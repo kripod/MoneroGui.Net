@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:MoneroClient"
         xmlns:views="clr-namespace:MoneroClient.Views"
-        Title="Monero Client" Height="350" Width="525">
+        Title="Monero Client" Height="350" Width="525"
+        Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
     </Window.CommandBindings>
@@ -52,6 +53,6 @@
             </TabItem>
         </TabControl>
 
-        <views:StatusBarView Grid.Row="2"/>
+        <views:StatusBarView x:Name="StatusBar" Grid.Row="2"/>
     </Grid>
 </Window>
