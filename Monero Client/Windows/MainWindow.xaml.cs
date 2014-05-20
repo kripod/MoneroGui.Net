@@ -15,14 +15,18 @@ using System.Windows.Shapes;
 
 namespace MoneroClient
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow
     {
+        public static readonly RoutedCommand ExitCommand = new RoutedCommand();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

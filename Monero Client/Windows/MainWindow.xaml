@@ -1,0 +1,57 @@
+﻿<Window x:Class="MoneroClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MoneroClient"
+        xmlns:views="clr-namespace:MoneroClient.Views"
+        Title="Monero Client" Height="350" Width="525">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Modifiers="Control" Command="local:MainWindow.ExitCommand"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Backup wallet..."/>
+                <MenuItem Header="_Export..."/>
+                <Separator/>
+                <MenuItem Header="Exit" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q"/>
+            </MenuItem>
+
+            <MenuItem Header="Settings"/>
+            <MenuItem Header="Help"/>
+        </Menu>
+
+        <TabControl Grid.Row="1" Margin="10">
+            <TabItem Header="Overview">
+                <views:OverviewView Margin="5"/>
+            </TabItem>
+
+            <TabItem Header="Send coins">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Transactions">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Address book">
+                <views:AddressBookView Margin="5"/>
+            </TabItem>
+        </TabControl>
+
+        <views:StatusBarView Grid.Row="2"/>
+    </Grid>
+</Window>
