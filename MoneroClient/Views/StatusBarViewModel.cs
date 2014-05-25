@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace MoneroClient.Views
+namespace Jojatekok.MoneroClient.Views
 {
     sealed class StatusBarViewModel : INotifyPropertyChanged
     {

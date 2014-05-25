@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Timers;
 
-namespace MoneroClient.ProcessManagers
+namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class DaemonManager : BaseProcessManager
+    public class DaemonManager : BaseProcessManager, IDisposable
     {
         public EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
         public EventHandler<byte> ConnectionCountChanged;
 
         public byte ConnectionCount { get; private set; }
 
-        public DaemonManager() : base(Paths.ResourceDaemon)
+        private Timer ConnectionCountQueryTimer { get; set; }
+
+        internal DaemonManager(Paths paths) : base(paths.SoftwareDaemon)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
-            
+
             StartProcess();
+
+            ConnectionCountQueryTimer = new Timer(5000);
+            ConnectionCountQueryTimer.Elapsed += ((sender, e) => Send("print_cn"));
+            ConnectionCountQueryTimer.Start();
         }
 
         private void Process_ErrorReceived(object sender, string e)
@@ -52,6 +59,24 @@ namespace MoneroClient.ProcessManagers
                     ConnectionCountChanged(this, ConnectionCount);
                     return;
                 }
+            }
+        }
+
+        public new void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing) {
+                if (ConnectionCountQueryTimer != null) {
+                    ConnectionCountQueryTimer.Dispose();
+                    ConnectionCountQueryTimer = null;
+                }
+
+                base.Dispose();
             }
         }
     }

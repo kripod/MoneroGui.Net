@@ -1,17 +1,17 @@
-﻿using MoneroClient.ProcessManagers;
+﻿using Jojatekok.MoneroAPI;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MoneroClient
+namespace Jojatekok.MoneroClient.Windows
 {
     public partial class MainWindow : IDisposable
     {
         private bool IsDisposeInProgress { get; set; }
 
-        public DaemonManager DaemonManager { get; private set; }
+        public MoneroAPI.MoneroClient MoneroClient { get; private set; }
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
 
@@ -19,9 +19,9 @@ namespace MoneroClient
         {
             InitializeComponent();
 
-            DaemonManager = new DaemonManager();
-            DaemonManager.SyncStatusChanged += DaemonManager_SyncStatusChanged;
-            DaemonManager.ConnectionCountChanged += DaemonManager_ConnectionCountChanged;
+            MoneroClient = new MoneroAPI.MoneroClient();
+            MoneroClient.Daemon.SyncStatusChanged += DaemonManager_SyncStatusChanged;
+            MoneroClient.Daemon.ConnectionCountChanged += DaemonManager_ConnectionCountChanged;
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -65,9 +65,9 @@ namespace MoneroClient
             if (disposing && !IsDisposeInProgress) {
                 IsDisposeInProgress = true;
                 
-                if (DaemonManager != null) {
-                    DaemonManager.Dispose();
-                    DaemonManager = null;
+                if (MoneroClient != null) {
+                    MoneroClient.Dispose();
+                    MoneroClient = null;
                 }
 
                 Dispatcher.Invoke(Application.Current.Shutdown);

@@ -1,4 +1,4 @@
-﻿namespace MoneroClient.Views
+﻿namespace Jojatekok.MoneroClient.Views
 {
     public partial class StatusBarView
     {

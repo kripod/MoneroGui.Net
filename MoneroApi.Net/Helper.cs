@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace MoneroClient
+namespace Jojatekok.MoneroAPI
 {
     static class Helper
     {

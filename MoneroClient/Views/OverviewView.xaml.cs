@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MoneroClient.Views
+namespace Jojatekok.MoneroClient.Views
 {
-    public partial class AddressBookView
+    public partial class OverviewView
     {
-        public AddressBookView()
+        public OverviewView()
         {
             InitializeComponent();
         }

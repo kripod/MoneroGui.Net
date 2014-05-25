@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MoneroClient
+namespace Jojatekok.MoneroAPI
 {
     public class SyncStatusChangedEventArgs : EventArgs
     {

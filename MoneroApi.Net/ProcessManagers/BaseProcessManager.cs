@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Timers;
 
-namespace MoneroClient.ProcessManagers
+namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public abstract class BaseProcessManager : IDisposable
     {
@@ -15,7 +15,6 @@ namespace MoneroClient.ProcessManagers
         private string Path { get; set; }
 
         private Timer PingTimer { get; set; }
-        private Timer ConnectionCountQueryTimer { get; set; }
 
         protected bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
@@ -26,9 +25,6 @@ namespace MoneroClient.ProcessManagers
 
             PingTimer = new Timer(1000);
             PingTimer.Elapsed += ((sender, e) => Send(""));
-
-            ConnectionCountQueryTimer = new Timer(5000);
-            ConnectionCountQueryTimer.Elapsed += ((sender, e) => Send("print_cn"));
         }
 
         protected void StartProcess()
@@ -50,14 +46,13 @@ namespace MoneroClient.ProcessManagers
 
             Process.Start();
 
-            ReadLine(true);
-            ReadLine(false);
+            ReadLineAsync(true);
+            ReadLineAsync(false);
 
             PingTimer.Start();
-            ConnectionCountQueryTimer.Start();
         }
 
-        private async void ReadLine(bool isError)
+        private async void ReadLineAsync(bool isError)
         {
             while (IsProcessAlive) {
                 var reader = isError ? Process.StandardError : Process.StandardOutput;
@@ -73,10 +68,10 @@ namespace MoneroClient.ProcessManagers
             }
         }
 
-        protected async void Send(string input)
+        protected void Send(string input)
         {
             if (IsProcessAlive) {
-                await Process.StandardInput.WriteLineAsync(input);
+                Process.StandardInput.WriteLine(input);
             }
         }
 
@@ -100,11 +95,6 @@ namespace MoneroClient.ProcessManagers
                 if (PingTimer != null) {
                     PingTimer.Dispose();
                     PingTimer = null;
-                }
-
-                if (ConnectionCountQueryTimer != null) {
-                    ConnectionCountQueryTimer.Dispose();
-                    ConnectionCountQueryTimer = null;
                 }
 
                 if (Process != null) {
