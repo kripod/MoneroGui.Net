@@ -44,11 +44,15 @@
   <ItemGroup>
     <Compile Include="EventArgs\SyncStatusChangedEventArgs.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Objects\Balance.cs" />
+    <Compile Include="Objects\TransactionType.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="ProcessManagers\BaseProcessManager.cs" />
+    <Compile Include="ProcessManagers\WalletManager.cs" />
     <Compile Include="ProcessManagers\DaemonManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneroClient.cs" />
+    <Compile Include="Objects\Transaction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

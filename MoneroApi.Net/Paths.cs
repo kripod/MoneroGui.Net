@@ -6,7 +6,8 @@ namespace Jojatekok.MoneroAPI
     {
         private static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
 
-        private const string DirectoryWalletData = @"WalletData\";
+        internal const string DirectoryWalletData = @"WalletData\";
+        internal const string DirectoryWalletDataBackups = DirectoryWalletData + @"Backups\";
         private string _fileWalletData = DirectoryWalletData + "wallet.bin";
 
         private const string DirectoryResources = @"Resources\";

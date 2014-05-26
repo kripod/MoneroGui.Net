@@ -14,8 +14,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private Process Process { get; set; }
         private string Path { get; set; }
 
-        private Timer PingTimer { get; set; }
-
         protected bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
         }
@@ -23,11 +21,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         protected BaseProcessManager(string path) {
             Path = path;
 
-            PingTimer = new Timer(1000);
-            PingTimer.Elapsed += ((sender, e) => Send(""));
+            
         }
 
-        protected void StartProcess()
+        protected void StartProcess(params string[] arguments)
         {
             if (Process != null) Process.Dispose();
 
@@ -42,14 +39,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 }
             };
 
+            if (arguments != null) {
+                Process.StartInfo.Arguments = string.Join(" ", arguments);
+            }
+
             Process.Exited += Process_Exited;
 
             Process.Start();
 
             ReadLineAsync(true);
             ReadLineAsync(false);
-
-            PingTimer.Start();
         }
 
         private async void ReadLineAsync(bool isError)
@@ -91,11 +90,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (disposing && !IsDisposeInProgress) {
                 IsDisposeInProgress = true;
-
-                if (PingTimer != null) {
-                    PingTimer.Dispose();
-                    PingTimer = null;
-                }
 
                 if (Process != null) {
                     if (Process.Responding) {

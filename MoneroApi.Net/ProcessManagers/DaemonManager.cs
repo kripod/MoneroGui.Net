@@ -11,6 +11,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public byte ConnectionCount { get; private set; }
 
+        private Timer PingTimer { get; set; }
         private Timer ConnectionCountQueryTimer { get; set; }
 
         internal DaemonManager(Paths paths) : base(paths.SoftwareDaemon)
@@ -19,6 +20,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             OutputReceived += Process_OutputReceived;
 
             StartProcess();
+
+            PingTimer = new Timer(1000);
+            PingTimer.Elapsed += ((sender, e) => Send(""));
+            PingTimer.Start();
 
             ConnectionCountQueryTimer = new Timer(5000);
             ConnectionCountQueryTimer.Elapsed += ((sender, e) => Send("print_cn"));
@@ -71,6 +76,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
+                if (PingTimer != null) {
+                    PingTimer.Dispose();
+                    PingTimer = null;
+                }
+
                 if (ConnectionCountQueryTimer != null) {
                     ConnectionCountQueryTimer.Dispose();
                     ConnectionCountQueryTimer = null;
