@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Jojatekok.MoneroClient.Views
+namespace Jojatekok.MoneroGUI.Views
 {
     public partial class OverviewView
     {

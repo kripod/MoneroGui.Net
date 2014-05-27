@@ -1,8 +1,8 @@
-﻿<Window x:Class="Jojatekok.MoneroClient.Windows.MainWindow"
+﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:Jojatekok.MoneroClient.Windows"
-        xmlns:views="clr-namespace:Jojatekok.MoneroClient.Views"
+        xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
+        xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
         Title="Monero Client" Height="440" Width="640"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>

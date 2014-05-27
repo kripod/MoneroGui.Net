@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Jojatekok.MoneroClient.Windows
+namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class MainWindow : IDisposable
     {
         private bool IsDisposeInProgress { get; set; }
 
-        public MoneroAPI.MoneroClient MoneroClient { get; private set; }
+        private MoneroClient MoneroClient { get; set; }
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
 
@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroClient.Windows
         {
             InitializeComponent();
 
-            MoneroClient = new MoneroAPI.MoneroClient();
+            MoneroClient = new MoneroClient();
 
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
             MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneroClient", "MoneroClient\MoneroClient.csproj", "{CC2FD8A6-B60E-43FD-BDE8-761C8AB922A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneroGui", "MoneroGui\MoneroGui.csproj", "{CC2FD8A6-B60E-43FD-BDE8-761C8AB922A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneroApi.Net", "MoneroApi.Net\MoneroApi.Net.csproj", "{499FBE00-79A6-43ED-86CF-597994471433}"
 EndProject

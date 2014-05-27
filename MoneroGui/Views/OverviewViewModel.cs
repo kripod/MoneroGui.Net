@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace Jojatekok.MoneroClient.Views
+namespace Jojatekok.MoneroGUI.Views
 {
     sealed class OverviewViewModel : INotifyPropertyChanged
     {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Jojatekok.MoneroClient.Views
+namespace Jojatekok.MoneroGUI.Views
 {
     public partial class AddressBookView
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{CC2FD8A6-B60E-43FD-BDE8-761C8AB922A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jojatekok.MoneroClient</RootNamespace>
+    <RootNamespace>Jojatekok.MoneroGUI</RootNamespace>
     <AssemblyName>Monero Client</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
