@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Jojatekok.MoneroClient.Windows"
         xmlns:views="clr-namespace:Jojatekok.MoneroClient.Views"
-        Title="Monero Client" Height="350" Width="525"
+        Title="Monero Client" Height="440" Width="640"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
@@ -33,7 +33,7 @@
 
         <TabControl Grid.Row="1" Margin="10">
             <TabItem Header="Overview">
-                <views:OverviewView Margin="5"/>
+                <views:OverviewView x:Name="Overview" Margin="5"/>
             </TabItem>
 
             <TabItem Header="Send coins">

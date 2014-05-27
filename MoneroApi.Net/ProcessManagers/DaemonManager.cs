@@ -6,8 +6,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public class DaemonManager : BaseProcessManager, IDisposable
     {
-        public EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
-        public EventHandler<byte> ConnectionCountChanged;
+        public event EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
+        public event EventHandler<byte> ConnectionCountChanged;
 
         public byte ConnectionCount { get; private set; }
 

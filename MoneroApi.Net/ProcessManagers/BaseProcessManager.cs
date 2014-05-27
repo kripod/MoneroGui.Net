@@ -6,8 +6,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public abstract class BaseProcessManager : IDisposable
     {
-        protected EventHandler<string> OutputReceived;
-        protected EventHandler<string> ErrorReceived;
+        protected event EventHandler<string> OutputReceived;
+        protected event EventHandler<string> ErrorReceived;
+        protected event EventHandler<int> Exited;
 
         private bool IsDisposeInProgress { get; set; }
 
@@ -20,8 +21,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         protected BaseProcessManager(string path) {
             Path = path;
-
-            
         }
 
         protected void StartProcess(params string[] arguments)
@@ -76,6 +75,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Process_Exited(object sender, EventArgs e)
         {
+            if (Exited != null) Exited(this, Process.ExitCode);
+
             // TODO: Restart the process whether it's needed
             // StartProcess(Path);
         }
@@ -92,14 +93,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 IsDisposeInProgress = true;
 
                 if (Process != null) {
-                    if (Process.Responding) {
-                        Send("exit");
-                        if (!Process.WaitForExit(30000)) Process.Kill();
-                    } else {
-                        Process.Kill();
+                    if (!Process.HasExited) {
+                        if (Process.Responding) {
+                            Send("exit");
+                            if (!Process.WaitForExit(30000)) Process.Kill();
+                        } else {
+                            Process.Kill();
+                        }
+
+                        Process.WaitForExit();
                     }
 
-                    Process.WaitForExit();
                     Process.Dispose();
                     Process = null;
                 }

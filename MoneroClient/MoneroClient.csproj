@@ -78,6 +78,7 @@
     <Compile Include="Views\AddressBookView.xaml.cs">
       <DependentUpon>AddressBookView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OverviewViewModel.cs" />
     <Compile Include="Views\StatusBarViewModel.cs" />
     <Compile Include="Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>

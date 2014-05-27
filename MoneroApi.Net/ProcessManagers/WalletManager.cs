@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -9,11 +10,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public class WalletManager : BaseProcessManager, IDisposable
     {
-        public EventHandler ReadyToLogin;
-        public EventHandler Refreshed;
-        public EventHandler<string> AddressReceived;
-        public EventHandler<Balance> BalanceChanged;
-        public EventHandler<string> SentMoney;
+        public event EventHandler Refreshed;
+        public event EventHandler<string> AddressReceived;
+        public event EventHandler<Balance> BalanceChanged;
+        public event EventHandler<string> SentMoney;
 
         private Paths Paths { get; set; }
 
@@ -22,7 +22,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private Timer RefreshTimer { get; set; }
 
-        internal WalletManager(Paths paths) : base(paths.SoftwareWallet)
+        internal WalletManager(Paths paths, string password = null) : base(paths.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
@@ -32,12 +32,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TransactionsPrivate = new ObservableCollection<Transaction>();
             Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
+            var arguments = new List<string>(2);
+
             if (File.Exists(Paths.FileWalletData)) {
-                StartProcess("--wallet-file=" + Paths.FileWalletData);
+                arguments.Add("--wallet-file=" + Paths.FileWalletData);
             } else {
                 if (!Directory.Exists(Paths.DirectoryWalletData)) Directory.CreateDirectory(Paths.DirectoryWalletData);
-                StartProcess("--generate-new-wallet=" + Paths.FileWalletData);
+                arguments.Add("--generate-new-wallet=" + Paths.FileWalletData);
             }
+
+            if (!string.IsNullOrWhiteSpace(password)) {
+                arguments.Add("--password=" + password);
+            }
+
+            StartProcess(arguments.ToArray());
 
             RefreshTimer = new Timer(10000);
             RefreshTimer.Elapsed += (sender, e) => Refresh();
@@ -115,28 +123,19 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            // <-- Initializer methods -->
-
-            if (ReadyToLogin != null && data.Contains("bitmonero wallet")) {
-                ReadyToLogin(this, EventArgs.Empty);
-                return;
-            }
+            // <-- Initializer -->
 
             if (AddressReceived != null && (data.Contains("opened wallet: ") || data.Contains("generated new wallet: "))) {
-                AddressReceived(this, data.Substring(data.IndexOf(':') + 1).Trim());
+                AddressReceived(this, data.Substring(data.IndexOf(':') + 2));
+                GetBalance();
                 return;
             }
 
             // <-- Error handler -->
 
             if (data.Contains("error")) {
-                ErrorReceived(this, data);
+                Process_ErrorReceived(this, data);
             }
-        }
-
-        public void Login(string password = "x")
-        {
-            Send(password);
         }
 
         public void GetBalance()
@@ -144,9 +143,19 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("balance");
         }
 
-        public void Transfer(string address, double amount, int mixCount)
+        public void Transfer(int mixCount, string address, double amount)
         {
-            Send(string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address.Trim(), amount));
+            Send(string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address, amount));
+        }
+
+        public void Transfer(int mixCount, Dictionary<string, double> recipients)
+        {
+            var transfers = string.Empty;
+            foreach (var keyValuePair in recipients) {
+                transfers += " " + keyValuePair.Key + " " + keyValuePair.Value;
+            }
+
+            Send(string.Format(Helper.InvariantCulture, "transfer {0}{1}", mixCount, transfers));
         }
 
         public void Refresh()

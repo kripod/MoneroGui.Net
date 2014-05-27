@@ -20,8 +20,12 @@ namespace Jojatekok.MoneroClient.Windows
             InitializeComponent();
 
             MoneroClient = new MoneroAPI.MoneroClient();
-            MoneroClient.Daemon.SyncStatusChanged += DaemonManager_SyncStatusChanged;
-            MoneroClient.Daemon.ConnectionCountChanged += DaemonManager_ConnectionCountChanged;
+
+            MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
+            MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;
+
+            MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
+            MoneroClient.Wallet.BalanceChanged += Wallet_BalanceChanged;
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -41,7 +45,7 @@ namespace Jojatekok.MoneroClient.Windows
             Close();
         }
 
-        private void DaemonManager_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
+        private void Daemon_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
         {
             var statusBarViewModel = StatusBar.ViewModel;
             statusBarViewModel.SyncBarText = e.StatusText;
@@ -49,9 +53,21 @@ namespace Jojatekok.MoneroClient.Windows
             statusBarViewModel.BlocksDownloaded = e.BlocksDownloaded;
         }
 
-        private void DaemonManager_ConnectionCountChanged(object sender, byte e)
+        private void Daemon_ConnectionCountChanged(object sender, byte e)
         {
             StatusBar.ViewModel.ConnectionCount = e;
+        }
+
+        private void Wallet_AddressReceived(object sender, string e)
+        {
+            Overview.ViewModel.Address = e;
+        }
+
+        private void Wallet_BalanceChanged(object sender, Balance e)
+        {
+            var overviewViewModel = Overview.ViewModel;
+            overviewViewModel.BalanceSpendable = e.Spendable;
+            overviewViewModel.BalanceUnconfirmed = e.Unconfirmed;
         }
 
         public void Dispose()

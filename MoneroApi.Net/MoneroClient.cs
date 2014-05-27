@@ -8,13 +8,13 @@ namespace Jojatekok.MoneroAPI
         public DaemonManager Daemon { get; private set; }
         public WalletManager Wallet { get; private set; }
 
-        public MoneroClient(Paths paths)
+        public MoneroClient(Paths paths, string password = null)
         {
             Daemon = new DaemonManager(paths);
-            Wallet = new WalletManager(paths);
+            Wallet = new WalletManager(paths, password);
         }
 
-        public MoneroClient() : this(new Paths())
+        public MoneroClient(string password = null) : this(new Paths(), password)
         {
 
         }
@@ -28,6 +28,11 @@ namespace Jojatekok.MoneroAPI
         private void Dispose(bool disposing)
         {
             if (disposing) {
+                if (Wallet != null) {
+                    Wallet.Dispose();
+                    Wallet = null;
+                }
+
                 if (Daemon != null) {
                     Daemon.Dispose();
                     Daemon = null;
