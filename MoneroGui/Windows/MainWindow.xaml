@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="Monero Client" Height="440" Width="640"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
@@ -12,47 +13,47 @@
         <KeyBinding Key="Q" Modifiers="Control" Command="local:MainWindow.ExitCommand"/>
     </Window.InputBindings>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="57*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <xctk:BusyIndicator x:Name="BusyIndicator" BusyContent="Monero Client is shutting down...">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="57*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <Menu>
-            <MenuItem Header="_File">
-                <MenuItem Header="_Backup wallet..."/>
-                <MenuItem Header="_Export..."/>
-                <Separator/>
-                <MenuItem Header="Exit" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q"/>
-            </MenuItem>
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Backup wallet..."/>
+                    <MenuItem Header="_Export..."/>
+                    <Separator/>
+                    <MenuItem Header="Exit" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q"/>
+                </MenuItem>
 
-            <MenuItem Header="Settings"/>
-            <MenuItem Header="Help"/>
-        </Menu>
+                <MenuItem Header="Settings"/>
+                <MenuItem Header="Help"/>
+            </Menu>
 
-        <TabControl Grid.Row="1" Margin="10">
-            <TabItem Header="Overview">
-                <views:OverviewView x:Name="Overview" Margin="5"/>
-            </TabItem>
+            <TabControl Grid.Row="1" Margin="10">
+                <TabItem Header="Overview">
+                    <views:OverviewView x:Name="Overview" Margin="5"/>
+                </TabItem>
 
-            <TabItem Header="Send coins">
-                <Grid>
+                <TabItem Header="Send coins">
+                    <views:SendCoinsView x:Name="SendCoinsView" Margin="5"/>
+                </TabItem>
 
-                </Grid>
-            </TabItem>
+                <TabItem Header="Transactions">
+                    <Grid>
 
-            <TabItem Header="Transactions">
-                <Grid>
+                    </Grid>
+                </TabItem>
 
-                </Grid>
-            </TabItem>
+                <TabItem Header="Address book">
+                    <views:AddressBookView Margin="5"/>
+                </TabItem>
+            </TabControl>
 
-            <TabItem Header="Address book">
-                <views:AddressBookView Margin="5"/>
-            </TabItem>
-        </TabControl>
-
-        <views:StatusBarView x:Name="StatusBar" Grid.Row="2"/>
-    </Grid>
+            <views:StatusBarView x:Name="StatusBar" Grid.Row="2"/>
+        </Grid>
+    </xctk:BusyIndicator>
 </Window>

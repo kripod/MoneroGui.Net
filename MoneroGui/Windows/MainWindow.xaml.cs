@@ -11,15 +11,15 @@ namespace Jojatekok.MoneroGUI.Windows
     {
         private bool IsDisposeInProgress { get; set; }
 
-        private MoneroClient MoneroClient { get; set; }
+        internal static MoneroClient MoneroClient { get; set; }
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
 
         public MainWindow()
         {
-            InitializeComponent();
-
             MoneroClient = new MoneroClient();
+
+            InitializeComponent();
 
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
             MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;
@@ -32,9 +32,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             if (!IsDisposeInProgress) {
                 Task.Factory.StartNew(Dispose);
-                IsEnabled = false;
-
-                // TODO: Show a dialog of an indeterminate ProgressBar until all the processes are killed
+                BusyIndicator.IsBusy = true;
             }
 
             e.Cancel = true;
@@ -68,6 +66,10 @@ namespace Jojatekok.MoneroGUI.Windows
             var overviewViewModel = Overview.ViewModel;
             overviewViewModel.BalanceSpendable = e.Spendable;
             overviewViewModel.BalanceUnconfirmed = e.Unconfirmed;
+
+            var sendCoinsViewModel = SendCoinsView.ViewModel;
+            sendCoinsViewModel.CoinBalance = e.Spendable;
+            sendCoinsViewModel.IsSendingEnabled = true;
         }
 
         public void Dispose()

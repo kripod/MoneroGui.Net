@@ -20,7 +20,7 @@
             </ItemsPanelTemplate>
         </StatusBar.ItemsPanel>
 
-        <StatusBarItem x:Name="TextBlockSync" Content="Synchronizing with network..." Visibility="{Binding SyncBarVisibility}"/>
+        <StatusBarItem Content="Synchronizing with network..." Visibility="{Binding SyncBarVisibility}"/>
         <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
             <Grid>
                 <ProgressBar Value="{Binding BlocksDownloaded}" Maximum="{Binding BlocksTotal}" Height="21" Visibility="{Binding SyncBarVisibility}"/>

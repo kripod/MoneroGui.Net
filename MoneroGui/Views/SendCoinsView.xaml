@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.SendCoinsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+    <UserControl.DataContext>
+        <views:SendCoinsViewModel x:Name="ViewModel"/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Address:" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox x:Name="TextBoxAddress" Grid.Row="0" Grid.Column="2" Watermark="Enter a Monero address" FontFamily="Lucida Console" VerticalContentAlignment="Center" Height="22" Margin="0 0 0 5"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Label:" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox x:Name="TextBoxLabel" Grid.Row="1" Grid.Column="2" Watermark="Enter a label for this address to add it to your address book" Margin="0 0 0 5"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Amount:" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:DoubleUpDown x:Name="DoubleUpDownAmount" Grid.Row="2" Grid.Column="2" Value="0" Minimum="0" Increment="0.001" FormatString="0.00000000" Height="22" Margin="0 0 0 5"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Mix count:" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:IntegerUpDown x:Name="IntegerUpDownMixCount" Grid.Row="3" Grid.Column="2" Value="0" Minimum="0" Height="22" Margin="0 0 0 5"/>
+
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Content="Send" Click="ButtonSend_Click" IsEnabled="{Binding IsSendingEnabled}"/>
+    </Grid>
+</UserControl>
