@@ -35,14 +35,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var arguments = new List<string>(2);
 
             if (File.Exists(Paths.FileWalletData)) {
-                arguments.Add("--wallet-file=" + Paths.FileWalletData);
+                arguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
+
             } else {
-                if (!Directory.Exists(Paths.DirectoryWalletData)) Directory.CreateDirectory(Paths.DirectoryWalletData);
-                arguments.Add("--generate-new-wallet=" + Paths.FileWalletData);
+                var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
+                Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
+
+                if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
+                arguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
             }
 
             if (!string.IsNullOrWhiteSpace(password)) {
-                arguments.Add("--password=" + password);
+                arguments.Add("--password=\"" + password + "\"");
             }
 
             StartProcess(arguments.ToArray());
@@ -167,15 +171,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public void Backup(string path = null)
         {
             if (path == null) {
-                path = Paths.DirectoryWalletDataBackups + DateTime.Now.ToString("yyyy-MM-dd");
+                path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd");
             }
 
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-            var walletName = Paths.FileWalletData;
-            walletName = walletName.Substring(0, walletName.LastIndexOf('.'));
+            var walletName = Path.GetFileNameWithoutExtension(Paths.FileWalletData);
+            var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
+            Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
 
-            var filesToBackup = Directory.GetFiles(Paths.DirectoryWalletData, walletName + "*");
+            var filesToBackup = Directory.GetFiles(directoryWalletData, walletName + "*");
             for (var i = filesToBackup.Length - 1; i >= 0; i--) {
                 var file = filesToBackup[i];
                 Debug.Assert(file != null, "file != null");

@@ -6,39 +6,45 @@ namespace Jojatekok.MoneroAPI
     {
         private static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
 
-        internal const string DirectoryWalletData = @"WalletData\";
-        internal const string DirectoryWalletDataBackups = DirectoryWalletData + @"Backups\";
-        private string _fileWalletData = DirectoryWalletData + "wallet.bin";
+        private const string DefaultRelativePathDirectoryWalletData = @"WalletData\";
+        private const string DefaultRelativePathDirectoryResources = @"Resources\";
+        private static readonly string DefaultRelativePathDirectorySoftwares = DefaultRelativePathDirectoryResources + (
+            Environment.Is64BitOperatingSystem ?
+            @"64-bit\" :
+            @"32-bit\"
+        );
 
-        private const string DirectoryResources = @"Resources\";
-        private static readonly string DirectorySoftwares = DirectoryResources + (Environment.Is64BitOperatingSystem ?
-                                                                                  @"64-bit\" :
-                                                                                  @"32-bit\");
-        private string _softwareDaemon = DirectorySoftwares + "bitmonerod.exe";
-        private string _softwareWallet = DirectorySoftwares + "simplewallet.exe";
-        private string _softwareMiner = DirectorySoftwares + "simpleminer.exe";
+        private string _directoryWalletBackups = BasePath + DefaultRelativePathDirectoryWalletData + @"Backups\";
+        public string DirectoryWalletBackups {
+            get { return _directoryWalletBackups; }
+            set { _directoryWalletBackups = value; }
+        }
 
+        private string _fileWalletData = BasePath + DefaultRelativePathDirectoryWalletData + "wallet.bin";
         public string FileWalletData {
-            get { return BasePath + _fileWalletData; }
+            get { return _fileWalletData; }
             set { _fileWalletData = value; }
         }
 
         public string FileWalletAddress {
-            get { return BasePath + _fileWalletData + ".address.txt"; }
+            get { return FileWalletData + ".address.txt"; }
         }
 
+        private string _softwareDaemon = BasePath + DefaultRelativePathDirectorySoftwares + "bitmonerod.exe";
         public string SoftwareDaemon {
-            get { return BasePath + _softwareDaemon; }
+            get { return _softwareDaemon; }
             set { _softwareDaemon = value; }
         }
 
+        private string _softwareWallet = BasePath + DefaultRelativePathDirectorySoftwares + "simplewallet.exe";
         public string SoftwareWallet {
-            get { return BasePath + _softwareWallet; }
+            get { return _softwareWallet; }
             set { _softwareWallet = value; }
         }
 
+        private string _softwareMiner = BasePath + DefaultRelativePathDirectorySoftwares + "simpleminer.exe";
         public string SoftwareMiner {
-            get { return BasePath + _softwareMiner; }
+            get { return _softwareMiner; }
             set { _softwareMiner = value; }
         }
     }
