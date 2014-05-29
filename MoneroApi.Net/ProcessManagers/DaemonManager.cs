@@ -40,12 +40,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var data = e.ToLower(Helper.InvariantCulture);
 
             if (SyncStatusChanged != null && data.Contains("sync data return")) {
-                var match = Regex.Match(data, "([0-9]+)->([0-9]+)\\[([0-9]+) blocks\\(([0-9 a-z]+)\\)");
+                var match = Regex.Match(data, "([0-9]+)->([0-9]+)\\[([0-9]+) blocks\\(([0-9]+) ([a-z]+)\\)");
                 if (match.Success) {
                     SyncStatusChanged(this, new SyncStatusChangedEventArgs(
                         ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture),
                         ulong.Parse(match.Groups[2].Value, Helper.InvariantCulture),
-                        string.Format(Helper.InvariantCulture, "{0} blocks ({1}) behind", match.Groups[3].Value, match.Groups[4].Value)
+                        ulong.Parse(match.Groups[3].Value, Helper.InvariantCulture),
+                        ulong.Parse(match.Groups[4].Value, Helper.InvariantCulture),
+                        match.Groups[5].Value
                     ));
                 }
 

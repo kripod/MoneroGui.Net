@@ -46,7 +46,16 @@ namespace Jojatekok.MoneroGUI.Windows
         private void Daemon_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
         {
             var statusBarViewModel = StatusBar.ViewModel;
-            statusBarViewModel.SyncBarText = e.StatusText;
+
+            var timeRemainingText = "?";
+            if (e.TimeRemainingText == "days") {
+                timeRemainingText = Properties.Resources.StatusBarSyncTextDays;
+            }
+            statusBarViewModel.SyncBarText = string.Format(Properties.Resources.StatusBarSyncTextMain,
+                                                           e.BlocksRemaining,
+                                                           e.TimeRemainingValue,
+                                                           timeRemainingText);
+
             statusBarViewModel.BlocksTotal = e.BlocksTotal;
             statusBarViewModel.BlocksDownloaded = e.BlocksDownloaded;
         }

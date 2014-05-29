@@ -118,105 +118,105 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddressBookAddress" xml:space="preserve">
-    <value>Address</value>
+    <value>Cím</value>
   </data>
   <data name="AddressBookLabel" xml:space="preserve">
-    <value>Label</value>
+    <value>Címke</value>
   </data>
   <data name="DataCurrencyCode" xml:space="preserve">
     <value>MRO</value>
   </data>
   <data name="MainWindowAddressBook" xml:space="preserve">
-    <value>Address book</value>
+    <value>Címjegyzék</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
-    <value>Monero Client is shutting down...</value>
+    <value>A Monero Kliens leáll...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Overview</value>
+    <value>Áttekintés</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Send coins</value>
+    <value>Érmék küldése</value>
   </data>
   <data name="MainWindowTitle" xml:space="preserve">
-    <value>Monero Client</value>
+    <value>Monero Kliens</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Transactions</value>
+    <value>Tranzakciók</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Backup wallet...</value>
+    <value>_Biztonsági mentés készítése a tárcáról...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Kilépés</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Export...</value>
+    <value>_Exportálás...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_File</value>
+    <value>_Fájl</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Help</value>
+    <value>_Súgó</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Settings</value>
+    <value>_Beállítások</value>
   </data>
   <data name="OverviewAddress" xml:space="preserve">
-    <value>Address:</value>
+    <value>Cím:</value>
   </data>
   <data name="OverviewCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Másolás</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Initializing...</value>
+    <value>Inicializálás...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Number of transactions:</value>
+    <value>Tranzakciók száma:</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Recent transactions</value>
+    <value>Legutóbbi tranzakciók</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Spendable:</value>
+    <value>Elkölthető:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Unconfirmed:</value>
+    <value>Megerősítetlen:</value>
   </data>
   <data name="OverviewWallet" xml:space="preserve">
-    <value>Wallet</value>
+    <value>Tárca</value>
   </data>
   <data name="SendCoinsAddress" xml:space="preserve">
-    <value>Address:</value>
+    <value>Cím:</value>
   </data>
   <data name="SendCoinsAddressHint" xml:space="preserve">
-    <value>Enter a Monero address</value>
+    <value>Adj meg egy Monero címet</value>
   </data>
   <data name="SendCoinsAmount" xml:space="preserve">
-    <value>Amount:</value>
+    <value>Mennyiség:</value>
   </data>
   <data name="SendCoinsLabel" xml:space="preserve">
-    <value>Label:</value>
+    <value>Címke:</value>
   </data>
   <data name="SendCoinsLabelHint" xml:space="preserve">
-    <value>Enter a label for this address to add it to your address book</value>
+    <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Mix count:</value>
+    <value>Keverések száma:</value>
   </data>
   <data name="SendCoinsSend" xml:space="preserve">
-    <value>Send</value>
+    <value>Küldés</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>connections</value>
+    <value>kapcsolat</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Synchronizing with network...</value>
+    <value>Szinkronizálás a hálózattal...</value>
   </data>
   <data name="StatusBarSyncTextDays" xml:space="preserve">
-    <value>days</value>
+    <value>nap</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blocks ({1} {2}) behind</value>
+    <value>{0} blokk ({1} {2}) lemaradás</value>
   </data>
 </root>

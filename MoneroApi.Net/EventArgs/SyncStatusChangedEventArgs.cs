@@ -6,13 +6,17 @@ namespace Jojatekok.MoneroAPI
     {
         public ulong BlocksDownloaded { get; set; }
         public ulong BlocksTotal { get; set; }
-        public string StatusText { get; set; }
+        public ulong BlocksRemaining { get; set; }
+        public ulong TimeRemainingValue { get; set; }
+        public string TimeRemainingText { get; set; }
 
-        public SyncStatusChangedEventArgs(ulong blocksDownloaded, ulong blocksTotal, string statusText)
+        public SyncStatusChangedEventArgs(ulong blocksDownloaded, ulong blocksTotal, ulong blocksRemaining, ulong timeRemainingValue, string timeRemainingText)
         {
             BlocksDownloaded = blocksDownloaded;
             BlocksTotal = blocksTotal;
-            StatusText = statusText;
+            BlocksRemaining = blocksRemaining;
+            TimeRemainingValue = timeRemainingValue;
+            TimeRemainingText = timeRemainingText;
         }
     }
 }

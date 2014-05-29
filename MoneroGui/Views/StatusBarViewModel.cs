@@ -62,18 +62,6 @@ namespace Jojatekok.MoneroGUI.Views
             set {
                 _connectionCount = value;
                 OnPropertyChanged();
-
-                ConnectionCountText = value + " connections";
-            }
-        }
-
-        private string _connectionCountText = "0 connections";
-        public string ConnectionCountText {
-            get { return _connectionCountText; }
-
-            private set {
-                _connectionCountText = value;
-                OnPropertyChanged();
             }
         }
 
