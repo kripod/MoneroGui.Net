@@ -72,6 +72,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             } else if (e.Contains("not enough money")) {
                 // Not enough money
+
+            } else if (e.Contains("payment id has invalid format")) {
+                // The payment ID needs to be a 64 character string
             }
 
             // TODO: Handle unexpected errors
@@ -147,12 +150,15 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("balance");
         }
 
-        public void Transfer(int mixCount, string address, double amount)
+        public void Transfer(string address, double amount, int mixCount = 0, string paymentId = null)
         {
-            Send(string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address, amount));
+            Send(string.IsNullOrEmpty(paymentId) ?
+                 string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address, amount) :
+                 string.Format(Helper.InvariantCulture, "transfer {0} {1} {2} {3}", mixCount, address, amount, paymentId)
+            );
         }
 
-        public void Transfer(int mixCount, Dictionary<string, double> recipients)
+        public void Transfer(Dictionary<string, double> recipients, int mixCount = 0)
         {
             var transfers = string.Empty;
             foreach (var keyValuePair in recipients) {

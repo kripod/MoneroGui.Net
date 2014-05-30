@@ -61,24 +61,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address.
-        /// </summary>
-        public static string AddressBookAddress {
-            get {
-                return ResourceManager.GetString("AddressBookAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Label.
-        /// </summary>
-        public static string AddressBookLabel {
-            get {
-                return ResourceManager.GetString("AddressBookLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to MRO.
         /// </summary>
         public static string DataCurrencyCode {
@@ -196,15 +178,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address:.
-        /// </summary>
-        public static string OverviewAddress {
-            get {
-                return ResourceManager.GetString("OverviewAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Copy.
         /// </summary>
         public static string OverviewCopy {
@@ -268,38 +241,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Address:.
-        /// </summary>
-        public static string SendCoinsAddress {
-            get {
-                return ResourceManager.GetString("SendCoinsAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter a Monero address.
         /// </summary>
         public static string SendCoinsAddressHint {
             get {
                 return ResourceManager.GetString("SendCoinsAddressHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Amount:.
-        /// </summary>
-        public static string SendCoinsAmount {
-            get {
-                return ResourceManager.GetString("SendCoinsAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Label:.
-        /// </summary>
-        public static string SendCoinsLabel {
-            get {
-                return ResourceManager.GetString("SendCoinsLabel", resourceCulture);
             }
         }
         
@@ -318,6 +264,24 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string SendCoinsMixCount {
             get {
                 return ResourceManager.GetString("SendCoinsMixCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment ID:.
+        /// </summary>
+        public static string SendCoinsPaymentId {
+            get {
+                return ResourceManager.GetString("SendCoinsPaymentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field is optional.
+        /// </summary>
+        public static string SendCoinsPaymentIdHint {
+            get {
+                return ResourceManager.GetString("SendCoinsPaymentIdHint", resourceCulture);
             }
         }
         
@@ -363,6 +327,42 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string StatusBarSyncTextMain {
             get {
                 return ResourceManager.GetString("StatusBarSyncTextMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string TextAddress {
+            get {
+                return ResourceManager.GetString("TextAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        public static string TextAmount {
+            get {
+                return ResourceManager.GetString("TextAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Label.
+        /// </summary>
+        public static string TextLabel {
+            get {
+                return ResourceManager.GetString("TextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        public static string TransactionsType {
+            get {
+                return ResourceManager.GetString("TransactionsType", resourceCulture);
             }
         }
     }

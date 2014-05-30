@@ -44,9 +44,7 @@
                 </TabItem>
 
                 <TabItem Header="{x:Static p:Resources.MainWindowTransactions}">
-                    <Grid>
-
-                    </Grid>
+                    <views:TransactionsView x:Name="TransactionsView" Margin="5"/>
                 </TabItem>
 
                 <TabItem Header="{x:Static p:Resources.MainWindowAddressBook}">

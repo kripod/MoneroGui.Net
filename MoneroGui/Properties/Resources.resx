@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressBookAddress" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="AddressBookLabel" xml:space="preserve">
-    <value>Label</value>
-  </data>
   <data name="DataCurrencyCode" xml:space="preserve">
     <value>MRO</value>
   </data>
@@ -162,9 +156,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Settings</value>
   </data>
-  <data name="OverviewAddress" xml:space="preserve">
-    <value>Address:</value>
-  </data>
   <data name="OverviewCopy" xml:space="preserve">
     <value>Copy</value>
   </data>
@@ -186,23 +177,20 @@
   <data name="OverviewWallet" xml:space="preserve">
     <value>Wallet</value>
   </data>
-  <data name="SendCoinsAddress" xml:space="preserve">
-    <value>Address:</value>
-  </data>
   <data name="SendCoinsAddressHint" xml:space="preserve">
     <value>Enter a Monero address</value>
-  </data>
-  <data name="SendCoinsAmount" xml:space="preserve">
-    <value>Amount:</value>
-  </data>
-  <data name="SendCoinsLabel" xml:space="preserve">
-    <value>Label:</value>
   </data>
   <data name="SendCoinsLabelHint" xml:space="preserve">
     <value>Enter a label for this address to add it to your address book</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Mix count:</value>
+  </data>
+  <data name="SendCoinsPaymentId" xml:space="preserve">
+    <value>Payment ID:</value>
+  </data>
+  <data name="SendCoinsPaymentIdHint" xml:space="preserve">
+    <value>This field is optional</value>
   </data>
   <data name="SendCoinsSend" xml:space="preserve">
     <value>Send</value>
@@ -218,5 +206,17 @@
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
     <value>{0} blocks ({1} {2}) behind</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Type</value>
   </data>
 </root>

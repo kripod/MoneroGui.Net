@@ -93,6 +93,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 IsDisposeInProgress = true;
 
                 if (Process != null) {
+#if DEBUG // Unsafe shutdown
+                    if (!Process.HasExited) {
+                        Process.Kill();
+                    }
+
+#else     // Safe shutdown
                     if (!Process.HasExited) {
                         if (Process.Responding) {
                             Send("exit");
@@ -103,6 +109,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                         Process.WaitForExit();
                     }
+#endif
 
                     Process.Dispose();
                     Process = null;

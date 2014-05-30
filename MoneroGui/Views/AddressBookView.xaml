@@ -5,8 +5,8 @@
     <Grid>
         <DataGrid IsReadOnly="True" HeadersVisibility="Column">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Resources.AddressBookLabel}" SortDirection="Ascending" Width="*"/>
-                <DataGridTextColumn Header="{x:Static p:Resources.AddressBookAddress}" Width="200"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.TextLabel}" SortDirection="Ascending" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.TextAddress}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

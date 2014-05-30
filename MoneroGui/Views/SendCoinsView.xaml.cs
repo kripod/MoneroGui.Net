@@ -1,5 +1,4 @@
-﻿using Jojatekok.MoneroGUI.Windows;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Jojatekok.MoneroGUI.Views
 {
@@ -8,6 +7,8 @@ namespace Jojatekok.MoneroGUI.Views
         public SendCoinsView()
         {
             InitializeComponent();
+
+            // TODO: Load mix count's previous value from settings
         }
 
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
@@ -21,7 +22,17 @@ namespace Jojatekok.MoneroGUI.Views
                 IntegerUpDownMixCount.Value = 0;
             }
 
-            MainWindow.MoneroClient.Wallet.Transfer(IntegerUpDownMixCount.Value.Value, TextBoxAddress.Text, DoubleUpDownAmount.Value.Value);
+            StaticObjects.MoneroClient.Wallet.Transfer(TextBoxAddress.Text, DoubleUpDownAmount.Value.Value, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
+
+            ResetValues();
+        }
+
+        private void ResetValues()
+        {
+            TextBoxAddress.Clear();
+            TextBoxLabel.Clear();
+            DoubleUpDownAmount.Value = 0;
+            TextBoxPaymentId.Clear();
         }
     }
 }

@@ -11,15 +11,18 @@ namespace Jojatekok.MoneroGUI.Windows
     {
         private bool IsDisposeInProgress { get; set; }
 
-        internal static MoneroClient MoneroClient { get; set; }
+        private static MoneroClient MoneroClient { get; set; }
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
 
         public MainWindow()
         {
-            MoneroClient = new MoneroClient();
+            StaticObjects.MoneroClient = new MoneroClient();
+            MoneroClient = StaticObjects.MoneroClient;
 
             InitializeComponent();
+
+            TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
 
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
             MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;

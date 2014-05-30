@@ -7,8 +7,7 @@ namespace Jojatekok.MoneroGUI.Views
     sealed class StatusBarViewModel : INotifyPropertyChanged
     {
         private Visibility _syncBarVisibility = Visibility.Hidden;
-        public Visibility SyncBarVisibility
-        {
+        public Visibility SyncBarVisibility {
             get { return _syncBarVisibility; }
 
             private set {

@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressBookAddress" xml:space="preserve">
-    <value>Cím</value>
-  </data>
-  <data name="AddressBookLabel" xml:space="preserve">
-    <value>Címke</value>
-  </data>
   <data name="DataCurrencyCode" xml:space="preserve">
     <value>MRO</value>
   </data>
@@ -162,9 +156,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Beállítások</value>
   </data>
-  <data name="OverviewAddress" xml:space="preserve">
-    <value>Cím:</value>
-  </data>
   <data name="OverviewCopy" xml:space="preserve">
     <value>Másolás</value>
   </data>
@@ -186,23 +177,20 @@
   <data name="OverviewWallet" xml:space="preserve">
     <value>Tárca</value>
   </data>
-  <data name="SendCoinsAddress" xml:space="preserve">
-    <value>Cím:</value>
-  </data>
   <data name="SendCoinsAddressHint" xml:space="preserve">
     <value>Adj meg egy Monero címet</value>
-  </data>
-  <data name="SendCoinsAmount" xml:space="preserve">
-    <value>Mennyiség:</value>
-  </data>
-  <data name="SendCoinsLabel" xml:space="preserve">
-    <value>Címke:</value>
   </data>
   <data name="SendCoinsLabelHint" xml:space="preserve">
     <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Keverések száma:</value>
+  </data>
+  <data name="SendCoinsPaymentId" xml:space="preserve">
+    <value>Fizetési azonosító:</value>
+  </data>
+  <data name="SendCoinsPaymentIdHint" xml:space="preserve">
+    <value>Ez a mező opcionális</value>
   </data>
   <data name="SendCoinsSend" xml:space="preserve">
     <value>Küldés</value>
@@ -218,5 +206,17 @@
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
     <value>{0} blokk ({1} {2}) lemaradás</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Cím</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Mennyiség</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Címke</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Típus</value>
   </data>
 </root>

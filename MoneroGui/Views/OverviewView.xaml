@@ -54,7 +54,7 @@
 
                 <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 3 0 8"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static p:Resources.OverviewAddress}"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}"/>
                 <Grid Grid.Row="3" Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
