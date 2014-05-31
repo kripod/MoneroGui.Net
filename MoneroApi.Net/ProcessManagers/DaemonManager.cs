@@ -6,27 +6,28 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public class DaemonManager : BaseProcessManager, IDisposable
     {
+        public event EventHandler RpcInitialized;
         public event EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
         public event EventHandler<byte> ConnectionCountChanged;
 
+        public bool IsRpcInitialized { get; private set; }
+
         public byte ConnectionCount { get; private set; }
 
-        private Timer PingTimer { get; set; }
         private Timer ConnectionCountQueryTimer { get; set; }
 
         internal DaemonManager(Paths paths) : base(paths.SoftwareDaemon)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
+        }
 
+        internal void Start()
+        {
             StartProcess();
 
-            PingTimer = new Timer(1000);
-            PingTimer.Elapsed += ((sender, e) => Send(""));
-            PingTimer.Start();
-
             ConnectionCountQueryTimer = new Timer(5000);
-            ConnectionCountQueryTimer.Elapsed += ((sender, e) => Send("print_cn"));
+            ConnectionCountQueryTimer.Elapsed += delegate { Send("print_cn"); };
             ConnectionCountQueryTimer.Start();
         }
 
@@ -40,7 +41,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var data = e.ToLower(Helper.InvariantCulture);
 
             if (SyncStatusChanged != null && data.Contains("sync data return")) {
-                var match = Regex.Match(data, "([0-9]+)->([0-9]+)\\[([0-9]+) blocks\\(([0-9]+) ([a-z]+)\\)");
+                var match = Regex.Match(data, "([0-9]+) -> ([0-9]+) \\[([0-9]+) blocks \\(([0-9]+) ([a-z]+)\\)");
                 if (match.Success) {
                     SyncStatusChanged(this, new SyncStatusChangedEventArgs(
                         ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture),
@@ -67,6 +68,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     return;
                 }
             }
+
+            if (RpcInitialized != null && data.Contains("you are now synchronized with the network") && !IsRpcInitialized) {
+                IsRpcInitialized = true;
+                RpcInitialized(this, EventArgs.Empty);
+            }
         }
 
         public new void Dispose()
@@ -78,11 +84,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                if (PingTimer != null) {
-                    PingTimer.Dispose();
-                    PingTimer = null;
-                }
-
                 if (ConnectionCountQueryTimer != null) {
                     ConnectionCountQueryTimer.Dispose();
                     ConnectionCountQueryTimer = null;

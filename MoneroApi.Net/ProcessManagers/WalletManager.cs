@@ -15,44 +15,56 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<Balance> BalanceChanged;
         public event EventHandler<string> SentMoney;
 
+        private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
+        private List<string> Arguments { get; set; }
 
         private ObservableCollection<Transaction> TransactionsPrivate { get; set; }
         public ReadOnlyObservableCollection<Transaction> Transactions { get; private set; }
 
         private Timer RefreshTimer { get; set; }
 
-        internal WalletManager(Paths paths, string password = null) : base(paths.SoftwareWallet)
+        internal WalletManager(DaemonManager daemon, Paths paths, string password = null) : base(paths.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
 
+            Daemon = daemon;
+            Daemon.RpcInitialized += Daemon_RpcInitialized;
+
             Paths = paths;
 
-            TransactionsPrivate = new ObservableCollection<Transaction>();
-            Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
-
-            var arguments = new List<string>(2);
+            Arguments = new List<string>(2);
 
             if (File.Exists(Paths.FileWalletData)) {
-                arguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
+                Arguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
 
             } else {
                 var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
                 Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
-                arguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
+                Arguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
             }
 
             if (!string.IsNullOrWhiteSpace(password)) {
-                arguments.Add("--password=\"" + password + "\"");
+                Arguments.Add("--password=\"" + password + "\"");
             }
 
-            StartProcess(arguments.ToArray());
+            TransactionsPrivate = new ObservableCollection<Transaction>();
+            Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
+        }
+
+        internal void Start()
+        {
+            StartProcess(Arguments.ToArray());
 
             RefreshTimer = new Timer(10000);
-            RefreshTimer.Elapsed += (sender, e) => Refresh();
+            RefreshTimer.Elapsed += delegate { Refresh(); };
+        }
+
+        private void Daemon_RpcInitialized(object sender, EventArgs e)
+        {
             RefreshTimer.Start();
         }
 
@@ -134,7 +146,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             if (AddressReceived != null && (data.Contains("opened wallet: ") || data.Contains("generated new wallet: "))) {
                 AddressReceived(this, data.Substring(data.IndexOf(':') + 2));
-                GetBalance();
                 return;
             }
 
@@ -171,7 +182,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public void Refresh()
         {
             Send("refresh");
-            Send("incoming_transfers");
+            Send("incoming_transfers"); // TODO: Do this only at launch
         }
 
         public void Backup(string path = null)

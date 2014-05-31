@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI
         App()
         {
             // TODO: Initialize the desired language from a configuration file
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("hu-HU");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
         }
     }
 }

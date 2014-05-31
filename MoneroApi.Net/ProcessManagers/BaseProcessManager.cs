@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Timers;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public abstract class BaseProcessManager : IDisposable
     {
+        public event EventHandler<string> OnLogMessage;
+        public event EventHandler<int> Exited;
+
         protected event EventHandler<string> OutputReceived;
         protected event EventHandler<string> ErrorReceived;
-        protected event EventHandler<int> Exited;
 
         private bool IsDisposeInProgress { get; set; }
 
@@ -58,6 +59,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 if (IsDisposeInProgress) break;
                 if (line == null) continue;
 
+                if (OnLogMessage != null) OnLogMessage(this, line);
+
                 if (isError) {
                     if (ErrorReceived != null) ErrorReceived(this, line);
                 } else {
@@ -69,6 +72,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         protected void Send(string input)
         {
             if (IsProcessAlive) {
+                if (OnLogMessage != null) OnLogMessage(this, "> " + input);
                 Process.StandardInput.WriteLine(input);
             }
         }

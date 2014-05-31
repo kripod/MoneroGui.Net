@@ -5,10 +5,12 @@
         xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="{x:Static p:Resources.MainWindowTitle}" Height="440" Width="640"
+        Title="{x:Static p:Resources.MainWindowTitle}"
+        Width="640" Height="440" MinWidth="640" MinHeight="440"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
+        <CommandBinding Command="local:MainWindow.ShowDebugWindowCommand" Executed="ShowDebugWindowCommand_Executed"/>
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Key="Q" Modifiers="Control" Command="local:MainWindow.ExitCommand"/>
@@ -30,8 +32,18 @@
                     <MenuItem Header="{x:Static p:Resources.MenuExit}" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q"/>
                 </MenuItem>
 
-                <MenuItem Header="{x:Static p:Resources.MenuSettings}"/>
-                <MenuItem Header="{x:Static p:Resources.MenuHelp}"/>
+                <MenuItem Header="{x:Static p:Resources.MenuSettings}">
+                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}"/>
+                    <Separator/>
+                    <MenuItem Header="{x:Static p:Resources.MenuOptions}"/>
+                </MenuItem>
+
+                <MenuItem Header="{x:Static p:Resources.MenuHelp}">
+                    <MenuItem Header="{x:Static p:Resources.MenuDebugWindow}" Command="local:MainWindow.ShowDebugWindowCommand"/>
+                    <Separator/>
+                    <MenuItem Header="{x:Static p:Resources.MenuAbout}"/>
+                </MenuItem>
             </Menu>
 
             <TabControl Grid.Row="1" Margin="10">

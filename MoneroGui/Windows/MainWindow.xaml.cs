@@ -14,21 +14,27 @@ namespace Jojatekok.MoneroGUI.Windows
         private static MoneroClient MoneroClient { get; set; }
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
+        public static readonly RoutedCommand ShowDebugWindowCommand = new RoutedCommand();
+
+        private DebugWindow DebugWindow { get; set; }
 
         public MainWindow()
         {
-            StaticObjects.MoneroClient = new MoneroClient();
-            MoneroClient = StaticObjects.MoneroClient;
-
             InitializeComponent();
 
-            TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
+            MoneroClient = StaticObjects.MoneroClient;
 
+            MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
             MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;
 
+            MoneroClient.Wallet.OnLogMessage += Wallet_OnLogMessage;
             MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
             MoneroClient.Wallet.BalanceChanged += Wallet_BalanceChanged;
+
+            TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
+
+            MoneroClient.Start();
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -44,6 +50,23 @@ namespace Jojatekok.MoneroGUI.Windows
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ShowDebugWindowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (DebugWindow == null) {
+                DebugWindow = new DebugWindow();
+                DebugWindow.Closed += delegate { DebugWindow = null; };
+                DebugWindow.Show();
+
+            } else {
+                DebugWindow.Activate();
+            }
+        }
+
+        private void Daemon_OnLogMessage(object sender, string e)
+        {
+            Dispatcher.Invoke(() => StaticObjects.LoggerDaemon.Log(e));
         }
 
         private void Daemon_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
@@ -66,6 +89,11 @@ namespace Jojatekok.MoneroGUI.Windows
         private void Daemon_ConnectionCountChanged(object sender, byte e)
         {
             StatusBar.ViewModel.ConnectionCount = e;
+        }
+
+        private void Wallet_OnLogMessage(object sender, string e)
+        {
+            Dispatcher.Invoke(() => StaticObjects.LoggerWallet.Log(e));
         }
 
         private void Wallet_AddressReceived(object sender, string e)

@@ -70,6 +70,69 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string DebugConsoleClear {
+            get {
+                return ResourceManager.GetString("DebugConsoleClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string DebugConsoleSend {
+            get {
+                return ResourceManager.GetString("DebugConsoleSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daemon.
+        /// </summary>
+        public static string DebugWindowConsoleDaemon {
+            get {
+                return ResourceManager.GetString("DebugWindowConsoleDaemon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consoles.
+        /// </summary>
+        public static string DebugWindowConsoles {
+            get {
+                return ResourceManager.GetString("DebugWindowConsoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet.
+        /// </summary>
+        public static string DebugWindowConsoleWallet {
+            get {
+                return ResourceManager.GetString("DebugWindowConsoleWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string DebugWindowInformation {
+            get {
+                return ResourceManager.GetString("DebugWindowInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug window.
+        /// </summary>
+        public static string DebugWindowTitle {
+            get {
+                return ResourceManager.GetString("DebugWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address book.
         /// </summary>
         public static string MainWindowAddressBook {
@@ -124,11 +187,47 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _About Monero.
+        /// </summary>
+        public static string MenuAbout {
+            get {
+                return ResourceManager.GetString("MenuAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Backup wallet....
         /// </summary>
         public static string MenuBackupWallet {
             get {
                 return ResourceManager.GetString("MenuBackupWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Change wallet passphrase....
+        /// </summary>
+        public static string MenuChangeWalletPassword {
+            get {
+                return ResourceManager.GetString("MenuChangeWalletPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Debug window.
+        /// </summary>
+        public static string MenuDebugWindow {
+            get {
+                return ResourceManager.GetString("MenuDebugWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Encrypt wallet....
+        /// </summary>
+        public static string MenuEncryptWallet {
+            get {
+                return ResourceManager.GetString("MenuEncryptWallet", resourceCulture);
             }
         }
         
@@ -169,11 +268,29 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Options.
+        /// </summary>
+        public static string MenuOptions {
+            get {
+                return ResourceManager.GetString("MenuOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Settings.
         /// </summary>
         public static string MenuSettings {
             get {
                 return ResourceManager.GetString("MenuSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Unlock wallet....
+        /// </summary>
+        public static string MenuUnlockWallet {
+            get {
+                return ResourceManager.GetString("MenuUnlockWallet", resourceCulture);
             }
         }
         

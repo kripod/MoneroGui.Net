@@ -120,6 +120,27 @@
   <data name="DataCurrencyCode" xml:space="preserve">
     <value>MRO</value>
   </data>
+  <data name="DebugConsoleClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="DebugConsoleSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Consoles</value>
+  </data>
+  <data name="DebugWindowConsoleWallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="DebugWindowInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Debug window</value>
+  </data>
   <data name="MainWindowAddressBook" xml:space="preserve">
     <value>Address book</value>
   </data>
@@ -138,8 +159,20 @@
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_About Monero</value>
+  </data>
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Backup wallet...</value>
+  </data>
+  <data name="MenuChangeWalletPassword" xml:space="preserve">
+    <value>_Change wallet passphrase...</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>_Debug window</value>
+  </data>
+  <data name="MenuEncryptWallet" xml:space="preserve">
+    <value>_Encrypt wallet...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Exit</value>
@@ -153,8 +186,14 @@
   <data name="MenuHelp" xml:space="preserve">
     <value>_Help</value>
   </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>_Options</value>
+  </data>
   <data name="MenuSettings" xml:space="preserve">
     <value>_Settings</value>
+  </data>
+  <data name="MenuUnlockWallet" xml:space="preserve">
+    <value>_Unlock wallet...</value>
   </data>
   <data name="OverviewCopy" xml:space="preserve">
     <value>Copy</value>
