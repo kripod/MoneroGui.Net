@@ -17,7 +17,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
-        private List<string> Arguments { get; set; }
+        private List<string> ProcessArguments { get; set; }
+
+        public string Address { get; private set; }
+        public Balance Balance { get; private set; }
 
         private ObservableCollection<Transaction> TransactionsPrivate { get; set; }
         public ReadOnlyObservableCollection<Transaction> Transactions { get; private set; }
@@ -34,30 +37,30 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Paths = paths;
 
-            Arguments = new List<string>(2);
+            ProcessArguments = new List<string>(2);
 
             if (File.Exists(Paths.FileWalletData)) {
-                Arguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
+                ProcessArguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
 
             } else {
                 var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
                 Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
-                Arguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
+                ProcessArguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
             }
 
             if (!string.IsNullOrWhiteSpace(password)) {
-                Arguments.Add("--password=\"" + password + "\"");
+                ProcessArguments.Add("--password=\"" + password + "\"");
             }
 
             TransactionsPrivate = new ObservableCollection<Transaction>();
             Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
         }
 
-        internal void Start()
+        public void Start()
         {
-            StartProcess(Arguments.ToArray());
+            StartProcess(ProcessArguments.ToArray());
 
             RefreshTimer = new Timer(10000);
             RefreshTimer.Elapsed += delegate { Refresh(); };
@@ -65,7 +68,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Daemon_RpcInitialized(object sender, EventArgs e)
         {
-            RefreshTimer.Start();
+            Refresh();
         }
 
         private void Process_ErrorReceived(object sender, string e)
@@ -98,8 +101,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Reply methods -->
 
-            if (Refreshed != null && data.Contains("refresh done")) {
-                Refreshed(this, EventArgs.Empty);
+            if (data.Contains("refresh done")) {
+                RefreshTimer.Start();
+                if (Refreshed != null) Refreshed(this, EventArgs.Empty);
                 return;
             }
 
@@ -109,7 +113,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     var total = double.Parse(match.Groups[1].Value, Helper.InvariantCulture);
                     var spendable = double.Parse(match.Groups[2].Value, Helper.InvariantCulture);
 
-                    BalanceChanged(this, new Balance(total, spendable));
+                    Balance = new Balance(total, spendable);
+                    BalanceChanged(this, Balance);
                 }
 
                 return;
@@ -142,10 +147,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            // <-- Initializer -->
+            // <-- Initializers -->
+
+            if (data.Contains(" wallet v")) {
+                // Startup commands
+                Refresh();
+                GetBalance();
+                GetAllTransfers();
+            }
 
             if (AddressReceived != null && (data.Contains("opened wallet: ") || data.Contains("generated new wallet: "))) {
-                AddressReceived(this, data.Substring(data.IndexOf(':') + 2));
+                Address = data.Substring(data.IndexOf(':') + 2);
+                AddressReceived(this, Address);
                 return;
             }
 
@@ -156,9 +169,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        public void GetBalance()
+        private void GetBalance()
         {
             Send("balance");
+        }
+
+        private void GetAllTransfers()
+        {
+            Send("incoming_transfers");
         }
 
         public void Transfer(string address, double amount, int mixCount = 0, string paymentId = null)
@@ -181,8 +199,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void Refresh()
         {
+            RefreshTimer.Stop();
             Send("refresh");
-            Send("incoming_transfers"); // TODO: Do this only at launch
         }
 
         public void Backup(string path = null)

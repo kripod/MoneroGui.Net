@@ -4,10 +4,10 @@ namespace Jojatekok.MoneroGUI
 {
     static class StaticObjects
     {
-        internal static MoneroClient MoneroClient { get; set; }
+        public static MoneroClient MoneroClient { get; private set; }
 
-        internal static Logger LoggerDaemon { get; set; }
-        internal static Logger LoggerWallet { get; set; }
+        public static Logger LoggerDaemon { get; private set; }
+        public static Logger LoggerWallet { get; private set; }
 
         static StaticObjects()
         {

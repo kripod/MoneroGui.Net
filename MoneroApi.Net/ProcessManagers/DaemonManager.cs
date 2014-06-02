@@ -22,7 +22,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             OutputReceived += Process_OutputReceived;
         }
 
-        internal void Start()
+        public void Start()
         {
             StartProcess();
 

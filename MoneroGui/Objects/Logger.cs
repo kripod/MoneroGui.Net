@@ -6,7 +6,12 @@ namespace Jojatekok.MoneroGUI
 {
     class Logger : INotifyPropertyChanged
     {
+        public event EventHandler<string> OnMessage;
+
         private const int MaxLineCount = 300;
+
+        private int LineCount { get; set; }
+        public bool IsMaxLineCountReached { get; private set; }
 
         private string _messages = string.Empty;
         public string Messages {
@@ -18,27 +23,32 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        private int LineCount { get; set; }
-
-        internal void Log(string message)
+        public void Log(string message)
         {
             var time = DateTime.Now.ToString("[HH:mm:ss] ", Helper.InvariantCulture);
-            var messages = Messages;
+            var allMessages = Messages;
 
             if (LineCount == MaxLineCount) {
-                messages = messages.Substring(messages.IndexOf(Helper.NewLineString, StringComparison.Ordinal) + 2);
+                IsMaxLineCountReached = true;
+                allMessages = allMessages.Substring(allMessages.IndexOf(Helper.NewLineString, StringComparison.InvariantCulture) + Helper.NewLineString.Length);
             } else {
                 LineCount += 1;
             }
 
-            messages += time + message + Helper.NewLineString;
-            Messages = messages;
+            message = time + message;
+            if (Messages.Length != 0) message = Helper.NewLineString + message;
+
+            allMessages += message;
+            Messages = allMessages;
+
+            if (OnMessage != null) OnMessage(this, message);
         }
 
-        internal void Clear()
+        public void Clear()
         {
             Messages = string.Empty;
             LineCount = 0;
+            IsMaxLineCountReached = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

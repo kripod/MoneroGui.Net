@@ -11,7 +11,9 @@ namespace Jojatekok.MoneroGUI.Windows
     {
         private bool IsDisposeInProgress { get; set; }
 
-        private static MoneroClient MoneroClient { get; set; }
+        private static readonly MoneroClient MoneroClient = StaticObjects.MoneroClient;
+        private static readonly Logger LoggerDaemon = StaticObjects.LoggerDaemon;
+        private static readonly Logger LoggerWallet = StaticObjects.LoggerWallet;
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
         public static readonly RoutedCommand ShowDebugWindowCommand = new RoutedCommand();
@@ -21,8 +23,6 @@ namespace Jojatekok.MoneroGUI.Windows
         public MainWindow()
         {
             InitializeComponent();
-
-            MoneroClient = StaticObjects.MoneroClient;
 
             MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
@@ -64,9 +64,9 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        private void Daemon_OnLogMessage(object sender, string e)
+        private static void Daemon_OnLogMessage(object sender, string e)
         {
-            Dispatcher.Invoke(() => StaticObjects.LoggerDaemon.Log(e));
+            LoggerDaemon.Log(e);
         }
 
         private void Daemon_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
@@ -91,9 +91,9 @@ namespace Jojatekok.MoneroGUI.Windows
             StatusBar.ViewModel.ConnectionCount = e;
         }
 
-        private void Wallet_OnLogMessage(object sender, string e)
+        private static void Wallet_OnLogMessage(object sender, string e)
         {
-            Dispatcher.Invoke(() => StaticObjects.LoggerWallet.Log(e));
+            LoggerWallet.Log(e);
         }
 
         private void Wallet_AddressReceived(object sender, string e)
@@ -125,7 +125,6 @@ namespace Jojatekok.MoneroGUI.Windows
                 
                 if (MoneroClient != null) {
                     MoneroClient.Dispose();
-                    MoneroClient = null;
                 }
 
                 Dispatcher.Invoke(Application.Current.Shutdown);

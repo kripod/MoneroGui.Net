@@ -69,7 +69,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        protected void Send(string input)
+        public void Send(string input)
         {
             if (IsProcessAlive) {
                 if (OnLogMessage != null) OnLogMessage(this, "> " + input);

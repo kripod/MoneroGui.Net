@@ -4,6 +4,6 @@ namespace Jojatekok.MoneroAPI
 {
     static class Helper
     {
-        internal static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
+        public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
     }
 }

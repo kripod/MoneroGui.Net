@@ -15,11 +15,11 @@
         <TabItem Header="{x:Static p:Resources.DebugWindowConsoles}">
             <TabControl Margin="5">
                 <TabItem Header="{x:Static p:Resources.DebugWindowConsoleDaemon}">
-                    <views:DebugConsoleView x:Name="LogDaemon" Margin="5"/>
+                    <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>
                 </TabItem>
 
                 <TabItem Header="{x:Static p:Resources.DebugWindowConsoleWallet}">
-                    <views:DebugConsoleView x:Name="LogWallet" Margin="5"/>
+                    <views:DebugConsoleView x:Name="ConsoleWallet" SendRequested="ConsoleWallet_SendRequested" Margin="5"/>
                 </TabItem>
             </TabControl>
         </TabItem>
