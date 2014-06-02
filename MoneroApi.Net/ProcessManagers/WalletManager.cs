@@ -131,19 +131,38 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Transaction fetching -->
 
-            if (Regex.IsMatch(data, "amount[\\s]+spent")) {
-                TransactionsPrivate.Clear();
+            // Incoming transaction fetching
+            if (data.Contains("transaction")) {
+                var match = Regex.Match(data, "height ([0-9]+), transaction <([0-9a-z]+)>, ([a-z]+) ([0-9]+\\.[0-9]+)");
+                if (match.Success) {
+                    // TODO: Handle block height to get the transaction's timestamp
+                    //var blockHeight = ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture);
+
+                    var transactionId = match.Groups[2].Value;
+                    var type = match.Groups[3].Value == "received" ? TransactionType.Receive : TransactionType.Send;
+                    var amount = double.Parse(match.Groups[4].Value, Helper.InvariantCulture);
+
+                    TransactionsPrivate.Add(new Transaction(type, amount, transactionId));
+
+                    return;
+                }
+            }
+
+            // Initial transaction fetching
+            var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]+([tf])[\\s]+[0-9]+[\\s]+<([0-9a-z]+)>");
+            if (newTransactionMatch.Success) {
+                var amount = double.Parse(newTransactionMatch.Groups[1].Value, Helper.InvariantCulture);
+                var type = newTransactionMatch.Groups[2].Value == "t" ? TransactionType.Send : TransactionType.Receive;
+                var transactionId = newTransactionMatch.Groups[3].Value;
+
+                TransactionsPrivate.Add(new Transaction(type, amount, transactionId));
+
                 return;
             }
 
-            var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]*([TF])[\\s]*[0-9]+[\\s]*<([0-9a-z]+)>");
-            if (newTransactionMatch.Success) {
-                var amount = double.Parse(newTransactionMatch.Groups[1].Value, Helper.InvariantCulture);
-                var type = newTransactionMatch.Groups[2].Value == "T" ? TransactionType.Send : TransactionType.Receive;
-                var transactionId = newTransactionMatch.Groups[3].Value;
-
-                TransactionsPrivate.Add(new Transaction(amount, type, transactionId));
-
+            // Clear the list of transactions before they are reloaded
+            if (Regex.IsMatch(data, "amount[\\s]+spent")) {
+                TransactionsPrivate.Clear();
                 return;
             }
 
@@ -154,6 +173,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Refresh();
                 GetBalance();
                 GetAllTransfers();
+                return;
             }
 
             if (AddressReceived != null && (data.Contains("opened wallet: ") || data.Contains("generated new wallet: "))) {

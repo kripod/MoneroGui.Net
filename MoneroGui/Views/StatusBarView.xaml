@@ -20,11 +20,11 @@
             </ItemsPanelTemplate>
         </StatusBar.ItemsPanel>
 
-        <StatusBarItem Content="{x:Static p:Resources.StatusBarStatusSynchronizing}" Visibility="{Binding SyncBarVisibility}"/>
+        <StatusBarItem Content="{x:Static p:Resources.StatusBarStatusSynchronizing}" Visibility="{Binding Path=SyncBarVisibility}"/>
         <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
             <Grid>
-                <ProgressBar Value="{Binding BlocksDownloaded}" Maximum="{Binding BlocksTotal}" Height="21" Visibility="{Binding SyncBarVisibility}"/>
-                <TextBlock Text="{Binding SyncBarText}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding SyncBarVisibility}"/>
+                <ProgressBar Value="{Binding Path=BlocksDownloaded}" Maximum="{Binding BlocksTotal}" Height="21" Visibility="{Binding SyncBarVisibility}"/>
+                <TextBlock Text="{Binding Path=SyncBarText}" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding SyncBarVisibility}"/>
             </Grid>
         </StatusBarItem>
 

@@ -45,6 +45,6 @@
         <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsPaymentId}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" Watermark="{x:Static p:Resources.SendCoinsPaymentIdHint}" FontFamily="Lucida Console" VerticalContentAlignment="Center" Height="22" Margin="0 0 0 5"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Content="{x:Static p:Resources.SendCoinsSend}" Click="ButtonSend_Click" IsEnabled="{Binding IsSendingEnabled}"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Content="{x:Static p:Resources.SendCoinsSend}" Click="ButtonSend_Click" IsEnabled="{Binding Path=IsSendingEnabled}"/>
     </Grid>
 </UserControl>

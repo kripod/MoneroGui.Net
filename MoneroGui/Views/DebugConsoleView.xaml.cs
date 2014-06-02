@@ -42,7 +42,6 @@ namespace Jojatekok.MoneroGUI.Views
                 TextBoxLog.Select(0, 0);
 
                 TextBoxLog.Text = Logger.Messages;
-                if (!Logger.IsMaxLineCountReached) ScrollViewer.ScrollToVerticalOffset(oldVerticalScrollOffset);
 
                 if (oldSelectionLength > 0) {
                     if (Logger.IsMaxLineCountReached) {
@@ -52,6 +51,8 @@ namespace Jojatekok.MoneroGUI.Views
                     if (newSelectionStart < 0) newSelectionStart = 0;
                     TextBoxLog.Select(newSelectionStart, oldSelectionLength);
                 }
+
+                ScrollViewer.ScrollToVerticalOffset(oldVerticalScrollOffset);
             });
         }
 
