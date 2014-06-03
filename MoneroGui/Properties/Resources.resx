@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataCurrencyCode" xml:space="preserve">
-    <value>MRO</value>
+    <value>XMR</value>
   </data>
   <data name="DebugConsoleClear" xml:space="preserve">
     <value>Clear</value>
@@ -257,5 +257,23 @@
   </data>
   <data name="TransactionsType" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Spendable?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Unknown</value>
   </data>
 </root>

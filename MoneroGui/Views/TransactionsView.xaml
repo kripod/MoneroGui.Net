@@ -14,20 +14,24 @@
     <Grid>
         <DataGrid ItemsSource="{Binding Path=DataSource}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column">
             <DataGrid.Columns>
-                <!-- TODO: Fix column data (Status, date, type, address, amount) -->
+                <!-- TODO: Fix column data (Status, Date, Type, Spendable, Payment ID, Amount) -->
                 <!--<DataGridTextColumn/>-->
                 <!--<DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" SortDirection="Descending"/>-->
-                <DataGridTextColumn Header="{x:Static p:Resources.TransactionsType}" Binding="{Binding Path=Type}" Width="Auto"/>
-                <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->
-                <DataGridTextColumn Header="{x:Static p:Resources.TextAmount}" Binding="{Binding Path=Amount, StringFormat={}{0:0.000000000000}}" Width="Auto"/>
 
-                <DataGridTemplateColumn Header="Transaction ID" Width="1*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=TransactionId}" ToolTipService.ToolTip="{Binding Path=TransactionId}" TextTrimming="CharacterEllipsis" d:DataContext="{d:DesignInstance Type=api:Transaction}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="{x:Static p:Resources.TransactionsType}" Binding="{Binding Path=Type, Converter={StaticResource ConverterTransactionTypeToString}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.TransactionsSpendable}" Binding="{Binding Path=IsAmountSpendable, Converter={StaticResource ConverterBooleanToStringYesNo}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
+                <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->
+                <DataGridTextColumn Header="{x:Static p:Resources.TextAmount}" Binding="{Binding Path=Amount, StringFormat={}{0:0.000000000000}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
+
+                <DataGridTextColumn Header="Transaction ID" Binding="{Binding Path=TransactionId}" Width="1*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="ToolTip" Value="{Binding Path=(api:Transaction.TransactionId)}"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

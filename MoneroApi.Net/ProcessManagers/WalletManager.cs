@@ -141,8 +141,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     var transactionId = match.Groups[2].Value;
                     var type = match.Groups[3].Value == "received" ? TransactionType.Receive : TransactionType.Send;
                     var amount = double.Parse(match.Groups[4].Value, Helper.InvariantCulture);
+                    var isAmountSpendable = type == TransactionType.Receive;
 
-                    TransactionsPrivate.Add(new Transaction(type, amount, transactionId));
+                    TransactionsPrivate.AddOrMergeTransaction(new Transaction(type, isAmountSpendable, amount, transactionId));
+
+                    if (type == TransactionType.Send) {
+                        // TODO: Refresh funds' availability
+                    }
 
                     return;
                 }
@@ -152,10 +157,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]+([tf])[\\s]+[0-9]+[\\s]+<([0-9a-z]+)>");
             if (newTransactionMatch.Success) {
                 var amount = double.Parse(newTransactionMatch.Groups[1].Value, Helper.InvariantCulture);
-                var type = newTransactionMatch.Groups[2].Value == "t" ? TransactionType.Send : TransactionType.Receive;
+                var isAmountSpendable = newTransactionMatch.Groups[2].Value == "t";
                 var transactionId = newTransactionMatch.Groups[3].Value;
 
-                TransactionsPrivate.Add(new Transaction(type, amount, transactionId));
+                // TODO: Fetch the transaction's type if possible
+                TransactionsPrivate.AddOrMergeTransaction(new Transaction(TransactionType.Unknown, isAmountSpendable, amount, transactionId));
 
                 return;
             }

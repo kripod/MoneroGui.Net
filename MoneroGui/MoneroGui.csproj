@@ -99,6 +99,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Objects\ConverterTransactionTypeToString.cs" />
+    <Compile Include="Objects\ConverterBooleanToString.cs" />
     <Compile Include="Objects\Helper.cs" />
     <Compile Include="Objects\Logger.cs" />
     <Compile Include="Properties\Resources.hu-HU.Designer.cs">

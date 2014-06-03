@@ -61,7 +61,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MRO.
+        ///   Looks up a localized string similar to XMR.
         /// </summary>
         public static string DataCurrencyCode {
             get {
@@ -475,11 +475,65 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string TextNo {
+            get {
+                return ResourceManager.GetString("TextNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string TextYes {
+            get {
+                return ResourceManager.GetString("TextYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spendable?.
+        /// </summary>
+        public static string TransactionsSpendable {
+            get {
+                return ResourceManager.GetString("TransactionsSpendable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
         public static string TransactionsType {
             get {
                 return ResourceManager.GetString("TransactionsType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receive.
+        /// </summary>
+        public static string TransactionTypeReceive {
+            get {
+                return ResourceManager.GetString("TransactionTypeReceive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string TransactionTypeSend {
+            get {
+                return ResourceManager.GetString("TransactionTypeSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string TransactionTypeUnknown {
+            get {
+                return ResourceManager.GetString("TransactionTypeUnknown", resourceCulture);
             }
         }
     }

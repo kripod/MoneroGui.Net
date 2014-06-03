@@ -2,7 +2,8 @@
 {
     public enum TransactionType
     {
-        Receive = 0,
-        Send = 1
+        Unknown = 0,
+        Receive = 1,
+        Send = 2
     }
 }

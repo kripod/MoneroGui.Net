@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DataCurrencyCode" xml:space="preserve">
-    <value>MRO</value>
-  </data>
   <data name="DebugConsoleClear" xml:space="preserve">
     <value>Ürítés</value>
   </data>
@@ -257,5 +254,26 @@
   </data>
   <data name="TransactionsType" xml:space="preserve">
     <value>Típus</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Elkölthető?</value>
+  </data>
+  <data name="DataCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Fogadás</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Küldés</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Ismeretlen</value>
   </data>
 </root>
