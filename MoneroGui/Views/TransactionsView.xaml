@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
              xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net"
@@ -11,13 +12,23 @@
         <views:TransactionsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
 
+    <!-- TODO: Add ability for filtering -->
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSource}">
+            <CollectionViewSource.SortDescriptions>
+                <componentModel:SortDescription PropertyName="Number" Direction="Descending"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+
     <Grid>
-        <DataGrid ItemsSource="{Binding Path=DataSource}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column">
+        <DataGrid ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column">
             <DataGrid.Columns>
                 <!-- TODO: Fix column data (Status, Date, Type, Spendable, Payment ID, Amount) -->
                 <!--<DataGridTextColumn/>-->
                 <!--<DataGridTextColumn Header="Date" Binding="{Binding Path=Date}" SortDirection="Descending"/>-->
 
+                <DataGridTextColumn Header="#" Binding="{Binding Path=Number}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" SortDirection="Descending" Width="Auto"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TransactionsType}" Binding="{Binding Path=Type, Converter={StaticResource ConverterTransactionTypeToString}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TransactionsSpendable}" Binding="{Binding Path=IsAmountSpendable, Converter={StaticResource ConverterBooleanToStringYesNo}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->

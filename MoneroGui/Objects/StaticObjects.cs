@@ -11,7 +11,8 @@ namespace Jojatekok.MoneroGUI
 
         static StaticObjects()
         {
-            MoneroClient = new MoneroClient();
+            // TODO: Implement custom wallet password support
+            MoneroClient = new MoneroClient("x");
 
             LoggerDaemon = new Logger();
             LoggerWallet = new Logger();
