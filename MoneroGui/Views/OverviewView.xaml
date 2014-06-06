@@ -37,7 +37,7 @@
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0:0.000000000000} {1}">
                             <Binding Path="BalanceSpendable" TargetNullValue="?"/>
-                            <Binding Source="{x:Static p:Resources.DataCurrencyCode}"/>
+                            <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
@@ -47,7 +47,7 @@
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0:0.000000000000} {1}">
                             <Binding Path="BalanceUnconfirmed" TargetNullValue="?"/>
-                            <Binding Source="{x:Static p:Resources.DataCurrencyCode}"/>
+                            <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
@@ -70,7 +70,7 @@
                 <Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 8"/>
 
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.OverviewNumberOfTransactions}" Margin="0 0 0 5"/>
-                <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Path=TransactionCount}" HorizontalAlignment="Right" Margin="0 0 0 5"/>
+                <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Path=TransactionDataSource.Count}" HorizontalAlignment="Right" Margin="0 0 0 5"/>
             </Grid>
 
         </StackPanel>
@@ -78,7 +78,7 @@
         <StackPanel Grid.Column="2">
             <TextBlock Text="{x:Static p:Resources.OverviewRecentTransactions}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 5"/>
             <StackPanel Margin="20 0 0 5">
-                <!-- TODO -->
+                <!-- TODO: Show recent transactions -->
             </StackPanel>
         </StackPanel>
     </Grid>

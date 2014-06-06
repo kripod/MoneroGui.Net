@@ -61,11 +61,38 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to XMR.
+        ///   Looks up a localized string similar to Loading license file....
         /// </summary>
-        public static string DataCurrencyCode {
+        public static string AboutWindowLicenseFileLoading {
             get {
-                return ResourceManager.GetString("DataCurrencyCode", resourceCulture);
+                return ResourceManager.GetString("AboutWindowLicenseFileLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: The license file cannot be found..
+        /// </summary>
+        public static string AboutWindowLicenseFileNotFound {
+            get {
+                return ResourceManager.GetString("AboutWindowLicenseFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third-party licenses.
+        /// </summary>
+        public static string AboutWindowThirdPartyLicenses {
+            get {
+                return ResourceManager.GetString("AboutWindowThirdPartyLicenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Monero Client.
+        /// </summary>
+        public static string AboutWindowTitle {
+            get {
+                return ResourceManager.GetString("AboutWindowTitle", resourceCulture);
             }
         }
         
@@ -169,15 +196,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Monero Client.
-        /// </summary>
-        public static string MainWindowTitle {
-            get {
-                return ResourceManager.GetString("MainWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Transactions.
         /// </summary>
         public static string MainWindowTransactions {
@@ -187,7 +205,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _About Monero.
+        ///   Looks up a localized string similar to _About Monero Client.
         /// </summary>
         public static string MenuAbout {
             get {
@@ -462,6 +480,24 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextAmount {
             get {
                 return ResourceManager.GetString("TextAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monero Client.
+        /// </summary>
+        public static string TextClientName {
+            get {
+                return ResourceManager.GetString("TextClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XMR.
+        /// </summary>
+        public static string TextCurrencyCode {
+            get {
+                return ResourceManager.GetString("TextCurrencyCode", resourceCulture);
             }
         }
         

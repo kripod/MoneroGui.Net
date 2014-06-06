@@ -12,8 +12,6 @@ namespace Jojatekok.MoneroGUI.Views
             get { return _dataSource; }
 
             set {
-                if (value == _dataSource) return;
-
                 _dataSource = value;
                 OnPropertyChanged();
             }

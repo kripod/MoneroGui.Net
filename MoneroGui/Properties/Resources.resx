@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DataCurrencyCode" xml:space="preserve">
+  <data name="TextCurrencyCode" xml:space="preserve">
     <value>XMR</value>
   </data>
   <data name="DebugConsoleClear" xml:space="preserve">
@@ -153,14 +153,14 @@
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Send coins</value>
   </data>
-  <data name="MainWindowTitle" xml:space="preserve">
+  <data name="TextClientName" xml:space="preserve">
     <value>Monero Client</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_About Monero</value>
+    <value>_About Monero Client</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Backup wallet...</value>
@@ -275,5 +275,17 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Unknown</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>About Monero Client</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Error: The license file cannot be found.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Loading license file...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Third-party licenses</value>
   </data>
 </root>

@@ -40,6 +40,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             var data = e.ToLower(Helper.InvariantCulture);
 
+            // <-- Sync status change handler -->
+
             if (SyncStatusChanged != null && data.Contains("sync data return")) {
                 var match = Regex.Match(data, "([0-9]+) -> ([0-9]+) \\[([0-9]+) blocks \\(([0-9]+) ([a-z]+)\\)");
                 if (match.Success) {
@@ -54,6 +56,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 return;
             }
+
+            // <-- Connection count change handler -->
 
             if (ConnectionCountChanged != null) {
                 if (Regex.IsMatch(data, "\\[out\\][0-9\\.:]+[\\s]+[0-9a-z]+")) {
@@ -72,6 +76,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (RpcInitialized != null && data.Contains("you are now synchronized with the network") && !IsRpcInitialized) {
                 IsRpcInitialized = true;
                 RpcInitialized(this, EventArgs.Empty);
+            }
+
+            // <-- Error handler -->
+
+            if (data.Contains("error")) {
+                Process_ErrorReceived(this, data);
             }
         }
 

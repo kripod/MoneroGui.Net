@@ -5,12 +5,13 @@
         xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="{x:Static p:Resources.MainWindowTitle}"
+        Title="{x:Static p:Resources.TextClientName}"
         Width="640" Height="440" MinWidth="640" MinHeight="440"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
         <CommandBinding Command="local:MainWindow.ShowDebugWindowCommand" Executed="ShowDebugWindowCommand_Executed"/>
+        <CommandBinding Command="local:MainWindow.ShowAboutWindowCommand" Executed="ShowAboutWindowCommand_Executed"/>
     </Window.CommandBindings>
     <Window.InputBindings>
         <KeyBinding Key="Q" Modifiers="Control" Command="local:MainWindow.ExitCommand"/>
@@ -42,13 +43,13 @@
                 <MenuItem Header="{x:Static p:Resources.MenuHelp}">
                     <MenuItem Header="{x:Static p:Resources.MenuDebugWindow}" Command="local:MainWindow.ShowDebugWindowCommand"/>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuAbout}"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuAbout}" Command="local:MainWindow.ShowAboutWindowCommand"/>
                 </MenuItem>
             </Menu>
 
             <TabControl Grid.Row="1" Margin="10">
                 <TabItem Header="{x:Static p:Resources.MainWindowOverview}">
-                    <views:OverviewView x:Name="Overview" Margin="5"/>
+                    <views:OverviewView x:Name="OverviewView" Margin="5"/>
                 </TabItem>
 
                 <TabItem Header="{x:Static p:Resources.MainWindowSendCoins}">

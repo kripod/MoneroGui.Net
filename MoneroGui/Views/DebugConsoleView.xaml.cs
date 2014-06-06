@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views
 {
@@ -29,6 +30,13 @@ namespace Jojatekok.MoneroGUI.Views
 
             TextBoxLog.Text = Logger.Messages;
             Logger.OnMessage += Logger_OnMessage;
+        }
+
+        private void DebugConsoleView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue) {
+                Dispatcher.BeginInvoke(new Action(() => TextBoxInput.Focus()), DispatcherPriority.ContextIdle);
+            }
         }
 
         private void Logger_OnMessage(object sender, string e)

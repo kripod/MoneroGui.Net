@@ -1,0 +1,68 @@
+﻿using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace Jojatekok.MoneroGUI.Windows
+{
+    public partial class AboutWindow
+    {
+        private static readonly string VersionString = Assembly.GetExecutingAssembly().GetName().Version.ToString(3);
+        private static readonly string ThirdPartyLicensesPath = StaticObjects.ApplicationPath + "Licenses";
+
+        private static string LicenseText { get; set; }
+
+        public AboutWindow()
+        {
+            Icon = StaticObjects.ApplicationIcon;
+
+            InitializeComponent();
+
+            TextBlockVersion.Text = "v" + VersionString;
+            CheckThirdPartyLicensesAvailability();
+
+            if (LicenseText == null) {
+                Task.Factory.StartNew(LoadLicenseText);
+            } else {
+                TextBoxLicenseText.Text = LicenseText;
+            }
+        }
+
+        public AboutWindow(Window owner) : this()
+        {
+            Owner = owner;
+        }
+
+        private void LoadLicenseText()
+        {
+            var licenseFiles = Directory.GetFiles(StaticObjects.ApplicationPath, "LICENSE*", SearchOption.TopDirectoryOnly);
+
+            if (licenseFiles.Length != 0) {
+                using (var stream = new StreamReader(licenseFiles[0])) {
+                    LicenseText = stream.ReadToEnd();
+                    LicenseText = LicenseText.ReWrap();
+                }
+
+                Dispatcher.Invoke(() => TextBoxLicenseText.Text = LicenseText);
+
+            } else {
+                Dispatcher.Invoke(() => TextBoxLicenseText.Text = Properties.Resources.AboutWindowLicenseFileNotFound);
+            }
+        }
+
+        private bool CheckThirdPartyLicensesAvailability()
+        {
+            var output = Directory.Exists(ThirdPartyLicensesPath);
+            ButtonThirdPartyLicenses.IsEnabled = output;
+            return output;
+        }
+
+        private void ButtonThirdPartyLicenses_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckThirdPartyLicensesAvailability()) {
+                Process.Start(ThirdPartyLicensesPath);
+            }
+        }
+    }
+}

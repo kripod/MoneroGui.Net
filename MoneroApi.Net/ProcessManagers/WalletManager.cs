@@ -146,7 +146,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     TransactionsPrivate.Add(new Transaction(type, isAmountSpendable, amount, transactionId, TransactionsPrivate.Count + 1));
 
                     if (type == TransactionType.Send) {
-                        // TODO: Refresh funds' availability
+                        // TODO: Refresh funds' availability more solidly
+                        GetAllTransfers();
                     }
 
                     return;
@@ -241,7 +242,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
             Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
 
-            var filesToBackup = Directory.GetFiles(directoryWalletData, walletName + "*");
+            var filesToBackup = Directory.GetFiles(directoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
             for (var i = filesToBackup.Length - 1; i >= 0; i--) {
                 var file = filesToBackup[i];
                 Debug.Assert(file != null, "file != null");

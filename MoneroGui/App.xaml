@@ -8,7 +8,7 @@
         <main:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{x:Static p:Resources.TextNo}" TrueValue="{x:Static p:Resources.TextYes}"/>
         <main:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{x:Static p:Resources.TransactionTypeUnknown}" ReceiveValue="{x:Static p:Resources.TransactionTypeReceive}" SendValue="{x:Static p:Resources.TransactionTypeSend}"/>
 
-        <Style x:Key="StyleSeparatorVertical" TargetType="{x:Type Separator}" BasedOn="{StaticResource {x:Type Separator}}">
+        <Style x:Key="StyleSeparatorVertical" TargetType="{x:Type Separator}">
             <Setter Property="LayoutTransform">
                 <Setter.Value>
                     <TransformGroup>
@@ -25,28 +25,28 @@
             <Setter Property="Margin" Value="0 2"/>
         </Style>
 
-        <Style x:Key="StyleTextBlockAlignedCenter" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Style x:Key="StyleTextBlockAlignedCenter" TargetType="{x:Type TextBlock}">
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
 
-        <Style x:Key="StyleTextBlockAlignedRight" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Style x:Key="StyleTextBlockAlignedRight" TargetType="{x:Type TextBlock}">
             <Setter Property="TextAlignment" Value="Right"/>
         </Style>
 
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="5 0"/>
         </Style>
 
-        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+        <Style TargetType="{x:Type DataGrid}">
             <Setter Property="VerticalGridLinesBrush" Value="#26000000"/>
             <Setter Property="HorizontalGridLinesBrush" Value="#26000000"/>
         </Style>
 
-        <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Style TargetType="{x:Type DataGridColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
 
-        <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource {x:Type DataGridCell}}">
+        <Style TargetType="{x:Type DataGridCell}">
             <Setter Property="Padding" Value="8"/>
             <Setter Property="BorderThickness" Value="0"/>
 

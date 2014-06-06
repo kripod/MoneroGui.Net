@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using Jojatekok.MoneroAPI;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -59,12 +61,12 @@ namespace Jojatekok.MoneroGUI.Views
             }
         }
 
-        private ulong _transactionCount;
-        public ulong TransactionCount {
-            get { return _transactionCount; }
+        private ReadOnlyObservableCollection<Transaction> _transactionDataSource;
+        public ReadOnlyObservableCollection<Transaction> TransactionDataSource {
+            get { return _transactionDataSource; }
 
             set {
-                _transactionCount = value;
+                _transactionDataSource = value;
                 OnPropertyChanged();
             }
         }

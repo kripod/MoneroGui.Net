@@ -8,6 +8,8 @@ namespace Jojatekok.MoneroGUI.Windows
 
         public DebugWindow()
         {
+            Icon = StaticObjects.ApplicationIcon;
+
             InitializeComponent();
 
             ConsoleDaemon.DataContext = StaticObjects.LoggerDaemon;

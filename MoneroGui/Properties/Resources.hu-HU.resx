@@ -150,14 +150,14 @@
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Érmék küldése</value>
   </data>
-  <data name="MainWindowTitle" xml:space="preserve">
+  <data name="TextClientName" xml:space="preserve">
     <value>Monero Kliens</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Tranzakciók</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_A Monero-ról</value>
+    <value>_A Monero Kliensről</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Biztonsági mentés készítése a tárcáról...</value>
@@ -258,7 +258,7 @@
   <data name="TransactionsSpendable" xml:space="preserve">
     <value>Elkölthető?</value>
   </data>
-  <data name="DataCurrencyCode" xml:space="preserve">
+  <data name="TextCurrencyCode" xml:space="preserve">
     <value>XMR</value>
   </data>
   <data name="TextNo" xml:space="preserve">
@@ -275,5 +275,17 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Ismeretlen</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>A Monero Kliensről</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Hiba: A licencfájl nem található.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Licencfájl betöltése...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Harmadik féltől származó licencek</value>
   </data>
 </root>

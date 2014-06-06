@@ -17,11 +17,14 @@ namespace Jojatekok.MoneroGUI.Windows
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
         public static readonly RoutedCommand ShowDebugWindowCommand = new RoutedCommand();
+        public static readonly RoutedCommand ShowAboutWindowCommand = new RoutedCommand();
 
         private DebugWindow DebugWindow { get; set; }
 
         public MainWindow()
         {
+            Icon = StaticObjects.ApplicationIcon;
+
             InitializeComponent();
 
             MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
@@ -32,6 +35,7 @@ namespace Jojatekok.MoneroGUI.Windows
             MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
             MoneroClient.Wallet.BalanceChanged += Wallet_BalanceChanged;
 
+            OverviewView.ViewModel.TransactionDataSource = MoneroClient.Wallet.Transactions;
             TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
 
             MoneroClient.Start();
@@ -64,6 +68,11 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
+        private void ShowAboutWindowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            new AboutWindow(this).ShowDialog();
+        }
+
         private static void Daemon_OnLogMessage(object sender, string e)
         {
             LoggerDaemon.Log(e);
@@ -73,10 +82,13 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             var statusBarViewModel = StatusBar.ViewModel;
 
-            var timeRemainingText = "?";
+            string timeRemainingText;
             if (e.TimeRemainingText == "days") {
                 timeRemainingText = Properties.Resources.StatusBarSyncTextDays;
+            } else {
+                timeRemainingText = e.TimeRemainingText;
             }
+
             statusBarViewModel.SyncBarText = string.Format(Properties.Resources.StatusBarSyncTextMain,
                                                            e.BlocksRemaining,
                                                            e.TimeRemainingValue,
@@ -98,12 +110,12 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Wallet_AddressReceived(object sender, string e)
         {
-            Overview.ViewModel.Address = e;
+            OverviewView.ViewModel.Address = e;
         }
 
         private void Wallet_BalanceChanged(object sender, Balance e)
         {
-            var overviewViewModel = Overview.ViewModel;
+            var overviewViewModel = OverviewView.ViewModel;
             overviewViewModel.BalanceSpendable = e.Spendable;
             overviewViewModel.BalanceUnconfirmed = e.Unconfirmed;
 
