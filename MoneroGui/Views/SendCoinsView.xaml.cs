@@ -8,7 +8,8 @@ namespace Jojatekok.MoneroGUI.Views
         {
             InitializeComponent();
 
-            // TODO: Load mix count's previous value from settings
+            // Load mix count's previous value from settings
+            IntegerUpDownMixCount.Value = SettingsManager.General.TransactionsDefaultMixCount;
         }
 
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
@@ -23,8 +24,9 @@ namespace Jojatekok.MoneroGUI.Views
             }
 
             StaticObjects.MoneroClient.Wallet.Transfer(TextBoxAddress.Text, DoubleUpDownAmount.Value.Value, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
-
             ResetValues();
+
+            SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
         }
 
         private void ResetValues()

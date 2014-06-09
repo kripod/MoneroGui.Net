@@ -36,10 +36,9 @@
 
                 <DataGridTextColumn Header="Transaction ID" Binding="{Binding Path=TransactionId}" Width="1*">
                     <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
+                        <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="ToolTip" Value="{Binding Path=(api:Transaction.TransactionId)}"/>
                             <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-                            <Setter Property="TextAlignment" Value="Center"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>

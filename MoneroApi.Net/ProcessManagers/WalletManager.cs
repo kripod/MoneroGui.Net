@@ -43,8 +43,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 ProcessArguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
 
             } else {
-                var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
-                Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
+                var directoryWalletData = Paths.DirectoryWalletData;
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
                 ProcessArguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
@@ -239,10 +238,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             var walletName = Path.GetFileNameWithoutExtension(Paths.FileWalletData);
-            var directoryWalletData = Path.GetDirectoryName(Paths.FileWalletData);
-            Debug.Assert(directoryWalletData != null, "directoryWalletData != null");
 
-            var filesToBackup = Directory.GetFiles(directoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
+            var filesToBackup = Directory.GetFiles(Paths.DirectoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
             for (var i = filesToBackup.Length - 1; i >= 0; i--) {
                 var file = filesToBackup[i];
                 Debug.Assert(file != null, "file != null");

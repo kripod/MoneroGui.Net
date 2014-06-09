@@ -8,7 +8,6 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class AboutWindow
     {
-        private static readonly string VersionString = Assembly.GetExecutingAssembly().GetName().Version.ToString(3);
         private static readonly string ThirdPartyLicensesPath = StaticObjects.ApplicationPath + "Licenses";
 
         private static string LicenseText { get; set; }
@@ -19,7 +18,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             InitializeComponent();
 
-            TextBlockVersion.Text = "v" + VersionString;
+            TextBlockVersion.Text = "v" + Helper.ApplicationVersionString;
             CheckThirdPartyLicensesAvailability();
 
             if (LicenseText == null) {

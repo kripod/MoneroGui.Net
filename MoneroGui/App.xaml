@@ -3,43 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:main="clr-namespace:Jojatekok.MoneroGUI"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
         <main:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{x:Static p:Resources.TextNo}" TrueValue="{x:Static p:Resources.TextYes}"/>
         <main:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{x:Static p:Resources.TransactionTypeUnknown}" ReceiveValue="{x:Static p:Resources.TransactionTypeReceive}" SendValue="{x:Static p:Resources.TransactionTypeSend}"/>
 
-        <Style x:Key="StyleSeparatorVertical" TargetType="{x:Type Separator}">
-            <Setter Property="LayoutTransform">
-                <Setter.Value>
-                    <TransformGroup>
-                        <TransformGroup.Children>
-                            <TransformCollection>
-                                <RotateTransform Angle="90"/>
-                            </TransformCollection>
-                        </TransformGroup.Children>
-                    </TransformGroup>
-                </Setter.Value>
-            </Setter>
-
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="StyleSeparatorVertical" TargetType="{x:Type Separator}" BasedOn="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}">
+            <Setter Property="Width" Value="1"/>
             <Setter Property="Margin" Value="0 2"/>
         </Style>
 
         <Style x:Key="StyleTextBlockAlignedCenter" TargetType="{x:Type TextBlock}">
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
-
         <Style x:Key="StyleTextBlockAlignedRight" TargetType="{x:Type TextBlock}">
             <Setter Property="TextAlignment" Value="Right"/>
         </Style>
 
-        <Style TargetType="{x:Type Button}">
+        <Style x:Key="StyleHeight22" TargetType="{x:Type Control}">
+            <Setter Property="Height" Value="22"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StyleHeight22}">
             <Setter Property="Padding" Value="5 0"/>
+        </Style>
+        <Style TargetType="{x:Type xctk:ButtonSpinner}" BasedOn="{StaticResource StyleHeight22}">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style TargetType="{x:Type xctk:WatermarkTextBox}" BasedOn="{StaticResource StyleHeight22}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="VerticalGridLinesBrush" Value="#26000000"/>
             <Setter Property="HorizontalGridLinesBrush" Value="#26000000"/>
+
+            <Setter Property="AlternatingRowBackground" Value="#00000000"/>
         </Style>
 
         <Style TargetType="{x:Type DataGridColumnHeader}">

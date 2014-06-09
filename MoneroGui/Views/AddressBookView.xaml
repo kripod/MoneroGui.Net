@@ -2,12 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties">
-    <Grid>
-        <DataGrid IsReadOnly="True" HeadersVisibility="Column">
+    <Grid IsSharedSizeScope="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.ColumnSpan="5" IsReadOnly="True" HeadersVisibility="Column" Margin="0 0 0 8">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextLabel}" SortDirection="Ascending" Width="*"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextAddress}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button Grid.Row="1" Grid.Column="0" Content="{x:Static p:Resources.TextNew}" Click="ButtonNew_Click" Margin="0 0 8 0"/>
+        <Button Grid.Row="1" Grid.Column="1" Content="{x:Static p:Resources.TextCopy}" Click="ButtonCopy_Click" Margin="0 0 8 0"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="{x:Static p:Resources.TextDelete}" Click="ButtonDelete_Click" Margin="0 0 8 0"/>
+        <Button Grid.Row="1" Grid.Column="4" Content="{x:Static p:Resources.TextExport}" Click="ButtonExport_Click"/>
     </Grid>
 </UserControl>

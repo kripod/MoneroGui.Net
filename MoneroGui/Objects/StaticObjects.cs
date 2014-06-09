@@ -19,7 +19,15 @@ namespace Jojatekok.MoneroGUI
         static StaticObjects()
         {
             // TODO: Implement custom wallet password support
-            MoneroClient = new MoneroClient("x");
+            var paths = new Paths {
+                DirectoryWalletBackups = SettingsManager.Paths.DirectoryWalletBackups,
+                FileWalletData = SettingsManager.Paths.FileWalletData,
+                SoftwareDaemon = SettingsManager.Paths.SoftwareDaemon,
+                SoftwareWallet = SettingsManager.Paths.SoftwareWallet,
+                SoftwareMiner = SettingsManager.Paths.SoftwareMiner,
+            };
+
+            MoneroClient = new MoneroClient(paths, SettingsManager.General.WalletDefaultPassword);
 
             LoggerDaemon = new Logger();
             LoggerWallet = new Logger();

@@ -97,20 +97,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear.
+        ///   Looks up a localized string similar to Add known address.
         /// </summary>
-        public static string DebugConsoleClear {
+        public static string AddressBookAddWindowTitle {
             get {
-                return ResourceManager.GetString("DebugConsoleClear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Send.
-        /// </summary>
-        public static string DebugConsoleSend {
-            get {
-                return ResourceManager.GetString("DebugConsoleSend", resourceCulture);
+                return ResourceManager.GetString("AddressBookAddWindowTitle", resourceCulture);
             }
         }
         
@@ -313,15 +304,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Copy.
-        /// </summary>
-        public static string OverviewCopy {
-            get {
-                return ResourceManager.GetString("OverviewCopy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Initializing....
         /// </summary>
         public static string OverviewInitializing {
@@ -376,24 +358,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter a Monero address.
-        /// </summary>
-        public static string SendCoinsAddressHint {
-            get {
-                return ResourceManager.GetString("SendCoinsAddressHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a label for this address to add it to your address book.
-        /// </summary>
-        public static string SendCoinsLabelHint {
-            get {
-                return ResourceManager.GetString("SendCoinsLabelHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mix count:.
         /// </summary>
         public static string SendCoinsMixCount {
@@ -408,24 +372,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string SendCoinsPaymentId {
             get {
                 return ResourceManager.GetString("SendCoinsPaymentId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This field is optional.
-        /// </summary>
-        public static string SendCoinsPaymentIdHint {
-            get {
-                return ResourceManager.GetString("SendCoinsPaymentIdHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Send.
-        /// </summary>
-        public static string SendCoinsSend {
-            get {
-                return ResourceManager.GetString("SendCoinsSend", resourceCulture);
             }
         }
         
@@ -484,11 +430,38 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string TextCancel {
+            get {
+                return ResourceManager.GetString("TextCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string TextClear {
+            get {
+                return ResourceManager.GetString("TextClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monero Client.
         /// </summary>
         public static string TextClientName {
             get {
                 return ResourceManager.GetString("TextClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        public static string TextCopy {
+            get {
+                return ResourceManager.GetString("TextCopy", resourceCulture);
             }
         }
         
@@ -502,6 +475,51 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string TextDelete {
+            get {
+                return ResourceManager.GetString("TextDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export....
+        /// </summary>
+        public static string TextExport {
+            get {
+                return ResourceManager.GetString("TextExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a Monero address.
+        /// </summary>
+        public static string TextHintAddress {
+            get {
+                return ResourceManager.GetString("TextHintAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a label for this address to add it to your address book.
+        /// </summary>
+        public static string TextHintLabel {
+            get {
+                return ResourceManager.GetString("TextHintLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field is optional.
+        /// </summary>
+        public static string TextHintOptional {
+            get {
+                return ResourceManager.GetString("TextHintOptional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Label.
         /// </summary>
         public static string TextLabel {
@@ -511,11 +529,38 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New....
+        /// </summary>
+        public static string TextNew {
+            get {
+                return ResourceManager.GetString("TextNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string TextNo {
             get {
                 return ResourceManager.GetString("TextNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string TextOk {
+            get {
+                return ResourceManager.GetString("TextOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string TextSend {
+            get {
+                return ResourceManager.GetString("TextSend", resourceCulture);
             }
         }
         

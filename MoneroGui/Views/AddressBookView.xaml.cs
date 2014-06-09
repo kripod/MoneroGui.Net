@@ -21,5 +21,25 @@ namespace Jojatekok.MoneroGUI.Views
         {
             InitializeComponent();
         }
+
+        private void ButtonNew_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonCopy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonExport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

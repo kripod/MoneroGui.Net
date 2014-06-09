@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DebugConsoleClear" xml:space="preserve">
+  <data name="TextClear" xml:space="preserve">
     <value>Ürítés</value>
   </data>
-  <data name="DebugConsoleSend" xml:space="preserve">
+  <data name="TextSend" xml:space="preserve">
     <value>Küldés</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
@@ -192,9 +192,6 @@
   <data name="MenuUnlockWallet" xml:space="preserve">
     <value>Tárca _feloldása...</value>
   </data>
-  <data name="OverviewCopy" xml:space="preserve">
-    <value>Másolás</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializálás...</value>
   </data>
@@ -213,10 +210,10 @@
   <data name="OverviewWallet" xml:space="preserve">
     <value>Tárca</value>
   </data>
-  <data name="SendCoinsAddressHint" xml:space="preserve">
+  <data name="TextHintAddress" xml:space="preserve">
     <value>Adj meg egy Monero címet</value>
   </data>
-  <data name="SendCoinsLabelHint" xml:space="preserve">
+  <data name="TextHintLabel" xml:space="preserve">
     <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
@@ -225,11 +222,8 @@
   <data name="SendCoinsPaymentId" xml:space="preserve">
     <value>Fizetési azonosító:</value>
   </data>
-  <data name="SendCoinsPaymentIdHint" xml:space="preserve">
+  <data name="TextHintOptional" xml:space="preserve">
     <value>Ez a mező opcionális</value>
-  </data>
-  <data name="SendCoinsSend" xml:space="preserve">
-    <value>Küldés</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
     <value>kapcsolat</value>
@@ -287,5 +281,26 @@
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
     <value>Harmadik féltől származó licencek</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Új...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Exportálás...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookAddWindowTitle" xml:space="preserve">
+    <value>Ismert cím hozzáadása</value>
   </data>
 </root>

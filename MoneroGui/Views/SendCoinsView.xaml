@@ -23,28 +23,28 @@
             <ColumnDefinition Width="8"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="19"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="8"/>
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox x:Name="TextBoxAddress" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" Watermark="{x:Static p:Resources.SendCoinsAddressHint}" FontFamily="Lucida Console" VerticalContentAlignment="Center" Height="22" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxAddress" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextLabel}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox x:Name="TextBoxLabel" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6" Watermark="{x:Static p:Resources.SendCoinsLabelHint}" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxLabel" Watermark="{x:Static p:Resources.TextHintLabel}" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAmount}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:DoubleUpDown x:Name="DoubleUpDownAmount" Grid.Row="2" Grid.Column="2" Value="0" Minimum="0" Increment="0.001" FormatString="0.000000000000" Height="22" Margin="0 0 0 5"/>
+        <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Value="0" Minimum="0" Increment="0.001" FormatString="0.000000000000" Margin="0 0 0 5"/>
         <TextBlock Grid.Row="2" Grid.Column="3" Text="{x:Static p:Resources.TextCurrencyCode}" VerticalAlignment="Center" Margin="5 0 0 5"/>
         <Separator Grid.Row="2" Grid.Column="4" Style="{StaticResource StyleSeparatorVertical}" Margin="0 2 0 7"/>
         <TextBlock Grid.Row="2" Grid.Column="5" Text="{x:Static p:Resources.SendCoinsMixCount}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:IntegerUpDown x:Name="IntegerUpDownMixCount" Grid.Row="2" Grid.Column="7" Value="0" Minimum="0" Height="22" Margin="0 0 0 5"/>
+        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="7" x:Name="IntegerUpDownMixCount" Minimum="0" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsPaymentId}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" Watermark="{x:Static p:Resources.SendCoinsPaymentIdHint}" FontFamily="Lucida Console" VerticalContentAlignment="Center" Height="22" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Content="{x:Static p:Resources.SendCoinsSend}" Click="ButtonSend_Click" IsEnabled="{Binding Path=IsSendingEnabled}"/>
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Content="{x:Static p:Resources.TextSend}" Click="ButtonSend_Click" IsEnabled="{Binding Path=IsSendingEnabled}"/>
     </Grid>
 </UserControl>

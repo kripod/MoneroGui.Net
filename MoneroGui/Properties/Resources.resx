@@ -120,10 +120,10 @@
   <data name="TextCurrencyCode" xml:space="preserve">
     <value>XMR</value>
   </data>
-  <data name="DebugConsoleClear" xml:space="preserve">
+  <data name="TextClear" xml:space="preserve">
     <value>Clear</value>
   </data>
-  <data name="DebugConsoleSend" xml:space="preserve">
+  <data name="TextSend" xml:space="preserve">
     <value>Send</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
@@ -195,9 +195,6 @@
   <data name="MenuUnlockWallet" xml:space="preserve">
     <value>_Unlock wallet...</value>
   </data>
-  <data name="OverviewCopy" xml:space="preserve">
-    <value>Copy</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initializing...</value>
   </data>
@@ -216,10 +213,10 @@
   <data name="OverviewWallet" xml:space="preserve">
     <value>Wallet</value>
   </data>
-  <data name="SendCoinsAddressHint" xml:space="preserve">
+  <data name="TextHintAddress" xml:space="preserve">
     <value>Enter a Monero address</value>
   </data>
-  <data name="SendCoinsLabelHint" xml:space="preserve">
+  <data name="TextHintLabel" xml:space="preserve">
     <value>Enter a label for this address to add it to your address book</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
@@ -228,11 +225,8 @@
   <data name="SendCoinsPaymentId" xml:space="preserve">
     <value>Payment ID:</value>
   </data>
-  <data name="SendCoinsPaymentIdHint" xml:space="preserve">
+  <data name="TextHintOptional" xml:space="preserve">
     <value>This field is optional</value>
-  </data>
-  <data name="SendCoinsSend" xml:space="preserve">
-    <value>Send</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
     <value>connections</value>
@@ -287,5 +281,26 @@
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
     <value>Third-party licenses</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>New...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookAddWindowTitle" xml:space="preserve">
+    <value>Add known address</value>
   </data>
 </root>
