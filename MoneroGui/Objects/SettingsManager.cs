@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Reflection;
 using ApiPaths = Jojatekok.MoneroAPI.Paths;
 
@@ -10,17 +11,29 @@ namespace Jojatekok.MoneroGUI
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private static Configuration Configuration { get; set; }
+        public static bool IsAutoSaveEnabled { get; set; }
 
         public static ConfigSectionGeneral General { get; private set; }
         public static ConfigSectionPaths Paths { get; private set; }
+        public static ConfigSectionAppearance Appearance { get; private set; }
 
         static SettingsManager()
         {
+            InitializeConfiguration();
+
+            // Settings are ready to be used from here
+            StaticObjects.Initialize();
+        }
+
+        private static void InitializeConfiguration()
+        {
             // Directory: %LocalAppData%\[Company]\[AssemblyName]\
-            var configurationPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" +
-                                    ((AssemblyCompanyAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCompanyAttribute), false)).Company + "\\" +
-                                    Assembly.GetExecutingAssembly().GetName().Name + "\\" +
-                                    RelativePathFileUserConfiguration;
+            var configurationPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                Helper.GetAssemblyAttribute<AssemblyCompanyAttribute>().Company,
+                StaticObjects.ApplicationAssemblyName.Name,
+                RelativePathFileUserConfiguration
+            );
 
             var configurationFileMap = new ExeConfigurationFileMap {
                 ExeConfigFilename = configurationPath,
@@ -36,6 +49,11 @@ namespace Jojatekok.MoneroGUI
                 return inputSplit[0] + "," + inputSplit[1];
             };
 
+            LoadOrCreateSections();
+        }
+
+        private static void LoadOrCreateSections()
+        {
             var isSaveRequired = false;
 
             General = Configuration.GetSection("general") as ConfigSectionGeneral;
@@ -52,63 +70,26 @@ namespace Jojatekok.MoneroGUI
                 Configuration.Sections.Add("paths", Paths);
             }
 
-            if (isSaveRequired) Configuration.Save(ConfigurationSaveMode.Minimal);
+            Appearance = Configuration.GetSection("appearance") as ConfigSectionAppearance;
+            if (Appearance == null) {
+                isSaveRequired = true;
+                Appearance = new ConfigSectionAppearance();
+                Configuration.Sections.Add("appearance", Appearance);
+            }
+
+            if (isSaveRequired) SaveSettings();
         }
 
-        //private static bool UpgradeIfNecessary()
-        //{
-        //    // <-- Get the base directory of different versions' configurations -->
+        public static void SaveSettings()
+        {
+            Configuration.Save(ConfigurationSaveMode.Modified);
+            InitializeConfiguration();
+        }
 
-        //    var baseConfigDirectory = Configuration.FilePath;
-        //    var currentConfigDirectory = baseConfigDirectory.Substring(0, baseConfigDirectory.LastIndexOf('\\'));
-        //    baseConfigDirectory = currentConfigDirectory.Substring(0, currentConfigDirectory.LastIndexOf('\\'));
-
-        //    // <-- Obtain the highest configuration file available -->
-
-        //    if (!Directory.Exists(baseConfigDirectory)) return false;
-        //    var configDirectories = Directory.GetDirectories(baseConfigDirectory);
-        //    if (configDirectories.Length == 0) return false;
-
-        //    Version highestVersion = null;
-        //    for (var i = configDirectories.Length - 1; i >= 0; i--) {
-        //        var directory = configDirectories[i];
-        //        if (!File.Exists(directory + "\\" + RelativePathFileUserConfiguration)) continue;
-
-        //        var version = new Version(directory.Substring(directory.LastIndexOf('\\') + 1));
-        //        if (version < Helper.ApplicationVersion) {
-        //            if (highestVersion == null || version > highestVersion) {
-        //                highestVersion = version;
-        //            }
-        //        }
-        //    }
-
-        //    // <-- Move the latest configuration to the current one's path -->
-
-        //    if (highestVersion != null) {
-        //        var latestConfigPath = baseConfigDirectory + "\\" + highestVersion + "\\" + RelativePathFileUserConfiguration;
-        //        var currentConfigPath = Configuration.FilePath;
-
-        //        if (!Directory.Exists(currentConfigDirectory)) Directory.CreateDirectory(currentConfigDirectory);
-        //        File.Move(latestConfigPath, currentConfigPath);
-
-        //        // Re-initialize Configuration
-        //        Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
-
-        //    } else {
-        //        return false;
-        //    }
-
-        //    // <-- Delete old configurations -->
-
-        //    var oldConfigDirectories = new List<string>(configDirectories);
-        //    oldConfigDirectories.Remove(currentConfigDirectory);
-
-        //    for (var i = oldConfigDirectories.Count - 1; i >= 0; i--) {
-        //        Directory.Delete(oldConfigDirectories[i], true);
-        //    }
-
-        //    return true;
-        //}
+        private static void AutoSaveSettings()
+        {
+            if (IsAutoSaveEnabled) SaveSettings();
+        }
 
         public class ConfigSectionGeneral : ConfigurationSection
         {
@@ -117,12 +98,21 @@ namespace Jojatekok.MoneroGUI
                 SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
             }
 
-            [ConfigurationProperty("languageCode", DefaultValue = Helper.DefaultLanguageCode)]
-            public string LanguageCode {
-                get { return base["languageCode"] as string; }
+            [ConfigurationProperty("isStartableOnSystemLogin", DefaultValue = false)]
+            public bool IsStartableOnSystemLogin {
+                get { return (bool)base["isStartableOnSystemLogin"]; }
                 set {
-                    base["languageCode"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    base["isStartableOnSystemLogin"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("isSafeShutdownEnabled", DefaultValue = true)]
+            public bool IsSafeShutdownEnabled {
+                get { return (bool)base["isSafeShutdownEnabled"]; }
+                set {
+                    base["isSafeShutdownEnabled"] = value;
+                    AutoSaveSettings();
                 }
             }
 
@@ -131,7 +121,7 @@ namespace Jojatekok.MoneroGUI
                 get { return base["walletDefaultPassword"] as string; }
                 set {
                     base["walletDefaultPassword"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
 
@@ -141,7 +131,7 @@ namespace Jojatekok.MoneroGUI
                 get { return (int)base["transactionsDefaultMixCount"]; }
                 set {
                     base["transactionsDefaultMixCount"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
         }
@@ -158,7 +148,7 @@ namespace Jojatekok.MoneroGUI
                 get { return base["directoryWalletBackups"] as string; }
                 set {
                     base["directoryWalletBackups"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
 
@@ -167,7 +157,7 @@ namespace Jojatekok.MoneroGUI
                 get { return base["fileWalletData"] as string; }
                 set {
                     base["fileWalletData"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
 
@@ -176,7 +166,7 @@ namespace Jojatekok.MoneroGUI
                 get { return base["softwareDaemon"] as string; }
                 set {
                     base["softwareDaemon"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
 
@@ -185,7 +175,7 @@ namespace Jojatekok.MoneroGUI
                 get { return base["softwareWallet"] as string; }
                 set {
                     base["softwareWallet"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
                 }
             }
 
@@ -194,7 +184,24 @@ namespace Jojatekok.MoneroGUI
                 get { return base["softwareMiner"] as string; }
                 set {
                     base["softwareMiner"] = value;
-                    CurrentConfiguration.Save(ConfigurationSaveMode.Minimal);
+                    AutoSaveSettings();
+                }
+            }
+        }
+
+        public class ConfigSectionAppearance : ConfigurationSection
+        {
+            public ConfigSectionAppearance()
+            {
+                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+            }
+
+            [ConfigurationProperty("languageCode", DefaultValue = Helper.DefaultLanguageCode)]
+            public string LanguageCode {
+                get { return base["languageCode"] as string; }
+                set {
+                    base["languageCode"] = value;
+                    AutoSaveSettings();
                 }
             }
         }

@@ -3,13 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
         xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
-        xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
+        xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{x:Static p:Resources.TextClientName}"
+        WindowStartupLocation="CenterScreen"
         Width="640" Height="440" MinWidth="640" MinHeight="440"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
+        <CommandBinding Command="local:MainWindow.OptionsCommand" Executed="OptionsCommand_Executed"/>
         <CommandBinding Command="local:MainWindow.ShowDebugWindowCommand" Executed="ShowDebugWindowCommand_Executed"/>
         <CommandBinding Command="local:MainWindow.ShowAboutWindowCommand" Executed="ShowAboutWindowCommand_Executed"/>
     </Window.CommandBindings>
@@ -37,7 +39,7 @@
                     <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}"/>
                     <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}"/>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuOptions}"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuOptions}" Command="local:MainWindow.OptionsCommand"/>
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuHelp}">

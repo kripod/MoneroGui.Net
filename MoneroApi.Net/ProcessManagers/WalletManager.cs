@@ -205,7 +205,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("incoming_transfers");
         }
 
-        public void Transfer(string address, double amount, int mixCount = 0, string paymentId = null)
+        public void Transfer(string address, double amount, int mixCount, string paymentId)
         {
             Send(string.IsNullOrEmpty(paymentId) ?
                  string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address, amount) :
@@ -213,8 +213,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             );
         }
 
-        public void Transfer(Dictionary<string, double> recipients, int mixCount = 0)
+        public void Transfer(string address, double amount, int mixCount)
         {
+            Transfer(address, amount, mixCount, null);
+        }
+
+        public void Transfer(string address, double amount)
+        {
+            Transfer(address, amount, 0, null);
+        }
+
+        public void Transfer(Dictionary<string, double> recipients, int mixCount)
+        {
+            if (recipients == null || recipients.Count == 0) return;
+
             var transfers = string.Empty;
             foreach (var keyValuePair in recipients) {
                 transfers += " " + keyValuePair.Key + " " + keyValuePair.Value;
@@ -223,16 +235,21 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send(string.Format(Helper.InvariantCulture, "transfer {0}{1}", mixCount, transfers));
         }
 
+        public void Transfer(Dictionary<string, double> recipients)
+        {
+            Transfer(recipients, 0);
+        }
+
         public void Refresh()
         {
             RefreshTimer.Stop();
             Send("refresh");
         }
 
-        public void Backup(string path = null)
+        public void Backup(string path)
         {
             if (path == null) {
-                path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd");
+                path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
             }
 
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
@@ -245,6 +262,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Debug.Assert(file != null, "file != null");
                 File.Copy(file, Path.Combine(path, Path.GetFileName(file)), true);
             }
+        }
+
+        public void Backup()
+        {
+            Backup(null);
         }
 
         public new void Dispose()

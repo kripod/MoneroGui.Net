@@ -303,4 +303,40 @@
   <data name="AddressBookAddWindowTitle" xml:space="preserve">
     <value>Ismert cím hozzáadása</value>
   </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="OptionsDisplayLanguage" xml:space="preserve">
+    <value>Felhasználói felület nyelve:</value>
+  </data>
+  <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
+    <value>Alapértelmezett</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Útvonalak</value>
+  </data>
+  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
+    <value>Tárca biztonsági mentései:</value>
+  </data>
+  <data name="OptionsPathsFileWalletData" xml:space="preserve">
+    <value>Tárca fájl:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Daemon szoftver:</value>
+  </data>
+  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
+    <value>Bányász szoftver:</value>
+  </data>
+  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
+    <value>Tárca szoftver:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Adatbázisok mentése kilépés előtt</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>A Monero Kliens indítása bejelentkezéskor</value>
+  </data>
 </root>

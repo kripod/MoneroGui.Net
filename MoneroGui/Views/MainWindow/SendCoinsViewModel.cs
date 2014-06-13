@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Jojatekok.MoneroGUI.Views
+namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class SendCoinsViewModel : INotifyPropertyChanged
     {

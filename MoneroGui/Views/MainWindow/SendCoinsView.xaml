@@ -1,23 +1,14 @@
-﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.SendCoinsView"
+﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.MainWindow.SendCoinsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views"
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.DataContext>
         <views:SendCoinsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="8"/>
@@ -28,6 +19,14 @@
             <ColumnDefinition Width="8"/>
             <ColumnDefinition Width="60"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxAddress" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" Margin="0 0 0 5"/>

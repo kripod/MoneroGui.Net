@@ -303,4 +303,40 @@
   <data name="AddressBookAddWindowTitle" xml:space="preserve">
     <value>Add known address</value>
   </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="OptionsDisplayLanguage" xml:space="preserve">
+    <value>User Interface language:</value>
+  </data>
+  <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Paths</value>
+  </data>
+  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
+    <value>Wallet backups:</value>
+  </data>
+  <data name="OptionsPathsFileWalletData" xml:space="preserve">
+    <value>Wallet data:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Daemon software:</value>
+  </data>
+  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
+    <value>Miner software:</value>
+  </data>
+  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
+    <value>Wallet software:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Save databases before shutdown</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Start Monero Client on system login</value>
+  </data>
 </root>

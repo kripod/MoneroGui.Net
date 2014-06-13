@@ -42,6 +42,7 @@
     <ApplicationIcon>Resources\Icon\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Configuration" />
@@ -57,6 +58,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.5\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
     </Reference>
+    <Reference Include="Ookii.Dialogs.Wpf, Version=1.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ookii.Dialogs.1.0\lib\net35\Ookii.Dialogs.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.Toolkit, Version=2.2.0.0, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
@@ -71,32 +76,60 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\OptionsWindow\AppearanceView.xaml.cs">
+      <DependentUpon>AppearanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OptionsWindow\GeneralView.xaml.cs">
+      <DependentUpon>GeneralView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OptionsWindow\PathsView.xaml.cs">
+      <DependentUpon>PathsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OptionsWindow\PathSelectorView.xaml.cs">
+      <DependentUpon>PathSelectorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\DebugConsoleView.xaml">
+    <Page Include="Views\DebugWindow\DebugConsoleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TransactionsView.xaml">
+    <Page Include="Views\MainWindow\TransactionsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SendCoinsView.xaml">
+    <Page Include="Views\MainWindow\SendCoinsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AddressBookView.xaml">
+    <Page Include="Views\MainWindow\AddressBookView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\StatusBarView.xaml">
+    <Page Include="Views\MainWindow\StatusBarView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\OverviewView.xaml">
+    <Page Include="Views\MainWindow\OverviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OptionsWindow\AppearanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OptionsWindow\GeneralView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OptionsWindow\PathsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\OptionsWindow\PathSelectorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\AddressBookAddWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -119,32 +152,32 @@
     <Compile Include="Objects\ConverterBooleanToString.cs" />
     <Compile Include="Objects\Helper.cs" />
     <Compile Include="Objects\Logger.cs" />
-    <Compile Include="Properties\Resources.hu-HU.Designer.cs">
-      <DependentUpon>Resources.hu-HU.resx</DependentUpon>
+    <Compile Include="Properties\Resources.hu.Designer.cs">
+      <DependentUpon>Resources.hu.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Objects\StaticObjects.cs" />
-    <Compile Include="Views\DebugConsoleView.xaml.cs">
+    <Compile Include="Views\DebugWindow\DebugConsoleView.xaml.cs">
       <DependentUpon>DebugConsoleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TransactionsViewModel.cs" />
-    <Compile Include="Views\TransactionsView.xaml.cs">
+    <Compile Include="Views\MainWindow\TransactionsViewModel.cs" />
+    <Compile Include="Views\MainWindow\TransactionsView.xaml.cs">
       <DependentUpon>TransactionsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SendCoinsViewModel.cs" />
-    <Compile Include="Views\SendCoinsView.xaml.cs">
+    <Compile Include="Views\MainWindow\SendCoinsViewModel.cs" />
+    <Compile Include="Views\MainWindow\SendCoinsView.xaml.cs">
       <DependentUpon>SendCoinsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddressBookView.xaml.cs">
+    <Compile Include="Views\MainWindow\AddressBookView.xaml.cs">
       <DependentUpon>AddressBookView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OverviewViewModel.cs" />
-    <Compile Include="Views\StatusBarViewModel.cs" />
-    <Compile Include="Views\StatusBarView.xaml.cs">
+    <Compile Include="Views\MainWindow\OverviewViewModel.cs" />
+    <Compile Include="Views\MainWindow\StatusBarViewModel.cs" />
+    <Compile Include="Views\MainWindow\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OverviewView.xaml.cs">
+    <Compile Include="Views\MainWindow\OverviewView.xaml.cs">
       <DependentUpon>OverviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddressBookAddWindow.xaml.cs">
@@ -174,24 +207,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.hu-HU.resx">
+    <EmbeddedResource Include="Properties\Resources.hu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.hu-HU.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.hu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +238,17 @@
     <None Include="Licenses\Hardcodet WPF NotifyIcon\LICENSE.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

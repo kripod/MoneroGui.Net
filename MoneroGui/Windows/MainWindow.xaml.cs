@@ -16,6 +16,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private static readonly Logger LoggerWallet = StaticObjects.LoggerWallet;
 
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
+        public static readonly RoutedCommand OptionsCommand = new RoutedCommand();
         public static readonly RoutedCommand ShowDebugWindowCommand = new RoutedCommand();
         public static readonly RoutedCommand ShowAboutWindowCommand = new RoutedCommand();
 
@@ -56,6 +57,11 @@ namespace Jojatekok.MoneroGUI.Windows
             Close();
         }
 
+        private void OptionsCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            new OptionsWindow(this).ShowDialog();
+        }
+
         private void ShowDebugWindowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             if (DebugWindow == null) {
@@ -89,7 +95,8 @@ namespace Jojatekok.MoneroGUI.Windows
                 timeRemainingText = e.TimeRemainingText;
             }
 
-            statusBarViewModel.SyncBarText = string.Format(Properties.Resources.StatusBarSyncTextMain,
+            statusBarViewModel.SyncBarText = string.Format(Helper.InvariantCulture,
+                                                           Properties.Resources.StatusBarSyncTextMain,
                                                            e.BlocksRemaining,
                                                            e.TimeRemainingValue,
                                                            timeRemainingText);

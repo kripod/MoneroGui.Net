@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Threading;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -7,15 +6,15 @@ namespace Jojatekok.MoneroGUI
     {
         App()
         {
-#if DEBUG
-            var cultureInfo = new CultureInfo("en-US");
+#if !DEBUG
+            var cultureInfo = new CultureInfo("en");
 #else
-            var languageCode = SettingsManager.General.LanguageCode;
+            var languageCode = SettingsManager.Appearance.LanguageCode;
             var cultureInfo = languageCode == Helper.DefaultLanguageCode ? CultureInfo.CurrentCulture : new CultureInfo(languageCode);
 #endif
 
-            Thread.CurrentThread.CurrentUICulture = cultureInfo;
-            MoneroGUI.Properties.Resources.Culture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
     }
 }

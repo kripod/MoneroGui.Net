@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.OptionsWindow.GeneralView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <CheckBox Grid.Row="0" x:Name="CheckBoxStartableOnSystemLogin" Content="{x:Static p:Resources.OptionsGeneralIsStartableOnSystemLogin}" Margin="0 0 0 5"/>
+        <CheckBox Grid.Row="1" x:Name="CheckBoxSafeShutdownEnabled" Content="{x:Static p:Resources.OptionsGeneralIsSafeShutdownEnabled}"/>
+    </Grid>
+</UserControl>

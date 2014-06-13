@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -8,7 +7,7 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class AboutWindow
     {
-        private static readonly string ThirdPartyLicensesPath = StaticObjects.ApplicationPath + "Licenses";
+        private static readonly string ThirdPartyLicensesPath = StaticObjects.ApplicationDirectory + "Licenses";
 
         private static string LicenseText { get; set; }
 
@@ -18,7 +17,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             InitializeComponent();
 
-            TextBlockVersion.Text = "v" + Helper.ApplicationVersionString;
+            TextBlockVersion.Text = "v" + StaticObjects.ApplicationVersionString;
             CheckThirdPartyLicensesAvailability();
 
             if (LicenseText == null) {
@@ -35,7 +34,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void LoadLicenseText()
         {
-            var licenseFiles = Directory.GetFiles(StaticObjects.ApplicationPath, "LICENSE*", SearchOption.TopDirectoryOnly);
+            var licenseFiles = Directory.GetFiles(StaticObjects.ApplicationDirectory, "LICENSE*", SearchOption.TopDirectoryOnly);
 
             if (licenseFiles.Length != 0) {
                 using (var stream = new StreamReader(licenseFiles[0])) {

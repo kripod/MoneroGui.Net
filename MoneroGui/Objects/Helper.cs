@@ -18,8 +18,10 @@ namespace Jojatekok.MoneroGUI
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
         public static readonly string NewLineString = Environment.NewLine;
 
-        public static readonly Version ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        public static readonly string ApplicationVersionString = ApplicationVersion.ToString(3);
+        public static string UppercaseFirst(this string input)
+        {
+            return char.ToUpper(input[0], InvariantCulture) + input.Substring(1);
+        }
 
         public static string ReWrap(this string input)
         {
@@ -29,6 +31,18 @@ namespace Jojatekok.MoneroGUI
         public static ImageSource ToImageSource(this Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+        }
+
+        public static T GetAssemblyAttribute<T>() where T : Attribute
+        {
+            return (T)Attribute.GetCustomAttribute(StaticObjects.ApplicationAssembly, typeof(T), false);
+        }
+
+        public static string GetRelativePath(string path)
+        {
+            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
+            var uriPath = new Uri(path);
+            return uriBase.MakeRelativeUri(uriPath).ToString().Replace("%20", " ").Replace('/', '\\');
         }
     }
 
@@ -44,12 +58,24 @@ namespace Jojatekok.MoneroGUI
         [DllImport("user32.dll")]
         extern private static int SetWindowLong(IntPtr hwnd, int index, int value);
 
-        public static void HideMinimizeAndMaximizeButtons(this Window window)
+        public static void SetWindowButtons(this Window window, bool isMinimizable, bool isMaximizable)
         {
             var hwnd = new WindowInteropHelper(window).Handle;
-            var currentStyle = GetWindowLong(hwnd, GWL_STYLE);
+            var style = GetWindowLong(hwnd, GWL_STYLE);
 
-            SetWindowLong(hwnd, GWL_STYLE, (currentStyle & ~WS_MAXIMIZEBOX & ~WS_MINIMIZEBOX));
+            if (isMaximizable) {
+                style |= WS_MAXIMIZEBOX;
+            } else {
+                style &= ~WS_MAXIMIZEBOX;
+            }
+
+            if (isMinimizable) {
+                style |= WS_MINIMIZEBOX;
+            } else {
+                style &= ~WS_MINIMIZEBOX;
+            }
+
+            SetWindowLong(hwnd, GWL_STYLE, style);
         }
     }
 }

@@ -8,13 +8,23 @@ namespace Jojatekok.MoneroAPI
         public DaemonManager Daemon { get; private set; }
         public WalletManager Wallet { get; private set; }
 
-        public MoneroClient(Paths paths, string password = null)
+        public MoneroClient(Paths paths, string password)
         {
             Daemon = new DaemonManager(paths);
             Wallet = new WalletManager(Daemon, paths, password);
         }
 
-        public MoneroClient(string password = null) : this(new Paths(), password)
+        public MoneroClient(Paths paths) : this(paths, null)
+        {
+
+        }
+
+        public MoneroClient(string password) : this(new Paths(), password)
+        {
+
+        }
+
+        public MoneroClient() : this(new Paths(), null)
         {
 
         }

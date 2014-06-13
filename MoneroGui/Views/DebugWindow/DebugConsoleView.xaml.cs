@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace Jojatekok.MoneroGUI.Views
+namespace Jojatekok.MoneroGUI.Views.DebugWindow
 {
     public partial class DebugConsoleView
     {

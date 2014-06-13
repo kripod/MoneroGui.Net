@@ -30,7 +30,7 @@ namespace Jojatekok.MoneroGUI
 
             if (LineCount == MaxLineCount) {
                 IsMaxLineCountReached = true;
-                allMessages = allMessages.Substring(allMessages.IndexOf(Helper.NewLineString, StringComparison.InvariantCulture) + Helper.NewLineString.Length);
+                allMessages = allMessages.Substring(allMessages.IndexOf(Helper.NewLineString, StringComparison.Ordinal) + Helper.NewLineString.Length);
             } else {
                 LineCount += 1;
             }

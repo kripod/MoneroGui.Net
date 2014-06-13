@@ -1,20 +1,18 @@
-﻿using System;
-
-namespace Jojatekok.MoneroAPI
+﻿namespace Jojatekok.MoneroAPI
 {
     public class Paths
     {
-        private const string DefaultRelativePathDirectoryWalletData = @"WalletData\";
-        private const string DefaultRelativePathDirectoryResources = @"Resources\";
+        private const string DefaultRelativePathDirectoryWalletData = "WalletData\\";
+        private const string DefaultRelativePathDirectoryResources = "Resources\\";
 
-        public const string DefaultDirectoryWalletBackups = DefaultRelativePathDirectoryWalletData + @"Backups\";
+        public const string DefaultDirectoryWalletBackups = DefaultRelativePathDirectoryWalletData + "Backups\\";
         public const string DefaultFileWalletData = DefaultRelativePathDirectoryWalletData + "wallet.bin";
         public const string DefaultSoftwareDaemon = DefaultRelativePathDirectoryResources + "bitmonerod.exe";
         public const string DefaultSoftwareWallet = DefaultRelativePathDirectoryResources + "simplewallet.exe";
         public const string DefaultSoftwareMiner = DefaultRelativePathDirectoryResources + "simpleminer.exe";
 
         public string DirectoryWalletData {
-            get { return FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\') + 1); }
+            get { return FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\')); }
         }
 
         private string _directoryWalletBackups = DefaultDirectoryWalletBackups;

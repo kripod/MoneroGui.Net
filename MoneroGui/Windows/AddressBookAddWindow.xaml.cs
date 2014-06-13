@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             Icon = StaticObjects.ApplicationIcon;
             Loaded += delegate {
-                this.HideMinimizeAndMaximizeButtons();
+                this.SetWindowButtons(false, false);
 
                 MaxHeight = ActualHeight;
                 MinHeight = ActualHeight;

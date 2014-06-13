@@ -27,7 +27,7 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" x:Name="TextBoxAddress" Margin="0 0 0 8"/>
 
-        <Button Grid.Row="2" Grid.Column="3" Content="{x:Static p:Resources.TextOk}" IsDefault="True"/>
-        <Button Grid.Row="2" Grid.Column="5" Content="{x:Static p:Resources.TextCancel}" IsCancel="True"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="{x:Static p:Resources.TextOk}" IsDefault="True" Style="{StaticResource StyleButtonPaddingWide}"/>
+        <Button Grid.Row="2" Grid.Column="5" Content="{x:Static p:Resources.TextCancel}" IsCancel="True" Style="{StaticResource StyleButtonPaddingWide}"/>
     </Grid>
 </Window>

@@ -304,6 +304,114 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appearance.
+        /// </summary>
+        public static string OptionsAppearance {
+            get {
+                return ResourceManager.GetString("OptionsAppearance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Interface language:.
+        /// </summary>
+        public static string OptionsDisplayLanguage {
+            get {
+                return ResourceManager.GetString("OptionsDisplayLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string OptionsDisplayLanguageNameDefault {
+            get {
+                return ResourceManager.GetString("OptionsDisplayLanguageNameDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string OptionsGeneral {
+            get {
+                return ResourceManager.GetString("OptionsGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save databases before shutdown.
+        /// </summary>
+        public static string OptionsGeneralIsSafeShutdownEnabled {
+            get {
+                return ResourceManager.GetString("OptionsGeneralIsSafeShutdownEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Monero Client on system login.
+        /// </summary>
+        public static string OptionsGeneralIsStartableOnSystemLogin {
+            get {
+                return ResourceManager.GetString("OptionsGeneralIsStartableOnSystemLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paths.
+        /// </summary>
+        public static string OptionsPaths {
+            get {
+                return ResourceManager.GetString("OptionsPaths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet backups:.
+        /// </summary>
+        public static string OptionsPathsDirectoryWalletBackups {
+            get {
+                return ResourceManager.GetString("OptionsPathsDirectoryWalletBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet data:.
+        /// </summary>
+        public static string OptionsPathsFileWalletData {
+            get {
+                return ResourceManager.GetString("OptionsPathsFileWalletData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daemon software:.
+        /// </summary>
+        public static string OptionsPathsSoftwareDaemon {
+            get {
+                return ResourceManager.GetString("OptionsPathsSoftwareDaemon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Miner software:.
+        /// </summary>
+        public static string OptionsPathsSoftwareMiner {
+            get {
+                return ResourceManager.GetString("OptionsPathsSoftwareMiner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet software:.
+        /// </summary>
+        public static string OptionsPathsSoftwareWallet {
+            get {
+                return ResourceManager.GetString("OptionsPathsSoftwareWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Initializing....
         /// </summary>
         public static string OverviewInitializing {
