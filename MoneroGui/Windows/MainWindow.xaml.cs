@@ -1,8 +1,12 @@
 ﻿using Jojatekok.MoneroAPI;
+using Microsoft.Win32;
+using Ookii.Dialogs.Wpf;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Jojatekok.MoneroGUI.Windows
@@ -11,10 +15,12 @@ namespace Jojatekok.MoneroGUI.Windows
     {
         private bool IsDisposeInProgress { get; set; }
 
-        private static readonly MoneroClient MoneroClient = StaticObjects.MoneroClient;
-        private static readonly Logger LoggerDaemon = StaticObjects.LoggerDaemon;
-        private static readonly Logger LoggerWallet = StaticObjects.LoggerWallet;
+        private static MoneroClient MoneroClient { get; set; }
+        private static Logger LoggerDaemon { get; set; }
+        private static Logger LoggerWallet { get; set; }
 
+        public static readonly RoutedCommand BackupWalletCommand = new RoutedCommand();
+        public static readonly RoutedCommand ExportCommand = new RoutedCommand();
         public static readonly RoutedCommand ExitCommand = new RoutedCommand();
         public static readonly RoutedCommand OptionsCommand = new RoutedCommand();
         public static readonly RoutedCommand ShowDebugWindowCommand = new RoutedCommand();
@@ -27,6 +33,10 @@ namespace Jojatekok.MoneroGUI.Windows
             Icon = StaticObjects.ApplicationIcon;
 
             InitializeComponent();
+
+            MoneroClient = StaticObjects.MoneroClient;
+            LoggerDaemon = StaticObjects.LoggerDaemon;
+            LoggerWallet = StaticObjects.LoggerWallet;
 
             MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
             MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
@@ -50,6 +60,21 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             e.Cancel = true;
+        }
+
+        private void BackupWalletCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var dialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
+            
+            if (dialog.ShowDialog() == true) {
+                MoneroClient.Wallet.BackupAsync(dialog.SelectedPath);
+            }
+        }
+
+        private void ExportCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Debug.Assert(TabControl.SelectedContent as IExportable != null, "TabControl.SelectedContent as IExportable != null");
+            (TabControl.SelectedContent as IExportable).Export();
         }
 
         private void ExitCommand_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -77,6 +102,18 @@ namespace Jojatekok.MoneroGUI.Windows
         private void ShowAboutWindowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             new AboutWindow(this).ShowDialog();
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = e.AddedItems[0] as TabItem;
+            Debug.Assert(selectedItem != null, "selectedItem != null");
+
+            if (selectedItem.Content is IExportable) {
+                MenuItemExport.IsEnabled = true;
+            } else {
+                MenuItemExport.IsEnabled = false;
+            }
         }
 
         private static void Daemon_OnLogMessage(object sender, string e)

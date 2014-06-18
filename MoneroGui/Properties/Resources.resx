@@ -339,4 +339,19 @@
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
     <value>Start Monero Client on system login</value>
   </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Copy address</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>All files|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Executables (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterWalletFiles" xml:space="preserve">
+    <value>Wallet files (*.bin)|*.bin</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Comma separated file (*.csv)|*.csv</value>
+  </data>
 </root>

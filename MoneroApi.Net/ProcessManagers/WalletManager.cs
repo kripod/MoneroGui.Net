@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
@@ -15,9 +17,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<Balance> BalanceChanged;
         public event EventHandler<string> SentMoney;
 
+        private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
+
         private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
-        private List<string> ProcessArguments { get; set; }
+        private List<string> ProcessArgumentsExtra { get; set; }
 
         public string Address { get; private set; }
         public Balance Balance { get; private set; }
@@ -37,20 +41,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Paths = paths;
 
-            ProcessArguments = new List<string>(2);
+            ProcessArgumentsExtra = new List<string>(2);
 
             if (File.Exists(Paths.FileWalletData)) {
-                ProcessArguments.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
+                ProcessArgumentsExtra.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
 
             } else {
                 var directoryWalletData = Paths.DirectoryWalletData;
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
-                ProcessArguments.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
+                ProcessArgumentsExtra.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
             }
 
             if (!string.IsNullOrWhiteSpace(password)) {
-                ProcessArguments.Add("--password=\"" + password + "\"");
+                ProcessArgumentsExtra.Add("--password=\"" + password + "\"");
             }
 
             TransactionsPrivate = new ObservableCollection<Transaction>();
@@ -59,7 +63,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void Start()
         {
-            StartProcess(ProcessArguments.ToArray());
+            StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
 
             RefreshTimer = new Timer(10000);
             RefreshTimer.Elapsed += delegate { Refresh(); };
@@ -246,7 +250,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("refresh");
         }
 
-        public void Backup(string path)
+        private void Backup(string path)
         {
             if (path == null) {
                 path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
@@ -264,9 +268,19 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        public void Backup()
+        private void Backup()
         {
             Backup(null);
+        }
+
+        public Task BackupAsync(string path)
+        {
+            return Task.Factory.StartNew(() => Backup(path));
+        }
+
+        public Task BackupAsync()
+        {
+            return Task.Factory.StartNew(Backup);
         }
 
         public new void Dispose()

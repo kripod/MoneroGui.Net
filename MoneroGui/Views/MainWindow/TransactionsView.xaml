@@ -22,7 +22,16 @@
     </UserControl.Resources>
 
     <Grid>
-        <DataGrid ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.ColumnSpan="2" x:Name="DataGridTransactions" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" Margin="0 0 0 8">
             <DataGrid.Columns>
                 <!-- TODO: Fix column data (Status, Date, Type, Spendable, Payment ID, Amount) -->
                 <!--<DataGridTextColumn/>-->
@@ -44,5 +53,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button Grid.Row="1" Grid.Column="1" Content="{x:Static p:Resources.TextExport}" Click="ButtonExport_Click" Style="{StaticResource StyleButtonPaddingWide}"/>
     </Grid>
 </UserControl>

@@ -10,6 +10,12 @@
             if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
 #endif
 
+            var softwareFilter = Properties.Resources.TextFilterExecutableFiles + "|" + Properties.Resources.TextFilterAllFiles;
+            PathSelectorViewFileWalletData.Filter = Properties.Resources.TextFilterWalletFiles + "|" + Properties.Resources.TextFilterAllFiles;
+            PathSelectorViewSoftwareDaemon.Filter = softwareFilter;
+            PathSelectorViewSoftwareWallet.Filter = softwareFilter;
+            PathSelectorViewSoftwareMiner.Filter = softwareFilter;
+
             // Load settings
             var pathSettings = SettingsManager.Paths;
             PathSelectorViewFileWalletData.SelectedPath = pathSettings.FileWalletData;

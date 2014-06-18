@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using ApiPaths = Jojatekok.MoneroAPI.Paths;
 
 namespace Jojatekok.MoneroGUI
@@ -11,11 +17,17 @@ namespace Jojatekok.MoneroGUI
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private static Configuration Configuration { get; set; }
-        public static bool IsAutoSaveEnabled { get; set; }
+
+        private static bool _isAutoSaveEnabled = true;
+        public static bool IsAutoSaveEnabled {
+            get { return _isAutoSaveEnabled; }
+            set { _isAutoSaveEnabled = value; }
+        }
 
         public static ConfigSectionGeneral General { get; private set; }
         public static ConfigSectionPaths Paths { get; private set; }
         public static ConfigSectionAppearance Appearance { get; private set; }
+        public static ConfigSectionAddressBook AddressBook { get; private set; }
 
         static SettingsManager()
         {
@@ -75,6 +87,13 @@ namespace Jojatekok.MoneroGUI
                 isSaveRequired = true;
                 Appearance = new ConfigSectionAppearance();
                 Configuration.Sections.Add("appearance", Appearance);
+            }
+
+            AddressBook = Configuration.GetSection("addressBook") as ConfigSectionAddressBook;
+            if (AddressBook == null) {
+                isSaveRequired = true;
+                AddressBook = new ConfigSectionAddressBook();
+                Configuration.Sections.Add("addressBook", AddressBook);
             }
 
             if (isSaveRequired) SaveSettings();
@@ -202,6 +221,126 @@ namespace Jojatekok.MoneroGUI
                 set {
                     base["languageCode"] = value;
                     AutoSaveSettings();
+                }
+            }
+        }
+
+        public class ConfigSectionAddressBook : ConfigurationSection
+        {
+            public ConfigSectionAddressBook()
+            {
+                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+            }
+
+            [ConfigurationProperty("elements", IsDefaultCollection = true)]
+            [ConfigurationCollection(typeof(ConfigElementCollectionContact))]
+            public ConfigElementCollectionContact Elements {
+                get { return (ConfigElementCollectionContact)base["elements"]; }
+            }
+        }
+
+        public class ConfigElementContact : ConfigurationElement
+        {
+            [ConfigurationProperty("label", IsRequired = true)]
+            public string Label {
+                get { return base["label"] as string; }
+                set { base["label"] = value; }
+            }
+
+            [ConfigurationProperty("address", IsRequired = true)]
+            public string Address {
+                get { return base["address"] as string; }
+                set { base["address"] = value; }
+            }
+
+            public ConfigElementContact(string label, string address)
+            {
+                Label = label;
+                Address = address;
+            }
+        }
+
+        public class ConfigElementCollectionContact : ConfigurationElementCollection, IEnumerable<ConfigElementContact>
+        {
+            public override ConfigurationElementCollectionType CollectionType {
+                get { return ConfigurationElementCollectionType.AddRemoveClearMap; }
+            }
+
+            public ConfigElementContact this[int index] {
+                get { return BaseGet(index) as ConfigElementContact; }
+
+                set {
+                    IsAutoSaveEnabled = false;
+
+                    if (BaseGet(index) != null) BaseRemoveAt(index);
+                    BaseAdd(index, value);
+
+                    IsAutoSaveEnabled = true;
+                    SaveSettings();
+                }
+            }
+
+            new public ConfigElementContact this[string label] {
+                get { return BaseGet(label) as ConfigElementContact; }
+            }
+
+            protected override sealed ConfigurationElement CreateNewElement()
+            {
+                return new ConfigElementContact(string.Empty, string.Empty);
+            }
+
+            public void Add(ConfigElementContact element)
+            {
+                BaseAdd(element, false);
+                AutoSaveSettings();
+            }
+
+            public void Add(string label, string address)
+            {
+                Add(new ConfigElementContact(label, address));
+            }
+
+            protected override object GetElementKey(ConfigurationElement element)
+            {
+                Debug.Assert(element as ConfigElementContact != null, "element as ConfigElementContact != null");
+                return (element as ConfigElementContact).Label;
+            }
+
+            public int IndexOf(ConfigElementContact element)
+            {
+                return BaseIndexOf(element);
+            }
+
+            public void Remove(ConfigElementContact element)
+            {
+                if (BaseIndexOf(element) >= 0) {
+                    BaseRemove(element.Label);
+                    AutoSaveSettings();
+                }
+            }
+
+            public void Remove(string name)
+            {
+                BaseRemove(name);
+                AutoSaveSettings();
+            }
+
+            public void RemoveAt(int index)
+            {
+                BaseRemoveAt(index);
+                AutoSaveSettings();
+            }
+
+            public void Clear()
+            {
+                BaseClear();
+                AutoSaveSettings();
+            }
+
+            public new IEnumerator<ConfigElementContact> GetEnumerator()
+            {
+                for (var i = Count - 1; i >= 0; i--) {
+                    yield return this[i];
                 }
             }
         }

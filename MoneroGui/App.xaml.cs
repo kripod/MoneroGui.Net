@@ -6,7 +6,7 @@ namespace Jojatekok.MoneroGUI
     {
         App()
         {
-#if !DEBUG
+#if DEBUG
             var cultureInfo = new CultureInfo("en");
 #else
             var languageCode = SettingsManager.Appearance.LanguageCode;

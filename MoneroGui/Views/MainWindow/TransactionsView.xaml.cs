@@ -1,25 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Jojatekok.MoneroAPI;
+using Microsoft.Win32;
+using System;
+using System.Data;
+using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
-    public partial class TransactionsView
+    public partial class TransactionsView : IExportable
     {
         public TransactionsView()
         {
             InitializeComponent();
+        }
+
+        private void ButtonExport_Click(object sender, RoutedEventArgs e)
+        {
+            Export();
+        }
+
+        public void Export()
+        {
+            var dialog = new SaveFileDialog { Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
+                                              InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) };
+            if (dialog.ShowDialog() == true) Export(dialog.FileName);
+        }
+
+        public void Export(string fileName)
+        {
+            using (var dataTable = new DataTable()) {
+                var columns = DataGridTransactions.Columns;
+                for (var i = 0; i < columns.Count; i++) {
+                    dataTable.Columns.Add(columns[i].Header.ToString());
+                }
+
+                for (var i = 0; i < DataGridTransactions.Items.Count; i++) {
+                    var transaction = DataGridTransactions.Items[i] as Transaction;
+                    Debug.Assert(transaction != null, "transaction != null");
+                    dataTable.Rows.Add(transaction.Number,
+                                       transaction.Type,
+                                       transaction.IsAmountSpendable,
+                                       transaction.Amount.ToString("G", CultureInfo.InstalledUICulture),
+                                       "=\"" + transaction.TransactionId + "\"");
+                }
+
+                dataTable.ExportToCsvAsync(fileName);
+            }
         }
     }
 }

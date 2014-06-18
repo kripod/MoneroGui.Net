@@ -106,6 +106,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy address.
+        /// </summary>
+        public static string AddressBookCopyAddress {
+            get {
+                return ResourceManager.GetString("AddressBookCopyAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daemon.
         /// </summary>
         public static string DebugWindowConsoleDaemon {
@@ -597,6 +606,42 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextExport {
             get {
                 return ResourceManager.GetString("TextExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All files|*.
+        /// </summary>
+        public static string TextFilterAllFiles {
+            get {
+                return ResourceManager.GetString("TextFilterAllFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comma separated file (*.csv)|*.csv.
+        /// </summary>
+        public static string TextFilterCsvFiles {
+            get {
+                return ResourceManager.GetString("TextFilterCsvFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executables (*.exe)|*.exe.
+        /// </summary>
+        public static string TextFilterExecutableFiles {
+            get {
+                return ResourceManager.GetString("TextFilterExecutableFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet files (*.bin)|*.bin.
+        /// </summary>
+        public static string TextFilterWalletFiles {
+            get {
+                return ResourceManager.GetString("TextFilterWalletFiles", resourceCulture);
             }
         }
         

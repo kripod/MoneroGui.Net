@@ -6,7 +6,7 @@
         Title="Options"
         WindowStartupLocation="CenterOwner"
         Width="450" Height="320" MinWidth="450" MinHeight="320">
-    <Grid IsSharedSizeScope="True"  Margin="10">
+    <Grid Grid.IsSharedSizeScope="True" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>

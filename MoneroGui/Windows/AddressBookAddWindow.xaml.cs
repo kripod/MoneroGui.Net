@@ -21,5 +21,13 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             Owner = owner;
         }
+
+        private void ButtonOk_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: Check fields and throw error messages if needed
+
+            DialogResult = true;
+            Close();
+        }
     }
 }

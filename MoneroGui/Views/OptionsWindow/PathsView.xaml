@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsFileWalletData}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <views:PathSelectorView Grid.Row="0" Grid.Column="2" x:Name="PathSelectorViewFileWalletData" x:FieldModifier="private" Filter="Wallet files (*.bin)|*.bin|All files|*" Margin="0 0 0 5"/>
+        <views:PathSelectorView Grid.Row="0" Grid.Column="2" x:Name="PathSelectorViewFileWalletData" x:FieldModifier="private" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsDirectoryWalletBackups}" VerticalAlignment="Center"/>
         <views:PathSelectorView Grid.Row="1" Grid.Column="2" x:Name="PathSelectorViewDirectoryWalletBackups" x:FieldModifier="private"/>
@@ -27,12 +27,12 @@
         <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 10"/>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareDaemon}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <views:PathSelectorView Grid.Row="3" Grid.Column="2" x:Name="PathSelectorViewSoftwareDaemon" x:FieldModifier="private" Filter="Executables (*.exe)|*.txt|All files|*" Margin="0 0 0 5"/>
+        <views:PathSelectorView Grid.Row="3" Grid.Column="2" x:Name="PathSelectorViewSoftwareDaemon" x:FieldModifier="private" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareWallet}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <views:PathSelectorView Grid.Row="4" Grid.Column="2" x:Name="PathSelectorViewSoftwareWallet" x:FieldModifier="private" Filter="Executables (*.exe)|*.txt|All files|*" Margin="0 0 0 5"/>
+        <views:PathSelectorView Grid.Row="4" Grid.Column="2" x:Name="PathSelectorViewSoftwareWallet" x:FieldModifier="private" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareMiner}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <views:PathSelectorView Grid.Row="5" Grid.Column="2" x:Name="PathSelectorViewSoftwareMiner" x:FieldModifier="private" Filter="Executables (*.exe)|*.txt|All files|*" Margin="0 0 0 5"/>
+        <views:PathSelectorView Grid.Row="5" Grid.Column="2" x:Name="PathSelectorViewSoftwareMiner" x:FieldModifier="private" Margin="0 0 0 5"/>
     </Grid>
 </UserControl>

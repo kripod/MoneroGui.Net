@@ -10,6 +10,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
         public event EventHandler<byte> ConnectionCountChanged;
 
+        private static readonly string[] ProcessArgumentsDefault = { "--log-level 0" };
+
         public bool IsRpcInitialized { get; private set; }
 
         public byte ConnectionCount { get; private set; }
@@ -24,7 +26,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void Start()
         {
-            StartProcess();
+            StartProcess(ProcessArgumentsDefault);
 
             ConnectionCountQueryTimer = new Timer(5000);
             ConnectionCountQueryTimer.Elapsed += delegate { Send("print_cn"); };

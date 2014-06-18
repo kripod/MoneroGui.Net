@@ -339,4 +339,19 @@
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
     <value>A Monero Kliens indítása bejelentkezéskor</value>
   </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Cím másolása</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Minden fájl|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Programok (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterWalletFiles" xml:space="preserve">
+    <value>Tárca fájlok (*.bin)|*.bin</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+  </data>
 </root>
