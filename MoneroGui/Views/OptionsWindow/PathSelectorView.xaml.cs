@@ -29,7 +29,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
                 if (TextBoxPath.Text.Length != 0) {
                     var lastSlashIndex = TextBoxPath.Text.LastIndexOf('\\');
-                    if (lastSlashIndex != -1) {
+                    if (lastSlashIndex >= 0) {
                         var directory = Path.GetFullPath(TextBoxPath.Text.Substring(0, lastSlashIndex));
                         if (Directory.Exists(directory)) dialog.InitialDirectory = directory;
                     }

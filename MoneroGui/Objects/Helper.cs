@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Globalization;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -26,6 +25,25 @@ namespace Jojatekok.MoneroGUI
         public static string ReWrap(this string input)
         {
             return Regex.Replace(input.TrimEnd(), " (\r\n|\n)", " ");
+        }
+
+        public static string ToStringReadable(this TimeSpan timeSpan)
+        {
+            var days = timeSpan.Days;
+            if (days > 0) {
+                if (days == 1) return "1 " + Properties.Resources.StatusBarSyncTextDaySingular;
+                return days + " " + Properties.Resources.StatusBarSyncTextDayPlural;
+            }
+
+            var hours = timeSpan.Hours;
+            if (hours > 0) {
+                if (hours == 1) return "1 " + Properties.Resources.StatusBarSyncTextHourSingular;
+                return hours + " " + Properties.Resources.StatusBarSyncTextHourPlural;
+            }
+
+            var minutes = timeSpan.Minutes;
+            if (minutes == 1) return "1 " + Properties.Resources.StatusBarSyncTextMinuteSingular;
+            return minutes + " " + Properties.Resources.StatusBarSyncTextMinutePlural;
         }
 
         public static ImageSource ToImageSource(this Icon icon)

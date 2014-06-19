@@ -35,7 +35,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             // TODO: Apply language settings at runtime if possible
             var appearanceSettings = SettingsManager.Appearance;
 
-            if (ComboBoxLanguages.ItemsSource != null && ComboBoxLanguages.SelectedIndex != -1) {
+            if (ComboBoxLanguages.ItemsSource != null && ComboBoxLanguages.SelectedIndex >= 0) {
                 var selectedCulture = LanguageCultures[ComboBoxLanguages.SelectedIndex];
                 if (!Equals(selectedCulture, Helper.InvariantCulture)) {
                     appearanceSettings.LanguageCode = selectedCulture.TwoLetterISOLanguageName;
@@ -76,17 +76,18 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                 var displayName = culture.DisplayName.UppercaseFirst();
                 
                 var bracketIndex = nativeName.IndexOf('(');
-                if (bracketIndex != -1) {
+                if (bracketIndex >= 0) {
                     nativeName = nativeName.Substring(0, bracketIndex - 1);
                 }
 
                 bracketIndex = displayName.IndexOf('(');
-                if (bracketIndex != -1) {
+                if (bracketIndex >= 0) {
                     displayName = displayName.Substring(0, bracketIndex - 1);
                 }
 
                 var stringFormat = nativeName != displayName ? "[{0}] {1} ({2})" : "[{0}] {1}";
                 LanguageStrings[i] = string.Format(
+                    Helper.InvariantCulture,
                     stringFormat,
                     culture.TwoLetterISOLanguageName.ToUpper(Helper.InvariantCulture),
                     nativeName,
@@ -108,7 +109,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             }
 
             var activeLanguageIndex = LanguageCultures.IndexOf(CultureInfo.CurrentCulture);
-            if (activeLanguageIndex != -1) {
+            if (activeLanguageIndex >= 0) {
                 ComboBoxLanguages.SelectedIndex = activeLanguageIndex;
             }
         }

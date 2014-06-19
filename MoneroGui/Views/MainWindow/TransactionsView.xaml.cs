@@ -29,7 +29,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         public void Export(string fileName)
         {
-            using (var dataTable = new DataTable()) {
+            using (var dataTable = new DataTable { Locale = Helper.InvariantCulture }) {
                 var columns = DataGridTransactions.Columns;
                 for (var i = 0; i < columns.Count; i++) {
                     dataTable.Columns.Add(columns[i].Header.ToString());

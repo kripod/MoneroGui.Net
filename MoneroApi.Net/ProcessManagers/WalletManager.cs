@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Jojatekok.MoneroAPI.RpcManagers;
+using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
+using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -14,14 +17,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
     {
         public event EventHandler Refreshed;
         public event EventHandler<string> AddressReceived;
-        public event EventHandler<Balance> BalanceChanged;
+        public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
         public event EventHandler<string> SentMoney;
 
         private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
+        private List<string> ProcessArgumentsExtra { get; set; }
+
+        private RpcWebClient RpcWebClient { get; set; }
 
         private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
-        private List<string> ProcessArgumentsExtra { get; set; }
 
         public string Address { get; private set; }
         public Balance Balance { get; private set; }
@@ -31,17 +36,23 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private Timer RefreshTimer { get; set; }
 
-        internal WalletManager(DaemonManager daemon, Paths paths, string password = null) : base(paths.SoftwareWallet)
+        internal WalletManager(RpcWebClient rpcWebClient, DaemonManager daemon, Paths paths, string password = null) : base(paths.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
 
+            RpcWebClient = rpcWebClient;
+
             Daemon = daemon;
-            Daemon.RpcInitialized += Daemon_RpcInitialized;
+            Daemon.BlockchainSynced += Daemon_BlockchainSynced;
 
             Paths = paths;
 
-            ProcessArgumentsExtra = new List<string>(2);
+            ProcessArgumentsExtra = new List<string>(5) {
+                "--daemon-address " + rpcWebClient.Host + ":" + rpcWebClient.PortDaemon,
+                //"--rpc-bind-ip " + rpcWebClient.Host,
+                //"--rpc-bind-port " + rpcWebClient.PortWallet
+            };
 
             if (File.Exists(Paths.FileWalletData)) {
                 ProcessArgumentsExtra.Add("--wallet-file=\"" + Paths.FileWalletData + "\"");
@@ -69,7 +80,36 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             RefreshTimer.Elapsed += delegate { Refresh(); };
         }
 
-        private void Daemon_RpcInitialized(object sender, EventArgs e)
+        public void StartRpcServices()
+        {
+            // TODO: Make wallet RPC calls work
+            //AutoQueryBalanceAsync();
+            AutoSaveWalletAsync();
+        }
+
+        private async void AutoQueryBalanceAsync()
+        {
+            while (IsProcessAlive) {
+                if (BalanceChanging != null) {
+                    var output = await RpcWebClient.JsonQueryDataAsync<Balance>(RpcPortType.Wallet, new GetBalance());
+                    BalanceChanging(this, new BalanceChangingEventArgs(output));
+                    Balance = output;
+                }
+
+                await Task.Delay(10000);
+            }
+        }
+
+        private async void AutoSaveWalletAsync()
+        {
+            while (IsProcessAlive) {
+                // TODO: Add support for custom intervals
+                await Task.Delay(120000);
+                Send("save");
+            }
+        }
+
+        private void Daemon_BlockchainSynced(object sender, EventArgs e)
         {
             Refresh();
         }
@@ -110,14 +150,15 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            if (BalanceChanged != null && data.Contains("balance")) {
+            if (BalanceChanging != null && data.Contains("balance")) {
                 var match = Regex.Match(data, "balance: ([0-9\\.,]*), unlocked balance: ([0-9\\.,]*)");
                 if (match.Success) {
                     var total = double.Parse(match.Groups[1].Value, Helper.InvariantCulture);
                     var spendable = double.Parse(match.Groups[2].Value, Helper.InvariantCulture);
 
-                    Balance = new Balance(total, spendable);
-                    BalanceChanged(this, Balance);
+                    var newValue = new Balance(total, spendable);
+                    BalanceChanging(this, new BalanceChangingEventArgs(newValue));
+                    Balance = newValue;
                 }
 
                 return;
@@ -180,9 +221,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             if (data.Contains(" wallet v")) {
                 // Startup commands
-                Refresh();
                 GetBalance();
                 GetAllTransfers();
+                StartRpcServices();
                 return;
             }
 
@@ -194,9 +235,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Error handler -->
 
-            if (data.Contains("error")) {
-                Process_ErrorReceived(this, data);
-            }
+            if (data.Contains("error")) Process_ErrorReceived(this, data);
         }
 
         private void GetBalance()

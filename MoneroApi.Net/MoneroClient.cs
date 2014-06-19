@@ -1,17 +1,22 @@
 ﻿using System;
 using Jojatekok.MoneroAPI.ProcessManagers;
+using Jojatekok.MoneroAPI.RpcManagers;
 
 namespace Jojatekok.MoneroAPI
 {
     public class MoneroClient : IDisposable
     {
+        public RpcWebClient RpcWebClient { get; private set; }
+
         public DaemonManager Daemon { get; private set; }
         public WalletManager Wallet { get; private set; }
 
         public MoneroClient(Paths paths, string password)
         {
-            Daemon = new DaemonManager(paths);
-            Wallet = new WalletManager(Daemon, paths, password);
+            RpcWebClient = new RpcWebClient(Helper.RpcUrlBaseIp, Helper.RpcUrlBasePortDaemon, Helper.RpcUrlBasePortWallet);
+
+            Daemon = new DaemonManager(RpcWebClient, paths);
+            Wallet = new WalletManager(RpcWebClient, Daemon, paths, password);
         }
 
         public MoneroClient(Paths paths) : this(paths, null)

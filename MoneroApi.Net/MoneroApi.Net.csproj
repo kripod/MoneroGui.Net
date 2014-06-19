@@ -35,11 +35,31 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="Newtonsoft.Json, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArgs\SyncStatusChangedEventArgs.cs" />
+    <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
+    <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
+    <Compile Include="EventArgs\ValueChangingEventArgs.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="Objects\Balance.cs" />
+    <Compile Include="RpcManagers\HttpRpcResponse.cs" />
+    <Compile Include="RpcManagers\Daemon\Http\Responses\NetworkInformation.cs" />
+    <Compile Include="RpcManagers\JsonError.cs" />
+    <Compile Include="RpcManagers\RpcPortType.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Requests\GetBalance.cs" />
+    <Compile Include="RpcManagers\Daemon\Json\Requests\GetBlockHeaderLast.cs" />
+    <Compile Include="RpcManagers\Daemon\Json\Requests\GetBlockHeaderByHeight.cs" />
+    <Compile Include="RpcManagers\Daemon\Json\Requests\GetBlockHeaderByHash.cs" />
+    <Compile Include="RpcManagers\JsonRpcRequest.cs" />
+    <Compile Include="RpcManagers\Daemon\Json\Responses\BlockHeader.cs" />
+    <Compile Include="RpcManagers\IValueContainer.cs" />
+    <Compile Include="RpcManagers\RpcResponseStatus.cs" />
+    <Compile Include="RpcManagers\RpcWebClient.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Responses\Balance.cs" />
+    <Compile Include="RpcManagers\JsonRpcResponse.cs" />
     <Compile Include="Objects\TransactionType.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="ProcessManagers\BaseProcessManager.cs" />
@@ -49,6 +69,10 @@
     <Compile Include="MoneroClient.cs" />
     <Compile Include="Objects\Transaction.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

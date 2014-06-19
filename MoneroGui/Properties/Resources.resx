@@ -234,11 +234,11 @@
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
     <value>Synchronizing with network...</value>
   </data>
-  <data name="StatusBarSyncTextDays" xml:space="preserve">
-    <value>days</value>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>day</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blocks ({1} {2}) behind</value>
+    <value>{0} blocks ({1}) behind</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
     <value>Address</value>
@@ -353,5 +353,20 @@
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Comma separated file (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>minute</value>
   </data>
 </root>

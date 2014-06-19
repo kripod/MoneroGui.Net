@@ -6,12 +6,14 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class StatusBarViewModel : INotifyPropertyChanged
     {
+        private bool _isSyncBarShowable = true;
         private Visibility _syncBarVisibility = Visibility.Hidden;
         public Visibility SyncBarVisibility {
             get { return _syncBarVisibility; }
 
-            private set {
-                if (value == _syncBarVisibility) return;
+            set {
+                if (!_isSyncBarShowable || value == _syncBarVisibility) return;
+                if (value == Visibility.Hidden) _isSyncBarShowable = false;
 
                 _syncBarVisibility = value;
                 OnPropertyChanged();
@@ -35,10 +37,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             set {
                 _blocksDownloaded = value;
                 OnPropertyChanged();
-
-                SyncBarVisibility = BlocksDownloaded == BlocksTotal ?
-                                    Visibility.Hidden :
-                                    Visibility.Visible;
             }
         }
 

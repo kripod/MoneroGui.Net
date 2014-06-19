@@ -1,5 +1,4 @@
 ﻿using Jojatekok.MoneroAPI;
-using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
 using System;
 using System.ComponentModel;
@@ -39,12 +38,12 @@ namespace Jojatekok.MoneroGUI.Windows
             LoggerWallet = StaticObjects.LoggerWallet;
 
             MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
-            MoneroClient.Daemon.SyncStatusChanged += Daemon_SyncStatusChanged;
-            MoneroClient.Daemon.ConnectionCountChanged += Daemon_ConnectionCountChanged;
+            MoneroClient.Daemon.NetworkInformationChanging += Daemon_NetworkInformationChanging;
+            MoneroClient.Daemon.BlockchainSynced += Daemon_BlockchainSynced;
 
             MoneroClient.Wallet.OnLogMessage += Wallet_OnLogMessage;
             MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
-            MoneroClient.Wallet.BalanceChanged += Wallet_BalanceChanged;
+            MoneroClient.Wallet.BalanceChanging += Wallet_BalanceChanging;
 
             OverviewView.ViewModel.TransactionDataSource = MoneroClient.Wallet.Transactions;
             TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
@@ -107,7 +106,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0] as TabItem;
-            Debug.Assert(selectedItem != null, "selectedItem != null");
+            if (selectedItem == null) return;
 
             if (selectedItem.Content is IExportable) {
                 MenuItemExport.IsEnabled = true;
@@ -121,30 +120,26 @@ namespace Jojatekok.MoneroGUI.Windows
             LoggerDaemon.Log(e);
         }
 
-        private void Daemon_SyncStatusChanged(object sender, SyncStatusChangedEventArgs e)
+        private void Daemon_NetworkInformationChanging(object sender, NetworkInformationChangingEventArgs e)
         {
+            var newValue = e.NewValue;
             var statusBarViewModel = StatusBar.ViewModel;
 
-            string timeRemainingText;
-            if (e.TimeRemainingText == "days") {
-                timeRemainingText = Properties.Resources.StatusBarSyncTextDays;
-            } else {
-                timeRemainingText = e.TimeRemainingText;
-            }
+            statusBarViewModel.ConnectionCount = (byte)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
+
+            statusBarViewModel.BlocksTotal = newValue.BlockHeightTotal;
+            statusBarViewModel.BlocksDownloaded = newValue.BlockHeightDownloaded;
 
             statusBarViewModel.SyncBarText = string.Format(Helper.InvariantCulture,
                                                            Properties.Resources.StatusBarSyncTextMain,
-                                                           e.BlocksRemaining,
-                                                           e.TimeRemainingValue,
-                                                           timeRemainingText);
-
-            statusBarViewModel.BlocksTotal = e.BlocksTotal;
-            statusBarViewModel.BlocksDownloaded = e.BlocksDownloaded;
+                                                           newValue.BlockHeightRemaining,
+                                                           newValue.BlockTimeRemaining.ToStringReadable());
+            statusBarViewModel.SyncBarVisibility = Visibility.Visible;
         }
 
-        private void Daemon_ConnectionCountChanged(object sender, byte e)
+        private void Daemon_BlockchainSynced(object sender, EventArgs e)
         {
-            StatusBar.ViewModel.ConnectionCount = e;
+            StatusBar.ViewModel.SyncBarVisibility = Visibility.Hidden;
         }
 
         private static void Wallet_OnLogMessage(object sender, string e)
@@ -157,14 +152,16 @@ namespace Jojatekok.MoneroGUI.Windows
             OverviewView.ViewModel.Address = e;
         }
 
-        private void Wallet_BalanceChanged(object sender, Balance e)
+        private void Wallet_BalanceChanging(object sender, BalanceChangingEventArgs e)
         {
+            var newValue = e.NewValue;
+
             var overviewViewModel = OverviewView.ViewModel;
-            overviewViewModel.BalanceSpendable = e.Spendable;
-            overviewViewModel.BalanceUnconfirmed = e.Unconfirmed;
+            overviewViewModel.BalanceSpendable = newValue.Spendable;
+            overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
 
             var sendCoinsViewModel = SendCoinsView.ViewModel;
-            sendCoinsViewModel.CoinBalance = e.Spendable;
+            sendCoinsViewModel.CoinBalance = newValue.Spendable;
             sendCoinsViewModel.IsSendingEnabled = true;
         }
 

@@ -231,11 +231,11 @@
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
     <value>Szinkronizálás a hálózattal...</value>
   </data>
-  <data name="StatusBarSyncTextDays" xml:space="preserve">
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
     <value>nap</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blokk ({1} {2}) lemaradás</value>
+    <value>{0} blokk ({1}) lemaradás</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
     <value>Cím</value>
@@ -353,5 +353,20 @@
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>nap</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>perc</value>
   </data>
 </root>

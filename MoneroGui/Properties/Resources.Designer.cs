@@ -513,18 +513,63 @@ namespace Jojatekok.MoneroGUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to days.
         /// </summary>
-        public static string StatusBarSyncTextDays {
+        public static string StatusBarSyncTextDayPlural {
             get {
-                return ResourceManager.GetString("StatusBarSyncTextDays", resourceCulture);
+                return ResourceManager.GetString("StatusBarSyncTextDayPlural", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} blocks ({1} {2}) behind.
+        ///   Looks up a localized string similar to day.
+        /// </summary>
+        public static string StatusBarSyncTextDaySingular {
+            get {
+                return ResourceManager.GetString("StatusBarSyncTextDaySingular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string StatusBarSyncTextHourPlural {
+            get {
+                return ResourceManager.GetString("StatusBarSyncTextHourPlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hour.
+        /// </summary>
+        public static string StatusBarSyncTextHourSingular {
+            get {
+                return ResourceManager.GetString("StatusBarSyncTextHourSingular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} blocks ({1}) behind.
         /// </summary>
         public static string StatusBarSyncTextMain {
             get {
                 return ResourceManager.GetString("StatusBarSyncTextMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string StatusBarSyncTextMinutePlural {
+            get {
+                return ResourceManager.GetString("StatusBarSyncTextMinutePlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minute.
+        /// </summary>
+        public static string StatusBarSyncTextMinuteSingular {
+            get {
+                return ResourceManager.GetString("StatusBarSyncTextMinuteSingular", resourceCulture);
             }
         }
         

@@ -1,36 +1,86 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Timers;
+﻿using Jojatekok.MoneroAPI.RpcManagers;
+using Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses;
+using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Requests;
+using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class DaemonManager : BaseProcessManager, IDisposable
+    public class DaemonManager : BaseProcessManager
     {
         public event EventHandler RpcInitialized;
-        public event EventHandler<SyncStatusChangedEventArgs> SyncStatusChanged;
-        public event EventHandler<byte> ConnectionCountChanged;
+        public event EventHandler BlockchainSynced;
+        public event EventHandler<NetworkInformationChangingEventArgs> NetworkInformationChanging;
 
         private static readonly string[] ProcessArgumentsDefault = { "--log-level 0" };
+        private List<string> ProcessArgumentsExtra { get; set; }
+
+        private RpcWebClient RpcWebClient { get; set; }
 
         public bool IsRpcInitialized { get; private set; }
+        public bool IsBlockchainSynced { get; private set; }
 
-        public byte ConnectionCount { get; private set; }
+        public NetworkInformation NetworkInformation { get; private set; }
 
-        private Timer ConnectionCountQueryTimer { get; set; }
-
-        internal DaemonManager(Paths paths) : base(paths.SoftwareDaemon)
+        internal DaemonManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareDaemon)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
+
+            RpcWebClient = rpcWebClient;
+
+            ProcessArgumentsExtra = new List<string>(2) {
+                "--rpc-bind-ip " + RpcWebClient.Host,
+                "--rpc-bind-port " + RpcWebClient.PortDaemon
+            };
         }
 
         public void Start()
         {
-            StartProcess(ProcessArgumentsDefault);
+            StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+        }
 
-            ConnectionCountQueryTimer = new Timer(5000);
-            ConnectionCountQueryTimer.Elapsed += delegate { Send("print_cn"); };
-            ConnectionCountQueryTimer.Start();
+        public void StartRpcServices()
+        {
+            AutoQueryNetworkInformationAsync();
+            AutoSaveBlockchainAsync();
+        }
+
+        private async void AutoQueryNetworkInformationAsync()
+        {
+            while (IsProcessAlive) {
+                if (NetworkInformationChanging != null) {
+                    var output = await RpcWebClient.HttpGetDataAsync<NetworkInformation>(RpcPortType.Daemon, Helper.RpcUrlRelativeHttpGetInformation);
+                    if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
+                        var blockHeaderValueContainer = await RpcWebClient.JsonQueryDataAsync<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
+                        if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
+                            output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
+
+                            NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
+                            NetworkInformation = output;
+
+                            if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
+                                IsBlockchainSynced = true;
+                                if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
+                            }
+                        }
+                    }
+                }
+
+                await Task.Delay(750);
+            }
+        }
+
+        private async void AutoSaveBlockchainAsync()
+        {
+            while (IsProcessAlive) {
+                // TODO: Add support for custom intervals
+                await Task.Delay(120000);
+                await RpcWebClient.HttpGetDataAsync<HttpRpcResponse>(RpcPortType.Daemon, Helper.RpcUrlRelativeHttpGetSaveBlockchain);
+            }
         }
 
         private void Process_ErrorReceived(object sender, string e)
@@ -42,67 +92,15 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             var data = e.ToLower(Helper.InvariantCulture);
 
-            // <-- Sync status change handler -->
+            if (data.Contains("rpc server initialized") && !IsRpcInitialized) {
+                StartRpcServices();
 
-            if (SyncStatusChanged != null && data.Contains("sync data return")) {
-                var match = Regex.Match(data, "([0-9]+) -> ([0-9]+) \\[([0-9]+) blocks \\(([0-9]+) ([a-z]+)\\)");
-                if (match.Success) {
-                    SyncStatusChanged(this, new SyncStatusChangedEventArgs(
-                        ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture),
-                        ulong.Parse(match.Groups[2].Value, Helper.InvariantCulture),
-                        ulong.Parse(match.Groups[3].Value, Helper.InvariantCulture),
-                        ulong.Parse(match.Groups[4].Value, Helper.InvariantCulture),
-                        match.Groups[5].Value
-                    ));
-                }
-
-                return;
-            }
-
-            // <-- Connection count change handler -->
-
-            if (ConnectionCountChanged != null) {
-                if (Regex.IsMatch(data, "\\[out\\][0-9\\.:]+[\\s]+[0-9a-z]+")) {
-                    ConnectionCount++;
-                    ConnectionCountChanged(this, ConnectionCount);
-                    return;
-                }
-
-                if (Regex.IsMatch(data, "remote host[\\s]+peer id")) {
-                    ConnectionCount = 0;
-                    ConnectionCountChanged(this, ConnectionCount);
-                    return;
-                }
-            }
-
-            if (RpcInitialized != null && data.Contains("you are now synchronized with the network") && !IsRpcInitialized) {
                 IsRpcInitialized = true;
-                RpcInitialized(this, EventArgs.Empty);
+                if (RpcInitialized != null) RpcInitialized(this, EventArgs.Empty);
             }
 
-            // <-- Error handler -->
-
-            if (data.Contains("error")) {
-                Process_ErrorReceived(this, data);
-            }
-        }
-
-        public new void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool disposing)
-        {
-            if (disposing) {
-                if (ConnectionCountQueryTimer != null) {
-                    ConnectionCountQueryTimer.Dispose();
-                    ConnectionCountQueryTimer = null;
-                }
-
-                base.Dispose();
-            }
+            // Error handler
+            if (data.Contains("error")) Process_ErrorReceived(this, data);
         }
     }
 }
