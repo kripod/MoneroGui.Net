@@ -133,15 +133,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallet.
-        /// </summary>
-        public static string DebugWindowConsoleWallet {
-            get {
-                return ResourceManager.GetString("DebugWindowConsoleWallet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string DebugWindowInformation {
@@ -466,15 +457,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallet.
-        /// </summary>
-        public static string OverviewWallet {
-            get {
-                return ResourceManager.GetString("OverviewWallet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Mix count:.
         /// </summary>
         public static string SendCoinsMixCount {
@@ -759,6 +741,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextSend {
             get {
                 return ResourceManager.GetString("TextSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet.
+        /// </summary>
+        public static string TextWallet {
+            get {
+                return ResourceManager.GetString("TextWallet", resourceCulture);
             }
         }
         

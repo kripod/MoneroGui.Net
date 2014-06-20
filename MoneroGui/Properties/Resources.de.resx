@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,253 +117,253 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
   <data name="TextClear" xml:space="preserve">
-    <value>Ürítés</value>
+    <value>Leeren</value>
   </data>
   <data name="TextSend" xml:space="preserve">
-    <value>Küldés</value>
+    <value>Senden</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzolok</value>
+    <value>Konsolen</value>
   </data>
   <data name="DebugWindowInformation" xml:space="preserve">
-    <value>Információ</value>
+    <value>Information</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Hibakereső ablak</value>
+    <value>Debug-Fenster</value>
   </data>
   <data name="MainWindowAddressBook" xml:space="preserve">
-    <value>Címjegyzék</value>
+    <value>Adressbuch</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
-    <value>A Monero Kliens leáll...</value>
+    <value>Monero-Client wird heruntergefahren...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Áttekintés</value>
+    <value>Überblick</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Érmék küldése</value>
+    <value>Münzen senden</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Kliens</value>
+    <value>Monero-Client</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Tranzakciók</value>
+    <value>Transaktionen</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_A Monero Kliensről</value>
+    <value>_Über Monero-Client</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Biztonsági mentés készítése a tárcáról...</value>
+    <value>_Wallet Backup erstellen...</value>
   </data>
   <data name="MenuChangeWalletPassword" xml:space="preserve">
-    <value>Tárca jelkódjának _megváltoztatása...</value>
+    <value>_Wallet-Passphrase ändern...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Hibakereső ablak</value>
+    <value>_Debug-Fenster</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>Tárca _kódolása...</value>
+    <value>_Wallet verschlüsseln...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Kilépés</value>
+    <value>Beenden</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportálás...</value>
+    <value>_Exportieren...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fájl</value>
+    <value>_Datei</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Súgó</value>
+    <value>_Hilfe</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opciók</value>
+    <value>_Optionen</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Beállítások</value>
+    <value>_Einstellungen</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>Tárca _feloldása...</value>
+    <value>_Wallet aufschließen...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Inicializálás...</value>
+    <value>Initialisierung...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Tranzakciók száma:</value>
+    <value>Anzahl der Transaktionen:</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Legutóbbi tranzakciók</value>
+    <value>Aktuelle Transaktionen</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Elkölthető:</value>
+    <value>Aufwendbare:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Megerősítetlen:</value>
+    <value>Unbestätigt:</value>
   </data>
   <data name="TextWallet" xml:space="preserve">
-    <value>Tárca</value>
+    <value>Wallet</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Adj meg egy Monero címet</value>
+    <value>Geben Sie eine Monero Adresse ein</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
+    <value>Geben Sie eine Bezeichnung für diese Adresse, um es zu Ihrem Adressbuch hinzuzufügen</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Keverések száma:</value>
+    <value>Mix Anzahl:</value>
   </data>
   <data name="SendCoinsPaymentId" xml:space="preserve">
-    <value>Fizetési azonosító:</value>
+    <value>Payment-ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Ez a mező opcionális</value>
+    <value>Dieses Feld ist optional</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>kapcsolat</value>
+    <value>Verbindungen</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Szinkronizálás a hálózattal...</value>
+    <value>Synchronisiere mit Netzwerk...</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>nap</value>
+    <value>Tag</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blokk ({1}) lemaradás</value>
+    <value>{0} Blöcke ({1}) hinten</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
-    <value>Cím</value>
+    <value>Adresse</value>
   </data>
   <data name="TextAmount" xml:space="preserve">
-    <value>Mennyiség</value>
+    <value>Menge</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Címke</value>
+    <value>Etikett</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
-    <value>Típus</value>
+    <value>Art</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Elkölthető?</value>
-  </data>
-  <data name="TextCurrencyCode" xml:space="preserve">
-    <value>XMR</value>
+    <value>Aufwendbar?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Nem</value>
+    <value>Nein</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Igen</value>
+    <value>Ja</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Fogadás</value>
+    <value>Empfangen</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Küldés</value>
+    <value>Gesendet</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
-    <value>Ismeretlen</value>
+    <value>Unbekannt</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>A Monero Kliensről</value>
+    <value>Über Monero-Client</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Hiba: A licencfájl nem található.</value>
+    <value>Fehler: Die Lizenzdatei kann nicht gefunden werden.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Licencfájl betöltése...</value>
+    <value>Lade Lizenzdatei...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Harmadik féltől származó licencek</value>
+    <value>Third-Party-Lizenzen</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
-    <value>Másolás</value>
+    <value>Kopie</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Törlés</value>
+    <value>Löschen</value>
   </data>
   <data name="TextNew" xml:space="preserve">
-    <value>Új...</value>
+    <value>Neu...</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Exportálás...</value>
+    <value>Exportieren...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Mégse</value>
+    <value>Stornieren</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>OK</value>
+    <value>Ok</value>
   </data>
   <data name="AddressBookAddWindowTitle" xml:space="preserve">
-    <value>Ismert cím hozzáadása</value>
+    <value>Bekannte Adresse hinzufühen</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
-    <value>Megjelenés</value>
+    <value>Erscheinung</value>
   </data>
   <data name="OptionsDisplayLanguage" xml:space="preserve">
-    <value>Felhasználói felület nyelve:</value>
+    <value>Sprache in der Benutzeroberfläche:</value>
   </data>
   <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
-    <value>Alapértelmezett</value>
+    <value>Standard</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Általános</value>
+    <value>Allgemein</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Útvonalak</value>
+    <value>Pfade</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Tárca biztonsági mentései:</value>
+    <value>Wallet Backups:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Tárca fájl:</value>
+    <value>Wallet Daten:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Daemon szoftver:</value>
+    <value>Daemon-Software:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Bányász szoftver:</value>
+    <value>Miner-Software:</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Tárca szoftver:</value>
+    <value>Wallet-Software:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Adatbázisok mentése kilépés előtt</value>
+    <value>Datenbanken vor dem Herunterfahren speichern</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>A Monero Kliens indítása bejelentkezéskor</value>
+    <value>Monero Client bei System-Login starten</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Cím másolása</value>
+    <value>Adresse kopieren</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Minden fájl|*</value>
+    <value>Alle Dateien|*</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Programok (*.exe)|*.exe</value>
+    <value>Ausführbare Dateien (*.exe)|.*exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Tárca fájlok (*.bin)|*.bin</value>
+    <value>Wallet-Dateien (*bin.)|.*bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+    <value>Kommagetrennte Datei (*.csv)|.*csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>nap</value>
+    <value>Tage</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
-    <value>óra</value>
+    <value>Stunden</value>
   </data>
   <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
-    <value>óra</value>
+    <value>Stunde</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
-    <value>perc</value>
+    <value>Minuten</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
-    <value>perc</value>
+    <value>Minute</value>
   </data>
 </root>

@@ -18,7 +18,7 @@
                     <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{x:Static p:Resources.DebugWindowConsoleWallet}">
+                <TabItem Header="{x:Static p:Resources.TextWallet}">
                     <views:DebugConsoleView x:Name="ConsoleWallet" SendRequested="ConsoleWallet_SendRequested" Margin="5"/>
                 </TabItem>
             </TabControl>

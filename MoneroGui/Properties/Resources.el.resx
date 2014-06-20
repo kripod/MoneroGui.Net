@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,253 +117,253 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
   <data name="TextClear" xml:space="preserve">
-    <value>Ürítés</value>
+    <value>Καθαρισμός</value>
   </data>
   <data name="TextSend" xml:space="preserve">
-    <value>Küldés</value>
+    <value>Αποστολή</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzolok</value>
+    <value>Κονσόλες</value>
   </data>
   <data name="DebugWindowInformation" xml:space="preserve">
-    <value>Információ</value>
+    <value>Πληροφορίες</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Hibakereső ablak</value>
+    <value>Debug window</value>
   </data>
   <data name="MainWindowAddressBook" xml:space="preserve">
-    <value>Címjegyzék</value>
+    <value>Βιβλίο διευθύνσεων</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
-    <value>A Monero Kliens leáll...</value>
+    <value>Ο Μονέρο Client τερματίζεται...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Áttekintés</value>
+    <value>Eπισκόπηση</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Érmék küldése</value>
+    <value>Αποστολή νομισμάτων</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Kliens</value>
+    <value>Μονέρο Client</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Tranzakciók</value>
+    <value>Συναλλαγές</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_A Monero Kliensről</value>
+    <value>_Σχετικά με τον Μονέρο Client</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Biztonsági mentés készítése a tárcáról...</value>
+    <value>_Αντίγραφο ασφαλείας πορτοφολιού...</value>
   </data>
   <data name="MenuChangeWalletPassword" xml:space="preserve">
-    <value>Tárca jelkódjának _megváltoztatása...</value>
+    <value>_Αλλαγή κωδικού πορτοφολιού...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Hibakereső ablak</value>
+    <value>_Παράθυρο αποσφαλμάτωσης</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>Tárca _kódolása...</value>
+    <value>_Κρυπτογράφησε το πορτοφόλι...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Kilépés</value>
+    <value>Έξοδος</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportálás...</value>
+    <value>_Εξαγωγή...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fájl</value>
+    <value>_Αρχείο</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Súgó</value>
+    <value>_Βοήθεια</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opciók</value>
+    <value>_Επιλογές</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Beállítások</value>
+    <value>_ρυθμίσεις</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>Tárca _feloldása...</value>
+    <value>_Ξεκλείδωμα πορτοφολιού...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Inicializálás...</value>
+    <value>Προετοιμασία...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Tranzakciók száma:</value>
+    <value>Αριθμός συναλλαγών:</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Legutóbbi tranzakciók</value>
+    <value>Πρόσφατες συναλλαγές</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Elkölthető:</value>
+    <value>Δαπανήσιμα:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Megerősítetlen:</value>
+    <value>Ανεπιβεβαίωτα:</value>
   </data>
   <data name="TextWallet" xml:space="preserve">
-    <value>Tárca</value>
+    <value>Πορτοφόλι</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Adj meg egy Monero címet</value>
+    <value>Eισάγετε μία Μονέρο διεύθυνση</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
+    <value>Δώσε ετικέτα για αυτήν την διέθυνση</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Keverések száma:</value>
+    <value>Αριθμός ανάμειξης:</value>
   </data>
   <data name="SendCoinsPaymentId" xml:space="preserve">
-    <value>Fizetési azonosító:</value>
+    <value>Payment ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Ez a mező opcionális</value>
+    <value>Προαιρετικό πεδίο</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>kapcsolat</value>
+    <value>συνδέσεις</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Szinkronizálás a hálózattal...</value>
+    <value>Συνχρονισμός με το δίκτυο...</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>nap</value>
+    <value>μέρα</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blokk ({1}) lemaradás</value>
+    <value>{0} μπλοκ ({1}) πίσω</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
-    <value>Cím</value>
+    <value>Διεύθυνση</value>
   </data>
   <data name="TextAmount" xml:space="preserve">
-    <value>Mennyiség</value>
+    <value>Ποσό</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Címke</value>
+    <value>Ετικέτα</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
-    <value>Típus</value>
+    <value>Δώσε</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Elkölthető?</value>
-  </data>
-  <data name="TextCurrencyCode" xml:space="preserve">
-    <value>XMR</value>
+    <value>Δαπανήσιμα?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Nem</value>
+    <value>Όχι</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Igen</value>
+    <value>Ναι</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Fogadás</value>
+    <value>Παραλαβές</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Küldés</value>
+    <value>Αποστολές</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
-    <value>Ismeretlen</value>
+    <value>Άγνωστο</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>A Monero Kliensről</value>
+    <value>Σχετικά με τον Μονέρο Client</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Hiba: A licencfájl nem található.</value>
+    <value>Σφάλμα: Το αρχείο άδειας χρήσης δεν μπορεί να βρεθεί.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Licencfájl betöltése...</value>
+    <value>Φόρτωση αρχείου άδειας χρήσης...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Harmadik féltől származó licencek</value>
+    <value>Third-party άδειες χρήσης</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
-    <value>Másolás</value>
+    <value>Αντιγραφή</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Törlés</value>
+    <value>Διαγραφή</value>
   </data>
   <data name="TextNew" xml:space="preserve">
-    <value>Új...</value>
+    <value>Νέο...</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Exportálás...</value>
+    <value>Εξαγωγή...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Mégse</value>
+    <value>Ακύρωση</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>OK</value>
+    <value>ΟΚ</value>
   </data>
   <data name="AddressBookAddWindowTitle" xml:space="preserve">
-    <value>Ismert cím hozzáadása</value>
+    <value>Πρόσθεσε γνωστή διεύθυνση</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
-    <value>Megjelenés</value>
+    <value>Eμφάνιση</value>
   </data>
   <data name="OptionsDisplayLanguage" xml:space="preserve">
-    <value>Felhasználói felület nyelve:</value>
+    <value>Επιλογή γλώσσας:</value>
   </data>
   <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
-    <value>Alapértelmezett</value>
+    <value>Προεπιλεγμένα</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Általános</value>
+    <value>Γενικά</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Útvonalak</value>
+    <value>Μονοπάτια</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Tárca biztonsági mentései:</value>
+    <value>Αρχεία ασφαλείας πορτοφολιού:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Tárca fájl:</value>
+    <value>Δεδομένα πορτοφολιού:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Daemon szoftver:</value>
+    <value>Λογισμικό Daemon:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Bányász szoftver:</value>
+    <value>Λογισμικό εξόρυξης:</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Tárca szoftver:</value>
+    <value>Λογισμικό πορτοφολιού:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Adatbázisok mentése kilépés előtt</value>
+    <value>Αποθήκευση βάσης δεδομένων πριν τον τερματισμό</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>A Monero Kliens indítása bejelentkezéskor</value>
+    <value>Έναρξη του Μονέρο Client κατά την εκκίνηση του συστήματος.</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Cím másolása</value>
+    <value>Αντιγραφή διεύθυνσης</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Minden fájl|*</value>
+    <value>Όλα τα αρχεία|*</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Programok (*.exe)|*.exe</value>
+    <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Tárca fájlok (*.bin)|*.bin</value>
+    <value>Αρχεία πορτοφολιού (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>nap</value>
+    <value>μέρες</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
-    <value>óra</value>
+    <value>ώρες</value>
   </data>
   <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
-    <value>óra</value>
+    <value>ώρα</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
-    <value>perc</value>
+    <value>λεπτά</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
-    <value>perc</value>
+    <value>λεπτό</value>
   </data>
 </root>

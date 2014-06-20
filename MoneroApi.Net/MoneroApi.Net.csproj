@@ -45,6 +45,7 @@
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
     <Compile Include="EventArgs\ValueChangingEventArgs.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="ProcessManagers\JobManager.cs" />
     <Compile Include="RpcManagers\HttpRpcResponse.cs" />
     <Compile Include="RpcManagers\Daemon\Http\Responses\NetworkInformation.cs" />
     <Compile Include="RpcManagers\JsonError.cs" />

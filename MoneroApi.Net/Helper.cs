@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Jojatekok.MoneroAPI.ProcessManagers;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -24,6 +25,8 @@ namespace Jojatekok.MoneroAPI
         public const int RequestsTimeoutMilliseconds = 30000;
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
+
+        public static readonly JobManager JobManager = new JobManager();
 
         internal static DateTime UnixTimeStampToDateTime(ulong unixTimeStamp)
         {

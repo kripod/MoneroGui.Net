@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Consoles</value>
   </data>
-  <data name="DebugWindowConsoleWallet" xml:space="preserve">
-    <value>Wallet</value>
-  </data>
   <data name="DebugWindowInformation" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -210,7 +207,7 @@
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Unconfirmed:</value>
   </data>
-  <data name="OverviewWallet" xml:space="preserve">
+  <data name="TextWallet" xml:space="preserve">
     <value>Wallet</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">

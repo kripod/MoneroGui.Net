@@ -73,7 +73,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             for (var i = LanguageCultures.Count - 1; i > 0; i--) {
                 var culture = LanguageCultures[i];
                 var nativeName = culture.NativeName.UppercaseFirst();
-                var displayName = culture.DisplayName.UppercaseFirst();
+                var displayName = culture.EnglishName.UppercaseFirst();
                 
                 var bracketIndex = nativeName.IndexOf('(');
                 if (bracketIndex >= 0) {
