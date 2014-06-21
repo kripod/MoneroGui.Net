@@ -61,6 +61,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Icons made by:.
+        /// </summary>
+        public static string AboutWindowCreditIcons {
+            get {
+                return ResourceManager.GetString("AboutWindowCreditIcons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading license file....
         /// </summary>
         public static string AboutWindowLicenseFileLoading {
@@ -97,20 +106,29 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add known address.
-        /// </summary>
-        public static string AddressBookAddWindowTitle {
-            get {
-                return ResourceManager.GetString("AddressBookAddWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Copy address.
         /// </summary>
         public static string AddressBookCopyAddress {
             get {
                 return ResourceManager.GetString("AddressBookCopyAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add known address.
+        /// </summary>
+        public static string AddressBookEditWindowTitleAdd {
+            get {
+                return ResourceManager.GetString("AddressBookEditWindowTitleAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit contact.
+        /// </summary>
+        public static string AddressBookEditWindowTitleEdit {
+            get {
+                return ResourceManager.GetString("AddressBookEditWindowTitleEdit", resourceCulture);
             }
         }
         
@@ -624,6 +642,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextDelete {
             get {
                 return ResourceManager.GetString("TextDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string TextEdit {
+            get {
+                return ResourceManager.GetString("TextEdit", resourceCulture);
             }
         }
         

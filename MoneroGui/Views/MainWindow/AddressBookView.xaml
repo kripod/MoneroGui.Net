@@ -1,8 +1,9 @@
 ﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.MainWindow.AddressBookView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
+             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow">
     <UserControl.DataContext>
         <views:AddressBookViewModel x:Name="ViewModel"/>
@@ -21,6 +22,7 @@
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -29,16 +31,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="5" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" Margin="0 0 0 8">
+        <DataGrid Grid.ColumnSpan="6" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" Margin="0 0 0 8">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextLabel}" Binding="{Binding Path=Label}" SortDirection="Ascending" Width="*"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextAddress}" Binding="{Binding Path=Address}" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Grid.Column="0" Content="{x:Static p:Resources.TextNew}" Click="ButtonNew_Click" Margin="0 0 8 0"/>
-        <Button Grid.Row="1" Grid.Column="1" x:Name="ButtonCopyAddress" Content="{x:Static p:Resources.AddressBookCopyAddress}" IsEnabled="False" Click="ButtonCopyAddress_Click" Margin="0 0 8 0"/>
-        <Button Grid.Row="1" Grid.Column="2" x:Name="ButtonDelete" Content="{x:Static p:Resources.TextDelete}" IsEnabled="False" Click="ButtonDelete_Click" Margin="0 0 8 0"/>
-        <Button Grid.Row="1" Grid.Column="4" Content="{x:Static p:Resources.TextExport}" Click="ButtonExport_Click" Style="{StaticResource StyleButtonPaddingWide}"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.TextNew}" ImageUri="/Resources/Images/Add.png" Click="ButtonNew_Click" Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="1" x:Name="ButtonCopyAddress" Text="{x:Static p:Resources.AddressBookCopyAddress}" ImageUri="/Resources/Images/Copy.png" IsEnabled="False" Click="ButtonCopyAddress_Click" Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="2" x:Name="ButtonEdit" Text="{x:Static p:Resources.TextEdit}" ImageUri="/Resources/Images/Edit.png" IsEnabled="False" Click="ButtonEdit_Click" Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="3" x:Name="ButtonDelete" Text="{x:Static p:Resources.TextDelete}" ImageUri="/Resources/Images/Delete.png" IsEnabled="False" Click="ButtonDelete_Click" Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="5" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
     </Grid>
 </UserControl>

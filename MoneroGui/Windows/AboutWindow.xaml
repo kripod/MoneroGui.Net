@@ -4,18 +4,20 @@
         xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
         Title="{x:Static p:Resources.AboutWindowTitle}" Foreground="#FF4C4C4C"
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Width="600" Height="300">
+        SizeToContent="Height"
+        Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="..\Resources\Icon\Icon-192x192.png" Height="192" Margin="20"/>
+        <Image Source="/Resources/Icon/Icon-192x192.png" Height="192" Margin="20"/>
 
         <Grid Grid.Column="1" Margin="0 20 20 20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -31,12 +33,16 @@
                 </Style>
             </Grid.Style>-->
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static p:Resources.TextClientName}" FontSize="24" FontFamily="Tahoma" HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextBlockVersion" Text="v0.0.0" FontSize="12" FontFamily="Tahoma" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static p:Resources.TextClientName}" FontSize="24" FontFamily="Tahoma" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="TextBlockVersion" Text="v0.0.0" FontSize="12" FontFamily="Tahoma" HorizontalAlignment="Center"/>
 
-            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="TextBoxLicenseText" Text="{x:Static p:Resources.AboutWindowLicenseFileLoading}" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0 12"/>
+            <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="TextBoxLicenseText" Text="{x:Static p:Resources.AboutWindowLicenseFileLoading}" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Height="134" Margin="0 12"/>
 
-            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonThirdPartyLicenses" Content="{x:Static p:Resources.AboutWindowThirdPartyLicenses}" Click="ButtonThirdPartyLicenses_Click"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" FontFamily="Tahoma" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Source={x:Static p:Resources.AboutWindowCreditIcons}}"/>
+                <Hyperlink NavigateUri="http://www.visualpharm.com" RequestNavigate="HyperlinkIconCreatorWebsite_RequestNavigate">VisualPharm</Hyperlink>
+            </TextBlock>
+            <Button Grid.Row="3" Grid.Column="2" x:Name="ButtonThirdPartyLicenses" Content="{x:Static p:Resources.AboutWindowThirdPartyLicenses}" Click="ButtonThirdPartyLicenses_Click" VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>

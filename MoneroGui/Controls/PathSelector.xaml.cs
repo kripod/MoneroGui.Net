@@ -4,9 +4,9 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace Jojatekok.MoneroGUI.Views.OptionsWindow
+namespace Jojatekok.MoneroGUI.Controls
 {
-    public partial class PathSelectorView
+    public partial class PathSelector
     {
         public string SelectedPath {
             get { return TextBoxPath.Text; }
@@ -16,7 +16,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
         public string Filter { get; set; }
         public int FilterIndex { get; set; }
 
-        public PathSelectorView()
+        public PathSelector()
         {
             InitializeComponent();
         }

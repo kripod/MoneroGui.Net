@@ -297,7 +297,7 @@
   <data name="TextOk" xml:space="preserve">
     <value>Ok</value>
   </data>
-  <data name="AddressBookAddWindowTitle" xml:space="preserve">
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
     <value>Bekannte Adresse hinzufühen</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">

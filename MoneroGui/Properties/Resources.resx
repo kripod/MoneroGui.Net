@@ -297,7 +297,7 @@
   <data name="TextOk" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="AddressBookAddWindowTitle" xml:space="preserve">
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
     <value>Add known address</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
@@ -365,5 +365,14 @@
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
     <value>minute</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Icons made by:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Edit contact</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Edit</value>
   </data>
 </root>

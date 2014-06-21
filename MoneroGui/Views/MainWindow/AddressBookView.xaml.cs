@@ -22,32 +22,70 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             if (IsInitialized) {
                 var isButtonsEnabled = DataGridAddressBook.SelectedIndex >= 0;
                 ButtonCopyAddress.IsEnabled = isButtonsEnabled;
+                ButtonEdit.IsEnabled = isButtonsEnabled;
                 ButtonDelete.IsEnabled = isButtonsEnabled;
             }
         }
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddressBookAddWindow(Window.GetWindow(Parent));
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), ViewModel.DataSource);
             if (dialog.ShowDialog() == true) {
-                ViewModel.DataSource.Add(new SettingsManager.ConfigElementContact(dialog.TextBoxLabel.Text, dialog.TextBoxAddress.Text));
+                var overwriteIndex = dialog.OverwriteIndex;
+
+                if (overwriteIndex < 0) {
+                    // Add new item
+                    ViewModel.DataSource.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                    overwriteIndex = ViewModel.DataSource.Count - 1;
+
+                } else {
+                    // Overwrite existing item
+                    ViewModel.DataSource[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                }
+
+                DataGridAddressBook.SelectedItem = ViewModel.DataSource[overwriteIndex];
             }
+
+            DataGridAddressBook.Focus();
         }
 
         private void ButtonCopyAddress_Click(object sender, RoutedEventArgs e)
         {
             Debug.Assert(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null, "DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null");
             Clipboard.SetText((DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact).Address);
+
+            DataGridAddressBook.Focus();
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var editIndex = ViewModel.DataSource.IndexOf(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), ViewModel.DataSource, editIndex);
+            if (dialog.ShowDialog() == true) {
+                var overwriteIndex = dialog.OverwriteIndex;
+                if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
+                    ViewModel.DataSource.RemoveAt(dialog.OverwriteIndex);
+                    if (overwriteIndex < editIndex) editIndex -= 1;
+                }
+
+                ViewModel.DataSource[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+            }
+
+            DataGridAddressBook.Focus();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.DataSource.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+
+            DataGridAddressBook.Focus();
         }
 
         private void ButtonExport_Click(object sender, RoutedEventArgs e)
         {
             Export();
+
+            DataGridAddressBook.Focus();
         }
 
         public void Export()

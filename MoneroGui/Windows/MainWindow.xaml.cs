@@ -105,6 +105,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0) return;
             var selectedItem = e.AddedItems[0] as TabItem;
             if (selectedItem == null) return;
 

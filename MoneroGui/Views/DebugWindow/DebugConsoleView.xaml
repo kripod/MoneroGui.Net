@@ -4,13 +4,13 @@
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              DataContextChanged="DebugConsoleView_DataContextChanged"
              IsVisibleChanged="DebugConsoleView_IsVisibleChanged">
-    <Grid>
+    <Grid Grid.IsSharedSizeScope="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition Width="11"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>

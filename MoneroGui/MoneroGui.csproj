@@ -80,6 +80,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\ImageGreyable.cs" />
     <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\IExportable.cs" />
     <Compile Include="Properties\Resources.de.Designer.cs">
@@ -102,6 +103,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.hu.resx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ButtonWithImage.xaml.cs">
+      <DependentUpon>ButtonWithImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow\AddressBookViewModel.cs" />
     <Compile Include="Views\OptionsWindow\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
@@ -112,12 +116,16 @@
     <Compile Include="Views\OptionsWindow\PathsView.xaml.cs">
       <DependentUpon>PathsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\OptionsWindow\PathSelectorView.xaml.cs">
-      <DependentUpon>PathSelectorView.xaml</DependentUpon>
+    <Compile Include="Controls\PathSelector.xaml.cs">
+      <DependentUpon>PathSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\ButtonWithImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\DebugWindow\DebugConsoleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,11 +162,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\OptionsWindow\PathSelectorView.xaml">
+    <Page Include="Controls\PathSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\AddressBookAddWindow.xaml">
+    <Page Include="Windows\AddressBookEditWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -202,8 +210,8 @@
     <Compile Include="Views\MainWindow\OverviewView.xaml.cs">
       <DependentUpon>OverviewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddressBookAddWindow.xaml.cs">
-      <DependentUpon>AddressBookAddWindow.xaml</DependentUpon>
+    <Compile Include="Windows\AddressBookEditWindow.xaml.cs">
+      <DependentUpon>AddressBookEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -275,6 +283,23 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Add.png" />
+    <Resource Include="Resources\Images\Copy.png" />
+    <Resource Include="Resources\Images\Delete.png" />
+    <Resource Include="Resources\Images\Edit.png" />
+    <Resource Include="Resources\Images\Exit.png" />
+    <Resource Include="Resources\Images\Export.png" />
+    <Resource Include="Resources\Images\Information.png" />
+    <Resource Include="Resources\Images\Key.png" />
+    <Resource Include="Resources\Images\Open.png" />
+    <Resource Include="Resources\Images\Options.png" />
+    <Resource Include="Resources\Images\Paste.png" />
+    <Resource Include="Resources\Images\Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

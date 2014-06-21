@@ -1,13 +1,11 @@
 ﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.MainWindow.TransactionsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
+             xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
-             xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net"
-             mc:Ignorable="d">
+             xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net">
     <UserControl.DataContext>
         <views:TransactionsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
@@ -54,6 +52,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Grid.Column="1" Content="{x:Static p:Resources.TextExport}" Click="ButtonExport_Click" Style="{StaticResource StyleButtonPaddingWide}"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="1" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
     </Grid>
 </UserControl>

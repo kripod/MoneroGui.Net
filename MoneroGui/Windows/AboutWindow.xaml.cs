@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -54,6 +55,12 @@ namespace Jojatekok.MoneroGUI.Windows
             var output = Directory.Exists(ThirdPartyLicensesPath);
             ButtonThirdPartyLicenses.IsEnabled = output;
             return output;
+        }
+
+        private void HyperlinkIconCreatorWebsite_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(e.Uri.AbsoluteUri);
+            e.Handled = true;
         }
 
         private void ButtonThirdPartyLicenses_Click(object sender, RoutedEventArgs e)

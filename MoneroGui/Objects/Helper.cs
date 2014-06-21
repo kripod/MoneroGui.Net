@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -46,6 +47,13 @@ namespace Jojatekok.MoneroGUI
             return minutes + " " + Properties.Resources.StatusBarSyncTextMinutePlural;
         }
 
+        public static string GetRelativePath(string path)
+        {
+            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
+            var uriPath = new Uri(path);
+            return uriBase.MakeRelativeUri(uriPath).ToString().Replace("%20", " ").Replace('/', '\\');
+        }
+
         public static ImageSource ToImageSource(this Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
@@ -56,11 +64,15 @@ namespace Jojatekok.MoneroGUI
             return (T)Attribute.GetCustomAttribute(StaticObjects.ApplicationAssembly, typeof(T), false);
         }
 
-        public static string GetRelativePath(string path)
+        public static int IndexOf(this IList<SettingsManager.ConfigElementContact> collection, string label)
         {
-            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
-            var uriPath = new Uri(path);
-            return uriBase.MakeRelativeUri(uriPath).ToString().Replace("%20", " ").Replace('/', '\\');
+            for (var i = collection.Count - 1; i >= 0; i--) {
+                if (collection[i].Label == label) {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 

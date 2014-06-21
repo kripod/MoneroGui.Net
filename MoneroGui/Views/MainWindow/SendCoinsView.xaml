@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
+             xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.DataContext>
         <views:SendCoinsViewModel x:Name="ViewModel"/>
@@ -44,6 +45,6 @@
         <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsPaymentId}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <xctk:WatermarkTextBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
 
-        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Content="{x:Static p:Resources.TextSend}" Click="ButtonSend_Click" IsEnabled="{Binding Path=IsSendingEnabled}"/>
+        <controls:ButtonWithImage Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click"/>
     </Grid>
 </UserControl>

@@ -297,7 +297,7 @@
   <data name="TextOk" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="AddressBookAddWindowTitle" xml:space="preserve">
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
     <value>Ismert cím hozzáadása</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
@@ -365,5 +365,14 @@
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
     <value>perc</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Az ikonokat készítette:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Cím szerkesztése</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Szerkesztés</value>
   </data>
 </root>

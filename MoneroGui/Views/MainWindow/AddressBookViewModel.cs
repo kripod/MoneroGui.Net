@@ -26,17 +26,17 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 return;
             }
 
-            var newItems = e.NewItems;
-            if (newItems != null) {
-                for (var i = newItems.Count - 1; i >= 0; i--) {
-                    SettingsManager.AddressBook.Elements.Add(newItems[i] as SettingsManager.ConfigElementContact);
-                }
-            }
-
             var oldItems = e.OldItems;
             if (oldItems != null) {
                 for (var i = oldItems.Count - 1; i >= 0; i--) {
                     SettingsManager.AddressBook.Elements.Remove(oldItems[i] as SettingsManager.ConfigElementContact);
+                }
+            }
+
+            var newItems = e.NewItems;
+            if (newItems != null) {
+                for (var i = newItems.Count - 1; i >= 0; i--) {
+                    SettingsManager.AddressBook.Elements.Add(newItems[i] as SettingsManager.ConfigElementContact);
                 }
             }
         }

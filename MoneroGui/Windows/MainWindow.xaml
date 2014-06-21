@@ -7,7 +7,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{x:Static p:Resources.TextClientName}"
         WindowStartupLocation="CenterScreen"
-        Width="640" Height="435" MinWidth="640" MinHeight="435"
+        Width="800" Height="534" MinWidth="800" MinHeight="534"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="local:MainWindow.BackupWalletCommand" Executed="BackupWalletCommand_Executed"/>
@@ -34,23 +34,51 @@
 
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="{x:Static p:Resources.MenuBackupWallet}" Command="local:MainWindow.BackupWalletCommand"/>
-                    <MenuItem x:Name="MenuItemExport" Header="{x:Static p:Resources.MenuExport}" Command="local:MainWindow.ExportCommand" IsEnabled="False"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuBackupWallet}" Command="local:MainWindow.BackupWalletCommand">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Save.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="MenuItemExport" Header="{x:Static p:Resources.MenuExport}" Command="local:MainWindow.ExportCommand" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Export.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuExit}" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuExit}" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Exit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuSettings}">
-                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}"/>
-                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Key.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Key.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuOptions}" Command="local:MainWindow.OptionsCommand"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuOptions}" Command="local:MainWindow.OptionsCommand">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Options.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuHelp}">
                     <MenuItem Header="{x:Static p:Resources.MenuDebugWindow}" Command="local:MainWindow.ShowDebugWindowCommand"/>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuAbout}" Command="local:MainWindow.ShowAboutWindowCommand"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuAbout}" Command="local:MainWindow.ShowAboutWindowCommand">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Images/Information.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
 
@@ -63,11 +91,11 @@
                     <views:SendCoinsView x:Name="SendCoinsView" Margin="5"/>
                 </TabItem>
 
-                <TabItem x:Name="TabItemTransactions" Header="{x:Static p:Resources.MainWindowTransactions}">
+                <TabItem Header="{x:Static p:Resources.MainWindowTransactions}">
                     <views:TransactionsView x:Name="TransactionsView" Margin="5"/>
                 </TabItem>
 
-                <TabItem x:Name="TabItemAddressBook" Header="{x:Static p:Resources.MainWindowAddressBook}">
+                <TabItem Header="{x:Static p:Resources.MainWindowAddressBook}">
                     <views:AddressBookView Margin="5"/>
                 </TabItem>
             </TabControl>
