@@ -135,7 +135,7 @@
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Hibakereső ablak</value>
   </data>
-  <data name="MainWindowAddressBook" xml:space="preserve">
+  <data name="TextAddressBook" xml:space="preserve">
     <value>Címjegyzék</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
@@ -216,7 +216,7 @@
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Keverések száma:</value>
   </data>
-  <data name="SendCoinsPaymentId" xml:space="preserve">
+  <data name="TextPaymentId" xml:space="preserve">
     <value>Fizetési azonosító:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
@@ -374,5 +374,37 @@
   </data>
   <data name="TextEdit" xml:space="preserve">
     <value>Szerkesztés</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG fájlok (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Üzenet:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Mentés másként...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>A keletkezett URI túl hosszú.
+
+Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR kód</value>
+  </data>
+  <data name="SendCoinsBalance" xml:space="preserve">
+    <value>Egyenleg:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Címzett eltávolítása</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Új címzett</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Címzettek törlése</value>
   </data>
 </root>

@@ -51,6 +51,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -70,6 +71,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ZXing.Net.0.14.0.1\lib\net40\zxing.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -80,9 +85,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\TabItemHeader.xaml.cs">
+      <DependentUpon>TabItemHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CoinSender.xaml.cs">
+      <DependentUpon>CoinSender.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ImageGreyable.cs" />
     <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\IExportable.cs" />
+    <Compile Include="Objects\SendCoinsRecipient.cs" />
     <Compile Include="Properties\Resources.de.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,9 +131,20 @@
     <Compile Include="Controls\PathSelector.xaml.cs">
       <DependentUpon>PathSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\QrCodeWindow.xaml.cs">
+      <DependentUpon>QrCodeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\TabItemHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\CoinSender.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\ButtonWithImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -163,6 +186,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\PathSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\QrCodeWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -266,12 +293,6 @@
     <None Include="..\LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Licenses\Extended WPF Toolkit\LICENSE.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Licenses\Hardcodet WPF NotifyIcon\LICENSE.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">
@@ -301,12 +322,21 @@
     <Resource Include="Resources\Images\Paste.png" />
     <Resource Include="Resources\Images\Save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Overview.png" />
+    <Resource Include="Resources\Images\Transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\QR-code.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <ItemGroup>
+      <Licenses Include="..\Licenses\**\*" />
+    </ItemGroup>
+    <Microsoft.Build.Tasks.Copy SourceFiles="@(Licenses)" DestinationFolder="$(OutputPath)\Licenses\%(RecursiveDir)" />
   </Target>
-  -->
 </Project>

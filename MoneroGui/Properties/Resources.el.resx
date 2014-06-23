@@ -138,7 +138,7 @@
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug window</value>
   </data>
-  <data name="MainWindowAddressBook" xml:space="preserve">
+  <data name="TextAddressBook" xml:space="preserve">
     <value>Βιβλίο διευθύνσεων</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
@@ -219,7 +219,7 @@
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Αριθμός ανάμειξης:</value>
   </data>
-  <data name="SendCoinsPaymentId" xml:space="preserve">
+  <data name="TextPaymentId" xml:space="preserve">
     <value>Payment ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
@@ -337,7 +337,7 @@
     <value>Έναρξη του Μονέρο Client κατά την εκκίνηση του συστήματος.</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Αντιγραφή διεύθυνσης</value>
+    <value>Αντιγραφή</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
     <value>Όλα τα αρχεία|*</value>
@@ -365,5 +365,14 @@
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
     <value>λεπτό</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Εικονίδια από τον:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Επεξεργασία επαφής</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Επεξεργασία</value>
   </data>
 </root>

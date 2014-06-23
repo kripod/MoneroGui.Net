@@ -116,22 +116,24 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Process_ErrorReceived(object sender, string e)
         {
-            if (e.Contains("failed to connect")) {
+            var dataLower = e.ToLower(Helper.InvariantCulture);
+
+            if (dataLower.Contains("failed to connect")) {
                 // Cannot connect to the daemon
 
-            } else if (e.Contains("failed to generate new wallet")) {
+            } else if (dataLower.Contains("failed to generate new wallet")) {
                 // Failed to generate a new wallet file
 
-            } else if (e.Contains("invalid password")) {
+            } else if (dataLower.Contains("invalid password")) {
                 // Invalid password
 
-            } else if (e.Contains("wrong address")) {
+            } else if (dataLower.Contains("wrong address")) {
                 // Invalid send address
 
-            } else if (e.Contains("not enough money")) {
+            } else if (dataLower.Contains("not enough money")) {
                 // Not enough money
 
-            } else if (e.Contains("payment id has invalid format")) {
+            } else if (dataLower.Contains("payment id has invalid format")) {
                 // The payment ID needs to be a 64 character string
             }
 
@@ -140,18 +142,19 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Process_OutputReceived(object sender, string e)
         {
-            var data = e.ToLower(Helper.InvariantCulture);
+            var data = e;
+            var dataLower = e.ToLower(Helper.InvariantCulture);
 
             // <-- Reply methods -->
 
-            if (data.Contains("refresh done")) {
+            if (dataLower.Contains("refresh done")) {
                 RefreshTimer.Start();
                 if (Refreshed != null) Refreshed(this, EventArgs.Empty);
                 return;
             }
 
-            if (BalanceChanging != null && data.Contains("balance")) {
-                var match = Regex.Match(data, "balance: ([0-9\\.,]*), unlocked balance: ([0-9\\.,]*)");
+            if (BalanceChanging != null && dataLower.Contains("balance")) {
+                var match = Regex.Match(dataLower, "balance: ([0-9\\.,]*), unlocked balance: ([0-9\\.,]*)");
                 if (match.Success) {
                     var total = double.Parse(match.Groups[1].Value, Helper.InvariantCulture);
                     var spendable = double.Parse(match.Groups[2].Value, Helper.InvariantCulture);
@@ -164,8 +167,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            if (SentMoney != null && data.Contains("money successfully sent")) {
-                var match = Regex.Match(data, "transaction <([0-9a-z]*)>");
+            if (SentMoney != null && dataLower.Contains("money successfully sent")) {
+                var match = Regex.Match(data, "transaction <([0-9a-z]*)>", RegexOptions.IgnoreCase);
                 if (match.Success) {
                     SentMoney(this, match.Groups[1].Value);
                 }
@@ -176,8 +179,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             // <-- Transaction fetching -->
 
             // Incoming transaction fetching
-            if (data.Contains("transaction")) {
-                var match = Regex.Match(data, "height ([0-9]+), transaction <([0-9a-z]+)>, ([a-z]+) ([0-9]+\\.[0-9]+)");
+            if (dataLower.Contains("transaction")) {
+                var match = Regex.Match(data, "height ([0-9]+), transaction <([0-9a-z]+)>, ([a-z]+) ([0-9]+\\.[0-9]+)", RegexOptions.IgnoreCase);
                 if (match.Success) {
                     // TODO: Handle block height to get the transaction's timestamp
                     //var blockHeight = ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture);
@@ -199,10 +202,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
 
             // Initial transaction fetching
-            var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]+([tf])[\\s]+[0-9]+[\\s]+<([0-9a-z]+)>");
+            var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]+([tf])[\\s]+[0-9]+[\\s]+<([0-9a-z]+)>", RegexOptions.IgnoreCase);
             if (newTransactionMatch.Success) {
                 var amount = double.Parse(newTransactionMatch.Groups[1].Value, Helper.InvariantCulture);
-                var isAmountSpendable = newTransactionMatch.Groups[2].Value == "f";
+                var isAmountSpendable = newTransactionMatch.Groups[2].Value == "F";
                 var transactionId = newTransactionMatch.Groups[3].Value;
 
                 // TODO: Fetch the transaction's type if possible
@@ -212,14 +215,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
 
             // Clear the list of transactions before they are reloaded
-            if (Regex.IsMatch(data, "amount[\\s]+spent")) {
+            if (Regex.IsMatch(dataLower, "amount[\\s]+spent")) {
                 TransactionsPrivate.Clear();
                 return;
             }
 
             // <-- Initializers -->
 
-            if (data.Contains(" wallet v")) {
+            if (dataLower.Contains(" wallet v")) {
                 // Startup commands
                 GetBalance();
                 GetAllTransfers();
@@ -227,7 +230,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            if (AddressReceived != null && (data.Contains("opened wallet: ") || data.Contains("generated new wallet: "))) {
+            if (AddressReceived != null && (dataLower.Contains("opened wallet: ") || dataLower.Contains("generated new wallet: "))) {
                 Address = data.Substring(data.IndexOf(':') + 2);
                 AddressReceived(this, Address);
                 return;
@@ -235,7 +238,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Error handler -->
 
-            if (data.Contains("error")) Process_ErrorReceived(this, data);
+            if (dataLower.Contains("error")) Process_ErrorReceived(this, data);
         }
 
         private void GetBalance()
@@ -248,25 +251,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("incoming_transfers");
         }
 
-        public void Transfer(string address, double amount, int mixCount, string paymentId)
-        {
-            Send(string.IsNullOrEmpty(paymentId) ?
-                 string.Format(Helper.InvariantCulture, "transfer {0} {1} {2}", mixCount, address, amount) :
-                 string.Format(Helper.InvariantCulture, "transfer {0} {1} {2} {3}", mixCount, address, amount, paymentId)
-            );
-        }
-
-        public void Transfer(string address, double amount, int mixCount)
-        {
-            Transfer(address, amount, mixCount, null);
-        }
-
-        public void Transfer(string address, double amount)
-        {
-            Transfer(address, amount, 0, null);
-        }
-
-        public void Transfer(Dictionary<string, double> recipients, int mixCount)
+        public void Transfer(Dictionary<string, double> recipients, int mixCount, string paymentId)
         {
             if (recipients == null || recipients.Count == 0) return;
 
@@ -275,12 +260,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 transfers += " " + keyValuePair.Key + " " + keyValuePair.Value;
             }
 
-            Send(string.Format(Helper.InvariantCulture, "transfer {0}{1}", mixCount, transfers));
-        }
-
-        public void Transfer(Dictionary<string, double> recipients)
-        {
-            Transfer(recipients, 0);
+            var stringFormat = string.IsNullOrWhiteSpace(paymentId) ? "transfer {0}{1}" : "transfer {0}{1} {2}";
+            Send(string.Format(Helper.InvariantCulture, stringFormat, mixCount, transfers, paymentId));
         }
 
         public void Refresh()

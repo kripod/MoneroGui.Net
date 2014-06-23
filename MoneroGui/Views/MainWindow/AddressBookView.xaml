@@ -25,13 +25,14 @@
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="6" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" Margin="0 0 0 8">
+        <DataGrid Grid.ColumnSpan="7" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" Margin="0 0 0 8">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextLabel}" Binding="{Binding Path=Label}" SortDirection="Ascending" Width="*"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TextAddress}" Binding="{Binding Path=Address}" Width="200"/>
@@ -42,6 +43,8 @@
         <controls:ButtonWithImage Grid.Row="1" Grid.Column="1" x:Name="ButtonCopyAddress" Text="{x:Static p:Resources.AddressBookCopyAddress}" ImageUri="/Resources/Images/Copy.png" IsEnabled="False" Click="ButtonCopyAddress_Click" Margin="0 0 8 0"/>
         <controls:ButtonWithImage Grid.Row="1" Grid.Column="2" x:Name="ButtonEdit" Text="{x:Static p:Resources.TextEdit}" ImageUri="/Resources/Images/Edit.png" IsEnabled="False" Click="ButtonEdit_Click" Margin="0 0 8 0"/>
         <controls:ButtonWithImage Grid.Row="1" Grid.Column="3" x:Name="ButtonDelete" Text="{x:Static p:Resources.TextDelete}" ImageUri="/Resources/Images/Delete.png" IsEnabled="False" Click="ButtonDelete_Click" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="5" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
+
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" Text="{x:Static p:Resources.TextQrCode}" ImageUri="/Resources/Images/QR-code.png" IsEnabled="False" Click="ButtonQrCode_Click" RenderOptions.BitmapScalingMode="Linear"  Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="1" Grid.Column="6" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
     </Grid>
 </UserControl>

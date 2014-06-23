@@ -19,13 +19,11 @@ namespace Jojatekok.MoneroGUI.Windows
             set { _editIndex = value; }
         }
 
-        private string _label;
         public string Label {
             get { return TextBoxLabel.Text; }
             private set { TextBoxLabel.Text = value; }
         }
 
-        private string _address;
         public string Address {
             get { return TextBoxAddress.Text; }
             private set { TextBoxAddress.Text = value; }

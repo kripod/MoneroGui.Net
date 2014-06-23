@@ -59,13 +59,17 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.ColumnSpan="2" Text="{x:Static p:Resources.OverviewInitializing}" Visibility="{Binding Path=InitializerVisibility}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static p:Resources.OverviewInitializing}" Visibility="{Binding Path=InitializerVisibility}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
 
                     <TextBlock Grid.Column="0" Text="{Binding Path=Address}" ToolTip="{Binding Address}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" HorizontalAlignment="Right" Height="33"/>
                     <Button Grid.Column="1" ToolTip="{x:Static p:Resources.TextCopy}" Click="ButtonCopyAddress_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
                         <Image Source="/Resources/Images/Copy.png" Margin="2"/>
+                    </Button>
+                    <Button Grid.Column="2" ToolTip="{x:Static p:Resources.TextQrCode}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
+                        <Image Source="/Resources/Images/QR-code.png" Margin="2"/>
                     </Button>
                 </Grid>
 

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -12,34 +14,71 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
 #endif
 
+            // Add the first recipient
+            AddRecipient();
+
             // Load settings
             IntegerUpDownMixCount.Value = SettingsManager.General.TransactionsDefaultMixCount;
         }
 
+        private void AddRecipient()
+        {
+            ViewModel.Recipients.Add(new SendCoinsRecipient(this));
+        }
+
+        public void RemoveRecipient(SendCoinsRecipient item)
+        {
+            var recipients = ViewModel.Recipients;
+            recipients.Remove(item);
+
+            if (recipients.Count == 0) {
+                AddRecipient();
+            }
+        }
+
+        private void ClearRecipients()
+        {
+            ViewModel.Recipients.Clear();
+            AddRecipient();
+        }
+
+        private void ButtonAddRecipient_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecipient();
+        }
+
+        private void ButtonClearRecipients_Click(object sender, RoutedEventArgs e)
+        {
+            ClearRecipients();
+        }
+
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
         {
-            if (DoubleUpDownAmount.Value == null || DoubleUpDownAmount.Value == 0) {
-                // TODO: Show message "insufficient funds"
-                return;
-            }
-
             if (IntegerUpDownMixCount.Value == null) {
                 IntegerUpDownMixCount.Value = 0;
             }
 
-            StaticObjects.MoneroClient.Wallet.Transfer(TextBoxAddress.Text, DoubleUpDownAmount.Value.Value, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
-            ResetValues();
+            var recipients = ViewModel.Recipients;
+            var recipientsDictionary = new Dictionary<string, double>(recipients.Count);
+            
+            for (var i = recipients.Count - 1; i >= 0; i--) {
+                var recipient = recipients[i];
+
+                if (!recipient.IsValid()) {
+                    // TODO: Notify the user about a recipient being invalid
+                    return;
+
+                } else {
+                    Debug.Assert(recipient.Amount != null, "recipient.Amount != null");
+                    recipientsDictionary.Add(recipient.Address, recipient.Amount.Value);
+                }
+            }
+
+            StaticObjects.MoneroClient.Wallet.Transfer(recipientsDictionary, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
+            ClearRecipients();
 
             // Save settings
             SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
-        }
-
-        private void ResetValues()
-        {
-            TextBoxAddress.Clear();
-            TextBoxLabel.Clear();
-            DoubleUpDownAmount.Value = 0;
-            TextBoxPaymentId.Clear();
         }
     }
 }

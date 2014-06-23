@@ -90,9 +90,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Process_OutputReceived(object sender, string e)
         {
-            var data = e.ToLower(Helper.InvariantCulture);
+            var data = e;
+            var dataLower = e.ToLower(Helper.InvariantCulture);
 
-            if (data.Contains("rpc server initialized") && !IsRpcInitialized) {
+            if (dataLower.Contains("rpc server initialized") && !IsRpcInitialized) {
                 StartRpcServices();
 
                 IsRpcInitialized = true;
@@ -100,7 +101,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
 
             // Error handler
-            if (data.Contains("error")) Process_ErrorReceived(this, data);
+            if (dataLower.Contains("error")) Process_ErrorReceived(this, data);
         }
     }
 }

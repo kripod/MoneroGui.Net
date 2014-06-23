@@ -24,6 +24,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 ButtonCopyAddress.IsEnabled = isButtonsEnabled;
                 ButtonEdit.IsEnabled = isButtonsEnabled;
                 ButtonDelete.IsEnabled = isButtonsEnabled;
+                ButtonQrCode.IsEnabled = isButtonsEnabled;
             }
         }
 
@@ -77,6 +78,14 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.DataSource.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+
+            DataGridAddressBook.Focus();
+        }
+
+        private void ButtonQrCode_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new QrCodeWindow(Window.GetWindow(Parent), DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            dialog.ShowDialog();
 
             DataGridAddressBook.Focus();
         }

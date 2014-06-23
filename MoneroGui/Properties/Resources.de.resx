@@ -138,7 +138,7 @@
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug-Fenster</value>
   </data>
-  <data name="MainWindowAddressBook" xml:space="preserve">
+  <data name="TextAddressBook" xml:space="preserve">
     <value>Adressbuch</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
@@ -219,7 +219,7 @@
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Mix Anzahl:</value>
   </data>
-  <data name="SendCoinsPaymentId" xml:space="preserve">
+  <data name="TextPaymentId" xml:space="preserve">
     <value>Payment-ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">

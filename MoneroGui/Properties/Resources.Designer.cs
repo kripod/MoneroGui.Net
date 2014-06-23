@@ -133,6 +133,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove recipient.
+        /// </summary>
+        public static string CoinSenderRemoveRecipient {
+            get {
+                return ResourceManager.GetString("CoinSenderRemoveRecipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daemon.
         /// </summary>
         public static string DebugWindowConsoleDaemon {
@@ -165,15 +174,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string DebugWindowTitle {
             get {
                 return ResourceManager.GetString("DebugWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Address book.
-        /// </summary>
-        public static string MainWindowAddressBook {
-            get {
-                return ResourceManager.GetString("MainWindowAddressBook", resourceCulture);
             }
         }
         
@@ -475,20 +475,49 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resulting URI is too long.
+        ///
+        ///Please try to reduce the length of your inputs!.
+        /// </summary>
+        public static string QrCodeWindowUriTooLong {
+            get {
+                return ResourceManager.GetString("QrCodeWindowUriTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add recipient.
+        /// </summary>
+        public static string SendCoinsAddRecipient {
+            get {
+                return ResourceManager.GetString("SendCoinsAddRecipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Balance:.
+        /// </summary>
+        public static string SendCoinsBalance {
+            get {
+                return ResourceManager.GetString("SendCoinsBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear recipients.
+        /// </summary>
+        public static string SendCoinsClearRecipients {
+            get {
+                return ResourceManager.GetString("SendCoinsClearRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mix count:.
         /// </summary>
         public static string SendCoinsMixCount {
             get {
                 return ResourceManager.GetString("SendCoinsMixCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Payment ID:.
-        /// </summary>
-        public static string SendCoinsPaymentId {
-            get {
-                return ResourceManager.GetString("SendCoinsPaymentId", resourceCulture);
             }
         }
         
@@ -579,6 +608,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextAddress {
             get {
                 return ResourceManager.GetString("TextAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address book.
+        /// </summary>
+        public static string TextAddressBook {
+            get {
+                return ResourceManager.GetString("TextAddressBook", resourceCulture);
             }
         }
         
@@ -691,6 +729,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PNG files (*.png)|*.png.
+        /// </summary>
+        public static string TextFilterPngFiles {
+            get {
+                return ResourceManager.GetString("TextFilterPngFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallet files (*.bin)|*.bin.
         /// </summary>
         public static string TextFilterWalletFiles {
@@ -736,6 +783,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message:.
+        /// </summary>
+        public static string TextMessage {
+            get {
+                return ResourceManager.GetString("TextMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New....
         /// </summary>
         public static string TextNew {
@@ -759,6 +815,42 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextOk {
             get {
                 return ResourceManager.GetString("TextOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste.
+        /// </summary>
+        public static string TextPaste {
+            get {
+                return ResourceManager.GetString("TextPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment ID:.
+        /// </summary>
+        public static string TextPaymentId {
+            get {
+                return ResourceManager.GetString("TextPaymentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QR code.
+        /// </summary>
+        public static string TextQrCode {
+            get {
+                return ResourceManager.GetString("TextQrCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as....
+        /// </summary>
+        public static string TextSaveAs {
+            get {
+                return ResourceManager.GetString("TextSaveAs", resourceCulture);
             }
         }
         

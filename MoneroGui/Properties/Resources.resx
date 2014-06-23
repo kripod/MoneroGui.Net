@@ -138,7 +138,7 @@
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug window</value>
   </data>
-  <data name="MainWindowAddressBook" xml:space="preserve">
+  <data name="TextAddressBook" xml:space="preserve">
     <value>Address book</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
@@ -219,7 +219,7 @@
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Mix count:</value>
   </data>
-  <data name="SendCoinsPaymentId" xml:space="preserve">
+  <data name="TextPaymentId" xml:space="preserve">
     <value>Payment ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
@@ -374,5 +374,37 @@
   </data>
   <data name="TextEdit" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG files (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Message:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Save as...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>The resulting URI is too long.
+
+Please try to reduce the length of your inputs!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR code</value>
+  </data>
+  <data name="SendCoinsBalance" xml:space="preserve">
+    <value>Balance:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Remove recipient</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Add recipient</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Clear recipients</value>
   </data>
 </root>

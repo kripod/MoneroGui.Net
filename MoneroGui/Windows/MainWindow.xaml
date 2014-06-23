@@ -2,26 +2,27 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-        xmlns:local="clr-namespace:Jojatekok.MoneroGUI.Windows"
+        xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
+        xmlns:windows="clr-namespace:Jojatekok.MoneroGUI.Windows"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{x:Static p:Resources.TextClientName}"
         WindowStartupLocation="CenterScreen"
-        Width="800" Height="534" MinWidth="800" MinHeight="534"
+        Width="800" Height="540" MinWidth="800" MinHeight="540"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
-        <CommandBinding Command="local:MainWindow.BackupWalletCommand" Executed="BackupWalletCommand_Executed"/>
-        <CommandBinding Command="local:MainWindow.ExportCommand" Executed="ExportCommand_Executed"/>
-        <CommandBinding Command="local:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.BackupWalletCommand" Executed="BackupWalletCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.ExportCommand" Executed="ExportCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.ExitCommand" Executed="ExitCommand_Executed"/>
 
-        <CommandBinding Command="local:MainWindow.OptionsCommand" Executed="OptionsCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.OptionsCommand" Executed="OptionsCommand_Executed"/>
 
-        <CommandBinding Command="local:MainWindow.ShowDebugWindowCommand" Executed="ShowDebugWindowCommand_Executed"/>
-        <CommandBinding Command="local:MainWindow.ShowAboutWindowCommand" Executed="ShowAboutWindowCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.ShowDebugWindowCommand" Executed="ShowDebugWindowCommand_Executed"/>
+        <CommandBinding Command="windows:MainWindow.ShowAboutWindowCommand" Executed="ShowAboutWindowCommand_Executed"/>
     </Window.CommandBindings>
 
     <Window.InputBindings>
-        <KeyBinding Key="Q" Modifiers="Control" Command="local:MainWindow.ExitCommand"/>
+        <KeyBinding Key="Q" Modifiers="Control" Command="windows:MainWindow.ExitCommand"/>
     </Window.InputBindings>
 
     <xctk:BusyIndicator x:Name="BusyIndicator" BusyContent="{x:Static p:Resources.MainWindowBusyStatusShutdown}">
@@ -34,18 +35,18 @@
 
             <Menu>
                 <MenuItem Header="_File">
-                    <MenuItem Header="{x:Static p:Resources.MenuBackupWallet}" Command="local:MainWindow.BackupWalletCommand">
+                    <MenuItem Header="{x:Static p:Resources.MenuBackupWallet}" Command="windows:MainWindow.BackupWalletCommand">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Save.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="MenuItemExport" Header="{x:Static p:Resources.MenuExport}" Command="local:MainWindow.ExportCommand" IsEnabled="False">
+                    <MenuItem x:Name="MenuItemExport" Header="{x:Static p:Resources.MenuExport}" Command="windows:MainWindow.ExportCommand" IsEnabled="False">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Export.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuExit}" Command="local:MainWindow.ExitCommand" InputGestureText="Ctrl+Q">
+                    <MenuItem Header="{x:Static p:Resources.MenuExit}" Command="windows:MainWindow.ExitCommand" InputGestureText="Ctrl+Q">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Exit.png"/>
                         </MenuItem.Icon>
@@ -53,18 +54,18 @@
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuSettings}">
-                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}">
+                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}" IsEnabled="False">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Key.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}">
+                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}" IsEnabled="False">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Key.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuOptions}" Command="local:MainWindow.OptionsCommand">
+                    <MenuItem Header="{x:Static p:Resources.MenuOptions}" Command="windows:MainWindow.OptionsCommand">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Options.png"/>
                         </MenuItem.Icon>
@@ -72,9 +73,9 @@
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuHelp}">
-                    <MenuItem Header="{x:Static p:Resources.MenuDebugWindow}" Command="local:MainWindow.ShowDebugWindowCommand"/>
+                    <MenuItem Header="{x:Static p:Resources.MenuDebugWindow}" Command="windows:MainWindow.ShowDebugWindowCommand"/>
                     <Separator/>
-                    <MenuItem Header="{x:Static p:Resources.MenuAbout}" Command="local:MainWindow.ShowAboutWindowCommand">
+                    <MenuItem Header="{x:Static p:Resources.MenuAbout}" Command="windows:MainWindow.ShowAboutWindowCommand">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Information.png"/>
                         </MenuItem.Icon>
@@ -83,19 +84,31 @@
             </Menu>
 
             <TabControl Grid.Row="1" x:Name="TabControl" SelectionChanged="TabControl_SelectionChanged" Margin="10">
-                <TabItem Header="{x:Static p:Resources.MainWindowOverview}">
+                <TabItem>
+                    <TabItem.Header>
+                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowOverview}" ImageUri="/Resources/Images/Overview.png"/>
+                    </TabItem.Header>
                     <views:OverviewView x:Name="OverviewView" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{x:Static p:Resources.MainWindowSendCoins}">
+                <TabItem>
+                    <TabItem.Header>
+                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowSendCoins}" ImageUri="/Resources/Images/Send.png"/>
+                    </TabItem.Header>
                     <views:SendCoinsView x:Name="SendCoinsView" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{x:Static p:Resources.MainWindowTransactions}">
+                <TabItem>
+                    <TabItem.Header>
+                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowTransactions}" ImageUri="/Resources/Images/Transaction.png"/>
+                    </TabItem.Header>
                     <views:TransactionsView x:Name="TransactionsView" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{x:Static p:Resources.MainWindowAddressBook}">
+                <TabItem>
+                    <TabItem.Header>
+                        <controls:TabItemHeader Text="{x:Static p:Resources.TextAddressBook}" ImageUri="/Resources/Images/Contact.png"/>
+                    </TabItem.Header>
                     <views:AddressBookView Margin="5"/>
                 </TabItem>
             </TabControl>

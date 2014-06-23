@@ -1,10 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class SendCoinsViewModel : INotifyPropertyChanged
     {
+        private static readonly ObservableCollection<SendCoinsRecipient> RecipientsPrivate = new ObservableCollection<SendCoinsRecipient>();
+        public ObservableCollection<SendCoinsRecipient> Recipients {
+            get { return RecipientsPrivate; }
+        }
+
         private bool _isSendingEnabled;
         public bool IsSendingEnabled {
             get { return _isSendingEnabled; }
@@ -15,12 +21,12 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double _coinBalance;
-        public double CoinBalance {
-            get { return _coinBalance; }
+        private double? _balanceSpendable;
+        public double? BalanceSpendable {
+            get { return _balanceSpendable; }
 
             set {
-                _coinBalance = value;
+                _balanceSpendable = value;
                 OnPropertyChanged();
             }
         }

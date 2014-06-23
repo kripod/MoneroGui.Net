@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -51,12 +55,37 @@ namespace Jojatekok.MoneroGUI
         {
             var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
             var uriPath = new Uri(path);
-            return uriBase.MakeRelativeUri(uriPath).ToString().Replace("%20", " ").Replace('/', '\\');
+
+            var decodedUrl = HttpUtility.UrlDecode(uriBase.MakeRelativeUri(uriPath).ToString());
+            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
         }
 
         public static ImageSource ToImageSource(this Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+        }
+
+        public static BitmapImage ToImageSource(this Image image, bool isTransparent)
+        {
+            var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+
+            var stream = new MemoryStream();
+            image.Save(stream, isTransparent ? ImageFormat.Png : ImageFormat.Bmp);
+
+            bitmapImage.StreamSource = stream;
+            bitmapImage.EndInit();
+            return bitmapImage;
+        }
+
+        public static Bitmap ToBitmap(this BitmapSource bitmapSource)
+        {
+            using (var stream = new MemoryStream()) {
+                var encoder = new BmpBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+                encoder.Save(stream);
+                return new Bitmap(stream);
+            }
         }
 
         public static T GetAssemblyAttribute<T>() where T : Attribute

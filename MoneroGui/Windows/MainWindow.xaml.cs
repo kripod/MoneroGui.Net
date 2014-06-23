@@ -162,7 +162,7 @@ namespace Jojatekok.MoneroGUI.Windows
             overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
 
             var sendCoinsViewModel = SendCoinsView.ViewModel;
-            sendCoinsViewModel.CoinBalance = newValue.Spendable;
+            sendCoinsViewModel.BalanceSpendable = newValue.Spendable;
             sendCoinsViewModel.IsSendingEnabled = true;
         }
 

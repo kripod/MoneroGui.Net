@@ -24,7 +24,7 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextLabel}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" x:Name="TextBoxLabel" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 8"/>
         <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" x:Name="TextBoxAddress" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 8"/>
 
         <Button Grid.Row="2" Grid.Column="3" x:Name="ButtonOk" Content="{x:Static p:Resources.TextOk}" IsDefault="True" IsEnabled="False" Click="ButtonOk_Click" Style="{StaticResource StyleButtonPaddingWide}"/>

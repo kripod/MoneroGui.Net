@@ -1,50 +1,76 @@
 ﻿<UserControl x:Class="Jojatekok.MoneroGUI.Views.MainWindow.SendCoinsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d"
+             d:DesignWidth="700">
     <UserControl.DataContext>
         <views:SendCoinsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
 
-    <Grid>
+    <Grid Grid.IsSharedSizeScope="True">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="19"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="8"/>
             <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="19"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="19"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxAddress" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" Margin="0 0 0 5"/>
+        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" ItemsSource="{Binding Path=Recipients}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 0 0 8">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.MaxWidth>
+                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollContentPresenter}}"/>
+                        </Grid.MaxWidth>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextLabel}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxLabel" Watermark="{x:Static p:Resources.TextHintLabel}" Margin="0 0 0 5"/>
+                        <Border BorderBrush="{StaticResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="1" Margin="1 3 3 8">
+                            <controls:CoinSender Margin="10"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAmount}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Value="0" Minimum="0" Increment="0.001" FormatString="0.000000000000" Margin="0 0 0 5"/>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="{x:Static p:Resources.TextCurrencyCode}" VerticalAlignment="Center" Margin="5 0 0 5"/>
-        <Separator Grid.Row="2" Grid.Column="4" Style="{StaticResource StyleSeparatorVertical}" Margin="0 2 0 7"/>
-        <TextBlock Grid.Row="2" Grid.Column="5" Text="{x:Static p:Resources.SendCoinsMixCount}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="7" x:Name="IntegerUpDownMixCount" Minimum="0" Margin="0 0 0 5"/>
+        <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10" LastChildFill="True">
+            <TextBlock Text="{Binding Source={x:Static p:Resources.TextPaymentId}}" VerticalAlignment="Center" Margin="0 0 8 8"/>
+            <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
+        </DockPanel>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsPaymentId}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
+        <controls:ButtonWithImage Grid.Row="2" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsAddRecipient}" ImageUri="/Resources/Images/Add.png" Click="ButtonAddRecipient_Click" Margin="0 0 8 0"/>
+        <controls:ButtonWithImage Grid.Row="2" Grid.Column="1" Text="{x:Static p:Resources.SendCoinsClearRecipients}" ImageUri="/Resources/Images/Delete.png" Click="ButtonClearRecipients_Click" Margin="0 0 8 0"/>
 
-        <controls:ButtonWithImage Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click"/>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{x:Static p:Resources.SendCoinsMixCount}" VerticalAlignment="Center"/>
+        <xctk:IntegerUpDown Grid.Row="2" Grid.Column="5" x:Name="IntegerUpDownMixCount" Minimum="0"/>
+        <Separator Grid.Row="2" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="7" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0} {1:0.000000000000} {2}">
+                    <Binding Source="{x:Static p:Resources.SendCoinsBalance}"/>
+                    <Binding Path="BalanceSpendable" TargetNullValue="?"/>
+                    <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Separator Grid.Row="2" Grid.Column="8" Style="{StaticResource StyleSeparatorVertical}"/>
+
+        <controls:ButtonWithImage Grid.Row="2" Grid.Column="9" Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click"/>
     </Grid>
 </UserControl>
