@@ -16,6 +16,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
     public class WalletManager : BaseProcessManager, IDisposable
     {
         public event EventHandler Refreshed;
+        public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
+
         public event EventHandler<string> AddressReceived;
         public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
         public event EventHandler<string> SentMoney;
@@ -34,9 +36,27 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private ObservableCollection<Transaction> TransactionsPrivate { get; set; }
         public ReadOnlyObservableCollection<Transaction> Transactions { get; private set; }
 
+        public bool IsWalletFileExistent {
+            get { return File.Exists(Paths.FileWalletData); }
+        }
+
         private Timer RefreshTimer { get; set; }
 
-        internal WalletManager(RpcWebClient rpcWebClient, DaemonManager daemon, Paths paths, string password = null) : base(paths.SoftwareWallet)
+        private string _passphrase;
+        public string Passphrase {
+            get { return _passphrase; }
+
+            set {
+                _passphrase = value;
+
+                KillBaseProcess();
+
+                SetProcessArguments(value);
+                Start();
+            }
+        }
+
+        internal WalletManager(RpcWebClient rpcWebClient, DaemonManager daemon, Paths paths) : base(paths.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
@@ -48,8 +68,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Paths = paths;
 
+            SetProcessArguments();
+        }
+
+        private void SetProcessArguments(string passphrase = null)
+        {
             ProcessArgumentsExtra = new List<string>(5) {
-                "--daemon-address " + rpcWebClient.Host + ":" + rpcWebClient.PortDaemon,
+                "--daemon-address " + RpcWebClient.Host + ":" + RpcWebClient.PortDaemon,
                 //"--rpc-bind-ip " + rpcWebClient.Host,
                 //"--rpc-bind-port " + rpcWebClient.PortWallet
             };
@@ -64,27 +89,37 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 ProcessArgumentsExtra.Add("--generate-new-wallet=\"" + Paths.FileWalletData + "\"");
             }
 
-            if (!string.IsNullOrWhiteSpace(password)) {
-                ProcessArgumentsExtra.Add("--password=\"" + password + "\"");
+            if (!string.IsNullOrEmpty(passphrase)) {
+                ProcessArgumentsExtra.Add("--password=\"" + passphrase + "\"");
             }
-
-            TransactionsPrivate = new ObservableCollection<Transaction>();
-            Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
         }
 
-        public void Start()
+        internal void Start()
         {
+            if (TransactionsPrivate == null) {
+                TransactionsPrivate = new ObservableCollection<Transaction>();
+                Transactions = new ReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
+            } else {
+                TransactionsPrivate.Clear();
+            }
+
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
 
+            if (RefreshTimer != null) RefreshTimer.Dispose();
             RefreshTimer = new Timer(10000);
             RefreshTimer.Elapsed += delegate { Refresh(); };
         }
 
-        public void StartRpcServices()
+        private void StartRpcServices()
         {
             // TODO: Make wallet RPC calls work
             //AutoQueryBalanceAsync();
             AutoSaveWalletAsync();
+        }
+
+        internal void RequestPassphrase(bool isFirstTime)
+        {
+            if (PassphraseRequested != null) PassphraseRequested(this, new PassphraseRequestedEventArgs(isFirstTime));
         }
 
         private async void AutoQueryBalanceAsync()
@@ -125,7 +160,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 // Failed to generate a new wallet file
 
             } else if (dataLower.Contains("invalid password")) {
-                // Invalid password
+                // Invalid passphrase
+                RequestPassphrase(false);
 
             } else if (dataLower.Contains("wrong address")) {
                 // Invalid send address

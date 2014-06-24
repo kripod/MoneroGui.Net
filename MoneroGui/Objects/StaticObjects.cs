@@ -4,12 +4,17 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Media;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace Jojatekok.MoneroGUI
 {
     static class StaticObjects
     {
         private static bool IsInitialized { get; set; }
+
+        public static readonly Brush BrushForegroundDefault = Brushes.Black;
+        public static readonly Brush BrushForegroundWarning = Brushes.OrangeRed;
 
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
@@ -33,7 +38,6 @@ namespace Jojatekok.MoneroGUI
             if (IsInitialized) return;
             IsInitialized = true;
 
-            // TODO: Implement custom wallet password support
             var pathSettings = SettingsManager.Paths;
             var paths = new Paths {
                 DirectoryWalletBackups = pathSettings.DirectoryWalletBackups,
@@ -43,7 +47,7 @@ namespace Jojatekok.MoneroGUI
                 SoftwareMiner = pathSettings.SoftwareMiner,
             };
 
-            MoneroClient = new MoneroClient(paths, SettingsManager.General.WalletDefaultPassword);
+            MoneroClient = new MoneroClient(paths);
 
             LoggerDaemon = new Logger();
             LoggerWallet = new Logger();

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
@@ -29,7 +28,7 @@ namespace Jojatekok.MoneroGUI.Windows
             private set { TextBoxAddress.Text = value; }
         }
 
-        public AddressBookEditWindow()
+        private AddressBookEditWindow()
         {
             Icon = StaticObjects.ApplicationIcon;
             Loaded += delegate {
@@ -79,10 +78,10 @@ namespace Jojatekok.MoneroGUI.Windows
 
             if (OverwriteIndex >= 0 && OverwriteIndex != EditIndex) {
                 // Notify the user of the overwriting operation
-                TextBoxLabel.Foreground = Brushes.OrangeRed;
+                TextBoxLabel.Foreground = StaticObjects.BrushForegroundWarning;
 
             } else {
-                TextBoxLabel.Foreground = Brushes.Black;
+                TextBoxLabel.Foreground = StaticObjects.BrushForegroundDefault;
             }
 
             CheckInputsValidity();
@@ -101,7 +100,6 @@ namespace Jojatekok.MoneroGUI.Windows
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-            Close();
         }
     }
 }

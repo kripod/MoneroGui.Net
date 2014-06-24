@@ -162,7 +162,7 @@
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Αντίγραφο ασφαλείας πορτοφολιού...</value>
   </data>
-  <data name="MenuChangeWalletPassword" xml:space="preserve">
+  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Αλλαγή κωδικού πορτοφολιού...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">

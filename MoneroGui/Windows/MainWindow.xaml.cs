@@ -42,13 +42,15 @@ namespace Jojatekok.MoneroGUI.Windows
             MoneroClient.Daemon.BlockchainSynced += Daemon_BlockchainSynced;
 
             MoneroClient.Wallet.OnLogMessage += Wallet_OnLogMessage;
+            MoneroClient.Wallet.PassphraseRequested += Wallet_PassphraseRequested;
             MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
             MoneroClient.Wallet.BalanceChanging += Wallet_BalanceChanging;
 
             OverviewView.ViewModel.TransactionDataSource = MoneroClient.Wallet.Transactions;
             TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
 
-            MoneroClient.Start();
+            MoneroClient.StartDaemon();
+            Loaded += delegate { Dispatcher.Invoke(MoneroClient.StartWallet); };
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -146,6 +148,26 @@ namespace Jojatekok.MoneroGUI.Windows
         private static void Wallet_OnLogMessage(object sender, string e)
         {
             LoggerWallet.Log(e);
+        }
+
+        private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
+        {
+            if (e.IsFirstTime) {
+                // Let the user set the wallet's passphrase for the first time
+                var dialog = new WalletChangePassphraseWindow(this, false);
+                if (dialog.ShowDialog() == true) {
+                    MoneroClient.Wallet.Passphrase = dialog.NewPassphrase;
+                } else {
+                    MoneroClient.Wallet.Passphrase = null;
+                }
+
+            } else {
+                // Request the wallet's passphrase in order to unlock it
+                var dialog = new WalletUnlockWindow(this);
+                if (dialog.ShowDialog() == true) {
+                    MoneroClient.Wallet.Passphrase = dialog.Passphrase;
+                }
+            }
         }
 
         private void Wallet_AddressReceived(object sender, string e)

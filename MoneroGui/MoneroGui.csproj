@@ -131,6 +131,15 @@
     <Compile Include="Controls\PathSelector.xaml.cs">
       <DependentUpon>PathSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddressBookWindow.xaml.cs">
+      <DependentUpon>AddressBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WalletUnlockWindow.xaml.cs">
+      <DependentUpon>WalletUnlockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WalletChangePassphraseWindow.xaml.cs">
+      <DependentUpon>WalletChangePassphraseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\QrCodeWindow.xaml.cs">
       <DependentUpon>QrCodeWindow.xaml</DependentUpon>
     </Compile>
@@ -186,6 +195,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\PathSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\AddressBookWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\WalletUnlockWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\WalletChangePassphraseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

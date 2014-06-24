@@ -12,7 +12,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private static string LicenseText { get; set; }
 
-        public AboutWindow()
+        private AboutWindow()
         {
             Icon = StaticObjects.ApplicationIcon;
 

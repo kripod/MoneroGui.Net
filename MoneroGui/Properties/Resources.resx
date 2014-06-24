@@ -162,7 +162,7 @@
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Backup wallet...</value>
   </data>
-  <data name="MenuChangeWalletPassword" xml:space="preserve">
+  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Change wallet passphrase...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
@@ -406,5 +406,41 @@ Please try to reduce the length of your inputs!</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
     <value>Clear recipients</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+    <value>again</value>
+  </data>
+  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Current passphrase:</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Use a passphrase for your wallet in order to keep it safe!</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(It's recommended to use at least 10 random characters or 8 words.)</value>
+  </data>
+  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>New passphrase</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Passphrase</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Change wallet passphrase</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
+    <value>Encrypt wallet</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>The supplied passphrases do not match.</value>
+  </data>
+  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+    <value>Unlock wallet</value>
+  </data>
+  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
+    <value>Please enter your passphrase in order to access your wallet.</value>
   </data>
 </root>

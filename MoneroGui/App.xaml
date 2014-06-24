@@ -35,6 +35,9 @@
         <Style TargetType="{x:Type xctk:ButtonSpinner}" BasedOn="{StaticResource StyleHeight22}">
             <Setter Property="Padding" Value="0"/>
         </Style>
+        <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource StyleHeight22}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
         <Style TargetType="{x:Type xctk:WatermarkTextBox}" BasedOn="{StaticResource StyleHeight22}">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>

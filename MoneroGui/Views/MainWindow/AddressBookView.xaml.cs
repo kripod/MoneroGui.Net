@@ -5,16 +5,40 @@ using System.Data;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     public partial class AddressBookView : IExportable
     {
+        public bool IsDialogModeEnabled {
+            get { return ButtonOk.Visibility == Visibility.Visible; }
+
+            set {
+                if (value) {
+                    ButtonExport.Visibility = Visibility.Collapsed;
+                    ButtonOk.Visibility = Visibility.Visible;
+
+                } else {
+                    ButtonOk.Visibility = Visibility.Collapsed;
+                    ButtonExport.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
         public AddressBookView()
         {
             InitializeComponent();
 
             DataGridAddressBook.SelectedIndex = -1;
+        }
+
+        private void AddressBookView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue) {
+                Dispatcher.BeginInvoke(new Action(() => DataGridAddressBook.Focus()), DispatcherPriority.ContextIdle);
+            }
         }
 
         private void DataGridAddressBook_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -97,10 +121,29 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             DataGridAddressBook.Focus();
         }
 
+        private void ButtonOk_Click(object sender, RoutedEventArgs e)
+        {
+            SetDialogResult();
+        }
+
+        private void DataGridAddressBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SetDialogResult();
+        }
+
+        private void SetDialogResult()
+        {
+            var window = Window.GetWindow(Parent);
+            if (window != null) window.DialogResult = true;
+        }
+
         public void Export()
         {
-            var dialog = new SaveFileDialog { Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
-                                              InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) };
+            var dialog = new SaveFileDialog {
+                Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
             if (dialog.ShowDialog() == true) Export(dialog.FileName);
         }
 

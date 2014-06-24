@@ -5,7 +5,8 @@
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
-             xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net">
+             xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net"
+             IsVisibleChanged="TransactionsView_IsVisibleChanged">
     <UserControl.DataContext>
         <views:TransactionsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>

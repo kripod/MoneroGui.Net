@@ -26,7 +26,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         protected void StartProcess(params string[] arguments)
         {
-            if (Process != null) Process.Dispose();
+            bool isLineReadingAlreadyActive;
+            if (Process != null) {
+                Process.Dispose();
+                isLineReadingAlreadyActive = true;
+            } else {
+                isLineReadingAlreadyActive = false;
+            }
 
             Process = new Process {
                 EnableRaisingEvents = true,
@@ -48,8 +54,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Process.Start();
             Helper.JobManager.AddProcess(Process);
 
-            ReadLineAsync(true);
-            ReadLineAsync(false);
+            if (!isLineReadingAlreadyActive) {
+                ReadLineAsync(true);
+                ReadLineAsync(false);
+            }
         }
 
         private async void ReadLineAsync(bool isError)
@@ -78,6 +86,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
+        protected void KillBaseProcess()
+        {
+            if (IsProcessAlive) {
+                Process.Kill();
+            }
+        }
+
         private void Process_Exited(object sender, EventArgs e)
         {
             if (Exited != null) Exited(this, Process.ExitCode);
@@ -99,9 +114,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 if (Process != null) {
 #if DEBUG // Unsafe shutdown
-                    if (!Process.HasExited) {
-                        Process.Kill();
-                    }
+                    KillBaseProcess();
 
 #else     // Safe shutdown
                     if (!Process.HasExited) {

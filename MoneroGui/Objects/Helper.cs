@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Image = System.Drawing.Image;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -60,6 +63,11 @@ namespace Jojatekok.MoneroGUI
             return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
         }
 
+        public static void FocusParent(this Control control)
+        {
+            ((FrameworkElement)control.Parent).Focus();
+        }
+
         public static ImageSource ToImageSource(this Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
@@ -103,6 +111,75 @@ namespace Jojatekok.MoneroGUI
 
             return -1;
         }
+
+        public static void ShowError(this Window window, string message)
+        {
+            MessageBox.Show(window, message, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    public class ListBoxBehavior : DependencyObject
+    {
+        public static bool GetIsAutoScrollEnabled(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsAutoScrollProperty);
+        }
+
+        public static void SetIsAutoScrollEnabled(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsAutoScrollProperty, value);
+        }
+
+        public static readonly DependencyProperty IsAutoScrollProperty = DependencyProperty.RegisterAttached(
+            "IsAutoScrollEnabled",
+            typeof(bool),
+            typeof(ListBoxBehavior),
+            new UIPropertyMetadata(default(bool), IsAutoScrollEnabledProperty_Changed)
+        );
+
+        private static void IsAutoScrollEnabledProperty_Changed(DependencyObject sender1, DependencyPropertyChangedEventArgs e1)
+        {
+            var listBox = sender1 as ListBox;
+
+            Debug.Assert(listBox != null, "listBox != null");
+            var itemsCollection = listBox.Items;
+            var data = itemsCollection.SourceCollection as INotifyCollectionChanged;
+            Debug.Assert(data != null, "data != null");
+
+            var autoScroller = new NotifyCollectionChangedEventHandler((sender2, e2) => {
+                object selectedItem = null;
+
+                switch (e2.Action) {
+                    case NotifyCollectionChangedAction.Add:
+                    case NotifyCollectionChangedAction.Move:
+                        selectedItem = e2.NewItems[e2.NewItems.Count - 1];
+                        break;
+
+                    case NotifyCollectionChangedAction.Remove:
+                        if (itemsCollection.Count < e2.OldStartingIndex) {
+                            selectedItem = itemsCollection[e2.OldStartingIndex - 1];
+                        } else if (itemsCollection.Count > 0) {
+                            selectedItem = itemsCollection[0];
+                        }
+                        break;
+
+                    case NotifyCollectionChangedAction.Reset:
+                        if (itemsCollection.Count > 0) selectedItem = itemsCollection[0];
+                        break;
+                }
+
+                if (selectedItem != null) {
+                    itemsCollection.MoveCurrentTo(selectedItem);
+                    listBox.ScrollIntoView(selectedItem);
+                }
+            });
+
+            if ((bool)e1.NewValue) {
+                data.CollectionChanged += autoScroller;
+            } else {
+                data.CollectionChanged -= autoScroller;
+            }
+        }
     }
 
     static class NativeMethods
@@ -112,15 +189,15 @@ namespace Jojatekok.MoneroGUI
                           WS_MINIMIZEBOX = 0x20000;
 
         [DllImport("user32.dll")]
-        extern private static int GetWindowLong(IntPtr hwnd, int index);
+        private static extern int GetWindowLong(IntPtr hwnd, int index);
 
         [DllImport("user32.dll")]
-        extern private static int SetWindowLong(IntPtr hwnd, int index, int value);
+        private static extern int SetWindowLong(IntPtr hwnd, int index, int value);
 
         public static void SetWindowButtons(this Window window, bool isMinimizable, bool isMaximizable)
         {
-            var hwnd = new WindowInteropHelper(window).Handle;
-            var style = GetWindowLong(hwnd, GWL_STYLE);
+            var hWnd = new WindowInteropHelper(window).Handle;
+            var style = GetWindowLong(hWnd, GWL_STYLE);
 
             if (isMaximizable) {
                 style |= WS_MAXIMIZEBOX;
@@ -134,7 +211,7 @@ namespace Jojatekok.MoneroGUI
                 style &= ~WS_MINIMIZEBOX;
             }
 
-            SetWindowLong(hwnd, GWL_STYLE, style);
+            SetWindowLong(hWnd, GWL_STYLE, style);
         }
     }
 }

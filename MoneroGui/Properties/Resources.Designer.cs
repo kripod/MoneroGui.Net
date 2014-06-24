@@ -234,9 +234,9 @@ namespace Jojatekok.MoneroGUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to _Change wallet passphrase....
         /// </summary>
-        public static string MenuChangeWalletPassword {
+        public static string MenuChangeWalletPassphrase {
             get {
-                return ResourceManager.GetString("MenuChangeWalletPassword", resourceCulture);
+                return ResourceManager.GetString("MenuChangeWalletPassphrase", resourceCulture);
             }
         }
         
@@ -693,6 +693,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string TextError {
+            get {
+                return ResourceManager.GetString("TextError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export....
         /// </summary>
         public static string TextExport {
@@ -923,6 +932,105 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TransactionTypeUnknown {
             get {
                 return ResourceManager.GetString("TransactionTypeUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to again.
+        /// </summary>
+        public static string WalletChangePassphraseWindowAgain {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current passphrase:.
+        /// </summary>
+        public static string WalletChangePassphraseWindowCurrentPassphrase {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowCurrentPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a passphrase for your wallet in order to keep it safe!.
+        /// </summary>
+        public static string WalletChangePassphraseWindowInstruction1 {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowInstruction1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (It&apos;s recommended to use at least 10 random characters or 8 words.).
+        /// </summary>
+        public static string WalletChangePassphraseWindowInstruction2 {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowInstruction2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New passphrase.
+        /// </summary>
+        public static string WalletChangePassphraseWindowNewPassphrase {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowNewPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passphrase.
+        /// </summary>
+        public static string WalletChangePassphraseWindowPassphrase {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied passphrases do not match..
+        /// </summary>
+        public static string WalletChangePassphraseWindowPassphrasesDoNotMatch {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowPassphrasesDoNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change wallet passphrase.
+        /// </summary>
+        public static string WalletChangePassphraseWindowTitleChangePassphrase {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowTitleChangePassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypt wallet.
+        /// </summary>
+        public static string WalletChangePassphraseWindowTitleEncryptWallet {
+            get {
+                return ResourceManager.GetString("WalletChangePassphraseWindowTitleEncryptWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your passphrase in order to access your wallet..
+        /// </summary>
+        public static string WalletUnlockWindowInstruction {
+            get {
+                return ResourceManager.GetString("WalletUnlockWindowInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock wallet.
+        /// </summary>
+        public static string WalletUnlockWindowTitle {
+            get {
+                return ResourceManager.GetString("WalletUnlockWindowTitle", resourceCulture);
             }
         }
     }

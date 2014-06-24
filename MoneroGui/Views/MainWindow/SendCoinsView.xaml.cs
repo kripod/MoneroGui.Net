@@ -42,17 +42,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             AddRecipient();
         }
 
-        private void ButtonAddRecipient_Click(object sender, RoutedEventArgs e)
-        {
-            AddRecipient();
-        }
-
-        private void ButtonClearRecipients_Click(object sender, RoutedEventArgs e)
-        {
-            ClearRecipients();
-        }
-
-        private void ButtonSend_Click(object sender, RoutedEventArgs e)
+        private void SendTransaction()
         {
             if (IntegerUpDownMixCount.Value == null) {
                 IntegerUpDownMixCount.Value = 0;
@@ -76,9 +66,32 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             StaticObjects.MoneroClient.Wallet.Transfer(recipientsDictionary, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
             ClearRecipients();
+        }
+
+        private void ButtonAddRecipient_Click(object sender, RoutedEventArgs e)
+        {
+            AddRecipient();
+
+            ListBoxRecipients.SelectedIndex = ListBoxRecipients.Items.Count - 1;
+            ListBoxRecipients.Focus();
+        }
+
+        private void ButtonClearRecipients_Click(object sender, RoutedEventArgs e)
+        {
+            ClearRecipients();
+
+            ListBoxRecipients.Focus();
+        }
+
+        private void ButtonSend_Click(object sender, RoutedEventArgs e)
+        {
+            SendTransaction();
 
             // Save settings
+            Debug.Assert(IntegerUpDownMixCount.Value != null, "IntegerUpDownMixCount.Value != null");
             SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
+
+            ListBoxRecipients.Focus();
         }
     }
 }

@@ -54,14 +54,14 @@
                 </MenuItem>
 
                 <MenuItem Header="{x:Static p:Resources.MenuSettings}">
-                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}" IsEnabled="False">
+                    <MenuItem Header="{x:Static p:Resources.MenuEncryptWallet}" Visibility="Collapsed">
                         <MenuItem.Icon>
-                            <Image Source="/Resources/Images/Key.png"/>
+                            <controls:ImageGreyable Source="/Resources/Images/Key.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassword}" IsEnabled="False">
+                    <MenuItem Header="{x:Static p:Resources.MenuChangeWalletPassphrase}" IsEnabled="False">
                         <MenuItem.Icon>
-                            <Image Source="/Resources/Images/Key.png"/>
+                            <controls:ImageGreyable Source="/Resources/Images/Key.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator/>

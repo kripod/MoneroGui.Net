@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
@@ -32,7 +33,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" ItemsSource="{Binding Path=Recipients}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 0 0 8">
+        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" x:Name="ListBoxRecipients" ItemsSource="{Binding Path=Recipients}" objects:ListBoxBehavior.IsAutoScrollEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 0 0 8">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>

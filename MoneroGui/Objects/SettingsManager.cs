@@ -106,11 +106,16 @@ namespace Jojatekok.MoneroGUI
             if (IsAutoSaveEnabled) SaveSettings();
         }
 
+        private static void SetDefaultSectionInformation(this ConfigurationSection configSection)
+        {
+            configSection.SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+        }
+
         public class ConfigSectionGeneral : ConfigurationSection
         {
             public ConfigSectionGeneral()
             {
-                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+                this.SetDefaultSectionInformation();
             }
 
             [ConfigurationProperty("isStartableOnSystemLogin", DefaultValue = false)]
@@ -131,15 +136,6 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("walletDefaultPassword", DefaultValue = "x")]
-            public string WalletDefaultPassword {
-                get { return base["walletDefaultPassword"] as string; }
-                set {
-                    base["walletDefaultPassword"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
             [ConfigurationProperty("transactionsDefaultMixCount", DefaultValue = 0)]
             [IntegerValidator(MinValue = 0)]
             public int TransactionsDefaultMixCount {
@@ -155,7 +151,7 @@ namespace Jojatekok.MoneroGUI
         {
             public ConfigSectionPaths()
             {
-                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+                this.SetDefaultSectionInformation();
             }
 
             [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPaths.DefaultDirectoryWalletBackups)]
@@ -208,7 +204,7 @@ namespace Jojatekok.MoneroGUI
         {
             public ConfigSectionAppearance()
             {
-                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+                this.SetDefaultSectionInformation();
             }
 
             [ConfigurationProperty("languageCode", DefaultValue = Helper.DefaultLanguageCode)]
@@ -225,7 +221,7 @@ namespace Jojatekok.MoneroGUI
         {
             public ConfigSectionAddressBook()
             {
-                SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
+                this.SetDefaultSectionInformation();
             }
 
             [ConfigurationProperty("elements", IsDefaultCollection = true)]

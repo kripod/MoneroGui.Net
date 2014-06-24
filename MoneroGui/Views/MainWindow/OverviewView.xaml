@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow">
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
+             IsVisibleChanged="OverviewView_IsVisibleChanged">
     <UserControl.DataContext>
         <views:OverviewViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
@@ -68,7 +69,7 @@
                     <Button Grid.Column="1" ToolTip="{x:Static p:Resources.TextCopy}" Click="ButtonCopyAddress_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
                         <Image Source="/Resources/Images/Copy.png" Margin="2"/>
                     </Button>
-                    <Button Grid.Column="2" ToolTip="{x:Static p:Resources.TextQrCode}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
+                    <Button Grid.Column="2" ToolTip="{x:Static p:Resources.TextQrCode}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Linear" Padding="0" Margin="5 0 0 0">
                         <Image Source="/Resources/Images/QR-code.png" Margin="2"/>
                     </Button>
                 </Grid>

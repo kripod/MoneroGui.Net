@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -15,15 +16,27 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             InitializeComponent();
         }
 
+        private void TransactionsView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue) {
+                Dispatcher.BeginInvoke(new Action(() => DataGridTransactions.Focus()), DispatcherPriority.ContextIdle);
+            }
+        }
+
         private void ButtonExport_Click(object sender, RoutedEventArgs e)
         {
             Export();
+
+            DataGridTransactions.Focus();
         }
 
         public void Export()
         {
-            var dialog = new SaveFileDialog { Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
-                                              InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) };
+            var dialog = new SaveFileDialog {
+                Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
             if (dialog.ShowDialog() == true) Export(dialog.FileName);
         }
 

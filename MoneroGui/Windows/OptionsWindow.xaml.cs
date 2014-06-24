@@ -4,7 +4,7 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class OptionsWindow
     {
-        public OptionsWindow()
+        private OptionsWindow()
         {
             Icon = StaticObjects.ApplicationIcon;
             Loaded += delegate { this.SetWindowButtons(false, true); };

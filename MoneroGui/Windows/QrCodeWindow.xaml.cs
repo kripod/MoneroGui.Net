@@ -128,7 +128,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        private void TextBoxUri_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBoxQrUri_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (IsLoaded) UpdateQrCodeImageTask().Start();
         }
@@ -159,6 +159,11 @@ namespace Jojatekok.MoneroGUI.Windows
                     });
                 }
             });
+        }
+
+        private void TextBoxQrUri_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            TextBoxQrUri.SelectAll();
         }
 
         private void ButtonCopyQrUri_Click(object sender, RoutedEventArgs e)

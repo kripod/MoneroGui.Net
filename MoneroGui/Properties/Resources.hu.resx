@@ -159,7 +159,7 @@
   <data name="MenuBackupWallet" xml:space="preserve">
     <value>_Biztonsági mentés készítése a tárcáról...</value>
   </data>
-  <data name="MenuChangeWalletPassword" xml:space="preserve">
+  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>Tárca jelkódjának _megváltoztatása...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
@@ -406,5 +406,41 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
     <value>Címzettek törlése</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+    <value>ismét</value>
+  </data>
+  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Jelenlegi jelkód:</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Használj jelkódot a tárcádhoz, hogy biztonságban tarthasd!</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Ajánlott legalább 10 véletlenszerű karaktert vagy 8 szót használni.)</value>
+  </data>
+  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Új jelkód</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Jelkód</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Tárca jelkódjának megváltoztatása</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
+    <value>Tárca kódolása</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>A megadott jelkódok nem egyeznek.</value>
+  </data>
+  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
+    <value>Kérlek, add meg a jelkódot, hogy hozzáférhess a tárcádhoz.</value>
+  </data>
+  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+    <value>Tárca feloldása</value>
   </data>
 </root>

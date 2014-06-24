@@ -41,6 +41,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\PassphraseRequestedEventArgs.cs" />
     <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
     <Compile Include="EventArgs\ValueChangingEventArgs.cs" />

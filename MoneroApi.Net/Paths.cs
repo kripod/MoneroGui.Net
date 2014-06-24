@@ -1,4 +1,6 @@
-﻿namespace Jojatekok.MoneroAPI
+﻿using System.IO;
+
+namespace Jojatekok.MoneroAPI
 {
     public class Paths
     {
@@ -11,8 +13,13 @@
         public const string DefaultSoftwareWallet = DefaultRelativePathDirectoryResources + "simplewallet.exe";
         public const string DefaultSoftwareMiner = DefaultRelativePathDirectoryResources + "simpleminer.exe";
 
+        private static readonly string BaseDirectory = Directory.GetCurrentDirectory();
+
         public string DirectoryWalletData {
-            get { return FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\')); }
+            get {
+                var lastIndexOfSlash = FileWalletData.LastIndexOf('\\');
+                return lastIndexOfSlash >= 0 ? FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\')) : BaseDirectory;
+            }
         }
 
         private string _directoryWalletBackups = DefaultDirectoryWalletBackups;
@@ -25,10 +32,6 @@
         public string FileWalletData {
             get { return _fileWalletData; }
             set { _fileWalletData = value; }
-        }
-
-        public string FileWalletAddress {
-            get { return FileWalletData + ".address.txt"; }
         }
 
         private string _softwareDaemon = DefaultSoftwareDaemon;

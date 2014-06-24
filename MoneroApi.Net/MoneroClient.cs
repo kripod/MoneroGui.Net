@@ -6,38 +6,43 @@ namespace Jojatekok.MoneroAPI
 {
     public class MoneroClient : IDisposable
     {
-        public RpcWebClient RpcWebClient { get; private set; }
+        private RpcWebClient RpcWebClient { get; set; }
+        private Paths Paths { get; set; }
 
         public DaemonManager Daemon { get; private set; }
         public WalletManager Wallet { get; private set; }
 
-        public MoneroClient(Paths paths, string password)
+        private bool IsWalletStartForced { get; set; }
+
+        public MoneroClient(Paths paths)
         {
             RpcWebClient = new RpcWebClient(Helper.RpcUrlBaseIp, Helper.RpcUrlBasePortDaemon, Helper.RpcUrlBasePortWallet);
+            Paths = paths;
 
-            Daemon = new DaemonManager(RpcWebClient, paths);
-            Wallet = new WalletManager(RpcWebClient, Daemon, paths, password);
+            Daemon = new DaemonManager(RpcWebClient, Paths);
+            Wallet = new WalletManager(RpcWebClient, Daemon, Paths);
         }
 
-        public MoneroClient(Paths paths) : this(paths, null)
+        public MoneroClient() : this(new Paths())
         {
 
         }
 
-        public MoneroClient(string password) : this(new Paths(), password)
-        {
-
-        }
-
-        public MoneroClient() : this(new Paths(), null)
-        {
-
-        }
-
-        public void Start()
+        public void StartDaemon()
         {
             Daemon.Start();
-            Wallet.Start();
+        }
+
+        public void StartWallet()
+        {
+            if (IsWalletStartForced || Wallet.IsWalletFileExistent) {
+                IsWalletStartForced = false;
+                Wallet.Start();
+
+            } else {
+                IsWalletStartForced = true;
+                Wallet.RequestPassphrase(true);
+            }
         }
 
         public void Dispose()
