@@ -26,6 +26,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                 Task.Factory.StartNew(LoadLanguages);
 
             } else {
+                // The list of languages has already been loaded before
                 ShowLanguageValues();
             }
         }

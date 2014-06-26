@@ -11,9 +11,11 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using Image = System.Drawing.Image;
 
 namespace Jojatekok.MoneroGUI
@@ -54,18 +56,32 @@ namespace Jojatekok.MoneroGUI
             return minutes + " " + Properties.Resources.StatusBarSyncTextMinutePlural;
         }
 
-        public static string GetRelativePath(string path)
+        public static void SetFocusedElement(this Control control, FrameworkElement element)
         {
-            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
-            var uriPath = new Uri(path);
-
-            var decodedUrl = HttpUtility.UrlDecode(uriBase.MakeRelativeUri(uriPath).ToString());
-            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
+            control.Dispatcher.BeginInvoke(new Action(() => element.Focus()), DispatcherPriority.ContextIdle);
         }
 
-        public static void FocusParent(this Control control)
+        public static void SetFocusToParent(this Control control)
         {
-            ((FrameworkElement)control.Parent).Focus();
+            control.SetFocusedElement((FrameworkElement)control.Parent);
+        }
+
+        public static void SetDefaultFocusedElement(this Control control, FrameworkElement element)
+        {
+            control.IsVisibleChanged += ((sender, e) => {
+                if ((bool)e.NewValue) {
+                    control.SetFocusedElement(element);
+                }
+            });
+        }
+
+        public static void SetDefaultFocusToParent(this Control control)
+        {
+            control.IsVisibleChanged += ((sender, e) => {
+                if ((bool)e.NewValue) {
+                    control.SetFocusToParent();
+                }
+            });
         }
 
         public static ImageSource ToImageSource(this Icon icon)
@@ -73,7 +89,7 @@ namespace Jojatekok.MoneroGUI
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
-        public static BitmapImage ToImageSource(this Image image, bool isTransparent)
+        public static BitmapImage ToBitmapImage(this Image image, bool isTransparent)
         {
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
@@ -96,12 +112,7 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        public static T GetAssemblyAttribute<T>() where T : Attribute
-        {
-            return (T)Attribute.GetCustomAttribute(StaticObjects.ApplicationAssembly, typeof(T), false);
-        }
-
-        public static int IndexOf(this IList<SettingsManager.ConfigElementContact> collection, string label)
+        public static int IndexOfLabel(this IList<SettingsManager.ConfigElementContact> collection, string label)
         {
             for (var i = collection.Count - 1; i >= 0; i--) {
                 if (collection[i].Label == label) {
@@ -112,6 +123,45 @@ namespace Jojatekok.MoneroGUI
             return -1;
         }
 
+        public static int IndexOfAddress(this IList<SettingsManager.ConfigElementContact> collection, string address)
+        {
+            for (var i = collection.Count - 1; i >= 0; i--) {
+                if (collection[i].Address == address) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public static string GetRelativePath(string path)
+        {
+            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
+            var uriPath = new Uri(path);
+
+            var decodedUrl = HttpUtility.UrlDecode(uriBase.MakeRelativeUri(uriPath).ToString());
+            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : String.Empty;
+        }
+
+        public static object GetBoundValue(object value)
+        {
+            var bindingExpression = value as BindingExpression;
+            if (bindingExpression != null) {
+                var dataItem = bindingExpression.DataItem;
+                var propertyName = bindingExpression.ParentBinding.Path.Path;
+
+                var propertyValue = dataItem.GetType().GetProperty(propertyName).GetValue(dataItem, null);
+                return propertyValue;
+            }
+
+            return value;
+        }
+
+        public static T GetAssemblyAttribute<T>() where T : Attribute
+        {
+            return (T)Attribute.GetCustomAttribute(StaticObjects.ApplicationAssembly, typeof(T), false);
+        }
+
         public static void ShowError(this Window window, string message)
         {
             MessageBox.Show(window, message, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Error);
@@ -120,6 +170,13 @@ namespace Jojatekok.MoneroGUI
 
     public class ListBoxBehavior : DependencyObject
     {
+        public static readonly DependencyProperty IsAutoScrollProperty = DependencyProperty.RegisterAttached(
+            "IsAutoScrollEnabled",
+            typeof(bool),
+            typeof(ListBoxBehavior),
+            new UIPropertyMetadata(default(bool), IsAutoScrollEnabledProperty_Changed)
+        );
+
         public static bool GetIsAutoScrollEnabled(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsAutoScrollProperty);
@@ -130,18 +187,11 @@ namespace Jojatekok.MoneroGUI
             obj.SetValue(IsAutoScrollProperty, value);
         }
 
-        public static readonly DependencyProperty IsAutoScrollProperty = DependencyProperty.RegisterAttached(
-            "IsAutoScrollEnabled",
-            typeof(bool),
-            typeof(ListBoxBehavior),
-            new UIPropertyMetadata(default(bool), IsAutoScrollEnabledProperty_Changed)
-        );
-
         private static void IsAutoScrollEnabledProperty_Changed(DependencyObject sender1, DependencyPropertyChangedEventArgs e1)
         {
             var listBox = sender1 as ListBox;
-
             Debug.Assert(listBox != null, "listBox != null");
+
             var itemsCollection = listBox.Items;
             var data = itemsCollection.SourceCollection as INotifyCollectionChanged;
             Debug.Assert(data != null, "data != null");

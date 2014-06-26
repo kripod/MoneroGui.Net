@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
@@ -11,7 +12,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         protected event EventHandler<string> OutputReceived;
         protected event EventHandler<string> ErrorReceived;
 
-        private bool IsDisposeInProgress { get; set; }
+        protected CancellationTokenSource TaskCancellation;
 
         private Process Process { get; set; }
         private string Path { get; set; }
@@ -20,19 +21,29 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             get { return Process != null && !Process.HasExited; }
         }
 
+        protected bool IsTaskCancellationRequested
+        {
+            get { return !IsProcessAlive || (TaskCancellation != null && TaskCancellation.IsCancellationRequested); }
+
+            set {
+                if (value) {
+                    if (TaskCancellation == null) TaskCancellation = new CancellationTokenSource();
+                    TaskCancellation.Cancel(false);
+
+                } else {
+                    if (TaskCancellation != null) TaskCancellation.Dispose();
+                    TaskCancellation = new CancellationTokenSource();
+                }
+            }
+        }
+
         protected BaseProcessManager(string path) {
             Path = path;
         }
 
         protected void StartProcess(params string[] arguments)
         {
-            bool isLineReadingAlreadyActive;
-            if (Process != null) {
-                Process.Dispose();
-                isLineReadingAlreadyActive = true;
-            } else {
-                isLineReadingAlreadyActive = false;
-            }
+            if (Process != null) Process.Dispose();
 
             Process = new Process {
                 EnableRaisingEvents = true,
@@ -54,18 +65,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Process.Start();
             Helper.JobManager.AddProcess(Process);
 
-            if (!isLineReadingAlreadyActive) {
-                ReadLineAsync(true);
-                ReadLineAsync(false);
-            }
+            ReadLineAsync(true);
+            ReadLineAsync(false);
+
+            IsTaskCancellationRequested = false;
         }
 
         private async void ReadLineAsync(bool isError)
         {
-            while (IsProcessAlive) {
+            while (!IsTaskCancellationRequested) {
                 var reader = isError ? Process.StandardError : Process.StandardOutput;
                 var line = await reader.ReadLineAsync();
-                if (IsDisposeInProgress) break;
                 if (line == null) continue;
 
                 if (OnLogMessage != null) OnLogMessage(this, line);
@@ -88,17 +98,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         protected void KillBaseProcess()
         {
-            if (IsProcessAlive) {
-                Process.Kill();
-            }
+            IsTaskCancellationRequested = true;
+
+            if (IsProcessAlive) Process.Kill();
         }
 
         private void Process_Exited(object sender, EventArgs e)
         {
             if (Exited != null) Exited(this, Process.ExitCode);
-
-            // TODO: Restart the process whether it's needed
-            // StartProcess(Path);
         }
 
         public void Dispose()
@@ -109,8 +116,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Dispose(bool disposing)
         {
-            if (disposing && !IsDisposeInProgress) {
-                IsDisposeInProgress = true;
+            if (disposing) {
+                IsTaskCancellationRequested = true;
 
                 if (Process != null) {
 #if DEBUG // Unsafe shutdown
@@ -120,18 +127,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     if (!Process.HasExited) {
                         if (Process.Responding) {
                             Send("exit");
-                            if (!Process.WaitForExit(30000)) Process.Kill();
+                            if (!Process.WaitForExit(120000)) Process.Kill();
                         } else {
                             Process.Kill();
                         }
-
-                        Process.WaitForExit();
                     }
 #endif
 
                     Process.Dispose();
                     Process = null;
                 }
+
+                if (TaskCancellation != null) TaskCancellation.Dispose();
             }
         }
     }

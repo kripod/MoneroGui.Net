@@ -12,7 +12,7 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class MainWindow : IDisposable
     {
-        private bool IsDisposeInProgress { get; set; }
+        private bool IsDisposing { get; set; }
 
         private static MoneroClient MoneroClient { get; set; }
         private static Logger LoggerDaemon { get; set; }
@@ -37,25 +37,13 @@ namespace Jojatekok.MoneroGUI.Windows
             LoggerDaemon = StaticObjects.LoggerDaemon;
             LoggerWallet = StaticObjects.LoggerWallet;
 
-            MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
-            MoneroClient.Daemon.NetworkInformationChanging += Daemon_NetworkInformationChanging;
-            MoneroClient.Daemon.BlockchainSynced += Daemon_BlockchainSynced;
-
-            MoneroClient.Wallet.OnLogMessage += Wallet_OnLogMessage;
-            MoneroClient.Wallet.PassphraseRequested += Wallet_PassphraseRequested;
-            MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
-            MoneroClient.Wallet.BalanceChanging += Wallet_BalanceChanging;
-
-            OverviewView.ViewModel.TransactionDataSource = MoneroClient.Wallet.Transactions;
-            TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
-
-            MoneroClient.StartDaemon();
-            Loaded += delegate { Dispatcher.Invoke(MoneroClient.StartWallet); };
+            StartDaemon();
+            Loaded += delegate { Dispatcher.Invoke(StartWallet); };
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
-            if (!IsDisposeInProgress) {
+            if (!IsDisposing) {
                 Task.Factory.StartNew(Dispose);
                 BusyIndicator.IsBusy = true;
             }
@@ -118,6 +106,28 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
+        private void StartDaemon()
+        {
+            MoneroClient.Daemon.OnLogMessage += Daemon_OnLogMessage;
+            MoneroClient.Daemon.NetworkInformationChanging += Daemon_NetworkInformationChanging;
+            MoneroClient.Daemon.BlockchainSynced += Daemon_BlockchainSynced;
+
+            MoneroClient.StartDaemon();
+        }
+
+        private void StartWallet()
+        {
+            MoneroClient.Wallet.OnLogMessage += Wallet_OnLogMessage;
+            MoneroClient.Wallet.PassphraseRequested += Wallet_PassphraseRequested;
+            MoneroClient.Wallet.AddressReceived += Wallet_AddressReceived;
+            MoneroClient.Wallet.BalanceChanging += Wallet_BalanceChanging;
+
+            MoneroClient.StartWallet();
+
+            OverviewView.ViewModel.TransactionDataSource = MoneroClient.Wallet.Transactions;
+            TransactionsView.ViewModel.DataSource = MoneroClient.Wallet.Transactions;
+        }
+
         private static void Daemon_OnLogMessage(object sender, string e)
         {
             LoggerDaemon.Log(e);
@@ -128,7 +138,7 @@ namespace Jojatekok.MoneroGUI.Windows
             var newValue = e.NewValue;
             var statusBarViewModel = StatusBar.ViewModel;
 
-            statusBarViewModel.ConnectionCount = (byte)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
+            statusBarViewModel.ConnectionCount = (ushort)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
 
             statusBarViewModel.BlocksTotal = newValue.BlockHeightTotal;
             statusBarViewModel.BlocksDownloaded = newValue.BlockHeightDownloaded;
@@ -170,9 +180,9 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        private void Wallet_AddressReceived(object sender, string e)
+        private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)
         {
-            OverviewView.ViewModel.Address = e;
+            OverviewView.ViewModel.Address = e.Address;
         }
 
         private void Wallet_BalanceChanging(object sender, BalanceChangingEventArgs e)
@@ -196,8 +206,8 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Dispose(bool disposing)
         {
-            if (disposing && !IsDisposeInProgress) {
-                IsDisposeInProgress = true;
+            if (disposing && !IsDisposing) {
+                IsDisposing = true;
                 
                 if (MoneroClient != null) {
                     MoneroClient.Dispose();

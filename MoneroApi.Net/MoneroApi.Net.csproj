@@ -41,6 +41,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\MoneySentEventArgs.cs" />
+    <Compile Include="EventArgs\AddressReceivedEventArgs.cs" />
     <Compile Include="EventArgs\PassphraseRequestedEventArgs.cs" />
     <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="RpcManagers\HttpRpcResponse.cs" />
     <Compile Include="RpcManagers\Daemon\Http\Responses\NetworkInformation.cs" />
     <Compile Include="RpcManagers\JsonError.cs" />
+    <Compile Include="RpcManagers\RpcRelativeUrls.cs" />
     <Compile Include="RpcManagers\RpcPortType.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetBalance.cs" />
     <Compile Include="RpcManagers\Daemon\Json\Requests\GetBlockHeaderLast.cs" />

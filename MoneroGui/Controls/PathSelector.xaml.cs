@@ -35,7 +35,9 @@ namespace Jojatekok.MoneroGUI.Controls
                     }
                 }
 
-                if (dialog.ShowDialog() == true) TextBoxPath.Text = Helper.GetRelativePath(dialog.FileName);
+                if (dialog.ShowDialog() == true) {
+                    TextBoxPath.Text = Helper.GetRelativePath(dialog.FileName);
+                }
 
             } else {
                 // Handle folder selection

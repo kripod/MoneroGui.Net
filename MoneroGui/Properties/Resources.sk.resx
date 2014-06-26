@@ -121,326 +121,326 @@
     <value>XMR</value>
   </data>
   <data name="TextClear" xml:space="preserve">
-    <value>Καθαρισμός</value>
+    <value>Vyčistiť</value>
   </data>
   <data name="TextSend" xml:space="preserve">
-    <value>Αποστολή</value>
+    <value>Poslať</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Daemon</value>
+    <value>Démon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Κονσόλες</value>
+    <value>Konzoly</value>
   </data>
   <data name="DebugWindowInformation" xml:space="preserve">
-    <value>Πληροφορίες</value>
+    <value>Informácia</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug window</value>
+    <value>Ladiace okno</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
-    <value>Βιβλίο διευθύνσεων</value>
+    <value>Adresár</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
-    <value>Ο Μονέρο Client τερματίζεται...</value>
+    <value>Monero klient sa vypína...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Eπισκόπηση</value>
+    <value>Prehľad</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Αποστολή νομισμάτων</value>
+    <value>Poslať mince</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Μονέρο Client</value>
+    <value>Monero Klient</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Συναλλαγές</value>
+    <value>Transakcie</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Σχετικά με τον Μονέρο Client</value>
+    <value>_O Monero Kliente</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Αντίγραφο ασφαλείας πορτοφολιού...</value>
+    <value>_Zálohuj peňaženku</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Αλλαγή κωδικού πορτοφολιού...</value>
+    <value>_Zmeň heslo k peňaženke...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Παράθυρο αποσφαλμάτωσης</value>
+    <value>_Ladiace okno</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Κρυπτογράφησε το πορτοφόλι...</value>
+    <value>_Zašifruj peňaženku</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Έξοδος</value>
+    <value>Ukonči program</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Εξαγωγή...</value>
+    <value>_Exportuj...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Αρχείο</value>
+    <value>_Súbor</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Βοήθεια</value>
+    <value>_Nápoveď</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Επιλογές</value>
+    <value>_Možnosti</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_ρυθμίσεις</value>
+    <value>_Nastavenia</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Ξεκλείδωμα πορτοφολιού...</value>
+    <value>_Odomknúť peňaženku</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Προετοιμασία...</value>
+    <value>Inicializácia...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Αριθμός συναλλαγών:</value>
+    <value>Počet transakcií:</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Πρόσφατες συναλλαγές</value>
+    <value>Posledné transakcie</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Δαπανήσιμα:</value>
+    <value>Minuteľné:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Ανεπιβεβαίωτα:</value>
+    <value>Nepotvrdené:</value>
   </data>
   <data name="TextWallet" xml:space="preserve">
-    <value>Πορτοφόλι</value>
+    <value>Peňaženka</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Eισάγετε μία Μονέρο διεύθυνση</value>
+    <value>Zadaj Monero adresu</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Δώσε ετικέτα για αυτήν την διέθυνση</value>
+    <value>Pomenuj túto adresu a pridaj do adresára</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Αριθμός ανάμειξης:</value>
+    <value>Počet zmiešaní:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Payment ID:</value>
+    <value>ID platby:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Προαιρετικό πεδίο</value>
+    <value>Toto pole je nepovinné</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>συνδέσεις</value>
+    <value>spojenia</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Συνχρονισμός με το δίκτυο...</value>
+    <value>Synchronizujem so sieťou...</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>μέρα</value>
+    <value>deň</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} μπλοκ ({1}) πίσω</value>
+    <value>{0} blokov ({1}) pozadu</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
-    <value>Διεύθυνση</value>
+    <value>Adresa</value>
   </data>
   <data name="TextAmount" xml:space="preserve">
-    <value>Ποσό</value>
+    <value>Čiastka</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Ετικέτα</value>
+    <value>Menovka</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
-    <value>Δώσε</value>
+    <value>Typ</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Δαπανήσιμα?</value>
+    <value>Minuteľné?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Όχι</value>
+    <value>Nie</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Ναι</value>
+    <value>Áno</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Παραλαβές</value>
+    <value>Prijať</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Αποστολές</value>
+    <value>Poslať</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
-    <value>Άγνωστο</value>
+    <value>Neznáme</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Σχετικά με τον Μονέρο Client</value>
+    <value>O Monero Kliente</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Σφάλμα: Το αρχείο άδειας χρήσης δεν μπορεί να βρεθεί.</value>
+    <value>Chyba: Nie je možné nájsť licenčný súbor.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Φόρτωση αρχείου άδειας χρήσης...</value>
+    <value>Načítavam licenčný súbor</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Third-party άδειες χρήσης</value>
+    <value>Licencie tretích strán</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
-    <value>Αντιγραφή</value>
+    <value>Kopírovať</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Διαγραφή</value>
+    <value>Vymazať</value>
   </data>
   <data name="TextNew" xml:space="preserve">
-    <value>Νέο...</value>
+    <value>Nový...</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Εξαγωγή...</value>
+    <value>Export...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Ακύρωση</value>
+    <value>Zrušiť</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>ΟΚ</value>
+    <value>OK</value>
   </data>
   <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
-    <value>Πρόσθεσε γνωστή διεύθυνση</value>
+    <value>Pridaj známu adresu</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
-    <value>Eμφάνιση</value>
+    <value>Vzhľad</value>
   </data>
   <data name="OptionsDisplayLanguage" xml:space="preserve">
-    <value>Επιλογή γλώσσας:</value>
+    <value>Jazyk používateľského rozhrania:</value>
   </data>
   <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
-    <value>Προεπιλεγμένα</value>
+    <value>Predvolené</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Γενικά</value>
+    <value>Všeobecné</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Μονοπάτια</value>
+    <value>Cesty</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Αρχεία ασφαλείας πορτοφολιού:</value>
+    <value>Zálohy peňaženky:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Δεδομένα πορτοφολιού:</value>
+    <value>Dáta peňaženky:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Λογισμικό Daemon:</value>
+    <value>Softvér démona:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Λογισμικό εξόρυξης:</value>
+    <value>Softvér na mining:</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Λογισμικό πορτοφολιού:</value>
+    <value>Softvér peňaženky:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Αποθήκευση βάσης δεδομένων πριν τον τερματισμό</value>
+    <value>Ulož databázy pred ukončením</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Έναρξη του Μονέρο Client κατά την εκκίνηση του συστήματος.</value>
+    <value>Spusti Monero Klienta pri štarte</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Αντιγραφή</value>
+    <value>Kopíruj adresu</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Όλα τα αρχεία|*</value>
+    <value>Všetky súbory|*</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
+    <value>Spustiteľné (*.exe)|*.exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Αρχεία πορτοφολιού (*.bin)|*.bin</value>
+    <value>Súbory peňaženky (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
+    <value>Čiarkou oddelený súbor (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>μέρες</value>
+    <value>dni</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
-    <value>ώρες</value>
+    <value>hodiny</value>
   </data>
   <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
-    <value>ώρα</value>
+    <value>hodina</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
-    <value>λεπτά</value>
+    <value>minúty</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
-    <value>λεπτό</value>
+    <value>minúta</value>
   </data>
   <data name="AboutWindowCreditIcons" xml:space="preserve">
-    <value>Εικονίδια από τον:</value>
+    <value>Ikony vytvoril:</value>
   </data>
   <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
-    <value>Επεξεργασία επαφής</value>
+    <value>Uprav kontakt</value>
   </data>
   <data name="TextEdit" xml:space="preserve">
-    <value>Επεξεργασία</value>
+    <value>Uprav</value>
   </data>
   <data name="TextPaste" xml:space="preserve">
-    <value>Επικόλληση</value>
+    <value>Prilep</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG αρχεία (*.png)|*.png</value>
+    <value>PNG súbory (*.png)|*.png</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
-    <value>Μήνυμα:</value>
+    <value>Správa:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Αποθήκευση ως...</value>
+    <value>Ulož ako...</value>
   </data>
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
-    <value>Το URI είναι πολύ μακρύ.
+    <value>Výsledné URI je príliš dlhé.
 
-Παρακαλώ δοκίμασε να μειώσεις το μήκος του!</value>
+Skúste zmenšit dlžku vášho vstupu!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
-    <value>QR code</value>
+    <value>QR kód</value>
   </data>
   <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Yπόλοιπο:</value>
+    <value>Zostatok:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
-    <value>Διαγραφή παραλήπτη</value>
+    <value>Odober príjemcu</value>
   </data>
   <data name="SendCoinsAddRecipient" xml:space="preserve">
-    <value>Προσθήκη παραλήπτη</value>
+    <value>Pridaj príjemcu</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
-    <value>Καθαρισμός παραληπτών</value>
+    <value>Vymaž príjemcov</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Σφάλμα</value>
+    <value>Chyba</value>
   </data>
   <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
-    <value>ξανά</value>
+    <value>opäť</value>
   </data>
   <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
-    <value>Τρέχων κωδικός:</value>
+    <value>Súčasné heslo:</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Δώσε κωδικοό για το πορτοφόλι σου ώστε να είναι ασφαλές!</value>
+    <value>Použite heslo pre peňazenku, tak aby bola v bezpečí!</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
-    <value>(Δώστε τουλάχιστον 10 τυχαίους χαρακτήρες ή 8 λέξεις)</value>
+    <value>(Je odporúčané použiť aspon 10 náhodných znakov alebo 8 slov.)</value>
   </data>
   <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
-    <value>Νέος κωδικός</value>
+    <value>Nové heslo</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
-    <value>Κωδικός</value>
+    <value>Heslo</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Αλλαγή κωδικού πορτοφολιού</value>
+    <value>Zmeň heslo k peňaženke</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Κρυπτογράφηση πορτοφολιού</value>
+    <value>Zašifruj peňaženku</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
-    <value>Ο κωδικός που δώσατε δεν ταιριάζει.</value>
+    <value>Zadané heslá sa líšia.</value>
   </data>
   <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Ξεκλείδωμα πορτοφολιού</value>
+    <value>Odomkni peňaženku</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Παρακαλώ δώστε κωδικό για να εισέλθετε στο πορτοφόλι.</value>
+    <value>Zadajte prosím heslo pre pre prístup k peňaženke.</value>
   </data>
 </root>

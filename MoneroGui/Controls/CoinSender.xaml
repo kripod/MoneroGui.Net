@@ -4,11 +4,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-             xmlns:main="clr-namespace:Jojatekok.MoneroGUI"
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=main:SendCoinsRecipient}"
-             IsVisibleChanged="CoinSender_IsVisibleChanged">
+             d:DataContext="{d:DesignInstance Type=objects:SendCoinsRecipient}"
+             DataContextChanged="CoinSender_DataContextChanged">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -26,7 +26,15 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxAddress" Text="{Binding Path=Address}" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxAddress" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 5">
+            <xctk:WatermarkTextBox.Text>
+                <Binding Path="Address" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <objects:ValidationRuleAddress ValidationStep="CommittedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </xctk:WatermarkTextBox.Text>
+        </xctk:WatermarkTextBox>
         <Button Grid.Row="0" Grid.Column="4" ToolTip="{x:Static p:Resources.TextAddressBook}" Click="ButtonAddressBook_Click" VerticalAlignment="Top" Padding="0">
             <Image Source="/Resources/Images/Contact.png" Margin="2"/>
         </Button>
@@ -38,10 +46,18 @@
         </Button>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextLabel}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" Text="{Binding Path=Label}" Watermark="{x:Static p:Resources.TextHintLabel}" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" x:Name="TextBoxLabel" Text="{Binding Path=Label}" Watermark="{x:Static p:Resources.TextHintLabel}" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAmount}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
-        <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Value="{Binding Path=Amount}" Minimum="0" Increment="0.001" FormatString="0.000000000000"/>
+        <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Minimum="0" Increment="0.001" FormatString="{x:Static objects:StaticObjects.StringFormatCurrencyDefault}">
+            <xctk:DoubleUpDown.Value>
+                <Binding Path="Amount" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <objects:ValidationRuleDoubleBiggerThanZero ValidationStep="CommittedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </xctk:DoubleUpDown.Value>
+        </xctk:DoubleUpDown>
         <TextBlock Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Text="{x:Static p:Resources.TextCurrencyCode}" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

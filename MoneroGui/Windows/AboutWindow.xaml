@@ -17,7 +17,6 @@
         <Grid Grid.Column="1" Margin="0 20 20 20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -42,7 +41,7 @@
                 <TextBlock Text="{Binding Source={x:Static p:Resources.AboutWindowCreditIcons}}"/>
                 <Hyperlink NavigateUri="http://www.visualpharm.com" RequestNavigate="HyperlinkIconCreatorWebsite_RequestNavigate">VisualPharm</Hyperlink>
             </TextBlock>
-            <Button Grid.Row="3" Grid.Column="2" x:Name="ButtonThirdPartyLicenses" Content="{x:Static p:Resources.AboutWindowThirdPartyLicenses}" Click="ButtonThirdPartyLicenses_Click" VerticalAlignment="Center"/>
+            <Button Grid.Row="3" Grid.Column="1" x:Name="ButtonThirdPartyLicenses" Content="{x:Static p:Resources.AboutWindowThirdPartyLicenses}" Click="ButtonThirdPartyLicenses_Click" VerticalAlignment="Center" Margin="8 0 0 0"/>
         </Grid>
     </Grid>
 </Window>

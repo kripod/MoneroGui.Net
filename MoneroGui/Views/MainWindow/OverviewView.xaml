@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
-             IsVisibleChanged="OverviewView_IsVisibleChanged">
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow">
     <UserControl.DataContext>
         <views:OverviewViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
@@ -36,7 +36,7 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static p:Resources.OverviewSpendable}" Margin="0 0 0 5"/>
                 <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 0 5">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0:0.000000000000} {1}">
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
                             <Binding Path="BalanceSpendable" TargetNullValue="?"/>
                             <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
                         </MultiBinding>
@@ -46,7 +46,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.OverviewUnconfirmed}" Margin="0 0 0 5"/>
                 <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 0 5">
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{}{0:0.000000000000} {1}">
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
                             <Binding Path="BalanceUnconfirmed" TargetNullValue="?"/>
                             <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
                         </MultiBinding>

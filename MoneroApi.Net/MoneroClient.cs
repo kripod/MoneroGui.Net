@@ -36,10 +36,12 @@ namespace Jojatekok.MoneroAPI
         public void StartWallet()
         {
             if (IsWalletStartForced || Wallet.IsWalletFileExistent) {
+                // Start the wallet normally
                 IsWalletStartForced = false;
                 Wallet.Start();
 
             } else {
+                // Let the user set a password for the new wallet being created
                 IsWalletStartForced = true;
                 Wallet.RequestPassphrase(true);
             }

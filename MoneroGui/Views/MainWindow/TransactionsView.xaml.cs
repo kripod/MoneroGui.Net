@@ -5,7 +5,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -14,20 +13,15 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         public TransactionsView()
         {
             InitializeComponent();
-        }
 
-        private void TransactionsView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue) {
-                Dispatcher.BeginInvoke(new Action(() => DataGridTransactions.Focus()), DispatcherPriority.ContextIdle);
-            }
+            this.SetDefaultFocusedElement(DataGridTransactions);
         }
 
         private void ButtonExport_Click(object sender, RoutedEventArgs e)
         {
             Export();
 
-            DataGridTransactions.Focus();
+            this.SetFocusedElement(DataGridTransactions);
         }
 
         public void Export()

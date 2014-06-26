@@ -85,13 +85,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\TabItemHeader.xaml.cs">
-      <DependentUpon>TabItemHeader.xaml</DependentUpon>
+    <Compile Include="Controls\ImageTextComposition.xaml.cs">
+      <DependentUpon>ImageTextComposition.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CoinSender.xaml.cs">
       <DependentUpon>CoinSender.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageGreyable.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleDoubleBiggerThanZero.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleAddress.cs" />
     <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\IExportable.cs" />
     <Compile Include="Objects\SendCoinsRecipient.cs" />
@@ -110,15 +112,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.el.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.fr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.fr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.hu.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.hu.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ButtonWithImage.xaml.cs">
-      <DependentUpon>ButtonWithImage.xaml</DependentUpon>
+    <Compile Include="Properties\Resources.pt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.pt.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainWindow\AddressBookViewModel.cs" />
+    <Compile Include="Properties\Resources.sk.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.sk.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\OptionsWindow\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
@@ -146,15 +159,11 @@
     <Compile Include="Windows\OptionsWindow.xaml.cs">
       <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\TabItemHeader.xaml">
+    <Page Include="Controls\ImageTextComposition.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\CoinSender.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\ButtonWithImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -231,8 +240,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Objects\SettingsManager.cs" />
-    <Compile Include="Objects\ConverterTransactionTypeToString.cs" />
-    <Compile Include="Objects\ConverterBooleanToString.cs" />
+    <Compile Include="Objects\XAML-related\ConverterTransactionTypeToString.cs" />
+    <Compile Include="Objects\XAML-related\ConverterBooleanToString.cs" />
     <Compile Include="Objects\Helper.cs" />
     <Compile Include="Objects\Logger.cs" />
     <Compile Include="Objects\StaticObjects.cs" />
@@ -288,13 +297,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.el.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.hu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.hu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.pt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.sk.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.sk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

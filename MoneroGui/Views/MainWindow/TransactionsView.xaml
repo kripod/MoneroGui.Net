@@ -3,17 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-             xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
              xmlns:api="clr-namespace:Jojatekok.MoneroAPI;assembly=MoneroApi.Net"
-             IsVisibleChanged="TransactionsView_IsVisibleChanged">
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
+             xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
+             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow">
     <UserControl.DataContext>
         <views:TransactionsViewModel x:Name="ViewModel"/>
     </UserControl.DataContext>
 
     <!-- TODO: Add ability for filtering -->
     <UserControl.Resources>
-        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSource}">
+        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSource, IsAsync=True}">
             <CollectionViewSource.SortDescriptions>
                 <componentModel:SortDescription PropertyName="Number" Direction="Descending"/>
             </CollectionViewSource.SortDescriptions>
@@ -40,7 +40,7 @@
                 <DataGridTextColumn Header="{x:Static p:Resources.TransactionsType}" Binding="{Binding Path=Type, Converter={StaticResource ConverterTransactionTypeToString}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <DataGridTextColumn Header="{x:Static p:Resources.TransactionsSpendable}" Binding="{Binding Path=IsAmountSpendable, Converter={StaticResource ConverterBooleanToStringYesNo}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->
-                <DataGridTextColumn Header="{x:Static p:Resources.TextAmount}" Binding="{Binding Path=Amount, StringFormat={}{0:0.000000000000}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.TextAmount}" Binding="{Binding Path=Amount, StringFormat={x:Static objects:StaticObjects.StringFormatCurrencyDefault}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
 
                 <DataGridTextColumn Header="Transaction ID" Binding="{Binding Path=TransactionId}" Width="1*">
                     <DataGridTextColumn.ElementStyle>
@@ -53,6 +53,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="1" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
+        <Button Grid.Row="1" Grid.Column="1" Click="ButtonExport_Click">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png"/>
+        </Button>
     </Grid>
 </UserControl>

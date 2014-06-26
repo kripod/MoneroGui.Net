@@ -22,10 +22,10 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
         public void ApplySettings()
         {
-            var generalSettings = SettingsManager.General;
             Debug.Assert(CheckBoxStartableOnSystemLogin.IsChecked != null, "CheckBoxStartableOnSystemLogin.IsChecked != null");
             Debug.Assert(CheckBoxSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
 
+            var generalSettings = SettingsManager.General;
             var isStartableOnSystemLogin = CheckBoxStartableOnSystemLogin.IsChecked.Value;
             var isSafeShutdownEnabled = CheckBoxSafeShutdownEnabled.IsChecked.Value;
             generalSettings.IsSafeShutdownEnabled = isSafeShutdownEnabled;
@@ -35,7 +35,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
                 if (isStartableOnSystemLogin) {
                     var shell = new WshShell();
-                    var shortcut = (WshShortcut)shell.CreateShortcut(StaticObjects.ApplicationShortcutPath);
+                    var shortcut = (WshShortcut)shell.CreateShortcut(StaticObjects.ApplicationStartupShortcutPath);
 
                     // TODO: Implement hidden mode
                     shortcut.TargetPath = StaticObjects.ApplicationPath;
@@ -45,7 +45,9 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                     shortcut.Save();
 
                 } else {
-                    if (File.Exists(StaticObjects.ApplicationShortcutPath)) File.Delete(StaticObjects.ApplicationShortcutPath);
+                    if (File.Exists(StaticObjects.ApplicationStartupShortcutPath)) {
+                        File.Delete(StaticObjects.ApplicationStartupShortcutPath);
+                    }
                 }
             }
 

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -56,6 +54,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             EditIndex = editIndex;
             if (EditIndex >= 0) {
+                // Mode: Edit
                 Title = Properties.Resources.AddressBookEditWindowTitleEdit;
 
                 var editedContact = CurrentContacts[EditIndex];
@@ -65,16 +64,17 @@ namespace Jojatekok.MoneroGUI.Windows
                 TextBoxAddress.Watermark = editedContact.Address;
 
                 TextBoxAddress.SelectAll();
-                Dispatcher.BeginInvoke(new Action(() => TextBoxAddress.Focus()), DispatcherPriority.ContextIdle);
+                this.SetFocusedElement(TextBoxAddress);
 
             } else {
+                // Mode: Add
                 Title = Properties.Resources.AddressBookEditWindowTitleAdd;
             }
         }
 
         private void TextBoxLabel_TextChanged(object sender, TextChangedEventArgs e)
         {
-            OverwriteIndex = CurrentContacts.IndexOf(Label);
+            OverwriteIndex = CurrentContacts.IndexOfLabel(Label);
 
             if (OverwriteIndex >= 0 && OverwriteIndex != EditIndex) {
                 // Notify the user of the overwriting operation

@@ -8,7 +8,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{x:Static p:Resources.TextClientName}"
         WindowStartupLocation="CenterScreen"
-        Width="800" Height="540" MinWidth="800" MinHeight="540"
+        Width="800" Height="542" MinWidth="800" MinHeight="542"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding Command="windows:MainWindow.BackupWalletCommand" Executed="BackupWalletCommand_Executed"/>
@@ -86,28 +86,28 @@
             <TabControl Grid.Row="1" x:Name="TabControl" SelectionChanged="TabControl_SelectionChanged" Margin="10">
                 <TabItem>
                     <TabItem.Header>
-                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowOverview}" ImageUri="/Resources/Images/Overview.png"/>
+                        <controls:ImageTextComposition Text="{x:Static p:Resources.MainWindowOverview}" ImageUri="/Resources/Images/Overview.png"/>
                     </TabItem.Header>
                     <views:OverviewView x:Name="OverviewView" Margin="5"/>
                 </TabItem>
 
                 <TabItem>
                     <TabItem.Header>
-                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowSendCoins}" ImageUri="/Resources/Images/Send.png"/>
+                        <controls:ImageTextComposition Text="{x:Static p:Resources.MainWindowSendCoins}" ImageUri="/Resources/Images/Send.png"/>
                     </TabItem.Header>
                     <views:SendCoinsView x:Name="SendCoinsView" Margin="5"/>
                 </TabItem>
 
                 <TabItem>
                     <TabItem.Header>
-                        <controls:TabItemHeader Text="{x:Static p:Resources.MainWindowTransactions}" ImageUri="/Resources/Images/Transaction.png"/>
+                        <controls:ImageTextComposition Text="{x:Static p:Resources.MainWindowTransactions}" ImageUri="/Resources/Images/Transaction.png"/>
                     </TabItem.Header>
                     <views:TransactionsView x:Name="TransactionsView" Margin="5"/>
                 </TabItem>
 
                 <TabItem>
                     <TabItem.Header>
-                        <controls:TabItemHeader Text="{x:Static p:Resources.TextAddressBook}" ImageUri="/Resources/Images/Contact.png"/>
+                        <controls:ImageTextComposition Text="{x:Static p:Resources.TextAddressBook}" ImageUri="/Resources/Images/Contact.png"/>
                     </TabItem.Header>
                     <views:AddressBookView Margin="5"/>
                 </TabItem>

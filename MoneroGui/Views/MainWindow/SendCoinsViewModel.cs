@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             get { return RecipientsPrivate; }
         }
 
-        private bool _isSendingEnabled;
+        private static bool _isSendingEnabled;
         public bool IsSendingEnabled {
             get { return _isSendingEnabled; }
 
@@ -21,7 +21,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double? _balanceSpendable;
+        private static double? _balanceSpendable;
         public double? BalanceSpendable {
             get { return _balanceSpendable; }
 

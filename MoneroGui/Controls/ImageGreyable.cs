@@ -14,16 +14,19 @@ namespace Jojatekok.MoneroGUI.Controls
             if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
 #endif
 
-            IsEnabledProperty.OverrideMetadata(typeof(ImageGreyable), new FrameworkPropertyMetadata(true, IsEnabledProperty_Changed));
+            IsEnabledProperty.OverrideMetadata(
+                typeof(ImageGreyable),
+                new FrameworkPropertyMetadata(true, IsEnabledProperty_Changed)
+            );
         }
 
-        private static void IsEnabledProperty_Changed(DependencyObject source, DependencyPropertyChangedEventArgs args)
+        private static void IsEnabledProperty_Changed(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            var image = source as ImageGreyable;
+            var image = sender as ImageGreyable;
             if (image == null || image.Source == null) return;
 
             // Check whether the image is enabled
-            if ((bool)args.NewValue) {
+            if ((bool)e.NewValue) {
                 image.Source = ((FormatConvertedBitmap)image.Source).Source;
                 image.OpacityMask = null;
 

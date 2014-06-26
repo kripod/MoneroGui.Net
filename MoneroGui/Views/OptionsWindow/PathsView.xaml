@@ -19,20 +19,20 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsFileWalletData}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="0" Grid.Column="2" x:Name="PathSelectorFileWalletData" x:FieldModifier="private" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="0" Grid.Column="2" x:Name="PathSelectorFileWalletData" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsDirectoryWalletBackups}" VerticalAlignment="Center"/>
-        <controls:PathSelector Grid.Row="1" Grid.Column="2" x:Name="PathSelectorDirectoryWalletBackups" x:FieldModifier="private"/>
+        <controls:PathSelector Grid.Row="1" Grid.Column="2" x:Name="PathSelectorDirectoryWalletBackups"/>
 
         <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 10"/>
 
         <TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareDaemon}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="3" Grid.Column="2" x:Name="PathSelectorSoftwareDaemon" x:FieldModifier="private" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="3" Grid.Column="2" x:Name="PathSelectorSoftwareDaemon" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="4" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareWallet}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="4" Grid.Column="2" x:Name="PathSelectorSoftwareWallet" x:FieldModifier="private" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="4" Grid.Column="2" x:Name="PathSelectorSoftwareWallet" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareMiner}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="5" Grid.Column="2" x:Name="PathSelectorSoftwareMiner" x:FieldModifier="private" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="{x:Static p:Resources.OptionsPathsSoftwareMiner}" VerticalAlignment="Center"/>
+        <controls:PathSelector Grid.Row="5" Grid.Column="2" x:Name="PathSelectorSoftwareMiner"/>
     </Grid>
 </UserControl>

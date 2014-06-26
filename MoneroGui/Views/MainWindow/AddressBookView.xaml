@@ -3,15 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
-             xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
-             IsVisibleChanged="AddressBookView_IsVisibleChanged">
-    <UserControl.DataContext>
-        <views:AddressBookViewModel x:Name="ViewModel"/>
-    </UserControl.DataContext>
-
+             DataContext="{x:Static objects:StaticObjects.AddressBookDataSource}">
     <UserControl.Resources>
-        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSource}">
+        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding IsAsync=True}">
             <CollectionViewSource.SortDescriptions>
                 <componentModel:SortDescription PropertyName="Label" Direction="Ascending"/>
             </CollectionViewSource.SortDescriptions>
@@ -40,13 +36,25 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="0" Text="{x:Static p:Resources.TextNew}" ImageUri="/Resources/Images/Add.png" Click="ButtonNew_Click" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="1" x:Name="ButtonCopyAddress" Text="{x:Static p:Resources.AddressBookCopyAddress}" ImageUri="/Resources/Images/Copy.png" IsEnabled="False" Click="ButtonCopyAddress_Click" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="2" x:Name="ButtonEdit" Text="{x:Static p:Resources.TextEdit}" ImageUri="/Resources/Images/Edit.png" IsEnabled="False" Click="ButtonEdit_Click" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="3" x:Name="ButtonDelete" Text="{x:Static p:Resources.TextDelete}" ImageUri="/Resources/Images/Delete.png" IsEnabled="False" Click="ButtonDelete_Click" Margin="0 0 8 0"/>
+        <Button Grid.Row="1" Grid.Column="0" Click="ButtonNew_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextNew}" ImageUri="/Resources/Images/Add.png"/>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="1" x:Name="ButtonCopyAddress" IsEnabled="False" Click="ButtonCopyAddress_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.AddressBookCopyAddress}" ImageUri="/Resources/Images/Copy.png"/>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="2" x:Name="ButtonEdit" IsEnabled="False" Click="ButtonEdit_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextEdit}" ImageUri="/Resources/Images/Edit.png"/>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="3" x:Name="ButtonDelete" IsEnabled="False" Click="ButtonDelete_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextDelete}" ImageUri="/Resources/Images/Delete.png"/>
+        </Button>
 
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" Text="{x:Static p:Resources.TextQrCode}" ImageUri="/Resources/Images/QR-code.png" IsEnabled="False" Click="ButtonQrCode_Click" RenderOptions.BitmapScalingMode="Linear" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="1" Grid.Column="6" x:Name="ButtonExport" Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png" Click="ButtonExport_Click"/>
+        <Button Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" IsEnabled="False" Click="ButtonQrCode_Click" RenderOptions.BitmapScalingMode="Linear" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextQrCode}" ImageUri="/Resources/Images/QR-code.png"/>
+        </Button>
+        <Button Grid.Row="1" Grid.Column="6" x:Name="ButtonExport" Click="ButtonExport_Click">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextExport}" ImageUri="/Resources/Images/Export.png"/>
+        </Button>
         <Button Grid.Row="1" Grid.Column="6" x:Name="ButtonOk" Content="{x:Static p:Resources.TextOk}" IsDefault="True" Click="ButtonOk_Click" Visibility="Collapsed" Style="{StaticResource StyleButtonPaddingWide}"/>
     </Grid>
 </UserControl>

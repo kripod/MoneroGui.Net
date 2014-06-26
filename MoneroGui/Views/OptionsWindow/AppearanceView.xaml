@@ -5,7 +5,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="8"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -14,6 +13,6 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static p:Resources.OptionsDisplayLanguage}" VerticalAlignment="Center"/>
-        <ComboBox x:Name="ComboBoxLanguages" Grid.Row="0" Grid.Column="2" IsReadOnly="True"/>
+        <ComboBox x:Name="ComboBoxLanguages" Grid.Row="0" Grid.Column="1" IsReadOnly="True" Margin="8 0 0 0"/>
     </Grid>
 </UserControl>

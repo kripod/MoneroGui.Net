@@ -18,6 +18,17 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class QrCodeWindow : INotifyPropertyChanged
     {
+        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.RegisterAttached(
+            "ImageSource",
+            typeof(BitmapImage),
+            typeof(QrCodeWindow)
+        );
+
+        public BitmapImage ImageSource {
+            get { return GetValue(ImageSourceProperty) as BitmapImage; }
+            set { SetValue(ImageSourceProperty, value); }
+        }
+
         private string _address;
         public string Address {
             get { return _address; }
@@ -154,7 +165,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 using (var bitmap = new Bitmap(writer.Write(qrUriText))) {
                     Dispatcher.Invoke(() => {
 // ReSharper disable once AccessToDisposedClosure
-                        ImageQrCode.Source = bitmap.ToImageSource(false);
+                        ImageSource = bitmap.ToBitmapImage(false);
                         IsQrUriTooLong = false;
                     });
                 }
@@ -169,8 +180,9 @@ namespace Jojatekok.MoneroGUI.Windows
         private void ButtonCopyQrUri_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(TextBoxQrUri.Text);
+
             TextBoxQrUri.SelectAll();
-            TextBoxQrUri.Focus();
+            this.SetFocusedElement(TextBoxQrUri);
         }
 
         private void ButtonSaveAs_Click(object sender, RoutedEventArgs e)
@@ -182,7 +194,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             if (dialog.ShowDialog() != true) return;
 
-            Task.Factory.StartNew(() => SaveQrCodeImage(Dispatcher.Invoke(() => ImageQrCode.Source as BitmapImage), dialog.FileName));
+            Task.Factory.StartNew(() => SaveQrCodeImage(Dispatcher.Invoke(() => ImageSource), dialog.FileName));
         }
 
         private void SaveQrCodeImage(BitmapSource image, string fileName)
@@ -195,7 +207,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             using (var bitmap = image.ToBitmap()) {
                 bitmap.MakeTransparent(Color.White);
-                formatConvertedBitmap.Source = bitmap.ToImageSource(true);
+                formatConvertedBitmap.Source = bitmap.ToBitmapImage(true);
             }
 
             formatConvertedBitmap.DestinationFormat = PixelFormats.Default;

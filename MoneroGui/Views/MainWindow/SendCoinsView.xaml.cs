@@ -49,23 +49,49 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
 
             var recipients = ViewModel.Recipients;
-            var recipientsDictionary = new Dictionary<string, double>(recipients.Count);
-            
+            var transactionDictionary = new Dictionary<string, double>(recipients.Count);
+            var contactDictionary = new Dictionary<string, string>(recipients.Count);
+            var firstInvalidRecipient = -1;
+
+            // Check each recipient's validity, and add them to a dictionary
             for (var i = recipients.Count - 1; i >= 0; i--) {
                 var recipient = recipients[i];
 
                 if (!recipient.IsValid()) {
-                    // TODO: Notify the user about a recipient being invalid
-                    return;
+                    firstInvalidRecipient = i;
 
-                } else {
+                } else if (firstInvalidRecipient < 0) {
                     Debug.Assert(recipient.Amount != null, "recipient.Amount != null");
-                    recipientsDictionary.Add(recipient.Address, recipient.Amount.Value);
+                    transactionDictionary.Add(recipient.Address, recipient.Amount.Value);
+
+                    if (!string.IsNullOrWhiteSpace(recipient.Label)) {
+                        contactDictionary.Add(recipient.Label, recipient.Address);
+                    }
                 }
             }
 
-            StaticObjects.MoneroClient.Wallet.Transfer(recipientsDictionary, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
-            ClearRecipients();
+            if (firstInvalidRecipient < 0) {
+                // Initiate a new transaction
+                StaticObjects.MoneroClient.Wallet.Transfer(transactionDictionary, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
+
+                // Add new people to the address book
+                foreach (var keyValuePair in contactDictionary) {
+                    var contact = new SettingsManager.ConfigElementContact(keyValuePair.Key, keyValuePair.Value);
+                    var editIndex = StaticObjects.AddressBookDataSource.IndexOfLabel(contact.Label);
+
+                    if (editIndex < 0) {
+                        StaticObjects.AddressBookDataSource.Add(contact);
+                    } else {
+                        StaticObjects.AddressBookDataSource[editIndex] = contact;
+                    }
+                }
+
+                ClearRecipients();
+
+            } else {
+                // Notify the user about the first recipient being invalid
+                ListBoxRecipients.ScrollIntoView(recipients[firstInvalidRecipient]);
+            }
         }
 
         private void ButtonAddRecipient_Click(object sender, RoutedEventArgs e)
@@ -73,14 +99,14 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             AddRecipient();
 
             ListBoxRecipients.SelectedIndex = ListBoxRecipients.Items.Count - 1;
-            ListBoxRecipients.Focus();
+            this.SetFocusedElement(ListBoxRecipients);
         }
 
         private void ButtonClearRecipients_Click(object sender, RoutedEventArgs e)
         {
             ClearRecipients();
 
-            ListBoxRecipients.Focus();
+            this.SetFocusedElement(ListBoxRecipients);
         }
 
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
@@ -91,7 +117,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             Debug.Assert(IntegerUpDownMixCount.Value != null, "IntegerUpDownMixCount.Value != null");
             SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
 
-            ListBoxRecipients.Focus();
+            this.SetFocusedElement(ListBoxRecipients);
         }
     }
 }

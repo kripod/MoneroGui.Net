@@ -1,17 +1,19 @@
 ﻿using Jojatekok.MoneroGUI.Windows;
 using Microsoft.Win32;
 using System;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     public partial class AddressBookView : IExportable
     {
+        private static readonly ObservableCollection<SettingsManager.ConfigElementContact> DataSource = StaticObjects.AddressBookDataSource;
+
         public bool IsDialogModeEnabled {
             get { return ButtonOk.Visibility == Visibility.Visible; }
 
@@ -32,13 +34,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             InitializeComponent();
 
             DataGridAddressBook.SelectedIndex = -1;
-        }
-
-        private void AddressBookView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue) {
-                Dispatcher.BeginInvoke(new Action(() => DataGridAddressBook.Focus()), DispatcherPriority.ContextIdle);
-            }
+            this.SetDefaultFocusedElement(DataGridAddressBook);
         }
 
         private void DataGridAddressBook_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
@@ -49,29 +45,42 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 ButtonEdit.IsEnabled = isButtonsEnabled;
                 ButtonDelete.IsEnabled = isButtonsEnabled;
                 ButtonQrCode.IsEnabled = isButtonsEnabled;
+                ButtonOk.IsEnabled = isButtonsEnabled;
+            }
+        }
+
+        private void DataGridAddressBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Check only for double clicks with the left mouse button
+            if (e.ChangedButton != MouseButton.Left) return;
+
+            if (IsDialogModeEnabled) {
+                SetDialogResult();
+            } else {
+                EditSelectedContact();
             }
         }
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), ViewModel.DataSource);
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSource);
             if (dialog.ShowDialog() == true) {
                 var overwriteIndex = dialog.OverwriteIndex;
 
                 if (overwriteIndex < 0) {
                     // Add new item
-                    ViewModel.DataSource.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
-                    overwriteIndex = ViewModel.DataSource.Count - 1;
+                    DataSource.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                    overwriteIndex = DataSource.Count - 1;
 
                 } else {
                     // Overwrite existing item
-                    ViewModel.DataSource[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                    DataSource[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
                 }
 
-                DataGridAddressBook.SelectedItem = ViewModel.DataSource[overwriteIndex];
+                DataGridAddressBook.SelectedItem = DataSource[overwriteIndex];
             }
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonCopyAddress_Click(object sender, RoutedEventArgs e)
@@ -79,31 +88,36 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             Debug.Assert(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null, "DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null");
             Clipboard.SetText((DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact).Address);
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            var editIndex = ViewModel.DataSource.IndexOf(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
-            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), ViewModel.DataSource, editIndex);
+            EditSelectedContact();
+        }
+
+        private void EditSelectedContact()
+        {
+            var editIndex = DataSource.IndexOf(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSource, editIndex);
             if (dialog.ShowDialog() == true) {
                 var overwriteIndex = dialog.OverwriteIndex;
                 if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
-                    ViewModel.DataSource.RemoveAt(dialog.OverwriteIndex);
+                    DataSource.RemoveAt(dialog.OverwriteIndex);
                     if (overwriteIndex < editIndex) editIndex -= 1;
                 }
 
-                ViewModel.DataSource[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                DataSource[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
             }
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.DataSource.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            DataSource.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonQrCode_Click(object sender, RoutedEventArgs e)
@@ -111,22 +125,17 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             var dialog = new QrCodeWindow(Window.GetWindow(Parent), DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
             dialog.ShowDialog();
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonExport_Click(object sender, RoutedEventArgs e)
         {
             Export();
 
-            DataGridAddressBook.Focus();
+            this.SetFocusedElement(DataGridAddressBook);
         }
 
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
-        {
-            SetDialogResult();
-        }
-
-        private void DataGridAddressBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             SetDialogResult();
         }

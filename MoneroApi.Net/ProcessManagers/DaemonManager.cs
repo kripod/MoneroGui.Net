@@ -27,7 +27,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         internal DaemonManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareDaemon)
         {
-            ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
 
             RpcWebClient = rpcWebClient;
@@ -51,9 +50,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private async void AutoQueryNetworkInformationAsync()
         {
-            while (IsProcessAlive) {
+            while (!IsTaskCancellationRequested) {
                 if (NetworkInformationChanging != null) {
-                    var output = await RpcWebClient.HttpGetDataAsync<NetworkInformation>(RpcPortType.Daemon, Helper.RpcUrlRelativeHttpGetInformation);
+                    var output = await RpcWebClient.HttpGetDataAsync<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
                     if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
                         var blockHeaderValueContainer = await RpcWebClient.JsonQueryDataAsync<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
                         if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
@@ -70,27 +69,30 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     }
                 }
 
-                await Task.Delay(750);
+                try {
+                    await Task.Delay(750, TaskCancellation.Token);
+                } catch {
+                    return;
+                }
             }
         }
 
         private async void AutoSaveBlockchainAsync()
         {
-            while (IsProcessAlive) {
+            while (!IsTaskCancellationRequested) {
                 // TODO: Add support for custom intervals
-                await Task.Delay(120000);
-                await RpcWebClient.HttpGetDataAsync<HttpRpcResponse>(RpcPortType.Daemon, Helper.RpcUrlRelativeHttpGetSaveBlockchain);
-            }
-        }
+                try {
+                    await Task.Delay(120000, TaskCancellation.Token);
+                } catch {
+                    return;
+                }
 
-        private void Process_ErrorReceived(object sender, string e)
-        {
-            // TODO: Handle daemon errors
+                await RpcWebClient.HttpGetDataAsync<HttpRpcResponse>(RpcPortType.Daemon, RpcRelativeUrls.DaemonSaveBlockchain);
+            }
         }
 
         private void Process_OutputReceived(object sender, string e)
         {
-            var data = e;
             var dataLower = e.ToLower(Helper.InvariantCulture);
 
             if (dataLower.Contains("rpc server initialized") && !IsRpcInitialized) {
@@ -99,9 +101,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 IsRpcInitialized = true;
                 if (RpcInitialized != null) RpcInitialized(this, EventArgs.Empty);
             }
-
-            // Error handler
-            if (dataLower.Contains("error")) Process_ErrorReceived(this, data);
         }
     }
 }

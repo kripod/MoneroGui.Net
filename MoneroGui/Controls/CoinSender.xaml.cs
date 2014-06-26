@@ -1,23 +1,60 @@
-﻿using System;
+﻿using Jojatekok.MoneroGUI.Windows;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Threading;
-using Jojatekok.MoneroGUI.Windows;
+using System.Windows.Controls;
+using Xceed.Wpf.Toolkit;
 
 namespace Jojatekok.MoneroGUI.Controls
 {
     public partial class CoinSender
     {
+        private SendCoinsRecipient CurrentRecipient { get; set; }
+
         public CoinSender()
         {
             InitializeComponent();
+
+            this.SetDefaultFocusedElement(TextBoxAddress);
         }
 
-        private void CoinSender_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void CoinSender_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue) {
-                Dispatcher.BeginInvoke(new Action(() => TextBoxAddress.Focus()), DispatcherPriority.ContextIdle);
+            CurrentRecipient = e.NewValue as SendCoinsRecipient;
+            Debug.Assert(CurrentRecipient != null, "CurrentRecipient != null");
+
+            CurrentRecipient.AddressInvalidated += delegate {
+                var bindingExpression = TextBoxAddress.GetBindingExpression(TextBox.TextProperty);
+                if (bindingExpression != null) bindingExpression.UpdateSource();
+            };
+
+            CurrentRecipient.AmountInvalidated += delegate {
+                var bindingExpression = DoubleUpDownAmount.GetBindingExpression(DoubleUpDown.ValueProperty);
+                if (bindingExpression != null) bindingExpression.UpdateSource();
+            };
+        }
+
+        private void TextBoxAddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var index = StaticObjects.AddressBookDataSource.IndexOfAddress(TextBoxAddress.Text);
+            if (index >= 0) {
+                CurrentRecipient.Label = StaticObjects.AddressBookDataSource[index].Label;
+            }
+
+            CheckLabelExistence();
+        }
+
+        private void TextBoxLabel_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckLabelExistence();
+        }
+
+        private void CheckLabelExistence()
+        {
+            var index = StaticObjects.AddressBookDataSource.IndexOfLabel(TextBoxLabel.Text);
+            if (index >= 0 && TextBoxAddress.Text != StaticObjects.AddressBookDataSource[index].Address) {
+                TextBoxLabel.Foreground = StaticObjects.BrushForegroundWarning;
+            } else {
+                TextBoxLabel.Foreground = StaticObjects.BrushForegroundDefault;
             }
         }
 
@@ -28,13 +65,10 @@ namespace Jojatekok.MoneroGUI.Controls
                 var selectedContact = dialog.SelectedContact;
 
                 if (selectedContact != null) {
-                    var dataContext = DataContext as SendCoinsRecipient;
-                    Debug.Assert(dataContext != null, "dataContext != null");
+                    CurrentRecipient.Address = selectedContact.Address;
+                    CurrentRecipient.Label = selectedContact.Label;
 
-                    dataContext.Address = selectedContact.Address;
-                    dataContext.Label = selectedContact.Label;
-
-                    FocusManager.SetFocusedElement(this, DoubleUpDownAmount);
+                    this.SetFocusedElement(DoubleUpDownAmount);
                 }
             }
         }
@@ -43,18 +77,16 @@ namespace Jojatekok.MoneroGUI.Controls
         {
             var address = Clipboard.GetText(TextDataFormat.Text);
             if (!string.IsNullOrWhiteSpace(address)) {
-                Debug.Assert(DataContext as SendCoinsRecipient != null, "DataContext as SendCoinsRecipient != null");
-                (DataContext as SendCoinsRecipient).Address = address;
+                CurrentRecipient.Address = address;
             }
 
             TextBoxAddress.Select(address.Length, 0);
-            TextBoxAddress.Focus();
+            this.SetFocusedElement(TextBoxAddress);
         }
 
         private void ButtonRemoveSelf_Click(object sender, RoutedEventArgs e)
         {
-            Debug.Assert(DataContext as SendCoinsRecipient != null, "DataContext as SendCoinsRecipient != null");
-            (DataContext as SendCoinsRecipient).RemoveSelf();
+            CurrentRecipient.RemoveSelf();
         }
     }
 }

@@ -15,7 +15,10 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
         [JsonProperty("target_height")]
         public ulong BlockHeightTotal { get; private set; }
         public ulong BlockHeightRemaining {
-            get { return (ulong)Math.Max((long)BlockHeightTotal - (long)BlockHeightDownloaded, 0); }
+            get {
+                if (BlockHeightDownloaded > BlockHeightTotal) return 0;
+                return BlockHeightTotal - BlockHeightDownloaded;
+            }
         }
 
         public DateTime BlockTimeCurrent { get; internal set; }
@@ -29,13 +32,13 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
         public ulong PeerListSizeWhite { get; private set; }
 
         [JsonProperty("incoming_connections_count")]
-        public byte ConnectionCountIncoming { get; private set; }
+        public ushort ConnectionCountIncoming { get; private set; }
         [JsonProperty("outgoing_connections_count")]
-        public byte ConnectionCountOutgoing { get; private set; }
+        public ushort ConnectionCountOutgoing { get; private set; }
 
         [JsonProperty("tx_count")]
         public ulong TransactionCountTotal { get; private set; }
         [JsonProperty("tx_pool_size")]
-        public ushort TransactionPoolSize { get; private set; }
+        public uint TransactionPoolSize { get; private set; }
     }
 }

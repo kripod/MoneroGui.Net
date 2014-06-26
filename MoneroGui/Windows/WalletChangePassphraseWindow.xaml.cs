@@ -82,8 +82,9 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             if (PasswordBoxNewPassphrase1.Password != PasswordBoxNewPassphrase2.Password) {
                 this.ShowError(Properties.Resources.WalletChangePassphraseWindowPassphrasesDoNotMatch);
+
                 PasswordBoxNewPassphrase1.SelectAll();
-                PasswordBoxNewPassphrase1.Focus();
+                this.SetFocusedElement(PasswordBoxNewPassphrase1);
                 return;
             }
 

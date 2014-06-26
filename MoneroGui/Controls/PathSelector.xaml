@@ -4,12 +4,11 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="8"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <TextBox Grid.Column="0" x:Name="TextBoxPath"/>
-        <Button Grid.Column="2" Click="ButtonSelectPath_Click" Padding="0">
+        <Button Grid.Column="1" Click="ButtonSelectPath_Click" Padding="0" Margin="8 0 0 0">
             <Image Source="/Resources/Images/Open.png" Margin="2"/>
         </Button>
     </Grid>

@@ -52,8 +52,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private byte _connectionCount;
-        public byte ConnectionCount {
+        private ushort _connectionCount;
+        public ushort ConnectionCount {
             get { return _connectionCount; }
 
             set {

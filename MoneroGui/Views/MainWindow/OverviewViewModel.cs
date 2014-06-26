@@ -36,8 +36,14 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 _address = value;
                 OnPropertyChanged();
 
-                InitializerVisibility = Visibility.Hidden;
-                AddressVisibility = Visibility.Visible;
+                if (!string.IsNullOrEmpty(value)) {
+                    InitializerVisibility = Visibility.Hidden;
+                    AddressVisibility = Visibility.Visible;
+
+                } else {
+                    AddressVisibility = Visibility.Hidden;
+                    InitializerVisibility = Visibility.Visible;
+                }
             }
         }
 

@@ -16,12 +16,6 @@ namespace Jojatekok.MoneroAPI
         public const ushort RpcUrlBasePortDaemon = 18081;
         public const ushort RpcUrlBasePortWallet = 19091;
 
-        public const string RpcUrlRelativeHttpGetInformation = "getinfo";
-        public const string RpcUrlRelativeHttpGetTransactions = "gettransactions";
-        public const string RpcUrlRelativeHttpGetSaveBlockchain = "save_bc";
-
-        public const string RpcUrlRelativeHttpSendTransaction = "sendrawtransaction";
-
         public const int RequestsTimeoutMilliseconds = 30000;
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;

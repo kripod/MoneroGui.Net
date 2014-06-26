@@ -1,7 +1,5 @@
 ﻿using Jojatekok.MoneroGUI.Windows;
-using System;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -10,19 +8,15 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         public OverviewView()
         {
             InitializeComponent();
-        }
 
-        private void OverviewView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue) {
-                Dispatcher.BeginInvoke(new Action(this.FocusParent), DispatcherPriority.ContextIdle);
-            }
+            this.SetDefaultFocusToParent();
         }
 
         private void ButtonCopyAddress_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(ViewModel.Address);
-            this.FocusParent();
+
+            this.SetFocusToParent();
         }
 
         private void ButtonQrCode_Click(object sender, RoutedEventArgs e)
@@ -30,7 +24,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             var dialog = new QrCodeWindow(Window.GetWindow(Parent), ViewModel.Address);
             dialog.ShowDialog();
 
-            this.FocusParent();
+            this.SetFocusToParent();
         }
     }
 }

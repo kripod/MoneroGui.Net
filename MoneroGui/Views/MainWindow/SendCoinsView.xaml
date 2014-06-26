@@ -33,7 +33,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" x:Name="ListBoxRecipients" ItemsSource="{Binding Path=Recipients}" objects:ListBoxBehavior.IsAutoScrollEnabled="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 0 0 8">
+        <ListBox IsSynchronizedWithCurrentItem="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" x:Name="ListBoxRecipients" ItemsSource="{Binding Path=Recipients, IsAsync=True}" objects:ListBoxBehavior.IsAutoScrollEnabled="True" ScrollViewer.CanContentScroll="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0 0 0 8">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -41,7 +41,7 @@
                             <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType={x:Type ScrollContentPresenter}}"/>
                         </Grid.MaxWidth>
 
-                        <Border BorderBrush="{StaticResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="1" Margin="1 3 3 8">
+                        <Border BorderBrush="{StaticResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="1" Margin="1 6 3 6">
                             <controls:CoinSender Margin="10"/>
                         </Border>
                     </Grid>
@@ -54,24 +54,32 @@
             <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
         </DockPanel>
 
-        <controls:ButtonWithImage Grid.Row="2" Grid.Column="0" Text="{x:Static p:Resources.SendCoinsAddRecipient}" ImageUri="/Resources/Images/Add.png" Click="ButtonAddRecipient_Click" Margin="0 0 8 0"/>
-        <controls:ButtonWithImage Grid.Row="2" Grid.Column="1" Text="{x:Static p:Resources.SendCoinsClearRecipients}" ImageUri="/Resources/Images/Delete.png" Click="ButtonClearRecipients_Click" Margin="0 0 8 0"/>
+        <Button Grid.Row="2" Grid.Column="0" Click="ButtonAddRecipient_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.SendCoinsAddRecipient}" ImageUri="/Resources/Images/Add.png"/>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1" Click="ButtonClearRecipients_Click" Margin="0 0 8 0">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.SendCoinsClearRecipients}" ImageUri="/Resources/Images/Delete.png"/>
+        </Button>
 
         <TextBlock Grid.Row="2" Grid.Column="3" Text="{x:Static p:Resources.SendCoinsMixCount}" VerticalAlignment="Center"/>
         <xctk:IntegerUpDown Grid.Row="2" Grid.Column="5" x:Name="IntegerUpDownMixCount" Minimum="0"/>
         <Separator Grid.Row="2" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
 
         <TextBlock Grid.Row="2" Grid.Column="7" VerticalAlignment="Center">
-            <TextBlock.Text>
-                <MultiBinding StringFormat="{}{0} {1:0.000000000000} {2}">
-                    <Binding Source="{x:Static p:Resources.SendCoinsBalance}"/>
-                    <Binding Path="BalanceSpendable" TargetNullValue="?"/>
-                    <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
-                </MultiBinding>
-            </TextBlock.Text>
+            <TextBlock Text="{Binding Source={x:Static p:Resources.SendCoinsBalance}}"/>
+            <TextBlock>
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
+                        <Binding Path="BalanceSpendable" TargetNullValue="?"/>
+                        <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
         </TextBlock>
         <Separator Grid.Row="2" Grid.Column="8" Style="{StaticResource StyleSeparatorVertical}"/>
 
-        <controls:ButtonWithImage Grid.Row="2" Grid.Column="9" Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click"/>
+        <Button Grid.Row="2" Grid.Column="9" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click">
+            <controls:ImageTextComposition Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png"/>
+        </Button>
     </Grid>
 </UserControl>

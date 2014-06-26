@@ -18,9 +18,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler Refreshed;
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
-        public event EventHandler<string> AddressReceived;
+        public event EventHandler<AddressReceivedEventArgs> AddressReceived;
         public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
-        public event EventHandler<string> SentMoney;
+        public event EventHandler<MoneySentEventArgs> SentMoney;
 
         private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
@@ -124,22 +124,31 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private async void AutoQueryBalanceAsync()
         {
-            while (IsProcessAlive) {
+            while (!IsTaskCancellationRequested) {
                 if (BalanceChanging != null) {
                     var output = await RpcWebClient.JsonQueryDataAsync<Balance>(RpcPortType.Wallet, new GetBalance());
                     BalanceChanging(this, new BalanceChangingEventArgs(output));
                     Balance = output;
                 }
 
-                await Task.Delay(10000);
+                try {
+                    await Task.Delay(10000, TaskCancellation.Token);
+                } catch {
+                    return;
+                }
             }
         }
 
         private async void AutoSaveWalletAsync()
         {
-            while (IsProcessAlive) {
+            while (!IsTaskCancellationRequested) {
                 // TODO: Add support for custom intervals
-                await Task.Delay(120000);
+                try {
+                    await Task.Delay(120000, TaskCancellation.Token);
+                } catch {
+                    return;
+                }
+
                 Send("save");
             }
         }
@@ -206,7 +215,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (SentMoney != null && dataLower.Contains("money successfully sent")) {
                 var match = Regex.Match(data, "transaction <([0-9a-z]*)>", RegexOptions.IgnoreCase);
                 if (match.Success) {
-                    SentMoney(this, match.Groups[1].Value);
+                    SentMoney(this, new MoneySentEventArgs(match.Groups[1].Value));
                 }
 
                 return;
@@ -268,7 +277,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             if (AddressReceived != null && (dataLower.Contains("opened wallet: ") || dataLower.Contains("generated new wallet: "))) {
                 Address = data.Substring(data.IndexOf(':') + 2);
-                AddressReceived(this, Address);
+                AddressReceived(this, new AddressReceivedEventArgs(Address));
                 return;
             }
 

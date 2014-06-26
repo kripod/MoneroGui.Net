@@ -1,4 +1,5 @@
 ﻿using Jojatekok.MoneroGUI.Views.MainWindow;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -6,7 +7,13 @@ namespace Jojatekok.MoneroGUI
 {
     public class SendCoinsRecipient : INotifyPropertyChanged
     {
+        internal event EventHandler AddressInvalidated;
+        internal event EventHandler AmountInvalidated;
+
         private SendCoinsView Owner { get; set; }
+
+        private static readonly ValidationRuleAddress AddressValidator = new ValidationRuleAddress();
+        private static readonly ValidationRuleDoubleBiggerThanZero AmountValidator = new ValidationRuleDoubleBiggerThanZero();
 
         private string _address;
         public string Address {
@@ -45,13 +52,19 @@ namespace Jojatekok.MoneroGUI
 
         public bool IsValid()
         {
-            if (string.IsNullOrWhiteSpace(Address)) return false;
+            var output = true;
 
-            if (Amount == null || Amount.Value <= 0) {
-                return false;
+            if (!AddressValidator.Validate(Address, Helper.InvariantCulture).IsValid) {
+                if (AddressInvalidated != null) AddressInvalidated(this, EventArgs.Empty);
+                output = false;
             }
 
-            return true;
+            if (!AmountValidator.Validate(Amount, Helper.InvariantCulture).IsValid) {
+                if (AmountInvalidated != null) AmountInvalidated(this, EventArgs.Empty);
+                output = false;
+            }
+
+            return output;
         }
 
         public void RemoveSelf()

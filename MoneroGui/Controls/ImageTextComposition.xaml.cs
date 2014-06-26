@@ -4,9 +4,13 @@ using System.Windows.Media.Imaging;
 
 namespace Jojatekok.MoneroGUI.Controls
 {
-    public partial class ButtonWithImage
+    public partial class ImageTextComposition
     {
-        public event EventHandler<RoutedEventArgs> Click;
+        public static readonly DependencyProperty TextProperty = DependencyProperty.RegisterAttached(
+            "Text",
+            typeof(string),
+            typeof(ImageTextComposition)
+        );
 
         private string _imageUri;
         public string ImageUri {
@@ -19,18 +23,13 @@ namespace Jojatekok.MoneroGUI.Controls
         }
 
         public string Text {
-            get { return TextBlock.Text; }
-            set { TextBlock.Text = value; }
+            get { return GetValue(TextProperty) as string; }
+            set { SetValue(TextProperty, value); }
         }
 
-        public ButtonWithImage()
+        public ImageTextComposition()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (Click != null) Click(this, e);
         }
     }
 }
