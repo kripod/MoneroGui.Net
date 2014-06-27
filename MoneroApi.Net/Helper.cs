@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Net;
+//using System.Net.NetworkInformation;
 using System.Threading;
 
 namespace Jojatekok.MoneroAPI
@@ -61,6 +62,18 @@ namespace Jojatekok.MoneroAPI
         {
             timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
+
+        //public static bool IsPortInUse(int port)
+        //{
+        //    var activeTcpListeners = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners();
+        //    for (var i = activeTcpListeners.Length - 1; i >= 0; i--) {
+        //        if (activeTcpListeners[i].Port == port) {
+        //            return true;
+        //        }
+        //    }
+
+        //    return false;
+        //}
 
         public static DateTime UnixTimeStampToDateTime(ulong unixTimeStamp)
         {

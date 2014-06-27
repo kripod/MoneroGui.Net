@@ -25,8 +25,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
 
+        //private Timer TimerCheckRpcAvailability { get; set; }
+        //private Timer TimerQueryBalance { get; set; }
         private Timer TimerRefresh { get; set; }
-        private Timer TimerQueryBalance { get; set; }
         private Timer TimerSaveWallet { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
@@ -70,8 +71,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Paths = paths;
 
+            //TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
+            //TimerQueryBalance = new Timer(delegate { QueryBalance(); });
             TimerRefresh = new Timer(delegate { Refresh(); });
-            TimerQueryBalance = new Timer(delegate { QueryBalance(); });
             TimerSaveWallet = new Timer(delegate { SaveWallet(); });
         }
 
@@ -92,7 +94,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            ProcessArgumentsExtra.Add("--password \"" + passphrase + "\"");
+            if (!string.IsNullOrEmpty(passphrase)) {
+                ProcessArgumentsExtra.Add("--password \"" + passphrase + "\"");
+            }
 
             // TODO: Enable RPC mode
             //ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
@@ -111,28 +115,47 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
 
             Debug.Assert(ProcessArgumentsExtra != null, "ProcessArgumentsExtra != null");
-            var x = string.Join(" ", ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+
+            // Constantly check for the RPC port's activeness
+            //TimerCheckRpcAvailability.Change(5000, 1000);
         }
 
-        private void StartRpcServices()
-        {
-            TimerQueryBalance.Change(0, 10000);
-            TimerSaveWallet.Change(120000, 120000);
-        }
+        //private void StartRpcServices()
+        //{
+        //    QueryAddress();
+        //    TimerQueryBalance.Change(0, 10000);
+        //    TimerSaveWallet.Change(120000, 120000);
+        //}
 
         internal void RequestPassphrase(bool isFirstTime)
         {
             if (PassphraseRequested != null) PassphraseRequested(this, new PassphraseRequestedEventArgs(isFirstTime));
         }
 
-        private void QueryBalance()
-        {
-            var output = RpcWebClient.JsonQueryData<Balance>(RpcPortType.Wallet, new GetBalance());
+        //private void CheckRpcAvailability()
+        //{
+        //    if (Helper.IsPortInUse(RpcWebClient.PortWallet)) {
+        //        TimerCheckRpcAvailability.Stop();
+        //        StartRpcServices();
+        //    }
+        //}
 
-            if (BalanceChanging != null) BalanceChanging(this, new BalanceChangingEventArgs(output));
-            Balance = output;
-        }
+        //private void QueryAddress()
+        //{
+        //    var output = RpcWebClient.JsonQueryData<Address>(RpcPortType.Wallet, new GetAddress());
+
+        //    Address = output.Value;
+        //    if (AddressReceived != null) AddressReceived(this, new AddressReceivedEventArgs(Address));
+        //}
+
+        //private void QueryBalance()
+        //{
+        //    var output = RpcWebClient.JsonQueryData<Balance>(RpcPortType.Wallet, new GetBalance());
+
+        //    if (BalanceChanging != null) BalanceChanging(this, new BalanceChangingEventArgs(output));
+        //    Balance = output;
+        //}
 
         private void SaveWallet()
         {
@@ -184,14 +207,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            if (BalanceChanging != null && dataLower.Contains("balance")) {
+            if (dataLower.Contains("balance")) {
                 var match = Regex.Match(dataLower, "balance: ([0-9\\.,]*), unlocked balance: ([0-9\\.,]*)");
                 if (match.Success) {
                     var total = double.Parse(match.Groups[1].Value, Helper.InvariantCulture);
                     var spendable = double.Parse(match.Groups[2].Value, Helper.InvariantCulture);
 
                     var newValue = new Balance(total, spendable);
-                    BalanceChanging(this, new BalanceChangingEventArgs(newValue));
+                    if (BalanceChanging != null) BalanceChanging(this, new BalanceChangingEventArgs(newValue));
                     Balance = newValue;
                 }
 
@@ -253,11 +276,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Initializers -->
 
-            if (dataLower.Contains("run net_service loop")) {
-                // RPC server initialized
-                StartRpcServices();
-            }
-
             if (dataLower.Contains(" wallet v")) {
                 // Startup commands
                 GetBalance();
@@ -266,9 +284,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 return;
             }
 
-            if (AddressReceived != null && (dataLower.Contains("opened wallet: ") || dataLower.Contains("generated new wallet: "))) {
+            if (dataLower.Contains("opened wallet: ") || dataLower.Contains("generated new wallet: ")) {
                 Address = data.Substring(data.IndexOf(':') + 2);
-                AddressReceived(this, new AddressReceivedEventArgs(Address));
+                if (AddressReceived != null) AddressReceived(this, new AddressReceivedEventArgs(Address));
                 return;
             }
 
@@ -348,11 +366,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
+                //TimerCheckRpcAvailability.Dispose();
+                //TimerCheckRpcAvailability = null;
+
+                //TimerQueryBalance.Dispose();
+                //TimerQueryBalance = null;
+
                 TimerRefresh.Dispose();
                 TimerRefresh = null;
-
-                TimerQueryBalance.Dispose();
-                TimerQueryBalance = null;
 
                 TimerSaveWallet.Dispose();
                 TimerSaveWallet = null;
