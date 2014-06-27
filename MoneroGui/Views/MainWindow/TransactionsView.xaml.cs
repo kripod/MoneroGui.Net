@@ -3,7 +3,6 @@ using Microsoft.Win32;
 using System;
 using System.Data;
 using System.Diagnostics;
-using System.Globalization;
 using System.Windows;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
@@ -48,7 +47,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                     dataTable.Rows.Add(transaction.Number,
                                        transaction.Type,
                                        transaction.IsAmountSpendable,
-                                       transaction.Amount.ToString("G", CultureInfo.InstalledUICulture),
+                                       transaction.Amount.ToString("G", Helper.DefaultUiCulture),
                                        "=\"" + transaction.TransactionId + "\"");
                 }
 

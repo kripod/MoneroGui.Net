@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Net;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Jojatekok.MoneroAPI
 {
@@ -22,19 +22,14 @@ namespace Jojatekok.MoneroAPI
 
         public static readonly JobManager JobManager = new JobManager();
 
-        internal static DateTime UnixTimeStampToDateTime(ulong unixTimeStamp)
+        public static string GetResponseString(this HttpWebRequest request)
         {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTimeStamp);
-        }
-
-        public static async Task<string> GetResponseStringAsync(this HttpWebRequest request)
-        {
-            using (var response = await request.GetResponseAsync()) {
+            using (var response = request.GetResponse()) {
                 using (var stream = response.GetResponseStream()) {
                     if (stream == null) throw new NullReferenceException("The HttpWebRequest's response stream is empty.");
 
                     using (var reader = new StreamReader(stream)) {
-                        return await reader.ReadToEndAsync();
+                        return reader.ReadToEnd();
                     }
                 }
             }
@@ -60,6 +55,16 @@ namespace Jojatekok.MoneroAPI
 
                 return stringWriter.ToString();
             }
+        }
+
+        public static void Stop(this Timer timer)
+        {
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
+        }
+
+        public static DateTime UnixTimeStampToDateTime(ulong unixTimeStamp)
+        {
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTimeStamp);
         }
     }
 }

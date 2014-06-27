@@ -1,15 +1,45 @@
 ﻿using Jojatekok.MoneroAPI;
 using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace Jojatekok.MoneroGUI
 {
-    public class ConverterTransactionTypeToString : IValueConverter
+    public class ConverterTransactionTypeToString : DependencyObject, IValueConverter
     {
-        public string UnknownValue { get; set; }
-        public string ReceiveValue { get; set; }
-        public string SendValue { get; set; }
+        public static readonly DependencyProperty UnknownValueProperty = DependencyProperty.RegisterAttached(
+            "UnknownValue",
+            typeof(string),
+            typeof(ConverterTransactionTypeToString)
+        );
+
+        public string UnknownValue {
+            private get { return GetValue(UnknownValueProperty) as string; }
+            set { SetValue(UnknownValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty ReceiveValueProperty = DependencyProperty.RegisterAttached(
+            "ReceiveValue",
+            typeof(string),
+            typeof(ConverterTransactionTypeToString)
+        );
+
+        public string ReceiveValue {
+            private get { return GetValue(ReceiveValueProperty) as string; }
+            set { SetValue(ReceiveValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty SendValueProperty = DependencyProperty.RegisterAttached(
+            "SendValue",
+            typeof(string),
+            typeof(ConverterTransactionTypeToString)
+        );
+
+        public string SendValue {
+            private get { return GetValue(SendValueProperty) as string; }
+            set { SetValue(SendValueProperty, value); }
+        }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

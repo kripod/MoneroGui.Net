@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
@@ -50,28 +49,28 @@
         </ListBox>
 
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="10" LastChildFill="True">
-            <TextBlock Text="{Binding Source={x:Static p:Resources.TextPaymentId}}" VerticalAlignment="Center" Margin="0 0 8 8"/>
-            <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Watermark="{x:Static p:Resources.TextHintOptional}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
+            <TextBlock Text="{Binding Path=TextPaymentId, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 8 8"/>
+            <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Watermark="{Binding Path=TextHintOptional, Source={StaticResource Resources}}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
         </DockPanel>
 
         <Button Grid.Row="2" Grid.Column="0" Click="ButtonAddRecipient_Click" Margin="0 0 8 0">
-            <controls:ImageTextComposition Text="{x:Static p:Resources.SendCoinsAddRecipient}" ImageUri="/Resources/Images/Add.png"/>
+            <controls:ImageTextComposition Text="{Binding Path=SendCoinsAddRecipient, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Add.png"/>
         </Button>
         <Button Grid.Row="2" Grid.Column="1" Click="ButtonClearRecipients_Click" Margin="0 0 8 0">
-            <controls:ImageTextComposition Text="{x:Static p:Resources.SendCoinsClearRecipients}" ImageUri="/Resources/Images/Delete.png"/>
+            <controls:ImageTextComposition Text="{Binding Path=SendCoinsClearRecipients, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Delete.png"/>
         </Button>
 
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="{x:Static p:Resources.SendCoinsMixCount}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Path=SendCoinsMixCount, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
         <xctk:IntegerUpDown Grid.Row="2" Grid.Column="5" x:Name="IntegerUpDownMixCount" Minimum="0"/>
         <Separator Grid.Row="2" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
 
         <TextBlock Grid.Row="2" Grid.Column="7" VerticalAlignment="Center">
-            <TextBlock Text="{Binding Source={x:Static p:Resources.SendCoinsBalance}}"/>
+            <TextBlock Text="{Binding Path=SendCoinsBalance, Source={StaticResource Resources}}"/>
             <TextBlock>
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
                         <Binding Path="BalanceSpendable" TargetNullValue="?"/>
-                        <Binding Source="{x:Static p:Resources.TextCurrencyCode}"/>
+                        <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
@@ -79,7 +78,7 @@
         <Separator Grid.Row="2" Grid.Column="8" Style="{StaticResource StyleSeparatorVertical}"/>
 
         <Button Grid.Row="2" Grid.Column="9" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click">
-            <controls:ImageTextComposition Text="{x:Static p:Resources.TextSend}" ImageUri="/Resources/Images/Send.png"/>
+            <controls:ImageTextComposition Text="{Binding Path=TextSend, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Send.png"/>
         </Button>
     </Grid>
 </UserControl>

@@ -7,10 +7,9 @@ namespace Jojatekok.MoneroGUI
         App()
         {
             var languageCode = SettingsManager.Appearance.LanguageCode;
-            var cultureInfo = languageCode == Helper.DefaultLanguageCode ? CultureInfo.CurrentCulture : new CultureInfo(languageCode);
+            var languageCulture = languageCode == StaticObjects.DefaultLanguageCode ? Helper.DefaultUiCulture : new CultureInfo(languageCode);
 
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+            CultureManager.CurrentCulture = languageCulture;
         }
     }
 }

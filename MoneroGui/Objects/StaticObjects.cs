@@ -1,4 +1,5 @@
 ﻿using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroGUI.Windows;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -13,6 +14,8 @@ namespace Jojatekok.MoneroGUI
 {
     static class StaticObjects
     {
+        public const string DefaultLanguageCode = "default";
+
         public const string StringFormatCurrencyDefault = "0.000000000000";
         public const string StringFormatCurrencyBalance = "{0:" + StringFormatCurrencyDefault + "} {1}";
 
@@ -33,6 +36,8 @@ namespace Jojatekok.MoneroGUI
 
         public static readonly Version ApplicationVersion = ApplicationAssemblyName.Version;
         public static readonly string ApplicationVersionString = ApplicationVersion.ToString(3);
+
+        public static MainWindow MainWindow { get; internal set; }
 
         public static MoneroClient MoneroClient { get; private set; }
 

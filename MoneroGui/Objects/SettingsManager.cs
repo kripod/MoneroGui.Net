@@ -207,7 +207,7 @@ namespace Jojatekok.MoneroGUI
                 this.SetDefaultSectionInformation();
             }
 
-            [ConfigurationProperty("languageCode", DefaultValue = Helper.DefaultLanguageCode)]
+            [ConfigurationProperty("languageCode", DefaultValue = StaticObjects.DefaultLanguageCode)]
             public string LanguageCode {
                 get { return base["languageCode"] as string; }
                 set {

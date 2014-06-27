@@ -1,24 +1,23 @@
 ﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.DebugWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.DebugWindow"
-        Title="{x:Static p:Resources.DebugWindowTitle}"
+        Title="{Binding Path=DebugWindowTitle, Source={StaticResource Resources}}"
         Width="700" Height="500" MinWidth="300" MinHeight="250">
     <TabControl Margin="10">
-        <TabItem Header="{x:Static p:Resources.DebugWindowInformation}">
+        <TabItem Header="{Binding Path=DebugWindowInformation, Source={StaticResource Resources}}">
             <Grid Margin="5">
                 
             </Grid>
         </TabItem>
 
-        <TabItem Header="{x:Static p:Resources.DebugWindowConsoles}" IsSelected="True">
+        <TabItem Header="{Binding Path=DebugWindowConsoles, Source={StaticResource Resources}}" IsSelected="True">
             <TabControl Margin="5">
-                <TabItem Header="{x:Static p:Resources.DebugWindowConsoleDaemon}">
+                <TabItem Header="{Binding Path=DebugWindowConsoleDaemon, Source={StaticResource Resources}}">
                     <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{x:Static p:Resources.TextWallet}">
+                <TabItem Header="{Binding Path=TextWallet, Source={StaticResource Resources}}">
                     <views:DebugConsoleView x:Name="ConsoleWallet" SendRequested="ConsoleWallet_SendRequested" Margin="5"/>
                 </TabItem>
             </TabControl>

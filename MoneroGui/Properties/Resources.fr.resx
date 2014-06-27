@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -127,7 +127,7 @@
     <value>Envoyer</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Daemon</value>
+    <value>Processus</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Consoles</value>
@@ -142,7 +142,7 @@
     <value>Address book</value>
   </data>
   <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
-    <value>Le Client Monero est en train de s&apos;éteindre...</value>
+    <value>Le Client Monero est en train de s'éteindre...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Aperçu</value>
@@ -160,10 +160,10 @@
     <value>_A propos du Client Monero</value>
   </data>
   <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Backup wallet...</value>
+    <value>Sauvegarder le portefeuille</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Change wallet passphrase...</value>
+    <value>_Modification de la clef secrète du portefeuille...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Fenêtre de Débogage</value>
@@ -187,7 +187,7 @@
     <value>_Options</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Configuration</value>
+    <value>_Configurations</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
     <value>_Débloquer le portefeuille...</value>
@@ -214,16 +214,16 @@
     <value>Entrer une adresse Monero</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Entrer un label pour cette adresse afin de l&apos;ajouter à votre portefeuille d&apos;adresse</value>
+    <value>Entrer un libellé pour cette adresse afin de l'ajouter à votre portefeuille d'adresse</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Mix count:</value>
+    <value>Nombre:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Payment ID:</value>
+    <value>Identifiant de Paiement:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Cet emplacement est optionnel</value>
+    <value>Ce champ est optionnel</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
     <value>connections</value>
@@ -244,7 +244,7 @@
     <value>Montant</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Label</value>
+    <value>Libellé</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
     <value>Type</value>
@@ -271,13 +271,13 @@
     <value>A propos du Client Monero</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Error: The license file cannot be found.</value>
+    <value>Erreur: Le fichier de licence est introuvable.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Loading license file...</value>
+    <value>Chargement de la licence...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Third-party licenses</value>
+    <value>Licences de tierce partie</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
     <value>Copier</value>
@@ -303,10 +303,10 @@
   <data name="OptionsAppearance" xml:space="preserve">
     <value>Apparence</value>
   </data>
-  <data name="OptionsDisplayLanguage" xml:space="preserve">
-    <value>Interface de langage de l&apos;utilisateur</value>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Langue de l’interface utilisateur:</value>
   </data>
-  <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
     <value>Défaut</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
@@ -331,25 +331,25 @@
     <value>Logiciel du portefeuille:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Sauvegarder les bases de données avant d&apos;éteindre</value>
+    <value>Sauvegarder les bases de données avant d'éteindre</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
     <value>Lancer le Client Monero au démarrage du système</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Copier l&apos;adresse</value>
+    <value>Copier l'adresse</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
     <value>Tous les fichiers*</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executables (*.exe)|*.exe</value>
+    <value>Exécutables (*.exe)|*.exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Wallet files (*.bin)|*.bin</value>
+    <value>Fichiers portefeuille (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated file (*.csv)|*.csv</value>
+    <value>Fichier séparateur point virgule (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>jours</value>
@@ -376,71 +376,66 @@
     <value>Éditer </value>
   </data>
   <data name="TextPaste" xml:space="preserve">
-    <value>Paste</value>
+    <value>Coller</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG files (*.png)|*.png</value>
+    <value>Fichier PNG (*.png)|*.png</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Message:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Save as...</value>
-  </data>
-  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
-    <value>The resulting URI is too long.
-
-Please try to reduce the length of your inputs!</value>
+    <value>Enregistrer sous...</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR code</value>
   </data>
   <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Balance:</value>
+    <value>Solde:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
-    <value>Remove recipient</value>
+    <value>Retirer un destinataire</value>
   </data>
   <data name="SendCoinsAddRecipient" xml:space="preserve">
-    <value>Add recipient</value>
+    <value>Ajouter un destinataire</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
-    <value>Clear recipients</value>
+    <value>Effacer les destinataires</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Error</value>
+    <value>Erreur</value>
   </data>
   <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
-    <value>again</value>
+    <value>encore</value>
   </data>
   <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
-    <value>Current passphrase:</value>
+    <value>Clef secrète du portefeuille:</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Use a passphrase for your wallet in order to keep it safe!</value>
+    <value>Utiliser une clef secrète pour votre portefeuille afin de le garder en sécurité!</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
-    <value>(It&apos;s recommended to use at least 10 random characters or 8 words.)</value>
+    <value>(Il est recommandé d'utiliser au moins 10 caractères aléatoires ou 8 mots.)</value>
   </data>
   <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
-    <value>New passphrase</value>
+    <value>Nouvelle clef secrète</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
-    <value>Passphrase</value>
+    <value>Clef secrète</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Change wallet passphrase</value>
+    <value>Modifier la clef secrète du portefeuille</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Encrypt wallet</value>
+    <value>Crypter le portefeuille</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
-    <value>The supplied passphrases do not match.</value>
+    <value>Les deux clefs secrètes ne correspondent pas.</value>
   </data>
   <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Unlock wallet</value>
+    <value>Déverrouillage du portefeuille</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Please enter your passphrase in order to access your wallet.</value>
+    <value>Entrer votre clef secrète afin d’accéder au portefeuille.</value>
   </data>
 </root>

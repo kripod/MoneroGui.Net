@@ -303,10 +303,10 @@
   <data name="OptionsAppearance" xml:space="preserve">
     <value>Megjelenés</value>
   </data>
-  <data name="OptionsDisplayLanguage" xml:space="preserve">
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
     <value>Felhasználói felület nyelve:</value>
   </data>
-  <data name="OptionsDisplayLanguageNameDefault" xml:space="preserve">
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
     <value>Alapértelmezett</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">

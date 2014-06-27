@@ -5,7 +5,7 @@ using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
@@ -17,6 +17,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private static readonly string[] ProcessArgumentsDefault = { "--log-level 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
+
+        private Timer TimerQueryNetworkInformation { get; set; }
+        private Timer TimerSaveBlockchain { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
 
@@ -35,6 +38,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 "--rpc-bind-ip " + RpcWebClient.Host,
                 "--rpc-bind-port " + RpcWebClient.PortDaemon
             };
+
+            TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
+            TimerSaveBlockchain = new Timer(delegate { SaveBlockchain(); });
         }
 
         public void Start()
@@ -44,51 +50,34 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void StartRpcServices()
         {
-            AutoQueryNetworkInformationAsync();
-            AutoSaveBlockchainAsync();
+            TimerQueryNetworkInformation.Change(0, 750);
+            TimerSaveBlockchain.Change(120000, 120000);
         }
 
-        private async void AutoQueryNetworkInformationAsync()
+        private void QueryNetworkInformation()
         {
-            while (!IsTaskCancellationRequested) {
-                if (NetworkInformationChanging != null) {
-                    var output = await RpcWebClient.HttpGetDataAsync<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
-                    if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
-                        var blockHeaderValueContainer = await RpcWebClient.JsonQueryDataAsync<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
-                        if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
-                            output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
+            if (NetworkInformationChanging != null) {
+                var output = RpcWebClient.HttpGetData<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
+                if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
+                    var blockHeaderValueContainer = RpcWebClient.JsonQueryData<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
+                    if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
+                        output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
 
-                            NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
-                            NetworkInformation = output;
+                        NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
+                        NetworkInformation = output;
 
-                            if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
-                                IsBlockchainSynced = true;
-                                if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
-                            }
+                        if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
+                            IsBlockchainSynced = true;
+                            if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
                         }
                     }
                 }
-
-                try {
-                    await Task.Delay(750, TaskCancellation.Token);
-                } catch {
-                    return;
-                }
             }
         }
 
-        private async void AutoSaveBlockchainAsync()
+        private void SaveBlockchain()
         {
-            while (!IsTaskCancellationRequested) {
-                // TODO: Add support for custom intervals
-                try {
-                    await Task.Delay(120000, TaskCancellation.Token);
-                } catch {
-                    return;
-                }
-
-                await RpcWebClient.HttpGetDataAsync<HttpRpcResponse>(RpcPortType.Daemon, RpcRelativeUrls.DaemonSaveBlockchain);
-            }
+            RpcWebClient.HttpGetData<HttpRpcResponse>(RpcPortType.Daemon, RpcRelativeUrls.DaemonSaveBlockchain);
         }
 
         private void Process_OutputReceived(object sender, string e)
@@ -100,6 +89,25 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 IsRpcInitialized = true;
                 if (RpcInitialized != null) RpcInitialized(this, EventArgs.Empty);
+            }
+        }
+
+        public new void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing) {
+                TimerQueryNetworkInformation.Dispose();
+                TimerQueryNetworkInformation = null;
+
+                TimerSaveBlockchain.Dispose();
+                TimerSaveBlockchain = null;
+
+                base.Dispose();
             }
         }
     }

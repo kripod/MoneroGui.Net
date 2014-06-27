@@ -22,9 +22,9 @@ namespace Jojatekok.MoneroGUI
 {
     static class Helper
     {
-        public const string DefaultLanguageCode = "default";
-
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
+        public static readonly CultureInfo DefaultUiCulture = CultureInfo.InstalledUICulture;
+
         public static readonly string NewLineString = Environment.NewLine;
 
         public static string UppercaseFirst(this string input)

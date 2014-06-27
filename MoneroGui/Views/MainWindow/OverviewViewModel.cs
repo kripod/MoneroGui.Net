@@ -1,5 +1,4 @@
 ﻿using Jojatekok.MoneroAPI;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -67,8 +66,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private ReadOnlyObservableCollection<Transaction> _transactionDataSource;
-        public ReadOnlyObservableCollection<Transaction> TransactionDataSource {
+        private ConcurrentReadOnlyObservableCollection<Transaction> _transactionDataSource;
+        public ConcurrentReadOnlyObservableCollection<Transaction> TransactionDataSource {
             get { return _transactionDataSource; }
 
             set {

@@ -1,13 +1,33 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace Jojatekok.MoneroGUI
 {
-    public class ConverterBooleanToString : IValueConverter
+    public class ConverterBooleanToString : DependencyObject, IValueConverter
     {
-        public string FalseValue { get; set; }
-        public string TrueValue { get; set; }
+        public static readonly DependencyProperty FalseValueProperty = DependencyProperty.RegisterAttached(
+            "FalseValue",
+            typeof(string),
+            typeof(ConverterBooleanToString)
+        );
+
+        public static readonly DependencyProperty TrueValueProperty = DependencyProperty.RegisterAttached(
+            "TrueValue",
+            typeof(string),
+            typeof(ConverterBooleanToString)
+        );
+
+        public string FalseValue {
+            private get { return GetValue(FalseValueProperty) as string; }
+            set { SetValue(FalseValueProperty, value); }
+        }
+
+        public string TrueValue {
+            private get { return GetValue(TrueValueProperty) as string; }
+            set { SetValue(TrueValueProperty, value); }
+        }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

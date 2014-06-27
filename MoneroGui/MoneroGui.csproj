@@ -92,6 +92,7 @@
       <DependentUpon>CoinSender.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ImageGreyable.cs" />
+    <Compile Include="Objects\CultureManager.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleDoubleBiggerThanZero.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleAddress.cs" />
     <Compile Include="Objects\Exporter.cs" />

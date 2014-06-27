@@ -1,5 +1,4 @@
 ﻿using Jojatekok.MoneroAPI;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -7,8 +6,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class TransactionsViewModel : INotifyPropertyChanged
     {
-        private ReadOnlyObservableCollection<Transaction> _dataSource;
-        public ReadOnlyObservableCollection<Transaction> DataSource {
+        private ConcurrentReadOnlyObservableCollection<Transaction> _dataSource;
+        public ConcurrentReadOnlyObservableCollection<Transaction> DataSource {
             get { return _dataSource; }
 
             set {

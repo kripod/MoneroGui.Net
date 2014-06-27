@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
@@ -25,8 +24,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAddress}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxAddress" Watermark="{x:Static p:Resources.TextHintAddress}" FontFamily="Lucida Console" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 5">
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=TextAddress, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxAddress" Watermark="{Binding Path=TextHintAddress, Source={StaticResource Resources}}" FontFamily="Lucida Console" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 5">
             <xctk:WatermarkTextBox.Text>
                 <Binding Path="Address" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -35,20 +34,20 @@
                 </Binding>
             </xctk:WatermarkTextBox.Text>
         </xctk:WatermarkTextBox>
-        <Button Grid.Row="0" Grid.Column="4" ToolTip="{x:Static p:Resources.TextAddressBook}" Click="ButtonAddressBook_Click" VerticalAlignment="Top" Padding="0">
+        <Button Grid.Row="0" Grid.Column="4" ToolTip="{Binding Path=TextAddressBook, Source={StaticResource Resources}}" Click="ButtonAddressBook_Click" VerticalAlignment="Top" Padding="0">
             <Image Source="/Resources/Images/Contact.png" Margin="2"/>
         </Button>
-        <Button Grid.Row="0" Grid.Column="5" ToolTip="{x:Static p:Resources.TextPaste}" Click="ButtonPasteAddress_Click" VerticalAlignment="Top" Padding="0" Margin="3 0">
+        <Button Grid.Row="0" Grid.Column="5" ToolTip="{Binding Path=TextPaste, Source={StaticResource Resources}}" Click="ButtonPasteAddress_Click" VerticalAlignment="Top" Padding="0" Margin="3 0">
             <Image Source="/Resources/Images/Paste.png" Margin="2"/>
         </Button>
-        <Button Grid.Row="0" Grid.Column="6" ToolTip="{x:Static p:Resources.CoinSenderRemoveRecipient}" Click="ButtonRemoveSelf_Click" VerticalAlignment="Top" Padding="0">
+        <Button Grid.Row="0" Grid.Column="6" ToolTip="{Binding Path=CoinSenderRemoveRecipient, Source={StaticResource Resources}}" Click="ButtonRemoveSelf_Click" VerticalAlignment="Top" Padding="0">
             <Image Source="/Resources/Images/Delete.png" Margin="2"/>
         </Button>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextLabel}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" x:Name="TextBoxLabel" Text="{Binding Path=Label}" Watermark="{x:Static p:Resources.TextHintLabel}" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=TextLabel, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" x:Name="TextBoxLabel" Text="{Binding Path=Label}" Watermark="{Binding Path=TextHintLabel, Source={StaticResource Resources}}" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Source={x:Static p:Resources.TextAmount}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=TextAmount, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
         <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Minimum="0" Increment="0.001" FormatString="{x:Static objects:StaticObjects.StringFormatCurrencyDefault}">
             <xctk:DoubleUpDown.Value>
                 <Binding Path="Amount" UpdateSourceTrigger="PropertyChanged">
@@ -58,6 +57,6 @@
                 </Binding>
             </xctk:DoubleUpDown.Value>
         </xctk:DoubleUpDown>
-        <TextBlock Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Text="{x:Static p:Resources.TextCurrencyCode}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="3" Text="{Binding Path=TextCurrencyCode, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

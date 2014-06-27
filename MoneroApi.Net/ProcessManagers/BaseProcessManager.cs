@@ -12,29 +12,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         protected event EventHandler<string> OutputReceived;
         protected event EventHandler<string> ErrorReceived;
 
-        protected CancellationTokenSource TaskCancellation;
-
         private Process Process { get; set; }
         private string Path { get; set; }
 
         protected bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
-        }
-
-        protected bool IsTaskCancellationRequested
-        {
-            get { return !IsProcessAlive || (TaskCancellation != null && TaskCancellation.IsCancellationRequested); }
-
-            set {
-                if (value) {
-                    if (TaskCancellation == null) TaskCancellation = new CancellationTokenSource();
-                    TaskCancellation.Cancel(false);
-
-                } else {
-                    if (TaskCancellation != null) TaskCancellation.Dispose();
-                    TaskCancellation = new CancellationTokenSource();
-                }
-            }
         }
 
         protected BaseProcessManager(string path) {
@@ -60,32 +42,32 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Process.StartInfo.Arguments = string.Join(" ", arguments);
             }
 
+            Process.ErrorDataReceived += Process_ErrorDataReceived;
+            Process.OutputDataReceived += Process_OutputDataReceived;
             Process.Exited += Process_Exited;
 
             Process.Start();
             Helper.JobManager.AddProcess(Process);
-
-            ReadLineAsync(true);
-            ReadLineAsync(false);
-
-            IsTaskCancellationRequested = false;
+            Process.BeginErrorReadLine();
+            Process.BeginOutputReadLine();
         }
 
-        private async void ReadLineAsync(bool isError)
+        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            while (!IsTaskCancellationRequested) {
-                var reader = isError ? Process.StandardError : Process.StandardOutput;
-                var line = await reader.ReadLineAsync();
-                if (line == null) continue;
+            var line = e.Data;
+            if (line == null) return;
 
-                if (OnLogMessage != null) OnLogMessage(this, line);
+            if (OnLogMessage != null) OnLogMessage(this, line);
+            if (ErrorReceived != null) ErrorReceived(this, line);
+        }
 
-                if (isError) {
-                    if (ErrorReceived != null) ErrorReceived(this, line);
-                } else {
-                    if (OutputReceived != null) OutputReceived(this, line);
-                }
-            }
+        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            var line = e.Data;
+            if (line == null) return;
+
+            if (OnLogMessage != null) OnLogMessage(this, line);
+            if (OutputReceived != null) OutputReceived(this, line);
         }
 
         public void Send(string input)
@@ -98,13 +80,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         protected void KillBaseProcess()
         {
-            IsTaskCancellationRequested = true;
-
-            if (IsProcessAlive) Process.Kill();
+            if (IsProcessAlive) {
+                Process.Kill();
+            }
         }
 
         private void Process_Exited(object sender, EventArgs e)
         {
+            Process.CancelOutputRead();
+            Process.CancelErrorRead();
+
             if (Exited != null) Exited(this, Process.ExitCode);
         }
 
@@ -117,8 +102,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                IsTaskCancellationRequested = true;
-
                 if (Process != null) {
 #if DEBUG // Unsafe shutdown
                     KillBaseProcess();
@@ -137,8 +120,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     Process.Dispose();
                     Process = null;
                 }
-
-                if (TaskCancellation != null) TaskCancellation.Dispose();
             }
         }
     }

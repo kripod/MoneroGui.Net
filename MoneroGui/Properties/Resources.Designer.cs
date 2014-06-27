@@ -333,18 +333,18 @@ namespace Jojatekok.MoneroGUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to User Interface language:.
         /// </summary>
-        public static string OptionsDisplayLanguage {
+        public static string OptionsAppearanceLanguage {
             get {
-                return ResourceManager.GetString("OptionsDisplayLanguage", resourceCulture);
+                return ResourceManager.GetString("OptionsAppearanceLanguage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
-        public static string OptionsDisplayLanguageNameDefault {
+        public static string OptionsAppearanceLanguageNameDefault {
             get {
-                return ResourceManager.GetString("OptionsDisplayLanguageNameDefault", resourceCulture);
+                return ResourceManager.GetString("OptionsAppearanceLanguageNameDefault", resourceCulture);
             }
         }
         

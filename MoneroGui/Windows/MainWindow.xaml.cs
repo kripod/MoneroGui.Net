@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -29,6 +30,8 @@ namespace Jojatekok.MoneroGUI.Windows
 
         public MainWindow()
         {
+            StaticObjects.MainWindow = this;
+
             Icon = StaticObjects.ApplicationIcon;
 
             InitializeComponent();
@@ -136,23 +139,27 @@ namespace Jojatekok.MoneroGUI.Windows
         private void Daemon_NetworkInformationChanging(object sender, NetworkInformationChangingEventArgs e)
         {
             var newValue = e.NewValue;
-            var statusBarViewModel = StatusBar.ViewModel;
 
-            statusBarViewModel.ConnectionCount = (ushort)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
+            var connectionCount = (ushort)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
+            var syncBarText = string.Format(Helper.InvariantCulture,
+                                            Properties.Resources.StatusBarSyncTextMain,
+                                            newValue.BlockHeightRemaining,
+                                            newValue.BlockTimeRemaining.ToStringReadable());
 
-            statusBarViewModel.BlocksTotal = newValue.BlockHeightTotal;
-            statusBarViewModel.BlocksDownloaded = newValue.BlockHeightDownloaded;
+            InvokeForDataChanging(() => {
+                var statusBarViewModel = StatusBar.ViewModel;
 
-            statusBarViewModel.SyncBarText = string.Format(Helper.InvariantCulture,
-                                                           Properties.Resources.StatusBarSyncTextMain,
-                                                           newValue.BlockHeightRemaining,
-                                                           newValue.BlockTimeRemaining.ToStringReadable());
-            statusBarViewModel.SyncBarVisibility = Visibility.Visible;
+                statusBarViewModel.ConnectionCount = connectionCount;
+                statusBarViewModel.BlocksTotal = newValue.BlockHeightTotal;
+                statusBarViewModel.BlocksDownloaded = newValue.BlockHeightDownloaded;
+                statusBarViewModel.SyncBarText = syncBarText;
+                statusBarViewModel.SyncBarVisibility = Visibility.Visible;
+            });
         }
 
         private void Daemon_BlockchainSynced(object sender, EventArgs e)
         {
-            StatusBar.ViewModel.SyncBarVisibility = Visibility.Hidden;
+            InvokeForDataChanging(() => StatusBar.ViewModel.SyncBarVisibility = Visibility.Hidden);
         }
 
         private static void Wallet_OnLogMessage(object sender, string e)
@@ -162,40 +169,49 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
-            if (e.IsFirstTime) {
-                // Let the user set the wallet's passphrase for the first time
-                var dialog = new WalletChangePassphraseWindow(this, false);
-                if (dialog.ShowDialog() == true) {
-                    MoneroClient.Wallet.Passphrase = dialog.NewPassphrase;
-                } else {
-                    MoneroClient.Wallet.Passphrase = null;
-                }
+            Dispatcher.Invoke(() => {
+                if (e.IsFirstTime) {
+                    // Let the user set the wallet's passphrase for the first time
+                    var dialog = new WalletChangePassphraseWindow(this, false);
+                    if (dialog.ShowDialog() == true) {
+                        MoneroClient.Wallet.Passphrase = dialog.NewPassphrase;
+                    } else {
+                        MoneroClient.Wallet.Passphrase = null;
+                    }
 
-            } else {
-                // Request the wallet's passphrase in order to unlock it
-                var dialog = new WalletUnlockWindow(this);
-                if (dialog.ShowDialog() == true) {
-                    MoneroClient.Wallet.Passphrase = dialog.Passphrase;
+                } else {
+                    // Request the wallet's passphrase in order to unlock it
+                    var dialog = new WalletUnlockWindow(this);
+                    if (dialog.ShowDialog() == true) {
+                        MoneroClient.Wallet.Passphrase = dialog.Passphrase;
+                    }
                 }
-            }
+            });
         }
 
         private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)
         {
-            OverviewView.ViewModel.Address = e.Address;
+            InvokeForDataChanging(() => OverviewView.ViewModel.Address = e.Address);
         }
 
         private void Wallet_BalanceChanging(object sender, BalanceChangingEventArgs e)
         {
             var newValue = e.NewValue;
 
-            var overviewViewModel = OverviewView.ViewModel;
-            overviewViewModel.BalanceSpendable = newValue.Spendable;
-            overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
+            InvokeForDataChanging(() => {
+                var overviewViewModel = OverviewView.ViewModel;
+                overviewViewModel.BalanceSpendable = newValue.Spendable;
+                overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
 
-            var sendCoinsViewModel = SendCoinsView.ViewModel;
-            sendCoinsViewModel.BalanceSpendable = newValue.Spendable;
-            sendCoinsViewModel.IsSendingEnabled = true;
+                var sendCoinsViewModel = SendCoinsView.ViewModel;
+                sendCoinsViewModel.BalanceSpendable = newValue.Spendable;
+                sendCoinsViewModel.IsSendingEnabled = true;
+            });
+        }
+
+        private void InvokeForDataChanging(Action callback)
+        {
+            Dispatcher.Invoke(callback, DispatcherPriority.DataBind);
         }
 
         public void Dispose()

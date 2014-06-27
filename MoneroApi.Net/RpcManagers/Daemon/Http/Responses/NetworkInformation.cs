@@ -6,7 +6,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
     public class NetworkInformation : HttpRpcResponse
     {
         [JsonProperty("alt_blocks_count")]
-        public int AltBlocksCount { get; private set; }
+        public int AlternativeBlockCount { get; private set; }
 
         [JsonProperty("difficulty")]
         public ulong BlockDifficulty { get; private set; }

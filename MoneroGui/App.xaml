@@ -1,13 +1,14 @@
 ﻿<Application x:Class="Jojatekok.MoneroGUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:p="clr-namespace:Jojatekok.MoneroGUI.Properties"
              xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              StartupUri="Windows\MainWindow.xaml">
     <Application.Resources>
-        <objects:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{x:Static p:Resources.TextNo}" TrueValue="{x:Static p:Resources.TextYes}"/>
-        <objects:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{x:Static p:Resources.TransactionTypeUnknown}" ReceiveValue="{x:Static p:Resources.TransactionTypeReceive}" SendValue="{x:Static p:Resources.TransactionTypeSend}"/>
+        <ObjectDataProvider x:Key="Resources" ObjectType="{x:Type objects:CultureManager}" MethodName="GetResourceInstance"/>
+
+        <objects:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{Binding Path=TextNo, Source={StaticResource Resources}}" TrueValue="{Binding Path=TextYes, Source={StaticResource Resources}}"/>
+        <objects:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{Binding Path=TransactionTypeUnknown, Source={StaticResource Resources}}" ReceiveValue="{Binding Path=TransactionTypeReceive, Source={StaticResource Resources}}" SendValue="{Binding Path=TransactionTypeSend, Source={StaticResource Resources}}"/>
 
         <Style x:Key="StyleHeight22" TargetType="{x:Type Control}">
             <Setter Property="Height" Value="22"/>

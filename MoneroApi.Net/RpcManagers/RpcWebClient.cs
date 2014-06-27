@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroAPI.RpcManagers
 {
@@ -21,39 +20,39 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             PortWallet = portWallet;
         }
 
-        public async Task<T> HttpGetDataAsync<T>(RpcPortType portType, string command)
+        public T HttpGetData<T>(RpcPortType portType, string command)
         {
-            var jsonString = await HttpQueryStringAsync(portType, "GET", command);
+            var jsonString = HttpQueryString(portType, "GET", command);
             var output = JsonSerializer.DeserializeObject<T>(jsonString);
 
             return output;
         }
 
-        public async Task<T> HttpPostDataAsync<T>(RpcPortType portType, string command, string postData)
+        public T HttpPostData<T>(RpcPortType portType, string command, string postData)
         {
-            var jsonString = await PostStringAsync(portType, command, postData);
+            var jsonString = PostString(portType, command, postData);
             var output = JsonSerializer.DeserializeObject<T>(jsonString);
 
             return output;
         }
 
-        private async Task<string> HttpQueryStringAsync(RpcPortType portType, string method, string relativeUrl)
+        private string HttpQueryString(RpcPortType portType, string method, string relativeUrl)
         {
             var request = CreateHttpWebRequest(portType, method, relativeUrl);
-            return await request.GetResponseStringAsync();
+            return request.GetResponseString();
         }
 
-        public async Task<T> JsonQueryDataAsync<T>(RpcPortType portType, JsonRpcRequest jsonRpcRequest)
+        public T JsonQueryData<T>(RpcPortType portType, JsonRpcRequest jsonRpcRequest)
         {
-            var jsonString = await PostStringAsync(portType, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
+            var jsonString = PostString(portType, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
             var output = JsonSerializer.DeserializeObject<JsonRpcResponse<T>>(jsonString);
 
             return output.Result;
         }
 
-        public Task<T> JsonQueryDataAsync<T>(RpcPortType portType, string command)
+        public T JsonQueryData<T>(RpcPortType portType, string command)
         {
-            return JsonQueryDataAsync<T>(portType, new JsonRpcRequest(command));
+            return JsonQueryData<T>(portType, new JsonRpcRequest(command));
         }
 
         private HttpWebRequest CreateHttpWebRequest(RpcPortType portType, string method, string relativeUrl)
@@ -66,7 +65,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             return request;
         }
 
-        private async Task<string> PostStringAsync(RpcPortType portType, string relativeUrl, string postData)
+        private string PostString(RpcPortType portType, string relativeUrl, string postData)
         {
             var request = CreateHttpWebRequest(portType, "POST", relativeUrl);
             request.ContentType = "application/json";
@@ -74,11 +73,11 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             var postBytes = Encoding.GetBytes(postData);
             request.ContentLength = postBytes.Length;
 
-            using (var requestStream = await request.GetRequestStreamAsync()) {
-                await requestStream.WriteAsync(postBytes, 0, postBytes.Length);
+            using (var requestStream = request.GetRequestStream()) {
+                requestStream.Write(postBytes, 0, postBytes.Length);
             }
 
-            return await request.GetResponseStringAsync();
+            return request.GetResponseString();
         }
 
         private string GetBaseUrl(RpcPortType portType)
