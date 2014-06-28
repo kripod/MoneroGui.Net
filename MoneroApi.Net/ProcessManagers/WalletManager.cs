@@ -19,6 +19,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
         public event EventHandler<AddressReceivedEventArgs> AddressReceived;
+        public event EventHandler<TransactionReceivedEventArgs> TransactionReceived;
         public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
         public event EventHandler<MoneySentEventArgs> SentMoney;
 
@@ -244,7 +245,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     var amount = double.Parse(match.Groups[4].Value, Helper.InvariantCulture);
                     var isAmountSpendable = type == TransactionType.Receive;
 
-                    TransactionsPrivate.Add(new Transaction(type, isAmountSpendable, amount, transactionId, TransactionsPrivate.Count + 1));
+                    var transaction = new Transaction(type, isAmountSpendable, amount, transactionId, TransactionsPrivate.Count + 1);
+                    TransactionsPrivate.Add(transaction);
+                    if (TransactionReceived != null) TransactionReceived(this, new TransactionReceivedEventArgs(transaction));
 
                     if (type == TransactionType.Send) {
                         // TODO: Refresh funds' availability more solidly
@@ -311,7 +314,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             var transfers = string.Empty;
             foreach (var keyValuePair in recipients) {
-                transfers += " " + keyValuePair.Key + " " + keyValuePair.Value;
+                transfers += " " + keyValuePair.Key + " " + keyValuePair.Value.ToString(Helper.InvariantCulture);
             }
 
             var stringFormat = string.IsNullOrWhiteSpace(paymentId) ? "transfer {0}{1}" : "transfer {0}{1} {2}";
@@ -366,6 +369,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
+                base.Dispose();
+
                 //TimerCheckRpcAvailability.Dispose();
                 //TimerCheckRpcAvailability = null;
 
@@ -377,8 +382,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 TimerSaveWallet.Dispose();
                 TimerSaveWallet = null;
-
-                base.Dispose();
             }
         }
     }

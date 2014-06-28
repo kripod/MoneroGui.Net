@@ -15,6 +15,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private Process Process { get; set; }
         private string Path { get; set; }
 
+        private bool IsDisposing { get; set; }
         protected bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
         }
@@ -87,6 +88,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Process_Exited(object sender, EventArgs e)
         {
+            if (IsDisposing) return;
+
             Process.CancelOutputRead();
             Process.CancelErrorRead();
 
@@ -101,12 +104,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void Dispose(bool disposing)
         {
-            if (disposing) {
-                if (Process != null) {
-#if DEBUG // Unsafe shutdown
-                    KillBaseProcess();
+            if (disposing && !IsDisposing) {
+                IsDisposing = true;
 
-#else     // Safe shutdown
+                if (Process != null) {
                     if (!Process.HasExited) {
                         if (Process.Responding) {
                             Send("exit");
@@ -115,7 +116,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                             Process.Kill();
                         }
                     }
-#endif
 
                     Process.Dispose();
                     Process = null;

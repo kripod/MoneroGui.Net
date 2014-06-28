@@ -141,7 +141,7 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adressbuch</value>
   </data>
-  <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
+  <data name="TaskbarShutdown" xml:space="preserve">
     <value>Monero-Client wird heruntergefahren...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
@@ -202,7 +202,7 @@
     <value>Aktuelle Transaktionen</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Aufwendbare:</value>
+    <value>Verwendbare:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Unbestätigt:</value>
@@ -211,7 +211,7 @@
     <value>Wallet</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Geben Sie eine Monero Adresse ein</value>
+    <value>Geben Sie eine Monero-Adresse ein</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
     <value>Geben Sie eine Bezeichnung für diese Adresse, um es zu Ihrem Adressbuch hinzuzufügen</value>
@@ -235,7 +235,7 @@
     <value>Tag</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} Blöcke ({1}) hinten</value>
+    <value>{0} Blöcke ({1}) verbleibend</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
     <value>Adresse</value>
@@ -250,7 +250,7 @@
     <value>Art</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Aufwendbar?</value>
+    <value>Verwendbar?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>Nein</value>
@@ -262,7 +262,7 @@
     <value>Empfangen</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Gesendet</value>
+    <value>Senden</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Unbekannt</value>
@@ -292,7 +292,7 @@
     <value>Exportieren...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Stornieren</value>
+    <value>Abbrechen</value>
   </data>
   <data name="TextOk" xml:space="preserve">
     <value>Ok</value>
@@ -304,7 +304,7 @@
     <value>Erscheinung</value>
   </data>
   <data name="OptionsAppearanceLanguage" xml:space="preserve">
-    <value>Sprache in der Benutzeroberfläche:</value>
+    <value>Spracheinstellung für die Benutzeroberfläche:</value>
   </data>
   <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
     <value>Standard</value>
@@ -365,5 +365,80 @@
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
     <value>Minute</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Icons erstellt von:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Kontakt editieren</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Editieren</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Einfügen</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG-Dateien (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Nachricht:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Speichern unter...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Die URI ist zu lang, bitte versuchen Sie, die Länge Ihrer Eingabe zu reduzieren!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR-Code</value>
+  </data>
+  <data name="SendCoinsBalance" xml:space="preserve">
+    <value>Kontostand:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Empfänger entfernen</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Empfänger hinzufügen</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Alle Empfänger entfernen</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+    <value>noch einmal</value>
+  </data>
+  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Aktuelle Passphrase:</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Benutzen Sie eine Passphrase, um Ihre Brieftasche vor unbefugtem Zugriff zu sichern!</value>
+  </data>
+  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Es wird empfohlen, mindestens 10 zufällige Zeichen oder 8 Worte zu benutzen.)</value>
+  </data>
+  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Neue Passphrase</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Passphrase</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Passphrase der Brieftasche ändern</value>
+  </data>
+  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
+    <value>Brieftasche verschlüsseln</value>
+  </data>
+  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Die angegebenen Passphrases sind nicht identisch.</value>
+  </data>
+  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+    <value>Brieftasche aufschließen</value>
+  </data>
+  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
+    <value>Bitte geben Sie Ihre Passphrase ein, um auf Ihre Brieftasche zuzugreifen.</value>
   </data>
 </root>

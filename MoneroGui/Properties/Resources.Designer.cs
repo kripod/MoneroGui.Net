@@ -178,15 +178,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Monero Client is shutting down....
-        /// </summary>
-        public static string MainWindowBusyStatusShutdown {
-            get {
-                return ResourceManager.GetString("MainWindowBusyStatusShutdown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Overview.
         /// </summary>
         public static string MainWindowOverview {
@@ -295,6 +286,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide window.
+        /// </summary>
+        public static string MenuHideWindow {
+            get {
+                return ResourceManager.GetString("MenuHideWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Options.
         /// </summary>
         public static string MenuOptions {
@@ -309,6 +309,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string MenuSettings {
             get {
                 return ResourceManager.GetString("MenuSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show window.
+        /// </summary>
+        public static string MenuShowWindow {
+            get {
+                return ResourceManager.GetString("MenuShowWindow", resourceCulture);
             }
         }
         
@@ -426,6 +435,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string OptionsPathsSoftwareWallet {
             get {
                 return ResourceManager.GetString("OptionsPathsSoftwareWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options.
+        /// </summary>
+        public static string OptionsWindowTitle {
+            get {
+                return ResourceManager.GetString("OptionsWindowTitle", resourceCulture);
             }
         }
         
@@ -599,6 +617,51 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string StatusBarSyncTextMinuteSingular {
             get {
                 return ResourceManager.GetString("StatusBarSyncTextMinuteSingular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please do not interrupt this process!.
+        /// </summary>
+        public static string TaskbarDoNotInterruptProcess {
+            get {
+                return ResourceManager.GetString("TaskbarDoNotInterruptProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monero Client is shutting down....
+        /// </summary>
+        public static string TaskbarShutdown {
+            get {
+                return ResourceManager.GetString("TaskbarShutdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming transaction.
+        /// </summary>
+        public static string TaskbarTransactionIncoming {
+            get {
+                return ResourceManager.GetString("TaskbarTransactionIncoming", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outgoing transaction.
+        /// </summary>
+        public static string TaskbarTransactionOutgoing {
+            get {
+                return ResourceManager.GetString("TaskbarTransactionOutgoing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown type transaction.
+        /// </summary>
+        public static string TaskbarTransactionUnknownType {
+            get {
+                return ResourceManager.GetString("TaskbarTransactionUnknownType", resourceCulture);
             }
         }
         
@@ -896,6 +959,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TransactionsSpendable {
             get {
                 return ResourceManager.GetString("TransactionsSpendable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction ID.
+        /// </summary>
+        public static string TransactionsTransactionId {
+            get {
+                return ResourceManager.GetString("TransactionsTransactionId", resourceCulture);
             }
         }
         

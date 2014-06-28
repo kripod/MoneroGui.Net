@@ -56,20 +56,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryNetworkInformation()
         {
-            if (NetworkInformationChanging != null) {
-                var output = RpcWebClient.HttpGetData<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
-                if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
-                    var blockHeaderValueContainer = RpcWebClient.JsonQueryData<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
-                    if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
-                        output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
+            var output = RpcWebClient.HttpGetData<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
+            if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
+                var blockHeaderValueContainer = RpcWebClient.JsonQueryData<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
+                if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
+                    output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
 
-                        NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
-                        NetworkInformation = output;
+                    if (NetworkInformationChanging != null) NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
+                    NetworkInformation = output;
 
-                        if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
-                            IsBlockchainSynced = true;
-                            if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
-                        }
+                    if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
+                        IsBlockchainSynced = true;
+                        if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
                     }
                 }
             }
@@ -101,13 +99,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
+                base.Dispose();
+
                 TimerQueryNetworkInformation.Dispose();
                 TimerQueryNetworkInformation = null;
 
                 TimerSaveBlockchain.Dispose();
                 TimerSaveBlockchain = null;
-
-                base.Dispose();
             }
         }
     }

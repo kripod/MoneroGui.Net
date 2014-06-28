@@ -107,7 +107,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         public QrCodeWindow(Window owner, SettingsManager.ConfigElementContact contact)
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
 
             InitializeComponent();
 

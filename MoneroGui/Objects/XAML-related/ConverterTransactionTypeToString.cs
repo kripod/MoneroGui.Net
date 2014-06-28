@@ -6,10 +6,23 @@ using System.Windows.Data;
 
 namespace Jojatekok.MoneroGUI
 {
+    [ValueConversion(typeof(TransactionType), typeof(string))]
     public class ConverterTransactionTypeToString : DependencyObject, IValueConverter
     {
         public static readonly DependencyProperty UnknownValueProperty = DependencyProperty.RegisterAttached(
             "UnknownValue",
+            typeof(string),
+            typeof(ConverterTransactionTypeToString)
+        );
+
+        public static readonly DependencyProperty ReceiveValueProperty = DependencyProperty.RegisterAttached(
+            "ReceiveValue",
+            typeof(string),
+            typeof(ConverterTransactionTypeToString)
+        );
+
+        public static readonly DependencyProperty SendValueProperty = DependencyProperty.RegisterAttached(
+            "SendValue",
             typeof(string),
             typeof(ConverterTransactionTypeToString)
         );
@@ -19,26 +32,25 @@ namespace Jojatekok.MoneroGUI
             set { SetValue(UnknownValueProperty, value); }
         }
 
-        public static readonly DependencyProperty ReceiveValueProperty = DependencyProperty.RegisterAttached(
-            "ReceiveValue",
-            typeof(string),
-            typeof(ConverterTransactionTypeToString)
-        );
-
         public string ReceiveValue {
             private get { return GetValue(ReceiveValueProperty) as string; }
             set { SetValue(ReceiveValueProperty, value); }
         }
 
-        public static readonly DependencyProperty SendValueProperty = DependencyProperty.RegisterAttached(
-            "SendValue",
-            typeof(string),
-            typeof(ConverterTransactionTypeToString)
-        );
-
         public string SendValue {
             private get { return GetValue(SendValueProperty) as string; }
             set { SetValue(SendValueProperty, value); }
+        }
+
+        private static ConverterTransactionTypeToString _provider;
+        public static ConverterTransactionTypeToString Provider {
+            get {
+                if (_provider == null) {
+                    _provider = Application.Current.FindResource("ConverterTransactionTypeToString") as ConverterTransactionTypeToString;
+                }
+
+                return _provider;
+            }
         }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

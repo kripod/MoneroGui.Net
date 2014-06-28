@@ -44,6 +44,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\TransactionReceivedEventArgs.cs" />
     <Compile Include="EventArgs\MoneySentEventArgs.cs" />
     <Compile Include="EventArgs\AddressReceivedEventArgs.cs" />
     <Compile Include="EventArgs\PassphraseRequestedEventArgs.cs" />

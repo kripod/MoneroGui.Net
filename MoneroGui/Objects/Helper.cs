@@ -84,6 +84,20 @@ namespace Jojatekok.MoneroGUI
             });
         }
 
+        public static void ActivateWindowOrLastChild(this Window window)
+        {
+            var ownedWindows = window.OwnedWindows;
+            if (ownedWindows.Count == 0) {
+                if (window.Visibility == Visibility.Visible) window.Activate();
+
+            } else {
+                var lastOwnedWindow = ownedWindows[ownedWindows.Count - 1];
+
+                Debug.Assert(lastOwnedWindow != null, "lastOwnedWindow != null");
+                lastOwnedWindow.Activate();
+            }
+        }
+
         public static ImageSource ToImageSource(this Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
@@ -262,6 +276,28 @@ namespace Jojatekok.MoneroGUI
             }
 
             SetWindowLong(hWnd, GWL_STYLE, style);
+        }
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
+
+        private enum ShowWindowCommands
+        {
+            Restore = 9
+        }
+
+        public static void RestoreWindowStateFromMinimized(this Window window)
+        {
+            // Restore the window's state
+            if (window.WindowState == WindowState.Minimized) {
+                var hwndSource = PresentationSource.FromVisual(window) as HwndSource;
+                Debug.Assert(hwndSource != null, "hwndSource != null");
+
+                ShowWindow(hwndSource.Handle, ShowWindowCommands.Restore);
+            }
+
+            // Activate the window or its last child
+            window.ActivateWindowOrLastChild();
         }
     }
 }

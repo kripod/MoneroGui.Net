@@ -141,7 +141,7 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresár</value>
   </data>
-  <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
+  <data name="TaskbarShutdown" xml:space="preserve">
     <value>Monero klient sa vypína...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">

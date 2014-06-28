@@ -28,7 +28,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private AddressBookEditWindow()
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
             Loaded += delegate {
                 this.SetWindowButtons(false, false);
 

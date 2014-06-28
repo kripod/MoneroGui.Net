@@ -20,7 +20,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private WalletChangePassphraseWindow()
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
             Loaded += delegate {
                 this.SetWindowButtons(false, false);
 

@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         public DebugWindow()
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
 
             InitializeComponent();
 

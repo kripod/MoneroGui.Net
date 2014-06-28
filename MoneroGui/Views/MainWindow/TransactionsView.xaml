@@ -41,7 +41,7 @@
                 <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->
                 <DataGridTextColumn Header="{Binding Path=TextAmount, Source={StaticResource Resources}}" Binding="{Binding Path=Amount, StringFormat={x:Static objects:StaticObjects.StringFormatCurrencyDefault}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
 
-                <DataGridTextColumn Header="Transaction ID" Binding="{Binding Path=TransactionId}" Width="1*">
+                <DataGridTextColumn Header="{Binding Path=TransactionsTransactionId, Source={StaticResource Resources}}" Binding="{Binding Path=TransactionId}" Width="1*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="ToolTip" Value="{Binding Path=(api:Transaction.TransactionId)}"/>

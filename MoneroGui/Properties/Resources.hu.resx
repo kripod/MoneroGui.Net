@@ -138,7 +138,7 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Címjegyzék</value>
   </data>
-  <data name="MainWindowBusyStatusShutdown" xml:space="preserve">
+  <data name="TaskbarShutdown" xml:space="preserve">
     <value>A Monero Kliens leáll...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
@@ -442,5 +442,29 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
   </data>
   <data name="WalletUnlockWindowTitle" xml:space="preserve">
     <value>Tárca feloldása</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Opciók</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Kérlek, ne szakítsd meg ezt a folyamatot!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Ablak elrejtése</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Ablak mutatása</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Tranzakció-azonosító</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Bejövő tranzakció</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Kimenő tranzakció</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Ismeretlen típusú tranzakció</value>
   </data>
 </root>

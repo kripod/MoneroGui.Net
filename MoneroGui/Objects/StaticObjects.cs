@@ -28,7 +28,8 @@ namespace Jojatekok.MoneroGUI
 
         public static readonly string ApplicationPath = ApplicationAssemblyName.CodeBase;
         public static readonly string ApplicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        public static readonly ImageSource ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location).ToImageSource();
+        public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);
+        public static readonly ImageSource ApplicationIconImage = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location).ToImageSource();
         public static readonly string ApplicationStartupShortcutPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.Startup),
             Helper.GetAssemblyAttribute<AssemblyTitleAttribute>().Title + ".lnk"

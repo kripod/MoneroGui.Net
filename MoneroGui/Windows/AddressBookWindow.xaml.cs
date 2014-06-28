@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private AddressBookWindow()
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
             Loaded += delegate {
                 this.SetWindowButtons(false, true);
 

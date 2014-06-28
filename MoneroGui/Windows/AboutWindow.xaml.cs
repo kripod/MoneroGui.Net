@@ -14,7 +14,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private AboutWindow()
         {
-            Icon = StaticObjects.ApplicationIcon;
+            Icon = StaticObjects.ApplicationIconImage;
 
             InitializeComponent();
 
