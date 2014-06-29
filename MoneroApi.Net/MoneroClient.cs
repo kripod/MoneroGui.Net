@@ -47,6 +47,11 @@ namespace Jojatekok.MoneroAPI
             }
         }
 
+        public void StopWallet()
+        {
+            Wallet.KillBaseProcess();
+        }
+
         public void Dispose()
         {
             Dispose(true);

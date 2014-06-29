@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Navigation;
+﻿using System.Windows;
 
 namespace Jojatekok.MoneroGUI.Windows
 {

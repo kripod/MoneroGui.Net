@@ -132,7 +132,7 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Κονσόλες</value>
   </data>
-  <data name="DebugWindowInformation" xml:space="preserve">
+  <data name="TextInformation" xml:space="preserve">
     <value>Πληροφορίες</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
@@ -158,9 +158,6 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_Σχετικά με τον Μονέρο Client</value>
-  </data>
-  <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Αντίγραφο ασφαλείας πορτοφολιού...</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Αλλαγή κωδικού πορτοφολιού...</value>

@@ -5,7 +5,7 @@
         Title="{Binding Path=DebugWindowTitle, Source={StaticResource Resources}}"
         Width="700" Height="500" MinWidth="300" MinHeight="250">
     <TabControl Margin="10">
-        <TabItem Header="{Binding Path=DebugWindowInformation, Source={StaticResource Resources}}">
+        <TabItem Header="{Binding Path=TextInformation, Source={StaticResource Resources}}">
             <Grid Margin="5">
                 
             </Grid>

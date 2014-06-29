@@ -22,16 +22,16 @@ namespace Jojatekok.MoneroGUI.Windows
         private static Logger LoggerDaemon { get; set; }
         private static Logger LoggerWallet { get; set; }
 
-        public static readonly RoutedUICommand CommandShowOrHideWindow = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandSendCoins = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandShowTransactions = new RoutedUICommand();
+        public static readonly RoutedCommand CommandShowOrHideWindow = new RoutedCommand();
+        public static readonly RoutedCommand CommandSendCoins = new RoutedCommand();
+        public static readonly RoutedCommand CommandShowTransactions = new RoutedCommand();
 
-        public static readonly RoutedUICommand CommandBackupWallet = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandExport = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandExit = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandOptions = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandShowDebugWindow = new RoutedUICommand();
-        public static readonly RoutedUICommand CommandShowAboutWindow = new RoutedUICommand();
+        public static readonly RoutedCommand CommandBackupManager = new RoutedCommand();
+        public static readonly RoutedCommand CommandExport = new RoutedCommand();
+        public static readonly RoutedCommand CommandExit = new RoutedCommand();
+        public static readonly RoutedCommand CommandOptions = new RoutedCommand();
+        public static readonly RoutedCommand CommandShowDebugWindow = new RoutedCommand();
+        public static readonly RoutedCommand CommandShowAboutWindow = new RoutedCommand();
 
         private DebugWindow DebugWindow { get; set; }
 
@@ -110,13 +110,9 @@ namespace Jojatekok.MoneroGUI.Windows
             this.RestoreWindowStateFromMinimized();
         }
 
-        private void CommandBackupWallet_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void CommandBackupManager_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            var dialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
-            
-            if (dialog.ShowDialog() == true) {
-                MoneroClient.Wallet.BackupAsync(dialog.SelectedPath);
-            }
+            new BackupManagerWindow(this).ShowDialog();
         }
 
         private void CommandExport_Executed(object sender, ExecutedRoutedEventArgs e)

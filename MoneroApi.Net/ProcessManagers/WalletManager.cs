@@ -1,5 +1,5 @@
 ﻿using Jojatekok.MoneroAPI.RpcManagers;
-using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
+//using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
 using System;
 using System.Collections.Generic;
@@ -108,12 +108,23 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (ProcessArgumentsExtra == null) SetProcessArguments();
 
+            // <-- Reset variables -->
+
             if (TransactionsPrivate == null) {
                 TransactionsPrivate = new ObservableCollection<Transaction>();
                 Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
             } else {
                 TransactionsPrivate.Clear();
             }
+
+            Address = null;
+            if (AddressReceived != null) AddressReceived(this, new AddressReceivedEventArgs(null));
+
+            var balance = new Balance(null, null);
+            if (BalanceChanging != null) BalanceChanging(this, new BalanceChangingEventArgs(balance));
+            Balance = balance;
+
+            // <-- Start process -->
 
             Debug.Assert(ProcessArgumentsExtra != null, "ProcessArgumentsExtra != null");
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
@@ -327,7 +338,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Send("refresh");
         }
 
-        private void Backup(string path)
+        private string Backup(string path)
         {
             if (path == null) {
                 path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
@@ -343,21 +354,23 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Debug.Assert(file != null, "file != null");
                 File.Copy(file, Path.Combine(path, Path.GetFileName(file)), true);
             }
+
+            return path;
         }
 
-        private void Backup()
+        private string Backup()
         {
-            Backup(null);
+            return Backup(null);
         }
 
-        public Task BackupAsync(string path)
+        public Task<string> BackupAsync(string path)
         {
             return Task.Factory.StartNew(() => Backup(path));
         }
 
-        public Task BackupAsync()
+        public Task<string> BackupAsync()
         {
-            return Task.Factory.StartNew(Backup);
+            return Task.Factory.StartNew(() => Backup());
         }
 
         public new void Dispose()

@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System;
 
 namespace Jojatekok.MoneroAPI
 {
@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroAPI
         public const string DefaultSoftwareWallet = DefaultRelativePathDirectoryResources + "simplewallet.exe";
         public const string DefaultSoftwareMiner = DefaultRelativePathDirectoryResources + "simpleminer.exe";
 
-        private static readonly string BaseDirectory = Directory.GetCurrentDirectory();
+        private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         public string DirectoryWalletData {
             get {

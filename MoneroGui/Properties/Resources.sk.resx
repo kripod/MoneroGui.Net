@@ -132,7 +132,7 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Konzoly</value>
   </data>
-  <data name="DebugWindowInformation" xml:space="preserve">
+  <data name="TextInformation" xml:space="preserve">
     <value>Informácia</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
@@ -158,9 +158,6 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_O Monero Kliente</value>
-  </data>
-  <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Zálohuj peňaženku</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Zmeň heslo k peňaženke...</value>

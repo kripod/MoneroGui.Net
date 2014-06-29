@@ -132,7 +132,7 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Konsolen</value>
   </data>
-  <data name="DebugWindowInformation" xml:space="preserve">
+  <data name="TextInformation" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
@@ -158,9 +158,6 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_Über Monero-Client</value>
-  </data>
-  <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Wallet Backup erstellen...</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Wallet-Passphrase ändern...</value>

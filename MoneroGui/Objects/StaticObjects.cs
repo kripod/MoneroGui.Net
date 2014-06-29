@@ -26,17 +26,19 @@ namespace Jojatekok.MoneroGUI
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
 
-        public static readonly string ApplicationPath = ApplicationAssemblyName.CodeBase;
-        public static readonly string ApplicationDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        public static readonly Version ApplicationVersion = ApplicationAssemblyName.Version;
+        public static readonly string ApplicationVersionString = ApplicationVersion.ToString(3);
+
         public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);
         public static readonly ImageSource ApplicationIconImage = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location).ToImageSource();
+
+        public static readonly string ApplicationPath = ApplicationAssemblyName.CodeBase;
         public static readonly string ApplicationStartupShortcutPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.Startup),
             Helper.GetAssemblyAttribute<AssemblyTitleAttribute>().Title + ".lnk"
         );
 
-        public static readonly Version ApplicationVersion = ApplicationAssemblyName.Version;
-        public static readonly string ApplicationVersionString = ApplicationVersion.ToString(3);
+        public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         public static MainWindow MainWindow { get; internal set; }
 

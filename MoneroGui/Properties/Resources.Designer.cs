@@ -133,6 +133,170 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a method for creating the new backup!.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowInstructionMain {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowInstructionMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As a file, at a chosen path.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowSelectionAsFileCustom1 {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowSelectionAsFileCustom1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to These files will not appear as selectable in the built-in Backup Manager.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowSelectionAsFileCustom2 {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowSelectionAsFileCustom2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As a file, at the default location.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowSelectionAsFileDefault {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowSelectionAsFileDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As a deterministic wallet seed.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowSelectionAsSeed1 {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowSelectionAsSeed1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This method is the safest, and it doesn&apos;t even require a computer for storage.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowSelectionAsSeed2 {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowSelectionAsSeed2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New backup.
+        /// </summary>
+        public static string BackupManagerNewBackupWindowTitle {
+            get {
+                return ResourceManager.GetString("BackupManagerNewBackupWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse in explorer....
+        /// </summary>
+        public static string BackupManagerWindowBrowseInExplorer {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowBrowseInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically create backups each week.
+        /// </summary>
+        public static string BackupManagerWindowCreateAutomaticBackups {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowCreateAutomaticBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create backups.
+        /// </summary>
+        public static string BackupManagerWindowCreateBackups {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowCreateBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The backup at \&quot;{0}\&quot; could not be restored..
+        /// </summary>
+        public static string BackupManagerWindowErrorRestore {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowErrorRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From directory....
+        /// </summary>
+        public static string BackupManagerWindowFromDirectory {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowFromDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From deterministic wallet seed....
+        /// </summary>
+        public static string BackupManagerWindowFromSeed {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowFromSeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From selection.
+        /// </summary>
+        public static string BackupManagerWindowFromSelection {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowFromSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The backup has been successfully restored and applied..
+        /// </summary>
+        public static string BackupManagerWindowInformationRestoreSuccessful {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowInformationRestoreSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore backups.
+        /// </summary>
+        public static string BackupManagerWindowRestoreBackups {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowRestoreBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup manager.
+        /// </summary>
+        public static string BackupManagerWindowTitle {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please be EXTREMELY CAREFUL about storing your wallet data!
+        ///
+        ///No one else should be able to access them, as this would cause your money to be compromised..
+        /// </summary>
+        public static string BackupManagerWindowWarningNewBackup {
+            get {
+                return ResourceManager.GetString("BackupManagerWindowWarningNewBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove recipient.
         /// </summary>
         public static string CoinSenderRemoveRecipient {
@@ -156,15 +320,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string DebugWindowConsoles {
             get {
                 return ResourceManager.GetString("DebugWindowConsoles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Information.
-        /// </summary>
-        public static string DebugWindowInformation {
-            get {
-                return ResourceManager.GetString("DebugWindowInformation", resourceCulture);
             }
         }
         
@@ -214,11 +369,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Backup wallet....
+        ///   Looks up a localized string similar to _Backup manager.
         /// </summary>
-        public static string MenuBackupWallet {
+        public static string MenuBackupManager {
             get {
-                return ResourceManager.GetString("MenuBackupWallet", resourceCulture);
+                return ResourceManager.GetString("MenuBackupManager", resourceCulture);
             }
         }
         
@@ -846,6 +1001,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string TextInformation {
+            get {
+                return ResourceManager.GetString("TextInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Label.
         /// </summary>
         public static string TextLabel {
@@ -941,6 +1105,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextWallet {
             get {
                 return ResourceManager.GetString("TextWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        public static string TextWarning {
+            get {
+                return ResourceManager.GetString("TextWarning", resourceCulture);
             }
         }
         

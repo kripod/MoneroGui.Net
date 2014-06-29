@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <StackPanel Orientation="Horizontal">
-        <controls:ImageGreyable x:Name="Image" Height="14"/>
-        <TextBlock Text="{Binding Path=Text, Mode=OneWay}" VerticalAlignment="Center" Margin="4 0 0 0"/>
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <controls:ImageGreyable Grid.Column="0" x:Name="Image" Height="14"/>
+        <TextBlock Grid.Column="1" Text="{Binding Path=Text, Mode=OneWay}" TextWrapping="Wrap" TextAlignment="Center" Margin="4 0 0 0"/>
+    </Grid>
 </UserControl>

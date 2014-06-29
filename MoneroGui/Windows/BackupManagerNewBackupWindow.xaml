@@ -1,0 +1,51 @@
+﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.BackupManagerNewBackupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="{Binding Path=BackupManagerNewBackupWindowTitle, Source={StaticResource Resources}}"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        SizeToContent="WidthAndHeight"
+        MaxWidth="600">
+    <Grid Grid.IsSharedSizeScope="True" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding Path=BackupManagerNewBackupWindowInstructionMain, Source={StaticResource Resources}}" TextWrapping="Wrap" Margin="0 0 0 8"/>
+
+        <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="RadioButtonDefaultLocation" IsChecked="True" Margin="20 0 0 5">
+            <TextBlock TextWrapping="Wrap">
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileDefault, Source={StaticResource Resources}}"/>
+                <LineBreak/>
+                <TextBlock x:Name="TextBlockDefaultBackupDirectory" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
+            </TextBlock>
+        </RadioButton>
+        <RadioButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="20 0 0 8">
+            <TextBlock TextWrapping="Wrap">
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileCustom1, Source={StaticResource Resources}}"/>
+                <LineBreak/>
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileCustom2, Source={StaticResource Resources}}" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
+            </TextBlock>
+        </RadioButton>
+        <RadioButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" IsEnabled="False" Margin="20 0 0 8">
+            <TextBlock TextWrapping="Wrap">
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed1, Source={StaticResource Resources}}"/>
+                <LineBreak/>
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed2, Source={StaticResource Resources}}" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
+            </TextBlock>
+        </RadioButton>
+
+        <Button Grid.Row="4" Grid.Column="1" Content="{Binding Path=TextOk, Source={StaticResource Resources}}" IsDefault="True" Click="ButtonOk_Click" Style="{StaticResource StyleButtonPaddingWide}"/>
+        <Button Grid.Row="4" Grid.Column="3" Content="{Binding Path=TextCancel, Source={StaticResource Resources}}" IsCancel="True" Style="{StaticResource StyleButtonPaddingWide}"/>
+    </Grid>
+</Window>

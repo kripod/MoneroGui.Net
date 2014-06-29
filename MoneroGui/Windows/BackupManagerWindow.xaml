@@ -1,0 +1,62 @@
+﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.BackupManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="{Binding Path=BackupManagerWindowTitle, Source={StaticResource Resources}}"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        SizeToContent="Height"
+        Width="400">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="0" Grid.Column="0" x:Name="ListViewBackups" SelectionChanged="ListViewBackups_SelectionChanged" Margin="0 0 0 8"/>
+            <Button Grid.Row="1" Grid.Column="0" Click="ButtonBrowseBackupsInExplorer_Click">
+                <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowBrowseInExplorer, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Browse.png"/>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="8 0 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="{Binding Path=BackupManagerWindowCreateBackups, Source={StaticResource Resources}}" Margin="0 0 0 8">
+                <StackPanel Margin="5">
+                    <Button Click="ButtonNewBackup_Click" Margin="0 0 0 8">
+                        <controls:ImageTextComposition Text="{Binding Path=TextNew, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Add.png"/>
+                    </Button>
+
+                    <CheckBox IsEnabled="False" IsChecked="{Binding Path=IsRegularWalletBackupEnabled}">
+                        <TextBlock Text="{Binding Path=BackupManagerWindowCreateAutomaticBackups, Source={StaticResource Resources}}" TextWrapping="Wrap"/>
+                    </CheckBox>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="{Binding Path=BackupManagerWindowRestoreBackups, Source={StaticResource Resources}}">
+                <StackPanel Margin="5">
+                    <Button x:Name="ButtonRestoreBackupFromSelection" IsEnabled="False" Click="ButtonRestoreBackupFromSelection_Click" Margin="0 0 0 5">
+                        <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromSelection, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
+                    </Button>
+                    <Button Click="ButtonRestoreBackupFromDirectory_Click" Margin="0 0 0 5">
+                        <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromDirectory, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
+                    </Button>
+                    <Button IsEnabled="False">
+                        <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromSeed, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

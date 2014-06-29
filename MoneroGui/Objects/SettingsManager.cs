@@ -136,6 +136,15 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
+            [ConfigurationProperty("isRegularWalletBackupEnabled", DefaultValue = true)]
+            public bool IsRegularWalletBackupEnabled {
+                get { return (bool)base["isRegularWalletBackupEnabled"]; }
+                set {
+                    base["isRegularWalletBackupEnabled"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
             [ConfigurationProperty("transactionsDefaultMixCount", DefaultValue = 0)]
             [IntegerValidator(MinValue = 0)]
             public int TransactionsDefaultMixCount {

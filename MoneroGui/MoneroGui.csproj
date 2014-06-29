@@ -143,6 +143,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.sr.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.zh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.zh.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\OptionsWindow\AppearanceView.xaml.cs">
       <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +162,12 @@
     </Compile>
     <Compile Include="Windows\AddressBookWindow.xaml.cs">
       <DependentUpon>AddressBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BackupManagerNewBackupWindow.xaml.cs">
+      <DependentUpon>BackupManagerNewBackupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BackupManagerWindow.xaml.cs">
+      <DependentUpon>BackupManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\WalletUnlockWindow.xaml.cs">
       <DependentUpon>WalletUnlockWindow.xaml</DependentUpon>
@@ -219,6 +230,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\AddressBookWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\BackupManagerNewBackupWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\BackupManagerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -336,6 +355,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.sr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.zh.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.zh.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
@@ -392,6 +415,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\QR-code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Browse.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

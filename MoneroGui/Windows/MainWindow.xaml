@@ -15,7 +15,7 @@
         <CommandBinding x:Name="CommandBindingSendCoins" Command="windows:MainWindow.CommandSendCoins" Executed="CommandSendCoins_Executed"/>
         <CommandBinding x:Name="CommandBindingShowTransactions" Command="windows:MainWindow.CommandShowTransactions" Executed="CommandShowTransactions_Executed"/>
 
-        <CommandBinding Command="windows:MainWindow.CommandBackupWallet" Executed="CommandBackupWallet_Executed"/>
+        <CommandBinding Command="windows:MainWindow.CommandBackupManager" Executed="CommandBackupManager_Executed"/>
         <CommandBinding Command="windows:MainWindow.CommandExport" Executed="CommandExport_Executed" CanExecute="CommandExport_CanExecute"/>
         <CommandBinding x:Name="CommandBindingExit" Command="windows:MainWindow.CommandExit" Executed="CommandExit_Executed"/>
         <CommandBinding x:Name="CommandBindingOptions" Command="windows:MainWindow.CommandOptions" Executed="CommandOptions_Executed"/>
@@ -78,7 +78,7 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="{Binding Path=MenuBackupWallet, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandBackupWallet">
+                <MenuItem Header="{Binding Path=MenuBackupManager, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandBackupManager">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Save.png"/>
                     </MenuItem.Icon>

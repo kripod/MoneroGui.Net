@@ -10,11 +10,11 @@
         <objects:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{Binding Path=TextNo, Source={StaticResource Resources}}" TrueValue="{Binding Path=TextYes, Source={StaticResource Resources}}"/>
         <objects:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{Binding Path=TransactionTypeUnknown, Source={StaticResource Resources}}" ReceiveValue="{Binding Path=TransactionTypeReceive, Source={StaticResource Resources}}" SendValue="{Binding Path=TransactionTypeSend, Source={StaticResource Resources}}"/>
 
-        <Style x:Key="StyleHeight22" TargetType="{x:Type Control}">
-            <Setter Property="Height" Value="22"/>
+        <Style x:Key="StyleMinHeight22" TargetType="{x:Type Control}">
+            <Setter Property="MinHeight" Value="22"/>
         </Style>
 
-        <Style x:Key="StyleValidatableControl" TargetType="{x:Type Control}" BasedOn="{StaticResource StyleHeight22}">
+        <Style x:Key="StyleValidatableControl" TargetType="{x:Type Control}" BasedOn="{StaticResource StyleMinHeight22}">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
                     <Setter Property="Background" Value="{x:Static objects:StaticObjects.BrushBackgroundError}"/>
@@ -36,27 +36,34 @@
             <Setter Property="TextAlignment" Value="Right"/>
         </Style>
 
-        <Style x:Key="StyleButtonPaddingWide" TargetType="{x:Type Button}" BasedOn="{StaticResource StyleHeight22}">
+        <Style x:Key="StyleButtonPaddingWide" TargetType="{x:Type Button}" BasedOn="{StaticResource StyleMinHeight22}">
             <Setter Property="Padding" Value="10 0"/>
         </Style>
 
-        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StyleHeight22}">
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StyleMinHeight22}">
             <Setter Property="Padding" Value="5 0"/>
         </Style>
         <Style TargetType="{x:Type xctk:IntegerUpDown}" BasedOn="{StaticResource StyleValidatableControl}">
+            <Setter Property="Height" Value="22"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
         <Style TargetType="{x:Type xctk:DoubleUpDown}" BasedOn="{StaticResource StyleValidatableControl}">
+            <Setter Property="Height" Value="22"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
-        <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource StyleHeight22}">
+        <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource StyleMinHeight22}">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
         <Style TargetType="{x:Type xctk:WatermarkTextBox}" BasedOn="{StaticResource StyleValidatableControl}">
+            <Setter Property="Height" Value="22"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
-        <Style TargetType="ListBoxItem">
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="Padding" Value="0 3 0 0"/>
+        </Style>
+
+        <Style TargetType="{x:Type ListBoxItem}">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
 
             <Setter Property="Template">

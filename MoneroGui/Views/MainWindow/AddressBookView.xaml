@@ -31,7 +31,15 @@
         <DataGrid Grid.ColumnSpan="7" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" MouseDoubleClick="DataGridAddressBook_MouseDoubleClick" Margin="0 0 0 8">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{Binding Path=TextLabel, Source={StaticResource Resources}}" Binding="{Binding Path=Label}" SortDirection="Ascending" Width="*"/>
-                <DataGridTextColumn Header="{Binding Path=TextAddress, Source={StaticResource Resources}}" Binding="{Binding Path=Address}" Width="200"/>
+
+                <DataGridTextColumn Header="{Binding Path=TextAddress, Source={StaticResource Resources}}" Binding="{Binding Path=Address}" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="ToolTip" Value="{Binding Path=Address}"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

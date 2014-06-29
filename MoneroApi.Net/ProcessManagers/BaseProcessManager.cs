@@ -79,10 +79,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        protected void KillBaseProcess()
+        internal void KillBaseProcess()
         {
             if (IsProcessAlive) {
                 Process.Kill();
+                Process.WaitForExit();
             }
         }
 

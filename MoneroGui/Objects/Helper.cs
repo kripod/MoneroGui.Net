@@ -148,13 +148,43 @@ namespace Jojatekok.MoneroGUI
             return -1;
         }
 
+        private static string GetPathLastPart(string path)
+        {
+            var lastSlashIndex = path.LastIndexOf('\\');
+            if (lastSlashIndex >= 0) return path.Substring(lastSlashIndex + 1);
+            
+            return string.Empty;
+        }
+
+        public static string GetDirectoryOfFile(string path)
+        {
+            var lastSlashIndex = path.LastIndexOf('\\');
+            if (lastSlashIndex < 0) return StaticObjects.ApplicationBaseDirectory;
+
+            return path.Substring(0, lastSlashIndex);
+        }
+
         public static string GetRelativePath(string path)
         {
-            var uriBase = new Uri(StaticObjects.ApplicationDirectory, UriKind.Absolute);
+            var uriBase = new Uri(StaticObjects.ApplicationBaseDirectory, UriKind.Absolute);
             var uriPath = new Uri(path);
 
             var decodedUrl = HttpUtility.UrlDecode(uriBase.MakeRelativeUri(uriPath).ToString());
-            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : String.Empty;
+            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
+        }
+
+        public static string GetFileExtension(string input)
+        {
+            var fileName = GetPathLastPart(input);
+            var firstDotIndex = fileName.IndexOf('.');
+            return firstDotIndex >= 0 ? fileName.Substring(firstDotIndex) : string.Empty;
+        }
+
+        public static string GetFileNameWithoutExtension(string input)
+        {
+            var fileName = GetPathLastPart(input);
+            var firstDotIndex = fileName.IndexOf('.');
+            return firstDotIndex >= 0 ? fileName.Substring(0, firstDotIndex) : fileName;
         }
 
         public static object GetBoundValue(object value)
@@ -174,6 +204,16 @@ namespace Jojatekok.MoneroGUI
         public static T GetAssemblyAttribute<T>() where T : Attribute
         {
             return (T)Attribute.GetCustomAttribute(StaticObjects.ApplicationAssembly, typeof(T), false);
+        }
+
+        public static void ShowInformation(this Window window, string message)
+        {
+            MessageBox.Show(window, message, Properties.Resources.TextInformation, MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public static void ShowWarning(this Window window, string message)
+        {
+            MessageBox.Show(window, message, Properties.Resources.TextWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         public static void ShowError(this Window window, string message)

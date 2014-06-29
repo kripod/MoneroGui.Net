@@ -132,7 +132,7 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Terminal</value>
   </data>
-  <data name="DebugWindowInformation" xml:space="preserve">
+  <data name="TextInformation" xml:space="preserve">
     <value>Informação</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
@@ -142,7 +142,7 @@
     <value>Endereços</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>O cliente Monero está encerrando...</value>
+    <value>O Cliente Monero está encerrando...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Visão geral</value>
@@ -158,9 +158,6 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_Sobre o Cliente Monero</value>
-  </data>
-  <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Backup da carteira</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Alterar senha da carteira...</value>
@@ -322,7 +319,7 @@
     <value>Arquivos da carteira:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Software do Daemon</value>
+    <value>Software do Daemon:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
     <value>Software minerador:</value>
@@ -441,6 +438,30 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Desbloquear carteira</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Por favor entre com sua senha para acessar sua carteira.</value>
+    <value>Por favor entre com sua senha para acessar a carteira.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Por favor não interrompa este procedimento!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Esconder janela</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Mostrar janela</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>ID da Transação</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Transação sendo recebida</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Transação sendo enviada</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Transação desconhecida</value>
   </data>
 </root>

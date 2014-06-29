@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Consoles</value>
   </data>
-  <data name="DebugWindowInformation" xml:space="preserve">
-    <value>Information</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug window</value>
   </data>
@@ -159,8 +156,8 @@
   <data name="MenuAbout" xml:space="preserve">
     <value>_About Monero Client</value>
   </data>
-  <data name="MenuBackupWallet" xml:space="preserve">
-    <value>_Backup wallet...</value>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Backup manager</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Change wallet passphrase...</value>
@@ -466,5 +463,67 @@ Please try to reduce the length of your inputs!</value>
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
     <value>Unknown type transaction</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Please select a method for creating the new backup!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>As a file, at a chosen path</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>These files will not appear as selectable in the built-in Backup Manager</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>As a file, at the default location</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>As a deterministic wallet seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>This method is the safest, and it doesn't even require a computer for storage</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>New backup</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Browse in explorer...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Automatically create backups each week</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Create backups</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>The backup at \"{0}\" could not be restored.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>From directory...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>From deterministic wallet seed...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>From selection</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>The backup has been successfully restored and applied.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Restore backups</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Backup manager</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Please be EXTREMELY CAREFUL about storing your wallet data!
+
+No one else should be able to access them, as this would cause your money to be compromised.</value>
   </data>
 </root>

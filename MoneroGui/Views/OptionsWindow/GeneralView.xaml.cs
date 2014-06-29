@@ -40,7 +40,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                     // TODO: Implement hidden mode
                     shortcut.TargetPath = StaticObjects.ApplicationPath;
                     shortcut.IconLocation = StaticObjects.ApplicationPath;
-                    shortcut.WorkingDirectory = StaticObjects.ApplicationDirectory;
+                    shortcut.WorkingDirectory = StaticObjects.ApplicationBaseDirectory;
 
                     shortcut.Save();
 

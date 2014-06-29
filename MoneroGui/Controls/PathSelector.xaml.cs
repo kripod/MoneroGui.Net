@@ -32,6 +32,9 @@ namespace Jojatekok.MoneroGUI.Controls
                     if (lastSlashIndex >= 0) {
                         var directory = Path.GetFullPath(TextBoxPath.Text.Substring(0, lastSlashIndex));
                         if (Directory.Exists(directory)) dialog.InitialDirectory = directory;
+
+                    } else {
+                        dialog.InitialDirectory = StaticObjects.ApplicationBaseDirectory;
                     }
                 }
 
@@ -50,7 +53,7 @@ namespace Jojatekok.MoneroGUI.Controls
 
                 if (dialog.ShowDialog() == true) {
                     var newPath = Helper.GetRelativePath(dialog.SelectedPath);
-                    if (!newPath.EndsWith("\\", StringComparison.Ordinal)) newPath += "\\";
+                    if (newPath[newPath.Length - 1] != '\\') newPath += "\\";
                     TextBoxPath.Text = newPath;
                 }
             }
