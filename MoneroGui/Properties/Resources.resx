@@ -477,7 +477,7 @@ Please try to reduce the length of your inputs!</value>
     <value>As a file, at a chosen path</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
-    <value>These files will not appear as selectable in the built-in Backup Manager</value>
+    <value>These files will not appear as selectable in the built-in backup manager</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>As a file, at the default location</value>

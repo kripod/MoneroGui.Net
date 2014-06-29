@@ -136,7 +136,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("isRegularWalletBackupEnabled", DefaultValue = true)]
+            [ConfigurationProperty("isRegularWalletBackupEnabled", DefaultValue = false)]
             public bool IsRegularWalletBackupEnabled {
                 get { return (bool)base["isRegularWalletBackupEnabled"]; }
                 set {

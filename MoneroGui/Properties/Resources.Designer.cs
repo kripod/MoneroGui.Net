@@ -151,7 +151,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These files will not appear as selectable in the built-in Backup Manager.
+        ///   Looks up a localized string similar to These files will not appear as selectable in the built-in backup manager.
         /// </summary>
         public static string BackupManagerNewBackupWindowSelectionAsFileCustom2 {
             get {
