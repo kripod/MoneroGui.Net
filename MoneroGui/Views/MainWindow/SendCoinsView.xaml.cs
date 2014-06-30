@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -24,6 +25,9 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         private void AddRecipient()
         {
             ViewModel.Recipients.Add(new SendCoinsRecipient(this));
+
+            ListBoxRecipients.SelectedIndex = ListBoxRecipients.Items.Count - 1;
+            SetFocusToSelectedRecipient();
         }
 
         public void RemoveRecipient(SendCoinsRecipient item)
@@ -97,16 +101,11 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         private void ButtonAddRecipient_Click(object sender, RoutedEventArgs e)
         {
             AddRecipient();
-
-            ListBoxRecipients.SelectedIndex = ListBoxRecipients.Items.Count - 1;
-            this.SetFocusedElement(ListBoxRecipients);
         }
 
         private void ButtonClearRecipients_Click(object sender, RoutedEventArgs e)
         {
             ClearRecipients();
-
-            this.SetFocusedElement(ListBoxRecipients);
         }
 
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
@@ -116,8 +115,13 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             // Save settings
             Debug.Assert(IntegerUpDownMixCount.Value != null, "IntegerUpDownMixCount.Value != null");
             SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
+        }
 
-            this.SetFocusedElement(ListBoxRecipients);
+        private void SetFocusToSelectedRecipient()
+        {
+            var itemContainer = ListBoxRecipients.ItemContainerGenerator.ContainerFromIndex(ListBoxRecipients.SelectedIndex) as ListBoxItem;
+            if (itemContainer == null) return;
+            itemContainer.Focus();
         }
     }
 }

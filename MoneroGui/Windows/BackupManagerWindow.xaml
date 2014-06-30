@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <ListView Grid.Row="0" Grid.Column="0" x:Name="ListViewBackups" SelectionChanged="ListViewBackups_SelectionChanged" Margin="0 0 0 8"/>
+            <ListBox Grid.Row="0" Grid.Column="0" x:Name="ListBoxBackups" SelectionChanged="ListBoxBackups_SelectionChanged" Margin="0 0 0 8"/>
             <Button Grid.Row="1" Grid.Column="0" Click="ButtonBrowseBackupsInExplorer_Click">
                 <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowBrowseInExplorer, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Browse.png"/>
             </Button>

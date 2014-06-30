@@ -1,5 +1,4 @@
 ﻿using Jojatekok.MoneroGUI.Windows;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using Xceed.Wpf.Toolkit;
@@ -20,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Controls
         private void CoinSender_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             CurrentRecipient = e.NewValue as SendCoinsRecipient;
-            Debug.Assert(CurrentRecipient != null, "CurrentRecipient != null");
+            if (CurrentRecipient == null) return;
 
             CurrentRecipient.AddressInvalidated += delegate {
                 var bindingExpression = TextBoxAddress.GetBindingExpression(TextBox.TextProperty);

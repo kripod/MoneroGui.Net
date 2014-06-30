@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
 {
-    public class NetworkInformation : HttpRpcResponse
+    public class NetworkInformation : RpcResponse
     {
         [JsonProperty("alt_blocks_count")]
         public int AlternativeBlockCount { get; private set; }

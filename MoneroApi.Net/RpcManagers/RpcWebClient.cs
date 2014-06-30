@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
+using System.Threading;
 
 namespace Jojatekok.MoneroAPI.RpcManagers
 {
@@ -60,7 +61,8 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             var request = WebRequest.CreateHttp(GetBaseUrl(portType) + relativeUrl);
 
             request.Method = method;
-            request.Timeout = Helper.RequestsTimeoutMilliseconds;
+            request.Timeout = Timeout.Infinite;
+            request.ReadWriteTimeout = Timeout.Infinite;
 
             return request;
         }

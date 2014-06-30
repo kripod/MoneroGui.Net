@@ -9,7 +9,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <controls:ImageGreyable Grid.Column="0" x:Name="Image" Height="14"/>
+        <controls:ImageGreyable Grid.Column="0" x:Name="Image" Style="{StaticResource StyleImagePictogram}"/>
         <TextBlock Grid.Column="1" Text="{Binding Path=Text, Mode=OneWay}" TextWrapping="Wrap" TextAlignment="Center" Margin="4 0 0 0"/>
     </Grid>
 </UserControl>

@@ -51,13 +51,14 @@
     <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
     <Compile Include="EventArgs\ValueChangingEventArgs.cs" />
+    <Compile Include="TimerSettings.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Objects\ConcurrentReadOnlyObservableCollection.cs" />
     <Compile Include="ProcessManagers\JobManager.cs" />
-    <Compile Include="RpcManagers\HttpRpcResponse.cs" />
+    <Compile Include="RpcManagers\RpcResponse.cs" />
     <Compile Include="RpcManagers\Daemon\Http\Responses\NetworkInformation.cs" />
     <Compile Include="RpcManagers\JsonError.cs" />
-    <Compile Include="RpcManagers\RpcRelativeUrls.cs" />
+    <Compile Include="RpcManagers\HttpRpcCommands.cs" />
     <Compile Include="RpcManagers\RpcPortType.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetAddress.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetBalance.cs" />

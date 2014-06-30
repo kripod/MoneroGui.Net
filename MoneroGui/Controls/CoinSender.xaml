@@ -35,13 +35,13 @@
             </xctk:WatermarkTextBox.Text>
         </xctk:WatermarkTextBox>
         <Button Grid.Row="0" Grid.Column="4" ToolTip="{Binding Path=TextAddressBook, Source={StaticResource Resources}}" Click="ButtonAddressBook_Click" VerticalAlignment="Top" Padding="0">
-            <Image Source="/Resources/Images/Contact.png" Margin="2"/>
+            <Image Source="/Resources/Images/Contact.png" Style="{StaticResource StyleImagePictogram}" Margin="2"/>
         </Button>
         <Button Grid.Row="0" Grid.Column="5" ToolTip="{Binding Path=TextPaste, Source={StaticResource Resources}}" Click="ButtonPasteAddress_Click" VerticalAlignment="Top" Padding="0" Margin="3 0">
-            <Image Source="/Resources/Images/Paste.png" Margin="2"/>
+            <Image Source="/Resources/Images/Paste.png" Style="{StaticResource StyleImagePictogram}" Margin="2"/>
         </Button>
         <Button Grid.Row="0" Grid.Column="6" ToolTip="{Binding Path=CoinSenderRemoveRecipient, Source={StaticResource Resources}}" Click="ButtonRemoveSelf_Click" VerticalAlignment="Top" Padding="0">
-            <Image Source="/Resources/Images/Delete.png" Margin="2"/>
+            <Image Source="/Resources/Images/Delete.png" Style="{StaticResource StyleImagePictogram}" Margin="2"/>
         </Button>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=TextLabel, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>

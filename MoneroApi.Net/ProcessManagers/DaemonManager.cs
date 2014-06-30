@@ -11,7 +11,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public class DaemonManager : BaseProcessManager
     {
-        public event EventHandler RpcInitialized;
         public event EventHandler BlockchainSynced;
         public event EventHandler<NetworkInformationChangingEventArgs> NetworkInformationChanging;
 
@@ -23,10 +22,25 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private RpcWebClient RpcWebClient { get; set; }
 
-        public bool IsRpcInitialized { get; private set; }
-        public bool IsBlockchainSynced { get; private set; }
+        private bool _isBlockchainSynced;
+        public bool IsBlockchainSynced {
+            get { return _isBlockchainSynced; }
 
-        public NetworkInformation NetworkInformation { get; private set; }
+            private set {
+                _isBlockchainSynced = value;
+                if (BlockchainSynced != null && value) BlockchainSynced(this, EventArgs.Empty);
+            }
+        }
+
+        private NetworkInformation _networkInformation;
+        public NetworkInformation NetworkInformation {
+            get { return _networkInformation; }
+
+            private set {
+                if (NetworkInformationChanging != null) NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(value));
+                _networkInformation = value;
+            }
+        }
 
         internal DaemonManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareDaemon)
         {
@@ -50,44 +64,75 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void StartRpcServices()
         {
-            TimerQueryNetworkInformation.Change(0, 750);
-            TimerSaveBlockchain.Change(120000, 120000);
+            TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
+            TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
         }
 
         private void QueryNetworkInformation()
         {
-            var output = RpcWebClient.HttpGetData<NetworkInformation>(RpcPortType.Daemon, RpcRelativeUrls.DaemonGetInformation);
-            if (output.Status == RpcResponseStatus.Ok && output.BlockHeightTotal != 0) {
-                var blockHeaderValueContainer = RpcWebClient.JsonQueryData<BlockHeaderValueContainer>(RpcPortType.Daemon, new GetBlockHeaderByHeight(Math.Max(output.BlockHeightDownloaded - 1, 0)));
-                if (blockHeaderValueContainer != null && blockHeaderValueContainer.Status == RpcResponseStatus.Ok) {
-                    output.BlockTimeCurrent = blockHeaderValueContainer.Value.Timestamp;
+            TimerQueryNetworkInformation.Stop();
 
-                    if (NetworkInformationChanging != null) NetworkInformationChanging(this, new NetworkInformationChangingEventArgs(output));
+            var output = HttpGetData<NetworkInformation>(HttpRpcCommands.DaemonGetInformation);
+            if (output != null && output.BlockHeightTotal != 0) {
+                var blockHeaderLast = GetBlockHeaderLast();
+                if (blockHeaderLast != null) {
+                    output.BlockTimeCurrent = blockHeaderLast.Timestamp;
+
                     NetworkInformation = output;
 
                     if (output.BlockHeightRemaining == 0 && !IsBlockchainSynced) {
                         IsBlockchainSynced = true;
-                        if (BlockchainSynced != null) BlockchainSynced(this, EventArgs.Empty);
                     }
                 }
             }
+
+            TimerQueryNetworkInformation.StartOnce(TimerSettings.DaemonQueryNetworkInformationPeriod);
         }
 
         private void SaveBlockchain()
         {
-            RpcWebClient.HttpGetData<HttpRpcResponse>(RpcPortType.Daemon, RpcRelativeUrls.DaemonSaveBlockchain);
+            HttpGetData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
+
+            TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+        }
+
+        public BlockHeader GetBlockHeaderLast()
+        {
+            var blockHeaderValueContainer = JsonQueryData<BlockHeaderValueContainer>(new GetBlockHeaderLast());
+            if (blockHeaderValueContainer != null) {
+                return blockHeaderValueContainer.Value;
+            }
+
+            return null;
         }
 
         private void Process_OutputReceived(object sender, string e)
         {
             var dataLower = e.ToLower(Helper.InvariantCulture);
 
-            if (dataLower.Contains("rpc server initialized") && !IsRpcInitialized) {
+            if (dataLower.Contains("rpc server initialized")) {
                 StartRpcServices();
-
-                IsRpcInitialized = true;
-                if (RpcInitialized != null) RpcInitialized(this, EventArgs.Empty);
             }
+        }
+
+        private T HttpGetData<T>(string command) where T : RpcResponse
+        {
+            var output = RpcWebClient.HttpGetData<T>(RpcPortType.Daemon, command);
+            if (output.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
+        }
+
+        private T JsonQueryData<T>(JsonRpcRequest jsonRpcRequest) where T : RpcResponse
+        {
+            var output = RpcWebClient.JsonQueryData<T>(RpcPortType.Daemon, jsonRpcRequest);
+            if (output.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
         }
 
         public new void Dispose()

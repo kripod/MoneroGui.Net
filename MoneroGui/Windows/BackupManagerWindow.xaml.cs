@@ -63,21 +63,23 @@ namespace Jojatekok.MoneroGUI.Windows
             backupDates.Sort();
             Dispatcher.Invoke(() => {
                 for (var i = backupDates.Count - 1; i >= 0; i--) {
-                    ListViewBackups.Items.Add(backupDates[i]);
+                    ListBoxBackups.Items.Add(backupDates[i]);
                 }
             });
         }
 
-        private void ListViewBackups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBoxBackups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ButtonRestoreBackupFromSelection.IsEnabled = ListViewBackups.SelectedIndex >= 0;
+            ButtonRestoreBackupFromSelection.IsEnabled = ListBoxBackups.SelectedIndex >= 0;
         }
 
         private void ButtonBrowseBackupsInExplorer_Click(object sender, RoutedEventArgs e)
         {
-            if (!Directory.Exists(BaseBackupDirectory)) return;
+            if (Directory.Exists(BaseBackupDirectory)) {
+                Process.Start(BaseBackupDirectory);
+            }
 
-            Process.Start(BaseBackupDirectory);
+            this.SetFocusedElement(ListBoxBackups);
         }
 
         private async void ButtonNewBackup_Click(object sender, RoutedEventArgs e)
@@ -92,20 +94,27 @@ namespace Jojatekok.MoneroGUI.Windows
                     backupName = dialog.BackupDirectory.Substring(BaseBackupDirectory.Length);
                 } else {
                     backupName = await Task.Factory.StartNew(() => IsDirectoryAvailableInBackups(dialog.BackupDirectory));
-                    if (backupName == null) return;
+                    if (backupName == null) {
+                        this.SetFocusedElement(ListBoxBackups);
+                        return;
+                    }
                 }
 
-                var listViewItems = ListViewBackups.Items;
+                var listViewItems = ListBoxBackups.Items;
                 if (!listViewItems.Contains(backupName)) listViewItems.Insert(0, backupName);
             }
+
+            this.SetFocusedElement(ListBoxBackups);
         }
 
         private async void ButtonRestoreBackupFromSelection_Click(object sender, RoutedEventArgs e)
         {
-            var selectedBackup = ListViewBackups.SelectedItem as string;
+            var selectedBackup = ListBoxBackups.SelectedItem as string;
             if (selectedBackup != null) {
                 await TryRestoreWalletFromDirectoryAsync(Path.Combine(BaseBackupDirectory, selectedBackup));
             }
+
+            this.SetFocusedElement(ListBoxBackups);
         }
 
         private async void ButtonRestoreBackupFromDirectory_Click(object sender, RoutedEventArgs e)
@@ -114,6 +123,8 @@ namespace Jojatekok.MoneroGUI.Windows
             if (dialog.ShowDialog() == true) {
                 await TryRestoreWalletFromDirectoryAsync(dialog.SelectedPath);
             }
+
+            this.SetFocusedElement(ListBoxBackups);
         }
 
         private async Task TryRestoreWalletFromDirectoryAsync(string directoryToRestore)

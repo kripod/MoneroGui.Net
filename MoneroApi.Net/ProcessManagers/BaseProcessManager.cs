@@ -112,7 +112,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                     if (!Process.HasExited) {
                         if (Process.Responding) {
                             Send("exit");
-                            if (!Process.WaitForExit(120000)) Process.Kill();
+                            if (!Process.WaitForExit(300000)) Process.Kill();
                         } else {
                             Process.Kill();
                         }

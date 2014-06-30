@@ -17,8 +17,6 @@ namespace Jojatekok.MoneroAPI
         public const ushort RpcUrlBasePortDaemon = 18081;
         public const ushort RpcUrlBasePortWallet = 19091;
 
-        public const int RequestsTimeoutMilliseconds = 30000;
-
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
 
         public static readonly JobManager JobManager = new JobManager();
@@ -56,6 +54,21 @@ namespace Jojatekok.MoneroAPI
 
                 return stringWriter.ToString();
             }
+        }
+
+        public static void Start(this Timer timer, int period)
+        {
+            timer.Change(period, period);
+        }
+
+        public static void StartImmediately(this Timer timer, int period)
+        {
+            timer.Change(0, period);
+        }
+
+        public static void StartOnce(this Timer timer, int dueTime)
+        {
+            timer.Change(dueTime, Timeout.Infinite);
         }
 
         public static void Stop(this Timer timer)

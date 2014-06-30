@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroAPI.RpcManagers
 {
-    public class HttpRpcResponse
+    public class RpcResponse
     {
         public RpcResponseStatus Status { get; private set; }
 

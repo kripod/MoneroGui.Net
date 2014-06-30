@@ -483,7 +483,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Fájlként, az alapértelmezett helyen</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Determinisztikus tárca seedként</value>
+    <value>Meghatározott tárca seedként</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ez a módszer a legbiztonságosabb, és nem is igényel számítógépet a tároláshoz</value>
@@ -507,7 +507,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Könyvtárból...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Determinisztikus tárca seedből...</value>
+    <value>Meghatározott tárca seedből...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>A kijelölésből</value>
@@ -522,7 +522,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Biztonsági mentés kezelő</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Kérlek, légy RENDKÍVÜL ÓVATOS a tárcainformációid tárolásával!
+    <value>Kérlek, légy RENDKÍVÜL ÓVATOS a tárca-információid tárolásával!
 
 Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value>
   </data>

@@ -39,7 +39,7 @@
             </TextBox.Text>
         </TextBox>
         <Button Grid.Row="1" Grid.Column="3" ToolTip="{Binding Path=TextCopy, Source={StaticResource Resources}}" Click="ButtonCopyQrUri_Click" VerticalAlignment="Center" Padding="0" Margin="8 0 0 0">
-            <Image Source="/Resources/Images/Copy.png" Margin="2"/>
+            <Image Source="/Resources/Images/Copy.png" Style="{StaticResource StyleImagePictogram}" Margin="2"/>
         </Button>
 
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=TextAddress, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>

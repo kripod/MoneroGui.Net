@@ -57,6 +57,9 @@ namespace Jojatekok.MoneroGUI.Controls
                     TextBoxPath.Text = newPath;
                 }
             }
+
+            TextBoxPath.SelectAll();
+            this.SetFocusedElement(TextBoxPath);
         }
     }
 }

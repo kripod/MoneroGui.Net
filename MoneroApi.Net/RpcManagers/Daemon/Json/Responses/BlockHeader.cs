@@ -3,7 +3,7 @@ using System;
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses
 {
-    class BlockHeaderValueContainer : HttpRpcResponse, IValueContainer<BlockHeader>
+    class BlockHeaderValueContainer : RpcResponse, IValueContainer<BlockHeader>
     {
         [JsonProperty("block_header")]
         public BlockHeader Value { get; private set; }

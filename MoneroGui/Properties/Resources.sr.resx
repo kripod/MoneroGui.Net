@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Konzola</value>
   </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>Informacija</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug prozor</value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_O Monero Klijentu</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Menadžer rezervne kopije</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Promenite šifru novčanika...</value>
@@ -256,7 +256,7 @@
     <value>Da</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Primiti</value>
+    <value>Primljen</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
     <value>Poslati</value>
@@ -463,5 +463,66 @@ Molimo smanjite broj karaktera!</value>
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
     <value>Nepoznata vrsta transakcije</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Informacija</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Upozorenje</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Izaberite metod za stvaranje nove rezervne kopije!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>As a file, at a chosen path</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>These files will not appear as selectable in the built-in backup manager</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>As a file, at the default location</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>As a deterministic wallet seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Ovaj metod je najsigurniji i čak ne zahteva komjuter za skladištenje</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Nova rezervna kopija</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Pretražite u eksploreru...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Automatsko kreiranje rezervnih kopija svake nedelje</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Napravite rezervnu kopiju</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>The backup at \&quot;{0}\&quot; ne može da se vrati.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>From directory...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>From deterministic wallet seed...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>From selection</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>The backup has been successfully restored and applied.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Vraćanje rezervne kopije</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Backup manager</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Molimo vas da budete EKSTREMNO OPREZNI u skladištenju podataka novčanika!
+Niko ne bi trebalo da može da im pristupi,jer će to ugroziti vaš novac.</value>
   </data>
 </root>
