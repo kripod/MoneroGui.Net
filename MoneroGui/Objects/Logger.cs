@@ -1,27 +1,27 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI
 {
-    class Logger : INotifyPropertyChanged
+    class Logger : DependencyObject
     {
-        public event EventHandler<string> OnMessage;
-
         private const int MaxLineCount = 300;
+
+        public static readonly DependencyProperty MessagesProperty = DependencyProperty.RegisterAttached(
+            "Messages",
+            typeof(string),
+            typeof(Logger),
+            new PropertyMetadata(string.Empty)
+        );
+
+        public string Messages {
+            get { return Dispatcher.Invoke(() => GetValue(MessagesProperty) as string, DispatcherPriority.DataBind); }
+            private set { Dispatcher.Invoke(() => SetValue(MessagesProperty, value), DispatcherPriority.DataBind); }
+        }
 
         private int LineCount { get; set; }
         public bool IsMaxLineCountReached { get; private set; }
-
-        private string _messages = string.Empty;
-        public string Messages {
-            get { return _messages; }
-
-            private set {
-                _messages = value;
-                OnPropertyChanged();
-            }
-        }
 
         public void Log(string message)
         {
@@ -40,8 +40,6 @@ namespace Jojatekok.MoneroGUI
 
             allMessages += message;
             Messages = allMessages;
-
-            if (OnMessage != null) OnMessage(this, message);
         }
 
         public void Clear()
@@ -49,12 +47,6 @@ namespace Jojatekok.MoneroGUI
             Messages = string.Empty;
             LineCount = 0;
             IsMaxLineCountReached = false;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

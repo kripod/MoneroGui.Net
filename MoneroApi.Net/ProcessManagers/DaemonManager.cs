@@ -91,9 +91,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void SaveBlockchain()
         {
-            HttpGetData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
-
-            TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+            Send("save");
         }
 
         public BlockHeader GetBlockHeaderLast()
@@ -109,6 +107,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Process_OutputReceived(object sender, string e)
         {
             var dataLower = e.ToLower(Helper.InvariantCulture);
+
+            if (dataLower.Contains("blockchain stored")) {
+                TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+            }
 
             if (dataLower.Contains("rpc server initialized")) {
                 StartRpcServices();

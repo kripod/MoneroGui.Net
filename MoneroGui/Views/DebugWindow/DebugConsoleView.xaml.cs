@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -11,12 +12,6 @@ namespace Jojatekok.MoneroGUI.Views.DebugWindow
         public event EventHandler<string> SendRequested;
 
         private Logger Logger { get; set; }
-
-        private bool _isAutoScroll = true;
-        private bool IsAutoScroll {
-            get { return _isAutoScroll; }
-            set { _isAutoScroll = value; }
-        }
 
         public DebugConsoleView()
         {
@@ -30,43 +25,35 @@ namespace Jojatekok.MoneroGUI.Views.DebugWindow
             Logger = DataContext as Logger;
             if (Logger == null) return;
 
-            TextBoxLog.Text = Logger.Messages;
-            Logger.OnMessage += Logger_OnMessage;
+            TextBoxLog.SetBinding(
+                TextBox.TextProperty,
+                new Binding {
+                    Path = new PropertyPath("Messages"),
+                    Source = Logger,
+                    IsAsync = true,
+                    NotifyOnTargetUpdated = true,
+                    Mode = BindingMode.OneWay,
+                }
+            );
         }
 
-        private void Logger_OnMessage(object sender, string e)
+        private void DebugConsoleView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Dispatcher.Invoke(() => {
-                // TODO: Maintain the scroll bar's position even if the number of max lines have been reached
-
-                var oldVerticalScrollOffset = ScrollViewer.VerticalOffset;
-                var oldSelectionLength = TextBoxLog.SelectionLength;
-                var newSelectionStart = TextBoxLog.SelectionStart;
-                TextBoxLog.Select(0, 0);
-
-                TextBoxLog.Text = Logger.Messages;
-
-                if (oldSelectionLength > 0) {
-                    if (Logger.IsMaxLineCountReached) {
-                        newSelectionStart -= e.Length;
-                    }
-
-                    if (newSelectionStart < 0) newSelectionStart = 0;
-                    TextBoxLog.Select(newSelectionStart, oldSelectionLength);
-                }
-
-                ScrollViewer.ScrollToVerticalOffset(oldVerticalScrollOffset);
-            });
+            if ((bool) e.NewValue) {
+                Dispatcher.BeginInvoke(new Action(() => ScrollViewerLog.ScrollToEnd()), DispatcherPriority.ContextIdle);
+            }
         }
 
 // ReSharper disable CompareOfFloatsByEqualityOperator
-        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        private void TextBoxLog_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-            if (e.ExtentHeightChange == 0) {
-                IsAutoScroll = ScrollViewer.VerticalOffset == ScrollViewer.ScrollableHeight;
+            if (ScrollViewerLog.VerticalOffset == ScrollViewerLog.ScrollableHeight) {
+                // Auto-scroll
+                ScrollViewerLog.ScrollToEnd();
 
-            } else if (IsAutoScroll) {
-                ScrollViewer.ScrollToVerticalOffset(ScrollViewer.ExtentHeight);
+            } else if (Logger.IsMaxLineCountReached) {
+                // Maintain the ScrollViewer's previous position (if possible)
+                ScrollViewerLog.LineUp();
             }
         }
 // ReSharper restore CompareOfFloatsByEqualityOperator
@@ -85,14 +72,15 @@ namespace Jojatekok.MoneroGUI.Views.DebugWindow
                 SendRequested(this, input);
                 TextBoxInput.Clear();
             }
+
+            this.SetFocusedElement(TextBoxInput);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             if (Logger != null) Logger.Clear();
 
-            TextBoxLog.Clear();
-            IsAutoScroll = true;
+            this.SetFocusedElement(TextBoxInput);
         }
     }
 }
