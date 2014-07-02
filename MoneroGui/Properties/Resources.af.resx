@@ -121,408 +121,408 @@
     <value>XMR</value>
   </data>
   <data name="TextClear" xml:space="preserve">
-    <value>Obriši</value>
+    <value>Maak skoon</value>
   </data>
   <data name="TextSend" xml:space="preserve">
-    <value>Pošalji</value>
+    <value>Stuur</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Demon</value>
+    <value>Deamon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzola</value>
+    <value>Konsole</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug prozor</value>
+    <value>Ontgogga venster</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
-    <value>Imenik</value>
+    <value>Adres boek</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero klijent se gasi...</value>
+    <value>Monero Kliënt sluit af...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Pregled</value>
+    <value>Oorsig</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Pošalji novac</value>
+    <value>Stuur munte</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klijent</value>
+    <value>Monero Kliënt</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Transakcije</value>
+    <value>Transaksies</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_O Monero Klijentu</value>
+    <value>_Omtrent Monero Kliënt</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Menadžer rezervne kopije</value>
+    <value>_Reserwe bestuurder</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Promenite šifru novčanika...</value>
+    <value>_Verander beursie frase</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug prozor</value>
+    <value>_Ontgogga venster</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Šifrovanje novčanika</value>
+    <value>_Enkripteer beursie</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Izlaz</value>
+    <value>Verlaat</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Izvesti</value>
+    <value>_Laai af</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fajl</value>
+    <value>_Lêer</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Pomoć</value>
+    <value>_Hulp</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opcije</value>
+    <value>_Opsies</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Podešavanja</value>
+    <value>_Instellings</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Otključavanje novčanika...</value>
+    <value>_Ontsluit beursie</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Inicijalizacija...</value>
+    <value>Inisialiseer...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Broj transakcija:</value>
+    <value>Getal transaksies</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Nedavne transakcije</value>
+    <value>Onlangse transaksies</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Raspoloživo stanje:</value>
+    <value>Spandeerbare:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Nepotvrđeno:</value>
+    <value>Onbevestigde:</value>
   </data>
   <data name="TextWallet" xml:space="preserve">
-    <value>Novčanik</value>
+    <value>Beursie</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Unesite Monero adresu</value>
+    <value>Tik in n Monero address</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Unesite oznaku za ovu adresu da je dodate u adresar</value>
+    <value>Tik n etiket vir hierdie adres om dit in die adres boek te laai</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Mix račun</value>
+    <value>Meng getal</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Uplatnica ID:</value>
+    <value>Betaling ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Ovo polje je opcionalno</value>
+    <value>Hierdie veld is optioneel</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>broj konekcija</value>
+    <value>konneksies</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Sinhronizacija sa mrežom...</value>
+    <value>Besig met sinkronisering met netwerk..</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>dana</value>
+    <value>dag</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} blokova ({1}) preostalo</value>
+    <value>{0} blokke ({1}) agter</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
-    <value>Adresa</value>
+    <value>Adres</value>
   </data>
   <data name="TextAmount" xml:space="preserve">
-    <value>Količina</value>
+    <value>Bedrag</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Oznaka</value>
+    <value>Etiket</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
-    <value>Tip</value>
+    <value>Tipe</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Za slanje?</value>
+    <value>Spandeerbare</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Ne</value>
+    <value>Nee</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Da</value>
+    <value>Ja</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Primljen</value>
+    <value>Ontvang</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Poslati</value>
+    <value>Stuur</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
-    <value>Nepoznato</value>
+    <value>Onbekend</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>O Monero Klijentu</value>
+    <value>Omtrent Monero  Kliënt</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Greška: Licencni fajl ne može biti pronađen.</value>
+    <value>Fout: Die lisensie lêer kan nie gevind word nie.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Učitavanje licencnog fajla...</value>
+    <value>Besig om lisensie lêer te laai</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Licence treće strane</value>
+    <value>Derde party lisensies</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
-    <value>Kopiraj</value>
+    <value>Kopie</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Obriši</value>
+    <value>Vee uit</value>
   </data>
   <data name="TextNew" xml:space="preserve">
-    <value>Novo...</value>
+    <value>Nuwe..</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Izvesti...</value>
+    <value>Laai af..</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Otkazati</value>
+    <value>Kanselleer</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>U redu</value>
+    <value>Reg so</value>
   </data>
   <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
-    <value>Dodaj poznatu adresu</value>
+    <value>Voeg bekende adres by</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
-    <value>Izgled</value>
+    <value>Voorkoms</value>
   </data>
   <data name="OptionsAppearanceLanguage" xml:space="preserve">
-    <value>Jezik korisničkog interfejsa:</value>
+    <value>Gebruikers Koppelvlak Taal</value>
   </data>
   <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
-    <value>Uobičajeno</value>
+    <value>Standaard</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Opšti</value>
+    <value>Allerlei</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Putanje</value>
+    <value>Paaie</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value> Vraćanje Novčanika:</value>
+    <value>Beursie reserwe</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Podaci novčanika:</value>
+    <value>Beursie data</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Demon softver:</value>
+    <value>Deamon sagteware:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Rudar softver:</value>
+    <value>Myner sagteware</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Novčanik softver:</value>
+    <value>Beursie sagteware:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Sačuvajte baze podataka pre isključivanja</value>
+    <value>Stoor databasis voor afskakeling</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Startuj Monero Klijent pri pokretanju</value>
+    <value>Open Monero Kliënt tydens stelsel intekening</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Kopiraj adresu</value>
+    <value>Maak n kopie van die adres</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Svi fajlovi|*</value>
+    <value>Alle lêers</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Izvršni (*.exe)|*.exe</value>
+    <value>Uitvoerbare (*.exe)|*.exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Fajl novčanika (*.bin)|*.bin</value>
+    <value>Beursie lêers (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Tačka odvojiv fajl (*.csv)|*.csv</value>
+    <value>Komma gespasieerde lêer (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>dani</value>
+    <value>dae</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
-    <value>sati</value>
+    <value>ure</value>
   </data>
   <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
-    <value>sat</value>
+    <value>uur</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
     <value>minute</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
-    <value>minuta</value>
+    <value>minuut</value>
   </data>
   <data name="AboutWindowCreditIcons" xml:space="preserve">
-    <value>Ikone od strane:</value>
+    <value>Ikoon gemaak deur:</value>
   </data>
   <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
-    <value>Uredi kontakt</value>
+    <value>Wysig kontak</value>
   </data>
   <data name="TextEdit" xml:space="preserve">
-    <value>Uredi</value>
+    <value>Wysig</value>
   </data>
   <data name="TextPaste" xml:space="preserve">
-    <value>Nalepi</value>
+    <value>Plak</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fajl (*.png)|*.png</value>
+    <value>PNG lêers (*.png)|*.png</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
-    <value>Poruka:</value>
+    <value>Boodskap:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Sačuvaj kao...</value>
+    <value>Stoor as...</value>
   </data>
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
-    <value>Dobijen URI je predugačak.
+    <value>Die uiteindelike URI is te lank.
 
-Molimo smanjite broj karaktera!</value>
+Verkort asseblief jou insette!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
-    <value>QR kod</value>
+    <value>QR kode</value>
   </data>
   <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Stanje:</value>
+    <value>Balans</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
-    <value>Uklonite primaoca</value>
+    <value>Verwyder ontvanger</value>
   </data>
   <data name="SendCoinsAddRecipient" xml:space="preserve">
-    <value>Dodaj primaoca</value>
+    <value>Sit ontvanger by</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
-    <value>Obriši primaoce</value>
+    <value>Verwyder ontvangers</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Greška</value>
+    <value>Fout</value>
   </data>
   <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
-    <value>ponovo</value>
+    <value>weer</value>
   </data>
   <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
-    <value>Sadašnja šifra:</value>
+    <value>Huidige frase:</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Šifrujte novčanik kako bi bio siguran!</value>
+    <value>Gebruik n frase om jou beursie veilig te hou!</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
-    <value>(Preporučuje se korišćenje najmanje 10 slučajnih karaktera ili 8 reči.)</value>
+    <value>(Dit word voorgeskryf om ten minste 10 verskeie karakters of 8 woorde te gebruik.)</value>
   </data>
   <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
-    <value>Nova šifra</value>
+    <value>Nuwe frase</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
-    <value>Šifra</value>
+    <value>Frase</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Promena šifre novčanika</value>
+    <value>Verander beursie frase</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Šifrovanje novčanika</value>
+    <value>Enkripteer beursie</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
-    <value>Šifre se ne poklapaju</value>
+    <value>Die verskafde frases kom nie ooreen. </value>
   </data>
   <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Otključaj novčanik</value>
+    <value>Sluit beursie oop</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Unesite šifru kako biste pristupili novčaniku.</value>
+    <value>Tik asseblief jou frase in om jou beursie oop te maak.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Opcije</value>
+    <value>Opsies</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
-    <value>Molimo vas da ne prekidate ovaj proces!</value>
+    <value>Moet asseblief nie die proses onderbreuk nie!</value>
   </data>
   <data name="MenuHideWindow" xml:space="preserve">
-    <value>Sakrij prozor</value>
+    <value>Steek die venster weg</value>
   </data>
   <data name="MenuShowWindow" xml:space="preserve">
-    <value>Prikaži prozor</value>
+    <value>Wys die venster</value>
   </data>
   <data name="TransactionsTransactionId" xml:space="preserve">
-    <value>ID Transakcije</value>
+    <value>Transaksie ID</value>
   </data>
   <data name="TaskbarTransactionIncoming" xml:space="preserve">
-    <value>Dolazna transakcija</value>
+    <value>Inkomende transaksie</value>
   </data>
   <data name="TaskbarTransactionOutgoing" xml:space="preserve">
-    <value>Odlazna transakcija</value>
+    <value>Uitgaande transaksie</value>
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
-    <value>Nepoznata vrsta transakcije</value>
+    <value>Onbekende tipe transaksie</value>
   </data>
   <data name="TextInformation" xml:space="preserve">
-    <value>Informacija</value>
+    <value>Informasie</value>
   </data>
   <data name="TextWarning" xml:space="preserve">
-    <value>Upozorenje</value>
+    <value>Waarskuwing</value>
   </data>
   <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
-    <value>Izaberite metod za stvaranje nove rezervne kopije!</value>
+    <value>Kies asseblief n metode om die nuwe reserwe te maak!</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
-    <value>As a file, at a chosen path</value>
+    <value>As n lêer, by n verkose pad</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
-    <value>These files will not appear as selectable in the built-in backup manager</value>
+    <value>Hierdie lêers sal nie verskyn in die ingeboude reserwe bestuurder nie</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
-    <value>As a file, at the default location</value>
+    <value>As n lêer, by die oorspronklike pad</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>As a deterministic wallet seed</value>
+    <value>As n deterministiese beursie saad</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
-    <value>Ovaj metod je najsigurniji i čak ne zahteva komjuter za skladištenje</value>
+    <value>Hierdie metode is die veiligste, en dit verg nie eers n rekenaar vir storing nie</value>
   </data>
   <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
-    <value>Nova rezervna kopija</value>
+    <value>Nuwe reserwe</value>
   </data>
   <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
-    <value>Pretražite u eksploreru...</value>
+    <value>Soek in verkenner...</value>
   </data>
   <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
-    <value>Automatsko kreiranje rezervnih kopija svake nedelje</value>
+    <value>Maak outomaties reserwes elke week</value>
   </data>
   <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
-    <value>Napravite rezervnu kopiju</value>
+    <value>Maak reserwes</value>
   </data>
   <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
-    <value>The backup at \"{0}\" ne može da se vrati.</value>
+    <value>Die reserwe by \"{0}\" kon nie herwin word nie.</value>
   </data>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
-    <value>From directory...</value>
+    <value>Van pad...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>From deterministic wallet seed...</value>
+    <value>Van deterministiese beursie saad...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
-    <value>From selection</value>
+    <value>Van seleksie</value>
   </data>
   <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
-    <value>The backup has been successfully restored and applied.</value>
+    <value>Die reserwe is suksesvol herwin en aangewend.</value>
   </data>
   <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
-    <value>Vraćanje rezervne kopije</value>
+    <value>Herstel reserwes</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
-    <value>Backup manager</value>
+    <value>Reserwe bestuurder</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Molimo vas da budete EKSTREMNO OPREZNI u skladištenju podataka novčanika!
-Niko ne bi trebalo da može da im pristupi,jer će to ugroziti vaš novac.</value>
+    <value>Wees asseblief geweldig noukeurig en versigtig met die storing van jou beursie se data.
+Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verloor.</value>
   </data>
 </root>

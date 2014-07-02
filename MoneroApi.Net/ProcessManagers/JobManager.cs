@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    class JobManager : IDisposable
+    sealed class JobManager : IDisposable
     {
         private IntPtr Handle { get; set; }
 
@@ -41,7 +41,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Dispose(false);
         }
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!disposing) {
                 if (Handle != IntPtr.Zero) {

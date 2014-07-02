@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 {
@@ -49,7 +50,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
         private void CultureManager_SupportedLanguagesLoaded(object sender, EventArgs e)
         {
-            Dispatcher.Invoke(ShowLanguageValues);
+            Dispatcher.BeginInvoke(new Action(ShowLanguageValues), DispatcherPriority.DataBind);
         }
     }
 }

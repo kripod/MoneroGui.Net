@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -61,11 +62,11 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             backupDates.Sort();
-            Dispatcher.Invoke(() => {
+            Dispatcher.BeginInvoke(new Action(() => {
                 for (var i = backupDates.Count - 1; i >= 0; i--) {
                     ListBoxBackups.Items.Add(backupDates[i]);
                 }
-            });
+            }), DispatcherPriority.DataBind);
         }
 
         private void ListBoxBackups_SelectionChanged(object sender, SelectionChangedEventArgs e)

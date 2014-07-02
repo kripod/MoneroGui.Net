@@ -24,10 +24,11 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void AddRecipient()
         {
-            ViewModel.Recipients.Add(new SendCoinsRecipient(this));
+            var recipient = new SendCoinsRecipient(this);
+            ViewModel.Recipients.Add(recipient);
 
+            ListBoxRecipients.ScrollIntoView(recipient);
             ListBoxRecipients.SelectedIndex = ListBoxRecipients.Items.Count - 1;
-            SetFocusToSelectedRecipient();
         }
 
         public void RemoveRecipient(SendCoinsRecipient item)
@@ -81,12 +82,12 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 // Add new people to the address book
                 foreach (var keyValuePair in contactDictionary) {
                     var contact = new SettingsManager.ConfigElementContact(keyValuePair.Key, keyValuePair.Value);
-                    var editIndex = StaticObjects.AddressBookDataSource.IndexOfLabel(contact.Label);
+                    var editIndex = StaticObjects.DataSourceAddressBook.IndexOfLabel(contact.Label);
 
                     if (editIndex < 0) {
-                        StaticObjects.AddressBookDataSource.Add(contact);
+                        StaticObjects.DataSourceAddressBook.Add(contact);
                     } else {
-                        StaticObjects.AddressBookDataSource[editIndex] = contact;
+                        StaticObjects.DataSourceAddressBook[editIndex] = contact;
                     }
                 }
 
@@ -115,13 +116,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             // Save settings
             Debug.Assert(IntegerUpDownMixCount.Value != null, "IntegerUpDownMixCount.Value != null");
             SettingsManager.General.TransactionsDefaultMixCount = IntegerUpDownMixCount.Value.Value;
-        }
-
-        private void SetFocusToSelectedRecipient()
-        {
-            var itemContainer = ListBoxRecipients.ItemContainerGenerator.ContainerFromIndex(ListBoxRecipients.SelectedIndex) as ListBoxItem;
-            if (itemContainer == null) return;
-            itemContainer.Focus();
         }
     }
 }

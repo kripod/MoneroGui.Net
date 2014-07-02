@@ -1,8 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -43,10 +45,10 @@ namespace Jojatekok.MoneroGUI.Windows
                     LicenseText = LicenseText.ReWrap();
                 }
 
-                Dispatcher.Invoke(() => TextBoxLicenseText.Text = LicenseText);
+                Dispatcher.BeginInvoke(new Action(() => TextBoxLicenseText.Text = LicenseText), DispatcherPriority.DataBind);
 
             } else {
-                Dispatcher.Invoke(() => TextBoxLicenseText.Text = Properties.Resources.AboutWindowLicenseFileNotFound);
+                Dispatcher.BeginInvoke(new Action(() => TextBoxLicenseText.Text = Properties.Resources.AboutWindowLicenseFileNotFound), DispatcherPriority.DataBind);
             }
         }
 

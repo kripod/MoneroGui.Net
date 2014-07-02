@@ -1,71 +1,61 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
-    sealed class StatusBarViewModel : INotifyPropertyChanged
+    sealed class StatusBarViewModel : DependencyObject
     {
-        private bool _isSyncBarShowable = true;
-        private Visibility _syncBarVisibility = Visibility.Hidden;
-        public Visibility SyncBarVisibility {
-            get { return _syncBarVisibility; }
+        public static readonly DependencyProperty SyncStatusVisibilityProperty = DependencyProperty.RegisterAttached(
+            "SyncStatusVisibility",
+            typeof(Visibility),
+            typeof(StatusBarViewModel),
+            new PropertyMetadata(Visibility.Hidden)
+        );
+
+        public static readonly DependencyProperty SyncBarProgressPercentageProperty = DependencyProperty.RegisterAttached(
+            "SyncBarProgressPercentage",
+            typeof(double),
+            typeof(StatusBarViewModel)
+        );
+
+        public static readonly DependencyProperty SyncBarTextProperty = DependencyProperty.RegisterAttached(
+            "SyncBarText",
+            typeof(string),
+            typeof(StatusBarViewModel)
+        );
+
+        public static readonly DependencyProperty ConnectionCountProperty = DependencyProperty.RegisterAttached(
+            "ConnectionCount",
+            typeof(ushort),
+            typeof(StatusBarViewModel)
+        );
+
+        private bool _isSyncStatusShowable = true;
+        public Visibility SyncStatusVisibility {
+            get { return (Visibility)GetValue(SyncStatusVisibilityProperty); }
 
             set {
-                if (!_isSyncBarShowable || value == _syncBarVisibility) return;
-                if (value == Visibility.Hidden) _isSyncBarShowable = false;
+                if (!_isSyncStatusShowable) return;
+                if (value == Visibility.Hidden) _isSyncStatusShowable = false;
 
-                _syncBarVisibility = value;
-                OnPropertyChanged();
+                SetValue(SyncStatusVisibilityProperty, value);
             }
         }
 
-        private string _syncBarText;
+        public double SyncBarProgressPercentage {
+            get { return (double)GetValue(SyncBarProgressPercentageProperty); }
+            set { SetValue(SyncBarProgressPercentageProperty, value); }
+        }
+
         public string SyncBarText {
-            get { return _syncBarText; }
-
-            set {
-                _syncBarText = value;
-                OnPropertyChanged();
-            }
+            get { return GetValue(SyncBarTextProperty) as string; }
+            set { SetValue(SyncBarTextProperty, value); }
         }
 
-        private ulong _blocksDownloaded;
-        public ulong BlocksDownloaded {
-            get { return _blocksDownloaded; }
-
-            set {
-                _blocksDownloaded = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ulong _blocksTotal;
-        public ulong BlocksTotal {
-            get { return _blocksTotal; }
-
-            set {
-                if (value == _blocksTotal) return;
-
-                _blocksTotal = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ushort _connectionCount;
         public ushort ConnectionCount {
-            get { return _connectionCount; }
-
-            set {
-                _connectionCount = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            get { return (ushort)GetValue(ConnectionCountProperty); }
+            set { SetValue(ConnectionCountProperty, value); }
         }
     }
 }

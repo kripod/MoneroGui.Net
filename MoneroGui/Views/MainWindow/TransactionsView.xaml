@@ -12,7 +12,7 @@
 
     <!-- TODO: Add ability for filtering -->
     <UserControl.Resources>
-        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSource, IsAsync=True}">
+        <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding Path=DataSourceTransactions, IsAsync=True}">
             <CollectionViewSource.SortDescriptions>
                 <componentModel:SortDescription PropertyName="Number" Direction="Descending"/>
             </CollectionViewSource.SortDescriptions>

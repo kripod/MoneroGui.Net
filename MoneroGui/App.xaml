@@ -86,10 +86,15 @@
             <Setter Property="Padding" Value="0 3 0 0"/>
         </Style>
 
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True"/>
+        </Style>
+
         <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True"/>
+            <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling"/>
             <Setter Property="EnableColumnVirtualization" Value="True"/>
             <Setter Property="EnableRowVirtualization" Value="True"/>
-            <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling"/>
 
             <Setter Property="AlternatingRowBackground" Value="#00000000"/>
 

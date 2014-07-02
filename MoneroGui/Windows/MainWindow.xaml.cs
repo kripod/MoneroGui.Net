@@ -1,6 +1,5 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
-using Ookii.Dialogs.Wpf;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
@@ -56,7 +56,13 @@ namespace Jojatekok.MoneroGUI.Windows
             LoggerWallet = StaticObjects.LoggerWallet;
 
             StartDaemon();
-            Loaded += delegate { Dispatcher.Invoke(StartWallet); };
+            Loaded += delegate {
+                Dispatcher.BeginInvoke(new Action(StartWallet));
+
+                var hwndSource = HwndSource.FromHwnd((new WindowInteropHelper(this)).Handle);
+                Debug.Assert(hwndSource != null, "hwndSource != null");
+                hwndSource.AddHook(HandleWindowMessages);
+            };
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
@@ -89,7 +95,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 }
             );
 
-            this.ActivateWindowOrLastChild();
+            this.RestoreWindowStateFromMinimized();
         }
 
         private void CommandSendCoins_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -123,6 +129,8 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void CommandExit_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            StaticObjects.IsUnhandledExceptionLoggingEnabled = false;
+
             if (SettingsManager.General.IsSafeShutdownEnabled) {
                 if (IsDisposing) return;
 
@@ -194,8 +202,8 @@ namespace Jojatekok.MoneroGUI.Windows
 
             MoneroClient.StartWallet();
 
-            OverviewView.ViewModel.TransactionDataSource = wallet.Transactions;
-            TransactionsView.ViewModel.DataSource = wallet.Transactions;
+            OverviewView.ViewModel.DataSourceTransactions = wallet.Transactions;
+            TransactionsView.ViewModel.DataSourceTransactions = wallet.Transactions;
         }
 
         private static void Daemon_OnLogMessage(object sender, string e)
@@ -207,26 +215,26 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             var newValue = e.NewValue;
 
-            var connectionCount = (ushort)(newValue.ConnectionCountIncoming + newValue.ConnectionCountOutgoing);
+            var connectionCount = newValue.ConnectionCountTotal;
+            var syncBarProgressPercentage = (double)newValue.BlockHeightDownloaded / newValue.BlockHeightTotal;
             var syncBarText = string.Format(Helper.InvariantCulture,
                                             Properties.Resources.StatusBarSyncTextMain,
                                             newValue.BlockHeightRemaining,
                                             newValue.BlockTimeRemaining.ToStringReadable());
 
-            InvokeForDataChanging(() => {
+            BeginInvokeForDataChanging(() => {
                 var statusBarViewModel = StatusBar.ViewModel;
 
                 statusBarViewModel.ConnectionCount = connectionCount;
-                statusBarViewModel.BlocksTotal = newValue.BlockHeightTotal;
-                statusBarViewModel.BlocksDownloaded = newValue.BlockHeightDownloaded;
+                statusBarViewModel.SyncBarProgressPercentage = syncBarProgressPercentage;
                 statusBarViewModel.SyncBarText = syncBarText;
-                statusBarViewModel.SyncBarVisibility = Visibility.Visible;
+                statusBarViewModel.SyncStatusVisibility = Visibility.Visible;
             });
         }
 
         private void Daemon_BlockchainSynced(object sender, EventArgs e)
         {
-            InvokeForDataChanging(() => StatusBar.ViewModel.SyncBarVisibility = Visibility.Hidden);
+            BeginInvokeForDataChanging(() => StatusBar.ViewModel.SyncStatusVisibility = Visibility.Hidden);
         }
 
         private static void Wallet_OnLogMessage(object sender, string e)
@@ -236,7 +244,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
-            Dispatcher.Invoke(() => {
+            Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
                     // Let the user set the wallet's passphrase for the first time
                     var dialog = new WalletChangePassphraseWindow(this, false);
@@ -253,12 +261,12 @@ namespace Jojatekok.MoneroGUI.Windows
                         MoneroClient.Wallet.Passphrase = dialog.Passphrase;
                     }
                 }
-            });
+            }));
         }
 
         private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)
         {
-            InvokeForDataChanging(() => OverviewView.ViewModel.Address = e.Address);
+            BeginInvokeForDataChanging(() => OverviewView.ViewModel.Address = e.Address);
         }
 
         private void Wallet_TransactionReceived(object sender, TransactionReceivedEventArgs e)
@@ -291,14 +299,14 @@ namespace Jojatekok.MoneroGUI.Windows
                                  Helper.NewLineString +
                                  Properties.Resources.TransactionsTransactionId + ": " + transaction.TransactionId;
 
-            Dispatcher.Invoke(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info));
+            Dispatcher.BeginInvoke(new Action(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info)));
         }
 
         private void Wallet_BalanceChanging(object sender, BalanceChangingEventArgs e)
         {
             var newValue = e.NewValue;
 
-            InvokeForDataChanging(() => {
+            BeginInvokeForDataChanging(() => {
                 var overviewViewModel = OverviewView.ViewModel;
                 overviewViewModel.BalanceSpendable = newValue.Spendable;
                 overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
@@ -309,9 +317,22 @@ namespace Jojatekok.MoneroGUI.Windows
             });
         }
 
-        private void InvokeForDataChanging(Action callback)
+        private void BeginInvokeForDataChanging(Action callback)
         {
-            Dispatcher.Invoke(callback, DispatcherPriority.DataBind);
+            Dispatcher.BeginInvoke(callback, DispatcherPriority.DataBind);
+        }
+
+        private IntPtr HandleWindowMessages(IntPtr handle, Int32 message, IntPtr wParameter, IntPtr lParameter, ref Boolean handled)
+        {
+            if (message == StaticObjects.ApplicationFirstInstanceActivatorMessage) {
+                if (Visibility != Visibility.Visible) {
+                    CommandShowOrHideWindow.Execute(null, this);
+                } else {
+                    this.RestoreWindowStateFromMinimized();
+                }
+            }
+
+            return IntPtr.Zero;
         }
 
         public void Dispose()

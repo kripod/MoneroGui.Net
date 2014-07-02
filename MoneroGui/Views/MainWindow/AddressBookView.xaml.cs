@@ -12,7 +12,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     public partial class AddressBookView : IExportable
     {
-        private static readonly ObservableCollection<SettingsManager.ConfigElementContact> DataSource = StaticObjects.AddressBookDataSource;
+        private static readonly ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = StaticObjects.DataSourceAddressBook;
 
         public bool IsDialogModeEnabled {
             get { return ButtonOk.Visibility == Visibility.Visible; }
@@ -63,21 +63,21 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void ButtonNew_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSource);
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSourceAddressBook);
             if (dialog.ShowDialog() == true) {
                 var overwriteIndex = dialog.OverwriteIndex;
 
                 if (overwriteIndex < 0) {
                     // Add new item
-                    DataSource.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
-                    overwriteIndex = DataSource.Count - 1;
+                    DataSourceAddressBook.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                    overwriteIndex = DataSourceAddressBook.Count - 1;
 
                 } else {
                     // Overwrite existing item
-                    DataSource[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                    DataSourceAddressBook[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
                 }
 
-                DataGridAddressBook.SelectedItem = DataSource[overwriteIndex];
+                DataGridAddressBook.SelectedItem = DataSourceAddressBook[overwriteIndex];
             }
 
             this.SetFocusedElement(DataGridAddressBook);
@@ -98,16 +98,16 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void EditSelectedContact()
         {
-            var editIndex = DataSource.IndexOf(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
-            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSource, editIndex);
+            var editIndex = DataSourceAddressBook.IndexOf(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            var dialog = new AddressBookEditWindow(Window.GetWindow(Parent), DataSourceAddressBook, editIndex);
             if (dialog.ShowDialog() == true) {
                 var overwriteIndex = dialog.OverwriteIndex;
                 if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
-                    DataSource.RemoveAt(dialog.OverwriteIndex);
+                    DataSourceAddressBook.RemoveAt(dialog.OverwriteIndex);
                     if (overwriteIndex < editIndex) editIndex -= 1;
                 }
 
-                DataSource[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                DataSourceAddressBook[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
             }
 
             this.SetFocusedElement(DataGridAddressBook);
@@ -115,7 +115,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            DataSource.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            DataSourceAddressBook.Remove(DataGridAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
 
             this.SetFocusedElement(DataGridAddressBook);
         }

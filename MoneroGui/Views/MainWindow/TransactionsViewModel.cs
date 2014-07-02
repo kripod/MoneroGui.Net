@@ -6,12 +6,12 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class TransactionsViewModel : INotifyPropertyChanged
     {
-        private ConcurrentReadOnlyObservableCollection<Transaction> _dataSource;
-        public ConcurrentReadOnlyObservableCollection<Transaction> DataSource {
-            get { return _dataSource; }
+        private ConcurrentReadOnlyObservableCollection<Transaction> _dataSourceTransactions;
+        public ConcurrentReadOnlyObservableCollection<Transaction> DataSourceTransactions {
+            get { return _dataSourceTransactions; }
 
             set {
-                _dataSource = value;
+                _dataSourceTransactions = value;
                 OnPropertyChanged();
             }
         }

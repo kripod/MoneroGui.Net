@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>日志信息</value>
   </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>信息</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>调试窗口</value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_关于门罗币客户端</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_备份管理</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_更改钱包密码...</value>
@@ -217,7 +217,7 @@
     <value>混合笔数：</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Payment ID:</value>
+    <value>支付ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
     <value>可选字段（交易站需要填写）</value>
@@ -444,7 +444,7 @@
     <value>选项</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
-    <value>请不要中断当过程！</value>
+    <value>请不要中断当前进程！</value>
   </data>
   <data name="MenuHideWindow" xml:space="preserve">
     <value>隐藏窗口</value>
@@ -463,5 +463,67 @@
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
     <value>未知交易类型</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>请选择一个方案创建新的备份！</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>在选择路径下创建一个文件</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>这些文件不会出现在内置的备份管理中</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>在默认路径创建一个文件</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>作为一个固定的钱包种子</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>这个方式最安全，不需要电脑作为存储</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>新建备份</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>浏览目录</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>每周自动创建备份</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>创建备份</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>\"{0}\" 此备份不能还原</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>选择目录</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>选择钱包种子</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>备份已成功还原和应用。</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>还原备份</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>备份管理</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>请非常小心保存你的钱包的数据！
+
+确保没有人能访问它们，因为这会导致你的钱受到影响。</value>
   </data>
 </root>

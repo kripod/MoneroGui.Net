@@ -4,7 +4,7 @@
              xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:controls="clr-namespace:Jojatekok.MoneroGUI.Controls"
-             DataContext="{x:Static objects:StaticObjects.AddressBookDataSource}">
+             DataContext="{x:Static objects:StaticObjects.DataSourceAddressBook}">
     <UserControl.Resources>
         <CollectionViewSource x:Key="CollectionViewSourceDataSource" Source="{Binding IsAsync=True}">
             <CollectionViewSource.SortDescriptions>

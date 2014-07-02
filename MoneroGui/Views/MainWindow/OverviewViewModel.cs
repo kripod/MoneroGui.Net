@@ -7,6 +7,16 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class OverviewViewModel : INotifyPropertyChanged
     {
+        private ConcurrentReadOnlyObservableCollection<Transaction> _dataSourceTransactions;
+        public ConcurrentReadOnlyObservableCollection<Transaction> DataSourceTransactions {
+            get { return _dataSourceTransactions; }
+
+            set {
+                _dataSourceTransactions = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Visibility _addressVisibility = Visibility.Hidden;
         public Visibility AddressVisibility {
             get { return _addressVisibility; }
@@ -62,16 +72,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             set {
                 _balanceUnconfirmed = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ConcurrentReadOnlyObservableCollection<Transaction> _transactionDataSource;
-        public ConcurrentReadOnlyObservableCollection<Transaction> TransactionDataSource {
-            get { return _transactionDataSource; }
-
-            set {
-                _transactionDataSource = value;
                 OnPropertyChanged();
             }
         }

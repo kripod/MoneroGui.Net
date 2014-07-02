@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Konsolen</value>
   </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>Information</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug-Fenster</value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_Über Monero-Client</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Backup Manager</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Wallet-Passphrase ändern...</value>
@@ -437,5 +437,91 @@
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
     <value>Bitte geben Sie Ihre Passphrase ein, um auf Ihre Brieftasche zuzugreifen.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Bitte unterbrechen Sie diesen Vorgang nicht!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Fenster verstecken</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Fenster anzeigen</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Transaktions-ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Eingehende Transaktion</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Ausgehende Transaktion</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Transaktion unbekannten Typs</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Bitte wählen Sie eine Methode für das neue Backup!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Als Datei unter angegebenem Pfad</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Diese Dateien werden im integrierten Backup Manager nicht auswählbar sein</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Als Datei, im Default-Pfad</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Als deterministischer Brieftaschen-Seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Diese Methode ist die sicherste, and benötigt noch nicht einmal einen Computer zum Speichern</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Neues Backup</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Auswählen...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Backups jede Woche automatisch erzeugen</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Backups erzeugen</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Das Backup in \"{0}\" konnte nicht wiederhergestellt werden.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Aus Verzeichnis...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Aus deterministischem Brieftaschen-Seed...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Aus Auswahl...</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Das Backup wurde erfolgreich wiederhergestellt.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Backups wiederherstellen</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Backup Manager</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Seien Sie ÄUSSERST VORSICHTIG beim Speichern Ihrer Brieftaschen-Daten!
+
+Niemand außer Ihnen sollte Zugriff darauf haben, da er sonst Zugriff auf Ihr Geld hat.</value>
   </data>
 </root>

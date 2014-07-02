@@ -132,9 +132,6 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Terminal</value>
   </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>Informação</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Janela de depuração</value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_Sobre o Cliente Monero</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Gerenciador de backup</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Alterar senha da carteira...</value>
@@ -268,7 +268,7 @@
     <value>Sobre o Cliente Monero</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Error: O arquivo de licença não pode ser encontrado.</value>
+    <value>Erro: O arquivo de licença não pode ser encontrado.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
     <value>Carregando o arquivo da licença...</value>
@@ -280,7 +280,7 @@
     <value>Copiar</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Deletar</value>
+    <value>Apagar</value>
   </data>
   <data name="TextNew" xml:space="preserve">
     <value>Novo...</value>
@@ -313,7 +313,7 @@
     <value>Caminhos</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Backups da carteira:</value>
+    <value>Backup da carteira:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
     <value>Arquivos da carteira:</value>
@@ -463,5 +463,67 @@ Por favor reduza o comprimento dos parâmetros!</value>
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
     <value>Transação desconhecida</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Informação</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Por favor seleccione um método para criar o novo backup!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Como um arquivo, em um caminho escolhido</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Esses arquivos não aparecerão como seleccionável no gerenciador de backup integrado</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Como um arquivo, no local padrão</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Como da semente determinística da carteira</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Este método é o mais seguro, e nem requer um computador para armazenamento</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Novo backup</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Procurar no explorador...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Criar backups semanais automáticamente</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Criar backups</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>O backup em \"{0} \" não pode ser restaurado.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Da diretoria...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>A partir da semente determinística da carteira...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Da seleção</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>O backup foi restaurado e aplicado com sucesso.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Restaurar backups</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Gerenciador de backup</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Por favor, seja EXTREMAMENTE CUIDADOSO sobre o armazenamento dos seus dados da carteira!
+
+Ninguém deve ser capaz de acessá-los, pois isso fará com que o seu dinheiro estejo comprometido.</value>
   </data>
 </root>

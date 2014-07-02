@@ -39,7 +39,7 @@ namespace Jojatekok.MoneroGUI.Views.DebugWindow
 
         private void DebugConsoleView_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if ((bool) e.NewValue) {
+            if ((bool)e.NewValue) {
                 Dispatcher.BeginInvoke(new Action(() => ScrollViewerLog.ScrollToEnd()), DispatcherPriority.ContextIdle);
             }
         }

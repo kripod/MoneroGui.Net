@@ -35,6 +35,9 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
         public ushort ConnectionCountIncoming { get; private set; }
         [JsonProperty("outgoing_connections_count")]
         public ushort ConnectionCountOutgoing { get; private set; }
+        public ushort ConnectionCountTotal {
+            get { return (ushort)(ConnectionCountIncoming + ConnectionCountOutgoing); }
+        }
 
         [JsonProperty("tx_count")]
         public ulong TransactionCountTotal { get; private set; }

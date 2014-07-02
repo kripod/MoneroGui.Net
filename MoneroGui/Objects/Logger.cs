@@ -17,7 +17,7 @@ namespace Jojatekok.MoneroGUI
 
         public string Messages {
             get { return Dispatcher.Invoke(() => GetValue(MessagesProperty) as string, DispatcherPriority.DataBind); }
-            private set { Dispatcher.Invoke(() => SetValue(MessagesProperty, value), DispatcherPriority.DataBind); }
+            private set { Dispatcher.BeginInvoke(new Action(() => SetValue(MessagesProperty, value)), DispatcherPriority.DataBind); }
         }
 
         private int LineCount { get; set; }

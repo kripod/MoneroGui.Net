@@ -40,14 +40,22 @@ namespace Jojatekok.MoneroGUI
 
         public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-        public static MainWindow MainWindow { get; internal set; }
+        private static bool _isUnhandledExceptionLoggingEnabled = true;
+        public static bool IsUnhandledExceptionLoggingEnabled {
+            get { return _isUnhandledExceptionLoggingEnabled; }
+            set { _isUnhandledExceptionLoggingEnabled = value; }
+        }
+
+        public static int ApplicationFirstInstanceActivatorMessage { get; set; }
+
+        public static MainWindow MainWindow { get; set; }
 
         public static MoneroClient MoneroClient { get; private set; }
 
         public static Logger LoggerDaemon { get; private set; }
         public static Logger LoggerWallet { get; private set; }
 
-        public static ObservableCollection<SettingsManager.ConfigElementContact> AddressBookDataSource { get; private set; }
+        public static ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
 
         public static void Initialize()
         {
@@ -65,15 +73,15 @@ namespace Jojatekok.MoneroGUI
             LoggerDaemon = new Logger();
             LoggerWallet = new Logger();
 
-            AddressBookDataSource = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
-            AddressBookDataSource.CollectionChanged += AddressBookDataSource_CollectionChanged;
+            DataSourceAddressBook = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
+            DataSourceAddressBook.CollectionChanged += DataSourceAddressBook_CollectionChanged;
         }
 
-        private static void AddressBookDataSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private static void DataSourceAddressBook_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             // Save the collection's changes into the configuration file
 
-            if (AddressBookDataSource.Count == 0) {
+            if (DataSourceAddressBook.Count == 0) {
                 SettingsManager.AddressBook.Elements.Clear();
                 return;
             }

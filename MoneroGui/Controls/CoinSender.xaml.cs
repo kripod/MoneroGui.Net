@@ -34,9 +34,9 @@ namespace Jojatekok.MoneroGUI.Controls
 
         private void TextBoxAddress_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var index = StaticObjects.AddressBookDataSource.IndexOfAddress(TextBoxAddress.Text);
+            var index = StaticObjects.DataSourceAddressBook.IndexOfAddress(TextBoxAddress.Text);
             if (index >= 0) {
-                CurrentRecipient.Label = StaticObjects.AddressBookDataSource[index].Label;
+                CurrentRecipient.Label = StaticObjects.DataSourceAddressBook[index].Label;
             }
 
             CheckLabelExistence();
@@ -49,8 +49,8 @@ namespace Jojatekok.MoneroGUI.Controls
 
         private void CheckLabelExistence()
         {
-            var index = StaticObjects.AddressBookDataSource.IndexOfLabel(TextBoxLabel.Text);
-            if (index >= 0 && TextBoxAddress.Text != StaticObjects.AddressBookDataSource[index].Address) {
+            var index = StaticObjects.DataSourceAddressBook.IndexOfLabel(TextBoxLabel.Text);
+            if (index >= 0 && TextBoxAddress.Text != StaticObjects.DataSourceAddressBook[index].Address) {
                 TextBoxLabel.Foreground = StaticObjects.BrushForegroundWarning;
             } else {
                 TextBoxLabel.Foreground = StaticObjects.BrushForegroundDefault;

@@ -129,17 +129,8 @@
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
     <value>Processus</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Consoles</value>
-  </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>Information</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Fenêtre de Débogage</value>
-  </data>
-  <data name="TextAddressBook" xml:space="preserve">
-    <value>Address book</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
     <value>Le Client Monero est en train de s'éteindre...</value>
@@ -152,9 +143,6 @@
   </data>
   <data name="TextClientName" xml:space="preserve">
     <value>Client Monero</value>
-  </data>
-  <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Transactions</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
     <value>_A propos du Client Monero</value>
@@ -434,5 +422,64 @@
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
     <value>Entrer votre clef secrète afin d’accéder au portefeuille.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>N'interrompez pas ce processus!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Cacher la fenêtre</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Afficher la fenêtre</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Identifiant de transaction</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Transaction entrante</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Transaction sortante</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Transaction de type inconnue</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Sélectionner une méthode pour créer la sauvegarde!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Cette méthode est sure, et ne requière pas d'ordinateur pour la stocker</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Parcourir dans l’explorer...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Créer une sauvegarde hebdomadaire automatique</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Créer une sauvegarde</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>La sauvegarde dans \"{0}\" ne peut être restaurée.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Depuis un répertoire...</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>La sauvegarde a été correctement restaurée et appliquée.</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Soyez prudent sur la sauvegarde de votre portefeuille!
+
+Une personne y ayant accès pourrais se servir de celui ci.</value>
   </data>
 </root>

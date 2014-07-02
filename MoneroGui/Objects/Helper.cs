@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -222,81 +221,45 @@ namespace Jojatekok.MoneroGUI
         }
     }
 
-    public class ListBoxBehavior : DependencyObject
-    {
-        public static readonly DependencyProperty IsAutoScrollProperty = DependencyProperty.RegisterAttached(
-            "IsAutoScrollEnabled",
-            typeof(bool),
-            typeof(ListBoxBehavior),
-            new UIPropertyMetadata(default(bool), IsAutoScrollEnabledProperty_Changed)
-        );
-
-        public static bool GetIsAutoScrollEnabled(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(IsAutoScrollProperty);
-        }
-
-        public static void SetIsAutoScrollEnabled(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsAutoScrollProperty, value);
-        }
-
-        private static void IsAutoScrollEnabledProperty_Changed(DependencyObject sender1, DependencyPropertyChangedEventArgs e1)
-        {
-            var listBox = sender1 as ListBox;
-            Debug.Assert(listBox != null, "listBox != null");
-
-            var itemsCollection = listBox.Items;
-            var data = itemsCollection.SourceCollection as INotifyCollectionChanged;
-            Debug.Assert(data != null, "data != null");
-
-            var autoScroller = new NotifyCollectionChangedEventHandler((sender2, e2) => {
-                object selectedItem = null;
-
-                switch (e2.Action) {
-                    case NotifyCollectionChangedAction.Add:
-                    case NotifyCollectionChangedAction.Move:
-                        selectedItem = e2.NewItems[e2.NewItems.Count - 1];
-                        break;
-
-                    case NotifyCollectionChangedAction.Remove:
-                        if (itemsCollection.Count < e2.OldStartingIndex) {
-                            selectedItem = itemsCollection[e2.OldStartingIndex - 1];
-                        } else if (itemsCollection.Count > 0) {
-                            selectedItem = itemsCollection[0];
-                        }
-                        break;
-
-                    case NotifyCollectionChangedAction.Reset:
-                        if (itemsCollection.Count > 0) selectedItem = itemsCollection[0];
-                        break;
-                }
-
-                if (selectedItem != null) {
-                    itemsCollection.MoveCurrentTo(selectedItem);
-                    listBox.ScrollIntoView(selectedItem);
-                }
-            });
-
-            if ((bool)e1.NewValue) {
-                data.CollectionChanged += autoScroller;
-            } else {
-                data.CollectionChanged -= autoScroller;
-            }
-        }
-    }
-
     static class NativeMethods
     {
+        public static readonly IntPtr HWND_BROADCAST = (IntPtr)0xFFFF;
+        [DllImport("User32.dll")]
+        public static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("User32.dll")]
+        public static extern int RegisterWindowMessage(string message);
+
+        [DllImport("User32.dll")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("User32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
+
+        public enum ShowWindowCommands
+        {
+            Restore = 9
+        }
+
+        public static void RestoreWindowStateFromMinimized(this Window window)
+        {
+            // Restore the window's state
+            if (window.WindowState == WindowState.Minimized) {
+                ShowWindow(new WindowInteropHelper(window).Handle, ShowWindowCommands.Restore);
+            }
+
+            // Activate the window or its last child
+            window.ActivateWindowOrLastChild();
+        }
+
         private const int GWL_STYLE = -16,
                           WS_MAXIMIZEBOX = 0x10000,
                           WS_MINIMIZEBOX = 0x20000;
 
-        [DllImport("user32.dll")]
-        private static extern int GetWindowLong(IntPtr hwnd, int index);
+        [DllImport("User32.dll")]
+        private static extern int GetWindowLong(IntPtr hWnd, int index);
 
-        [DllImport("user32.dll")]
-        private static extern int SetWindowLong(IntPtr hwnd, int index, int value);
+        [DllImport("User32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int index, int value);
 
         public static void SetWindowButtons(this Window window, bool isMinimizable, bool isMaximizable)
         {
@@ -316,28 +279,6 @@ namespace Jojatekok.MoneroGUI
             }
 
             SetWindowLong(hWnd, GWL_STYLE, style);
-        }
-
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
-
-        private enum ShowWindowCommands
-        {
-            Restore = 9
-        }
-
-        public static void RestoreWindowStateFromMinimized(this Window window)
-        {
-            // Restore the window's state
-            if (window.WindowState == WindowState.Minimized) {
-                var hwndSource = PresentationSource.FromVisual(window) as HwndSource;
-                Debug.Assert(hwndSource != null, "hwndSource != null");
-
-                ShowWindow(hwndSource.Handle, ShowWindowCommands.Restore);
-            }
-
-            // Activate the window or its last child
-            window.ActivateWindowOrLastChild();
         }
     }
 }
