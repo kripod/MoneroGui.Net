@@ -695,6 +695,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The transaction could not be sent..
+        /// </summary>
+        public static string SendCoinsTransactionCouldNotBeSent {
+            get {
+                return ResourceManager.GetString("SendCoinsTransactionCouldNotBeSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to connections.
         /// </summary>
         public static string StatusBarConnections {

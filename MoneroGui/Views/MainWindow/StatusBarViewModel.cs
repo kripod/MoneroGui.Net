@@ -27,7 +27,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         public static readonly DependencyProperty ConnectionCountProperty = DependencyProperty.RegisterAttached(
             "ConnectionCount",
-            typeof(ushort),
+            typeof(ulong),
             typeof(StatusBarViewModel)
         );
 
@@ -53,8 +53,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             set { SetValue(SyncBarTextProperty, value); }
         }
 
-        public ushort ConnectionCount {
-            get { return (ushort)GetValue(ConnectionCountProperty); }
+        public ulong ConnectionCount {
+            get { return (ulong)GetValue(ConnectionCountProperty); }
             set { SetValue(ConnectionCountProperty, value); }
         }
     }

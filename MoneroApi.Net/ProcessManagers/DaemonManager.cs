@@ -49,20 +49,23 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             RpcWebClient = rpcWebClient;
 
             ProcessArgumentsExtra = new List<string>(2) {
-                "--rpc-bind-ip " + RpcWebClient.Host,
                 "--rpc-bind-port " + RpcWebClient.PortDaemon
             };
+
+            if (RpcWebClient.Host != Helper.RpcUrlDefaultLocalhost) {
+                ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
+            }
 
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
             TimerSaveBlockchain = new Timer(delegate { SaveBlockchain(); });
         }
 
-        public void Start()
+        internal void Start()
         {
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
         }
 
-        public void StartRpcServices()
+        private void StartRpcServices()
         {
             TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
             TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);

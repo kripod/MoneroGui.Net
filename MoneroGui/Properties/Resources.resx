@@ -526,4 +526,7 @@ Please try to reduce the length of your inputs!</value>
 
 No one else should be able to access them, as this would cause your money to be compromised.</value>
   </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>The transaction could not be sent.</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;

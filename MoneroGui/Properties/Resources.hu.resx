@@ -526,4 +526,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
 
 Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value>
   </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Nem sikerült elküldeni a tranzakciót.</value>
+  </data>
 </root>

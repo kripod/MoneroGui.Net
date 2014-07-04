@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Jojatekok.MoneroAPI.Objects;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
@@ -54,7 +54,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
 
             var recipients = ViewModel.Recipients;
-            var transactionDictionary = new Dictionary<string, double>(recipients.Count);
+            var recipientsList = new List<TransferRecipient>(recipients.Count);
             var contactDictionary = new Dictionary<string, string>(recipients.Count);
             var firstInvalidRecipient = -1;
 
@@ -67,7 +67,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
                 } else if (firstInvalidRecipient < 0) {
                     Debug.Assert(recipient.Amount != null, "recipient.Amount != null");
-                    transactionDictionary.Add(recipient.Address, recipient.Amount.Value);
+                    recipientsList.Add(new TransferRecipient(recipient.Address, recipient.Amount.Value));
 
                     if (!string.IsNullOrWhiteSpace(recipient.Label)) {
                         contactDictionary.Add(recipient.Label, recipient.Address);
@@ -77,7 +77,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             if (firstInvalidRecipient < 0) {
                 // Initiate a new transaction
-                StaticObjects.MoneroClient.Wallet.Transfer(transactionDictionary, IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
+                var isTransferSuccessful = StaticObjects.MoneroClient.Wallet.SendTransfer(recipientsList, (ulong)IntegerUpDownMixCount.Value.Value, TextBoxPaymentId.Text);
 
                 // Add new people to the address book
                 foreach (var keyValuePair in contactDictionary) {
@@ -91,11 +91,19 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                     }
                 }
 
-                ClearRecipients();
+                if (isTransferSuccessful) {
+                    ClearRecipients();
+                } else {
+                    // Show a warning whether the transaction could not be sent
+                    Window.GetWindow(this).ShowWarning(Properties.Resources.SendCoinsTransactionCouldNotBeSent);
+                    this.SetFocusedElement(ListBoxRecipients);
+                }
 
             } else {
                 // Notify the user about the first recipient being invalid
                 ListBoxRecipients.ScrollIntoView(recipients[firstInvalidRecipient]);
+                ListBoxRecipients.SelectedIndex = firstInvalidRecipient;
+                this.SetFocusedElement(ListBoxRecipients);
             }
         }
 

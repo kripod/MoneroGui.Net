@@ -5,17 +5,21 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Net;
-//using System.Net.NetworkInformation;
+using System.Net.NetworkInformation;
 using System.Threading;
 
 namespace Jojatekok.MoneroAPI
 {
     static class Helper
     {
+        public const double CoinAtomicValueDivider = 1000000000000;
+
+        public const string RpcUrlDefaultLocalhost = "localhost";
+
         // TODO: Add custom host and port support
-        public const string RpcUrlBaseIp = "127.0.0.1";
-        public const ushort RpcUrlBasePortDaemon = 18081;
-        public const ushort RpcUrlBasePortWallet = 19091;
+        public const string RpcUrlIp = RpcUrlDefaultLocalhost;
+        public const ushort RpcUrlPortDaemon = 18081;
+        public const ushort RpcUrlPortWallet = 19091;
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
 
@@ -56,11 +60,6 @@ namespace Jojatekok.MoneroAPI
             }
         }
 
-        public static void Start(this Timer timer, int period)
-        {
-            timer.Change(period, period);
-        }
-
         public static void StartImmediately(this Timer timer, int period)
         {
             timer.Change(0, period);
@@ -76,17 +75,17 @@ namespace Jojatekok.MoneroAPI
             timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
-        //public static bool IsPortInUse(int port)
-        //{
-        //    var activeTcpListeners = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners();
-        //    for (var i = activeTcpListeners.Length - 1; i >= 0; i--) {
-        //        if (activeTcpListeners[i].Port == port) {
-        //            return true;
-        //        }
-        //    }
+        public static bool IsPortInUse(int port)
+        {
+            var activeTcpListeners = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners();
+            for (var i = activeTcpListeners.Length - 1; i >= 0; i--) {
+                if (activeTcpListeners[i].Port == port) {
+                    return true;
+                }
+            }
 
-        //    return false;
-        //}
+            return false;
+        }
 
         public static DateTime UnixTimeStampToDateTime(ulong unixTimeStamp)
         {

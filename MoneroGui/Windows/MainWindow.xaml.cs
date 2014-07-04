@@ -234,7 +234,11 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Daemon_BlockchainSynced(object sender, EventArgs e)
         {
-            BeginInvokeForDataChanging(() => StatusBar.ViewModel.SyncStatusVisibility = Visibility.Hidden);
+            BeginInvokeForDataChanging(() => {
+                // Enable sending coins, along with hiding the sync status
+                StatusBar.ViewModel.SyncStatusVisibility = Visibility.Hidden;
+                SendCoinsView.ViewModel.IsSendingEnabled = true;
+            });
         }
 
         private static void Wallet_OnLogMessage(object sender, string e)
@@ -313,7 +317,6 @@ namespace Jojatekok.MoneroGUI.Windows
 
                 var sendCoinsViewModel = SendCoinsView.ViewModel;
                 sendCoinsViewModel.BalanceSpendable = newValue.Spendable;
-                sendCoinsViewModel.IsSendingEnabled = true;
             });
         }
 

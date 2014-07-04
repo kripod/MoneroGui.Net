@@ -45,12 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventArgs\TransactionReceivedEventArgs.cs" />
-    <Compile Include="EventArgs\MoneySentEventArgs.cs" />
     <Compile Include="EventArgs\AddressReceivedEventArgs.cs" />
     <Compile Include="EventArgs\PassphraseRequestedEventArgs.cs" />
     <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
     <Compile Include="EventArgs\ValueChangingEventArgs.cs" />
+    <Compile Include="Objects\TransferRecipient.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Requests\SendTransfer.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Requests\SaveWallet.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Requests\GetIncomingTransfers.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Responses\TransactionId.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Responses\Transaction.cs" />
     <Compile Include="TimerSettings.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Objects\ConcurrentReadOnlyObservableCollection.cs" />
@@ -80,7 +85,6 @@
     <Compile Include="ProcessManagers\DaemonManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoneroClient.cs" />
-    <Compile Include="Objects\Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

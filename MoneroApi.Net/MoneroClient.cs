@@ -16,7 +16,7 @@ namespace Jojatekok.MoneroAPI
 
         public MoneroClient(Paths paths)
         {
-            RpcWebClient = new RpcWebClient(Helper.RpcUrlBaseIp, Helper.RpcUrlBasePortDaemon, Helper.RpcUrlBasePortWallet);
+            RpcWebClient = new RpcWebClient(Helper.RpcUrlIp, Helper.RpcUrlPortDaemon, Helper.RpcUrlPortWallet);
             Paths = paths;
 
             Daemon = new DaemonManager(RpcWebClient, Paths);

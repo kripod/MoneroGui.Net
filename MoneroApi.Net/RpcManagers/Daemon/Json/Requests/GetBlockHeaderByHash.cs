@@ -2,20 +2,20 @@
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Requests
 {
-    public class GetBlockHeaderByHash : JsonRpcRequest<GetBlockHeaderByHashInternal>
+    public class GetBlockHeaderByHash : JsonRpcRequest<GetBlockHeaderByHashParameters>
     {
-        internal GetBlockHeaderByHash(string hash) : base("getblockheaderbyhash", new GetBlockHeaderByHashInternal(hash))
+        internal GetBlockHeaderByHash(string hash) : base("getblockheaderbyhash", new GetBlockHeaderByHashParameters(hash))
         {
 
         }
     }
 
-    public class GetBlockHeaderByHashInternal
+    public class GetBlockHeaderByHashParameters
     {
         [JsonProperty("hash")]
         public string Hash { get; private set; }
 
-        internal GetBlockHeaderByHashInternal(string hash)
+        internal GetBlockHeaderByHashParameters(string hash)
         {
             Hash = hash;
         }

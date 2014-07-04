@@ -12,10 +12,10 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses
     public class BlockHeader
     {
         [JsonProperty("major_version")]
-        public int VersionMajor { get; private set; }
+        public ushort VersionMajor { get; private set; }
 
         [JsonProperty("minor_version")]
-        public int VersionMinor { get; private set; }
+        public ushort VersionMinor { get; private set; }
 
         [JsonProperty("timestamp")]
         private ulong TimestampUnix {
@@ -39,7 +39,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses
         public ulong Reward { get; private set; }
 
         [JsonProperty("nonce")]
-        public ulong Nonce { get; private set; }
+        public uint Nonce { get; private set; }
 
         [JsonProperty("orphan_status")]
         public bool IsOrphaned { get; private set; }

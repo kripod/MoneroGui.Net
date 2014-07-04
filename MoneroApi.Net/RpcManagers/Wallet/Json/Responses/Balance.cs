@@ -8,14 +8,14 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
         [JsonProperty("balance")]
         public double? Total {
             get { return _total; }
-            private set { _total = value; } // TODO: Divide by 1000000000000 when the RPC is used
+            private set { _total = value / Helper.CoinAtomicValueDivider; }
         }
 
         private double? _spendable;
         [JsonProperty("unlocked_balance")]
         public double? Spendable {
             get { return _spendable; }
-            private set { _spendable = value; } // TODO: Divide by 1000000000000 when the RPC is used
+            private set { _spendable = value / Helper.CoinAtomicValueDivider; }
         }
 
         public double? Unconfirmed {

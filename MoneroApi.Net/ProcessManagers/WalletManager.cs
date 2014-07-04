@@ -1,5 +1,6 @@
-﻿using Jojatekok.MoneroAPI.RpcManagers;
-//using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
+﻿using Jojatekok.MoneroAPI.Objects;
+using Jojatekok.MoneroAPI.RpcManagers;
+using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,19 +15,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public class WalletManager : BaseProcessManager, IDisposable
     {
-        public event EventHandler Refreshed;
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
         public event EventHandler<AddressReceivedEventArgs> AddressReceived;
         public event EventHandler<TransactionReceivedEventArgs> TransactionReceived;
         public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
-        public event EventHandler<MoneySentEventArgs> SentMoney;
 
         private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
 
-        //private Timer TimerCheckRpcAvailability { get; set; }
-        //private Timer TimerQueryBalance { get; set; }
+        private bool IsTransactionReceivedEventEnabled { get; set; }
+
+        private Timer TimerCheckRpcAvailability { get; set; }
         private Timer TimerRefresh { get; set; }
         private Timer TimerSaveWallet { get; set; }
 
@@ -36,8 +35,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
 
-        private ObservableCollection<Transaction> TransactionsPrivate { get; set; }
-        public ConcurrentReadOnlyObservableCollection<Transaction> Transactions { get; private set; }
+        private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
+        private ObservableCollection<Transaction> TransactionsPrivate {
+            get { return _transactionsPrivate; }
+        }
+
+        private ConcurrentReadOnlyObservableCollection<Transaction> _transactions;
+        public ConcurrentReadOnlyObservableCollection<Transaction> Transactions {
+            get { return _transactions; }
+            private set { _transactions = value; }
+        }
 
         private string _address;
         public string Address {
@@ -81,14 +88,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             OutputReceived += Process_OutputReceived;
 
             RpcWebClient = rpcWebClient;
-
             Daemon = daemon;
-            Daemon.BlockchainSynced += Daemon_BlockchainSynced;
-
             Paths = paths;
 
-            //TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
-            //TimerQueryBalance = new Timer(delegate { QueryBalance(); });
+            Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
+
+            TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
             TimerRefresh = new Timer(delegate { Refresh(); });
             TimerSaveWallet = new Timer(delegate { SaveWallet(); });
         }
@@ -102,21 +107,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (File.Exists(Paths.FileWalletData)) {
                 ProcessArgumentsExtra.Add("--wallet-file \"" + Paths.FileWalletData + "\"");
 
+                // Enable RPC mode
+                ProcessArgumentsExtra.Add("--rpc-bind-port " + RpcWebClient.PortWallet);
+                if (RpcWebClient.Host != Helper.RpcUrlDefaultLocalhost) {
+                    ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
+                }
+
             } else {
                 var directoryWalletData = Paths.DirectoryWalletData;
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
                 ProcessArgumentsExtra.Add("--generate-new-wallet \"" + Paths.FileWalletData + "\"");
-                return;
             }
 
-            if (!string.IsNullOrEmpty(Passphrase)) {
-                ProcessArgumentsExtra.Add("--password \"" + Passphrase + "\"");
-            }
-
-            // TODO: Enable RPC mode
-            //ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
-            //ProcessArgumentsExtra.Add("--rpc-bind-port " + RpcWebClient.PortWallet);
+            ProcessArgumentsExtra.Add("--password \"" + Passphrase + "\"");
         }
 
         internal void Start()
@@ -125,12 +129,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             SetProcessArguments();
 
-            if (TransactionsPrivate == null) {
-                TransactionsPrivate = new ObservableCollection<Transaction>();
-                Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
-            } else {
-                TransactionsPrivate.Clear();
-            }
+            TransactionsPrivate.Clear();
+            IsTransactionReceivedEventEnabled = false;
 
             Address = null;
             Balance = new Balance(null, null);
@@ -140,203 +140,114 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Debug.Assert(ProcessArgumentsExtra != null, "ProcessArgumentsExtra != null");
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
 
-            // Constantly check for the RPC port's activeness
-            //TimerCheckRpcAvailability.Change(5000, 1000);
+            // <-- Constantly check for the RPC port's activeness -->
+
+            TimerCheckRpcAvailability.Change(TimerSettings.WalletCheckRpcAvailabilityDueTime, TimerSettings.WalletCheckRpcAvailabilityPeriod);
         }
 
-        //private void StartRpcServices()
-        //{
-        //    QueryAddress();
-        //    TimerQueryBalance.Change(0, 10000);
-        //    TimerSaveWallet.Change(120000, 120000);
-        //}
+        private void StartRpcServices()
+        {
+            QueryAddress();
+            TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
+            TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
+        }
 
         internal void RequestPassphrase(bool isFirstTime)
         {
             if (PassphraseRequested != null) PassphraseRequested(this, new PassphraseRequestedEventArgs(isFirstTime));
         }
 
-        //private void CheckRpcAvailability()
-        //{
-        //    if (Helper.IsPortInUse(RpcWebClient.PortWallet)) {
-        //        TimerCheckRpcAvailability.Stop();
-        //        StartRpcServices();
-        //    }
-        //}
-
-        //private void QueryAddress()
-        //{
-        //    Address = RpcWebClient.JsonQueryData<Address>(RpcPortType.Wallet, new GetAddress());
-        //}
-
-        //private void QueryBalance()
-        //{
-        //    Balance = RpcWebClient.JsonQueryData<Balance>(RpcPortType.Wallet, new GetBalance());
-        //}
-
-        private void SaveWallet()
+        private void CheckRpcAvailability()
         {
-            Send("save");
-        }
-
-        private void Daemon_BlockchainSynced(object sender, EventArgs e)
-        {
-            Refresh();
-        }
-
-        private void Process_ErrorReceived(object sender, string e)
-        {
-            var dataLower = e.ToLower(Helper.InvariantCulture);
-
-            if (dataLower.Contains("failed to connect")) {
-                // Cannot connect to the daemon
-
-            } else if (dataLower.Contains("failed to generate new wallet")) {
-                // Failed to generate a new wallet file
-
-            } else if (dataLower.Contains("invalid password")) {
-                // Invalid passphrase
-                RequestPassphrase(false);
-
-            } else if (dataLower.Contains("wrong address")) {
-                // Invalid send address
-
-            } else if (dataLower.Contains("not enough money")) {
-                // Not enough money
-
-            } else if (dataLower.Contains("payment id has invalid format")) {
-                // The payment ID needs to be a 64 character string
+            if (Helper.IsPortInUse(RpcWebClient.PortWallet)) {
+                TimerCheckRpcAvailability.Stop();
+                StartRpcServices();
             }
-
-            // TODO: Handle unexpected errors
         }
 
-        private void Process_OutputReceived(object sender, string e)
+        private void QueryAddress()
         {
-            var data = e;
-            var dataLower = e.ToLower(Helper.InvariantCulture);
+            Address = JsonQueryData<Address>(new GetAddress()).Value;
+        }
 
-            // <-- Reply methods -->
+        private void QueryBalance()
+        {
+            Balance = JsonQueryData<Balance>(new GetBalance());
+        }
 
-            if (dataLower.Contains("refresh done") || dataLower.Contains("refresh failed")) {
-                TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
-                if (Refreshed != null) Refreshed(this, EventArgs.Empty);
-                return;
-            }
+        private void QueryIncomingTransfers()
+        {
+            var transactions = JsonQueryData<TransactionList>(new GetIncomingTransfers());
 
-            if (dataLower.Contains("balance")) {
-                var match = Regex.Match(dataLower, "balance: ([0-9\\.,]*), unlocked balance: ([0-9\\.,]*)");
-                if (match.Success) {
-                    var total = double.Parse(match.Groups[1].Value, Helper.InvariantCulture);
-                    var spendable = double.Parse(match.Groups[2].Value, Helper.InvariantCulture);
+            if (transactions != null) {
+                var currentTransactionCount = TransactionsPrivate.Count;
 
-                    Balance = new Balance(total, spendable);
+                // Update existing transactions
+                for (var i = currentTransactionCount - 1; i >= 0; i--) {
+                    var transaction = transactions.Value[i];
+                    transaction.Number = (uint)(i + 1);
+                    // TODO: Add support for detecting transaction type
+
+                    TransactionsPrivate[i] = transaction;
                 }
 
-                return;
-            }
+                // Add new transactions
+                for (var i = currentTransactionCount; i < transactions.Value.Count; i++) {
+                    var transaction = transactions.Value[i];
+                    transaction.Number = (uint)(TransactionsPrivate.Count + 1);
+                    // TODO: Add support for detecting transaction type
 
-            if (SentMoney != null && dataLower.Contains("money successfully sent")) {
-                var match = Regex.Match(data, "transaction <([0-9a-z]*)>", RegexOptions.IgnoreCase);
-                if (match.Success) {
-                    SentMoney(this, new MoneySentEventArgs(match.Groups[1].Value));
-                }
-
-                return;
-            }
-
-            // <-- Transaction fetching -->
-
-            // Incoming transaction fetching
-            if (dataLower.Contains("transaction")) {
-                var match = Regex.Match(data, "height ([0-9]+), transaction <([0-9a-z]+)>, ([a-z]+) ([0-9]+\\.[0-9]+)", RegexOptions.IgnoreCase);
-                if (match.Success) {
-                    // TODO: Handle block height to get the transaction's timestamp
-                    //var blockHeight = ulong.Parse(match.Groups[1].Value, Helper.InvariantCulture);
-
-                    var transactionId = match.Groups[2].Value;
-                    var type = match.Groups[3].Value == "received" ? TransactionType.Receive : TransactionType.Send;
-                    var amount = double.Parse(match.Groups[4].Value, Helper.InvariantCulture);
-                    var isAmountSpendable = type == TransactionType.Receive;
-
-                    var transaction = new Transaction(type, isAmountSpendable, amount, transactionId, TransactionsPrivate.Count + 1);
                     TransactionsPrivate.Add(transaction);
-                    if (TransactionReceived != null) TransactionReceived(this, new TransactionReceivedEventArgs(transaction));
-
-                    if (type == TransactionType.Send) {
-                        // TODO: Refresh funds' availability more solidly
-                        GetAllTransfers();
+                    if (IsTransactionReceivedEventEnabled && TransactionReceived != null) {
+                        TransactionReceived(this, new TransactionReceivedEventArgs(transaction));
                     }
-
-                    return;
                 }
             }
 
-            // Initial transaction fetching
-            var newTransactionMatch = Regex.Match(data, "([0-9]+\\.[0-9]+)[\\s]+([tf])[\\s]+[0-9]+[\\s]+<([0-9a-z]+)>", RegexOptions.IgnoreCase);
-            if (newTransactionMatch.Success) {
-                var amount = double.Parse(newTransactionMatch.Groups[1].Value, Helper.InvariantCulture);
-                var isAmountSpendable = newTransactionMatch.Groups[2].Value == "F";
-                var transactionId = newTransactionMatch.Groups[3].Value;
-
-                // TODO: Fetch the transaction's type if possible
-                TransactionsPrivate.Add(new Transaction(TransactionType.Unknown, isAmountSpendable, amount, transactionId, TransactionsPrivate.Count + 1));
-
-                return;
-            }
-
-            // Clear the list of transactions before they are reloaded
-            if (Regex.IsMatch(dataLower, "amount[\\s]+spent")) {
-                TransactionsPrivate.Clear();
-                return;
-            }
-
-            // <-- Initializers -->
-
-            if (dataLower.Contains(" wallet v")) {
-                // Startup commands
-                GetBalance();
-                GetAllTransfers();
-                TimerSaveWallet.Start(TimerSettings.WalletSaveWalletPeriod); // TODO: Handle wallet saving by the RPC
-                return;
-            }
-
-            if (dataLower.Contains("opened wallet: ") || dataLower.Contains("generated new wallet: ")) {
-                Address = data.Substring(data.IndexOf(':') + 2);
-                return;
-            }
-
-            // <-- Error handler -->
-
-            if (dataLower.Contains("error")) Process_ErrorReceived(this, data);
-        }
-
-        private void GetBalance()
-        {
-            Send("balance");
-        }
-
-        private void GetAllTransfers()
-        {
-            Send("incoming_transfers");
-        }
-
-        public void Transfer(Dictionary<string, double> recipients, int mixCount, string paymentId)
-        {
-            if (recipients == null || recipients.Count == 0) return;
-
-            var transfers = string.Empty;
-            foreach (var keyValuePair in recipients) {
-                transfers += " " + keyValuePair.Key + " " + keyValuePair.Value.ToString(Helper.InvariantCulture);
-            }
-
-            var stringFormat = string.IsNullOrWhiteSpace(paymentId) ? "transfer {0}{1}" : "transfer {0}{1} {2}";
-            Send(string.Format(Helper.InvariantCulture, stringFormat, mixCount, transfers, paymentId));
+            IsTransactionReceivedEventEnabled = true;
         }
 
         public void Refresh()
         {
-            Send("refresh");
+            TimerRefresh.Stop();
+            QueryBalance();
+            QueryIncomingTransfers();
+            TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
+        }
+
+        public bool SendTransfer(IList<TransferRecipient> recipients, ulong mixCount, string paymentId)
+        {
+            if (recipients == null || recipients.Count == 0) return false;
+
+            var parameters = new SendTransferParameters(recipients) {
+                MixCount = mixCount,
+                PaymentId = paymentId
+            };
+
+            var output = JsonQueryData<TransactionId>(new SendTransfer(parameters));
+            if (output == null) return false;
+
+            double amountTotal = 0;
+            for (var i = recipients.Count - 1; i >= 0; i--) {
+                amountTotal += recipients[i].Amount;
+            }
+            
+            if (TransactionReceived != null) {
+                TransactionReceived(this, new TransactionReceivedEventArgs(new Transaction {
+                    Type = TransactionType.Send,
+                    Amount = amountTotal,
+                    TransactionId = output.Value,
+                }));
+            }
+
+            TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
+            return true;
+        }
+
+        private void SaveWallet()
+        {
+            JsonQueryData(new SaveWallet());
+            TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
         }
 
         private string Backup(string path)
@@ -374,6 +285,47 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return Task.Factory.StartNew(() => Backup());
         }
 
+        private void Process_ErrorReceived(object sender, string e)
+        {
+            var dataLower = e.ToLower(Helper.InvariantCulture);
+
+            if (dataLower.Contains("signature missmatch")) {
+                // Invalid passphrase
+                RequestPassphrase(false);
+            }
+        }
+
+        private void Process_OutputReceived(object sender, string e)
+        {
+            var data = e;
+            var dataLower = e.ToLower(Helper.InvariantCulture);
+
+            if (dataLower.Contains("wallet has been generated")) {
+                // Restart in RPC mode after generating a new wallet
+                KillBaseProcess();
+                Start();
+            }
+
+            // Error handler
+            if (dataLower.Contains("error")) Process_ErrorReceived(this, data);
+        }
+
+        private T JsonQueryData<T>(JsonRpcRequest jsonRpcRequest) where T : class
+        {
+            var output = RpcWebClient.JsonQueryData<T>(RpcPortType.Wallet, jsonRpcRequest);
+            var rpcResponse = output as RpcResponse;
+            if (rpcResponse == null || rpcResponse.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
+        }
+
+        private object JsonQueryData(JsonRpcRequest jsonRpcRequest)
+        {
+            return JsonQueryData<object>(jsonRpcRequest);
+        }
+
         public new void Dispose()
         {
             Dispose(true);
@@ -385,11 +337,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (disposing) {
                 base.Dispose();
 
-                //TimerCheckRpcAvailability.Dispose();
-                //TimerCheckRpcAvailability = null;
-
-                //TimerQueryBalance.Dispose();
-                //TimerQueryBalance = null;
+                TimerCheckRpcAvailability.Dispose();
+                TimerCheckRpcAvailability = null;
 
                 TimerRefresh.Dispose();
                 TimerRefresh = null;

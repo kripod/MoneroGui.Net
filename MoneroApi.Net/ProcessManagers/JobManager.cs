@@ -54,20 +54,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
     static class NativeMethods
     {
-        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
-        internal static extern IntPtr CreateJobObject(IntPtr a, string lpName);
+        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr CreateJobObject(IntPtr a, string lpName);
 
-        [DllImport("kernel32.dll")]
+        [DllImport("Kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool SetInformationJobObject(IntPtr hJob, JobObjectInfoType infoType, IntPtr lpJobObjectInfo, UInt32 cbJobObjectInfoLength);
+        public static extern bool SetInformationJobObject(IntPtr hJob, JobObjectInfoType infoType, IntPtr lpJobObjectInfo, UInt32 cbJobObjectInfoLength);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
+        [DllImport("Kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool AssignProcessToJobObject(IntPtr job, IntPtr process);
+        public static extern bool AssignProcessToJobObject(IntPtr job, IntPtr process);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
+        [DllImport("Kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool CloseHandle(IntPtr hObject);
+        public static extern bool CloseHandle(IntPtr hObject);
     }
 
     [StructLayout(LayoutKind.Sequential)]

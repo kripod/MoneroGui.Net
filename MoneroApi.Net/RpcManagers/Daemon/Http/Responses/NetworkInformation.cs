@@ -6,7 +6,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
     public class NetworkInformation : RpcResponse
     {
         [JsonProperty("alt_blocks_count")]
-        public int AlternativeBlockCount { get; private set; }
+        public ulong AlternativeBlockCount { get; private set; }
 
         [JsonProperty("difficulty")]
         public ulong BlockDifficulty { get; private set; }
@@ -32,16 +32,16 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
         public ulong PeerListSizeWhite { get; private set; }
 
         [JsonProperty("incoming_connections_count")]
-        public ushort ConnectionCountIncoming { get; private set; }
+        public ulong ConnectionCountIncoming { get; private set; }
         [JsonProperty("outgoing_connections_count")]
-        public ushort ConnectionCountOutgoing { get; private set; }
-        public ushort ConnectionCountTotal {
-            get { return (ushort)(ConnectionCountIncoming + ConnectionCountOutgoing); }
+        public ulong ConnectionCountOutgoing { get; private set; }
+        public ulong ConnectionCountTotal {
+            get { return ConnectionCountIncoming + ConnectionCountOutgoing; }
         }
 
         [JsonProperty("tx_count")]
         public ulong TransactionCountTotal { get; private set; }
         [JsonProperty("tx_pool_size")]
-        public uint TransactionPoolSize { get; private set; }
+        public ulong TransactionPoolSize { get; private set; }
     }
 }
