@@ -174,7 +174,7 @@ namespace Jojatekok.MoneroGUI.Windows
             });
         }
 
-        private void TextBoxQrUri_IsKeyboardFocusedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void TextBoxQrUri_GotKeyboardFocus(object sender, RoutedEventArgs e)
         {
             TextBoxQrUri.SelectAll();
         }

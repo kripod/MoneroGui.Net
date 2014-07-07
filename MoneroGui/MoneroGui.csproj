@@ -93,7 +93,9 @@
     </Compile>
     <Compile Include="Controls\ImageGreyable.cs" />
     <Compile Include="Objects\CultureManager.cs" />
-    <Compile Include="Objects\XAML-related\ValidationRuleDoubleBiggerThanZero.cs" />
+    <Compile Include="Objects\ObservableCollectionEx.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleCoinAmountPositive.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleCoinAmountNonNegative.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleAddress.cs" />
     <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\IExportable.cs" />
@@ -102,6 +104,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.af.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.da.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.da.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.de.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -128,10 +135,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.hu.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.ja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.ja.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.lt.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.lt.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.nl.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.nl.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.pl.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.pl.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.pt.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -333,6 +355,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.af.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.da.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.da.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.de.Designer.cs</LastGenOutput>
@@ -349,9 +375,21 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.hu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ja.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ja.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.lt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.lt.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.nl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.nl.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.pl.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.pl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.pt.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

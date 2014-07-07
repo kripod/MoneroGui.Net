@@ -27,19 +27,20 @@ namespace Jojatekok.MoneroGUI
         {
             var time = DateTime.Now.ToString("[HH:mm:ss] ", Helper.InvariantCulture);
             var allMessages = Messages;
+            var newLineString = Helper.NewLineString;
+            var appendNewLine = true;
 
             if (LineCount == MaxLineCount) {
                 IsMaxLineCountReached = true;
-                allMessages = allMessages.Substring(allMessages.IndexOf(Helper.NewLineString, StringComparison.Ordinal) + Helper.NewLineString.Length);
+                allMessages = allMessages.Substring(allMessages.IndexOf(newLineString, StringComparison.Ordinal) + newLineString.Length);
+
             } else {
                 LineCount += 1;
+                if (allMessages.Length == 0) appendNewLine = false;
             }
 
-            message = time + message;
-            if (Messages.Length != 0) message = Helper.NewLineString + message;
-
-            allMessages += message;
-            Messages = allMessages;
+            if (appendNewLine) allMessages += newLineString;
+            Messages = allMessages + time + message;
         }
 
         public void Clear()

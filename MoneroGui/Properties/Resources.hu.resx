@@ -395,8 +395,8 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR kód</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Egyenleg:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Jelenlegi egyenleg:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Címzett eltávolítása</value>
@@ -528,5 +528,11 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Nem sikerült elküldeni a tranzakciót.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Becsült új egyenleg:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Díj:</value>
   </data>
 </root>

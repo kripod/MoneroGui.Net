@@ -121,413 +121,412 @@
     <value>XMR</value>
   </data>
   <data name="TextClear" xml:space="preserve">
-    <value>Leeren</value>
+    <value>Wyczyść</value>
   </data>
   <data name="TextSend" xml:space="preserve">
-    <value>Senden</value>
+    <value>Wyślij</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Daemon</value>
+    <value>Demon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Konsole</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug-Fenster</value>
+    <value>Okno debugowania</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
-    <value>Adressbuch</value>
+    <value>Książka adresowa</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero-Client wird heruntergefahren...</value>
+    <value>Klient Monero jest wyłączany...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
-    <value>Überblick</value>
+    <value>Przegląd</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>Überweisen</value>
+    <value>Wyślij środki</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero-Client</value>
+    <value>Klient Monero</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
-    <value>Transaktionen</value>
+    <value>Transakcje</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Über den Monero-Clienten</value>
+    <value>_O kliencie Monero</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Backup Manager</value>
+    <value>_Menedżer kopii zapasowych</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Wallet-Passwort ändern...</value>
+    <value>_Zmień hasło portfela...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug-Fenster</value>
+    <value>_Okno debugowania</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Wallet verschlüsseln...</value>
+    <value>_Szyfruj portfel...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
-    <value>Beenden</value>
+    <value>Wyjdź</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportieren...</value>
+    <value>_Eksport...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Datei</value>
+    <value>_Plik</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Hilfe</value>
+    <value>_Pomoc</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Optionen</value>
+    <value>_Opcje</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Einstellungen</value>
+    <value>_Ustawienia</value>
   </data>
   <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Wallet entsperren...</value>
+    <value>_Odblokuj portfel...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>Initialisierung...</value>
+    <value>Inicjowanie...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>Anzahl der Transaktionen:</value>
+    <value>Liczba transakcji:</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
-    <value>Aktuelle Transaktionen</value>
+    <value>Ostatnie transakcje</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Verwendbare:</value>
+    <value>Możliwe do wydania:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
-    <value>Unbestätigte:</value>
+    <value>Niepotwierdzone:</value>
   </data>
   <data name="TextWallet" xml:space="preserve">
-    <value>Wallet</value>
+    <value>Portfel</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Geben Sie eine Monero-Adresse ein</value>
+    <value>Wpisz adres Monero</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Geben Sie eine Bezeichnung für diese Adresse an, um sie zu Ihrem Adressbuch hinzuzufügen</value>
+    <value>Wpisz etykietę dla tego adresu aby dodać go do swojej książki adresowej</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Mix Anzahl:</value>
+    <value>Stopień mieszania:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Payment-ID:</value>
+    <value>ID płatności:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Dieses Feld ist optional</value>
+    <value>To pole nie jest wymagane</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>Verbindungen</value>
+    <value>połączenia</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
-    <value>Synchronisiere mit Netzwerk...</value>
+    <value>Trwa synchronizacja z siecią...</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>Tag</value>
+    <value>dzień</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} Blöcke ({1}) im Rückstand</value>
+    <value>{0} bloków ({1}) do tyłu</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
-    <value>Adresse</value>
+    <value>Adres</value>
   </data>
   <data name="TextAmount" xml:space="preserve">
-    <value>Menge</value>
+    <value>Ilość</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Etikett</value>
+    <value>Etykieta</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
-    <value>Art</value>
+    <value>Typ</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Verwendbar?</value>
+    <value>Gotowe do wydania?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
-    <value>Nein</value>
+    <value>Nie</value>
   </data>
   <data name="TextYes" xml:space="preserve">
-    <value>Ja</value>
+    <value>Yes</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Empfangen</value>
+    <value>Otrzymaj</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Senden</value>
+    <value>Wyślij</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
-    <value>Unbekannt</value>
+    <value>Nieznany</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Über Monero-Client</value>
+    <value>O kliencie Monero</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
-    <value>Fehler: Die Lizenzdatei kann nicht gefunden werden.</value>
+    <value>Błąd: Plik licencji nie został odnaleziony.</value>
   </data>
   <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
-    <value>Lade Lizenzdatei...</value>
+    <value>Ładowanie pliku licencji...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Drittpartei-Lizenzen</value>
+    <value>Licencje firm trzecich</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
-    <value>Kopieren</value>
+    <value>Kopiuj</value>
   </data>
   <data name="TextDelete" xml:space="preserve">
-    <value>Löschen</value>
+    <value>Usuń</value>
   </data>
   <data name="TextNew" xml:space="preserve">
-    <value>Neu...</value>
+    <value>Nowy...</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Exportieren...</value>
+    <value>Eksport...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>Anuluj</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>OK</value>
+    <value>Tak</value>
   </data>
   <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
-    <value>Bekannte Adresse hinzufügen</value>
+    <value>Dodaj znany adres</value>
   </data>
   <data name="OptionsAppearance" xml:space="preserve">
-    <value>Erscheinung</value>
+    <value>Wygląd</value>
   </data>
   <data name="OptionsAppearanceLanguage" xml:space="preserve">
-    <value>Spracheinstellung für die Benutzeroberfläche:</value>
+    <value>Język interfejsu:</value>
   </data>
   <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
-    <value>Standard</value>
+    <value>Domyślny</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Allgemein</value>
+    <value>Ogólne</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Pfade</value>
+    <value>Ścieżki</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Wallet Backups:</value>
+    <value>Kopie zapasowe portfela:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Wallet Daten:</value>
+    <value>Dane portfela:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Daemon-Software:</value>
+    <value>Oprogramowanie demona:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner-Software:</value>
+    <value>Oprogramowanie kopiące:</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Wallet-Software:</value>
+    <value>Oprogramowanie portfela:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Datenbanken vor dem Herunterfahren speichern</value>
+    <value>Zapisz bazy danych przed wyłączeniem</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Monero Client bei Systemstart starten</value>
+    <value>Uruchom klienta Monero przy logowaniu do systemu</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
-    <value>Adresse kopieren</value>
+    <value>Kopiuj adres</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Alle Dateien|*</value>
+    <value>Wszystkie pliki|*</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Ausführbare Dateien (*.exe)|.*exe</value>
+    <value>Pliki wykonywalne (*.exe)|*.exe</value>
   </data>
   <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Wallet-Dateien (*bin.)|.*bin</value>
+    <value>Pliki portfela (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Kommaseparierte Datei (*.csv)|.*csv</value>
+    <value>Plik rozdzielony przecinkami (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>Tage</value>
+    <value>dni</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
-    <value>Stunden</value>
+    <value>godziny</value>
   </data>
   <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
-    <value>Stunde</value>
+    <value>godzina</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
-    <value>Minuten</value>
+    <value>minuty</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
-    <value>Minute</value>
+    <value>minuta</value>
   </data>
   <data name="AboutWindowCreditIcons" xml:space="preserve">
-    <value>Icons erstellt von:</value>
+    <value>Ikony stworzone przez:</value>
   </data>
   <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
-    <value>Kontakt editieren</value>
+    <value>Edytuj kontakt:</value>
   </data>
   <data name="TextEdit" xml:space="preserve">
-    <value>Editieren</value>
+    <value>Edytuj</value>
   </data>
   <data name="TextPaste" xml:space="preserve">
-    <value>Einfügen</value>
+    <value>Wklej</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG-Dateien (*.png)|*.png</value>
+    <value>Pliki PNG (*.png)|*.png</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
-    <value>Nachricht:</value>
+    <value>Wiadomość:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Speichern unter...</value>
+    <value>Zapisz jako...</value>
   </data>
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
-    <value>Die URL ist zu lang.
-
-Bitte versuchen Sie die Länge Ihrer Eingabe zu reduzieren!</value>
+    <value>Adres URL jest zbyt długi.
+Spróbuj go skrócić!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
-    <value>QR-Code</value>
+    <value>Kod QR</value>
   </data>
   <data name="SendCoinsCurrentBalance" xml:space="preserve">
     <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
-    <value>Empfänger entfernen</value>
+    <value>Usuń odbiorcę</value>
   </data>
   <data name="SendCoinsAddRecipient" xml:space="preserve">
-    <value>Empfänger hinzufügen</value>
+    <value>Dodaj odbiorcę</value>
   </data>
   <data name="SendCoinsClearRecipients" xml:space="preserve">
-    <value>Alle Empfänger entfernen</value>
+    <value>Wyczyść odbiorców</value>
   </data>
   <data name="TextError" xml:space="preserve">
-    <value>Fehler</value>
+    <value>Błąd</value>
   </data>
   <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
-    <value>noch einmal</value>
+    <value>ponownie</value>
   </data>
   <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
-    <value>Aktuelles Passwort</value>
+    <value>Aktualne hasło:</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Benutzen Sie ein Passwort, um Ihre Wallet vor unbefugtem Zugriff zu sichern!</value>
+    <value>Użyj hasła dla swojego portfela by zwiększyć bezpieczeństwo!</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
-    <value>(Es wird empfohlen, mindestens 10 zufällige Zeichen oder 8 Worte zu benutzen.)</value>
+    <value>(zalecane jest używanie 10 przypadkowych znaków lub 8 słów.)</value>
   </data>
   <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
-    <value>Neues Passwort</value>
+    <value>Nowe hasło</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
-    <value>Passwort</value>
+    <value>Hasło</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Passwort der Wallet ändern</value>
+    <value>Zmień hasło portfela</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Brieftasche verschlüsseln</value>
+    <value>Szyfruj portfel</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
-    <value>Die angegebenen Passwörter sind nicht identisch.</value>
+    <value>Wprowadzone hasła nie są zgodne.</value>
   </data>
   <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Brieftasche entsperren</value>
+    <value>Odblokuj portfel</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Bitte geben Sie Ihr Passwort ein, um auf Ihre Wallet zuzugreifen.</value>
+    <value>Wpisz hasło by uzyskać dostęp do portfela.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Optionen</value>
+    <value>Opcje</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
-    <value>Bitte unterbrechen Sie diesen Vorgang nicht!</value>
+    <value>Nie przerywaj tego procesu!</value>
   </data>
   <data name="MenuHideWindow" xml:space="preserve">
-    <value>Fenster verstecken</value>
+    <value>Ukryj okno</value>
   </data>
   <data name="MenuShowWindow" xml:space="preserve">
-    <value>Fenster anzeigen</value>
+    <value>Pokaż okno</value>
   </data>
   <data name="TransactionsTransactionId" xml:space="preserve">
-    <value>Transaktions-ID</value>
+    <value>ID transakcji</value>
   </data>
   <data name="TaskbarTransactionIncoming" xml:space="preserve">
-    <value>Eingehende Transaktion</value>
+    <value>Przychodząca transakcja</value>
   </data>
   <data name="TaskbarTransactionOutgoing" xml:space="preserve">
-    <value>Ausgehende Transaktion</value>
+    <value>Wychodząca transakcja</value>
   </data>
   <data name="TaskbarTransactionUnknownType" xml:space="preserve">
-    <value>Transaktion unbekannten Typs</value>
+    <value>Transakcja nieznanego typu</value>
   </data>
   <data name="TextInformation" xml:space="preserve">
-    <value>Information</value>
+    <value>Informacje</value>
   </data>
   <data name="TextWarning" xml:space="preserve">
-    <value>Warnung</value>
+    <value>Uwaga</value>
   </data>
   <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
-    <value>Bitte wählen Sie eine Methode für das neue Backup!</value>
+    <value>Wybierz metodę utworzenia nowej kopii zapasowej!</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
-    <value>Als Datei unter angegebenem Pfad</value>
+    <value>Jako plik, w wybranej ścieżce</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
-    <value>Diese Dateien werden im integrierten Backup Manager nicht auswählbar sein</value>
+    <value>Te pliki nie będą widoczne we wbudowanym edytorze kopii zapasowych</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
-    <value>Als Datei, im voreingestellten Pfad</value>
+    <value>Jako plik, w standardowej lokalizacji</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Als deterministischer Wallet-Seed</value>
+    <value>Jako odcisk portfela</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
-    <value>Diese Methode ist die sicherste und benötigt auch keinen Computer zum speichern</value>
+    <value>Ta metoda jest najbezpieczniejsza oraz nie wymaga komputera do przechowywania danych</value>
   </data>
   <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
-    <value>Neues Backup</value>
+    <value>Nowa kopia zapasowa</value>
   </data>
   <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
-    <value>Auswählen...</value>
+    <value>Przeglądaj w eksploratorze...</value>
   </data>
   <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
-    <value>Automatisch jede Woche Backups erzeugen</value>
+    <value>Twórz automatycznie kopie zapasowe w cyklu tygodniowym</value>
   </data>
   <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
-    <value>Backups erzeugen</value>
+    <value>Twórz kopie zapasowe</value>
   </data>
   <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
-    <value>Das Backup in \"{0}\" konnte nicht wiederhergestellt werden.</value>
+    <value>Twoja kopia zapasowa w lokalizacji: \"{0}\" nie może zostać przywrócona.</value>
   </data>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
-    <value>Aus Verzeichnis...</value>
+    <value>Z folderu...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Aus deterministischem Wallet-Seed...</value>
+    <value>Z odcisku portfela...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
-    <value>Aus Auswahl...</value>
+    <value>Z wybranych</value>
   </data>
   <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
-    <value>Das Backup wurde erfolgreich wiederhergestellt.</value>
+    <value>Kopia zapasowa została przywrócona pomyślnie.</value>
   </data>
   <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
-    <value>Backups wiederherstellen</value>
+    <value>Przywróć kopie zapasowe</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
-    <value>Backup Manager</value>
+    <value>Menedżer kopii zapasowych</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Seien Sie ÄUSSERST VORSICHTIG beim Speichern Ihrer Brieftaschen-Daten!
+    <value>Zachowaj SZCZEGÓLNĄ ostrożność przy przechowywaniu plików swojego portfela!
 
-Niemand außer Ihnen sollte Zugriff darauf haben, da er sonst Zugriff auf Ihr Konto hat.</value>
+Nikt nie powinien mieć do nich dostępu. Może to zapobiec wykradzeniu Twoich środków.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
-    <value>Die Transaktion konnte nicht gesendet werden</value>
+    <value>Transakcja nie mogła zostać wysłana.</value>
   </data>
   <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
     <value>Estimated new balance:</value>

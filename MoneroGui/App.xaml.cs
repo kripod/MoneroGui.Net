@@ -5,24 +5,31 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Jojatekok.MoneroGUI
 {
     public partial class App
     {
-        private static readonly string MutexName = "Local\\" +
+        private static readonly string MutexName = "Global\\" +
                                                    Helper.GetAssemblyAttribute<AssemblyTitleAttribute>().Title +
                                                    " {" + Helper.GetAssemblyAttribute<GuidAttribute>().Value + "}";
-        private static readonly Mutex MutexObject = new Mutex(true, MutexName);
+        private static Mutex MutexObject { get; set; }
 
         App()
         {
+#if !DEBUG
             var applicationFirstInstanceActivatorMessage = NativeMethods.RegisterWindowMessage(MutexName);
-            StaticObjects.ApplicationFirstInstanceActivatorMessage = applicationFirstInstanceActivatorMessage;
+            var createdNewMutex = true;
 
-            if (MutexObject.WaitOne(0, true)) {
+            MutexObject = new Mutex(true, MutexName, out createdNewMutex);
+
+            if (createdNewMutex) {
                 // This is the first instance of the application
                 MutexObject.ReleaseMutex();
+                StaticObjects.ApplicationFirstInstanceActivatorMessage = applicationFirstInstanceActivatorMessage;
 
             } else {
                 // Notify the first instance to let it be shown
@@ -44,7 +51,6 @@ namespace Jojatekok.MoneroGUI
                 return;
             }
 
-#if !DEBUG
             // Log unhandled exceptions
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 #endif
@@ -69,6 +75,24 @@ namespace Jojatekok.MoneroGUI
                     exception.StackTrace
                 );
             }
+        }
+
+        private void StyleTextBoxTransparent_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            Debug.Assert(textBox != null, "textBox != null");
+
+            textBox.SelectAll();
+            e.Handled = true;
+        }
+
+        private void StyleTextBoxTransparent_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            Debug.Assert(textBox != null, "textBox != null");
+
+            textBox.SelectionLength = 0;
+            e.Handled = true;
         }
     }
 }

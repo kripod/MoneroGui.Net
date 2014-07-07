@@ -392,8 +392,8 @@ Please try to reduce the length of your inputs!</value>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR code</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Balance:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Remove recipient</value>
@@ -528,5 +528,11 @@ No one else should be able to access them, as this would cause your money to be 
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>The transaction could not be sent.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
   </data>
 </root>

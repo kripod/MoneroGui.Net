@@ -225,14 +225,17 @@ namespace Jojatekok.MoneroGUI
     {
         public static readonly IntPtr HWND_BROADCAST = (IntPtr)0xFFFF;
         [DllImport("User32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-        [DllImport("User32.dll")]
-        public static extern int RegisterWindowMessage(string message);
+        [DllImport("User32.dll", CharSet = CharSet.Unicode)]
+        public static extern int RegisterWindowMessage(string lpString);
 
         [DllImport("User32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
         [DllImport("User32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
 
         public enum ShowWindowCommands

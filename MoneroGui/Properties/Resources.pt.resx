@@ -136,10 +136,10 @@
     <value>Janela de depuração</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
-    <value>Endereços</value>
+    <value>Agenda</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>O Cliente Monero está encerrando...</value>
+    <value>O Cliente Monero está a encerrar...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Visão geral</value>
@@ -157,7 +157,7 @@
     <value>_Sobre o Cliente Monero</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Gerenciador de backup</value>
+    <value>_Gestor de backup</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Alterar senha da carteira...</value>
@@ -166,7 +166,7 @@
     <value>_Janela de depuração</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Criptografar carteira...</value>
+    <value>_Encriptar carteira...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Sair</value>
@@ -211,7 +211,7 @@
     <value>Digite um endereço de Monero:</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Informe o rótulo deste endereço para adicioná-lo à agenda.</value>
+    <value>Digite o rótulo deste endereço para adicioná-lo à sua agenda.</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Total de misturas:</value>
@@ -223,7 +223,7 @@
     <value>Este campo é opcional</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>conexões</value>
+    <value>ligações</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
     <value>Sincronizando com a rede...</value>
@@ -274,7 +274,7 @@
     <value>Carregando o arquivo da licença...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Licença de terceiros</value>
+    <value>Licenças de terceiros</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
     <value>Copiar</value>
@@ -310,13 +310,13 @@
     <value>Geral</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Caminhos</value>
+    <value>Pastas</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
     <value>Backup da carteira:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Arquivos da carteira:</value>
+    <value>Dados da carteira:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Software do Daemon:</value>
@@ -328,10 +328,10 @@
     <value>Software da carteira:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Salvar banco de dados antes de desligar</value>
+    <value>Gravar bases de dados antes de encerrar</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Iniciar Cliente do Monero no login do sistema</value>
+    <value>Iniciar o Cliente Monero no login do sistema</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copiar endereço</value>
@@ -346,7 +346,7 @@
     <value>Arquivos de carteira  (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated file (*.csv)|*.csv</value>
+    <value>Arquivo de valores separados por vírgula (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dias</value>
@@ -382,18 +382,18 @@
     <value>Mensagem:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Salvar como...</value>
+    <value>Guardar como...</value>
   </data>
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
-    <value>A URI resultando é muito grande.
+    <value>O URI resultante é muito longo.
 
-Por favor reduza o comprimento dos parâmetros!</value>
+Por favor reduza o comprimento dos seus parâmetros!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>Código QR</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Saldo:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Remover destinatário</value>
@@ -417,7 +417,7 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Utilize uma senha para manter sua carteira segura!</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
-    <value>(É recomendável utilizar pelo menos 10 caracteres aleartórios ou 8 palavras.)</value>
+    <value>(É recomendável utilizar pelo menos 10 caracteres aleatórios ou 8 palavras.)</value>
   </data>
   <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nova senha</value>
@@ -429,7 +429,7 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Alterar senha da carteira</value>
   </data>
   <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Criptografar carteira</value>
+    <value>Encriptar carteira</value>
   </data>
   <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>As senhas fornecidas não são idênticas.</value>
@@ -438,13 +438,13 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Desbloquear carteira</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Por favor entre com sua senha para acessar a carteira.</value>
+    <value>Por favor digite a sua senha para aceder à sua carteira.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opções</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
-    <value>Por favor não interrompa este procedimento!</value>
+    <value>Por favor não interrompa este processo!</value>
   </data>
   <data name="MenuHideWindow" xml:space="preserve">
     <value>Esconder janela</value>
@@ -474,16 +474,16 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Por favor seleccione um método para criar o novo backup!</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
-    <value>Como um arquivo, em um caminho escolhido</value>
+    <value>Como um arquivo, na pasta escolhida</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
-    <value>Esses arquivos não aparecerão como seleccionável no gerenciador de backup integrado</value>
+    <value>Estes arquivos não aparecerão como seleccionáveis no gestor de backup integrado</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Como um arquivo, no local padrão</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Como da semente determinística da carteira</value>
+    <value>Como semente determinística da carteira</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Este método é o mais seguro, e nem requer um computador para armazenamento</value>
@@ -519,11 +519,20 @@ Por favor reduza o comprimento dos parâmetros!</value>
     <value>Restaurar backups</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
-    <value>Gerenciador de backup</value>
+    <value>Gestor de backup</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
     <value>Por favor, seja EXTREMAMENTE CUIDADOSO sobre o armazenamento dos seus dados da carteira!
 
-Ninguém deve ser capaz de acessá-los, pois isso fará com que o seu dinheiro estejo comprometido.</value>
+Ninguém deve ser capaz de aceder aos mesmos, pois isso fará com que o seu dinheiro estejo comprometido.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>A transação não pode ser enviada.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
   </data>
 </root>

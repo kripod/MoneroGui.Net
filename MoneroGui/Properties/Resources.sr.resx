@@ -127,16 +127,16 @@
     <value>Pošalji</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Demon</value>
+    <value>Servis</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzola</value>
+    <value>Konzole</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug prozor</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
-    <value>Imenik</value>
+    <value>Adresar</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
     <value>Monero klijent se gasi...</value>
@@ -166,13 +166,13 @@
     <value>_Debug prozor</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Šifrovanje novčanika</value>
+    <value>_Šifrovanje novčanika...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Izlaz</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Izvesti</value>
+    <value>_Izvezi</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
     <value>_Fajl</value>
@@ -211,16 +211,16 @@
     <value>Unesite Monero adresu</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Unesite oznaku za ovu adresu da je dodate u adresar</value>
+    <value>Unesite oznaku za ovu adresu da bi je dodali u adresar</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Mix račun</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>Uplatnica ID:</value>
+    <value>ID plaćanja:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
-    <value>Ovo polje je opcionalno</value>
+    <value>Ovo polje je opciono</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
     <value>broj konekcija</value>
@@ -229,7 +229,7 @@
     <value>Sinhronizacija sa mrežom...</value>
   </data>
   <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
-    <value>dana</value>
+    <value>dan</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
     <value>{0} blokova ({1}) preostalo</value>
@@ -247,7 +247,7 @@
     <value>Tip</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Za slanje?</value>
+    <value>Za potrošnju?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>Ne</value>
@@ -256,10 +256,10 @@
     <value>Da</value>
   </data>
   <data name="TransactionTypeReceive" xml:space="preserve">
-    <value>Primljen</value>
+    <value>Primi</value>
   </data>
   <data name="TransactionTypeSend" xml:space="preserve">
-    <value>Poslati</value>
+    <value>Pošalji</value>
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
@@ -286,13 +286,13 @@
     <value>Novo...</value>
   </data>
   <data name="TextExport" xml:space="preserve">
-    <value>Izvesti...</value>
+    <value>Izvezi...</value>
   </data>
   <data name="TextCancel" xml:space="preserve">
-    <value>Otkazati</value>
+    <value>Otkaži</value>
   </data>
   <data name="TextOk" xml:space="preserve">
-    <value>U redu</value>
+    <value>OK</value>
   </data>
   <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
     <value>Dodaj poznatu adresu</value>
@@ -307,31 +307,31 @@
     <value>Uobičajeno</value>
   </data>
   <data name="OptionsGeneral" xml:space="preserve">
-    <value>Opšti</value>
+    <value>Opšte</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
     <value>Putanje</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value> Vraćanje Novčanika:</value>
+    <value>Rezervne kopije novčanika:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
     <value>Podaci novčanika:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
-    <value>Demon softver:</value>
+    <value>Servisni softver:</value>
   </data>
   <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Rudar softver:</value>
+    <value>Rudarski softver:</value>
   </data>
   <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
     <value>Novčanik softver:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Sačuvajte baze podataka pre isključivanja</value>
+    <value>Sačuvaj baze podataka pre gašenja</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Startuj Monero Klijent pri pokretanju</value>
+    <value>Startuj Monero Klijent pri logovanju u sistem</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>
@@ -346,10 +346,10 @@
     <value>Fajl novčanika (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Tačka odvojiv fajl (*.csv)|*.csv</value>
+    <value>Fajl sa odvajajućim zarezima (*.csv)|*.csv</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
-    <value>dani</value>
+    <value>dana</value>
   </data>
   <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
     <value>sati</value>
@@ -358,13 +358,13 @@
     <value>sat</value>
   </data>
   <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
-    <value>minute</value>
+    <value>minuta</value>
   </data>
   <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
     <value>minuta</value>
   </data>
   <data name="AboutWindowCreditIcons" xml:space="preserve">
-    <value>Ikone od strane:</value>
+    <value>Ikone napravio:</value>
   </data>
   <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
     <value>Uredi kontakt</value>
@@ -376,7 +376,7 @@
     <value>Nalepi</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fajl (*.png)|*.png</value>
+    <value>PNG fajlovi (*.png)|*.png</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Poruka:</value>
@@ -387,13 +387,13 @@
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
     <value>Dobijen URI je predugačak.
 
-Molimo smanjite broj karaktera!</value>
+Molimo, pokušajte sa manjim brojem karaktera!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR kod</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Stanje:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Uklonite primaoca</value>
@@ -474,16 +474,16 @@ Molimo smanjite broj karaktera!</value>
     <value>Izaberite metod za stvaranje nove rezervne kopije!</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
-    <value>As a file, at a chosen path</value>
+    <value>Kao fajl, na izabranoj putanji</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
-    <value>These files will not appear as selectable in the built-in backup manager</value>
+    <value>Ovi fajlovi ne mogu da se odaberu u ugrađenom bekap menadžeru</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
-    <value>As a file, at the default location</value>
+    <value>Kao fajl, na podrazumevanoj lokaciji</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>As a deterministic wallet seed</value>
+    <value>Kao determinisani seed novčanika</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ovaj metod je najsigurniji i čak ne zahteva komjuter za skladištenje</value>
@@ -504,25 +504,34 @@ Molimo smanjite broj karaktera!</value>
     <value>The backup at \"{0}\" ne može da se vrati.</value>
   </data>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
-    <value>From directory...</value>
+    <value>Iz direktorijuma...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>From deterministic wallet seed...</value>
+    <value>Iz determinisanog seed-a novlanika...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
-    <value>From selection</value>
+    <value>Iz selekcije</value>
   </data>
   <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
-    <value>The backup has been successfully restored and applied.</value>
+    <value>Rezervna kopija je uspešno vraćena i aktivirana.</value>
   </data>
   <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
-    <value>Vraćanje rezervne kopije</value>
+    <value>Vraćanje rezervnih kopija</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
-    <value>Backup manager</value>
+    <value>Menadžer rezervnih kopija</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Molimo vas da budete EKSTREMNO OPREZNI u skladištenju podataka novčanika!
-Niko ne bi trebalo da može da im pristupi,jer će to ugroziti vaš novac.</value>
+    <value>Molimo vas da budete EKSTREMNO OPREZNI sa skladištenjem podataka novčanika!
+Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš novac.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Transakcija ne može biti poslata.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
   </data>
 </root>

@@ -152,7 +152,7 @@ namespace Jojatekok.MoneroGUI.Windows
             var baseWalletFileName = Helper.GetFileNameWithoutExtension(fileWalletData);
 
             // Stop the wallet
-            StaticObjects.MoneroClient.StopWallet();
+            StaticObjects.MoneroClient.Wallet.Stop();
 
             // Restore the wanted files (with name conversion)
             for (var i = files.Length - 1; i >= 0; i--) {
@@ -162,7 +162,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             // Restart the wallet
-            StaticObjects.MoneroClient.StartWallet();
+            StaticObjects.MoneroClient.Wallet.Start();
             return true;
         }
 

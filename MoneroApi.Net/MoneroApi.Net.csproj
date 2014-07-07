@@ -51,6 +51,7 @@
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
     <Compile Include="EventArgs\ValueChangingEventArgs.cs" />
     <Compile Include="Objects\TransferRecipient.cs" />
+    <Compile Include="ProcessManagers\IBaseProcessManager.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\SendTransfer.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\SaveWallet.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetIncomingTransfers.cs" />

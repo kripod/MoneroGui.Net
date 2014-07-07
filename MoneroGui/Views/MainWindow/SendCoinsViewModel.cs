@@ -1,34 +1,91 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class SendCoinsViewModel : INotifyPropertyChanged
     {
-        private static readonly ObservableCollection<SendCoinsRecipient> RecipientsPrivate = new ObservableCollection<SendCoinsRecipient>();
-        public ObservableCollection<SendCoinsRecipient> Recipients {
-            get { return RecipientsPrivate; }
+        private readonly ObservableCollectionEx<SendCoinsRecipient> _recipients = new ObservableCollectionEx<SendCoinsRecipient>();
+        public ObservableCollectionEx<SendCoinsRecipient> Recipients {
+            get { return _recipients; }
         }
 
-        private static bool _isSendingEnabled;
+        private bool _isSendingEnabled;
         public bool IsSendingEnabled {
             get { return _isSendingEnabled; }
 
-            set {
+            private set {
                 _isSendingEnabled = value;
                 OnPropertyChanged();
             }
         }
 
-        private static double? _balanceSpendable;
+        private bool _isBlockchainSynced;
+        public bool IsBlockchainSynced {
+            private get { return _isBlockchainSynced; }
+
+            set {
+                _isBlockchainSynced = value;
+                OnPropertyChanged();
+
+                UpdatePropertyIsSendingEnabled();
+            }
+        }
+
+        private double? _balanceSpendable;
         public double? BalanceSpendable {
             get { return _balanceSpendable; }
 
             set {
                 _balanceSpendable = value;
                 OnPropertyChanged();
+
+                UpdatePropertyIsSendingEnabled();
             }
+        }
+
+        private double? _balanceNewEstimated;
+        public double? BalanceNewEstimated {
+            get { return _balanceNewEstimated; }
+
+            set {
+                _balanceNewEstimated = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _paymentId;
+        public string PaymentId {
+            get { return _paymentId; }
+
+            set {
+                _paymentId = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int? _mixCount;
+        public int? MixCount {
+            get { return _mixCount; }
+            set {
+                _mixCount = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double? _transactionFee;
+        public double? TransactionFee {
+            get { return _transactionFee; }
+
+            set {
+                _transactionFee = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void UpdatePropertyIsSendingEnabled()
+        {
+            IsSendingEnabled = IsBlockchainSynced && BalanceSpendable != null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

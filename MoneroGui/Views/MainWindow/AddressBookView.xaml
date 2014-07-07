@@ -28,7 +28,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.ColumnSpan="7" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" MouseDoubleClick="DataGridAddressBook_MouseDoubleClick" Margin="0 0 0 8">
+        <DataGrid Grid.ColumnSpan="7" x:Name="DataGridAddressBook" ItemsSource="{Binding Source={StaticResource CollectionViewSourceDataSource}}" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectedCellsChanged="DataGridAddressBook_SelectedCellsChanged" Margin="0 0 0 8">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource {x:Type DataGridCell}}">
+                    <EventSetter Event="MouseDoubleClick" Handler="DataGridAddressBookCell_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{Binding Path=TextLabel, Source={StaticResource Resources}}" Binding="{Binding Path=Label}" SortDirection="Ascending" Width="*"/>
 
@@ -56,7 +62,7 @@
             <controls:ImageTextComposition Text="{Binding Path=TextDelete, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Delete.png"/>
         </Button>
 
-        <Button Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" IsEnabled="False" Click="ButtonQrCode_Click" RenderOptions.BitmapScalingMode="Linear" Margin="0 0 8 0">
+        <Button Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" IsEnabled="False" Click="ButtonQrCode_Click" Margin="0 0 8 0">
             <controls:ImageTextComposition Text="{Binding Path=TextQrCode, Source={StaticResource Resources}}" ImageUri="/Resources/Images/QR-code.png"/>
         </Button>
         <Button Grid.Row="1" Grid.Column="6" x:Name="ButtonExport" Click="ButtonExport_Click">

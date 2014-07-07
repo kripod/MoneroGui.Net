@@ -84,6 +84,7 @@ namespace Jojatekok.MoneroGUI.Windows
             } else {
                 Visibility = Visibility.Visible;
                 bindingPath = "MenuHideWindow";
+                this.RestoreWindowStateFromMinimized();
             }
 
             MenuItemShowOrHideWindow.SetBinding(
@@ -94,8 +95,6 @@ namespace Jojatekok.MoneroGUI.Windows
                     Mode = BindingMode.OneWay
                 }
             );
-
-            this.RestoreWindowStateFromMinimized();
         }
 
         private void CommandSendCoins_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -188,7 +187,7 @@ namespace Jojatekok.MoneroGUI.Windows
             daemon.NetworkInformationChanging += Daemon_NetworkInformationChanging;
             daemon.BlockchainSynced += Daemon_BlockchainSynced;
 
-            MoneroClient.StartDaemon();
+            daemon.Start();
         }
 
         private void StartWallet()
@@ -200,7 +199,7 @@ namespace Jojatekok.MoneroGUI.Windows
             wallet.TransactionReceived += Wallet_TransactionReceived;
             wallet.BalanceChanging += Wallet_BalanceChanging;
 
-            MoneroClient.StartWallet();
+            wallet.Start();
 
             OverviewView.ViewModel.DataSourceTransactions = wallet.Transactions;
             TransactionsView.ViewModel.DataSourceTransactions = wallet.Transactions;
@@ -237,7 +236,7 @@ namespace Jojatekok.MoneroGUI.Windows
             BeginInvokeForDataChanging(() => {
                 // Enable sending coins, along with hiding the sync status
                 StatusBar.ViewModel.SyncStatusVisibility = Visibility.Hidden;
-                SendCoinsView.ViewModel.IsSendingEnabled = true;
+                SendCoinsView.ViewModel.IsBlockchainSynced = true;
             });
         }
 
@@ -248,7 +247,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
-            Dispatcher.BeginInvoke(new Action(() => {
+            Dispatcher.Invoke(() => {
                 if (e.IsFirstTime) {
                     // Let the user set the wallet's passphrase for the first time
                     var dialog = new WalletChangePassphraseWindow(this, false);
@@ -265,7 +264,7 @@ namespace Jojatekok.MoneroGUI.Windows
                         MoneroClient.Wallet.Passphrase = dialog.Passphrase;
                     }
                 }
-            }));
+            });
         }
 
         private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)
@@ -315,8 +314,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 overviewViewModel.BalanceSpendable = newValue.Spendable;
                 overviewViewModel.BalanceUnconfirmed = newValue.Unconfirmed;
 
-                var sendCoinsViewModel = SendCoinsView.ViewModel;
-                sendCoinsViewModel.BalanceSpendable = newValue.Spendable;
+                SendCoinsView.ViewModel.BalanceSpendable = newValue.Spendable;
             });
         }
 

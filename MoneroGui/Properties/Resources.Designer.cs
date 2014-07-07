@@ -668,20 +668,38 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Balance:.
-        /// </summary>
-        public static string SendCoinsBalance {
-            get {
-                return ResourceManager.GetString("SendCoinsBalance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Clear recipients.
         /// </summary>
         public static string SendCoinsClearRecipients {
             get {
                 return ResourceManager.GetString("SendCoinsClearRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current balance:.
+        /// </summary>
+        public static string SendCoinsCurrentBalance {
+            get {
+                return ResourceManager.GetString("SendCoinsCurrentBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated new balance:.
+        /// </summary>
+        public static string SendCoinsEstimatedNewBalance {
+            get {
+                return ResourceManager.GetString("SendCoinsEstimatedNewBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fee:.
+        /// </summary>
+        public static string SendCoinsFee {
+            get {
+                return ResourceManager.GetString("SendCoinsFee", resourceCulture);
             }
         }
         

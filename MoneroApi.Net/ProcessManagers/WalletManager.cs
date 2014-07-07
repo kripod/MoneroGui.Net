@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class WalletManager : BaseProcessManager, IDisposable
+    public class WalletManager : BaseProcessManager, IBaseProcessManager, IDisposable
     {
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
@@ -25,14 +25,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private List<string> ProcessArgumentsExtra { get; set; }
 
         private bool IsTransactionReceivedEventEnabled { get; set; }
+        private bool IsStartForced { get; set; }
 
         private Timer TimerCheckRpcAvailability { get; set; }
         private Timer TimerRefresh { get; set; }
         private Timer TimerSaveWallet { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
-
-        private DaemonManager Daemon { get; set; }
         private Paths Paths { get; set; }
 
         private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
@@ -76,19 +75,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             set {
                 _passphrase = value;
-
-                KillBaseProcess();
-                Start();
+                Restart();
             }
         }
 
-        internal WalletManager(RpcWebClient rpcWebClient, DaemonManager daemon, Paths paths) : base(paths.SoftwareWallet)
+        internal WalletManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
 
             RpcWebClient = rpcWebClient;
-            Daemon = daemon;
             Paths = paths;
 
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
@@ -123,7 +119,21 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             ProcessArgumentsExtra.Add("--password \"" + Passphrase + "\"");
         }
 
-        internal void Start()
+        public void Start()
+        {
+            if (IsStartForced || IsWalletFileExistent) {
+                // Start the wallet normally
+                IsStartForced = false;
+                StartInternal();
+
+            } else {
+                // Let the user set a password for the new wallet being created
+                IsStartForced = true;
+                RequestPassphrase(true);
+            }
+        }
+
+        private void StartInternal()
         {
             // <-- Reset variables -->
 
@@ -150,6 +160,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             QueryAddress();
             TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
             TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
+        }
+
+        public void Stop()
+        {
+            KillBaseProcess();
+        }
+
+        public void Restart()
+        {
+            Stop();
+            StartInternal();
         }
 
         internal void RequestPassphrase(bool isFirstTime)
@@ -302,8 +323,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             if (dataLower.Contains("wallet has been generated")) {
                 // Restart in RPC mode after generating a new wallet
-                KillBaseProcess();
-                Start();
+                Restart();
             }
 
             // Error handler

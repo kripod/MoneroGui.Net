@@ -392,8 +392,8 @@ Verkort asseblief jou insette!</value>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR kode</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Balans</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Verwyder ontvanger</value>
@@ -524,5 +524,14 @@ Verkort asseblief jou insette!</value>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
     <value>Wees asseblief geweldig noukeurig en versigtig met die storing van jou beursie se data.
 Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verloor.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Die transaksie kon nie gestuur word nie</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
   </data>
 </root>

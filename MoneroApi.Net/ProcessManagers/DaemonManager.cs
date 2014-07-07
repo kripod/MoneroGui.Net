@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class DaemonManager : BaseProcessManager
+    public class DaemonManager : BaseProcessManager, IBaseProcessManager
     {
         public event EventHandler BlockchainSynced;
         public event EventHandler<NetworkInformationChangingEventArgs> NetworkInformationChanging;
@@ -60,9 +60,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerSaveBlockchain = new Timer(delegate { SaveBlockchain(); });
         }
 
-        internal void Start()
+        public void Start()
         {
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+        }
+
+        public void Stop()
+        {
+            KillBaseProcess();
+        }
+
+        public void Restart()
+        {
+            Stop();
+            Start();
         }
 
         private void StartRpcServices()

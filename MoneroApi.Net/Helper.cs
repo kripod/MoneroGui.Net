@@ -1,6 +1,7 @@
 ﻿using Jojatekok.MoneroAPI.ProcessManagers;
 using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
@@ -29,7 +30,7 @@ namespace Jojatekok.MoneroAPI
         {
             using (var response = request.GetResponse()) {
                 using (var stream = response.GetResponseStream()) {
-                    if (stream == null) throw new NullReferenceException("The HttpWebRequest's response stream is empty.");
+                    Debug.Assert(stream != null, "stream != null");
 
                     using (var reader = new StreamReader(stream)) {
                         return reader.ReadToEnd();

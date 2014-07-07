@@ -392,8 +392,8 @@
   <data name="TextQrCode" xml:space="preserve">
     <value>QR code</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Yπόλοιπο:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Διαγραφή παραλήπτη</value>
@@ -525,5 +525,14 @@
     <value>Παρακαλώ να είστε ΕΞΑΙΡΕΤΙΚΑ ΠΡΟΣΕΧΤΙΚΟΙ κατά την αποθήκευση πορτοφολιών!
 
 Κανείς δεν θα πρέπει να έχει πρόσβαση σε αυτά, καθώς αυτό θέτει τα χρήματα σας σε κίνδυνο.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Η συναλλαγή δεν έχει αποσταλεί.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
   </data>
 </root>

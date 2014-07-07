@@ -33,24 +33,24 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=OverviewSpendable, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 0 5">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
-                            <Binding Path="BalanceSpendable" TargetNullValue="?"/>
+                <TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource StyleTextBoxTransparent}" Margin="0 0 0 5">
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}" Mode="OneWay">
+                            <Binding Path="BalanceSpendable" TargetNullValue="{StaticResource StringUnknownValue}"/>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                         </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
+                    </TextBox.Text>
+                </TextBox>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OverviewUnconfirmed, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 0 5">
-                    <TextBlock.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
-                            <Binding Path="BalanceUnconfirmed" TargetNullValue="?"/>
+                <TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource StyleTextBoxTransparent}" Margin="0 0 0 5">
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}" Mode="OneWay">
+                            <Binding Path="BalanceUnconfirmed" TargetNullValue="{StaticResource StringUnknownValue}"/>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                         </MultiBinding>
-                    </TextBlock.Text>
-                </TextBlock>
+                    </TextBox.Text>
+                </TextBox>
 
                 <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 3 0 8"/>
 
@@ -68,7 +68,7 @@
                     <Button Grid.Column="1" ToolTip="{Binding Path=TextCopy, Source={StaticResource Resources}}" Click="ButtonCopyAddress_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
                         <Image Source="/Resources/Images/Copy.png" Margin="2"/>
                     </Button>
-                    <Button Grid.Column="2" ToolTip="{Binding Path=TextQrCode, Source={StaticResource Resources}}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Linear" Padding="0" Margin="5 0 0 0">
+                    <Button Grid.Column="2" ToolTip="{Binding Path=TextQrCode, Source={StaticResource Resources}}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
                         <Image Source="/Resources/Images/QR-code.png" Margin="2"/>
                     </Button>
                 </Grid>
@@ -76,7 +76,7 @@
                 <Separator Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 8"/>
 
                 <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=OverviewNumberOfTransactions, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
-                <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Path=DataSourceTransactions.Count}" HorizontalAlignment="Right" Margin="0 0 0 5"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding Path=DataSourceTransactions.Count, Mode=OneWay}" HorizontalAlignment="Right" Style="{StaticResource StyleTextBoxTransparent}" Margin="0 0 0 5"/>
             </Grid>
 
         </StackPanel>

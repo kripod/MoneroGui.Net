@@ -49,7 +49,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private void DataGridAddressBook_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DataGridAddressBookCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             // Check only for double clicks with the left mouse button
             if (e.ChangedButton != MouseButton.Left) return;

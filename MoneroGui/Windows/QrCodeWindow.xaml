@@ -28,7 +28,7 @@
         <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="ImageQrCode" Source="{Binding Path=ImageSource, IsAsync=True}" RenderOptions.BitmapScalingMode="NearestNeighbor" HorizontalAlignment="Center" Width="300" Height="300"/>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="TextBlockUriIsTooLong" Text="{Binding Path=QrCodeWindowUriTooLong, Source={StaticResource Resources}}" TextWrapping="Wrap" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" MaxWidth="256" Margin="0 0 0 5"/>
 
-        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="TextBoxQrUri" IsReadOnly="True" TextChanged="TextBoxQrUri_TextChanged" IsKeyboardFocusedChanged="TextBoxQrUri_IsKeyboardFocusedChanged" Margin="0 8">
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="TextBoxQrUri" IsReadOnly="True" TextChanged="TextBoxQrUri_TextChanged" GotKeyboardFocus="TextBoxQrUri_GotKeyboardFocus" Margin="0 8">
             <TextBox.Text>
                 <MultiBinding StringFormat="{}monero:{0}{1}{2}{3}">
                     <Binding Path="Address"/>

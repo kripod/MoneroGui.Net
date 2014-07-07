@@ -59,7 +59,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         [DllImport("Kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetInformationJobObject(IntPtr hJob, JobObjectInfoType infoType, IntPtr lpJobObjectInfo, UInt32 cbJobObjectInfoLength);
+        public static extern bool SetInformationJobObject(IntPtr hJob, JobObjectInfoType infoType, IntPtr lpJobObjectInfo, uint cbJobObjectInfoLength);
 
         [DllImport("Kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -73,34 +73,26 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
     [StructLayout(LayoutKind.Sequential)]
     struct IO_COUNTERS
     {
-        public UInt64 ReadOperationCount;
-        public UInt64 WriteOperationCount;
-        public UInt64 OtherOperationCount;
-        public UInt64 ReadTransferCount;
-        public UInt64 WriteTransferCount;
-        public UInt64 OtherTransferCount;
+        public ulong ReadOperationCount;
+        public ulong WriteOperationCount;
+        public ulong OtherOperationCount;
+        public ulong ReadTransferCount;
+        public ulong WriteTransferCount;
+        public ulong OtherTransferCount;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     struct JOBOBJECT_BASIC_LIMIT_INFORMATION
     {
-        public Int64 PerProcessUserTimeLimit;
-        public Int64 PerJobUserTimeLimit;
-        public UInt32 LimitFlags;
+        public long PerProcessUserTimeLimit;
+        public long PerJobUserTimeLimit;
+        public uint LimitFlags;
         public UIntPtr MinimumWorkingSetSize;
         public UIntPtr MaximumWorkingSetSize;
-        public UInt32 ActiveProcessLimit;
+        public uint ActiveProcessLimit;
         public UIntPtr Affinity;
-        public UInt32 PriorityClass;
-        public UInt32 SchedulingClass;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SECURITY_ATTRIBUTES
-    {
-        public UInt32 nLength;
-        public IntPtr lpSecurityDescriptor;
-        public Int32 bInheritHandle;
+        public uint PriorityClass;
+        public uint SchedulingClass;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -116,12 +108,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
     public enum JobObjectInfoType
     {
-        AssociateCompletionPortInformation = 7,
-        BasicLimitInformation = 2,
-        BasicUIRestrictions = 4,
-        EndOfJobTimeInformation = 6,
-        ExtendedLimitInformation = 9,
-        SecurityLimitInformation = 5,
-        GroupInformation = 11
+        ExtendedLimitInformation = 9
     }
 }

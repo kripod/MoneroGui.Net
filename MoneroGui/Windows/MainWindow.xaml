@@ -8,7 +8,7 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         Title="{Binding Path=TextClientName, Source={StaticResource Resources}}"
         WindowStartupLocation="CenterScreen"
-        Width="800" Height="542" MinWidth="800" MinHeight="542"
+        Width="850" Height="566" MinWidth="850" MinHeight="566"
         Closing="MainWindow_Closing">
     <Window.CommandBindings>
         <CommandBinding x:Name="CommandBindingShowOrHideWindow" Command="windows:MainWindow.CommandShowOrHideWindow" Executed="CommandShowOrHideWindow_Executed"/>

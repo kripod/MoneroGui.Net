@@ -145,6 +145,15 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
+            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = 0.005)]
+            public double TransactionsDefaultFee {
+                get { return (double)base["transactionsDefaultFee"]; }
+                set {
+                    base["transactionsDefaultFee"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
             [ConfigurationProperty("transactionsDefaultMixCount", DefaultValue = 0)]
             [IntegerValidator(MinValue = 0)]
             public int TransactionsDefaultMixCount {
