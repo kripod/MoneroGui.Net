@@ -18,7 +18,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
         [JsonProperty("destinations")]
         private IList<TransferRecipient> Recipients { get; set; }
 
-        private ulong _feeAtomicValue = 5000000000; // TODO: Allow custom values for transaction fees
+        private ulong _feeAtomicValue;
         [JsonProperty("fee")]
         private ulong FeeAtomicValue {
             get { return _feeAtomicValue; }
@@ -26,7 +26,6 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
         }
 
         public double Fee {
-            get { return FeeAtomicValue / Helper.CoinAtomicValueDivider; }
             set { FeeAtomicValue = (ulong)(value * Helper.CoinAtomicValueDivider); }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,7 +12,7 @@ namespace Jojatekok.MoneroGUI.Controls
         static ImageGreyable()
         {
 #if DEBUG
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
 #endif
 
             IsEnabledProperty.OverrideMetadata(

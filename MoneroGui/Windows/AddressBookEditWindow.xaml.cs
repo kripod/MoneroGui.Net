@@ -29,7 +29,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private AddressBookEditWindow()
         {
             Icon = StaticObjects.ApplicationIconImage;
-            Loaded += delegate {
+            SourceInitialized += delegate {
                 this.SetWindowButtons(false, false);
 
                 MaxHeight = ActualHeight;

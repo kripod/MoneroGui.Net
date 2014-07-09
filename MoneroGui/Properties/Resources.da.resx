@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adressebog</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero klient lukker ned...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Oversigt</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Send mønter</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klient</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaktioner</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_Om Monero klient</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup manager</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Ukendt</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Om Monero Klient</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Licens fil kan ikke findes</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Gem databaser før lukning</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero klient ved opstart</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopier adresse</value>

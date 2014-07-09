@@ -143,7 +143,12 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             if (firstInvalidRecipient < 0) {
                 // Initiate a new transaction
-                var isTransferSuccessful = StaticObjects.MoneroClient.Wallet.SendTransfer(recipientsList, (ulong)ViewModel.MixCount.Value, ViewModel.PaymentId);
+                var isTransferSuccessful = StaticObjects.MoneroClient.Wallet.SendTransfer(
+                    recipientsList,
+                    ViewModel.PaymentId,
+                    (ulong)ViewModel.MixCount.Value,
+                    ViewModel.TransactionFee.Value
+                );
 
                 // Add new people to the address book
                 foreach (var keyValuePair in contactDictionary) {

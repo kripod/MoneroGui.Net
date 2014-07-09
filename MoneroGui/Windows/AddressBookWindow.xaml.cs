@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private AddressBookWindow()
         {
             Icon = StaticObjects.ApplicationIconImage;
-            Loaded += delegate {
+            SourceInitialized += delegate {
                 this.SetWindowButtons(false, true);
 
                 MaxWidth = ActualWidth;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.OptionsWindow
@@ -10,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             InitializeComponent();
 
 #if DEBUG
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
 #endif
 
             // <-- Load settings -->

@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Agenda</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>O Cliente Monero está a encerrar...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Visão geral</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Enviar moedas</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Cliente Monero</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transações</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_Sobre o Cliente Monero</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Gestor de backup</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Desconhecido</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Sobre o Cliente Monero</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Erro: O arquivo de licença não pode ser encontrado.</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Gravar bases de dados antes de encerrar</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Iniciar o Cliente Monero no login do sistema</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copiar endereço</value>

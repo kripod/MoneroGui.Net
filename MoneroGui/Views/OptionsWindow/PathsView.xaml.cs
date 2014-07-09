@@ -1,4 +1,6 @@
-﻿namespace Jojatekok.MoneroGUI.Views.OptionsWindow
+﻿using System.ComponentModel;
+
+namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 {
     public partial class PathsView
     {
@@ -7,7 +9,7 @@
             InitializeComponent();
 
 #if DEBUG
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
 #endif
 
             var softwareFilter = Properties.Resources.TextFilterExecutableFiles + "|" + Properties.Resources.TextFilterAllFiles;

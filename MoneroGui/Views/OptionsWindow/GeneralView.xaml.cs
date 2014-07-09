@@ -1,4 +1,5 @@
 ﻿using IWshRuntimeLibrary;
+using System.ComponentModel;
 using System.Diagnostics;
 using File = System.IO.File;
 
@@ -11,7 +12,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             InitializeComponent();
 
 #if DEBUG
-            if (System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime) return;
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
 #endif
 
             // Load settings
@@ -26,10 +27,9 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             Debug.Assert(CheckBoxSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
 
             var generalSettings = SettingsManager.General;
-            var isStartableOnSystemLogin = CheckBoxStartableOnSystemLogin.IsChecked.Value;
-            var isSafeShutdownEnabled = CheckBoxSafeShutdownEnabled.IsChecked.Value;
-            generalSettings.IsSafeShutdownEnabled = isSafeShutdownEnabled;
+            generalSettings.IsSafeShutdownEnabled = CheckBoxSafeShutdownEnabled.IsChecked.Value;
 
+            var isStartableOnSystemLogin = CheckBoxStartableOnSystemLogin.IsChecked.Value;
             if (isStartableOnSystemLogin != generalSettings.IsStartableOnSystemLogin) {
                 generalSettings.IsStartableOnSystemLogin = isStartableOnSystemLogin;
 
@@ -37,8 +37,9 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                     var shell = new WshShell();
                     var shortcut = (WshShortcut)shell.CreateShortcut(StaticObjects.ApplicationStartupShortcutPath);
 
-                    // TODO: Implement hidden mode
+                    // Start the application hidden (on the tray)
                     shortcut.TargetPath = StaticObjects.ApplicationPath;
+                    shortcut.Arguments = "-hidewindow";
                     shortcut.IconLocation = StaticObjects.ApplicationPath;
                     shortcut.WorkingDirectory = StaticObjects.ApplicationBaseDirectory;
 
@@ -50,8 +51,6 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
                     }
                 }
             }
-
-            // TODO: Allow unsafe shutdown
         }
     }
 }

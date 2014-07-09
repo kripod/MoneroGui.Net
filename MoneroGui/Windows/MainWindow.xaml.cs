@@ -43,6 +43,18 @@ namespace Jojatekok.MoneroGUI.Windows
             InitializeComponent();
             TaskbarIcon.Icon = StaticObjects.ApplicationIcon;
 
+            // Parse command line arguments
+            var arguments = Environment.GetCommandLineArgs();
+            for (var i = arguments.Length - 1; i > 0; i--) {
+                var key = arguments[i].ToLower(Helper.InvariantCulture);
+
+                switch (key) {
+                    case "-hidewindow":
+                        SetTrayState(false);
+                        break;
+                }
+            }
+
             // Register commands which can be used from the tray
             CommandManager.RegisterClassCommandBinding(typeof(Popup), CommandBindingShowOrHideWindow);
             CommandManager.RegisterClassCommandBinding(typeof(Popup), CommandBindingSendCoins);
@@ -56,7 +68,7 @@ namespace Jojatekok.MoneroGUI.Windows
             LoggerWallet = StaticObjects.LoggerWallet;
 
             StartDaemon();
-            Loaded += delegate {
+            SourceInitialized += delegate {
                 Dispatcher.BeginInvoke(new Action(StartWallet));
 
                 var hwndSource = HwndSource.FromHwnd((new WindowInteropHelper(this)).Handle);
@@ -73,18 +85,18 @@ namespace Jojatekok.MoneroGUI.Windows
             e.Cancel = true;
         }
 
-        private void CommandShowOrHideWindow_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void SetTrayState(bool isWindowVisible)
         {
             string bindingPath;
 
-            if (Visibility == Visibility.Visible) {
-                Visibility = Visibility.Collapsed;
-                bindingPath = "MenuShowWindow";
-
-            } else {
+            if (isWindowVisible) {
                 Visibility = Visibility.Visible;
                 bindingPath = "MenuHideWindow";
                 this.RestoreWindowStateFromMinimized();
+
+            } else {
+                Visibility = Visibility.Hidden;
+                bindingPath = "MenuShowWindow";
             }
 
             MenuItemShowOrHideWindow.SetBinding(
@@ -95,6 +107,11 @@ namespace Jojatekok.MoneroGUI.Windows
                     Mode = BindingMode.OneWay
                 }
             );
+        }
+
+        private void CommandShowOrHideWindow_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            SetTrayState(Visibility != Visibility.Visible);
         }
 
         private void CommandSendCoins_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -327,7 +344,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             if (message == StaticObjects.ApplicationFirstInstanceActivatorMessage) {
                 if (Visibility != Visibility.Visible) {
-                    CommandShowOrHideWindow.Execute(null, this);
+                    SetTrayState(true);
                 } else {
                     this.RestoreWindowStateFromMinimized();
                 }

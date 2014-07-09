@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adres boek</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Kliënt sluit af...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Oorsig</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Stuur munte</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Kliënt</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksies</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_Omtrent Monero Kliënt</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Reserwe bestuurder</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Onbekend</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Omtrent Monero  Kliënt</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Fout: Die lisensie lêer kan nie gevind word nie.</value>
   </data>
@@ -330,9 +318,6 @@
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Stoor databasis voor afskakeling</value>
   </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Open Monero Kliënt tydens stelsel intekening</value>
-  </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Maak n kopie van die adres</value>
   </data>
@@ -393,7 +378,7 @@ Verkort asseblief jou insette!</value>
     <value>QR kode</value>
   </data>
   <data name="SendCoinsCurrentBalance" xml:space="preserve">
-    <value>Current balance:</value>
+    <value>Huidige balans:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Verwyder ontvanger</value>
@@ -529,9 +514,9 @@ Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verl
     <value>Die transaksie kon nie gestuur word nie</value>
   </data>
   <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
-    <value>Estimated new balance:</value>
+    <value>Benaderde nuwe balans:</value>
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
-    <value>Fee:</value>
+    <value>Fooi:</value>
   </data>
 </root>

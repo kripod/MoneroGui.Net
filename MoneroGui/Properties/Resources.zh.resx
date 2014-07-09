@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>地址簿</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>门罗币钱包关闭中...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>概览</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>发送钱币</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>门罗币客户端</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>交易记录</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_关于门罗币客户端</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_备份管理</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>未知</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>关于门罗币客户端</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>错误：未找到许可文件。</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>关闭前保存数据</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>开机自动启动客户端</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>复制地址</value>

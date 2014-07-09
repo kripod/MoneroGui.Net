@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresboek</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client is aan het afsluiten...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Overzicht</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Verzend munten</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Vertalingen</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_Over Monero Client</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup manager</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Onbekend</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Over Monero Client</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Error: Het licentiebestand kan niet gevonden worden.</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sla databases op vooraleer af te sluiten</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Client bij opstarten</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopieer adres</value>

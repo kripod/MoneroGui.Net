@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private WalletUnlockWindow()
         {
             Icon = StaticObjects.ApplicationIconImage;
-            Loaded += delegate {
+            SourceInitialized += delegate {
                 this.SetWindowButtons(false, false);
 
                 MinWidth = ActualWidth;

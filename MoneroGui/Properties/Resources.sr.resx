@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresar</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero klijent se gasi...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Pregled</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Pošalji novac</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klijent</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcije</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_O Monero Klijentu</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Menadžer rezervne kopije</value>
@@ -214,7 +205,7 @@
     <value>Unesite oznaku za ovu adresu da bi je dodali u adresar</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Mix račun</value>
+    <value>Mix count:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
     <value>ID plaćanja:</value>
@@ -263,9 +254,6 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
-  </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>O Monero Klijentu</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Greška: Licencni fajl ne može biti pronađen.</value>
@@ -328,10 +316,7 @@
     <value>Novčanik softver:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Sačuvaj baze podataka pre gašenja</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Startuj Monero Klijent pri logovanju u sistem</value>
+    <value>Sačuvaj baze podataka pre isključenja</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>
@@ -393,7 +378,7 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
     <value>QR kod</value>
   </data>
   <data name="SendCoinsCurrentBalance" xml:space="preserve">
-    <value>Current balance:</value>
+    <value>Trenutno stanje:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Uklonite primaoca</value>
@@ -529,9 +514,9 @@ Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš nov
     <value>Transakcija ne može biti poslata.</value>
   </data>
   <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
-    <value>Estimated new balance:</value>
+    <value>Procenjeno stanje:</value>
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
-    <value>Fee:</value>
+    <value>Naknada:</value>
   </data>
 </root>

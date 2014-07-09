@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             var input = value as double?;
-            if (input == null || input.Value < -0.0000000000009) {
+            if (input != null && input.Value < -0.0000000000009) {
                 return new ValidationResult(false, null);
             }
 

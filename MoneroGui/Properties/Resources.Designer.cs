@@ -97,7 +97,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Monero Client.
+        ///   Looks up a localized string similar to About Monero Client .NET.
         /// </summary>
         public static string AboutWindowTitle {
             get {
@@ -360,7 +360,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _About Monero Client.
+        ///   Looks up a localized string similar to _About Monero Client .NET.
         /// </summary>
         public static string MenuAbout {
             get {
@@ -531,7 +531,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start Monero Client on system login.
+        ///   Looks up a localized string similar to Start Monero Client .NET on system login.
         /// </summary>
         public static string OptionsGeneralIsStartableOnSystemLogin {
             get {
@@ -812,7 +812,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Monero Client is shutting down....
+        ///   Looks up a localized string similar to Monero Client .NET is shutting down....
         /// </summary>
         public static string TaskbarShutdown {
             get {
@@ -893,7 +893,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Monero Client.
+        ///   Looks up a localized string similar to Monero Client .NET.
         /// </summary>
         public static string TextClientName {
             get {

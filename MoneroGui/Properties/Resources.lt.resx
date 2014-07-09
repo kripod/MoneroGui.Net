@@ -138,23 +138,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresų knyga</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero klientas yra išjungiamas...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Apžvalga</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Siųsti monetas</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klientas</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Pervedimai</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_Apie Monero Klientą</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Atsarginių kopijų vadovas</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nežinomas</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Apie Monero Klientą</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Klaida: Licenzijos failas nerastas.</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Išsaugomos duomenų bazės prieš išjungimą</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Paleisti Monero Klientą paleidžiant OS</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopijuoti adresą</value>

@@ -236,13 +236,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
         }
 
-        public bool SendTransfer(IList<TransferRecipient> recipients, ulong mixCount, string paymentId)
+        public bool SendTransfer(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, double fee)
         {
             if (recipients == null || recipients.Count == 0) return false;
 
             var parameters = new SendTransferParameters(recipients) {
+                PaymentId = paymentId,
                 MixCount = mixCount,
-                PaymentId = paymentId
+                Fee = fee
             };
 
             var output = JsonQueryData<TransactionId>(new SendTransfer(parameters));

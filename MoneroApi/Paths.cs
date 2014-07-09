@@ -5,13 +5,13 @@ namespace Jojatekok.MoneroAPI
     public class Paths
     {
         private const string DefaultRelativePathDirectoryWalletData = "WalletData\\";
-        private const string DefaultRelativePathDirectoryResources = "Resources\\";
+        private const string DefaultRelativePathDirectorySoftware = "Resources\\Software\\";
 
         public const string DefaultDirectoryWalletBackups = DefaultRelativePathDirectoryWalletData + "Backups\\";
         public const string DefaultFileWalletData = DefaultRelativePathDirectoryWalletData + "wallet.bin";
-        public const string DefaultSoftwareDaemon = DefaultRelativePathDirectoryResources + "bitmonerod.exe";
-        public const string DefaultSoftwareWallet = DefaultRelativePathDirectoryResources + "simplewallet.exe";
-        public const string DefaultSoftwareMiner = DefaultRelativePathDirectoryResources + "simpleminer.exe";
+        public const string DefaultSoftwareDaemon = DefaultRelativePathDirectorySoftware + "bitmonerod.exe";
+        public const string DefaultSoftwareWallet = DefaultRelativePathDirectorySoftware + "simplewallet.exe";
+        public const string DefaultSoftwareMiner = DefaultRelativePathDirectorySoftware + "simpleminer.exe";
 
         private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 

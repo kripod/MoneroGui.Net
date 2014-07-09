@@ -141,23 +141,14 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresár</value>
   </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero klient sa vypína...</value>
-  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Prehľad</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Poslať mince</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klient</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcie</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_O Monero Kliente</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Zmeň heslo k peňaženke...</value>
@@ -264,9 +255,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Neznáme</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>O Monero Kliente</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Chyba: Nie je možné nájsť licenčný súbor.</value>
   </data>
@@ -329,9 +317,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Ulož databázy pred ukončením</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Spusti Monero Klienta pri štarte</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopíruj adresu</value>
