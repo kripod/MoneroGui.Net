@@ -13,8 +13,6 @@ namespace Jojatekok.MoneroAPI
 {
     static class Helper
     {
-        public const double CoinAtomicValueDivider = 1000000000000;
-
         public const string RpcUrlDefaultLocalhost = "localhost";
 
         // TODO: Add custom host and port support

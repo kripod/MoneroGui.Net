@@ -10,7 +10,10 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
+        private const ulong SettingsVersionLatest = 1;
         private const string RelativePathFileUserConfiguration = "user.config";
+
+        private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 5000000000;
 
         private static Configuration Configuration { get; set; }
 
@@ -63,10 +66,11 @@ namespace Jojatekok.MoneroGUI
         private static void LoadOrCreateSections()
         {
             var isSaveRequired = false;
+            var isNewFileCreated = false;
 
             General = Configuration.GetSection("general") as ConfigSectionGeneral;
             if (General == null) {
-                isSaveRequired = true;
+                isNewFileCreated = true;
                 General = new ConfigSectionGeneral();
                 Configuration.Sections.Add("general", General);
             }
@@ -92,7 +96,44 @@ namespace Jojatekok.MoneroGUI
                 Configuration.Sections.Add("addressBook", AddressBook);
             }
 
-            if (isSaveRequired) SaveSettings();
+            var metaData = Configuration.GetSection("metaData") as ConfigSectionMetaData;
+            if (metaData == null) {
+                isSaveRequired = true;
+                metaData = new ConfigSectionMetaData();
+                Configuration.Sections.Add("metaData", metaData);
+            }
+
+            // Don't try to upgrade the settings whether a new configuration file was created
+            if (isNewFileCreated) {
+                metaData.SettingsVersion = SettingsVersionLatest;
+                SaveSettings();
+                return;
+            }
+
+            // Upgrade settings if necessary
+            var settingsVersionOld = metaData.SettingsVersion;
+            if (settingsVersionOld < SettingsVersionLatest) {
+                UpgradeFromVersion(settingsVersionOld);
+                metaData.SettingsVersion = SettingsVersionLatest;
+                SaveSettings();
+                return;
+            }
+
+            // Save settings if necessary
+            if (isSaveRequired) {
+                SaveSettings();
+            }
+        }
+
+        private static void UpgradeFromVersion(ulong oldConfigurationVersion)
+        {
+            IsAutoSaveEnabled = false;
+
+            if (oldConfigurationVersion < 1) {
+                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+            }
+
+            IsAutoSaveEnabled = true;
         }
 
         public static void SaveSettings()
@@ -145,21 +186,20 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = 0.005)]
-            public double TransactionsDefaultFee {
-                get { return (double)base["transactionsDefaultFee"]; }
+            [ConfigurationProperty("transactionsDefaultMixCount", DefaultValue = (ulong)0)]
+            public ulong TransactionsDefaultMixCount {
+                get { return (ulong)base["transactionsDefaultMixCount"]; }
                 set {
-                    base["transactionsDefaultFee"] = value;
+                    base["transactionsDefaultMixCount"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("transactionsDefaultMixCount", DefaultValue = 0)]
-            [IntegerValidator(MinValue = 0)]
-            public int TransactionsDefaultMixCount {
-                get { return (int)base["transactionsDefaultMixCount"]; }
+            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = DefaultValueGeneralSectionTransactionsDefaultFee)]
+            public ulong TransactionsDefaultFee {
+                get { return (ulong)base["transactionsDefaultFee"]; }
                 set {
-                    base["transactionsDefaultMixCount"] = value;
+                    base["transactionsDefaultFee"] = value;
                     AutoSaveSettings();
                 }
             }
@@ -249,6 +289,20 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
+        private class ConfigSectionMetaData : ConfigurationSection
+        {
+            public ConfigSectionMetaData()
+            {
+                this.SetDefaultSectionInformation();
+            }
+
+            [ConfigurationProperty("settingsVersion", DefaultValue = (ulong)0)]
+            public ulong SettingsVersion {
+                get { return (ulong)base["settingsVersion"]; }
+                set { base["settingsVersion"] = value; }
+            }
+        }
+
         public class ConfigElementContact : ConfigurationElement
         {
             [ConfigurationProperty("label", IsRequired = true)]
@@ -276,6 +330,37 @@ namespace Jojatekok.MoneroGUI
                 get { return ConfigurationElementCollectionType.AddRemoveClearMap; }
             }
 
+            protected override sealed ConfigurationElement CreateNewElement()
+            {
+                return new ConfigElementContact(string.Empty, string.Empty);
+            }
+
+            protected override object GetElementKey(ConfigurationElement element)
+            {
+                Debug.Assert(element as ConfigElementContact != null, "element as ConfigElementContact != null");
+                return (element as ConfigElementContact).Label;
+            }
+
+            public void Add(ConfigElementContact element)
+            {
+                BaseAdd(element, false);
+                AutoSaveSettings();
+            }
+
+            public void Remove(ConfigElementContact element)
+            {
+                if (BaseIndexOf(element) >= 0) {
+                    BaseRemove(element.Label);
+                    AutoSaveSettings();
+                }
+            }
+
+            public void Clear()
+            {
+                BaseClear();
+                AutoSaveSettings();
+            }
+
             public ConfigElementContact this[int index] {
                 get { return BaseGet(index) as ConfigElementContact; }
 
@@ -288,63 +373,6 @@ namespace Jojatekok.MoneroGUI
                     IsAutoSaveEnabled = true;
                     SaveSettings();
                 }
-            }
-
-            new public ConfigElementContact this[string label] {
-                get { return BaseGet(label) as ConfigElementContact; }
-            }
-
-            protected override sealed ConfigurationElement CreateNewElement()
-            {
-                return new ConfigElementContact(string.Empty, string.Empty);
-            }
-
-            public void Add(ConfigElementContact element)
-            {
-                BaseAdd(element, false);
-                AutoSaveSettings();
-            }
-
-            public void Add(string label, string address)
-            {
-                Add(new ConfigElementContact(label, address));
-            }
-
-            protected override object GetElementKey(ConfigurationElement element)
-            {
-                Debug.Assert(element as ConfigElementContact != null, "element as ConfigElementContact != null");
-                return (element as ConfigElementContact).Label;
-            }
-
-            public int IndexOf(ConfigElementContact element)
-            {
-                return BaseIndexOf(element);
-            }
-
-            public void Remove(ConfigElementContact element)
-            {
-                if (BaseIndexOf(element) >= 0) {
-                    BaseRemove(element.Label);
-                    AutoSaveSettings();
-                }
-            }
-
-            public void Remove(string name)
-            {
-                BaseRemove(name);
-                AutoSaveSettings();
-            }
-
-            public void RemoveAt(int index)
-            {
-                BaseRemoveAt(index);
-                AutoSaveSettings();
-            }
-
-            public void Clear()
-            {
-                BaseClear();
-                AutoSaveSettings();
             }
 
             public new IEnumerator<ConfigElementContact> GetEnumerator()

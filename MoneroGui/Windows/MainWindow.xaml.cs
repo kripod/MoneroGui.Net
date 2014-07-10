@@ -314,7 +314,8 @@ namespace Jojatekok.MoneroGUI.Windows
                                       Dispatcher.Invoke(() => ConverterBooleanToString.Provider.Convert(transaction.IsAmountSpendable, typeof(string), null, Helper.InvariantCulture)) + Helper.NewLineString;
             }
 
-            var balloonMessage = Properties.Resources.TextAmount + ": " + transaction.Amount.ToString(StaticObjects.StringFormatCurrencyDefault, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode + Helper.NewLineString +
+            var amountDisplayValue = transaction.Amount / StaticObjects.CoinAtomicValueDivider;
+            var balloonMessage = Properties.Resources.TextAmount + ": " + amountDisplayValue.ToString(StaticObjects.StringFormatCoinDisplayValue, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode + Helper.NewLineString +
                                  balloonMessageExtra +
                                  Helper.NewLineString +
                                  Properties.Resources.TransactionsTransactionId + ": " + transaction.TransactionId;

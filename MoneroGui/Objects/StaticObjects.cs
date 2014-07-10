@@ -16,8 +16,9 @@ namespace Jojatekok.MoneroGUI
     {
         public const string DefaultLanguageCode = "default";
 
-        public const string StringFormatCurrencyDefault = "0.000000000000";
-        public const string StringFormatCurrencyBalance = "{0:" + StringFormatCurrencyDefault + "} {1}";
+        public const double CoinAtomicValueDivider = 1000000000000;
+        public const string StringFormatCoinDisplayValue = "0.000000000000";
+        public const string StringFormatCoinBalance = "{0:" + StringFormatCoinDisplayValue + "} {1}";
 
         public static readonly Brush BrushForegroundDefault = Brushes.Black;
         public static readonly Brush BrushForegroundWarning = Brushes.OrangeRed;

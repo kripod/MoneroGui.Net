@@ -42,8 +42,8 @@
                 <TextBlock Text="{Binding Path=SendCoinsCurrentBalance, Source={StaticResource Resources}}"/>
                 <TextBlock>
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
-                            <Binding Path="BalanceSpendable" TargetNullValue="{StaticResource StringUnknownValue}"/>
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCoinBalance}">
+                            <Binding Path="BalanceSpendable" Converter="{StaticResource ConverterCoinAtomicValueToDisplayValue}" TargetNullValue="{StaticResource StringUnknownValue}"/>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                         </MultiBinding>
                     </TextBlock.Text>
@@ -54,10 +54,10 @@
                 <TextBlock Text="{Binding Path=SendCoinsEstimatedNewBalance, Source={StaticResource Resources}}"/>
                 <TextBlock>
                     <TextBlock.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}">
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCoinBalance}">
                             <Binding Path="BalanceNewEstimated" TargetNullValue="{StaticResource StringUnknownValue}">
                                 <Binding.ValidationRules>
-                                    <objects:ValidationRuleCoinAmountNonNegative ValidatesOnTargetUpdated="True"/>
+                                    <objects:ValidationRuleCoinDisplayValueNonNegative ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
                             </Binding>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
@@ -104,7 +104,7 @@
         <Separator Grid.Row="3" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
 
         <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding Path=SendCoinsFee, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <xctk:DoubleUpDown Grid.Row="3" Grid.Column="9" Value="{Binding Path=TransactionFee}" Style="{StaticResource StyleDoubleUpDownCoinAmount}"/>
+        <xctk:DoubleUpDown Grid.Row="3" Grid.Column="9" Value="{Binding Path=TransactionFee, Converter={StaticResource ConverterCoinAtomicValueToDisplayValue}}" Style="{StaticResource StyleDoubleUpDownCoinAmount}"/>
         <TextBlock Grid.Row="3" Grid.Column="11" Text="{Binding Path=TextCurrencyCode, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
         <Separator Grid.Row="3" Grid.Column="12" Style="{StaticResource StyleSeparatorVertical}"/>
 

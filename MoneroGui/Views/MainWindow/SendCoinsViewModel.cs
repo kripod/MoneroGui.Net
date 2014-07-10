@@ -32,8 +32,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double? _balanceSpendable;
-        public double? BalanceSpendable {
+        private ulong? _balanceSpendable;
+        public ulong? BalanceSpendable {
             get { return _balanceSpendable; }
 
             set {
@@ -64,8 +64,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private int? _mixCount;
-        public int? MixCount {
+        private ulong? _mixCount;
+        public ulong? MixCount {
             get { return _mixCount; }
             set {
                 _mixCount = value;
@@ -73,8 +73,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double? _transactionFee;
-        public double? TransactionFee {
+        private ulong? _transactionFee;
+        public ulong? TransactionFee {
             get { return _transactionFee; }
 
             set {

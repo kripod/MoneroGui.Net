@@ -11,7 +11,29 @@
         <system:String x:Key="StringUnknownValue">?</system:String>
 
         <objects:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{Binding Path=TextNo, Source={StaticResource Resources}}" TrueValue="{Binding Path=TextYes, Source={StaticResource Resources}}"/>
+        <objects:ConverterCoinAtomicValueToDisplayValue x:Key="ConverterCoinAtomicValueToDisplayValue"/>
         <objects:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{Binding Path=TransactionTypeUnknown, Source={StaticResource Resources}}" ReceiveValue="{Binding Path=TransactionTypeReceive, Source={StaticResource Resources}}" SendValue="{Binding Path=TransactionTypeSend, Source={StaticResource Resources}}"/>
+
+        <Style x:Key="StyleAnimationSpinner" TargetType="{x:Type Image}">
+            <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="Visibility" Value="Visible">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="0" To="360" Duration="0:0:4" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <Style x:Key="StyleMinHeight22" TargetType="{x:Type Control}">
             <Setter Property="MinHeight" Value="22"/>
@@ -120,8 +142,9 @@
         </Style>
 
         <Style x:Key="StyleDoubleUpDownCoinAmount" TargetType="{x:Type xctk:DoubleUpDown}" BasedOn="{StaticResource {x:Type xctk:DoubleUpDown}}">
-            <Setter Property="FormatString" Value="{x:Static objects:StaticObjects.StringFormatCurrencyDefault}"/>
+            <Setter Property="FormatString" Value="{x:Static objects:StaticObjects.StringFormatCoinDisplayValue}"/>
             <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Maximum" Value="18446744.0737095"/>
             <Setter Property="Increment" Value="0.001"/>
         </Style>
 

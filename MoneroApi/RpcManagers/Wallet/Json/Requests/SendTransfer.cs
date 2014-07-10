@@ -18,25 +18,17 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
         [JsonProperty("destinations")]
         private IList<TransferRecipient> Recipients { get; set; }
 
-        private ulong _feeAtomicValue;
-        [JsonProperty("fee")]
-        private ulong FeeAtomicValue {
-            get { return _feeAtomicValue; }
-            set { _feeAtomicValue = value; }
-        }
-
-        public double Fee {
-            set { FeeAtomicValue = (ulong)(value * Helper.CoinAtomicValueDivider); }
-        }
+        [JsonProperty("payment_id")]
+        public string PaymentId { get; set; }
 
         [JsonProperty("mixin")]
         public ulong MixCount { get; set; }
 
+        [JsonProperty("fee")]
+        public ulong Fee { get; set; }
+
         [JsonProperty("unlock_time")]
         public ulong UnlockTime { get; set; }
-
-        [JsonProperty("payment_id")]
-        public string PaymentId { get; set; }
 
         internal SendTransferParameters(IList<TransferRecipient> recipients)
         {

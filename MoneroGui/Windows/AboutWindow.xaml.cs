@@ -28,6 +28,8 @@ namespace Jojatekok.MoneroGUI.Windows
             } else {
                 TextBoxLicenseText.Text = LicenseText;
             }
+
+            this.SetDefaultFocusedElement(TextBoxLicenseText);
         }
 
         public AboutWindow(Window owner) : this()
@@ -62,6 +64,8 @@ namespace Jojatekok.MoneroGUI.Windows
         private void HyperlinkIconCreatorWebsite_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(e.Uri.AbsoluteUri);
+
+            this.SetFocusedElement(TextBoxLicenseText);
             e.Handled = true;
         }
 
@@ -70,6 +74,8 @@ namespace Jojatekok.MoneroGUI.Windows
             if (CheckThirdPartyLicensesAvailability()) {
                 Process.Start(ThirdPartyLicensesPath);
             }
+
+            this.SetFocusedElement(TextBoxLicenseText);
         }
     }
 }

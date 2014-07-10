@@ -50,9 +50,9 @@
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=TextAmount, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
         <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Style="{StaticResource StyleDoubleUpDownCoinAmount}">
             <xctk:DoubleUpDown.Value>
-                <Binding Path="Amount" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Amount" Converter="{StaticResource ConverterCoinAtomicValueToDisplayValue}" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <objects:ValidationRuleCoinAmountPositive ValidationStep="CommittedValue"/>
+                        <objects:ValidationRuleCoinAtomicValuePositive ValidationStep="CommittedValue"/>
                     </Binding.ValidationRules>
                 </Binding>
             </xctk:DoubleUpDown.Value>

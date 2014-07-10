@@ -1,4 +1,5 @@
 ﻿using Jojatekok.MoneroAPI.Objects;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -47,44 +48,28 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void Recipients_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            // Perform a hard refresh if the collection of recipients has been cleared
-            if (e.Action == NotifyCollectionChangedAction.Reset) {
+            if (e.OldItems != null || e.Action == NotifyCollectionChangedAction.Reset) {
                 RefreshNewEstimatedBalance();
-                return;
-            }
-
-            // Check for removed items
-            var oldItems = e.OldItems;
-            if (oldItems != null && ViewModel.BalanceNewEstimated != null) {
-                for (var i = oldItems.Count - 1; i >= 0; i--) {
-                    var sendCoinsRecipient = oldItems[i] as SendCoinsRecipient;
-                    Debug.Assert(sendCoinsRecipient != null, "sendCoinsRecipient != null");
-
-                    var amount = sendCoinsRecipient.Amount;
-                    if (amount != null) {
-                        ViewModel.BalanceNewEstimated += amount;
-                    }
-                }
             }
         }
 
-        // TODO: Instead of "hard refresh", calculate only with the data which is being changed
         private void RefreshNewEstimatedBalance()
         {
             var balanceSpendable = ViewModel.BalanceSpendable;
-            if (balanceSpendable == null) {
+            var transactionFee = ViewModel.TransactionFee;
+            if (balanceSpendable == null || transactionFee == null) {
                 ViewModel.BalanceNewEstimated = null;
                 return;
             }
 
-            var balanceNewEstimated = balanceSpendable.Value - ViewModel.TransactionFee;
+            var balanceNewEstimated = (double)balanceSpendable.Value - transactionFee.Value;
             var recipients = ViewModel.Recipients;
             for (var i = recipients.Count - 1; i >= 0; i--) {
                 var amount = recipients[i].Amount;
                 if (amount != null) balanceNewEstimated -= amount.Value;
             }
 
-            ViewModel.BalanceNewEstimated = balanceNewEstimated;
+            ViewModel.BalanceNewEstimated = Math.Round(balanceNewEstimated) / StaticObjects.CoinAtomicValueDivider;
         }
 
         private void AddRecipient()
@@ -146,7 +131,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 var isTransferSuccessful = StaticObjects.MoneroClient.Wallet.SendTransfer(
                     recipientsList,
                     ViewModel.PaymentId,
-                    (ulong)ViewModel.MixCount.Value,
+                    ViewModel.MixCount.Value,
                     ViewModel.TransactionFee.Value
                 );
 

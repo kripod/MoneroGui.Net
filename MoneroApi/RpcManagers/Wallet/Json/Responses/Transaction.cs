@@ -12,10 +12,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
     public class Transaction
     {
         [JsonProperty("amount")]
-        private ulong AmountAtomicValue {
-            set { Amount = value / Helper.CoinAtomicValueDivider; }
-        }
-        public double Amount { get; internal set; }
+        public ulong Amount { get; internal set; }
 
         private string _transactionId;
         [JsonProperty("tx_hash")]

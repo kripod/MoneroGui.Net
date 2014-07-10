@@ -35,8 +35,8 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=OverviewSpendable, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
                 <TextBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource StyleTextBoxTransparent}" Margin="0 0 0 5">
                     <TextBox.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}" Mode="OneWay">
-                            <Binding Path="BalanceSpendable" TargetNullValue="{StaticResource StringUnknownValue}"/>
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCoinBalance}" Mode="OneWay">
+                            <Binding Path="BalanceSpendable" Converter="{StaticResource ConverterCoinAtomicValueToDisplayValue}" TargetNullValue="{StaticResource StringUnknownValue}"/>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                         </MultiBinding>
                     </TextBox.Text>
@@ -45,8 +45,8 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OverviewUnconfirmed, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
                 <TextBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource StyleTextBoxTransparent}" Margin="0 0 0 5">
                     <TextBox.Text>
-                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCurrencyBalance}" Mode="OneWay">
-                            <Binding Path="BalanceUnconfirmed" TargetNullValue="{StaticResource StringUnknownValue}"/>
+                        <MultiBinding StringFormat="{x:Static objects:StaticObjects.StringFormatCoinBalance}" Mode="OneWay">
+                            <Binding Path="BalanceUnconfirmed" Converter="{StaticResource ConverterCoinAtomicValueToDisplayValue}" TargetNullValue="{StaticResource StringUnknownValue}"/>
                             <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
                         </MultiBinding>
                     </TextBox.Text>

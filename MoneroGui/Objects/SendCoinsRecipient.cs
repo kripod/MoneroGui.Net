@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroGUI
         private SendCoinsView Owner { get; set; }
 
         private static readonly ValidationRuleAddress AddressValidator = new ValidationRuleAddress();
-        private static readonly ValidationRuleCoinAmountPositive AmountValidator = new ValidationRuleCoinAmountPositive();
+        private static readonly ValidationRuleCoinAtomicValuePositive AmountValidator = new ValidationRuleCoinAtomicValuePositive();
 
         private string _address;
         public string Address {
@@ -35,8 +35,8 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        private double? _amount = 0;
-        public double? Amount {
+        private ulong? _amount = 0;
+        public ulong? Amount {
             get { return _amount; }
 
             set {

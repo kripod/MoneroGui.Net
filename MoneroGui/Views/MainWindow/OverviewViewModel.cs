@@ -57,8 +57,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double? _balanceSpendable;
-        public double? BalanceSpendable {
+        private ulong? _balanceSpendable;
+        public ulong? BalanceSpendable {
             get { return _balanceSpendable; }
 
             set {
@@ -67,8 +67,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private double? _balanceUnconfirmed;
-        public double? BalanceUnconfirmed {
+        private ulong? _balanceUnconfirmed;
+        public ulong? BalanceUnconfirmed {
             get { return _balanceUnconfirmed; }
 
             set {

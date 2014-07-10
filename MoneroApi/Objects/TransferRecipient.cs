@@ -9,13 +9,9 @@ namespace Jojatekok.MoneroAPI.Objects
         public string Address { get; set; }
 
         [JsonProperty("amount")]
-        private ulong AmountAtomicValue { get; set; }
-        public double Amount {
-            get { return AmountAtomicValue / Helper.CoinAtomicValueDivider; }
-            set { AmountAtomicValue = (ulong)(value * Helper.CoinAtomicValueDivider); }
-        }
+        public ulong Amount { get; set; }
 
-        public TransferRecipient(string address, double amount)
+        public TransferRecipient(string address, ulong amount)
         {
             Address = address;
             Amount = amount;

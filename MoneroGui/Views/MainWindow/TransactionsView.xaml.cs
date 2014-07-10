@@ -44,10 +44,12 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 for (var i = 0; i < DataGridTransactions.Items.Count; i++) {
                     var transaction = DataGridTransactions.Items[i] as Transaction;
                     Debug.Assert(transaction != null, "transaction != null");
+
+                    var amountDisplayValue = transaction.Amount / StaticObjects.CoinAtomicValueDivider;
                     dataTable.Rows.Add(transaction.Number,
                                        transaction.Type,
                                        transaction.IsAmountSpendable,
-                                       transaction.Amount.ToString("G", Helper.DefaultUiCulture),
+                                       amountDisplayValue.ToString("G", Helper.DefaultUiCulture),
                                        "=\"" + transaction.TransactionId + "\"");
                 }
 

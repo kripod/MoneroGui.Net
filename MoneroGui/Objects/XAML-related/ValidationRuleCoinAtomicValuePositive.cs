@@ -3,12 +3,12 @@ using System.Windows.Controls;
 
 namespace Jojatekok.MoneroGUI
 {
-    public class ValidationRuleCoinAmountPositive : ValidationRule
+    public class ValidationRuleCoinAtomicValuePositive : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var input = Helper.GetBoundValue(value) as double?;
-            if (input == null || input.Value <= 0) {
+            var input = Helper.GetBoundValue(value) as ulong?;
+            if (input == null || input.Value == 0) {
                 return new ValidationResult(false, null);
             }
 

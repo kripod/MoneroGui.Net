@@ -39,7 +39,7 @@
                 <DataGridTextColumn Header="{Binding Path=TransactionsType, Source={StaticResource Resources}}" Binding="{Binding Path=Type, Converter={StaticResource ConverterTransactionTypeToString}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <DataGridTextColumn Header="{Binding Path=TransactionsSpendable, Source={StaticResource Resources}}" Binding="{Binding Path=IsAmountSpendable, Converter={StaticResource ConverterBooleanToStringYesNo}}" ElementStyle="{StaticResource StyleTextBlockAlignedCenter}" Width="Auto"/>
                 <!--<DataGridTextColumn Header="Payment ID" Binding="{Binding Path=PaymentId}"/>-->
-                <DataGridTextColumn Header="{Binding Path=TextAmount, Source={StaticResource Resources}}" Binding="{Binding Path=Amount, StringFormat={x:Static objects:StaticObjects.StringFormatCurrencyDefault}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
+                <DataGridTextColumn Header="{Binding Path=TextAmount, Source={StaticResource Resources}}" Binding="{Binding Path=Amount, Converter={StaticResource ConverterCoinAtomicValueToDisplayValue}, StringFormat={x:Static objects:StaticObjects.StringFormatCoinDisplayValue}}" ElementStyle="{StaticResource StyleTextBlockAlignedRight}" Width="Auto"/>
 
                 <DataGridTextColumn Header="{Binding Path=TransactionsTransactionId, Source={StaticResource Resources}}" Binding="{Binding Path=TransactionId}" Width="1*">
                     <DataGridTextColumn.ElementStyle>

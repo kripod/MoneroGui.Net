@@ -94,8 +94,9 @@
     <Compile Include="Controls\ImageGreyable.cs" />
     <Compile Include="Objects\CultureManager.cs" />
     <Compile Include="Objects\ObservableCollectionEx.cs" />
-    <Compile Include="Objects\XAML-related\ValidationRuleCoinAmountPositive.cs" />
-    <Compile Include="Objects\XAML-related\ValidationRuleCoinAmountNonNegative.cs" />
+    <Compile Include="Objects\XAML-related\ConverterCoinAtomicValueToDisplayValue.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleCoinAtomicValuePositive.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRuleCoinDisplayValueNonNegative.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleAddress.cs" />
     <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\IExportable.cs" />
@@ -354,6 +355,7 @@
     <EmbeddedResource Include="Properties\Resources.af.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.af.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.da.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -478,6 +480,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Browse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Synchronize.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

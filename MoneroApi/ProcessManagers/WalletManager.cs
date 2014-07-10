@@ -236,7 +236,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
         }
 
-        public bool SendTransfer(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, double fee)
+        public bool SendTransfer(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, ulong fee)
         {
             if (recipients == null || recipients.Count == 0) return false;
 
@@ -249,7 +249,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var output = JsonQueryData<TransactionId>(new SendTransfer(parameters));
             if (output == null) return false;
 
-            double amountTotal = 0;
+            ulong amountTotal = 0;
             for (var i = recipients.Count - 1; i >= 0; i--) {
                 amountTotal += recipients[i].Amount;
             }
