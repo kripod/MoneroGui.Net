@@ -78,7 +78,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal void KillBaseProcess()
+        protected void KillBaseProcess()
         {
             if (IsProcessAlive) {
                 Process.Kill();
@@ -95,24 +95,31 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (Exited != null) Exited(this, Process.ExitCode);
         }
 
-        public void Dispose()
+        public void Dispose(bool tryKillProcessSafely)
         {
-            Dispose(true);
+            Dispose(true, tryKillProcessSafely);
             GC.SuppressFinalize(this);
         }
 
-        private void Dispose(bool disposing)
+        public void Dispose()
+        {
+            Dispose(false);
+        }
+
+        private void Dispose(bool disposing, bool tryKillProcessSafely)
         {
             if (disposing && !IsDisposing) {
                 IsDisposing = true;
 
                 if (Process != null) {
-                    if (!Process.HasExited) {
-                        if (Process.Responding) {
-                            Send("exit");
-                            if (!Process.WaitForExit(300000)) Process.Kill();
-                        } else {
-                            Process.Kill();
+                    if (tryKillProcessSafely) {
+                        if (!Process.HasExited) {
+                            if (Process.Responding) {
+                                Send("exit");
+                                if (!Process.WaitForExit(300000)) Process.Kill();
+                            } else {
+                                Process.Kill();
+                            }
                         }
                     }
 

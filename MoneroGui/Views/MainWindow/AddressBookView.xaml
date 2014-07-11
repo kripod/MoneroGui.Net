@@ -63,7 +63,7 @@
         </Button>
 
         <Button Grid.Row="1" Grid.Column="5" x:Name="ButtonQrCode" IsEnabled="False" Click="ButtonQrCode_Click" Margin="0 0 8 0">
-            <controls:ImageTextComposition Text="{Binding Path=TextQrCode, Source={StaticResource Resources}}" ImageUri="/Resources/Images/QR-code.png"/>
+            <controls:ImageTextComposition Text="{Binding Path=TextQrCode, Source={StaticResource Resources}}" ImageUri="/Resources/Images/QrCode.png"/>
         </Button>
         <Button Grid.Row="1" Grid.Column="6" x:Name="ButtonExport" Click="ButtonExport_Click">
             <controls:ImageTextComposition Text="{Binding Path=TextExport, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Export.png"/>

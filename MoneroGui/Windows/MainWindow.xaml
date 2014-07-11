@@ -6,6 +6,7 @@
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
         xmlns:windows="clr-namespace:Jojatekok.MoneroGUI.Windows"
         xmlns:tb="http://www.hardcodet.net/taskbar"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="{Binding Path=TextClientName, Source={StaticResource Resources}}"
         WindowStartupLocation="CenterScreen"
         Width="850" Height="567" MinWidth="850" MinHeight="567"
@@ -37,35 +38,35 @@
         <tb:TaskbarIcon x:Name="TaskbarIcon" ToolTipText="{Binding Path=TextClientName, Source={StaticResource Resources}}" DoubleClickCommand="windows:MainWindow.CommandShowOrHideWindow">
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="MenuItemShowOrHideWindow" Header="{Binding Path=MenuHideWindow, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowOrHideWindow">
+                    <MenuItem x:Name="MenuItemShowOrHideWindow" Header="{Binding Path=MenuHideWindow, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowOrHideWindow" Visibility="{Binding Path=TaskbarCommandsVisibility}">
                         <MenuItem.Icon>
                             <Image Source="{x:Static objects:StaticObjects.ApplicationIconImage}" Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <Separator/>
+                    <Separator Visibility="{Binding Path=TaskbarCommandsVisibility}"/>
 
-                    <MenuItem Header="{Binding Path=MainWindowSendCoins, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandSendCoins">
+                    <MenuItem Header="{Binding Path=MainWindowSendCoins, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandSendCoins" Visibility="{Binding Path=TaskbarCommandsVisibility}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Send.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{Binding Path=MainWindowTransactions, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowTransactions">
+                    <MenuItem Header="{Binding Path=MainWindowTransactions, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowTransactions" Visibility="{Binding Path=TaskbarCommandsVisibility}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Transaction.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <Separator/>
+                    <Separator Visibility="{Binding Path=TaskbarCommandsVisibility}"/>
 
-                    <MenuItem Header="{Binding Path=MenuOptions, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandOptions">
+                    <MenuItem Header="{Binding Path=MenuOptions, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandOptions" Visibility="{Binding Path=TaskbarCommandsVisibility}">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Images/Options.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{Binding Path=MenuDebugWindow, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowDebugWindow"/>
+                    <MenuItem Header="{Binding Path=MenuDebugWindow, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandShowDebugWindow" Visibility="{Binding Path=TaskbarCommandsVisibility}"/>
 
-                    <Separator/>
+                    <Separator Visibility="{Binding Path=TaskbarCommandsVisibility}"/>
 
                     <MenuItem Header="{Binding Path=MenuExit, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandExit">
                         <MenuItem.Icon>

@@ -65,8 +65,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        public bool IsWalletFileExistent {
-            get { return File.Exists(Paths.FileWalletData); }
+        public bool IsWalletKeysFileExistent {
+            get { return File.Exists(Paths.FileWalletDataKeys); }
         }
 
         private string _passphrase;
@@ -100,7 +100,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 "--daemon-address " + RpcWebClient.Host + ":" + RpcWebClient.PortDaemon,
             };
 
-            if (File.Exists(Paths.FileWalletData)) {
+            if (IsWalletKeysFileExistent) {
                 ProcessArgumentsExtra.Add("--wallet-file \"" + Paths.FileWalletData + "\"");
 
                 // Enable RPC mode
@@ -121,7 +121,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public void Start()
         {
-            if (IsStartForced || IsWalletFileExistent) {
+            if (IsStartForced || IsWalletKeysFileExistent) {
                 // Start the wallet normally
                 IsStartForced = false;
                 StartInternal();
@@ -356,8 +356,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                base.Dispose();
-
                 TimerCheckRpcAvailability.Dispose();
                 TimerCheckRpcAvailability = null;
 
@@ -366,6 +364,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 TimerSaveWallet.Dispose();
                 TimerSaveWallet = null;
+
+                base.Dispose(false);
             }
         }
     }

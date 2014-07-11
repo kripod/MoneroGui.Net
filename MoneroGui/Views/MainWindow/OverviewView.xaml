@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel>
-            <TextBlock Text="{Binding Path=TextWallet, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 5"/>
+            <TextBlock Text="{Binding Path=TextWallet, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 8"/>
 
             <Grid Margin="20 0 0 0">
                 <Grid.ColumnDefinitions>
@@ -69,7 +69,7 @@
                         <Image Source="/Resources/Images/Copy.png" Margin="2"/>
                     </Button>
                     <Button Grid.Column="2" ToolTip="{Binding Path=TextQrCode, Source={StaticResource Resources}}" Click="ButtonQrCode_Click" Visibility="{Binding Path=AddressVisibility}" VerticalAlignment="Center" Padding="0" Margin="5 0 0 0">
-                        <Image Source="/Resources/Images/QR-code.png" Margin="2"/>
+                        <Image Source="/Resources/Images/QrCode.png" Margin="2"/>
                     </Button>
                 </Grid>
 
@@ -82,7 +82,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="2">
-            <TextBlock Text="{Binding Path=OverviewRecentTransactions, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 5"/>
+            <TextBlock Text="{Binding Path=OverviewRecentTransactions, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 8"/>
             <StackPanel Margin="20 0 0 5">
                 <!-- TODO: Show recent transactions -->
             </StackPanel>

@@ -16,6 +16,18 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class MainWindow : IDisposable
     {
+        public static readonly DependencyProperty TaskbarCommandsVisibilityProperty = DependencyProperty.RegisterAttached(
+            "TaskbarCommandsVisibility",
+            typeof(Visibility),
+            typeof(MainWindow),
+            new PropertyMetadata(Visibility.Visible)
+        );
+
+        public Visibility TaskbarCommandsVisibility {
+            get { return (Visibility)GetValue(TaskbarCommandsVisibilityProperty); }
+            set { SetValue(TaskbarCommandsVisibilityProperty, value); }
+        }
+
         private bool IsDisposing { get; set; }
 
         private static MoneroClient MoneroClient { get; set; }
@@ -134,7 +146,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void CommandBackupManager_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            new BackupManagerWindow(this).ShowDialog();
+            DisplayDialog(new BackupManagerWindow(this));
         }
 
         private void CommandExport_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -152,6 +164,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
                 Visibility = Visibility.Hidden;
 
+                TaskbarIcon.DoubleClickCommand = null;
                 TaskbarIcon.ContextMenu = null;
                 TaskbarIcon.ToolTipText = Properties.Resources.TaskbarShutdown;
 
@@ -169,7 +182,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void CommandOptions_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            new OptionsWindow(this).ShowDialog();
+            DisplayDialog(new OptionsWindow(this));
 
             // This is needed for the behavior of the tray icon
             if (WindowState != WindowState.Minimized) this.ActivateWindowOrLastChild();
@@ -189,7 +202,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void CommandShowAboutWindow_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            new AboutWindow(this).ShowDialog();
+            DisplayDialog(new AboutWindow(this));
         }
 
         private void CommandExport_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -268,7 +281,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 if (e.IsFirstTime) {
                     // Let the user set the wallet's passphrase for the first time
                     var dialog = new WalletChangePassphraseWindow(this, false);
-                    if (dialog.ShowDialog() == true) {
+                    if (DisplayDialog(dialog) == true) {
                         MoneroClient.Wallet.Passphrase = dialog.NewPassphrase;
                     } else {
                         MoneroClient.Wallet.Passphrase = null;
@@ -277,7 +290,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 } else {
                     // Request the wallet's passphrase in order to unlock it
                     var dialog = new WalletUnlockWindow(this);
-                    if (dialog.ShowDialog() == true) {
+                    if (DisplayDialog(dialog) == true) {
                         MoneroClient.Wallet.Passphrase = dialog.Passphrase;
                     }
                 }
@@ -334,6 +347,15 @@ namespace Jojatekok.MoneroGUI.Windows
 
                 SendCoinsView.ViewModel.BalanceSpendable = newValue.Spendable;
             });
+        }
+
+        private bool? DisplayDialog(Window window)
+        {
+            TaskbarCommandsVisibility = Visibility.Collapsed;
+            var output = window.ShowDialog();
+            TaskbarCommandsVisibility = Visibility.Visible;
+
+            return output;
         }
 
         private void BeginInvokeForDataChanging(Action callback)

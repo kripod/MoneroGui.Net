@@ -1,11 +1,11 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Threading;
+﻿using System.Windows;
 
 namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class StatusBarViewModel : DependencyObject
     {
+        private const string ConnectionCountIndicatorImageUriBase = "/Resources/Images/ConnectionCountIndicator{0}.png";
+
         public static readonly DependencyProperty SyncStatusVisibilityProperty = DependencyProperty.RegisterAttached(
             "SyncStatusVisibility",
             typeof(Visibility),
@@ -29,6 +29,13 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             "ConnectionCount",
             typeof(ulong),
             typeof(StatusBarViewModel)
+        );
+
+        public static readonly DependencyProperty ConnectionCountIndicatorImageUriProperty = DependencyProperty.RegisterAttached(
+            "ConnectionCountIndicatorImageUri",
+            typeof(string),
+            typeof(StatusBarViewModel),
+            new PropertyMetadata(string.Format(Helper.InvariantCulture, ConnectionCountIndicatorImageUriBase, 0))
         );
 
         private bool _isSyncStatusShowable = true;
@@ -55,7 +62,37 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         public ulong ConnectionCount {
             get { return (ulong)GetValue(ConnectionCountProperty); }
-            set { SetValue(ConnectionCountProperty, value); }
+
+            set {
+                SetValue(ConnectionCountProperty, value);
+
+                if (value == 0) {
+                    ConnectionCountIndicatorIndex = 0;
+                } else if (value < 4) {
+                    ConnectionCountIndicatorIndex = 1;
+                } else if (value < 7) {
+                    ConnectionCountIndicatorIndex = 2;
+                } else if (value < 10) {
+                    ConnectionCountIndicatorIndex = 3;
+                } else {
+                    ConnectionCountIndicatorIndex = 4;
+                }
+            }
+        }
+
+        private byte _connectionCountIndicatorIndex;
+        private byte ConnectionCountIndicatorIndex {
+            set {
+                if (value == _connectionCountIndicatorIndex) return;
+
+                _connectionCountIndicatorIndex = value;
+                ConnectionCountIndicatorImageUri = string.Format(Helper.InvariantCulture, ConnectionCountIndicatorImageUriBase, value);
+            }
+        }
+
+        public string ConnectionCountIndicatorImageUri {
+            get { return GetValue(ConnectionCountIndicatorImageUriProperty) as string; }
+            private set { SetValue(ConnectionCountIndicatorImageUriProperty, value); }
         }
     }
 }

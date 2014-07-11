@@ -160,13 +160,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                base.Dispose();
-
                 TimerQueryNetworkInformation.Dispose();
                 TimerQueryNetworkInformation = null;
 
                 TimerSaveBlockchain.Dispose();
                 TimerSaveBlockchain = null;
+
+                base.Dispose(true);
             }
         }
     }

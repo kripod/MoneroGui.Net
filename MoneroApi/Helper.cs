@@ -61,16 +61,19 @@ namespace Jojatekok.MoneroAPI
 
         public static void StartImmediately(this Timer timer, int period)
         {
+            if (timer == null) return;
             timer.Change(0, period);
         }
 
         public static void StartOnce(this Timer timer, int dueTime)
         {
+            if (timer == null) return;
             timer.Change(dueTime, Timeout.Infinite);
         }
 
         public static void Stop(this Timer timer)
         {
+            if (timer == null) return;
             timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 

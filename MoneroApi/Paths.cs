@@ -34,6 +34,10 @@ namespace Jojatekok.MoneroAPI
             set { _fileWalletData = value; }
         }
 
+        public string FileWalletDataKeys {
+            get { return FileWalletData + ".keys"; }
+        }
+
         private string _softwareDaemon = DefaultSoftwareDaemon;
         public string SoftwareDaemon {
             get { return _softwareDaemon; }
