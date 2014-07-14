@@ -1,4 +1,4 @@
-﻿using Jojatekok.MoneroAPI.Objects;
+﻿using Jojatekok.MoneroAPI;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -28,8 +28,9 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             AddRecipient();
 
             // Load settings
-            ViewModel.TransactionFee = SettingsManager.General.TransactionsDefaultFee;
-            ViewModel.MixCount = SettingsManager.General.TransactionsDefaultMixCount;
+            var generalSettings = SettingsManager.General;
+            ViewModel.TransactionFee = generalSettings.TransactionsDefaultFee;
+            ViewModel.MixCount = generalSettings.TransactionsDefaultMixCount;
         }
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -99,8 +100,15 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
         private void SendTransaction()
         {
-            if (ViewModel.MixCount == null) ViewModel.MixCount = 0;
-            if (ViewModel.TransactionFee == null) ViewModel.TransactionFee = 0;
+            // Save settings
+            SettingsManager.IsAutoSaveEnabled = false;
+            var generalSettings = SettingsManager.General;
+            if (ViewModel.MixCount == null) ViewModel.MixCount = generalSettings.TransactionsDefaultMixCount;
+            if (ViewModel.TransactionFee == null) ViewModel.TransactionFee = generalSettings.TransactionsDefaultFee;
+            generalSettings.TransactionsDefaultMixCount = ViewModel.MixCount.Value;
+            generalSettings.TransactionsDefaultFee = ViewModel.TransactionFee.Value;
+            SettingsManager.IsAutoSaveEnabled = true;
+            SettingsManager.SaveSettings();
 
             var recipients = ViewModel.Recipients;
             var recipientsCount = recipients.Count;
@@ -176,12 +184,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         private void ButtonSend_Click(object sender, RoutedEventArgs e)
         {
             SendTransaction();
-
-            // Save settings
-            Debug.Assert(ViewModel.MixCount != null, "ViewModel.MixCount != null");
-            Debug.Assert(ViewModel.TransactionFee != null, "ViewModel.TransactionFee != null");
-            SettingsManager.General.TransactionsDefaultMixCount = ViewModel.MixCount.Value;
-            SettingsManager.General.TransactionsDefaultFee = ViewModel.TransactionFee.Value;
         }
     }
 }

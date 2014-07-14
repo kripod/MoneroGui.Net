@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Jojatekok.MoneroAPI.Objects
+namespace Jojatekok.MoneroAPI
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class TransferRecipient

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -21,9 +23,14 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             SettingsManager.IsAutoSaveEnabled = false;
 
-            GeneralView.ApplySettings();
-            PathsView.ApplySettings();
-            AppearanceView.ApplySettings();
+            var items = TabControl.Items;
+            for (var i = items.Count - 1; i >= 0; i--) {
+                var tabItem = items[i] as TabItem;
+                Debug.Assert(tabItem != null, "tabItem != null");
+                var content = tabItem.Content as ISettingsView;
+                Debug.Assert(content != null, "content != null");
+                content.ApplySettings();
+            }
 
             SettingsManager.IsAutoSaveEnabled = true;
             SettingsManager.SaveSettings();

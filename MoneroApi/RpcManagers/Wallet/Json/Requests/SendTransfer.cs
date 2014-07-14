@@ -1,5 +1,4 @@
-﻿using Jojatekok.MoneroAPI.Objects;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests

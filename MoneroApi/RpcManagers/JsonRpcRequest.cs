@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers
         private static string Version { get { return "2.0"; } }
 
         [JsonProperty("method")]
-        public string Method { get; private set; }
+        private string Method { get; set; }
 
         internal JsonRpcRequest(string method)
         {
@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers
     public abstract class JsonRpcRequest<T> : JsonRpcRequest
     {
         [JsonProperty("params")]
-        public T Arguments { get; private set; }
+        private T Arguments { get; set; }
 
         internal JsonRpcRequest(string method, T arguments) : base(method)
         {

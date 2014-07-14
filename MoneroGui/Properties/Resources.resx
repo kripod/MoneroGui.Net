@@ -535,4 +535,28 @@ No one else should be able to access them, as this would cause your money to be 
   <data name="SendCoinsFee" xml:space="preserve">
     <value>Fee:</value>
   </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Connect through proxy</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC server</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Daemon port:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Wallet port:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
 </root>

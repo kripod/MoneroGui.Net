@@ -1,7 +1,7 @@
-﻿using Jojatekok.MoneroAPI.Objects;
-using Jojatekok.MoneroAPI.RpcManagers;
+﻿using Jojatekok.MoneroAPI.RpcManagers;
 using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
+using Jojatekok.MoneroAPI.Settings;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,7 +32,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private Timer TimerSaveWallet { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
-        private Paths Paths { get; set; }
+        private PathSettings PathSettings { get; set; }
+        private DaemonManager Daemon { get; set; }
 
         private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
         private ObservableCollection<Transaction> TransactionsPrivate {
@@ -66,7 +67,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         }
 
         public bool IsWalletKeysFileExistent {
-            get { return File.Exists(Paths.FileWalletDataKeys); }
+            get { return File.Exists(PathSettings.FileWalletDataKeys); }
         }
 
         private string _passphrase;
@@ -79,13 +80,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal WalletManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareWallet)
+        internal WalletManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareWallet)
         {
             ErrorReceived += Process_ErrorReceived;
             OutputReceived += Process_OutputReceived;
 
             RpcWebClient = rpcWebClient;
-            Paths = paths;
+            PathSettings = pathSettings;
+            Daemon = daemon;
 
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
@@ -96,24 +98,26 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void SetProcessArguments()
         {
+            var rpcSettings = RpcWebClient.RpcSettings;
+
             ProcessArgumentsExtra = new List<string>(5) {
-                "--daemon-address " + RpcWebClient.Host + ":" + RpcWebClient.PortDaemon,
+                "--daemon-address " + rpcSettings.UrlHost + ":" + rpcSettings.UrlPortDaemon,
             };
 
             if (IsWalletKeysFileExistent) {
-                ProcessArgumentsExtra.Add("--wallet-file \"" + Paths.FileWalletData + "\"");
+                ProcessArgumentsExtra.Add("--wallet-file \"" + PathSettings.FileWalletData + "\"");
 
                 // Enable RPC mode
-                ProcessArgumentsExtra.Add("--rpc-bind-port " + RpcWebClient.PortWallet);
-                if (RpcWebClient.Host != Helper.RpcUrlDefaultLocalhost) {
-                    ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
+                ProcessArgumentsExtra.Add("--rpc-bind-port " + rpcSettings.UrlPortWallet);
+                if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
+                    ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
                 }
 
             } else {
-                var directoryWalletData = Paths.DirectoryWalletData;
+                var directoryWalletData = PathSettings.DirectoryWalletData;
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
-                ProcessArgumentsExtra.Add("--generate-new-wallet \"" + Paths.FileWalletData + "\"");
+                ProcessArgumentsExtra.Add("--generate-new-wallet \"" + PathSettings.FileWalletData + "\"");
             }
 
             ProcessArgumentsExtra.Add("--password \"" + Passphrase + "\"");
@@ -180,7 +184,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void CheckRpcAvailability()
         {
-            if (Helper.IsPortInUse(RpcWebClient.PortWallet)) {
+            if (Helper.IsPortInUse(RpcWebClient.RpcSettings.UrlPortWallet)) {
                 TimerCheckRpcAvailability.Stop();
                 StartRpcServices();
             }
@@ -188,7 +192,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryAddress()
         {
-            Address = JsonQueryData<Address>(new GetAddress()).Value;
+            Address = JsonQueryData<AddressValueContainer>(new GetAddress()).Value;
         }
 
         private void QueryBalance()
@@ -198,7 +202,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryIncomingTransfers()
         {
-            var transactions = JsonQueryData<TransactionList>(new GetIncomingTransfers());
+            var transactions = JsonQueryData<TransactionListValueContainer>(new GetIncomingTransfers());
 
             if (transactions != null) {
                 var currentTransactionCount = TransactionsPrivate.Count;
@@ -236,6 +240,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
         }
 
+        private void SaveWallet()
+        {
+            JsonQueryData(new SaveWallet());
+            TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
+        }
+
         public bool SendTransfer(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, ulong fee)
         {
             if (recipients == null || recipients.Count == 0) return false;
@@ -246,7 +256,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Fee = fee
             };
 
-            var output = JsonQueryData<TransactionId>(new SendTransfer(parameters));
+            var output = JsonQueryData<TransactionIdValueContainer>(new SendTransfer(parameters));
             if (output == null) return false;
 
             ulong amountTotal = 0;
@@ -266,23 +276,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return true;
         }
 
-        private void SaveWallet()
-        {
-            JsonQueryData(new SaveWallet());
-            TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
-        }
-
-        private string Backup(string path)
+        private string Backup(string path = null)
         {
             if (path == null) {
-                path = Paths.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
+                path = PathSettings.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
             }
 
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-            var walletName = Path.GetFileNameWithoutExtension(Paths.FileWalletData);
+            var walletName = Path.GetFileNameWithoutExtension(PathSettings.FileWalletData);
 
-            var filesToBackup = Directory.GetFiles(Paths.DirectoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
+            var filesToBackup = Directory.GetFiles(PathSettings.DirectoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
             for (var i = filesToBackup.Length - 1; i >= 0; i--) {
                 var file = filesToBackup[i];
                 Debug.Assert(file != null, "file != null");
@@ -290,11 +294,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
 
             return path;
-        }
-
-        private string Backup()
-        {
-            return Backup(null);
         }
 
         public Task<string> BackupAsync(string path)

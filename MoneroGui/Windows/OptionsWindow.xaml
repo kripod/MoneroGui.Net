@@ -17,13 +17,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TabControl Margin="0 0 0 8" Grid.ColumnSpan="4">
+        <TabControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="TabControl" Margin="0 0 0 8">
             <TabItem Header="{Binding Path=OptionsGeneral, Source={StaticResource Resources}}">
                 <views:GeneralView x:Name="GeneralView" Margin="5"/>
             </TabItem>
 
             <TabItem Header="{Binding Path=OptionsPaths, Source={StaticResource Resources}}">
                 <views:PathsView x:Name="PathsView" Margin="5"/>
+            </TabItem>
+
+            <TabItem Header="{Binding Path=OptionsNetwork, Source={StaticResource Resources}}">
+                <views:NetworkView x:Name="NetworkView" Margin="5"/>
             </TabItem>
 
             <TabItem Header="{Binding Path=OptionsAppearance, Source={StaticResource Resources}}">

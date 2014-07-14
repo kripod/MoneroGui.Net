@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 {
-    public partial class PathsView
+    public partial class PathsView : ISettingsView
     {
         public PathsView()
         {

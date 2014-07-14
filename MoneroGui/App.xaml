@@ -67,10 +67,12 @@
             <Setter Property="Padding" Value="5 0"/>
         </Style>
         <Style TargetType="{x:Type xctk:IntegerUpDown}" BasedOn="{StaticResource StyleValidatableControl}">
+            <Setter Property="ClipValueToMinMax" Value="True"/>
             <Setter Property="Height" Value="22"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
         <Style TargetType="{x:Type xctk:DoubleUpDown}" BasedOn="{StaticResource StyleValidatableControl}">
+            <Setter Property="ClipValueToMinMax" Value="True"/>
             <Setter Property="Height" Value="22"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
@@ -80,6 +82,27 @@
         <Style TargetType="{x:Type xctk:WatermarkTextBox}" BasedOn="{StaticResource StyleValidatableControl}">
             <Setter Property="Height" Value="22"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="#FF01D328"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="1 0">
+                        <GradientStop Color="#FFBABABA" Offset="0"/>
+                        <GradientStop Color="#FFC7C7C7" Offset="0.5"/>
+                        <GradientStop Color="#FFBABABA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="0 1">
+                        <GradientStop Color="#FFB2B2B2" Offset="0"/>
+                        <GradientStop Color="#FF8C8C8C" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="{x:Type TabItem}">

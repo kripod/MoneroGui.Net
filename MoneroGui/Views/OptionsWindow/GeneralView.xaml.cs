@@ -5,7 +5,7 @@ using File = System.IO.File;
 
 namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 {
-    public partial class GeneralView
+    public partial class GeneralView : ISettingsView
     {
         public GeneralView()
         {
@@ -17,19 +17,19 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
             // Load settings
             var generalSettings = SettingsManager.General;
-            CheckBoxStartableOnSystemLogin.IsChecked = generalSettings.IsStartableOnSystemLogin;
-            CheckBoxSafeShutdownEnabled.IsChecked = generalSettings.IsSafeShutdownEnabled;
+            CheckBoxIsStartableOnSystemLogin.IsChecked = generalSettings.IsStartableOnSystemLogin;
+            CheckBoxIsSafeShutdownEnabled.IsChecked = generalSettings.IsSafeShutdownEnabled;
         }
 
         public void ApplySettings()
         {
-            Debug.Assert(CheckBoxStartableOnSystemLogin.IsChecked != null, "CheckBoxStartableOnSystemLogin.IsChecked != null");
-            Debug.Assert(CheckBoxSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
+            Debug.Assert(CheckBoxIsStartableOnSystemLogin.IsChecked != null, "CheckBoxStartableOnSystemLogin.IsChecked != null");
+            Debug.Assert(CheckBoxIsSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
 
             var generalSettings = SettingsManager.General;
-            generalSettings.IsSafeShutdownEnabled = CheckBoxSafeShutdownEnabled.IsChecked.Value;
+            generalSettings.IsSafeShutdownEnabled = CheckBoxIsSafeShutdownEnabled.IsChecked.Value;
 
-            var isStartableOnSystemLogin = CheckBoxStartableOnSystemLogin.IsChecked.Value;
+            var isStartableOnSystemLogin = CheckBoxIsStartableOnSystemLogin.IsChecked.Value;
             if (isStartableOnSystemLogin != generalSettings.IsStartableOnSystemLogin) {
                 generalSettings.IsStartableOnSystemLogin = isStartableOnSystemLogin;
 

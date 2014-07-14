@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Jojatekok.MoneroAPI.Settings;
+using Newtonsoft.Json;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -7,18 +8,14 @@ namespace Jojatekok.MoneroAPI.RpcManagers
 {
     public sealed class RpcWebClient
     {
-        public string Host { get; private set; }
-        public ushort PortDaemon { get; private set; }
-        public ushort PortWallet { get; private set; }
+        public RpcSettings RpcSettings { get; private set; }
 
-        private static readonly JsonSerializer JsonSerializer = new JsonSerializer { NullValueHandling = NullValueHandling.Ignore, MissingMemberHandling = MissingMemberHandling.Ignore };
-        private static readonly Encoding Encoding = Encoding.UTF8;
+        private static readonly JsonSerializer JsonSerializer = new JsonSerializer { NullValueHandling = NullValueHandling.Ignore };
+        private static readonly Encoding EncodingUtf8 = Encoding.UTF8;
 
-        internal RpcWebClient(string host, ushort portDaemon, ushort portWallet)
+        internal RpcWebClient(RpcSettings rpcSettings)
         {
-            Host = host;
-            PortDaemon = portDaemon;
-            PortWallet = portWallet;
+            RpcSettings = rpcSettings;
         }
 
         public T HttpGetData<T>(RpcPortType portType, string command)
@@ -29,9 +26,9 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             return output;
         }
 
-        public T HttpPostData<T>(RpcPortType portType, string command, string postData)
+        public T HttpPostData<T>(RpcPortType portType, string command, HttpRpcRequest httpRpcRequest)
         {
-            var jsonString = PostString(portType, command, postData);
+            var jsonString = PostString(portType, command, JsonSerializer.SerializeObject(httpRpcRequest));
             var output = JsonSerializer.DeserializeObject<T>(jsonString);
 
             return output;
@@ -72,7 +69,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             var request = CreateHttpWebRequest(portType, "POST", relativeUrl);
             request.ContentType = "application/json";
 
-            var postBytes = Encoding.GetBytes(postData);
+            var postBytes = EncodingUtf8.GetBytes(postData);
             request.ContentLength = postBytes.Length;
 
             using (var requestStream = request.GetRequestStream()) {
@@ -87,15 +84,15 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             ushort port;
             switch (portType) {
                 case RpcPortType.Wallet:
-                    port = PortWallet;
+                    port = RpcSettings.UrlPortWallet;
                     break;
 
                 default:
-                    port = PortDaemon;
+                    port = RpcSettings.UrlPortDaemon;
                     break;
             }
 
-            return "http://" + Host + ":" + port + "/";
+            return "http://" + RpcSettings.UrlHost + ":" + port + "/";
         }
     }
 }

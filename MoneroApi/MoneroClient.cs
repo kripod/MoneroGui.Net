@@ -1,5 +1,6 @@
 ﻿using Jojatekok.MoneroAPI.ProcessManagers;
 using Jojatekok.MoneroAPI.RpcManagers;
+using Jojatekok.MoneroAPI.Settings;
 using System;
 
 namespace Jojatekok.MoneroAPI
@@ -7,23 +8,18 @@ namespace Jojatekok.MoneroAPI
     public class MoneroClient : IDisposable
     {
         private RpcWebClient RpcWebClient { get; set; }
-        private Paths Paths { get; set; }
+        private PathSettings Paths { get; set; }
 
         public DaemonManager Daemon { get; private set; }
         public WalletManager Wallet { get; private set; }
 
-        public MoneroClient(Paths paths)
+        public MoneroClient(PathSettings paths, RpcSettings rpcSettings)
         {
-            RpcWebClient = new RpcWebClient(Helper.RpcUrlIp, Helper.RpcUrlPortDaemon, Helper.RpcUrlPortWallet);
+            RpcWebClient = new RpcWebClient(rpcSettings);
             Paths = paths;
 
             Daemon = new DaemonManager(RpcWebClient, Paths);
-            Wallet = new WalletManager(RpcWebClient, Paths);
-        }
-
-        public MoneroClient() : this(new Paths())
-        {
-
+            Wallet = new WalletManager(RpcWebClient, Paths, Daemon);
         }
 
         public void Dispose()

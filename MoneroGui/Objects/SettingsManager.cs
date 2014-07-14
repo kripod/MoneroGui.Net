@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using ApiPaths = Jojatekok.MoneroAPI.Paths;
+using ApiPathSettings = Jojatekok.MoneroAPI.Settings.PathSettings;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -25,6 +25,7 @@ namespace Jojatekok.MoneroGUI
 
         public static ConfigSectionGeneral General { get; private set; }
         public static ConfigSectionPaths Paths { get; private set; }
+        public static ConfigSectionNetwork Network { get; private set; }
         public static ConfigSectionAppearance Appearance { get; private set; }
         public static ConfigSectionAddressBook AddressBook { get; private set; }
 
@@ -80,6 +81,13 @@ namespace Jojatekok.MoneroGUI
                 isSaveRequired = true;
                 Paths = new ConfigSectionPaths();
                 Configuration.Sections.Add("paths", Paths);
+            }
+
+            Network = Configuration.GetSection("network") as ConfigSectionNetwork;
+            if (Network == null) {
+                isSaveRequired = true;
+                Network = new ConfigSectionNetwork();
+                Configuration.Sections.Add("network", Network);
             }
 
             Appearance = Configuration.GetSection("appearance") as ConfigSectionAppearance;
@@ -212,7 +220,7 @@ namespace Jojatekok.MoneroGUI
                 this.SetDefaultSectionInformation();
             }
 
-            [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPaths.DefaultDirectoryWalletBackups)]
+            [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPathSettings.DefaultDirectoryWalletBackups)]
             public string DirectoryWalletBackups {
                 get { return base["directoryWalletBackups"] as string; }
                 set {
@@ -221,7 +229,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("fileWalletData", DefaultValue = ApiPaths.DefaultFileWalletData)]
+            [ConfigurationProperty("fileWalletData", DefaultValue = ApiPathSettings.DefaultFileWalletData)]
             public string FileWalletData {
                 get { return base["fileWalletData"] as string; }
                 set {
@@ -230,7 +238,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareDaemon", DefaultValue = ApiPaths.DefaultSoftwareDaemon)]
+            [ConfigurationProperty("softwareDaemon", DefaultValue = ApiPathSettings.DefaultSoftwareDaemon)]
             public string SoftwareDaemon {
                 get { return base["softwareDaemon"] as string; }
                 set {
@@ -239,7 +247,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareWallet", DefaultValue = ApiPaths.DefaultSoftwareWallet)]
+            [ConfigurationProperty("softwareWallet", DefaultValue = ApiPathSettings.DefaultSoftwareWallet)]
             public string SoftwareWallet {
                 get { return base["softwareWallet"] as string; }
                 set {
@@ -248,11 +256,73 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareMiner", DefaultValue = ApiPaths.DefaultSoftwareMiner)]
+            [ConfigurationProperty("softwareMiner", DefaultValue = ApiPathSettings.DefaultSoftwareMiner)]
             public string SoftwareMiner {
                 get { return base["softwareMiner"] as string; }
                 set {
                     base["softwareMiner"] = value;
+                    AutoSaveSettings();
+                }
+            }
+        }
+
+        public class ConfigSectionNetwork : ConfigurationSection
+        {
+            public ConfigSectionNetwork()
+            {
+                this.SetDefaultSectionInformation();
+            }
+
+            [ConfigurationProperty("rpcUrlHost", DefaultValue = "localhost")]
+            public string RpcUrlHost {
+                get { return base["rpcUrlHost"] as string; }
+                set {
+                    base["rpcUrlHost"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("rpcUrlPortDaemon", DefaultValue = (ushort)18081)]
+            public ushort RpcUrlPortDaemon {
+                get { return (ushort)base["rpcUrlPortDaemon"]; }
+                set {
+                    base["rpcUrlPortDaemon"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)19091)]
+            public ushort RpcUrlPortWallet {
+                get { return (ushort)base["rpcUrlPortWallet"]; }
+                set {
+                    base["rpcUrlPortWallet"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("isProxyEnabled", DefaultValue = false)]
+            public bool IsProxyEnabled {
+                get { return (bool)base["isProxyEnabled"]; }
+                set {
+                    base["isProxyEnabled"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("proxyHost", DefaultValue = null)]
+            public string ProxyHost {
+                get { return base["proxyHost"] as string; }
+                set {
+                    base["proxyHost"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("proxyPort", DefaultValue = null)]
+            public ushort? ProxyPort {
+                get { return base["proxyPort"] as ushort?; }
+                set {
+                    base["proxyPort"] = value;
                     AutoSaveSettings();
                 }
             }

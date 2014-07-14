@@ -286,6 +286,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\OptionsWindow\NetworkView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\OptionsWindow\PathsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -386,6 +390,10 @@
     </Compile>
     <Compile Include="Views\OptionsWindow\GeneralView.xaml.cs">
       <DependentUpon>GeneralView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\ISettingsView.cs" />
+    <Compile Include="Views\OptionsWindow\NetworkView.xaml.cs">
+      <DependentUpon>NetworkView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OptionsWindow\PathsView.xaml.cs">
       <DependentUpon>PathsView.xaml</DependentUpon>

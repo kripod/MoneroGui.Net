@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
 {
-    public class TransactionId
+    class TransactionIdValueContainer : IValueContainer<string>
     {
         private string _value;
         [JsonProperty("tx_hash")]

@@ -1,10 +1,12 @@
 ﻿using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.Settings;
 using Jojatekok.MoneroGUI.Windows;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
+//using System.Net;
 using System.Reflection;
 using System.Windows.Media;
 using Brush = System.Windows.Media.Brush;
@@ -60,16 +62,30 @@ namespace Jojatekok.MoneroGUI
 
         public static void Initialize()
         {
-            var pathSettings = SettingsManager.Paths;
-            var paths = new Paths {
-                DirectoryWalletBackups = pathSettings.DirectoryWalletBackups,
-                FileWalletData = pathSettings.FileWalletData,
-                SoftwareDaemon = pathSettings.SoftwareDaemon,
-                SoftwareWallet = pathSettings.SoftwareWallet,
-                SoftwareMiner = pathSettings.SoftwareMiner,
+            var storedPathSettings = SettingsManager.Paths;
+            var pathSettings = new PathSettings {
+                DirectoryWalletBackups = storedPathSettings.DirectoryWalletBackups,
+                FileWalletData = storedPathSettings.FileWalletData,
+                SoftwareDaemon = storedPathSettings.SoftwareDaemon,
+                SoftwareWallet = storedPathSettings.SoftwareWallet,
+                SoftwareMiner = storedPathSettings.SoftwareMiner,
             };
 
-            MoneroClient = new MoneroClient(paths);
+            var storedNetworkSettings = SettingsManager.Network;
+            var rpcSettings = new RpcSettings(
+                storedNetworkSettings.RpcUrlHost,
+                storedNetworkSettings.RpcUrlPortDaemon,
+                storedNetworkSettings.RpcUrlPortWallet
+            );
+
+            // TODO: Add support for using proxies
+            //if (networkSettings.IsProxyEnabled) {
+            //    if (!string.IsNullOrEmpty(networkSettings.ProxyHost) && networkSettings.ProxyPort != null) {
+            //        rpcSettings.Proxy = new WebProxy(networkSettings.ProxyHost, (int)networkSettings.ProxyPort);
+            //    }
+            //}
+
+            MoneroClient = new MoneroClient(pathSettings, rpcSettings);
 
             LoggerDaemon = new Logger();
             LoggerWallet = new Logger();

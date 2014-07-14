@@ -535,4 +535,28 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
   <data name="SendCoinsFee" xml:space="preserve">
     <value>Díj:</value>
   </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Hálózat</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Kapcsolódás proxyn keresztül</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC szerver</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Daemon port:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Tárca port:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Kiszolgáló:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
 </root>

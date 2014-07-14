@@ -1,7 +1,9 @@
 ﻿using Jojatekok.MoneroAPI.RpcManagers;
+using Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses;
+using Jojatekok.MoneroAPI.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,18 +44,20 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal DaemonManager(RpcWebClient rpcWebClient, Paths paths) : base(paths.SoftwareDaemon)
+        internal DaemonManager(RpcWebClient rpcWebClient, PathSettings paths) : base(paths.SoftwareDaemon)
         {
             OutputReceived += Process_OutputReceived;
 
             RpcWebClient = rpcWebClient;
 
+            var rpcSettings = RpcWebClient.RpcSettings;
+
             ProcessArgumentsExtra = new List<string>(2) {
-                "--rpc-bind-port " + RpcWebClient.PortDaemon
+                "--rpc-bind-port " + rpcSettings.UrlPortDaemon
             };
 
-            if (RpcWebClient.Host != Helper.RpcUrlDefaultLocalhost) {
-                ProcessArgumentsExtra.Add("--rpc-bind-ip " + RpcWebClient.Host);
+            if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
+                ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
             }
 
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
@@ -118,6 +122,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return null;
         }
 
+        public object GetTransactions(IList<string> transactionIds)
+        {
+            var transactions = HttpPostData<TransactionBlobList>(HttpRpcCommands.DaemonGetTransactions, new GetTransactions(transactionIds));
+            if (transactions != null) {
+                return transactions;
+            }
+
+            return null;
+        }
+
         private void Process_OutputReceived(object sender, string e)
         {
             var dataLower = e.ToLower(Helper.InvariantCulture);
@@ -134,6 +148,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private T HttpGetData<T>(string command) where T : RpcResponse
         {
             var output = RpcWebClient.HttpGetData<T>(RpcPortType.Daemon, command);
+            if (output.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
+        }
+
+        private T HttpPostData<T>(string command, HttpRpcRequest httpRpcRequest) where T : RpcResponse
+        {
+            var output = RpcWebClient.HttpPostData<T>(RpcPortType.Daemon, command, httpRpcRequest);
             if (output.Status == RpcResponseStatus.Ok) {
                 return output;
             }

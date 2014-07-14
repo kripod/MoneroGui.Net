@@ -7,7 +7,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <CheckBox Grid.Row="0" x:Name="CheckBoxStartableOnSystemLogin" Content="{Binding Path=OptionsGeneralIsStartableOnSystemLogin, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
-        <CheckBox Grid.Row="1" x:Name="CheckBoxSafeShutdownEnabled" Content="{Binding Path=OptionsGeneralIsSafeShutdownEnabled, Source={StaticResource Resources}}"/>
+        <CheckBox Grid.Row="0" x:Name="CheckBoxIsStartableOnSystemLogin" Content="{Binding Path=OptionsGeneralIsStartableOnSystemLogin, Source={StaticResource Resources}}" Margin="0 0 0 5"/>
+        <CheckBox Grid.Row="1" x:Name="CheckBoxIsSafeShutdownEnabled" Content="{Binding Path=OptionsGeneralIsSafeShutdownEnabled, Source={StaticResource Resources}}"/>
     </Grid>
 </UserControl>

@@ -1,14 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
+namespace Jojatekok.MoneroAPI
 {
-    class TransactionList : RpcResponse
-    {
-        [JsonProperty("transfers")]
-        public IList<Transaction> Value { get; private set; }
-    }
-
     public class Transaction
     {
         [JsonProperty("amount")]

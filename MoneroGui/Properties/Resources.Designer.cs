@@ -540,6 +540,60 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Network.
+        /// </summary>
+        public static string OptionsNetwork {
+            get {
+                return ResourceManager.GetString("OptionsNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connect through proxy.
+        /// </summary>
+        public static string OptionsNetworkIsProxyEnabled {
+            get {
+                return ResourceManager.GetString("OptionsNetworkIsProxyEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proxy.
+        /// </summary>
+        public static string OptionsNetworkProxySettings {
+            get {
+                return ResourceManager.GetString("OptionsNetworkProxySettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RPC server.
+        /// </summary>
+        public static string OptionsNetworkRpcServerSettings {
+            get {
+                return ResourceManager.GetString("OptionsNetworkRpcServerSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daemon port:.
+        /// </summary>
+        public static string OptionsNetworkRpcUrlPortDaemon {
+            get {
+                return ResourceManager.GetString("OptionsNetworkRpcUrlPortDaemon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wallet port:.
+        /// </summary>
+        public static string OptionsNetworkRpcUrlPortWallet {
+            get {
+                return ResourceManager.GetString("OptionsNetworkRpcUrlPortWallet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paths.
         /// </summary>
         public static string OptionsPaths {
@@ -1028,6 +1082,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Host:.
+        /// </summary>
+        public static string TextHost {
+            get {
+                return ResourceManager.GetString("TextHost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string TextInformation {
@@ -1096,6 +1159,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextPaymentId {
             get {
                 return ResourceManager.GetString("TextPaymentId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port:.
+        /// </summary>
+        public static string TextPort {
+            get {
+                return ResourceManager.GetString("TextPort", resourceCulture);
             }
         }
         

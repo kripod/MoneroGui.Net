@@ -4,8 +4,6 @@ namespace Jojatekok.MoneroAPI.RpcManagers
 {
     public class RpcResponse
     {
-        public RpcResponseStatus Status { get; private set; }
-
         [JsonProperty("status")]
         private string StatusString {
             set {
@@ -24,5 +22,6 @@ namespace Jojatekok.MoneroAPI.RpcManagers
                 }
             }
         }
+        public RpcResponseStatus Status { get; private set; }
     }
 }

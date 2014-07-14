@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
 {
-    public class Address
+    class AddressValueContainer : IValueContainer<string>
     {
         [JsonProperty("address")]
         public string Value { get; private set; }

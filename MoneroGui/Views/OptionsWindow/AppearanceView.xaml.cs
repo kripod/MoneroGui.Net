@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 {
-    public partial class AppearanceView
+    public partial class AppearanceView : ISettingsView
     {
         public AppearanceView()
         {

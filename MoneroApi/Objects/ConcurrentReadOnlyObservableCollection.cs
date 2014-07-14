@@ -25,7 +25,7 @@ namespace Jojatekok.MoneroAPI
 
                 var dispatcherObject = handler.Target as DispatcherObject;
 
-                if (dispatcherObject != null && dispatcherObject.CheckAccess() == false) {
+                if (dispatcherObject != null && !dispatcherObject.CheckAccess()) {
                     dispatcherObject.Dispatcher.BeginInvoke(DispatcherPriority.DataBind, handler, this, e);
                 } else {
                     handler(this, e);

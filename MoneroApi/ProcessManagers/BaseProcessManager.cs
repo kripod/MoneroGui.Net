@@ -47,7 +47,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Process.Exited += Process_Exited;
 
             Process.Start();
-            Helper.JobManager.AddProcess(Process);
+            StaticObjects.JobManager.AddProcess(Process);
             Process.BeginErrorReadLine();
             Process.BeginOutputReadLine();
         }

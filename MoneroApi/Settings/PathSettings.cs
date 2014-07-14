@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Jojatekok.MoneroAPI
+namespace Jojatekok.MoneroAPI.Settings
 {
-    public class Paths
+    public class PathSettings
     {
         private const string DefaultRelativePathDirectoryWalletData = "WalletData\\";
         private const string DefaultRelativePathDirectorySoftware = "Resources\\Software\\";

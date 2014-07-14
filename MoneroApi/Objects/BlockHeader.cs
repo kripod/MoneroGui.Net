@@ -1,14 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses
+namespace Jojatekok.MoneroAPI
 {
-    class BlockHeaderValueContainer : RpcResponse, IValueContainer<BlockHeader>
-    {
-        [JsonProperty("block_header")]
-        public BlockHeader Value { get; private set; }
-    }
-
     public class BlockHeader
     {
         [JsonProperty("major_version")]

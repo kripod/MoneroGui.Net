@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
     public class GetIncomingTransfersParameters
     {
         [JsonProperty("transfer_type")]
-        public string TransfersType { get; set; }
+        private string TransfersType { get; set; }
 
         internal GetIncomingTransfersParameters(string transfersType)
         {
