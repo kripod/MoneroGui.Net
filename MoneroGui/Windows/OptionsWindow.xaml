@@ -4,7 +4,7 @@
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.OptionsWindow"
         Title="{Binding Path=OptionsWindowTitle, Source={StaticResource Resources}}"
         WindowStartupLocation="CenterOwner"
-        Width="450" Height="320" MinWidth="450" MinHeight="320">
+        Width="470" Height="314" MinWidth="470" MinHeight="314">
     <Grid Grid.IsSharedSizeScope="True" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,19 +19,19 @@
 
         <TabControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="TabControl" Margin="0 0 0 8">
             <TabItem Header="{Binding Path=OptionsGeneral, Source={StaticResource Resources}}">
-                <views:GeneralView x:Name="GeneralView" Margin="5"/>
+                <views:GeneralView Margin="5"/>
             </TabItem>
 
             <TabItem Header="{Binding Path=OptionsPaths, Source={StaticResource Resources}}">
-                <views:PathsView x:Name="PathsView" Margin="5"/>
+                <views:PathsView Margin="5"/>
             </TabItem>
 
             <TabItem Header="{Binding Path=OptionsNetwork, Source={StaticResource Resources}}">
-                <views:NetworkView x:Name="NetworkView" Margin="5"/>
+                <views:NetworkView Margin="5"/>
             </TabItem>
 
             <TabItem Header="{Binding Path=OptionsAppearance, Source={StaticResource Resources}}">
-                <views:AppearanceView x:Name="AppearanceView" Margin="5"/>
+                <views:AppearanceView Margin="5"/>
             </TabItem>
         </TabControl>
 

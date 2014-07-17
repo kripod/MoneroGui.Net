@@ -197,7 +197,11 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryBalance()
         {
-            Balance = JsonQueryData<Balance>(new GetBalance());
+            var balance = JsonQueryData<Balance>(new GetBalance());
+            if (balance != null) {
+                Balance = balance;
+                Daemon.IsBlockchainSavable = true;
+            }
         }
 
         private void QueryIncomingTransfers()

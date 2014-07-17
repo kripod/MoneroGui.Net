@@ -24,6 +24,32 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private RpcWebClient RpcWebClient { get; set; }
 
+        private bool _isRpcAvailable;
+        public bool IsRpcAvailable {
+            get { return _isRpcAvailable; }
+
+            private set {
+                _isRpcAvailable = value;
+                if (value && IsBlockchainSavable) {
+                    TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+                }
+            }
+        }
+
+        private bool _isBlockchainSavable;
+        internal bool IsBlockchainSavable {
+            get { return _isBlockchainSavable; }
+
+            set {
+                if (value == _isBlockchainSavable) return;
+                _isBlockchainSavable = value;
+
+                if (value && IsRpcAvailable) {
+                    TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+                }
+            }
+        }
+
         private bool _isBlockchainSynced;
         public bool IsBlockchainSynced {
             get { return _isBlockchainSynced; }
@@ -52,7 +78,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             var rpcSettings = RpcWebClient.RpcSettings;
 
-            ProcessArgumentsExtra = new List<string>(2) {
+            ProcessArgumentsExtra = new List<string>(3) {
+                "--data-dir \"" + paths.DirectoryDaemonData + "\"",
                 "--rpc-bind-port " + rpcSettings.UrlPortDaemon
             };
 
@@ -83,7 +110,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void StartRpcServices()
         {
             TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
-            TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
+            IsRpcAvailable = true;
         }
 
         private void QueryNetworkInformation()
@@ -148,7 +175,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private T HttpGetData<T>(string command) where T : RpcResponse
         {
             var output = RpcWebClient.HttpGetData<T>(RpcPortType.Daemon, command);
-            if (output.Status == RpcResponseStatus.Ok) {
+            if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
             }
 
@@ -158,7 +185,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private T HttpPostData<T>(string command, HttpRpcRequest httpRpcRequest) where T : RpcResponse
         {
             var output = RpcWebClient.HttpPostData<T>(RpcPortType.Daemon, command, httpRpcRequest);
-            if (output.Status == RpcResponseStatus.Ok) {
+            if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
             }
 
@@ -168,7 +195,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private T JsonQueryData<T>(JsonRpcRequest jsonRpcRequest) where T : RpcResponse
         {
             var output = RpcWebClient.JsonQueryData<T>(RpcPortType.Daemon, jsonRpcRequest);
-            if (output.Status == RpcResponseStatus.Ok) {
+            if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
             }
 

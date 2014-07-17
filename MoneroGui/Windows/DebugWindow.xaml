@@ -5,13 +5,7 @@
         Title="{Binding Path=DebugWindowTitle, Source={StaticResource Resources}}"
         Width="700" Height="500" MinWidth="300" MinHeight="250">
     <TabControl Margin="10">
-        <TabItem Header="{Binding Path=TextInformation, Source={StaticResource Resources}}">
-            <Grid Margin="5">
-                
-            </Grid>
-        </TabItem>
-
-        <TabItem Header="{Binding Path=DebugWindowConsoles, Source={StaticResource Resources}}" IsSelected="True">
+        <TabItem Header="{Binding Path=DebugWindowConsoles, Source={StaticResource Resources}}">
             <TabControl Margin="5">
                 <TabItem Header="{Binding Path=DebugWindowConsoleDaemon, Source={StaticResource Resources}}">
                     <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=objects:SendCoinsRecipient}"
              DataContextChanged="CoinSender_DataContextChanged">
@@ -50,7 +50,7 @@
         <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=TextAmount, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
         <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Style="{StaticResource StyleDoubleUpDownCoinAmount}">
             <xctk:DoubleUpDown.Value>
-                <Binding Path="Amount" Converter="{StaticResource ConverterCoinAtomicValueToDisplayValue}" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Amount" Converter="{StaticResource ConverterCoinAtomicValueToNullableDisplayValue}" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                         <objects:ValidationRuleCoinAtomicValuePositive ValidationStep="CommittedValue"/>
                     </Binding.ValidationRules>

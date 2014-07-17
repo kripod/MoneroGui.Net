@@ -603,6 +603,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Daemon data:.
+        /// </summary>
+        public static string OptionsPathsDirectoryDaemonData {
+            get {
+                return ResourceManager.GetString("OptionsPathsDirectoryDaemonData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wallet backups:.
         /// </summary>
         public static string OptionsPathsDirectoryWalletBackups {
@@ -702,6 +711,24 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to :.
+        /// </summary>
+        public static string PunctuationColon {
+            get {
+                return ResourceManager.GetString("PunctuationColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?.
+        /// </summary>
+        public static string PunctuationQuestionMark {
+            get {
+                return ResourceManager.GetString("PunctuationQuestionMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The resulting URI is too long.
         ///
         ///Please try to reduce the length of your inputs!.
@@ -790,6 +817,25 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string StatusBarStatusSynchronizing {
             get {
                 return ResourceManager.GetString("StatusBarStatusSynchronizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloaded {0} of {1} blocks of transaction history ({2}% done).
+        ///The last received block was generated {3} ago..
+        /// </summary>
+        public static string StatusBarStatusTextMain {
+            get {
+                return ResourceManager.GetString("StatusBarStatusTextMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up to date.
+        /// </summary>
+        public static string StatusBarStatusUpToDate {
+            get {
+                return ResourceManager.GetString("StatusBarStatusUpToDate", resourceCulture);
             }
         }
         

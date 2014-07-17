@@ -20,6 +20,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
             // Load settings
             var pathSettings = SettingsManager.Paths;
+            PathSelectorDirectoryDaemonData.SelectedPath = pathSettings.DirectoryDaemonData;
             PathSelectorFileWalletData.SelectedPath = pathSettings.FileWalletData;
             PathSelectorDirectoryWalletBackups.SelectedPath = pathSettings.DirectoryWalletBackups;
             PathSelectorSoftwareDaemon.SelectedPath = pathSettings.SoftwareDaemon;
@@ -30,6 +31,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
         public void ApplySettings()
         {
             var pathSettings = SettingsManager.Paths;
+            pathSettings.DirectoryDaemonData = PathSelectorDirectoryDaemonData.SelectedPath;
             pathSettings.FileWalletData = PathSelectorFileWalletData.SelectedPath;
             pathSettings.DirectoryWalletBackups = PathSelectorDirectoryWalletBackups.SelectedPath;
             pathSettings.SoftwareDaemon = PathSelectorSoftwareDaemon.SelectedPath;

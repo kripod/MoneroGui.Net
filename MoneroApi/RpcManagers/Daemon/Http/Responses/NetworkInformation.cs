@@ -10,15 +10,17 @@ namespace Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses
 
         [JsonProperty("difficulty")]
         public ulong BlockDifficulty { get; private set; }
+
+        private ulong _blockHeightTotal;
+        [JsonProperty("target_height")]
+        public ulong BlockHeightTotal {
+            get { return _blockHeightTotal; }
+            private set { _blockHeightTotal = value != 0 && value < BlockHeightDownloaded ? BlockHeightDownloaded : value; }
+        }
         [JsonProperty("height")]
         public ulong BlockHeightDownloaded { get; private set; }
-        [JsonProperty("target_height")]
-        public ulong BlockHeightTotal { get; private set; }
         public ulong BlockHeightRemaining {
-            get {
-                if (BlockHeightDownloaded > BlockHeightTotal) return 0;
-                return BlockHeightTotal - BlockHeightDownloaded;
-            }
+            get { return BlockHeightTotal - BlockHeightDownloaded; }
         }
 
         public DateTime BlockTimeCurrent { get; internal set; }

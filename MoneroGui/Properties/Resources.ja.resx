@@ -138,14 +138,23 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>アドレス帳</value>
   </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client .NETがシャットダウンしています...</value>
+  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>概要</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>コインを送る</value>
   </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Client .NET</value>
+  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>取引</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Monero Client .NETについて (_A)</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>バックアップマネージャ (_B)</value>
@@ -255,6 +264,9 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>不明</value>
   </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>Monero Client .NETについて</value>
+  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>エラー：ライセンスのファイルが見つかりませんでした</value>
   </data>
@@ -318,6 +330,9 @@
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>シャットダウンの時にデータベースをセーブする</value>
   </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>システムにログインした時にMonero Client .NETを起動</value>
+  </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>アドレスをコピーする</value>
   </data>
@@ -376,6 +391,9 @@
   </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>ＱＲコード</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>現在の残高:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>受信者を削除する</value>
@@ -510,5 +528,35 @@
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>取引を送信できませんでした。</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>推定された残高:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>料金:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>ネットワーク</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>プロキシで接続する</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>プロキシ</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPCサーバ</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>デーモンのポート:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>ウォレットのポート:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>ホスト:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>ポート:</value>
   </data>
 </root>

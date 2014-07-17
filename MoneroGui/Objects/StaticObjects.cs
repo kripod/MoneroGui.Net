@@ -64,6 +64,7 @@ namespace Jojatekok.MoneroGUI
         {
             var storedPathSettings = SettingsManager.Paths;
             var pathSettings = new PathSettings {
+                DirectoryDaemonData = storedPathSettings.DirectoryDaemonData,
                 DirectoryWalletBackups = storedPathSettings.DirectoryWalletBackups,
                 FileWalletData = storedPathSettings.FileWalletData,
                 SoftwareDaemon = storedPathSettings.SoftwareDaemon,

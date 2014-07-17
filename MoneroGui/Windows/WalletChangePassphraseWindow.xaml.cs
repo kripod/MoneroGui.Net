@@ -45,7 +45,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 PasswordBoxCurrentPassphrase.Visibility = Visibility.Collapsed;
             }
 
-            TextBlockNewPassphrase1.Text = baseNewPassphraseText + ":";
+            TextBlockNewPassphrase1.Text = baseNewPassphraseText + Properties.Resources.PunctuationColon;
             TextBlockNewPassphrase2.Text = string.Format(
                 Helper.InvariantCulture,
                 "{0} ({1}):",

@@ -559,4 +559,20 @@ No one else should be able to access them, as this would cause your money to be 
   <data name="TextPort" xml:space="preserve">
     <value>Port:</value>
   </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Daemon data:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Up to date</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Downloaded {0} of {1} blocks of transaction history ({2}% done).
+The last received block was generated {3} ago.</value>
+  </data>
 </root>

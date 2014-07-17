@@ -245,11 +245,23 @@ namespace Jojatekok.MoneroGUI.Windows
             var newValue = e.NewValue;
 
             var connectionCount = newValue.ConnectionCountTotal;
+            var blockTimeRemainingString = newValue.BlockTimeRemaining.ToStringReadable();
+
             var syncBarProgressPercentage = (double)newValue.BlockHeightDownloaded / newValue.BlockHeightTotal;
-            var syncBarText = string.Format(Helper.InvariantCulture,
-                                            Properties.Resources.StatusBarSyncTextMain,
-                                            newValue.BlockHeightRemaining,
-                                            newValue.BlockTimeRemaining.ToStringReadable());
+            var syncBarText = string.Format(
+                Helper.InvariantCulture,
+                Properties.Resources.StatusBarSyncTextMain,
+                newValue.BlockHeightRemaining,
+                blockTimeRemainingString
+            );
+            var syncStatusText = string.Format(
+                Helper.InvariantCulture,
+                Properties.Resources.StatusBarStatusTextMain,
+                newValue.BlockHeightDownloaded,
+                newValue.BlockHeightTotal,
+                (syncBarProgressPercentage * 100).ToString("F2", CultureManager.CurrentCulture),
+                blockTimeRemainingString
+            );
 
             BeginInvokeForDataChanging(() => {
                 var statusBarViewModel = StatusBar.ViewModel;
@@ -257,7 +269,8 @@ namespace Jojatekok.MoneroGUI.Windows
                 statusBarViewModel.ConnectionCount = connectionCount;
                 statusBarViewModel.SyncBarProgressPercentage = syncBarProgressPercentage;
                 statusBarViewModel.SyncBarText = syncBarText;
-                statusBarViewModel.SyncStatusVisibility = Visibility.Visible;
+                statusBarViewModel.SyncStatusText = syncStatusText;
+                statusBarViewModel.SyncStatusSynchronizingVisibility = Visibility.Visible;
             });
         }
 
@@ -265,7 +278,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             BeginInvokeForDataChanging(() => {
                 // Enable sending coins, along with hiding the sync status
-                StatusBar.ViewModel.SyncStatusVisibility = Visibility.Hidden;
+                StatusBar.ViewModel.SyncStatusSynchronizingVisibility = Visibility.Hidden;
                 SendCoinsView.ViewModel.IsBlockchainSynced = true;
             });
         }
@@ -323,15 +336,15 @@ namespace Jojatekok.MoneroGUI.Windows
 
             var balloonMessageExtra = string.Empty;
             if (transaction.Type == TransactionType.Unknown) {
-                balloonMessageExtra = Properties.Resources.TransactionsSpendable + ": " +
+                balloonMessageExtra = Properties.Resources.TransactionsSpendable + Properties.Resources.PunctuationColon + " " +
                                       Dispatcher.Invoke(() => ConverterBooleanToString.Provider.Convert(transaction.IsAmountSpendable, typeof(string), null, Helper.InvariantCulture)) + Helper.NewLineString;
             }
 
             var amountDisplayValue = transaction.Amount / StaticObjects.CoinAtomicValueDivider;
-            var balloonMessage = Properties.Resources.TextAmount + ": " + amountDisplayValue.ToString(StaticObjects.StringFormatCoinDisplayValue, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode + Helper.NewLineString +
+            var balloonMessage = Properties.Resources.TextAmount + Properties.Resources.PunctuationColon + " " + amountDisplayValue.ToString(StaticObjects.StringFormatCoinDisplayValue, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode + Helper.NewLineString +
                                  balloonMessageExtra +
                                  Helper.NewLineString +
-                                 Properties.Resources.TransactionsTransactionId + ": " + transaction.TransactionId;
+                                 Properties.Resources.TransactionsTransactionId + Properties.Resources.PunctuationColon + " " + transaction.TransactionId;
 
             Dispatcher.BeginInvoke(new Action(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info)));
         }

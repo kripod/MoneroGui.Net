@@ -130,7 +130,7 @@
     <value>Servis</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzole</value>
+    <value>Konzola</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Debug prozor</value>
@@ -138,14 +138,23 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresar</value>
   </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client .NET se isključuje...</value>
+  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Pregled</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Pošalji novac</value>
   </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Client .NET</value>
+  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcije</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_About Monero Client .NET</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Menadžer rezervne kopije</value>
@@ -208,7 +217,7 @@
     <value>Mix count:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>ID plaćanja:</value>
+    <value>Payment ID:</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
     <value>Ovo polje je opciono</value>
@@ -254,6 +263,9 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>About Monero Client .NET</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Greška: Licencni fajl ne može biti pronađen.</value>
@@ -317,6 +329,9 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Start Monero Client .NET on system login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>
@@ -492,7 +507,7 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
     <value>Iz direktorijuma...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Iz determinisanog seed-a novlanika...</value>
+    <value>Iz determinisanog seed-a novčanika...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Iz selekcije</value>
@@ -518,5 +533,29 @@ Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš nov
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
     <value>Naknada:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Mreža</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Povezivanje preko proksija</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proksi</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC server</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Demon port:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Wallet port:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
   </data>
 </root>

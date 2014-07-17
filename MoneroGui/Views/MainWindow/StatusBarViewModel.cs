@@ -6,22 +6,35 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
     {
         private const string ConnectionCountIndicatorImageUriBase = "/Resources/Images/ConnectionCountIndicator{0}.png";
 
-        public static readonly DependencyProperty SyncStatusVisibilityProperty = DependencyProperty.RegisterAttached(
-            "SyncStatusVisibility",
+        public static readonly DependencyProperty SyncStatusSynchronizingVisibilityProperty = DependencyProperty.RegisterAttached(
+            "SyncStatusSynchronizingVisibility",
             typeof(Visibility),
             typeof(StatusBarViewModel),
             new PropertyMetadata(Visibility.Hidden)
         );
 
-        public static readonly DependencyProperty SyncBarProgressPercentageProperty = DependencyProperty.RegisterAttached(
-            "SyncBarProgressPercentage",
-            typeof(double),
+        public static readonly DependencyProperty SyncStatusUpToDateVisibilityProperty = DependencyProperty.RegisterAttached(
+            "SyncStatusUpToDateVisibility",
+            typeof(Visibility),
+            typeof(StatusBarViewModel),
+            new PropertyMetadata(Visibility.Collapsed)
+        );
+
+        public static readonly DependencyProperty SyncStatusTextProperty = DependencyProperty.RegisterAttached(
+            "SyncStatusText",
+            typeof(string),
             typeof(StatusBarViewModel)
         );
 
         public static readonly DependencyProperty SyncBarTextProperty = DependencyProperty.RegisterAttached(
             "SyncBarText",
             typeof(string),
+            typeof(StatusBarViewModel)
+        );
+
+        public static readonly DependencyProperty SyncBarProgressPercentageProperty = DependencyProperty.RegisterAttached(
+            "SyncBarProgressPercentage",
+            typeof(double),
             typeof(StatusBarViewModel)
         );
 
@@ -38,26 +51,39 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             new PropertyMetadata(string.Format(Helper.InvariantCulture, ConnectionCountIndicatorImageUriBase, 0))
         );
 
-        private bool _isSyncStatusShowable = true;
-        public Visibility SyncStatusVisibility {
-            get { return (Visibility)GetValue(SyncStatusVisibilityProperty); }
+        private bool _isSyncStatusSynchronizingShowable = true;
+        public Visibility SyncStatusSynchronizingVisibility {
+            get { return (Visibility)GetValue(SyncStatusSynchronizingVisibilityProperty); }
 
             set {
-                if (!_isSyncStatusShowable) return;
-                if (value == Visibility.Hidden) _isSyncStatusShowable = false;
+                if (!_isSyncStatusSynchronizingShowable) return;
+                if (value == Visibility.Hidden) {
+                    _isSyncStatusSynchronizingShowable = false;
+                    SyncStatusUpToDateVisibility = Visibility.Visible;
+                }
 
-                SetValue(SyncStatusVisibilityProperty, value);
+                SetValue(SyncStatusSynchronizingVisibilityProperty, value);
             }
         }
 
-        public double SyncBarProgressPercentage {
-            get { return (double)GetValue(SyncBarProgressPercentageProperty); }
-            set { SetValue(SyncBarProgressPercentageProperty, value); }
+        public Visibility SyncStatusUpToDateVisibility {
+            get { return (Visibility)GetValue(SyncStatusUpToDateVisibilityProperty); }
+            private set { SetValue(SyncStatusUpToDateVisibilityProperty, value); }
+        }
+
+        public string SyncStatusText {
+            get { return GetValue(SyncStatusTextProperty) as string; }
+            set { SetValue(SyncStatusTextProperty, value); }
         }
 
         public string SyncBarText {
             get { return GetValue(SyncBarTextProperty) as string; }
             set { SetValue(SyncBarTextProperty, value); }
+        }
+
+        public double SyncBarProgressPercentage {
+            get { return (double)GetValue(SyncBarProgressPercentageProperty); }
+            set { SetValue(SyncBarProgressPercentageProperty, value); }
         }
 
         public ulong ConnectionCount {

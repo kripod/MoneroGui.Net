@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -29,7 +30,11 @@ namespace Jojatekok.MoneroGUI
 
         public static CultureInfo CurrentCulture {
             get { return Properties.Resources.Culture; }
-            set { Properties.Resources.Culture = value; }
+
+            set {
+                Properties.Resources.Culture = value;
+                Thread.CurrentThread.CurrentCulture = value;
+            }
         }
 
         private static ObjectDataProvider _resourceProvider;

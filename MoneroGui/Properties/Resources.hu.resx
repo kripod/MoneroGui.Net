@@ -559,4 +559,20 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
   <data name="TextPort" xml:space="preserve">
     <value>Port:</value>
   </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Daemon fájlok:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Naprakész</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Letöltve {0} a(z) {1} blokknyi tranzakciótörténetből ({2}% kész).
+A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
+  </data>
 </root>

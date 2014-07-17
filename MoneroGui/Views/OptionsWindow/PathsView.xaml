@@ -15,23 +15,27 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=OptionsPathsFileWalletData, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="0" Grid.Column="2" x:Name="PathSelectorFileWalletData" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=OptionsPathsDirectoryDaemonData, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="0" Grid.Column="2" x:Name="PathSelectorDirectoryDaemonData" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OptionsPathsDirectoryWalletBackups, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <controls:PathSelector Grid.Row="1" Grid.Column="2" x:Name="PathSelectorDirectoryWalletBackups"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OptionsPathsFileWalletData, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="1" Grid.Column="2" x:Name="PathSelectorFileWalletData" Margin="0 0 0 5"/>
 
-        <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 10"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=OptionsPathsDirectoryWalletBackups, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+        <controls:PathSelector Grid.Row="2" Grid.Column="2" x:Name="PathSelectorDirectoryWalletBackups"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareDaemon, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="3" Grid.Column="2" x:Name="PathSelectorSoftwareDaemon" Margin="0 0 0 5"/>
+        <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 10"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareWallet, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
-        <controls:PathSelector Grid.Row="4" Grid.Column="2" x:Name="PathSelectorSoftwareWallet" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareDaemon, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="4" Grid.Column="2" x:Name="PathSelectorSoftwareDaemon" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareMiner, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <controls:PathSelector Grid.Row="5" Grid.Column="2" x:Name="PathSelectorSoftwareMiner"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareWallet, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <controls:PathSelector Grid.Row="5" Grid.Column="2" x:Name="PathSelectorSoftwareWallet" Margin="0 0 0 5"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareMiner, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+        <controls:PathSelector Grid.Row="6" Grid.Column="2" x:Name="PathSelectorSoftwareMiner"/>
     </Grid>
 </UserControl>

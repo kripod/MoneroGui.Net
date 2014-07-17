@@ -138,14 +138,23 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adres boek</value>
   </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Klient .NET besig om af te skakel..</value>
+  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Oorsig</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Stuur munte</value>
   </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero kliënt. NET</value>
+  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksies</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_Omtrent Monero kliënt. NET</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Reserwe bestuurder</value>
@@ -255,6 +264,9 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Onbekend</value>
   </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>Omtrent Monero kliënt. NET</value>
+  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Fout: Die lisensie lêer kan nie gevind word nie.</value>
   </data>
@@ -317,6 +329,9 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Stoor databasis voor afskakeling</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Begin Monero kliënt. NET tydens die stelsel aantekening</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Maak n kopie van die adres</value>
@@ -518,5 +533,29 @@ Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verl
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
     <value>Fooi:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Netwerk</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Konnekteer deur volmag</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Volmag</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC bediener</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Deamon poort:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Beursie poort:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Gasheer:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Poort:</value>
   </data>
 </root>

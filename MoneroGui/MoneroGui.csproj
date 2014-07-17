@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
+    <Compile Include="Objects\XAML-related\ConverterCoinDisplayValueToNullableDisplayValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -358,7 +359,7 @@
     <Compile Include="Objects\SettingsManager.cs" />
     <Compile Include="Objects\StaticObjects.cs" />
     <Compile Include="Objects\XAML-related\ConverterBooleanToString.cs" />
-    <Compile Include="Objects\XAML-related\ConverterCoinAtomicValueToDisplayValue.cs" />
+    <Compile Include="Objects\XAML-related\ConverterCoinAtomicValueToNullableDisplayValue.cs" />
     <Compile Include="Objects\XAML-related\ConverterTransactionTypeToString.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleAddress.cs" />
     <Compile Include="Objects\XAML-related\ValidationRuleCoinAtomicValuePositive.cs" />
@@ -464,6 +465,9 @@
     <Resource Include="Resources\Images\Send.png" />
     <Resource Include="Resources\Images\Synchronize.png" />
     <Resource Include="Resources\Images\Transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Ok.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

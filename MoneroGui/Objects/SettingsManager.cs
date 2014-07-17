@@ -220,6 +220,20 @@ namespace Jojatekok.MoneroGUI
                 this.SetDefaultSectionInformation();
             }
 
+            [ConfigurationProperty("directoryDaemonData", DefaultValue = null)]
+            public string DirectoryDaemonData {
+                get {
+                    var output = base["directoryDaemonData"] as string;
+                    return !string.IsNullOrEmpty(output) ? output : ApiPathSettings.DefaultDirectoryDaemonData;
+                }
+
+                set {
+                    if (value == ApiPathSettings.DefaultDirectoryDaemonData) value = null;
+                    base["directoryDaemonData"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
             [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPathSettings.DefaultDirectoryWalletBackups)]
             public string DirectoryWalletBackups {
                 get { return base["directoryWalletBackups"] as string; }
@@ -291,7 +305,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)19091)]
+            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)18082)]
             public ushort RpcUrlPortWallet {
                 get { return (ushort)base["rpcUrlPortWallet"]; }
                 set {

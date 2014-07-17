@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Jojatekok.MoneroAPI.Settings
 {
@@ -6,7 +7,8 @@ namespace Jojatekok.MoneroAPI.Settings
     {
         private const string DefaultRelativePathDirectoryWalletData = "WalletData\\";
         private const string DefaultRelativePathDirectorySoftware = "Resources\\Software\\";
-
+        
+        public static readonly string DefaultDirectoryDaemonData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "bitmonero");
         public const string DefaultDirectoryWalletBackups = DefaultRelativePathDirectoryWalletData + "Backups\\";
         public const string DefaultFileWalletData = DefaultRelativePathDirectoryWalletData + "wallet.bin";
         public const string DefaultSoftwareDaemon = DefaultRelativePathDirectorySoftware + "bitmonerod.exe";
@@ -14,6 +16,12 @@ namespace Jojatekok.MoneroAPI.Settings
         public const string DefaultSoftwareMiner = DefaultRelativePathDirectorySoftware + "simpleminer.exe";
 
         private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+        private string _directoryDaemonData = DefaultDirectoryDaemonData;
+        public string DirectoryDaemonData {
+            get { return _directoryDaemonData; }
+            set { _directoryDaemonData = value; }
+        }
 
         public string DirectoryWalletData {
             get {
