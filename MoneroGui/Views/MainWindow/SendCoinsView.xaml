@@ -125,7 +125,7 @@
         <Separator Grid.Row="3" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
 
         <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding Path=SendCoinsFee, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <xctk:DoubleUpDown Grid.Row="3" Grid.Column="9" Value="{Binding Path=TransactionFee, Converter={StaticResource ConverterCoinAtomicValueToNullableDisplayValue}}" Style="{StaticResource StyleDoubleUpDownCoinAmount}"/>
+        <xctk:DoubleUpDown Grid.Row="3" Grid.Column="9" Minimum="0.005" Value="{Binding Path=TransactionFee, Converter={StaticResource ConverterCoinAtomicValueToNullableDisplayValue}}" Style="{StaticResource StyleDoubleUpDownCoinAmount}"/>
         <TextBlock Grid.Row="3" Grid.Column="11" Text="{Binding Path=TextCurrencyCode, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
         <Separator Grid.Row="3" Grid.Column="12" Style="{StaticResource StyleSeparatorVertical}"/>
 

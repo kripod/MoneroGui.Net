@@ -575,4 +575,13 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
     <value>Letöltve {0} a(z) {1} blokknyi tranzakciótörténetből ({2}% kész).
 A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Hiba történt frissítések keresése közben.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Elérhető egy frissítés (v{0}). Szeretnéd alkalmazni?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Frissítés elérhető</value>
+  </data>
 </root>

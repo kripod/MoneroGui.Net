@@ -210,6 +210,11 @@ namespace Jojatekok.MoneroGUI
             MessageBox.Show(window, message, Properties.Resources.TextInformation, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        public static MessageBoxResult ShowQuestion(this Window window, string message, string title)
+        {
+            return MessageBox.Show(window, message, title, MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
+
         public static void ShowWarning(this Window window, string message)
         {
             MessageBox.Show(window, message, Properties.Resources.TextWarning, MessageBoxButton.OK, MessageBoxImage.Warning);

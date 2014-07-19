@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
-        private const ulong SettingsVersionLatest = 1;
+        private const ulong SettingsVersionLatest = 2;
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 5000000000;
@@ -137,8 +137,20 @@ namespace Jojatekok.MoneroGUI
         {
             IsAutoSaveEnabled = false;
 
+            if (oldConfigurationVersion < 2) {
+                if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
+                    General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+                }
+            } else {
+                IsAutoSaveEnabled = true;
+                return;
+            }
+
             if (oldConfigurationVersion < 1) {
                 General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+            } else {
+                IsAutoSaveEnabled = true;
+                return;
             }
 
             IsAutoSaveEnabled = true;

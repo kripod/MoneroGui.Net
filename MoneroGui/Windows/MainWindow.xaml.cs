@@ -3,6 +3,9 @@ using Jojatekok.MoneroAPI;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +58,8 @@ namespace Jojatekok.MoneroGUI.Windows
             InitializeComponent();
             TaskbarIcon.Icon = StaticObjects.ApplicationIcon;
 
+            var isAutoUpdateEnabled = true;
+
             // Parse command line arguments
             var arguments = Environment.GetCommandLineArgs();
             for (var i = arguments.Length - 1; i > 0; i--) {
@@ -63,6 +68,10 @@ namespace Jojatekok.MoneroGUI.Windows
                 switch (key) {
                     case "-hidewindow":
                         SetTrayState(false);
+                        break;
+
+                    case "-noupdate":
+                        isAutoUpdateEnabled = false;
                         break;
                 }
             }
@@ -81,11 +90,16 @@ namespace Jojatekok.MoneroGUI.Windows
 
             StartDaemon();
             SourceInitialized += delegate {
-                Dispatcher.BeginInvoke(new Action(StartWallet));
-
                 var hwndSource = HwndSource.FromHwnd((new WindowInteropHelper(this)).Handle);
                 Debug.Assert(hwndSource != null, "hwndSource != null");
                 hwndSource.AddHook(HandleWindowMessages);
+
+                StartWallet();
+#if !DEBUG
+                if (isAutoUpdateEnabled) {
+                    Task.Factory.StartNew(CheckForUpdates);
+                }
+#endif
             };
         }
 
@@ -95,6 +109,62 @@ namespace Jojatekok.MoneroGUI.Windows
 
             CommandShowOrHideWindow.Execute(null, this);
             e.Cancel = true;
+        }
+
+        private void CheckForUpdates()
+        {
+            using (var webClient = new WebClient()) {
+                try {
+                    // Compare the application's version with the latest one
+                    var latestVersionString = webClient.DownloadString(new Uri("https://jojatekok.github.io/monero-client-net/version.txt", UriKind.Absolute));
+                    //if (new Version(latestVersionString + ".0").CompareTo(StaticObjects.ApplicationVersion) <= 0) return;
+                    
+                    var applicationBaseDirectory = StaticObjects.ApplicationBaseDirectory;
+
+                    var updateName = "Update (v" + latestVersionString + ")";
+                    var updatePath = applicationBaseDirectory + updateName;
+
+                    // Check whether the update file has already been downloaded
+                    if (!File.Exists(updatePath + ".zip")) {
+                        var processorArchitectureString = Environment.Is64BitOperatingSystem ? "x64" : "x86";
+                        webClient.DownloadFile(new Uri("https://jojatekok.github.io/monero-client-net/binaries/" + processorArchitectureString + ".zip", UriKind.Absolute), updatePath + ".zip");
+                    }
+
+                    // Check whether the user wants to apply the new update now
+                    if (Dispatcher.Invoke(() => this.ShowQuestion(string.Format(
+                        Helper.InvariantCulture,
+                        Properties.Resources.MainWindowUpdateQuestionMessage,
+                        latestVersionString
+                    ), Properties.Resources.MainWindowUpdateQuestionTitle)) != MessageBoxResult.Yes) {
+                        return;
+                    }
+                    
+                    // Extract the downloaded update
+                    ZipFile.ExtractToDirectory(updatePath + ".zip", updatePath);
+
+                    // Write a batch file which applies the update
+                    using (var writer = new StreamWriter(applicationBaseDirectory + "Updater.bat")) {
+                        var newLineString = Helper.NewLineString;
+                        writer.Write("XCOPY /S /V /Q /R /Y \"" + updateName + "\"" + newLineString +
+                                     "START \"\" \"" + StaticObjects.ApplicationAssemblyName.Name + ".exe\" -noupdate" + newLineString +
+                                     "RD /S /Q \"" + updateName + "\"" + newLineString +
+                                     "DEL /F /Q \"" + updateName + ".zip\"" + newLineString +
+                                     "DEL /F /Q %0");
+                    }
+
+                    Dispatcher.Invoke(Application.Current.Shutdown);
+
+                    new Process {
+                        StartInfo = new ProcessStartInfo(applicationBaseDirectory + "Updater.bat") {
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        }
+                    }.Start();
+
+                } catch {
+                    Dispatcher.Invoke(() => this.ShowError(Properties.Resources.MainWindowUpdateError));
+                }
+            }
         }
 
         private void SetTrayState(bool isWindowVisible)

@@ -6,7 +6,6 @@ using System.Windows.Data;
 
 namespace Jojatekok.MoneroGUI
 {
-    [ValueConversion(typeof(TransactionType), typeof(string))]
     public class ConverterTransactionTypeToString : DependencyObject, IValueConverter
     {
         public static readonly DependencyProperty UnknownValueProperty = DependencyProperty.RegisterAttached(

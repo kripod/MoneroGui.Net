@@ -5,7 +5,6 @@ using System.Windows.Data;
 
 namespace Jojatekok.MoneroGUI
 {
-    [ValueConversion(typeof(bool), typeof(string))]
     public class ConverterBooleanToString : DependencyObject, IValueConverter
     {
         public static readonly DependencyProperty FalseValueProperty = DependencyProperty.RegisterAttached(

@@ -127,16 +127,37 @@
     <value>Envoyer</value>
   </data>
   <data name="DebugWindowConsoleDaemon" xml:space="preserve">
-    <value>Processus</value>
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Consoles</value>
   </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Fenêtre de Débogage</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Carnet d'adresses</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Le Client Monero est en cour de fermeture.</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Aperçu</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Envoyer des pièces</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Client .NET</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Transactions</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_A propos du Client Monero</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Gestionnaire de sauvegarde.</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Modification de la clef secrète du portefeuille...</value>
@@ -178,7 +199,7 @@
     <value>Transactions récentes</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>Dépensable:</value>
+    <value>Utilisable:</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Non confirmé:</value>
@@ -190,7 +211,7 @@
     <value>Entrer une adresse Monero</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
-    <value>Entrer un libellé pour cette adresse afin de l'ajouter à votre portefeuille d'adresse</value>
+    <value>Entrer une étiquette pour cette adresse afin de l'ajouter à votre portefeuille d'adresse</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
     <value>Nombre:</value>
@@ -220,13 +241,13 @@
     <value>Montant</value>
   </data>
   <data name="TextLabel" xml:space="preserve">
-    <value>Libellé</value>
+    <value>Étiquette</value>
   </data>
   <data name="TransactionsType" xml:space="preserve">
     <value>Type</value>
   </data>
   <data name="TransactionsSpendable" xml:space="preserve">
-    <value>Dépensable?</value>
+    <value>Utilisable?</value>
   </data>
   <data name="TextNo" xml:space="preserve">
     <value>Non</value>
@@ -242,6 +263,9 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Inconnu</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>A propos de Monero Client.NET</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Erreur: Le fichier de licence est introuvable.</value>
@@ -304,7 +328,10 @@
     <value>Logiciel du portefeuille:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
-    <value>Sauvegarder les bases de données avant d'éteindre</value>
+    <value>Sauvegarder la base de données avant d'éteindre</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Démarrer le Client Monero au démarrage du système</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copier l'adresse</value>
@@ -357,11 +384,16 @@
   <data name="TextSaveAs" xml:space="preserve">
     <value>Enregistrer sous...</value>
   </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>L'URL saisi est trop long.
+
+S.V.P. Essayer de réduire la longueur de la saisie. </value>
+  </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>QR code</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Solde:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Le solde actuel:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Retirer un destinataire</value>
@@ -441,8 +473,23 @@
   <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
     <value>Sélectionner une méthode pour créer la sauvegarde!</value>
   </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Comme un fichier, au chemin d'accès choisi</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Ces fichiers ne vont pas apparaître sélectionnable dans le gestionnaire de sauvegarde embarqué. </value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Comme un fichier, a son emplacement par défaut</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Comme un portefeuille déterministe</value>
+  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Cette méthode est sure, et ne requière pas d'ordinateur pour la stocker</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Nouvelle sauvegarde</value>
   </data>
   <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
     <value>Parcourir dans l’explorer...</value>
@@ -459,12 +506,73 @@
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Depuis un répertoire...</value>
   </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>D'un portefeuille déterministe...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>De la sélection</value>
+  </data>
   <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
     <value>La sauvegarde a été correctement restaurée et appliquée.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Restaurer la sauvegarde</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Gestionnaire de sauvegarde</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
     <value>Soyez prudent sur la sauvegarde de votre portefeuille!
 
 Une personne y ayant accès pourrais se servir de celui ci.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>La transaction n'a pas pu être envoyer.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Le nouveau solde estimatif:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Les frais:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Réseau</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Connection via un proxy</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>Serveur RPC</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Port du Daemon:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Port du portefeuille:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Hôte:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Donnée du Daemon:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Mis-à-jour</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Téléchargement {0} de {1} bloques de l'historique de transaction ({2}% complété).
+Le dernier bloque reçu a été généré il y a {3} jour.</value>
   </data>
 </root>

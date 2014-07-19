@@ -138,14 +138,23 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>地址簿</value>
   </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>门罗币.NET客户端关闭中...</value>
+  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>概览</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
-    <value>发送钱币</value>
+    <value>发送门罗币</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>门罗币.NET客户端</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>交易记录</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_关于门罗币.NET客户端</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_备份管理</value>
@@ -181,7 +190,7 @@
     <value>_解锁钱包</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
-    <value>_初始化中...</value>
+    <value>初始化中...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
     <value>交易总数</value>
@@ -223,7 +232,7 @@
     <value>天</value>
   </data>
   <data name="StatusBarSyncTextMain" xml:space="preserve">
-    <value>{0} 区块 ({1}) 落后</value>
+    <value>区块{0}  落后({1})</value>
   </data>
   <data name="TextAddress" xml:space="preserve">
     <value>地址</value>
@@ -254,6 +263,9 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>未知</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>关于门罗币.NET客户端</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>错误：未找到许可文件。</value>
@@ -318,6 +330,9 @@
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>关闭前保存数据</value>
   </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>系统登录是启动</value>
+  </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>复制地址</value>
   </data>
@@ -377,8 +392,8 @@
   <data name="TextQrCode" xml:space="preserve">
     <value>QR代码</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>金额</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>当前余额:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>删除接收人</value>
@@ -510,5 +525,54 @@
     <value>请非常小心保存你的钱包的数据！
 
 确保没有人能访问它们，因为这会导致你的钱受到影响。</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>交易未发送成功。</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>估计新余额:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>费用:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>通过代理连接</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>代理</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC服务器</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>守护端口:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>钱包端口:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>主机:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>端口:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>守护程序数据</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>：</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>？</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>区块已同步</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>已下载 {0} of {1}历史交易区块 ({2}% 完成).
+最新接收区块 {3} 以前</value>
   </data>
 </root>

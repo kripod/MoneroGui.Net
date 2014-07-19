@@ -360,6 +360,33 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to check for updates..
+        /// </summary>
+        public static string MainWindowUpdateError {
+            get {
+                return ResourceManager.GetString("MainWindowUpdateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An update is available (v{0}). Do you want to apply it now?.
+        /// </summary>
+        public static string MainWindowUpdateQuestionMessage {
+            get {
+                return ResourceManager.GetString("MainWindowUpdateQuestionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update available.
+        /// </summary>
+        public static string MainWindowUpdateQuestionTitle {
+            get {
+                return ResourceManager.GetString("MainWindowUpdateQuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _About Monero Client .NET.
         /// </summary>
         public static string MenuAbout {

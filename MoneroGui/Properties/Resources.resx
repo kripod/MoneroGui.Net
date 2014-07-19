@@ -575,4 +575,13 @@ No one else should be able to access them, as this would cause your money to be 
     <value>Downloaded {0} of {1} blocks of transaction history ({2}% done).
 The last received block was generated {3} ago.</value>
   </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Failed to check for updates.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>An update is available (v{0}). Do you want to apply it now?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Update available</value>
+  </data>
 </root>
