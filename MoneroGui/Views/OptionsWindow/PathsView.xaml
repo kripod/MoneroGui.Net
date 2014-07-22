@@ -15,7 +15,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=OptionsPathsDirectoryDaemonData, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
@@ -34,8 +33,5 @@
 
         <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareWallet, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <controls:PathSelector Grid.Row="5" Grid.Column="2" x:Name="PathSelectorSoftwareWallet" Margin="0 0 0 5"/>
-
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Path=OptionsPathsSoftwareMiner, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <controls:PathSelector Grid.Row="6" Grid.Column="2" x:Name="PathSelectorSoftwareMiner"/>
     </Grid>
 </UserControl>

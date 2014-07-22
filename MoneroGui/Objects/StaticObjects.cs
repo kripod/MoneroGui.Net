@@ -35,7 +35,7 @@ namespace Jojatekok.MoneroGUI
         public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);
         public static readonly ImageSource ApplicationIconImage = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location).ToImageSource();
 
-        public static readonly string ApplicationPath = ApplicationAssemblyName.CodeBase;
+        public static readonly string ApplicationPath = ApplicationAssembly.Location;
         public static readonly string ApplicationStartupShortcutPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.Startup),
             Helper.GetAssemblyAttribute<AssemblyTitleAttribute>().Title + ".lnk"
@@ -48,8 +48,6 @@ namespace Jojatekok.MoneroGUI
             get { return _isUnhandledExceptionLoggingEnabled; }
             set { _isUnhandledExceptionLoggingEnabled = value; }
         }
-
-        public static int ApplicationFirstInstanceActivatorMessage { get; set; }
 
         public static MainWindow MainWindow { get; set; }
 
@@ -68,8 +66,7 @@ namespace Jojatekok.MoneroGUI
                 DirectoryWalletBackups = storedPathSettings.DirectoryWalletBackups,
                 FileWalletData = storedPathSettings.FileWalletData,
                 SoftwareDaemon = storedPathSettings.SoftwareDaemon,
-                SoftwareWallet = storedPathSettings.SoftwareWallet,
-                SoftwareMiner = storedPathSettings.SoftwareMiner,
+                SoftwareWallet = storedPathSettings.SoftwareWallet
             };
 
             var storedNetworkSettings = SettingsManager.Network;

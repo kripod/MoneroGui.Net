@@ -54,7 +54,14 @@
 
                 <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 3 0 8"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Path=TextAddress, Source={StaticResource Resources}, StringFormat={}{0}:}"/>
+                <TextBlock Grid.Row="3" Grid.Column="0">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}{1}">
+                            <Binding Path="TextAddress" Source="{StaticResource Resources}"/>
+                            <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
                 <Grid Grid.Row="3" Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

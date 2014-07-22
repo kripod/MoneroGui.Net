@@ -138,14 +138,23 @@
   <data name="TextAddressBook" xml:space="preserve">
     <value>Agenda</value>
   </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>O Cliente Monero .NET está encerrando...</value>
+  </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Visão geral</value>
   </data>
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Enviar moedas</value>
   </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Cliente Monero .NET</value>
+  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transações</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>_Sobre o Cliente Monero .NET</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Gestor de backup</value>
@@ -157,7 +166,7 @@
     <value>_Janela de depuração</value>
   </data>
   <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Encriptar carteira...</value>
+    <value>_Criptografar carteira...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Sair</value>
@@ -199,13 +208,13 @@
     <value>Carteira</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
-    <value>Digite um endereço de Monero:</value>
+    <value>Digite um endereço Monero:</value>
   </data>
   <data name="TextHintLabel" xml:space="preserve">
     <value>Digite o rótulo deste endereço para adicioná-lo à sua agenda.</value>
   </data>
   <data name="SendCoinsMixCount" xml:space="preserve">
-    <value>Total de misturas:</value>
+    <value>Número de misturas:</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
     <value>ID de Pagamento;</value>
@@ -214,7 +223,7 @@
     <value>Este campo é opcional</value>
   </data>
   <data name="StatusBarConnections" xml:space="preserve">
-    <value>ligações</value>
+    <value>conexões</value>
   </data>
   <data name="StatusBarStatusSynchronizing" xml:space="preserve">
     <value>Sincronizando com a rede...</value>
@@ -254,6 +263,9 @@
   </data>
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Desconhecido</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>Sobre o Cliente Monero .NET</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Erro: O arquivo de licença não pode ser encontrado.</value>
@@ -298,10 +310,10 @@
     <value>Geral</value>
   </data>
   <data name="OptionsPaths" xml:space="preserve">
-    <value>Pastas</value>
+    <value>Diretórios</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Backup da carteira:</value>
+    <value>Backups da carteira:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
     <value>Dados da carteira:</value>
@@ -317,6 +329,9 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Gravar bases de dados antes de encerrar</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Iniciar o Cliente Monero .NET no login do sistema</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copiar endereço</value>
@@ -367,18 +382,18 @@
     <value>Mensagem:</value>
   </data>
   <data name="TextSaveAs" xml:space="preserve">
-    <value>Guardar como...</value>
+    <value>Salvar como...</value>
   </data>
   <data name="QrCodeWindowUriTooLong" xml:space="preserve">
     <value>O URI resultante é muito longo.
 
-Por favor reduza o comprimento dos seus parâmetros!</value>
+Por favor reduza o tamanho dos parâmetros!</value>
   </data>
   <data name="TextQrCode" xml:space="preserve">
     <value>Código QR</value>
   </data>
   <data name="SendCoinsCurrentBalance" xml:space="preserve">
-    <value>Current balance:</value>
+    <value>Saldo atual:</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Remover destinatário</value>
@@ -423,7 +438,7 @@ Por favor reduza o comprimento dos seus parâmetros!</value>
     <value>Desbloquear carteira</value>
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Por favor digite a sua senha para aceder à sua carteira.</value>
+    <value>Por favor digite sua senha para acessar a carteira.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opções</value>
@@ -489,7 +504,7 @@ Por favor reduza o comprimento dos seus parâmetros!</value>
     <value>O backup em \"{0} \" não pode ser restaurado.</value>
   </data>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
-    <value>Da diretoria...</value>
+    <value>Do diretório...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
     <value>A partir da semente determinística da carteira...</value>
@@ -507,17 +522,66 @@ Por favor reduza o comprimento dos seus parâmetros!</value>
     <value>Gestor de backup</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Por favor, seja EXTREMAMENTE CUIDADOSO sobre o armazenamento dos seus dados da carteira!
+    <value>Por favor, seja EXTREMAMENTE CUIDADOSO com o armazenamento dos seus dados da carteira!
 
-Ninguém deve ser capaz de aceder aos mesmos, pois isso fará com que o seu dinheiro estejo comprometido.</value>
+Ninguém deve ser capaz de acessar os mesmos, pois isso fará com que o seu dinheiro estejo comprometido.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
-    <value>A transação não pode ser enviada.</value>
+    <value>A transação não pôde ser enviada.</value>
   </data>
   <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
-    <value>Estimated new balance:</value>
+    <value>Novo saldo estimado:</value>
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
-    <value>Fee:</value>
+    <value>Taxa:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Conectar através de proxy</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>Servidor RPC</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Porta do Daemon:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Porta da carteira:</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Porta:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Dados do Daemon:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Atualizado</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Baixado {0} de {1} blocos do histórico de transações ({2}% completo).
+O último bloco gerado foi recebido {3} atrás.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Falha ao checar por atualizações.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Uma atualização está disponível (v{0}). Deseja instalá-la agora?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Atualização disponível</value>
   </data>
 </root>

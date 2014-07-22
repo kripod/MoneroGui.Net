@@ -1,8 +1,10 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -12,7 +14,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
@@ -59,13 +60,20 @@ namespace Jojatekok.MoneroGUI.Windows
             TaskbarIcon.Icon = StaticObjects.ApplicationIcon;
 
             var isAutoUpdateEnabled = true;
+            string uriToOpen = null;
 
             // Parse command line arguments
             var arguments = Environment.GetCommandLineArgs();
             for (var i = arguments.Length - 1; i > 0; i--) {
-                var key = arguments[i].ToLower(Helper.InvariantCulture);
+                var argument = arguments[i];
+                var argumentLower = argument.ToLower(Helper.InvariantCulture);
 
-                switch (key) {
+                if (argumentLower.StartsWith(QrUriParameters.ProtocolPreTag)) {
+                    uriToOpen = argument;
+                    continue;
+                }
+
+                switch (argumentLower) {
                     case "-hidewindow":
                         SetTrayState(false);
                         break;
@@ -90,16 +98,21 @@ namespace Jojatekok.MoneroGUI.Windows
 
             StartDaemon();
             SourceInitialized += delegate {
-                var hwndSource = HwndSource.FromHwnd((new WindowInteropHelper(this)).Handle);
-                Debug.Assert(hwndSource != null, "hwndSource != null");
-                hwndSource.AddHook(HandleWindowMessages);
-
                 StartWallet();
+
 #if !DEBUG
                 if (isAutoUpdateEnabled) {
                     Task.Factory.StartNew(CheckForUpdates);
                 }
 #endif
+
+                if (uriToOpen != null) {
+                    Task.Factory.StartNew(() => OpenProtocolUri(uriToOpen));
+                }
+
+                if (SettingsManager.General.IsUriAssociationCheckEnabled) {
+                    Task.Factory.StartNew(CheckUriAssociation);
+                }
             };
         }
 
@@ -135,7 +148,7 @@ namespace Jojatekok.MoneroGUI.Windows
                         Helper.InvariantCulture,
                         Properties.Resources.MainWindowUpdateQuestionMessage,
                         latestVersionString
-                    ), Properties.Resources.MainWindowUpdateQuestionTitle)) != MessageBoxResult.Yes) {
+                    ), Properties.Resources.MainWindowUpdateQuestionTitle)) != 1) {
                         return;
                     }
                     
@@ -167,7 +180,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        private void SetTrayState(bool isWindowVisible)
+        public void SetTrayState(bool isWindowVisible)
         {
             string bindingPath;
 
@@ -189,6 +202,140 @@ namespace Jojatekok.MoneroGUI.Windows
                     Mode = BindingMode.OneWay
                 }
             );
+        }
+
+        public void OpenProtocolUri(string input)
+        {
+            var uriParts = ConverterUriPartArrayToUriString.Provider.ConvertBack(input, new[] { typeof(string) }, null, Helper.InvariantCulture);
+            if (uriParts.Length == 0) return;
+
+            var firstUriPart = uriParts[0] as string;
+            Debug.Assert(firstUriPart != null, "firstUriPart != null");
+            var address = firstUriPart.Substring(QrUriParameters.ProtocolPreTag.Length);
+
+            string paymentId = null;
+            ulong amount = 0;
+            string label = null;
+            string message = null;
+            
+            // Parse values from each uri part
+            for (var i = uriParts.Length - 1; i >= 0; i--) {
+                var uriPart = uriParts[i] as string;
+                Debug.Assert(uriPart != null, "uriPart != null");
+
+                var uriPartSplit = uriPart.Split(new[] { '=' }, 2);
+
+                switch (uriPartSplit[0]) {
+                    case QrUriParameters.PaymentId:
+                        paymentId = uriPartSplit[1];
+                        break;
+
+                    case QrUriParameters.Amount:
+                        ulong value;
+                        if (ulong.TryParse(uriPartSplit[1], out value)) amount = value;
+                        break;
+
+                    case QrUriParameters.Label:
+                        label = uriPartSplit[1];
+                        break;
+
+                    case QrUriParameters.Message:
+                        message = uriPartSplit[1];
+                        break;
+                }
+            }
+
+            // Join all payment details into a string
+            var paymentDetailsSummary = string.Empty;
+            if (!string.IsNullOrEmpty(message)) {
+                paymentDetailsSummary += Helper.NewLineString + Properties.Resources.TextMessage + " " + message;
+            }
+            if (!string.IsNullOrEmpty(address)) {
+                paymentDetailsSummary += Helper.NewLineString + Properties.Resources.TextAddress + Properties.Resources.PunctuationColon + " " + address;
+            }
+            if (!string.IsNullOrEmpty(paymentId)) {
+                paymentDetailsSummary += Helper.NewLineString + Properties.Resources.TextPaymentId + " " + paymentId;
+            }
+            if (amount > 0) {
+                paymentDetailsSummary += Helper.NewLineString + Properties.Resources.TextAmount + Properties.Resources.PunctuationColon + " " + amount;
+            }
+            if (!string.IsNullOrEmpty(label)) {
+                paymentDetailsSummary += Helper.NewLineString + Properties.Resources.TextLabel + Properties.Resources.PunctuationColon + " " + label;
+            }
+
+            // Don't show empty URI requests
+            if (paymentDetailsSummary == string.Empty) return;
+
+            Dispatcher.BeginInvoke(new Action(() => {
+                // Ask the user whether opening the URI is wanted
+                if (this.ShowQuestion(
+                    Properties.Resources.MainWindowUriOpenQuestionMessage1 + Helper.NewLineString +
+                    paymentDetailsSummary + Helper.NewLineString + Helper.NewLineString +
+                    string.Format(Helper.InvariantCulture, Properties.Resources.MainWindowUriOpenQuestionMessage2, Properties.Resources.MainWindowSendCoins),
+                    Properties.Resources.MainWindowUriOpenQuestionTitle
+                ) != 1) {
+                    return;
+                }
+
+                SendCoinsView.ClearRecipients();
+
+                var recipient = new SendCoinsRecipient(SendCoinsView) { Address = address, Amount = amount, Label = label };
+                SendCoinsView.ViewModel.Recipients[0] = recipient;
+                SendCoinsView.ViewModel.PaymentId = paymentId;
+
+                CommandSendCoins.Execute(null, this);
+            }));
+        }
+
+        private void CheckUriAssociation()
+        {
+            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.ClassesRoot, RegistryView.Registry32)) {
+                using (var subKeyMain = baseKey.CreateSubKey("monero")) {
+                    if (subKeyMain == null) return;
+
+                    using (var subKeyCommand = subKeyMain.CreateSubKey(@"shell\open\command")) {
+                        if (subKeyCommand == null) return;
+
+                        var applicationPath = StaticObjects.ApplicationPath;
+                        var commandString = subKeyCommand.GetValue(null) as string;
+                        if (commandString != null) {
+                            if (commandString.Contains(applicationPath)) {
+                                // The current application is already the default handler of URIs
+                                return;
+                            }
+
+                            // The current application is not the default handler of URIs
+                            switch (Dispatcher.Invoke(() => MessageBoxEx.Show(
+                                this,
+                                Properties.Resources.MainWindowUriAssociationQuestionTitle,
+                                string.Format(Helper.InvariantCulture, Properties.Resources.MainWindowUriAssociationQuestionMessage, QrUriParameters.ProtocolPreTag),
+                                SystemIcons.Question,
+                                Properties.Resources.TextYes,
+                                Properties.Resources.TextNo,
+                                Properties.Resources.TextDoNotAskAgain
+                            ))) {
+                                case 2:
+                                    // No
+                                    return;
+
+                                case 3:
+                                    // Don't ask again
+                                    SettingsManager.General.IsUriAssociationCheckEnabled = false;
+                                    return;
+                            }
+                        }
+
+                        // Register the currency's protocol
+                        subKeyMain.SetValue(null, "URL:Monero Protocol", RegistryValueKind.String);
+                        subKeyMain.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);
+                        subKeyCommand.SetValue(null, "\"" + applicationPath + "\" \"%1\"", RegistryValueKind.String);
+                        using (var subKeyDefaultIcon = subKeyMain.CreateSubKey("DefaultIcon")) {
+                            if (subKeyDefaultIcon == null) return;
+                            subKeyDefaultIcon.SetValue(null, "\"" + StaticObjects.ApplicationAssemblyName.Name + ".exe\"");
+                        }
+                    }
+                }
+            }
         }
 
         private void CommandShowOrHideWindow_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -444,19 +591,6 @@ namespace Jojatekok.MoneroGUI.Windows
         private void BeginInvokeForDataChanging(Action callback)
         {
             Dispatcher.BeginInvoke(callback, DispatcherPriority.DataBind);
-        }
-
-        private IntPtr HandleWindowMessages(IntPtr handle, Int32 message, IntPtr wParameter, IntPtr lParameter, ref Boolean handled)
-        {
-            if (message == StaticObjects.ApplicationFirstInstanceActivatorMessage) {
-                if (Visibility != Visibility.Visible) {
-                    SetTrayState(true);
-                } else {
-                    this.RestoreWindowStateFromMinimized();
-                }
-            }
-
-            return IntPtr.Zero;
         }
 
         public void Dispose()

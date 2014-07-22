@@ -132,14 +132,14 @@
   <data name="DebugWindowConsoles" xml:space="preserve">
     <value>Консоль</value>
   </data>
-  <data name="TextInformation" xml:space="preserve">
-    <value>Информация</value>
-  </data>
   <data name="DebugWindowTitle" xml:space="preserve">
     <value>Окно отладки</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Адресная книга</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client завершает работу...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Обзор</value>
@@ -147,8 +147,17 @@
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Отправить монеты</value>
   </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Транзакции</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>_Менеджер резервных копий</value>
   </data>
   <data name="MenuChangeWalletPassphrase" xml:space="preserve">
     <value>_Изменить пароль бумажника...</value>
@@ -255,6 +264,9 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Неизвестно</value>
   </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Ошибка: файла лицензии не существует.</value>
   </data>
@@ -262,7 +274,7 @@
     <value>Загрузка файла лицензии...</value>
   </data>
   <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
-    <value>Третья сторона лицензии</value>
+    <value>Сторонние лицензии</value>
   </data>
   <data name="TextCopy" xml:space="preserve">
     <value>Копировать</value>
@@ -301,7 +313,7 @@
     <value>Пути к файлам</value>
   </data>
   <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Бекапы бумажника:</value>
+    <value>Резервные копии бумажника:</value>
   </data>
   <data name="OptionsPathsFileWalletData" xml:space="preserve">
     <value>Файл бумажника:</value>
@@ -317,6 +329,9 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Сохранить данные перед выходом</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Запускать Monero Client при старте системы</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Копировать адрес</value>
@@ -375,8 +390,8 @@
   <data name="TextQrCode" xml:space="preserve">
     <value>QR код</value>
   </data>
-  <data name="SendCoinsBalance" xml:space="preserve">
-    <value>Баланс:</value>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Текущий баланс</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>Удалить получателя</value>
@@ -422,5 +437,149 @@
   </data>
   <data name="WalletUnlockWindowInstruction" xml:space="preserve">
     <value>Пожалуйста введите пароль для доступа к вашему бумажнику.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Пожалуйста не прерывайте этот процесс!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Спрятать окно</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Показать окно</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>ID транзакции</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Входящая транзакция</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Исходящая транзакция</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Неизвестный тип транзакции</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Пожалуйста выберете метод создания новой резервной копии!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Как файл по указанному пути</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Эти файлы не будут доступны для выбора во встроенном менеджере резервного копирования</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Как файл, расположенный по умолчанию</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Как семя детерминистического бумажника</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Этот метод самый безопасный, и даже не требует наличия компьютера для хранения</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Новая резервная копия</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Просмотр в Проводнике</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Автоматически создавать резервные копии каждую неделю</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Создать резервные копии</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Резервная копия от \"{0}\" не может быть восстановлена.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Из папки...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Из семени детерминистического бумажника</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Из выделения</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Резервные копии были успешно восстановлены и применены</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Восстановить резервные копии</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Менеджер резервных копий</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Пожалуйста будьте предельно осторожны с хранением данных вашего бумажника.
+
+Ни у кого больше не должно быть к ним доступа, поскольку это может привести к возможности украсть ваши деньги.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Транзакция не может быть отправлена</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Предполагаемый новый баланс</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Комиссия</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Сеть</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Подключиться через прокси</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Прокси</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC сервер</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
+    <value>Порт демона:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+    <value>Порт бумажника</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Хост:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Порт:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Данные демона:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Последняя версия</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Получено {0} из {1} блоков истории транзакций ({2}% готово).
+Последний полученный блок создан {3} назад.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Ошибка проверки обновлений</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Доступно обновление (v{0}). Хотите его установить?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Доступно обновление</value>
   </data>
 </root>

@@ -24,7 +24,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=TextAddress, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}{1}">
+                    <Binding Path="TextAddress" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
         <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxAddress" Watermark="{Binding Path=TextHintAddress, Source={StaticResource Resources}}" FontFamily="Lucida Console" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 5">
             <xctk:WatermarkTextBox.Text>
                 <Binding Path="Address" UpdateSourceTrigger="PropertyChanged">
@@ -44,10 +51,24 @@
             <Image Source="/Resources/Images/Delete.png" Style="{StaticResource StyleImagePictogram}" Margin="2"/>
         </Button>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=TextLabel, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}{1}">
+                    <Binding Path="TextLabel" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
         <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="5" x:Name="TextBoxLabel" Text="{Binding Path=Label}" Watermark="{Binding Path=TextHintLabel, Source={StaticResource Resources}}" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Path=TextAmount, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}{1}">
+                    <Binding Path="TextAmount" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
         <xctk:DoubleUpDown Grid.Row="2" Grid.Column="2" x:Name="DoubleUpDownAmount" Style="{StaticResource StyleDoubleUpDownCoinAmount}">
             <xctk:DoubleUpDown.Value>
                 <Binding Path="Amount" Converter="{StaticResource ConverterCoinAtomicValueToNullableDisplayValue}" UpdateSourceTrigger="PropertyChanged">

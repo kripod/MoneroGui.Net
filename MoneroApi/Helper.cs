@@ -67,6 +67,11 @@ namespace Jojatekok.MoneroAPI
             timer.Change(Timeout.Infinite, Timeout.Infinite);
         }
 
+        public static string GetAbsolutePath(string input)
+        {
+            return input.Contains(":") ? input : Path.GetFullPath(Path.Combine(StaticObjects.ApplicationDirectory, input));
+        }
+
         public static bool IsPortInUse(int port)
         {
             var activeTcpListeners = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpListeners();

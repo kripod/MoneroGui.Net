@@ -574,4 +574,13 @@ Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš nov
     <value>Downloaded {0} of {1} blocks of transaction history ({2}% done).
 The last received block was generated {3} ago.</value>
   </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Neuspešna provera da li ima novih verzija.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Izašla je nova verzija programa (v{0}). Da li želite da je ažurirate sada?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Nova verzija programa je raspoloživa</value>
+  </data>
 </root>

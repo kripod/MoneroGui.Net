@@ -1,12 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -17,11 +16,17 @@ using Color = System.Drawing.Color;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
-    public partial class QrCodeWindow : INotifyPropertyChanged
+    public partial class QrCodeWindow
     {
         public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.RegisterAttached(
             "ImageSource",
             typeof(BitmapImage),
+            typeof(QrCodeWindow)
+        );
+
+        public static readonly DependencyProperty QrDataVisibilityProperty = DependencyProperty.RegisterAttached(
+            "QrDataVisibility",
+            typeof(Visibility),
             typeof(QrCodeWindow)
         );
 
@@ -31,9 +36,38 @@ namespace Jojatekok.MoneroGUI.Windows
             typeof(QrCodeWindow)
         );
 
+        public static readonly DependencyProperty PaymentIdProperty = DependencyProperty.RegisterAttached(
+            "PaymentId",
+            typeof(string),
+            typeof(QrCodeWindow)
+        );
+
+        public static readonly DependencyProperty AmountProperty = DependencyProperty.RegisterAttached(
+            "Amount",
+            typeof(ulong?),
+            typeof(QrCodeWindow)
+        );
+
+        public static readonly DependencyProperty LabelProperty = DependencyProperty.RegisterAttached(
+            "Label",
+            typeof(string),
+            typeof(QrCodeWindow)
+        );
+
+        public static readonly DependencyProperty MessageProperty = DependencyProperty.RegisterAttached(
+            "Message",
+            typeof(string),
+            typeof(QrCodeWindow)
+        );
+
         public BitmapImage ImageSource {
             get { return GetValue(ImageSourceProperty) as BitmapImage; }
-            set { SetValue(ImageSourceProperty, value); }
+            private set { SetValue(ImageSourceProperty, value); }
+        }
+
+        public Visibility QrDataVisibility {
+            get { return (Visibility)GetValue(QrDataVisibilityProperty); }
+            private set { SetValue(QrDataVisibilityProperty, value); }
         }
 
         public string Address {
@@ -41,90 +75,55 @@ namespace Jojatekok.MoneroGUI.Windows
             set { SetValue(AddressProperty, value); }
         }
 
-        private string _label;
-        public string Label {
-            get { return _label; }
-
-            set {
-                _label = value;
-                OnPropertyChanged();
-
-                if (value.Length != 0) {
-                    LabelUriPart = "&label=" + Uri.EscapeUriString(value);
-                } else {
-                    LabelUriPart = null;
-                }
-            }
+        public string PaymentId {
+            get { return GetValue(PaymentIdProperty) as string; }
+            set { SetValue(PaymentIdProperty, value); }
         }
 
-        private string _labelUriPart;
-        public string LabelUriPart {
-            get { return _labelUriPart; }
+        public ulong? Amount {
+            get { return GetValue(AmountProperty) as ulong?; }
+            set { SetValue(AmountProperty, value); }
+        }
 
-            private set {
-                _labelUriPart = value;
-                OnPropertyChanged();
-            }
+        public string Label {
+            get { return GetValue(LabelProperty) as string; }
+            set { SetValue(LabelProperty, value); }
         }
 
         public string Message {
+            get { return GetValue(MessageProperty) as string; }
+            set { SetValue(MessageProperty, value); }
+        }
+
+        private string UriErrorMessage {
             set {
-                if (value.Length != 0) {
-                    MessageUriPart = "&message=" + Uri.EscapeUriString(value);
-                } else {
-                    MessageUriPart = null;
-                }
-            }
-        }
+                if (value == TextBlockUriError.Text) return;
+                TextBlockUriError.Text = value;
 
-        private string _messageUriPart;
-        public string MessageUriPart {
-            get { return _messageUriPart; }
-
-            private set {
-                _messageUriPart = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string PaymentId {
-            set {
-                if (value.Length != 0) {
-                    PaymentIdUriPart = "&paymentId=" + Uri.EscapeUriString(value);
-                } else {
-                    PaymentIdUriPart = null;
-                }
-            }
-        }
-
-        private string _paymentIdUriPart;
-        public string PaymentIdUriPart {
-            get { return _paymentIdUriPart; }
-
-            private set {
-                _paymentIdUriPart = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool IsQrUriTooLong {
-            set {
-                if (value) {
+                if (value != string.Empty) {
+                    // There is an error
                     ImageQrCode.Visibility = Visibility.Hidden;
-                    TextBlockUriIsTooLong.Visibility = Visibility.Visible;
+                    TextBlockUriError.Visibility = Visibility.Visible;
+                    ButtonSaveAs.IsEnabled = false;
 
                 } else {
-                    TextBlockUriIsTooLong.Visibility = Visibility.Hidden;
+                    // There are no errors
+                    TextBlockUriError.Visibility = Visibility.Collapsed;
                     ImageQrCode.Visibility = Visibility.Visible;
+                    ButtonSaveAs.IsEnabled = true;
                 }
-
-                ButtonSaveAs.IsEnabled = !value;
             }
         }
 
         public QrCodeWindow(Window owner, SettingsManager.ConfigElementContact contact)
         {
             Icon = StaticObjects.ApplicationIconImage;
+            SourceInitialized += delegate {
+                this.SetWindowButtons(false, true);
+
+                MinWidth = ActualWidth;
+                MinHeight = ActualHeight;
+            };
 
             InitializeComponent();
 
@@ -141,6 +140,26 @@ namespace Jojatekok.MoneroGUI.Windows
 
         }
 
+        private void ImageQrCode_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check only for double clicks
+            if (e.ClickCount != 2) return;
+
+            if (QrDataVisibility == Visibility.Visible) {
+                QrDataVisibility = Visibility.Collapsed;
+                ImageQrCode.ToolTip = Properties.Resources.QrCodeWindowImageShrink;
+
+            } else {
+                QrDataVisibility = Visibility.Visible;
+                ImageQrCode.ToolTip = Properties.Resources.QrCodeWindowImageEnlarge;
+            }
+        }
+
+        private void TextBoxQrUri_GotKeyboardFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxQrUri.SelectAll();
+        }
+
         private void TextBoxQrUri_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (IsLoaded) UpdateQrCodeImageTask().Start();
@@ -149,9 +168,14 @@ namespace Jojatekok.MoneroGUI.Windows
         private Task UpdateQrCodeImageTask()
         {
             var qrUriText = Dispatcher.Invoke(() => TextBoxQrUri.Text);
+            if (qrUriText.Length == 0) {
+                // Notify user about the missing address parameter
+                return new Task(() => Dispatcher.BeginInvoke(new Action(() => UriErrorMessage = Properties.Resources.QrCodeWindowUriNoAddress), DispatcherPriority.DataBind));
+            }
+
             if (qrUriText.Length > 1024) {
                 // Notify user about the QR URI's size being too big
-                return new Task(() => Dispatcher.BeginInvoke(new Action(() => IsQrUriTooLong = true ), DispatcherPriority.DataBind));
+                return new Task(() => Dispatcher.BeginInvoke(new Action(() => UriErrorMessage = Properties.Resources.QrCodeWindowUriTooLong), DispatcherPriority.DataBind));
             }
 
             return new Task(() => {
@@ -168,15 +192,10 @@ namespace Jojatekok.MoneroGUI.Windows
                     Dispatcher.Invoke(() => {
 // ReSharper disable once AccessToDisposedClosure
                         ImageSource = bitmap.ToBitmapImage(false);
-                        IsQrUriTooLong = false;
+                        UriErrorMessage = string.Empty;
                     }, DispatcherPriority.DataBind);
                 }
             });
-        }
-
-        private void TextBoxQrUri_GotKeyboardFocus(object sender, RoutedEventArgs e)
-        {
-            TextBoxQrUri.SelectAll();
         }
 
         private void ButtonCopyQrUri_Click(object sender, RoutedEventArgs e)
@@ -201,9 +220,6 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void SaveQrCodeImage(BitmapSource image, string fileName)
         {
-            // Make sure the latest version of the QR code is used
-            UpdateQrCodeImageTask().RunSynchronously();
-
             var formatConvertedBitmap = new FormatConvertedBitmap();
             formatConvertedBitmap.BeginInit();
 
@@ -221,12 +237,6 @@ namespace Jojatekok.MoneroGUI.Windows
             using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 4096)) {
                 encoder.Save(stream);
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

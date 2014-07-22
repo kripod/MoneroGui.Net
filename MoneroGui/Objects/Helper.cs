@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jojatekok.MoneroGUI.Windows;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,8 +7,8 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -147,6 +148,125 @@ namespace Jojatekok.MoneroGUI
             return -1;
         }
 
+        public static string EncodeUrl(string value)
+        {
+            if (value == null) {
+                return null;
+            }
+
+            var length = value.Length;
+            var stringBuilder = new StringBuilder(length);
+
+            for (var i = 0; i < length; i++) {
+                var ch = value[i];
+
+                if ((ch & 0xff80) == 0) {
+                    if (IsUrlSafeChar(ch)) {
+                        stringBuilder.Append(ch);
+                    } else if (ch == ' ') {
+                        stringBuilder.Append("%20");
+                    } else {
+                        stringBuilder.Append(
+                            "%" +
+                            IntToHex((ch >> 4) & 0xf) +
+                            IntToHex((ch) & 0xf)
+                        );
+                    }
+
+                } else {
+                    // Unicode character encoding
+                    stringBuilder.Append(
+                        "%u" +
+                        IntToHex((ch >> 12) & 0xf) +
+                        IntToHex((ch >> 8) & 0xf) +
+                        IntToHex((ch >> 4) & 0xf) +
+                        IntToHex((ch) & 0xf)
+                    );
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        internal static string DecodeUrl(string value)
+        {
+            if (value == null) {
+                return null;
+            }
+
+            var length = value.Length;
+            var stringBuilder = new StringBuilder(length);
+
+            // Go through the string's chars collapsing %XX and %uXXXX, and appending each 
+            // char as char, with exception of %XX constructs that are appended as bytes
+
+            for (var i = 0; i < length; i++) {
+                var ch = value[i];
+
+                if (ch == '%' && i < length - 2) {
+                    if (value[i + 1] == 'u' && i < length - 5) {
+                        var h1 = HexToInt(value[i + 2]);
+                        var h2 = HexToInt(value[i + 3]);
+                        var h3 = HexToInt(value[i + 4]);
+                        var h4 = HexToInt(value[i + 5]);
+
+                        if (h1 >= 0 && h2 >= 0 && h3 >= 0 && h4 >= 0) {
+                            // Valid 4 hexadecimal chars
+                            i += 5;
+                            stringBuilder.Append((char)((h1 << 12) | (h2 << 8) | (h3 << 4) | h4));
+                            continue;
+                        }
+
+                    } else {
+                        var h1 = HexToInt(value[i + 1]);
+                        var h2 = HexToInt(value[i + 2]);
+
+                        if (h1 >= 0 && h2 >= 0) {
+                            // Valid 2 hexadecimal chars
+                            i += 2;
+                            stringBuilder.Append((char)((h1 << 4) | h2));
+                            continue;
+                        }
+                    }
+                }
+
+                stringBuilder.Append(ch);
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        private static bool IsUrlSafeChar(char input) {
+            if ((input >= 'a' && input <= 'z') || (input >= 'A' && input <= 'Z') || (input >= '0' && input <= '9')) {
+                return true;
+            }
+
+            switch (input) {
+                case '-':
+                case '_':
+                case '.':
+                case '!':
+                case '*':
+                case '(':
+                case ')':
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static char IntToHex(int input) {
+            if (input <= 9) return (char)(input + '0');
+            return (char)(input - 10 + 'a');
+        }
+
+        public static int HexToInt(char h) {
+            return (h >= '0' && h <= '9') ? h - '0' :
+            (h >= 'a' && h <= 'f') ? h - 'a' + 10 :
+            (h >= 'A' && h <= 'F') ? h - 'A' + 10 :
+            -1;
+        }
+
         private static string GetPathLastPart(string path)
         {
             var lastSlashIndex = path.LastIndexOf('\\');
@@ -168,7 +288,7 @@ namespace Jojatekok.MoneroGUI
             var uriBase = new Uri(StaticObjects.ApplicationBaseDirectory, UriKind.Absolute);
             var uriPath = new Uri(path);
 
-            var decodedUrl = HttpUtility.UrlDecode(uriBase.MakeRelativeUri(uriPath).ToString());
+            var decodedUrl = DecodeUrl(uriBase.MakeRelativeUri(uriPath).ToString());
             return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
         }
 
@@ -207,41 +327,30 @@ namespace Jojatekok.MoneroGUI
 
         public static void ShowInformation(this Window window, string message)
         {
-            MessageBox.Show(window, message, Properties.Resources.TextInformation, MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBoxEx.Show(window, Properties.Resources.TextInformation, message, SystemIcons.Information, Properties.Resources.TextOk);
         }
 
-        public static MessageBoxResult ShowQuestion(this Window window, string message, string title)
+        public static byte ShowQuestion(this Window window, string message, string title)
         {
-            return MessageBox.Show(window, message, title, MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return MessageBoxEx.Show(window, title, message, SystemIcons.Question, Properties.Resources.TextYes, Properties.Resources.TextNo);
         }
 
         public static void ShowWarning(this Window window, string message)
         {
-            MessageBox.Show(window, message, Properties.Resources.TextWarning, MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBoxEx.Show(window, Properties.Resources.TextWarning, message, SystemIcons.Warning, Properties.Resources.TextOk);
         }
 
         public static void ShowError(this Window window, string message)
         {
-            MessageBox.Show(window, message, Properties.Resources.TextError, MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBoxEx.Show(window, Properties.Resources.TextError, message, SystemIcons.Error, Properties.Resources.TextOk);
         }
     }
 
     static class NativeMethods
     {
-        public static readonly IntPtr HWND_BROADCAST = (IntPtr)0xFFFF;
         [DllImport("User32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool PostMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
-        [DllImport("User32.dll", CharSet = CharSet.Unicode)]
-        public static extern int RegisterWindowMessage(string lpString);
-
-        [DllImport("User32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("User32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
+        private static extern bool ShowWindow(IntPtr hWnd, ShowWindowCommands nCmdShow);
 
         public enum ShowWindowCommands
         {
@@ -287,6 +396,30 @@ namespace Jojatekok.MoneroGUI
             }
 
             SetWindowLong(hWnd, GWL_STYLE, style);
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool EnableMenuItem(IntPtr hMenu, uint uIdEnableItem, uint uEnable);
+
+        const uint MF_BYCOMMAND = 0x00000000;
+        const uint MF_GRAYED = 0x00000001;
+        const uint MF_ENABLED = 0x00000000;
+
+        const uint SC_CLOSE = 0xF060;
+
+        public static void SetWindowButtonClose(this Window window, bool isEnabled)
+        {
+            var hMenu = GetSystemMenu(new WindowInteropHelper(window).Handle, false);
+            if (hMenu != IntPtr.Zero) {
+                if (isEnabled) {
+                    EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | MF_ENABLED);
+                } else {
+                    EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | MF_GRAYED);
+                }
+            }
         }
     }
 }

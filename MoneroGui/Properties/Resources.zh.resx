@@ -193,13 +193,13 @@
     <value>初始化中...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>交易总数</value>
+    <value>交易总数：</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
     <value>近期交易</value>
   </data>
   <data name="OverviewSpendable" xml:space="preserve">
-    <value>可用金额:</value>
+    <value>可用金额：</value>
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>未确认：</value>
@@ -217,7 +217,7 @@
     <value>混合笔数：</value>
   </data>
   <data name="TextPaymentId" xml:space="preserve">
-    <value>支付ID:</value>
+    <value>支付ID：</value>
   </data>
   <data name="TextHintOptional" xml:space="preserve">
     <value>可选字段（交易站需要填写）</value>
@@ -393,7 +393,7 @@
     <value>QR代码</value>
   </data>
   <data name="SendCoinsCurrentBalance" xml:space="preserve">
-    <value>当前余额:</value>
+    <value>当前余额：</value>
   </data>
   <data name="CoinSenderRemoveRecipient" xml:space="preserve">
     <value>删除接收人</value>
@@ -411,7 +411,7 @@
     <value>再次输入</value>
   </data>
   <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
-    <value>当前密码:</value>
+    <value>当前密码：</value>
   </data>
   <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
     <value>使用密码确保您的钱包安全！</value>
@@ -530,10 +530,10 @@
     <value>交易未发送成功。</value>
   </data>
   <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
-    <value>估计新余额:</value>
+    <value>估计新余额：</value>
   </data>
   <data name="SendCoinsFee" xml:space="preserve">
-    <value>费用:</value>
+    <value>费用：</value>
   </data>
   <data name="OptionsNetwork" xml:space="preserve">
     <value>网络</value>
@@ -548,16 +548,16 @@
     <value>RPC服务器</value>
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>守护端口:</value>
+    <value>守护端口：</value>
   </data>
   <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>钱包端口:</value>
+    <value>钱包端口：</value>
   </data>
   <data name="TextHost" xml:space="preserve">
-    <value>主机:</value>
+    <value>主机：</value>
   </data>
   <data name="TextPort" xml:space="preserve">
-    <value>端口:</value>
+    <value>端口：</value>
   </data>
   <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
     <value>守护程序数据</value>
@@ -574,5 +574,14 @@
   <data name="StatusBarStatusTextMain" xml:space="preserve">
     <value>已下载 {0} of {1}历史交易区块 ({2}% 完成).
 最新接收区块 {3} 以前</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Failed to check for updates.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>An update is available (v{0}). Do you want to apply it now?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Update available</value>
   </data>
 </root>

@@ -16,7 +16,6 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             PathSelectorFileWalletData.Filter = Properties.Resources.TextFilterWalletFiles + "|" + Properties.Resources.TextFilterAllFiles;
             PathSelectorSoftwareDaemon.Filter = softwareFilter;
             PathSelectorSoftwareWallet.Filter = softwareFilter;
-            PathSelectorSoftwareMiner.Filter = softwareFilter;
 
             // Load settings
             var pathSettings = SettingsManager.Paths;
@@ -25,7 +24,6 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             PathSelectorDirectoryWalletBackups.SelectedPath = pathSettings.DirectoryWalletBackups;
             PathSelectorSoftwareDaemon.SelectedPath = pathSettings.SoftwareDaemon;
             PathSelectorSoftwareWallet.SelectedPath = pathSettings.SoftwareWallet;
-            PathSelectorSoftwareMiner.SelectedPath = pathSettings.SoftwareMiner;
         }
 
         public void ApplySettings()
@@ -36,7 +34,6 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             pathSettings.DirectoryWalletBackups = PathSelectorDirectoryWalletBackups.SelectedPath;
             pathSettings.SoftwareDaemon = PathSelectorSoftwareDaemon.SelectedPath;
             pathSettings.SoftwareWallet = PathSelectorSoftwareWallet.SelectedPath;
-            pathSettings.SoftwareMiner = PathSelectorSoftwareMiner.SelectedPath;
         }
     }
 }

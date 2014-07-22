@@ -20,10 +20,24 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=TextLabel, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 5">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}{1}">
+                    <Binding Path="TextLabel" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
         <xctk:WatermarkTextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="4" x:Name="TextBoxLabel" TextChanged="TextBoxLabel_TextChanged" Margin="0 0 0 5"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=TextAddress, Source={StaticResource Resources}, StringFormat={}{0}:}" VerticalAlignment="Center" Margin="0 0 0 8"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0 0 0 8">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0}{1}">
+                    <Binding Path="TextAddress" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationColon" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
         <xctk:WatermarkTextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" x:Name="TextBoxAddress" TextChanged="TextBoxAddress_TextChanged" Margin="0 0 0 8"/>
 
         <Button Grid.Row="2" Grid.Column="3" x:Name="ButtonOk" Content="{Binding Path=TextOk, Source={StaticResource Resources}}" IsDefault="True" IsEnabled="False" Click="ButtonOk_Click" Style="{StaticResource StyleButtonPaddingWide}"/>

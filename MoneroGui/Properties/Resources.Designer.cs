@@ -387,6 +387,51 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application is currently not the default for opening &apos;{0}&apos; URIs. Would you like to make it the default?.
+        /// </summary>
+        public static string MainWindowUriAssociationQuestionMessage {
+            get {
+                return ResourceManager.GetString("MainWindowUriAssociationQuestionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default URI association.
+        /// </summary>
+        public static string MainWindowUriAssociationQuestionTitle {
+            get {
+                return ResourceManager.GetString("MainWindowUriAssociationQuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A request has been received to send a payment with the following details:.
+        /// </summary>
+        public static string MainWindowUriOpenQuestionMessage1 {
+            get {
+                return ResourceManager.GetString("MainWindowUriOpenQuestionMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to navigate to the &apos;{0}&apos; tab?.
+        /// </summary>
+        public static string MainWindowUriOpenQuestionMessage2 {
+            get {
+                return ResourceManager.GetString("MainWindowUriOpenQuestionMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to open this URI?.
+        /// </summary>
+        public static string MainWindowUriOpenQuestionTitle {
+            get {
+                return ResourceManager.GetString("MainWindowUriOpenQuestionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _About Monero Client .NET.
         /// </summary>
         public static string MenuAbout {
@@ -563,6 +608,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string OptionsGeneralIsStartableOnSystemLogin {
             get {
                 return ResourceManager.GetString("OptionsGeneralIsStartableOnSystemLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always check whether the application is the default handler of the currency&apos;s URIs.
+        /// </summary>
+        public static string OptionsGeneralIsUriAssociationCheckEnabled {
+            get {
+                return ResourceManager.GetString("OptionsGeneralIsUriAssociationCheckEnabled", resourceCulture);
             }
         }
         
@@ -752,6 +806,33 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string PunctuationQuestionMark {
             get {
                 return ResourceManager.GetString("PunctuationQuestionMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click to enlarge!.
+        /// </summary>
+        public static string QrCodeWindowImageEnlarge {
+            get {
+                return ResourceManager.GetString("QrCodeWindowImageEnlarge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click to shrink!.
+        /// </summary>
+        public static string QrCodeWindowImageShrink {
+            get {
+                return ResourceManager.GetString("QrCodeWindowImageShrink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter an address!.
+        /// </summary>
+        public static string QrCodeWindowUriNoAddress {
+            get {
+                return ResourceManager.GetString("QrCodeWindowUriNoAddress", resourceCulture);
             }
         }
         
@@ -1052,6 +1133,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextDelete {
             get {
                 return ResourceManager.GetString("TextDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t ask again.
+        /// </summary>
+        public static string TextDoNotAskAgain {
+            get {
+                return ResourceManager.GetString("TextDoNotAskAgain", resourceCulture);
             }
         }
         

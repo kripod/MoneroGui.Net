@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:objects="clr-namespace:Jojatekok.MoneroGUI"
-             StartupUri="Windows\MainWindow.xaml">
+             StartupUri="Windows\MainWindow.xaml"
+             Exit="Application_Exit">
     <Application.Resources>
         <ObjectDataProvider x:Key="Resources" ObjectType="{x:Type objects:CultureManager}" MethodName="GetResourceInstance"/>
 
         <objects:ConverterBooleanToString x:Key="ConverterBooleanToStringYesNo" FalseValue="{Binding Path=TextNo, Source={StaticResource Resources}}" TrueValue="{Binding Path=TextYes, Source={StaticResource Resources}}"/>
+        <objects:ConverterStringToUriPartString x:Key="ConverterStringToUriPartString"/>
+        <objects:ConverterNullableUlongToUriPartString x:Key="ConverterNullableUlongToUriPartString"/>
+        <objects:ConverterUriPartArrayToUriString x:Key="ConverterUriPartArrayToUriString"/>
         <objects:ConverterCoinAtomicValueToNullableDisplayValue x:Key="ConverterCoinAtomicValueToNullableDisplayValue"/>
         <objects:ConverterCoinDisplayValueToNullableDisplayValue x:Key="ConverterCoinDisplayValueToNullableDisplayValue"/>
         <objects:ConverterTransactionTypeToString x:Key="ConverterTransactionTypeToString" UnknownValue="{Binding Path=TransactionTypeUnknown, Source={StaticResource Resources}}" ReceiveValue="{Binding Path=TransactionTypeReceive, Source={StaticResource Resources}}" SendValue="{Binding Path=TransactionTypeSend, Source={StaticResource Resources}}"/>

@@ -193,7 +193,7 @@
     <value>イニシアライジング...</value>
   </data>
   <data name="OverviewNumberOfTransactions" xml:space="preserve">
-    <value>取引の数 </value>
+    <value>取引の数 :</value>
   </data>
   <data name="OverviewRecentTransactions" xml:space="preserve">
     <value>最近の取引</value>
@@ -558,5 +558,30 @@
   </data>
   <data name="TextPort" xml:space="preserve">
     <value>ポート:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>デーモンのデータ:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>？</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>最新バージョン</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>取引履歴の{1}の内{0}ブロックをダウンロードしました。 ({2}%)
+最後に受信されたブロックは{3}前に生成されました。</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>更新プログラムを確認できませんでした。</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>更新プログラムがあります。バージョン{0}にアップデートをしますか。</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>更新プログラムがあります</value>
   </data>
 </root>

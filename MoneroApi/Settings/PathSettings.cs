@@ -13,55 +13,46 @@ namespace Jojatekok.MoneroAPI.Settings
         public const string DefaultFileWalletData = DefaultRelativePathDirectoryWalletData + "wallet.bin";
         public const string DefaultSoftwareDaemon = DefaultRelativePathDirectorySoftware + "bitmonerod.exe";
         public const string DefaultSoftwareWallet = DefaultRelativePathDirectorySoftware + "simplewallet.exe";
-        public const string DefaultSoftwareMiner = DefaultRelativePathDirectorySoftware + "simpleminer.exe";
-
-        private static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         private string _directoryDaemonData = DefaultDirectoryDaemonData;
         public string DirectoryDaemonData {
-            get { return _directoryDaemonData; }
+            get { return Helper.GetAbsolutePath(_directoryDaemonData); }
             set { _directoryDaemonData = value; }
         }
 
         public string DirectoryWalletData {
             get {
                 var lastIndexOfSlash = FileWalletData.LastIndexOf('\\');
-                return lastIndexOfSlash >= 0 ? FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\')) : BaseDirectory;
+                return lastIndexOfSlash >= 0 ? Helper.GetAbsolutePath(FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\'))) : StaticObjects.ApplicationDirectory;
             }
         }
 
         private string _directoryWalletBackups = DefaultDirectoryWalletBackups;
         public string DirectoryWalletBackups {
-            get { return _directoryWalletBackups; }
+            get { return Helper.GetAbsolutePath(_directoryWalletBackups); }
             set { _directoryWalletBackups = value; }
         }
 
         private string _fileWalletData = DefaultFileWalletData;
         public string FileWalletData {
-            get { return _fileWalletData; }
+            get { return Helper.GetAbsolutePath(_fileWalletData); }
             set { _fileWalletData = value; }
         }
 
         public string FileWalletDataKeys {
-            get { return FileWalletData + ".keys"; }
+            get { return Helper.GetAbsolutePath(FileWalletData + ".keys"); }
         }
 
         private string _softwareDaemon = DefaultSoftwareDaemon;
         public string SoftwareDaemon {
-            get { return _softwareDaemon; }
+            get { return Helper.GetAbsolutePath(_softwareDaemon); }
             set { _softwareDaemon = value; }
         }
 
         private string _softwareWallet = DefaultSoftwareWallet;
         public string SoftwareWallet {
-            get { return _softwareWallet; }
+            get { return Helper.GetAbsolutePath(_softwareWallet); }
             set { _softwareWallet = value; }
-        }
-
-        private string _softwareMiner = DefaultSoftwareMiner;
-        public string SoftwareMiner {
-            get { return _softwareMiner; }
-            set { _softwareMiner = value; }
         }
     }
 }

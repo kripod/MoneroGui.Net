@@ -17,16 +17,19 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
             // Load settings
             var generalSettings = SettingsManager.General;
+            CheckBoxIsUriAssociationCheckEnabled.IsChecked = generalSettings.IsUriAssociationCheckEnabled;
             CheckBoxIsStartableOnSystemLogin.IsChecked = generalSettings.IsStartableOnSystemLogin;
             CheckBoxIsSafeShutdownEnabled.IsChecked = generalSettings.IsSafeShutdownEnabled;
         }
 
         public void ApplySettings()
         {
+            Debug.Assert(CheckBoxIsUriAssociationCheckEnabled.IsChecked != null, "CheckBoxIsUriAssociationCheckEnabled.IsChecked != null");
             Debug.Assert(CheckBoxIsStartableOnSystemLogin.IsChecked != null, "CheckBoxStartableOnSystemLogin.IsChecked != null");
             Debug.Assert(CheckBoxIsSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
 
             var generalSettings = SettingsManager.General;
+            generalSettings.IsUriAssociationCheckEnabled = CheckBoxIsUriAssociationCheckEnabled.IsChecked.Value;
             generalSettings.IsSafeShutdownEnabled = CheckBoxIsSafeShutdownEnabled.IsChecked.Value;
 
             var isStartableOnSystemLogin = CheckBoxIsStartableOnSystemLogin.IsChecked.Value;

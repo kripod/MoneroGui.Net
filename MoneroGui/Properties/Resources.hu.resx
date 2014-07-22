@@ -584,4 +584,34 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
     <value>Frissítés elérhető</value>
   </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Kattints duplán a nagyításhoz!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Kattints duplán a kicsinyítéshez!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Kérés érkezett egy fizetés elküldésére az alábbi adatokkal:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Szeretnél elnavigálni a(z) '{0}' fülre?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Szeretnéd megnyitni ezt az URI-t?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>A program jelenleg nem az alapértelmezett '{0}' URI-k megnyitásához. Szeretnéd alapértelmezetté tenni?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Alapértelmezett URI társítás</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Mindig ellenőrizze, hogy az alkalmazás alapértelmezetten társítva van a valuta URI-jaihoz</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Ne kérdezd meg többé</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Kérlek, adj meg egy címet!</value>
+  </data>
 </root>

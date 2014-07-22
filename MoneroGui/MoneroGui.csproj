@@ -45,7 +45,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -80,6 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
+    <Compile Include="Objects\SingleInstance.cs" />
+    <Compile Include="Objects\QrUriParameters.cs" />
+    <Compile Include="Objects\XAML-related\ConverterNullableUlongToUriPartString.cs" />
+    <Compile Include="Objects\XAML-related\ConverterUriPartArrayToUriString.cs" />
+    <Compile Include="Objects\XAML-related\ConverterStringToUriPartString.cs" />
     <Compile Include="Objects\XAML-related\ConverterCoinDisplayValueToNullableDisplayValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -125,6 +130,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.nl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.no.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.no.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.pl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.pl.Designer.cs</LastGenOutput>
@@ -148,6 +157,10 @@
     <EmbeddedResource Include="Properties\Resources.sr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.sr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.sv.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.sv.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.zh.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -203,6 +216,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.nl.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.no.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.no.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.pl.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +245,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.sr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.sv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.sv.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.zh.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -298,6 +321,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MessageBoxEx.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -403,6 +430,9 @@
     </Compile>
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MessageBoxEx.xaml.cs">
+      <DependentUpon>MessageBoxEx.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddressBookEditWindow.xaml.cs">
       <DependentUpon>AddressBookEditWindow.xaml</DependentUpon>

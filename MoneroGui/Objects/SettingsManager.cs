@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
-        private const ulong SettingsVersionLatest = 2;
+        private const ulong SettingsVersionLatest = 3;
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 5000000000;
@@ -137,6 +137,13 @@ namespace Jojatekok.MoneroGUI
         {
             IsAutoSaveEnabled = false;
 
+            if (oldConfigurationVersion < 3) {
+                Paths.SoftwareMiner = null;
+            } else {
+                IsAutoSaveEnabled = true;
+                return;
+            }
+
             if (oldConfigurationVersion < 2) {
                 if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
                     General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
@@ -177,6 +184,15 @@ namespace Jojatekok.MoneroGUI
             public ConfigSectionGeneral()
             {
                 this.SetDefaultSectionInformation();
+            }
+
+            [ConfigurationProperty("isUriAssociationCheckEnabled", DefaultValue = true)]
+            public bool IsUriAssociationCheckEnabled {
+                get { return (bool)base["isUriAssociationCheckEnabled"]; }
+                set {
+                    base["isUriAssociationCheckEnabled"] = value;
+                    AutoSaveSettings();
+                }
             }
 
             [ConfigurationProperty("isStartableOnSystemLogin", DefaultValue = false)]
@@ -282,9 +298,8 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareMiner", DefaultValue = ApiPathSettings.DefaultSoftwareMiner)]
-            public string SoftwareMiner {
-                get { return base["softwareMiner"] as string; }
+            [ConfigurationProperty("softwareMiner", DefaultValue = null)]
+            protected internal string SoftwareMiner {
                 set {
                     base["softwareMiner"] = value;
                     AutoSaveSettings();
