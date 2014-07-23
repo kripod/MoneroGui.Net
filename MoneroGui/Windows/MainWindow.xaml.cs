@@ -68,7 +68,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 var argument = arguments[i];
                 var argumentLower = argument.ToLower(Helper.InvariantCulture);
 
-                if (argumentLower.StartsWith(QrUriParameters.ProtocolPreTag)) {
+                if (argumentLower.StartsWith(QrUriParameters.ProtocolPreTag + ":", StringComparison.Ordinal)) {
                     uriToOpen = argument;
                     continue;
                 }
@@ -107,11 +107,11 @@ namespace Jojatekok.MoneroGUI.Windows
 #endif
 
                 if (uriToOpen != null) {
-                    Task.Factory.StartNew(() => OpenProtocolUri(uriToOpen));
+                    OpenProtocolUri(uriToOpen);
                 }
 
                 if (SettingsManager.General.IsUriAssociationCheckEnabled) {
-                    Task.Factory.StartNew(CheckUriAssociation);
+                    Dispatcher.BeginInvoke(new Action(CheckUriAssociation));
                 }
             };
         }
@@ -130,7 +130,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 try {
                     // Compare the application's version with the latest one
                     var latestVersionString = webClient.DownloadString(new Uri("https://jojatekok.github.io/monero-client-net/version.txt", UriKind.Absolute));
-                    //if (new Version(latestVersionString + ".0").CompareTo(StaticObjects.ApplicationVersion) <= 0) return;
+                    if (new Version(latestVersionString + ".0").CompareTo(StaticObjects.ApplicationVersion) <= 0) return;
                     
                     var applicationBaseDirectory = StaticObjects.ApplicationBaseDirectory;
 
@@ -175,7 +175,7 @@ namespace Jojatekok.MoneroGUI.Windows
                     }.Start();
 
                 } catch {
-                    Dispatcher.Invoke(() => this.ShowError(Properties.Resources.MainWindowUpdateError));
+                    Dispatcher.BeginInvoke(new Action(() => this.ShowError(Properties.Resources.MainWindowUpdateError)));
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             var firstUriPart = uriParts[0] as string;
             Debug.Assert(firstUriPart != null, "firstUriPart != null");
-            var address = firstUriPart.Substring(QrUriParameters.ProtocolPreTag.Length);
+            var address = firstUriPart.Substring(QrUriParameters.ProtocolPreTag.Length + 1);
 
             string paymentId = null;
             ulong amount = 0;
@@ -264,7 +264,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             // Don't show empty URI requests
-            if (paymentDetailsSummary == string.Empty) return;
+            if (paymentDetailsSummary.Length == 0) return;
 
             Dispatcher.BeginInvoke(new Action(() => {
                 // Ask the user whether opening the URI is wanted
@@ -305,15 +305,15 @@ namespace Jojatekok.MoneroGUI.Windows
                             }
 
                             // The current application is not the default handler of URIs
-                            switch (Dispatcher.Invoke(() => MessageBoxEx.Show(
+                            switch (MessageBoxEx.Show(
                                 this,
                                 Properties.Resources.MainWindowUriAssociationQuestionTitle,
-                                string.Format(Helper.InvariantCulture, Properties.Resources.MainWindowUriAssociationQuestionMessage, QrUriParameters.ProtocolPreTag),
+                                string.Format(Helper.InvariantCulture, Properties.Resources.MainWindowUriAssociationQuestionMessage, QrUriParameters.ProtocolPreTag + ":"),
                                 SystemIcons.Question,
                                 Properties.Resources.TextYes,
                                 Properties.Resources.TextNo,
                                 Properties.Resources.TextDoNotAskAgain
-                            ))) {
+                            )) {
                                 case 2:
                                     // No
                                     return;
@@ -326,7 +326,7 @@ namespace Jojatekok.MoneroGUI.Windows
                         }
 
                         // Register the currency's protocol
-                        subKeyMain.SetValue(null, "URL:Monero Protocol", RegistryValueKind.String);
+                        subKeyMain.SetValue(null, "URL:" + QrUriParameters.ProtocolPreTag.UppercaseFirst() + " Protocol", RegistryValueKind.String);
                         subKeyMain.SetValue("URL Protocol", string.Empty, RegistryValueKind.String);
                         subKeyCommand.SetValue(null, "\"" + applicationPath + "\" \"%1\"", RegistryValueKind.String);
                         using (var subKeyDefaultIcon = subKeyMain.CreateSubKey("DefaultIcon")) {
@@ -507,7 +507,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
-            Dispatcher.Invoke(() => {
+            Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
                     // Let the user set the wallet's passphrase for the first time
                     var dialog = new WalletChangePassphraseWindow(this, false);
@@ -524,7 +524,7 @@ namespace Jojatekok.MoneroGUI.Windows
                         MoneroClient.Wallet.Passphrase = dialog.Passphrase;
                     }
                 }
-            });
+            }));
         }
 
         private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)

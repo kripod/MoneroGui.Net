@@ -36,7 +36,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            return QrUriParameters.ProtocolPreTag + output;
+            return QrUriParameters.ProtocolPreTag + ":" + output;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

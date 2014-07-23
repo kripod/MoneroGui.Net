@@ -100,7 +100,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 if (value == TextBlockUriError.Text) return;
                 TextBlockUriError.Text = value;
 
-                if (value != string.Empty) {
+                if (value.Length > 0) {
                     // There is an error
                     ImageQrCode.Visibility = Visibility.Hidden;
                     TextBlockUriError.Visibility = Visibility.Visible;

@@ -48,9 +48,10 @@ namespace Jojatekok.MoneroGUI.Windows
             TextBlockNewPassphrase1.Text = baseNewPassphraseText + Properties.Resources.PunctuationColon;
             TextBlockNewPassphrase2.Text = string.Format(
                 Helper.InvariantCulture,
-                "{0} ({1}):",
+                "{0} ({1}){2}",
                 baseNewPassphraseText,
-                Properties.Resources.WalletChangePassphraseWindowAgain
+                Properties.Resources.WalletChangePassphraseWindowAgain,
+                Properties.Resources.PunctuationColon
             );
         }
 

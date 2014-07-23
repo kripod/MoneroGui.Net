@@ -356,7 +356,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             GC.SuppressFinalize(this);
         }
 
-        private void Dispose(bool disposing)
+        private new void Dispose(bool disposing)
         {
             if (disposing) {
                 TimerCheckRpcAvailability.Dispose();

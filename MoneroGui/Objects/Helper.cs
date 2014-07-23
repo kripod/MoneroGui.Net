@@ -399,7 +399,7 @@ namespace Jojatekok.MoneroGUI
         }
 
         [DllImport("user32.dll")]
-        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool EnableMenuItem(IntPtr hMenu, uint uIdEnableItem, uint uEnable);

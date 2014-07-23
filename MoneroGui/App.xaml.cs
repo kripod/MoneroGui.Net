@@ -77,7 +77,7 @@ namespace Jojatekok.MoneroGUI
             e.Handled = true;
         }
 
-        public bool SignalExternalCommandLineArgs(IList<string> args)
+        public void SignalExternalCommandLineArgs(IList<string> args)
         {
             var mainWindow = MainWindow as MainWindow;
             Debug.Assert(mainWindow != null, "mainWindow != null");
@@ -92,8 +92,6 @@ namespace Jojatekok.MoneroGUI
             if (args.Count > 1) {
                 mainWindow.OpenProtocolUri(args[1]);
             }
-
-            return true;
         }
     }
 }

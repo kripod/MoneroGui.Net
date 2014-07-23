@@ -2,7 +2,7 @@
 {
     static class QrUriParameters
     {
-        public const string ProtocolPreTag = "monero:";
+        public const string ProtocolPreTag = "monero";
 
         public const string Message = "tx_description";
         public const string PaymentId = "tx_payment_id";

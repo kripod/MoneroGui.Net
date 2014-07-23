@@ -76,9 +76,10 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void ButtonBrowseBackupsInExplorer_Click(object sender, RoutedEventArgs e)
         {
-            if (Directory.Exists(BaseBackupDirectory)) {
-                Process.Start(BaseBackupDirectory);
+            if (!Directory.Exists(BaseBackupDirectory)) {
+                Directory.CreateDirectory(BaseBackupDirectory);
             }
+            Process.Start(BaseBackupDirectory);
 
             this.SetFocusedElement(ListBoxBackups);
         }
