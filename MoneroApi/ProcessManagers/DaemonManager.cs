@@ -19,6 +19,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private static readonly string[] ProcessArgumentsDefault = { "--log-level 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
 
+        private Timer TimerCheckRpcAvailability { get; set; }
         private Timer TimerQueryNetworkInformation { get; set; }
         private Timer TimerSaveBlockchain { get; set; }
 
@@ -30,9 +31,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             private set {
                 _isRpcAvailable = value;
-                if (value && IsBlockchainSavable) {
-                    TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
-                }
+                if (!value) return;
+
+                TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
+                if (IsBlockchainSavable) TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
             }
         }
 
@@ -72,7 +74,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         internal DaemonManager(RpcWebClient rpcWebClient, PathSettings paths) : base(paths.SoftwareDaemon)
         {
-            OutputReceived += Process_OutputReceived;
+            Exited += Process_Exited;
 
             RpcWebClient = rpcWebClient;
 
@@ -87,6 +89,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
             }
 
+            TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
             TimerSaveBlockchain = new Timer(delegate { SaveBlockchain(); });
         }
@@ -94,6 +97,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public void Start()
         {
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+
+            // Constantly check for the RPC port's activeness
+            TimerCheckRpcAvailability.Change(TimerSettings.RpcCheckAvailabilityDueTime, TimerSettings.RpcCheckAvailabilityPeriod);
         }
 
         public void Stop()
@@ -107,10 +113,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Start();
         }
 
-        private void StartRpcServices()
+        private void CheckRpcAvailability()
         {
-            TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
-            IsRpcAvailable = true;
+            if (Helper.IsPortInUse(RpcWebClient.RpcSettings.UrlPortDaemon)) {
+                TimerCheckRpcAvailability.Stop();
+                IsRpcAvailable = true;
+            }
         }
 
         private void QueryNetworkInformation()
@@ -136,7 +144,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void SaveBlockchain()
         {
-            Send("save");
+            HttpGetData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
         }
 
         public BlockHeader GetBlockHeaderLast()
@@ -159,17 +167,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return null;
         }
 
-        private void Process_OutputReceived(object sender, string e)
+        private void Process_Exited(object sender, int e)
         {
-            var dataLower = e.ToLower(Helper.InvariantCulture);
+            IsRpcAvailable = false;
+            StopTimers();
+        }
 
-            if (dataLower.Contains("blockchain stored")) {
-                TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
-            }
-
-            if (dataLower.Contains("rpc server initialized")) {
-                StartRpcServices();
-            }
+        private void StopTimers()
+        {
+            TimerCheckRpcAvailability.Stop();
+            TimerQueryNetworkInformation.Stop();
+            TimerSaveBlockchain.Stop();
         }
 
         private T HttpGetData<T>(string command) where T : RpcResponse
@@ -208,16 +216,24 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             GC.SuppressFinalize(this);
         }
 
-        private new void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (disposing) {
+                TimerCheckRpcAvailability.Dispose();
+                TimerCheckRpcAvailability = null;
+
                 TimerQueryNetworkInformation.Dispose();
                 TimerQueryNetworkInformation = null;
 
                 TimerSaveBlockchain.Dispose();
                 TimerSaveBlockchain = null;
 
-                base.Dispose(true);
+                // Safe shutdown
+                if (IsRpcAvailable) {
+                    HttpGetData<RpcResponse>(HttpRpcCommands.DaemonExit);
+                }
+
+                base.Dispose();
             }
         }
     }

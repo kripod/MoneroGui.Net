@@ -9,13 +9,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<int> Exited;
 
         protected event EventHandler<string> OutputReceived;
-        protected event EventHandler<string> ErrorReceived;
 
         private Process Process { get; set; }
         private string Path { get; set; }
 
         private bool IsDisposing { get; set; }
-        protected bool IsProcessAlive {
+        private bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
         }
 
@@ -42,32 +41,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 Process.StartInfo.Arguments = string.Join(" ", arguments);
             }
 
-            Process.ErrorDataReceived += Process_ErrorDataReceived;
             Process.OutputDataReceived += Process_OutputDataReceived;
             Process.Exited += Process_Exited;
 
             Process.Start();
             StaticObjects.JobManager.AddProcess(Process);
-            Process.BeginErrorReadLine();
             Process.BeginOutputReadLine();
-        }
-
-        private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            var line = e.Data;
-            if (line == null) return;
-
-            if (OnLogMessage != null) OnLogMessage(this, line);
-            if (ErrorReceived != null) ErrorReceived(this, line);
-        }
-
-        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
-        {
-            var line = e.Data;
-            if (line == null) return;
-
-            if (OnLogMessage != null) OnLogMessage(this, line);
-            if (OutputReceived != null) OutputReceived(this, line);
         }
 
         public void Send(string input)
@@ -85,41 +64,41 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
+        private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            var line = e.Data;
+            if (line == null) return;
+
+            if (OnLogMessage != null) OnLogMessage(this, line);
+            if (OutputReceived != null) OutputReceived(this, line);
+        }
+
         private void Process_Exited(object sender, EventArgs e)
         {
             if (IsDisposing) return;
 
             Process.CancelOutputRead();
-            Process.CancelErrorRead();
 
             if (Exited != null) Exited(this, Process.ExitCode);
         }
 
-        public void Dispose(bool tryKillProcessSafely)
+        public void Dispose()
         {
-            Dispose(true, tryKillProcessSafely);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        public void Dispose()
-        {
-            Dispose(false);
-        }
-
-        private void Dispose(bool disposing, bool tryKillProcessSafely)
+        private void Dispose(bool disposing)
         {
             if (disposing && !IsDisposing) {
                 IsDisposing = true;
 
                 if (Process != null) {
-                    if (tryKillProcessSafely) {
-                        if (!Process.HasExited) {
-                            if (Process.Responding) {
-                                Send("exit");
-                                if (!Process.WaitForExit(300000)) Process.Kill();
-                            } else {
-                                Process.Kill();
-                            }
+                    if (!Process.HasExited) {
+                        if (Process.Responding) {
+                            if (!Process.WaitForExit(300000)) Process.Kill();
+                        } else {
+                            Process.Kill();
                         }
                     }
 

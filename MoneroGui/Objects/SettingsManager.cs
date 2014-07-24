@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
-        private const ulong SettingsVersionLatest = 3;
+        private const ulong SettingsVersionLatest = 4;
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 5000000000;
@@ -136,6 +136,13 @@ namespace Jojatekok.MoneroGUI
         private static void UpgradeFromVersion(ulong oldConfigurationVersion)
         {
             IsAutoSaveEnabled = false;
+
+            if (oldConfigurationVersion < 4) {
+                Paths.SoftwareWallet = Paths.SoftwareWallet.Replace("simplewallet.exe", "rpcwallet.exe");
+            } else {
+                IsAutoSaveEnabled = true;
+                return;
+            }
 
             if (oldConfigurationVersion < 3) {
                 Paths.SoftwareMiner = null;

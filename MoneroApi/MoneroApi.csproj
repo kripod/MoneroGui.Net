@@ -83,6 +83,7 @@
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetAddress.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetBalance.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\GetIncomingTransfers.cs" />
+    <Compile Include="RpcManagers\Wallet\Json\Requests\ExitWallet.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\SaveWallet.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Requests\SendTransfer.cs" />
     <Compile Include="RpcManagers\Wallet\Json\Responses\AddressValueContainer.cs" />
