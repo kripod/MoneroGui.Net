@@ -330,9 +330,9 @@ namespace Jojatekok.MoneroGUI
             MessageBoxEx.Show(window, Properties.Resources.TextInformation, message, SystemIcons.Information, Properties.Resources.TextOk);
         }
 
-        public static byte ShowQuestion(this Window window, string message, string title)
+        public static bool ShowQuestion(this Window window, string message, string title)
         {
-            return MessageBoxEx.Show(window, title, message, SystemIcons.Question, Properties.Resources.TextYes, Properties.Resources.TextNo);
+            return MessageBoxEx.Show(window, title, message, SystemIcons.Question, Properties.Resources.TextYes, Properties.Resources.TextNo) == 1;
         }
 
         public static void ShowWarning(this Window window, string message)

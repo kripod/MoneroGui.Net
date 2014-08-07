@@ -614,4 +614,13 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
     <value>Kérlek, adj meg egy címet!</value>
   </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>Az egyik címzett címe kereskedőoldalhoz tartozik. Szeretnéd megakadályozni a tranzakció elküldését fizetési azonosító nélkül?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Hiányzik a fizetési azonosító</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>A megadott fizetési azonosító érvénytelen.</value>
+  </data>
 </root>

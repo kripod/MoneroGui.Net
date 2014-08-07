@@ -2,6 +2,7 @@
 using Jojatekok.MoneroAPI.Settings;
 using Jojatekok.MoneroGUI.Windows;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Drawing;
@@ -21,6 +22,24 @@ namespace Jojatekok.MoneroGUI
         public const double CoinAtomicValueDivider = 1000000000000;
         public const string StringFormatCoinDisplayValue = "0.000000000000";
         public const string StringFormatCoinBalance = "{0:" + StringFormatCoinDisplayValue + "} {1}";
+
+        // TODO: Fetch this list from the web
+        public static readonly List<string> ListExchangeAddresses = new List<string> {
+            // Bittrex
+            "463tWEBn5XZJSxLU6uLQnQ2iY9xuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ",
+
+            // Bter
+            "47CunEQ4v8FPVNnw9mDgNZeaiSo6SVDydB3AZM341ZtdYpBYNmYeqhh4mpU1X6RSmgBTfC8xqaAtUGC2DArotyaKSz1LJyj",
+
+            // HitBTC
+            "45VChYXEMP6HhzHzkcZXdJWXazQNRqy8ZKM3zSTiovzbAbhM7P3zQsY3kFjtCNfX9x2Wy9NRRKcxv9M249hUV4bQG8uaD2c",
+
+            // MintPal
+            "46aaTzGffy6MmCsY7rQ5CdSAbpPHPj5xkf7yDdfDZSs9YWWEvFhSSkjdr2veqC44q8dt3q1egrLdnZ3oecB1JSMF856eDwb",
+
+            // Poloniex
+            "47sghzufGhJJDQEbScMCwVBimTuq6L5JiRixD8VeGbpjCTA12noXmi4ZyBZLc99e66NtnKff34fHsGRoyZk3ES1s1V4QVcB"
+        };
 
         public static readonly Brush BrushForegroundDefault = Brushes.Black;
         public static readonly Brush BrushForegroundWarning = Brushes.OrangeRed;

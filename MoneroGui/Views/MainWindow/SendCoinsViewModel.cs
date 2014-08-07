@@ -5,6 +5,8 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 {
     sealed class SendCoinsViewModel : INotifyPropertyChanged
     {
+        private static readonly ValidationRulePaymentId PaymentIdValidator = new ValidationRulePaymentId();
+
         private readonly ObservableCollectionEx<SendCoinsRecipient> _recipients = new ObservableCollectionEx<SendCoinsRecipient>();
         public ObservableCollectionEx<SendCoinsRecipient> Recipients {
             get { return _recipients; }
@@ -81,6 +83,11 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 _transactionFee = value;
                 OnPropertyChanged();
             }
+        }
+
+        public bool IsPaymentIdValid()
+        {
+            return PaymentIdValidator.Validate(PaymentId, Helper.InvariantCulture).IsValid;
         }
 
         private void UpdatePropertyIsSendingEnabled()

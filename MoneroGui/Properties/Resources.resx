@@ -614,4 +614,13 @@ The last received block was generated {3} ago.</value>
   <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
     <value>Please enter an address!</value>
   </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>One of the recipients' addresses belongs to an exchange. Do you want to cancel sending the transaction without a payment ID?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Payment ID missing</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>The payment ID you've specified is not valid.</value>
+  </data>
 </root>

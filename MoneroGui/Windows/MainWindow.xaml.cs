@@ -144,11 +144,11 @@ namespace Jojatekok.MoneroGUI.Windows
                     }
 
                     // Check whether the user wants to apply the new update now
-                    if (Dispatcher.Invoke(() => this.ShowQuestion(string.Format(
+                    if (!Dispatcher.Invoke(() => this.ShowQuestion(string.Format(
                         Helper.InvariantCulture,
                         Properties.Resources.MainWindowUpdateQuestionMessage,
                         latestVersionString
-                    ), Properties.Resources.MainWindowUpdateQuestionTitle)) != 1) {
+                    ), Properties.Resources.MainWindowUpdateQuestionTitle))) {
                         return;
                     }
                     
@@ -268,12 +268,12 @@ namespace Jojatekok.MoneroGUI.Windows
 
             Dispatcher.BeginInvoke(new Action(() => {
                 // Ask the user whether opening the URI is wanted
-                if (this.ShowQuestion(
+                if (!this.ShowQuestion(
                     Properties.Resources.MainWindowUriOpenQuestionMessage1 + Helper.NewLineString +
                     paymentDetailsSummary + Helper.NewLineString + Helper.NewLineString +
                     string.Format(Helper.InvariantCulture, Properties.Resources.MainWindowUriOpenQuestionMessage2, Properties.Resources.MainWindowSendCoins),
                     Properties.Resources.MainWindowUriOpenQuestionTitle
-                ) != 1) {
+                )) {
                     return;
                 }
 
@@ -509,6 +509,10 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
+                    // TODO: Resolve this issue
+                    this.ShowError("Wallets cannot be created by this release. Please use v0.38.1 for wallet file creation.");
+                    return;
+
                     // Let the user set the wallet's passphrase for the first time
                     var dialog = new WalletChangePassphraseWindow(this, false);
                     if (DisplayDialog(dialog) == true) {

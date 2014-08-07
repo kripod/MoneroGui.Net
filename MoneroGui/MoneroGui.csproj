@@ -86,6 +86,7 @@
     <Compile Include="Objects\XAML-related\ConverterUriPartArrayToUriString.cs" />
     <Compile Include="Objects\XAML-related\ConverterStringToUriPartString.cs" />
     <Compile Include="Objects\XAML-related\ConverterCoinDisplayValueToNullableDisplayValue.cs" />
+    <Compile Include="Objects\XAML-related\ValidationRulePaymentId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

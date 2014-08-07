@@ -112,6 +112,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             var recipients = ViewModel.Recipients;
             var recipientsCount = recipients.Count;
+            var isExchangeSendWithoutPaymentIdQuestionShowable = string.IsNullOrEmpty(ViewModel.PaymentId);
             var firstInvalidRecipient = -1;
 
             var recipientsList = new List<TransferRecipient>(recipientsCount);
@@ -125,6 +126,15 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                     firstInvalidRecipient = i;
 
                 } else if (firstInvalidRecipient < 0) {
+                    // Check whether the address belongs to an exchange
+                    if (isExchangeSendWithoutPaymentIdQuestionShowable  && StaticObjects.ListExchangeAddresses.Contains(recipient.Address)) {
+                        if (Window.GetWindow(Parent).ShowQuestion(Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionMessage, Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionTitle)) {
+                            this.SetFocusedElement(TextBoxPaymentId);
+                            return;
+                        }
+                        isExchangeSendWithoutPaymentIdQuestionShowable = false;
+                    }
+
                     Debug.Assert(recipient.Amount != null, "recipient.Amount != null");
                     recipientsList.Add(new TransferRecipient(recipient.Address, recipient.Amount.Value));
 
@@ -135,10 +145,16 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
 
             if (firstInvalidRecipient < 0) {
+                // Check for the validity of the payment ID
+                if (!ViewModel.IsPaymentIdValid()) {
+                    Window.GetWindow(Parent).ShowError(Properties.Resources.SendCoinsInvalidPaymentId);
+                    return;
+                }
+
                 // Initiate a new transaction
                 var isTransferSuccessful = StaticObjects.MoneroClient.Wallet.SendTransfer(
                     recipientsList,
-                    ViewModel.PaymentId,
+                    ViewModel.PaymentId.ToLower(Helper.InvariantCulture),
                     ViewModel.MixCount.Value,
                     ViewModel.TransactionFee.Value
                 );

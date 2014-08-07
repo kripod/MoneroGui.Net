@@ -110,7 +110,15 @@
 
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="14" LastChildFill="True">
             <TextBlock Text="{Binding Path=TextPaymentId, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 8 8"/>
-            <xctk:WatermarkTextBox Text="{Binding Path=PaymentId}" Watermark="{Binding Path=TextHintOptional, Source={StaticResource Resources}}" FontFamily="Lucida Console" Margin="0 0 0 8"/>
+            <xctk:WatermarkTextBox x:Name="TextBoxPaymentId" Watermark="{Binding Path=TextHintOptional, Source={StaticResource Resources}}" FontFamily="Lucida Console" Margin="0 0 0 8">
+                <xctk:WatermarkTextBox.Text>
+                    <Binding Path="PaymentId" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <objects:ValidationRulePaymentId ValidationStep="CommittedValue"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:WatermarkTextBox.Text>
+            </xctk:WatermarkTextBox>
         </DockPanel>
 
         <Button Grid.Row="3" Grid.Column="0" Click="ButtonAddRecipient_Click" Margin="0 0 8 0">
