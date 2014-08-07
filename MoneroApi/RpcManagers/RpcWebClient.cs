@@ -18,29 +18,15 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             RpcSettings = rpcSettings;
         }
 
-        public T HttpGetData<T>(RpcPortType portType, string command)
+        public T HttpPostData<T>(RpcPortType portType, string command)
         {
-            var jsonString = HttpQueryString(portType, "GET", command);
+            var jsonString = PostString(portType, command, null);
             var output = JsonSerializer.DeserializeObject<T>(jsonString);
 
             return output;
         }
 
-        public T HttpPostData<T>(RpcPortType portType, string command, HttpRpcRequest httpRpcRequest)
-        {
-            var jsonString = PostString(portType, command, JsonSerializer.SerializeObject(httpRpcRequest));
-            var output = JsonSerializer.DeserializeObject<T>(jsonString);
-
-            return output;
-        }
-
-        private string HttpQueryString(RpcPortType portType, string method, string relativeUrl)
-        {
-            var request = CreateHttpWebRequest(portType, method, relativeUrl);
-            return request.GetResponseString();
-        }
-
-        public T JsonQueryData<T>(RpcPortType portType, JsonRpcRequest jsonRpcRequest)
+        public T JsonPostData<T>(RpcPortType portType, JsonRpcRequest jsonRpcRequest)
         {
             var jsonString = PostString(portType, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
             var output = JsonSerializer.DeserializeObject<JsonRpcResponse<T>>(jsonString);
@@ -48,32 +34,20 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             return output.Result;
         }
 
-        public T JsonQueryData<T>(RpcPortType portType, string command)
-        {
-            return JsonQueryData<T>(portType, new JsonRpcRequest(command));
-        }
-
-        private HttpWebRequest CreateHttpWebRequest(RpcPortType portType, string method, string relativeUrl)
+        private string PostString(RpcPortType portType, string relativeUrl, string postData = null)
         {
             var request = WebRequest.CreateHttp(GetBaseUrl(portType) + relativeUrl);
-
-            request.Method = method;
+            request.Method = "POST";
             request.Timeout = Timeout.Infinite;
-            request.ReadWriteTimeout = Timeout.Infinite;
 
-            return request;
-        }
+            if (postData != null) {
+                request.ContentType = "application/json";
+                var postBytes = EncodingUtf8.GetBytes(postData);
+                request.ContentLength = postBytes.Length;
 
-        private string PostString(RpcPortType portType, string relativeUrl, string postData)
-        {
-            var request = CreateHttpWebRequest(portType, "POST", relativeUrl);
-            request.ContentType = "application/json";
-
-            var postBytes = EncodingUtf8.GetBytes(postData);
-            request.ContentLength = postBytes.Length;
-
-            using (var requestStream = request.GetRequestStream()) {
-                requestStream.Write(postBytes, 0, postBytes.Length);
+                using (var requestStream = request.GetRequestStream()) {
+                    requestStream.Write(postBytes, 0, postBytes.Length);
+                }
             }
 
             return request.GetResponseString();

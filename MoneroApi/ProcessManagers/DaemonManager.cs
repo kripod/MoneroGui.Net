@@ -1,5 +1,4 @@
 ﻿using Jojatekok.MoneroAPI.RpcManagers;
-using Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Http.Responses;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Requests;
 using Jojatekok.MoneroAPI.RpcManagers.Daemon.Json.Responses;
@@ -91,7 +90,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
-            TimerSaveBlockchain = new Timer(delegate { SaveBlockchain(); });
+            TimerSaveBlockchain = new Timer(delegate { RequestSaveBlockchain(); });
         }
 
         public void Start()
@@ -125,9 +124,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             TimerQueryNetworkInformation.Stop();
 
-            var output = HttpGetData<NetworkInformation>(HttpRpcCommands.DaemonGetInformation);
+            var output = HttpPostData<NetworkInformation>(HttpRpcCommands.DaemonGetInformation);
             if (output != null && output.BlockHeightTotal != 0) {
-                var blockHeaderLast = GetBlockHeaderLast();
+                var blockHeaderLast = QueryBlockHeaderLast();
                 if (blockHeaderLast != null) {
                     output.BlockTimeCurrent = blockHeaderLast.Timestamp;
 
@@ -142,14 +141,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerQueryNetworkInformation.StartOnce(TimerSettings.DaemonQueryNetworkInformationPeriod);
         }
 
-        private void SaveBlockchain()
+        public BlockHeader QueryBlockHeaderLast()
         {
-            HttpGetData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
-        }
-
-        public BlockHeader GetBlockHeaderLast()
-        {
-            var blockHeaderValueContainer = JsonQueryData<BlockHeaderValueContainer>(new GetBlockHeaderLast());
+            var blockHeaderValueContainer = JsonPostData<BlockHeaderValueContainer>(new QueryBlockHeaderLast());
             if (blockHeaderValueContainer != null) {
                 return blockHeaderValueContainer.Value;
             }
@@ -157,14 +151,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return null;
         }
 
-        public object GetTransactions(IList<string> transactionIds)
+        private void RequestSaveBlockchain()
         {
-            var transactions = HttpPostData<TransactionBlobList>(HttpRpcCommands.DaemonGetTransactions, new GetTransactions(transactionIds));
-            if (transactions != null) {
-                return transactions;
-            }
-
-            return null;
+            HttpPostData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
         }
 
         private void Process_Exited(object sender, int e)
@@ -180,9 +169,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerSaveBlockchain.Stop();
         }
 
-        private T HttpGetData<T>(string command) where T : RpcResponse
+        private T HttpPostData<T>(string command) where T : RpcResponse
         {
-            var output = RpcWebClient.HttpGetData<T>(RpcPortType.Daemon, command);
+            var output = RpcWebClient.HttpPostData<T>(RpcPortType.Daemon, command);
             if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
             }
@@ -190,19 +179,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return null;
         }
 
-        private T HttpPostData<T>(string command, HttpRpcRequest httpRpcRequest) where T : RpcResponse
+        private T JsonPostData<T>(JsonRpcRequest jsonRpcRequest) where T : RpcResponse
         {
-            var output = RpcWebClient.HttpPostData<T>(RpcPortType.Daemon, command, httpRpcRequest);
-            if (output != null && output.Status == RpcResponseStatus.Ok) {
-                return output;
-            }
-
-            return null;
-        }
-
-        private T JsonQueryData<T>(JsonRpcRequest jsonRpcRequest) where T : RpcResponse
-        {
-            var output = RpcWebClient.JsonQueryData<T>(RpcPortType.Daemon, jsonRpcRequest);
+            var output = RpcWebClient.JsonPostData<T>(RpcPortType.Daemon, jsonRpcRequest);
             if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
             }
@@ -230,7 +209,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
                 // Safe shutdown
                 if (IsRpcAvailable) {
-                    HttpGetData<RpcResponse>(HttpRpcCommands.DaemonExit);
+                    HttpPostData<RpcResponse>(HttpRpcCommands.DaemonExit);
                 }
 
                 base.Dispose();

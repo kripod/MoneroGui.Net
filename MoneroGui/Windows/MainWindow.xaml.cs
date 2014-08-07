@@ -557,15 +557,14 @@ namespace Jojatekok.MoneroGUI.Windows
 
             var balloonMessageExtra = string.Empty;
             if (transaction.Type == TransactionType.Unknown) {
-                balloonMessageExtra = Properties.Resources.TransactionsSpendable + Properties.Resources.PunctuationColon + " " +
-                                      Dispatcher.Invoke(() => ConverterBooleanToString.Provider.Convert(transaction.IsAmountSpendable, typeof(string), null, Helper.InvariantCulture)) + Helper.NewLineString;
+                balloonMessageExtra = Helper.NewLineString +
+                                      Properties.Resources.TransactionsSpendable + Properties.Resources.PunctuationColon + " " +
+                                      Dispatcher.Invoke(() => ConverterBooleanToString.Provider.Convert(transaction.IsAmountSpendable, typeof(string), null, Helper.InvariantCulture));
             }
 
             var amountDisplayValue = transaction.Amount / StaticObjects.CoinAtomicValueDivider;
-            var balloonMessage = Properties.Resources.TextAmount + Properties.Resources.PunctuationColon + " " + amountDisplayValue.ToString(StaticObjects.StringFormatCoinDisplayValue, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode + Helper.NewLineString +
-                                 balloonMessageExtra +
-                                 Helper.NewLineString +
-                                 Properties.Resources.TransactionsTransactionId + Properties.Resources.PunctuationColon + " " + transaction.TransactionId;
+            var balloonMessage = Properties.Resources.TextAmount + Properties.Resources.PunctuationColon + " " + amountDisplayValue.ToString(StaticObjects.StringFormatCoinDisplayValue, Helper.InvariantCulture) + " " + Properties.Resources.TextCurrencyCode +
+                                 balloonMessageExtra;
 
             Dispatcher.BeginInvoke(new Action(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info)));
         }

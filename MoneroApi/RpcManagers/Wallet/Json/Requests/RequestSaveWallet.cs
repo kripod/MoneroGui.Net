@@ -1,8 +1,8 @@
 ﻿namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
 {
-    public class ExitWallet : JsonRpcRequest
+    public class RequestSaveWallet : JsonRpcRequest
     {
-        public ExitWallet() : base("stop")
+        public RequestSaveWallet() : base("store")
         {
 
         }

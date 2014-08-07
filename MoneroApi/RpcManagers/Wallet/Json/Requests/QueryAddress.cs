@@ -1,8 +1,8 @@
 ﻿namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
 {
-    public class SaveWallet : JsonRpcRequest
+    public class QueryAddress : JsonRpcRequest
     {
-        public SaveWallet() : base("store")
+        public QueryAddress() : base("getaddress")
         {
 
         }
