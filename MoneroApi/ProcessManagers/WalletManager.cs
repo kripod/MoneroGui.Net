@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class WalletManager : BaseProcessManager, IBaseProcessManager, IDisposable
+    public class WalletManager : BaseRpcProcessManager, IDisposable
     {
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
@@ -27,27 +27,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private bool IsTransactionReceivedEventEnabled { get; set; }
         private bool IsStartForced { get; set; }
 
-        private Timer TimerCheckRpcAvailability { get; set; }
         private Timer TimerRefresh { get; set; }
         private Timer TimerSaveWallet { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
         private PathSettings PathSettings { get; set; }
         private DaemonManager Daemon { get; set; }
-
-        private bool _isRpcAvailable;
-        public bool IsRpcAvailable {
-            get { return _isRpcAvailable; }
-
-            private set {
-                _isRpcAvailable = value;
-                if (!value) return;
-
-                QueryAddress();
-                TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
-                TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
-            }
-        }
 
         private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
         private ObservableCollection<Transaction> TransactionsPrivate {
@@ -90,10 +75,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal WalletManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareWallet)
+        internal WalletManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareWallet, rpcWebClient, rpcWebClient.RpcSettings.UrlPortWallet)
         {
             OutputReceived += Process_OutputReceived;
-            Exited += Process_Exited;
+            RpcAvailabilityChanged += Process_RpcAvailabilityChanged;
 
             RpcWebClient = rpcWebClient;
             PathSettings = pathSettings;
@@ -101,7 +86,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
-            TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
             TimerRefresh = new Timer(delegate { RequestRefresh(); });
             TimerSaveWallet = new Timer(delegate { RequestSaveWallet(); });
         }
@@ -112,25 +96,25 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             ProcessArgumentsExtra = new List<string>(5) {
                 "--daemon-address " + rpcSettings.UrlHost + ":" + rpcSettings.UrlPortDaemon,
+                "--password \"" + Passphrase + "\"",
+                "--rpc-bind-port " + rpcSettings.UrlPortWallet
             };
 
+            if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
+                ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
+            }
+
             if (IsWalletKeysFileExistent) {
+                // Load existing wallet
                 ProcessArgumentsExtra.Add("--wallet-file \"" + PathSettings.FileWalletData + "\"");
 
-                // Enable RPC mode
-                ProcessArgumentsExtra.Add("--rpc-bind-port " + rpcSettings.UrlPortWallet);
-                if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
-                    ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
-                }
-
             } else {
+                // Create new wallet
                 var directoryWalletData = PathSettings.DirectoryWalletData;
 
                 if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
                 ProcessArgumentsExtra.Add("--generate-new-wallet \"" + PathSettings.FileWalletData + "\"");
             }
-
-            ProcessArgumentsExtra.Add("--password \"" + Passphrase + "\"");
         }
 
         public void Start()
@@ -163,10 +147,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             Debug.Assert(ProcessArgumentsExtra != null, "ProcessArgumentsExtra != null");
             StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
-
-            // <-- Constantly check for the RPC port's activeness -->
-
-            TimerCheckRpcAvailability.Change(TimerSettings.RpcCheckAvailabilityDueTime, TimerSettings.RpcCheckAvailabilityPeriod);
         }
 
         public void Stop()
@@ -178,14 +158,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             Stop();
             StartInternal();
-        }
-
-        private void CheckRpcAvailability()
-        {
-            if (Helper.IsPortInUse(RpcWebClient.RpcSettings.UrlPortWallet)) {
-                TimerCheckRpcAvailability.Stop();
-                IsRpcAvailable = true;
-            }
         }
 
         private void QueryAddress()
@@ -330,33 +302,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        private void Process_Exited(object sender, int e)
+        private void Process_RpcAvailabilityChanged(object sender, EventArgs e)
         {
-            IsRpcAvailable = false;
-            StopTimers();
-        }
+            if (IsRpcAvailable) {
+                QueryAddress();
+                TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
+                TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
 
-        private void StopTimers()
-        {
-            TimerCheckRpcAvailability.Stop();
-            TimerRefresh.Stop();
-            TimerSaveWallet.Stop();
-        }
-
-        private T JsonPostData<T>(JsonRpcRequest jsonRpcRequest) where T : class
-        {
-            var output = RpcWebClient.JsonPostData<T>(RpcPortType.Wallet, jsonRpcRequest);
-            var rpcResponse = output as RpcResponse;
-            if (rpcResponse == null || rpcResponse.Status == RpcResponseStatus.Ok) {
-                return output;
+            } else {
+                TimerRefresh.Stop();
+                TimerSaveWallet.Stop();
             }
-
-            return null;
-        }
-
-        private void JsonPostData(JsonRpcRequest jsonRpcRequest)
-        {
-            JsonPostData<object>(jsonRpcRequest);
         }
 
         public new void Dispose()
@@ -368,9 +324,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                TimerCheckRpcAvailability.Dispose();
-                TimerCheckRpcAvailability = null;
-
                 TimerRefresh.Dispose();
                 TimerRefresh = null;
 

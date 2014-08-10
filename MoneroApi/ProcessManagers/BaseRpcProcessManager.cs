@@ -1,25 +1,49 @@
-﻿using System;
+﻿using Jojatekok.MoneroAPI.RpcManagers;
+using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public abstract class BaseProcessManager : IDisposable
+    public abstract class BaseRpcProcessManager : IDisposable
     {
         public event EventHandler<string> OnLogMessage;
-        public event EventHandler<int> Exited;
 
+        protected event EventHandler RpcAvailabilityChanged;
         protected event EventHandler<string> OutputReceived;
+        protected event EventHandler<int> Exited;
 
         private Process Process { get; set; }
         private string Path { get; set; }
+        private RpcWebClient RpcWebClient { get; set; }
+        private ushort RpcPort { get; set; }
+
+        private Timer TimerCheckRpcAvailability { get; set; }
+
+        private bool _isRpcAvailable;
+        protected bool IsRpcAvailable {
+            get { return _isRpcAvailable; }
+
+            private set {
+                if (value == _isRpcAvailable) return;
+
+                _isRpcAvailable = value;
+                if (value) TimerCheckRpcAvailability.Stop();
+                if (RpcAvailabilityChanged != null) RpcAvailabilityChanged(this, EventArgs.Empty);
+            }
+        }
 
         private bool IsDisposing { get; set; }
         private bool IsProcessAlive {
             get { return Process != null && !Process.HasExited; }
         }
 
-        protected BaseProcessManager(string path) {
+        protected BaseRpcProcessManager(string path, RpcWebClient rpcWebClient, ushort rpcPort) {
             Path = path;
+            RpcWebClient = rpcWebClient;
+            RpcPort = rpcPort;
+
+            TimerCheckRpcAvailability = new Timer(delegate { CheckRpcAvailability(); });
         }
 
         protected void StartProcess(params string[] arguments)
@@ -47,6 +71,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Process.Start();
             StaticObjects.JobManager.AddProcess(Process);
             Process.BeginOutputReadLine();
+
+            // Constantly check for the RPC port's activeness
+            TimerCheckRpcAvailability.Change(TimerSettings.RpcCheckAvailabilityDueTime, TimerSettings.RpcCheckAvailabilityPeriod);
+        }
+
+        private void CheckRpcAvailability()
+        {
+            IsRpcAvailable = Helper.IsPortInUse(RpcPort);
         }
 
         public void Send(string input)
@@ -64,6 +96,32 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
+        protected T HttpPostData<T>(string command) where T : RpcResponse
+        {
+            var output = RpcWebClient.HttpPostData<T>(RpcPort, command);
+            if (output != null && output.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
+        }
+
+        protected T JsonPostData<T>(JsonRpcRequest jsonRpcRequest) where T : class
+        {
+            var output = RpcWebClient.JsonPostData<T>(RpcPort, jsonRpcRequest);
+            var rpcResponse = output as RpcResponse;
+            if (rpcResponse == null || rpcResponse.Status == RpcResponseStatus.Ok) {
+                return output;
+            }
+
+            return null;
+        }
+
+        protected void JsonPostData(JsonRpcRequest jsonRpcRequest)
+        {
+            JsonPostData<object>(jsonRpcRequest);
+        }
+
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
             var line = e.Data;
@@ -77,8 +135,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (IsDisposing) return;
 
+            IsRpcAvailable = false;
             Process.CancelOutputRead();
-
             if (Exited != null) Exited(this, Process.ExitCode);
         }
 
@@ -92,6 +150,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (disposing && !IsDisposing) {
                 IsDisposing = true;
+
+                TimerCheckRpcAvailability.Dispose();
+                TimerCheckRpcAvailability = null;
 
                 if (Process != null) {
                     if (!Process.HasExited) {

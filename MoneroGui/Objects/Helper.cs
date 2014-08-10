@@ -188,7 +188,7 @@ namespace Jojatekok.MoneroGUI
             return stringBuilder.ToString();
         }
 
-        internal static string DecodeUrl(string value)
+        public static string DecodeUrl(string value)
         {
             if (value == null) {
                 return null;

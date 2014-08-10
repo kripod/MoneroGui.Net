@@ -18,25 +18,25 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             RpcSettings = rpcSettings;
         }
 
-        public T HttpPostData<T>(RpcPortType portType, string command)
+        public T HttpPostData<T>(ushort port, string command)
         {
-            var jsonString = PostString(portType, command, null);
+            var jsonString = PostString(port, command);
             var output = JsonSerializer.DeserializeObject<T>(jsonString);
 
             return output;
         }
 
-        public T JsonPostData<T>(RpcPortType portType, JsonRpcRequest jsonRpcRequest)
+        public T JsonPostData<T>(ushort port, JsonRpcRequest jsonRpcRequest)
         {
-            var jsonString = PostString(portType, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
+            var jsonString = PostString(port, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
             var output = JsonSerializer.DeserializeObject<JsonRpcResponse<T>>(jsonString);
 
             return output.Result;
         }
 
-        private string PostString(RpcPortType portType, string relativeUrl, string postData = null)
+        private string PostString(ushort port, string relativeUrl, string postData = null)
         {
-            var request = WebRequest.CreateHttp(GetBaseUrl(portType) + relativeUrl);
+            var request = WebRequest.CreateHttp(GetBaseUrl(port) + relativeUrl);
             request.Method = "POST";
             request.Timeout = Timeout.Infinite;
 
@@ -53,19 +53,8 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             return request.GetResponseString();
         }
 
-        private string GetBaseUrl(RpcPortType portType)
+        private string GetBaseUrl(ushort port)
         {
-            ushort port;
-            switch (portType) {
-                case RpcPortType.Wallet:
-                    port = RpcSettings.UrlPortWallet;
-                    break;
-
-                default:
-                    port = RpcSettings.UrlPortDaemon;
-                    break;
-            }
-
             return "http://" + RpcSettings.UrlHost + ":" + port + "/";
         }
     }

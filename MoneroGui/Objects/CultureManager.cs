@@ -74,7 +74,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            supportedCultures = supportedCultures.OrderBy(x => x.TwoLetterISOLanguageName).ToList();
+            supportedCultures = supportedCultures.OrderBy(x => x.ThreeLetterWindowsLanguageName).ToList();
             supportedCultures.Insert(0, Helper.InvariantCulture);
             SupportedLanguageCultures = supportedCultures;
 
@@ -95,11 +95,11 @@ namespace Jojatekok.MoneroGUI
                     displayName = displayName.Substring(0, bracketIndex - 1);
                 }
 
-                var stringFormat = nativeName != displayName ? "[{0}] {1} ({2})" : "[{0}] {1}";
+                var stringFormat = nativeName != displayName ? "{0}	{1} ({2})" : "{0}	{1}";
                 supportedStrings[i] = string.Format(
                     Helper.InvariantCulture,
                     stringFormat,
-                    culture.TwoLetterISOLanguageName.ToUpper(Helper.InvariantCulture),
+                    culture.ThreeLetterWindowsLanguageName,
                     nativeName,
                     displayName
                 );
@@ -113,7 +113,7 @@ namespace Jojatekok.MoneroGUI
         {
             // Save settings
             if (!Equals(culture, Helper.InvariantCulture)) {
-                SettingsManager.Appearance.LanguageCode = culture.TwoLetterISOLanguageName;
+                SettingsManager.Appearance.LanguageCode = culture.ToString();
 
             } else {
                 SettingsManager.Appearance.LanguageCode = StaticObjects.DefaultLanguageCode;
@@ -121,7 +121,7 @@ namespace Jojatekok.MoneroGUI
             }
 
             // Apply changes only if necessary
-            if (culture.TwoLetterISOLanguageName == CurrentCulture.TwoLetterISOLanguageName) return;
+            if (culture.ToString() == CurrentCulture.ToString()) return;
             CurrentCulture = culture;
             ResourceProvider.Refresh();
 
