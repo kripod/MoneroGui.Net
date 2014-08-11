@@ -48,8 +48,9 @@ namespace Jojatekok.MoneroGUI
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
 
-        public static readonly Version ApplicationVersion = ApplicationAssemblyName.Version;
-        public static readonly string ApplicationVersionString = ApplicationVersion.ToString(3);
+        public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
+        public const string ApplicationVersionExtra = "beta.1";
+        public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);
         public static readonly ImageSource ApplicationIconImage = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location).ToImageSource();

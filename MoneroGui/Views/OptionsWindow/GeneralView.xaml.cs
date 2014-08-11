@@ -17,18 +17,24 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 
             // Load settings
             var generalSettings = SettingsManager.General;
-            CheckBoxIsUriAssociationCheckEnabled.IsChecked = generalSettings.IsUriAssociationCheckEnabled;
+            CheckBoxIsUpdateCheckEnabled.IsChecked = generalSettings.IsUpdateCheckEnabled;
+            CheckBoxIsUpdateCheckForTestBuildsEnabled.IsChecked = generalSettings.IsUpdateCheckForTestBuildsEnabled;
             CheckBoxIsStartableOnSystemLogin.IsChecked = generalSettings.IsStartableOnSystemLogin;
+            CheckBoxIsUriAssociationCheckEnabled.IsChecked = generalSettings.IsUriAssociationCheckEnabled;
             CheckBoxIsSafeShutdownEnabled.IsChecked = generalSettings.IsSafeShutdownEnabled;
         }
 
         public void ApplySettings()
         {
-            Debug.Assert(CheckBoxIsUriAssociationCheckEnabled.IsChecked != null, "CheckBoxIsUriAssociationCheckEnabled.IsChecked != null");
+            Debug.Assert(CheckBoxIsUpdateCheckEnabled.IsChecked != null, "CheckBoxIsUpdateCheckEnabled.IsChecked != null");
+            Debug.Assert(CheckBoxIsUpdateCheckForTestBuildsEnabled.IsChecked != null, "CheckBoxIsUpdateCheckForTestBuildsEnabled.IsChecked != null");
             Debug.Assert(CheckBoxIsStartableOnSystemLogin.IsChecked != null, "CheckBoxStartableOnSystemLogin.IsChecked != null");
+            Debug.Assert(CheckBoxIsUriAssociationCheckEnabled.IsChecked != null, "CheckBoxIsUriAssociationCheckEnabled.IsChecked != null");
             Debug.Assert(CheckBoxIsSafeShutdownEnabled.IsChecked != null, "CheckBoxSafeShutdownEnabled.IsChecked != null");
 
             var generalSettings = SettingsManager.General;
+            generalSettings.IsUpdateCheckEnabled = CheckBoxIsUpdateCheckEnabled.IsChecked.Value;
+            generalSettings.IsUpdateCheckForTestBuildsEnabled = CheckBoxIsUpdateCheckForTestBuildsEnabled.IsChecked.Value;
             generalSettings.IsUriAssociationCheckEnabled = CheckBoxIsUriAssociationCheckEnabled.IsChecked.Value;
             generalSettings.IsSafeShutdownEnabled = CheckBoxIsSafeShutdownEnabled.IsChecked.Value;
 

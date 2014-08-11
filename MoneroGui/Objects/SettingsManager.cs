@@ -193,11 +193,20 @@ namespace Jojatekok.MoneroGUI
                 this.SetDefaultSectionInformation();
             }
 
-            [ConfigurationProperty("isUriAssociationCheckEnabled", DefaultValue = true)]
-            public bool IsUriAssociationCheckEnabled {
-                get { return (bool)base["isUriAssociationCheckEnabled"]; }
+            [ConfigurationProperty("isUpdateCheckEnabled", DefaultValue = true)]
+            public bool IsUpdateCheckEnabled {
+                get { return (bool)base["isUpdateCheckEnabled"]; }
                 set {
-                    base["isUriAssociationCheckEnabled"] = value;
+                    base["isUpdateCheckEnabled"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("isUpdateCheckForTestBuildsEnabled", DefaultValue = false)]
+            public bool IsUpdateCheckForTestBuildsEnabled {
+                get { return (bool)base["isUpdateCheckForTestBuildsEnabled"]; }
+                set {
+                    base["isUpdateCheckForTestBuildsEnabled"] = value;
                     AutoSaveSettings();
                 }
             }
@@ -207,6 +216,15 @@ namespace Jojatekok.MoneroGUI
                 get { return (bool)base["isStartableOnSystemLogin"]; }
                 set {
                     base["isStartableOnSystemLogin"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("isUriAssociationCheckEnabled", DefaultValue = true)]
+            public bool IsUriAssociationCheckEnabled {
+                get { return (bool)base["isUriAssociationCheckEnabled"]; }
+                set {
+                    base["isUriAssociationCheckEnabled"] = value;
                     AutoSaveSettings();
                 }
             }

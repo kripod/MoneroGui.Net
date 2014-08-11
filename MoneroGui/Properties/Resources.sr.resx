@@ -583,4 +583,34 @@ The last received block was generated {3} ago.</value>
   <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
     <value>Nova verzija programa je raspoloživa</value>
   </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Dvaput kliknite za uvećanje!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Dvaput kliknite da skupite!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Primljen je zahtev za slanje uplate sa sledećim detaljima:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Želite li da se prebacite na karticu '{0}' ?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Želite li da otvorite ovu adresu?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>Aplikacija trenutno nije podrazumevana za otvaranje adrese '{0}'. Želite li da bude podrazumevana?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Podrazumevana asocijacija adrese</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Ne pitati ponovo</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Uvek proveriti da li je aplikacija podrazumevani rukovalac valutne adrese</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Unesite adresu!</value>
+  </data>
 </root>

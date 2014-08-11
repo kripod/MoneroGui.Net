@@ -584,4 +584,34 @@ Den siste blokk mottat ble generert {3} siden.</value>
   <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
     <value>Oppdatering tilgjengelig</value>
   </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Dobbeltklikk for å forstørre!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Dobbeltklikk for å minske!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>En forespørsel har blitt mottatt om å sende en betaling med følgende detaljer:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Ønsker du å navigere til '{0}' fanen?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Ønsker du å åpne denne URI?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>Denne applikasjonen er ikke satt som nåværende standard for å åpne '{0}' URIer. Ønsker du gjøre denne applikasjonen til standarden?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Standard URI assosiasjon</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Ikke spør igjen</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Sjekk alltid om applikasjonen er standard behandler for valutaens URIer</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Vennligst skriv inn en adresse!</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using Hardcodet.Wpf.TaskbarNotification;
+﻿using System.Collections.Generic;
+using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
 using Microsoft.Win32;
 using System;
@@ -101,7 +102,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 StartWallet();
 
 #if !DEBUG
-                if (isAutoUpdateEnabled) {
+                if (isAutoUpdateEnabled && SettingsManager.General.IsUpdateCheckEnabled) {
                     Task.Factory.StartNew(CheckForUpdates);
                 }
 #endif
@@ -129,8 +130,39 @@ namespace Jojatekok.MoneroGUI.Windows
             using (var webClient = new WebClient()) {
                 try {
                     // Compare the application's version with the latest one
-                    var latestVersionString = webClient.DownloadString(new Uri("https://jojatekok.github.io/monero-client-net/version.txt", UriKind.Absolute));
-                    if (new Version(latestVersionString + ".0").CompareTo(StaticObjects.ApplicationVersion) <= 0) return;
+                    var versionInfoString = webClient.DownloadString(new Uri("https://jojatekok.github.io/monero-client-net/version_info.txt", UriKind.Absolute));
+                    var versionInfoStringSplit = versionInfoString.Split(new[] { '\n', '	' });
+
+                    var versionInfo = new Dictionary<string, string>();
+                    for (var i = versionInfoStringSplit.Length - 1; i > 0; i -= 2) {
+                        versionInfo.Add(versionInfoStringSplit[i - 1], versionInfoStringSplit[i]);
+                    }
+
+                    string latestVersionString;
+
+                    if (!SettingsManager.General.IsUpdateCheckForTestBuildsEnabled) {
+                        // Check for stable releases
+                        latestVersionString = versionInfo["LatestVersionStable"];
+                        var latestVersionComparable = new Version(latestVersionString + ".0");
+                        if (latestVersionComparable.CompareTo(StaticObjects.ApplicationVersionComparable) <= 0) return;
+
+                    } else {
+                        // Check for experimental releases
+                        latestVersionString = versionInfo["LatestVersionTest"];
+                        var latestVersionStringSplit = latestVersionString.Split('-');
+                        var latestVersionComparable = new Version(latestVersionStringSplit[0] + ".0");
+                        var latestVersionExtra = latestVersionStringSplit[1];
+
+                        if (latestVersionComparable.CompareTo(StaticObjects.ApplicationVersionComparable) <= 0) {
+                            var latestVersionExtraSplit = latestVersionExtra.Split('.');
+                            var applicationVersionExtraSplit = StaticObjects.ApplicationVersionExtra.Split('.');
+                            if (latestVersionExtraSplit[0][0] <= applicationVersionExtraSplit[0][0] && byte.Parse(latestVersionExtraSplit[1]) <= byte.Parse(applicationVersionExtraSplit[1])) {
+                                return;
+                            }
+                        }
+                    }
+
+                    var releasesUrlBase = versionInfo["ReleasesUrlBase"];
                     
                     var applicationBaseDirectory = StaticObjects.ApplicationBaseDirectory;
 
@@ -140,7 +172,7 @@ namespace Jojatekok.MoneroGUI.Windows
                     // Check whether the update file has already been downloaded
                     if (!File.Exists(updatePath + ".zip")) {
                         var processorArchitectureString = Environment.Is64BitOperatingSystem ? "x64" : "x86";
-                        webClient.DownloadFile(new Uri("https://jojatekok.github.io/monero-client-net/binaries/" + processorArchitectureString + ".zip", UriKind.Absolute), updatePath + ".zip");
+                        webClient.DownloadFile(new Uri(string.Format(Helper.InvariantCulture, releasesUrlBase, latestVersionString, processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
                     }
 
                     // Check whether the user wants to apply the new update now
@@ -151,18 +183,20 @@ namespace Jojatekok.MoneroGUI.Windows
                     ), Properties.Resources.MainWindowUpdateQuestionTitle))) {
                         return;
                     }
-                    
+
                     // Extract the downloaded update
                     ZipFile.ExtractToDirectory(updatePath + ".zip", updatePath);
 
                     // Write a batch file which applies the update
                     using (var writer = new StreamWriter(applicationBaseDirectory + "Updater.bat")) {
                         var newLineString = Helper.NewLineString;
-                        writer.Write("XCOPY /S /V /Q /R /Y \"" + updateName + "\"" + newLineString +
-                                     "START \"\" \"" + StaticObjects.ApplicationAssemblyName.Name + ".exe\" -noupdate" + newLineString +
-                                     "RD /S /Q \"" + updateName + "\"" + newLineString +
-                                     "DEL /F /Q \"" + updateName + ".zip\"" + newLineString +
-                                     "DEL /F /Q %0");
+                        writer.Write(
+                            "XCOPY /S /V /Q /R /Y \"" + updateName + "\"" + newLineString +
+                            "START \"\" \"" + StaticObjects.ApplicationAssemblyName.Name + ".exe\" -noupdate" + newLineString +
+                            "RD /S /Q \"" + updateName + "\"" + newLineString +
+                            "DEL /F /Q \"" + updateName + ".zip\"" + newLineString +
+                            "DEL /F /Q %0"
+                        );
                     }
 
                     Dispatcher.Invoke(Application.Current.Shutdown);

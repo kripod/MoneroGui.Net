@@ -623,4 +623,10 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
     <value>A megadott fizetési azonosító érvénytelen.</value>
   </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Frissítések keresése indításkor</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Kísérleti verziók keresésének engedélyezése</value>
+  </data>
 </root>

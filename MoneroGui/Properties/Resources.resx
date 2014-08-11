@@ -623,4 +623,10 @@ The last received block was generated {3} ago.</value>
   <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
     <value>The payment ID you've specified is not valid.</value>
   </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Check for updates on startup</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Allow checking for experimental builds</value>
+  </data>
 </root>

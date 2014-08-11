@@ -612,6 +612,24 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates on startup.
+        /// </summary>
+        public static string OptionsGeneralIsUpdateCheckEnabled {
+            get {
+                return ResourceManager.GetString("OptionsGeneralIsUpdateCheckEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow checking for experimental builds.
+        /// </summary>
+        public static string OptionsGeneralIsUpdateCheckForTestBuildsEnabled {
+            get {
+                return ResourceManager.GetString("OptionsGeneralIsUpdateCheckForTestBuildsEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check whether the application is the default handler of the currency&apos;s URIs.
         /// </summary>
         public static string OptionsGeneralIsUriAssociationCheckEnabled {

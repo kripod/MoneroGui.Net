@@ -584,4 +584,34 @@ O último bloco gerado foi recebido {3} atrás.</value>
   <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
     <value>Atualização disponível</value>
   </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Clique duas vezes para aumentar!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Clique duas vezes para diminuir!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Um requerimento foi recebido para o envio de um pagamento com os seguintes detalhes:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Deseja ir para aba '{0}'?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Deseja abrir esta URI?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>O programa atualmente não é o padrão para abertura de '{0}' URIs. Deseja torná-lo padrão?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Associação URI padrão</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Não pergunte novamente</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Sempre checar se o programa é o padrão para gerenciamento de URIs da moeda</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Por favor digite um endereço!</value>
+  </data>
 </root>
