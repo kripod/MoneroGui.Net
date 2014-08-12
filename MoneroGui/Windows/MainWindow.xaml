@@ -98,12 +98,12 @@
             </MenuItem>
 
             <MenuItem Header="{Binding Path=MenuSettings, Source={StaticResource Resources}}">
-                <MenuItem Header="{Binding Path=MenuEncryptWallet, Source={StaticResource Resources}}" Visibility="Collapsed">
+                <MenuItem Header="{Binding Path=MenuEncryptAccount, Source={StaticResource Resources}}" Visibility="Collapsed">
                     <MenuItem.Icon>
                         <controls:ImageGreyable Source="/Resources/Images/Key.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{Binding Path=MenuChangeWalletPassphrase, Source={StaticResource Resources}}" IsEnabled="False">
+                <MenuItem Header="{Binding Path=MenuChangeAccountPassphrase, Source={StaticResource Resources}}" IsEnabled="False">
                     <MenuItem.Icon>
                         <controls:ImageGreyable Source="/Resources/Images/Key.png"/>
                     </MenuItem.Icon>

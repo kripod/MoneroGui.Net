@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>バックアップマネージャ (_B)</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>ウォレットのパスフレーズの変更 (_C)</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>デバッグウィンドウ (_D)</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>ウォレットの暗号化... (_E)</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>終了</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>設定 (_S)</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>ウォレットをアンロックする... (_U)</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>イニシアライジング...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>未検証:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>ウォレット</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Moneroアドレスを入力してください</value>
@@ -311,21 +299,9 @@
   </data>
   <data name="OptionsPaths" xml:space="preserve">
     <value>パス</value>
-  </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>ウォレットのバックアップ:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>ウォレットのデータ:</value>
-  </data>
+  </data>\
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>デーモンのソフト:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>採掘のソフト:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>ウォレットのソフト:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>シャットダウンの時にデータベースをセーブする</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>実行可能のファイル (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>ウォレットのファイル (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>コンマで区切られたファイル (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@
   <data name="TextError" xml:space="preserve">
     <value>エラー</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>もう一度</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>今のパスフレーズ:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>ウォレットを安全にするためにパスフレーズを使ってください！</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(8個以上の単語か10個以上のランダムな文字を使ってください。)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>新しいパスフレーズ</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>パスフレーズ</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>ウォレットのパスフレーズ</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>ウォレットを暗号化する</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>パスフレーズが同じではありません。</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>ウォレットをアンロックする</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>ウォレットのアクセスのためにパスフレーズが必要です。</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>設定</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>シャットダウンを中断しないでください！</value>
@@ -482,9 +440,6 @@
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>初期値のパスにあるファイル</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>決定論的なウォレットのシード</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>これは一番安全な方法です。ストレージのためにＰＣが必要ではありません。</value>
   </data>
@@ -506,9 +461,6 @@
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>ディレクトリから...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>決定論的なウォレットのシードから...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>セレクションから...</value>
   </data>
@@ -520,11 +472,6 @@
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>バックアップマネージャ</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>ウォレットの安全なストレージを注意ください！
-
-他の人がアクセス出来たらお金を失う事になります。 </value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>取引を送信できませんでした。</value>
@@ -549,9 +496,6 @@
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>デーモンのポート:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>ウォレットのポート:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>ホスト:</value>

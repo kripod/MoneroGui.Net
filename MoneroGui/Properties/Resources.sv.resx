@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backuphanterare</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Ändra plånbokens lösenfras...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug fönster</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Kryptera plånbok...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Avsluta</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Inställningar</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Lås upp plånbok...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initierar...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Okonfirmerat:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Plånbok</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Skriv in en Monero adress</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Sökvägar</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Plånboksbackuper:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Plånboksdata:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemonmjukvara:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner mjukvara:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Plånboksmjukvara:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Spara databaser innan nedstängning</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Exekverbara (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Plånboksfiler (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Kommaseparerad fil (*.csv)|*.csv</value>
@@ -407,38 +380,23 @@ Var vänlig försök att redusera längden av dina inputs!</value>
   <data name="TextError" xml:space="preserve">
     <value>Fel</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>igen</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Nuvarande lösenordsfras:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Använd en lösenordsfras för din plånbok för att hålla den säker!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Det är rekomenderat att använda minst 10 slumpmässiga tecken eller 8 ord.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Ny lösenordsfras</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Lösenordsfras</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Ändra plånbokens lösenordsfras</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Kryptera plånbok</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Den angivna lösenordsfrasen matchar inte.</value>
-  </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Lås upp plånbok</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Var vänlig skriv in din lösenordsfras för att få tillgång till din plånbok.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Inställningar</value>
@@ -482,9 +440,6 @@ Var vänlig försök att redusera längden av dina inputs!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Som en fil, vid standard sökväg</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Som en deterministisk plånboks seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Denna metoden är den säkraste och den kräver inte ens en dator för förvaring</value>
   </data>
@@ -506,9 +461,6 @@ Var vänlig försök att redusera längden av dina inputs!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Från mapp...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Från deterministisk plånboks-seed...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Från markering</value>
   </data>
@@ -520,11 +472,6 @@ Var vänlig försök att redusera längden av dina inputs!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Backuphanterare</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Vänligen var EXTREMT FÖRSIKTIG när det gäller förvaring av plånboksdata!
-
-Ingen annan borde ha möjlighet att få tillgång till dom, eftersom det skulle leda till att dina pengar blir kompromitterade.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transaktionen kunde inte bli skickad.</value>
@@ -549,9 +496,6 @@ Ingen annan borde ha möjlighet att få tillgång till dom, eftersom det skulle 
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Daemonport:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Plånboksport:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Värd:</value>

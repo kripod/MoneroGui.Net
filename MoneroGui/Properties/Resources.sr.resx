@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Menadžer rezervne kopije</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Promenite šifru novčanika...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug prozor</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Šifrovanje novčanika...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Izlaz</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Podešavanja</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Otključavanje novčanika...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicijalizacija...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Nepotvrđeno:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Novčanik</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Unesite Monero adresu</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Putanje</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Rezervne kopije novčanika:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Podaci novčanika:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Servisni softver:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Rudarski softver:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Novčanik softver:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Izvršni (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Fajl novčanika (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Fajl sa odvajajućim zarezima (*.csv)|*.csv</value>
@@ -407,38 +380,23 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="TextError" xml:space="preserve">
     <value>Greška</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>ponovo</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Sadašnja šifra:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Šifrujte novčanik kako bi bio siguran!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Preporučuje se korišćenje najmanje 10 slučajnih karaktera ili 8 reči.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nova šifra</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Šifra</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Promena šifre novčanika</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Šifrovanje novčanika</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Šifre se ne poklapaju</value>
-  </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Otključaj novčanik</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Unesite šifru kako biste pristupili novčaniku.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opcije</value>
@@ -482,9 +440,6 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Kao fajl, na podrazumevanoj lokaciji</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Kao determinisani seed novčanika</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ovaj metod je najsigurniji i čak ne zahteva komjuter za skladištenje</value>
   </data>
@@ -506,9 +461,6 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Iz direktorijuma...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Iz determinisanog seed-a novčanika...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Iz selekcije</value>
   </data>
@@ -520,10 +472,6 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Menadžer rezervnih kopija</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Molimo vas da budete EKSTREMNO OPREZNI sa skladištenjem podataka novčanika!
-Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš novac.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transakcija ne može biti poslata.</value>
@@ -548,9 +496,6 @@ Niko drugi ne bi trebalo da može da im pristupi, jer to može ugroziti vaš nov
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Demon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Wallet port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>

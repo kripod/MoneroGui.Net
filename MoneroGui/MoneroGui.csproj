@@ -166,6 +166,7 @@
     <EmbeddedResource Include="Properties\Resources.zh.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.zh.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.af.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -361,11 +362,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WalletChangePassphraseWindow.xaml">
+    <Page Include="Windows\AccountChangePassphraseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WalletUnlockWindow.xaml">
+    <Page Include="Windows\AccountUnlockWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -459,11 +460,11 @@
     <Compile Include="Windows\QrCodeWindow.xaml.cs">
       <DependentUpon>QrCodeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WalletChangePassphraseWindow.xaml.cs">
-      <DependentUpon>WalletChangePassphraseWindow.xaml</DependentUpon>
+    <Compile Include="Windows\AccountChangePassphraseWindow.xaml.cs">
+      <DependentUpon>AccountChangePassphraseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WalletUnlockWindow.xaml.cs">
-      <DependentUpon>WalletUnlockWindow.xaml</DependentUpon>
+    <Compile Include="Windows\AccountUnlockWindow.xaml.cs">
+      <DependentUpon>AccountUnlockWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

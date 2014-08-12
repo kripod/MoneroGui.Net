@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Gestionnaire de sauvegarde.</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Modification de la clef secrète du portefeuille...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Fenêtre de Débogage</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Encrypter le portefeuille</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Quitter</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Configurations</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Débloquer le portefeuille...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialisation...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Non confirmé:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Portefeuille</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Entrer une adresse Monero</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Chemins</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Sauvegardes du portefeuille:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Données du portefeuille</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Logiciel de minage:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Logiciel du portefeuille:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sauvegarder la base de données avant d'éteindre</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Exécutables (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Fichiers portefeuille (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Fichier séparateur point virgule (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@ S.V.P. Essayer de réduire la longueur de la saisie. </value>
   <data name="TextError" xml:space="preserve">
     <value>Erreur</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>encore</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Clef secrète du portefeuille:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Utiliser une clef secrète pour votre portefeuille afin de le garder en sécurité!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Il est recommandé d'utiliser au moins 10 caractères aléatoires ou 8 mots.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nouvelle clef secrète</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Clef secrète</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Modifier la clef secrète du portefeuille</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Crypter le portefeuille</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Les deux clefs secrètes ne correspondent pas.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Déverrouillage du portefeuille</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Entrer votre clef secrète afin d’accéder au portefeuille.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Options</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>N'interrompez pas ce processus!</value>
@@ -482,9 +440,6 @@ S.V.P. Essayer de réduire la longueur de la saisie. </value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Comme un fichier, a son emplacement par défaut</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Comme un portefeuille déterministe</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Cette méthode est sure, et ne requière pas d'ordinateur pour la stocker</value>
   </data>
@@ -506,9 +461,6 @@ S.V.P. Essayer de réduire la longueur de la saisie. </value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Depuis un répertoire...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>D'un portefeuille déterministe...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>De la sélection</value>
   </data>
@@ -520,11 +472,6 @@ S.V.P. Essayer de réduire la longueur de la saisie. </value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Gestionnaire de sauvegarde</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Soyez prudent sur la sauvegarde de votre portefeuille!
-
-Une personne y ayant accès pourrais se servir de celui ci.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>La transaction n'a pas pu être envoyer.</value>
@@ -549,9 +496,6 @@ Une personne y ayant accès pourrais se servir de celui ci.</value>
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Port du Daemon:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Port du portefeuille:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Hôte:</value>

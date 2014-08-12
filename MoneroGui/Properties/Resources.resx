@@ -159,14 +159,14 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup manager</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Change wallet passphrase...</value>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>_Change account passphrase...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug window</value>
   </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Encrypt wallet...</value>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>_Encrypt account...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Exit</value>
@@ -186,8 +186,8 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Settings</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Unlock wallet...</value>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>_Unlock account...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initializing...</value>
@@ -204,8 +204,8 @@
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Unconfirmed:</value>
   </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Wallet</value>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Account</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Enter a Monero address</value>
@@ -312,20 +312,17 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Paths</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Wallet backups:</value>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Account backups:</value>
   </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Wallet data:</value>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Account data:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon software:</value>
   </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Wallet software:</value>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Account software:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Save databases before shutdown</value>
@@ -342,8 +339,8 @@
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Executables (*.exe)|*.exe</value>
   </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Wallet files (*.bin)|*.bin</value>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Account files (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Comma separated file (*.csv)|*.csv</value>
@@ -407,38 +404,38 @@ Please try to reduce the length of your inputs!</value>
   <data name="TextError" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>again</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Current passphrase:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Use a passphrase for your wallet in order to keep it safe!</value>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Use a passphrase for your account in order to keep it safe!</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(It's recommended to use at least 10 random characters or 8 words.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>New passphrase</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Passphrase</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Change wallet passphrase</value>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Change account passphrase</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Encrypt wallet</value>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Encrypt account</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>The supplied passphrases do not match.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Unlock wallet</value>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Unlock account</value>
   </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Please enter your passphrase in order to access your wallet.</value>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Please enter your passphrase in order to access your account.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Options</value>
@@ -483,7 +480,7 @@ Please try to reduce the length of your inputs!</value>
     <value>As a file, at the default location</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>As a deterministic wallet seed</value>
+    <value>As a deterministic account seed</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>This method is the safest, and it doesn't even require a computer for storage</value>
@@ -507,7 +504,7 @@ Please try to reduce the length of your inputs!</value>
     <value>From directory...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>From deterministic wallet seed...</value>
+    <value>From deterministic account seed...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>From selection</value>
@@ -522,7 +519,7 @@ Please try to reduce the length of your inputs!</value>
     <value>Backup manager</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Please be EXTREMELY CAREFUL about storing your wallet data!
+    <value>Please be EXTREMELY CAREFUL about storing your account data!
 
 No one else should be able to access them, as this would cause your money to be compromised.</value>
   </data>
@@ -550,8 +547,8 @@ No one else should be able to access them, as this would cause your money to be 
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Daemon port:</value>
   </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Wallet port:</value>
+  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
+    <value>Account manager port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>
@@ -628,5 +625,8 @@ The last received block was generated {3} ago.</value>
   </data>
   <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
     <value>Allow checking for experimental builds</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Account manager</value>
   </data>
 </root>

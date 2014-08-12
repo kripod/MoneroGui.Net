@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Менеджер резервных копий</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Изменить пароль бумажника...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Окно отладки</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Зашифровать бумажник...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Выход</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Настройки</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Разблокировать бумажник</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Инициализация...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Не подтверждено:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Бумажник</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Ведите адрес получателя</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Пути к файлам</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Резервные копии бумажника:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Файл бумажника:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Путь к демону:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Путь к майнеру:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Путь к кошелю:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Сохранить данные перед выходом</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Исполняемые файлы (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Файлы бумажника (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Файлы через запятую  (*.csv)|*.csv</value>
@@ -405,41 +378,26 @@
   <data name="TextError" xml:space="preserve">
     <value>Ошибка</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>снова</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Текущий пароль:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Используйте ключевую фразу для вашего бумажника, чтобы держать его в безопасности!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Рекомендуется использовать как минимум 10 случайных символов или 8 слов.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Новый пароль</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Пароль</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Изменить пароль бумажника</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Зашифровать бумажник</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Введенные пароли не совпадают.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Разблокировать бумажник</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Пожалуйста введите пароль для доступа к вашему бумажнику.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Настройки</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Пожалуйста не прерывайте этот процесс!</value>
@@ -480,9 +438,6 @@
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Как файл, расположенный по умолчанию</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Как семя детерминистического бумажника</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Этот метод самый безопасный, и даже не требует наличия компьютера для хранения</value>
   </data>
@@ -504,9 +459,6 @@
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Из папки...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Из семени детерминистического бумажника</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Из выделения</value>
   </data>
@@ -518,11 +470,6 @@
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Менеджер резервных копий</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Пожалуйста будьте предельно осторожны с хранением данных вашего бумажника.
-
-Ни у кого больше не должно быть к ним доступа, поскольку это может привести к возможности украсть ваши деньги.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Транзакция не может быть отправлена</value>
@@ -547,9 +494,6 @@
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Порт демона:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Порт бумажника</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Хост:</value>

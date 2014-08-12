@@ -49,7 +49,7 @@ namespace Jojatekok.MoneroGUI
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
 
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
-        public const string ApplicationVersionExtra = "beta.1";
+        public const string ApplicationVersionExtra = "beta.2";
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);
@@ -74,7 +74,7 @@ namespace Jojatekok.MoneroGUI
         public static MoneroClient MoneroClient { get; private set; }
 
         public static Logger LoggerDaemon { get; private set; }
-        public static Logger LoggerWallet { get; private set; }
+        public static Logger LoggerAccountManager { get; private set; }
 
         public static ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
 
@@ -83,17 +83,17 @@ namespace Jojatekok.MoneroGUI
             var storedPathSettings = SettingsManager.Paths;
             var pathSettings = new PathSettings {
                 DirectoryDaemonData = storedPathSettings.DirectoryDaemonData,
-                DirectoryWalletBackups = storedPathSettings.DirectoryWalletBackups,
-                FileWalletData = storedPathSettings.FileWalletData,
+                DirectoryAccountBackups = storedPathSettings.DirectoryAccountBackups,
+                FileAccountData = storedPathSettings.FileAccountData,
                 SoftwareDaemon = storedPathSettings.SoftwareDaemon,
-                SoftwareWallet = storedPathSettings.SoftwareWallet
+                SoftwareAccountManager = storedPathSettings.SoftwareAccountManager
             };
 
             var storedNetworkSettings = SettingsManager.Network;
             var rpcSettings = new RpcSettings(
                 storedNetworkSettings.RpcUrlHost,
                 storedNetworkSettings.RpcUrlPortDaemon,
-                storedNetworkSettings.RpcUrlPortWallet
+                storedNetworkSettings.RpcUrlPortAccountManager
             );
 
             // TODO: Add support for using proxies
@@ -106,7 +106,7 @@ namespace Jojatekok.MoneroGUI
             MoneroClient = new MoneroClient(pathSettings, rpcSettings);
 
             LoggerDaemon = new Logger();
-            LoggerWallet = new Logger();
+            LoggerAccountManager = new Logger();
 
             DataSourceAddressBook = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
             DataSourceAddressBook.CollectionChanged += DataSourceAddressBook_CollectionChanged;

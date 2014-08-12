@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
+namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests
 {
     public class SendTransferSplit : JsonRpcRequest<SendTransferSplitParameters>
     {

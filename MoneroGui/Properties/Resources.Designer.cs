@@ -106,6 +106,105 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to again.
+        /// </summary>
+        public static string AccountChangePassphraseWindowAgain {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current passphrase:.
+        /// </summary>
+        public static string AccountChangePassphraseWindowCurrentPassphrase {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowCurrentPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a passphrase for your account in order to keep it safe!.
+        /// </summary>
+        public static string AccountChangePassphraseWindowInstruction1 {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowInstruction1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (It&apos;s recommended to use at least 10 random characters or 8 words.).
+        /// </summary>
+        public static string AccountChangePassphraseWindowInstruction2 {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowInstruction2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New passphrase.
+        /// </summary>
+        public static string AccountChangePassphraseWindowNewPassphrase {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowNewPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passphrase.
+        /// </summary>
+        public static string AccountChangePassphraseWindowPassphrase {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowPassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied passphrases do not match..
+        /// </summary>
+        public static string AccountChangePassphraseWindowPassphrasesDoNotMatch {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowPassphrasesDoNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change account passphrase.
+        /// </summary>
+        public static string AccountChangePassphraseWindowTitleChangePassphrase {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowTitleChangePassphrase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encrypt account.
+        /// </summary>
+        public static string AccountChangePassphraseWindowTitleEncryptAccount {
+            get {
+                return ResourceManager.GetString("AccountChangePassphraseWindowTitleEncryptAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your passphrase in order to access your account..
+        /// </summary>
+        public static string AccountUnlockWindowInstruction {
+            get {
+                return ResourceManager.GetString("AccountUnlockWindowInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unlock account.
+        /// </summary>
+        public static string AccountUnlockWindowTitle {
+            get {
+                return ResourceManager.GetString("AccountUnlockWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy address.
         /// </summary>
         public static string AddressBookCopyAddress {
@@ -169,7 +268,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to As a deterministic wallet seed.
+        ///   Looks up a localized string similar to As a deterministic account seed.
         /// </summary>
         public static string BackupManagerNewBackupWindowSelectionAsSeed1 {
             get {
@@ -241,7 +340,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From deterministic wallet seed....
+        ///   Looks up a localized string similar to From deterministic account seed....
         /// </summary>
         public static string BackupManagerWindowFromSeed {
             get {
@@ -286,7 +385,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please be EXTREMELY CAREFUL about storing your wallet data!
+        ///   Looks up a localized string similar to Please be EXTREMELY CAREFUL about storing your account data!
         ///
         ///No one else should be able to access them, as this would cause your money to be compromised..
         /// </summary>
@@ -450,11 +549,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Change wallet passphrase....
+        ///   Looks up a localized string similar to _Change account passphrase....
         /// </summary>
-        public static string MenuChangeWalletPassphrase {
+        public static string MenuChangeAccountPassphrase {
             get {
-                return ResourceManager.GetString("MenuChangeWalletPassphrase", resourceCulture);
+                return ResourceManager.GetString("MenuChangeAccountPassphrase", resourceCulture);
             }
         }
         
@@ -468,11 +567,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Encrypt wallet....
+        ///   Looks up a localized string similar to _Encrypt account....
         /// </summary>
-        public static string MenuEncryptWallet {
+        public static string MenuEncryptAccount {
             get {
-                return ResourceManager.GetString("MenuEncryptWallet", resourceCulture);
+                return ResourceManager.GetString("MenuEncryptAccount", resourceCulture);
             }
         }
         
@@ -549,11 +648,11 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Unlock wallet....
+        ///   Looks up a localized string similar to _Unlock account....
         /// </summary>
-        public static string MenuUnlockWallet {
+        public static string MenuUnlockAccount {
             get {
-                return ResourceManager.GetString("MenuUnlockWallet", resourceCulture);
+                return ResourceManager.GetString("MenuUnlockAccount", resourceCulture);
             }
         }
         
@@ -675,20 +774,20 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account manager port:.
+        /// </summary>
+        public static string OptionsNetworkRpcUrlPortAccountManager {
+            get {
+                return ResourceManager.GetString("OptionsNetworkRpcUrlPortAccountManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daemon port:.
         /// </summary>
         public static string OptionsNetworkRpcUrlPortDaemon {
             get {
                 return ResourceManager.GetString("OptionsNetworkRpcUrlPortDaemon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallet port:.
-        /// </summary>
-        public static string OptionsNetworkRpcUrlPortWallet {
-            get {
-                return ResourceManager.GetString("OptionsNetworkRpcUrlPortWallet", resourceCulture);
             }
         }
         
@@ -702,6 +801,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account backups:.
+        /// </summary>
+        public static string OptionsPathsDirectoryAccountBackups {
+            get {
+                return ResourceManager.GetString("OptionsPathsDirectoryAccountBackups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daemon data:.
         /// </summary>
         public static string OptionsPathsDirectoryDaemonData {
@@ -711,20 +819,20 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallet backups:.
+        ///   Looks up a localized string similar to Account data:.
         /// </summary>
-        public static string OptionsPathsDirectoryWalletBackups {
+        public static string OptionsPathsFileAccountData {
             get {
-                return ResourceManager.GetString("OptionsPathsDirectoryWalletBackups", resourceCulture);
+                return ResourceManager.GetString("OptionsPathsFileAccountData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallet data:.
+        ///   Looks up a localized string similar to Account software:.
         /// </summary>
-        public static string OptionsPathsFileWalletData {
+        public static string OptionsPathsSoftwareAccountManager {
             get {
-                return ResourceManager.GetString("OptionsPathsFileWalletData", resourceCulture);
+                return ResourceManager.GetString("OptionsPathsSoftwareAccountManager", resourceCulture);
             }
         }
         
@@ -734,24 +842,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string OptionsPathsSoftwareDaemon {
             get {
                 return ResourceManager.GetString("OptionsPathsSoftwareDaemon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Miner software:.
-        /// </summary>
-        public static string OptionsPathsSoftwareMiner {
-            get {
-                return ResourceManager.GetString("OptionsPathsSoftwareMiner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallet software:.
-        /// </summary>
-        public static string OptionsPathsSoftwareWallet {
-            get {
-                return ResourceManager.GetString("OptionsPathsSoftwareWallet", resourceCulture);
             }
         }
         
@@ -1101,6 +1191,24 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        public static string TextAccount {
+            get {
+                return ResourceManager.GetString("TextAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account manager.
+        /// </summary>
+        public static string TextAccountManager {
+            get {
+                return ResourceManager.GetString("TextAccountManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string TextAddress {
@@ -1218,6 +1326,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account files (*.bin)|*.bin.
+        /// </summary>
+        public static string TextFilterAccountFiles {
+            get {
+                return ResourceManager.GetString("TextFilterAccountFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All files|*.
         /// </summary>
         public static string TextFilterAllFiles {
@@ -1250,15 +1367,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextFilterPngFiles {
             get {
                 return ResourceManager.GetString("TextFilterPngFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wallet files (*.bin)|*.bin.
-        /// </summary>
-        public static string TextFilterWalletFiles {
-            get {
-                return ResourceManager.GetString("TextFilterWalletFiles", resourceCulture);
             }
         }
         
@@ -1407,15 +1515,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wallet.
-        /// </summary>
-        public static string TextWallet {
-            get {
-                return ResourceManager.GetString("TextWallet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         public static string TextWarning {
@@ -1484,105 +1583,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TransactionTypeUnknown {
             get {
                 return ResourceManager.GetString("TransactionTypeUnknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to again.
-        /// </summary>
-        public static string WalletChangePassphraseWindowAgain {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowAgain", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current passphrase:.
-        /// </summary>
-        public static string WalletChangePassphraseWindowCurrentPassphrase {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowCurrentPassphrase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use a passphrase for your wallet in order to keep it safe!.
-        /// </summary>
-        public static string WalletChangePassphraseWindowInstruction1 {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowInstruction1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (It&apos;s recommended to use at least 10 random characters or 8 words.).
-        /// </summary>
-        public static string WalletChangePassphraseWindowInstruction2 {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowInstruction2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New passphrase.
-        /// </summary>
-        public static string WalletChangePassphraseWindowNewPassphrase {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowNewPassphrase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Passphrase.
-        /// </summary>
-        public static string WalletChangePassphraseWindowPassphrase {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowPassphrase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The supplied passphrases do not match..
-        /// </summary>
-        public static string WalletChangePassphraseWindowPassphrasesDoNotMatch {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowPassphrasesDoNotMatch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change wallet passphrase.
-        /// </summary>
-        public static string WalletChangePassphraseWindowTitleChangePassphrase {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowTitleChangePassphrase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Encrypt wallet.
-        /// </summary>
-        public static string WalletChangePassphraseWindowTitleEncryptWallet {
-            get {
-                return ResourceManager.GetString("WalletChangePassphraseWindowTitleEncryptWallet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter your passphrase in order to access your wallet..
-        /// </summary>
-        public static string WalletUnlockWindowInstruction {
-            get {
-                return ResourceManager.GetString("WalletUnlockWindowInstruction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unlock wallet.
-        /// </summary>
-        public static string WalletUnlockWindowTitle {
-            get {
-                return ResourceManager.GetString("WalletUnlockWindowTitle", resourceCulture);
             }
         }
     }

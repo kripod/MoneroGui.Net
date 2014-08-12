@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Sikkerhetskopi behandler</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Endre lommebok passord...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug vindu</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Krypter lommebok_</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Avslutt</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Instillinger</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Lås opp lommebok...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialiserer...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Ubekreftet:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Lommebok</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Skriv inn en Monero addresse</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Stier</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Lommebok sikkerhetskopier:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Lommebok data:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Lommebok software:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Lagre databaser før stengning</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value> Kjørbare (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Lommebok filer (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Komma separerte filer (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@ Prøv å redusere lengden på din input!</value>
   <data name="TextError" xml:space="preserve">
     <value>Feil</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>igjen</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Nåværende passord:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Bruk et passord for din lommebok for å gjøre den trygg!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Det er anbefalt å bruke minst 10 tilfeldige tegn eller 8 ord.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nytt passord</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Passord</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Endre lommebok passord</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Krypter lommebok</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>De inntastede passordene stemmer ikke overens.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Lås opp lommebok</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Skriv inn passord for å få tilgang til din lommebok</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Valgmuligheter</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Ikke avbryt denne prosessen!</value>
@@ -482,9 +440,6 @@ Prøv å redusere lengden på din input!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Som en fil, i standard plassering</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Som et deterministisk lommebok-seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Denne metoden er tryggest, og den krever ikke engang en datamaskin for lagring</value>
   </data>
@@ -506,9 +461,6 @@ Prøv å redusere lengden på din input!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Fra mappe...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Fra deterministik lommebook-seed...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Fra utvalg</value>
   </data>
@@ -520,11 +472,6 @@ Prøv å redusere lengden på din input!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Sikkerhetskopibehandler</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Vær EKSTREMT FORSIKTIG med å lagre lommebok-dataene!
-
-Ingen andre bør ha tilgang til dem da dette vil føre til at dine penger blir kompromittert.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transaksjonen kunne ikke bli sendt.</value>
@@ -549,9 +496,6 @@ Ingen andre bør ha tilgang til dem da dette vil føre til at dine penger blir k
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Daemon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Lommebok port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>

@@ -13,27 +13,27 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
 #endif
 
             var softwareFilter = Properties.Resources.TextFilterExecutableFiles + "|" + Properties.Resources.TextFilterAllFiles;
-            PathSelectorFileWalletData.Filter = Properties.Resources.TextFilterWalletFiles + "|" + Properties.Resources.TextFilterAllFiles;
+            PathSelectorFileAccountData.Filter = Properties.Resources.TextFilterAccountFiles + "|" + Properties.Resources.TextFilterAllFiles;
             PathSelectorSoftwareDaemon.Filter = softwareFilter;
-            PathSelectorSoftwareWallet.Filter = softwareFilter;
+            PathSelectorSoftwareAccountManager.Filter = softwareFilter;
 
             // Load settings
             var pathSettings = SettingsManager.Paths;
             PathSelectorDirectoryDaemonData.SelectedPath = pathSettings.DirectoryDaemonData;
-            PathSelectorFileWalletData.SelectedPath = pathSettings.FileWalletData;
-            PathSelectorDirectoryWalletBackups.SelectedPath = pathSettings.DirectoryWalletBackups;
+            PathSelectorFileAccountData.SelectedPath = pathSettings.FileAccountData;
+            PathSelectorDirectoryAccountBackups.SelectedPath = pathSettings.DirectoryAccountBackups;
             PathSelectorSoftwareDaemon.SelectedPath = pathSettings.SoftwareDaemon;
-            PathSelectorSoftwareWallet.SelectedPath = pathSettings.SoftwareWallet;
+            PathSelectorSoftwareAccountManager.SelectedPath = pathSettings.SoftwareAccountManager;
         }
 
         public void ApplySettings()
         {
             var pathSettings = SettingsManager.Paths;
             pathSettings.DirectoryDaemonData = PathSelectorDirectoryDaemonData.SelectedPath;
-            pathSettings.FileWalletData = PathSelectorFileWalletData.SelectedPath;
-            pathSettings.DirectoryWalletBackups = PathSelectorDirectoryWalletBackups.SelectedPath;
+            pathSettings.FileAccountData = PathSelectorFileAccountData.SelectedPath;
+            pathSettings.DirectoryAccountBackups = PathSelectorDirectoryAccountBackups.SelectedPath;
             pathSettings.SoftwareDaemon = PathSelectorSoftwareDaemon.SelectedPath;
-            pathSettings.SoftwareWallet = PathSelectorSoftwareWallet.SelectedPath;
+            pathSettings.SoftwareAccountManager = PathSelectorSoftwareAccountManager.SelectedPath;
         }
     }
 }

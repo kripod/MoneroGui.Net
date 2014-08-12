@@ -150,14 +150,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup manager</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Verander wachtwoord van de portemonnee</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug venster</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Versleutel portemonnee...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Afsluiten</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Instellingen</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Open portemonnee</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialiseren...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Onbevestigd:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Portemonnee</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Geef een Monero adres in</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Paden</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Portemonnee backups</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Portemonnee gegevens:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon programma:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner programma:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Portemonnee programma:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sla databases op vooraleer af te sluiten</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Executables (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Wallet bestanden (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Comma separated file (*.csv)|*.csv</value>
@@ -392,41 +365,26 @@ Probeer de lengte van uw inputs te verkleinen!</value>
   <data name="TextError" xml:space="preserve">
     <value>Fout</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>opnieuw</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Huidig wachtwoord:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Gebruik voor de veiligheid een wachtwoord voor uw portemonnee!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(het is aan te raden om op zijn minst 10 willekeurige karakters of 8 woorden te gebruiken)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nieuw wachtwoord</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Wachtwoord</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Verander wachtwoord</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Versleutel portemonnee</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>De ingegeven wachtwoorden komen niet overeen.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Open portemonnee</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Geef uw wachtwoord in om toegang te krijgen tot uw portemonnee.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Opties</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Verstoor dus proces aub niet!</value>
@@ -467,9 +425,6 @@ Probeer de lengte van uw inputs te verkleinen!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Als een ebstand, op de standaard plaats</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Als een deterministische wallet seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Deze methode is de veiligste, en je hebt zelfs geen computer nodig om het op te slaan</value>
   </data>
@@ -491,9 +446,6 @@ Probeer de lengte van uw inputs te verkleinen!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Van map...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Van deterministische wallet seed...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Van selectie</value>
   </data>
@@ -505,9 +457,5 @@ Probeer de lengte van uw inputs te verkleinen!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Backup manager</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Waas alstublieft EXTRA VOORZICHTIG met het opslaan van uw portemonnee data!
-Niemand anders zou er toegang tot mogen hebben, omdat uw geld dan kan gecompromitteerd worden.</value>
   </data>
 </root>

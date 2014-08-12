@@ -23,7 +23,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             InitializeComponent();
 
-            TextBlockDefaultBackupDirectory.Text = "(" + Path.GetFullPath(SettingsManager.Paths.DirectoryWalletBackups) + ")";
+            TextBlockDefaultBackupDirectory.Text = "(" + Path.GetFullPath(SettingsManager.Paths.DirectoryAccountBackups) + ")";
         }
 
         public BackupManagerNewBackupWindow(Window owner) : this()
@@ -34,14 +34,14 @@ namespace Jojatekok.MoneroGUI.Windows
         private async void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
             if (IsDefaultLocationSelected) {
-                BackupDirectory = await StaticObjects.MoneroClient.Wallet.BackupAsync();
+                BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync();
                 DialogResult = true;
 
             } else {
                 var dialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
 
                 if (dialog.ShowDialog() == true) {
-                    BackupDirectory = await StaticObjects.MoneroClient.Wallet.BackupAsync(dialog.SelectedPath);
+                    BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync(dialog.SelectedPath);
                     DialogResult = true;
                 }
             }

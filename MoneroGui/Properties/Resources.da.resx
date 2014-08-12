@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup manager</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Skift tegnebogs kodeord...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug vindue</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Krypter tegnebog</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Afslut</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Indstillinger</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Lås tegnebog op...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialiserer...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>ubekræftet:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Tegnebog</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Indsæt Monero adresse</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Stier</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Tegnebog sikkerhedskopier:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Tegnebog data:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Tegnebog software:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Gem databaser før lukning</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Programfiler (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Tegnebog filer (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Komma sepereret fil (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@ Prøv at reducere længden af ​​dit input!</value>
   <data name="TextError" xml:space="preserve">
     <value>Fejl</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>igen</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Nuværende kodeord:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Brug et kodeord til din tegnebog for at holde den sikker!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Det anbefales at bruge mindst 10 tilfældige tegn eller 8 ord.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nyt kodeord</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Kodeord</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Ændre tegnebogs kodeord</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Krypter tegnebog</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>De indtastede kodeord stemmer ikke over ens.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Lås tegnebog op</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Indtast kodeord for at få adgang til tegnebog.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Indstillinger</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Vær venlig ikke at afbryde denne proces!</value>
@@ -482,9 +440,6 @@ Prøv at reducere længden af ​​dit input!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Som en fil, på standard placeringen</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Som en deterministisk tegnebogs-seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Denne metode er den sikreste, og det kræver ikke engang en computer til opbevaring</value>
   </data>
@@ -506,9 +461,6 @@ Prøv at reducere længden af ​​dit input!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Fra bibliotek...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Fra deterministisk tegnebogs-seed</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Fra udvalg</value>
   </data>
@@ -520,11 +472,6 @@ Prøv at reducere længden af ​​dit input!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Backup manager</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Vær venligst yderst forsigtig med lagring af dine tegnebogsdata!
-
-Ingen andre skal kunne få adgang til dem, da dette vil medføre at dine penge bliver kompromitteret.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transaktionen kunne ikke gennemføres.</value>
@@ -549,9 +496,6 @@ Ingen andre skal kunne få adgang til dem, da dette vil medføre at dine penge b
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Daemon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Tegnebogs port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Vært:</value>

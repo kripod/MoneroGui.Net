@@ -150,14 +150,8 @@
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcie</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Zmeň heslo k peňaženke...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Ladiace okno</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Zašifruj peňaženku</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Ukonči program</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Nastavenia</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Odomknúť peňaženku</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializácia...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Nepotvrdené:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Peňaženka</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Zadaj Monero adresu</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Cesty</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Zálohy peňaženky:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Dáta peňaženky:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Softvér démona:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Softvér na mining:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Softvér peňaženky:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Ulož databázy pred ukončením</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Spustiteľné (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Súbory peňaženky (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Čiarkou oddelený súbor (*.csv)|*.csv</value>
@@ -392,37 +365,22 @@ Skúste zmenšit dlžku vášho vstupu!</value>
   <data name="TextError" xml:space="preserve">
     <value>Chyba</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>opäť</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Súčasné heslo:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Použite heslo pre peňazenku, tak aby bola v bezpečí!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Je odporúčané použiť aspon 10 náhodných znakov alebo 8 slov.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nové heslo</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Heslo</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Zmeň heslo k peňaženke</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Zašifruj peňaženku</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Zadané heslá sa líšia.</value>
-  </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Odomkni peňaženku</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Zadajte prosím heslo pre pre prístup k peňaženke.</value>
   </data>
 </root>

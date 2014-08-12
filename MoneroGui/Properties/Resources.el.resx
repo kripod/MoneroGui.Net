@@ -150,14 +150,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Διαχειριστής αρχείων ασφαλείας</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Αλλαγή κωδικού πορτοφολιού...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Παράθυρο αποσφαλμάτωσης</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Κρυπτογράφησε το πορτοφόλι...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Έξοδος</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_ρυθμίσεις</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Ξεκλείδωμα πορτοφολιού...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Προετοιμασία...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Ανεπιβεβαίωτα:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Πορτοφόλι</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Eισάγετε μία Μονέρο διεύθυνση</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Μονοπάτια</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Αρχεία ασφαλείας πορτοφολιού:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Δεδομένα πορτοφολιού:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Λογισμικό Daemon:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Λογισμικό εξόρυξης:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Λογισμικό πορτοφολιού:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Αποθήκευση βάσης δεδομένων πριν τον τερματισμό</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Αρχεία πορτοφολιού (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
@@ -392,41 +365,26 @@
   <data name="TextError" xml:space="preserve">
     <value>Σφάλμα</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>ξανά</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Τρέχων κωδικός:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Δώσε κωδικοό για το πορτοφόλι σου ώστε να είναι ασφαλές!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Δώστε τουλάχιστον 10 τυχαίους χαρακτήρες ή 8 λέξεις)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Νέος κωδικός</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Κωδικός</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Αλλαγή κωδικού πορτοφολιού</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Κρυπτογράφηση πορτοφολιού</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Ο κωδικός που δώσατε δεν ταιριάζει.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Ξεκλείδωμα πορτοφολιού</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Παρακαλώ δώστε κωδικό για να εισέλθετε στο πορτοφόλι.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Επιλογές</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Παρακαλώ μη διακόψετε αυτήν την διαδικασία!</value>
@@ -467,9 +425,6 @@
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Ως αρχείο, στην προεπιλεγμένη θέση</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Ως deterministic wallet seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Αυτή η μέθοδος είναι η ασφαλέστερη και δεν χρειάζεται ούτε υπολογιστή για να αποθηκευτεί</value>
   </data>
@@ -491,9 +446,6 @@
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Από τον κατάλογο...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Από deterministic wallet seed...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Από επιλογή</value>
   </data>
@@ -505,11 +457,6 @@
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Διαχειριστής αρχείων ασφαλείας</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Παρακαλώ να είστε ΕΞΑΙΡΕΤΙΚΑ ΠΡΟΣΕΧΤΙΚΟΙ κατά την αποθήκευση πορτοφολιών!
-
-Κανείς δεν θα πρέπει να έχει πρόσβαση σε αυτά, καθώς αυτό θέτει τα χρήματα σας σε κίνδυνο.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Η συναλλαγή δεν έχει αποσταλεί.</value>

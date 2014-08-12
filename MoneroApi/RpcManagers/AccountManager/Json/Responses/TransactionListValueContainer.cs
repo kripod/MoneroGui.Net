@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
+namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Responses
 {
     class TransactionListValueContainer : RpcResponse, IValueContainer<IList<Transaction>>
     {

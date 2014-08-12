@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses
+namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Responses
 {
     public class Balance
     {

@@ -150,14 +150,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Menedżer kopii zapasowych</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Zmień hasło portfela...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Okno debugowania</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Szyfruj portfel...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Wyjdź</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Ustawienia</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Odblokuj portfel...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicjowanie...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Niepotwierdzone:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Portfel</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Wpisz adres Monero</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Ścieżki</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Kopie zapasowe portfela:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Dane portfela:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Oprogramowanie demona:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Oprogramowanie kopiące:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Oprogramowanie portfela:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Zapisz bazy danych przed wyłączeniem</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Pliki wykonywalne (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Pliki portfela (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Plik rozdzielony przecinkami (*.csv)|*.csv</value>
@@ -391,41 +364,26 @@ Spróbuj go skrócić!</value>
   <data name="TextError" xml:space="preserve">
     <value>Błąd</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>ponownie</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Aktualne hasło:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Użyj hasła dla swojego portfela by zwiększyć bezpieczeństwo!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(zalecane jest używanie 10 przypadkowych znaków lub 8 słów.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nowe hasło</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Hasło</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Zmień hasło portfela</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Szyfruj portfel</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Wprowadzone hasła nie są zgodne.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Odblokuj portfel</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Wpisz hasło by uzyskać dostęp do portfela.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Opcje</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Nie przerywaj tego procesu!</value>
@@ -466,9 +424,6 @@ Spróbuj go skrócić!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Jako plik, w standardowej lokalizacji</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Jako odcisk portfela</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ta metoda jest najbezpieczniejsza oraz nie wymaga komputera do przechowywania danych</value>
   </data>
@@ -490,9 +445,6 @@ Spróbuj go skrócić!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Z folderu...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Z odcisku portfela...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Z wybranych</value>
   </data>
@@ -504,11 +456,6 @@ Spróbuj go skrócić!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Menedżer kopii zapasowych</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Zachowaj SZCZEGÓLNĄ ostrożność przy przechowywaniu plików swojego portfela!
-
-Nikt nie powinien mieć do nich dostępu. Może to zapobiec wykradzeniu Twoich środków.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transakcja nie mogła zostać wysłana.</value>

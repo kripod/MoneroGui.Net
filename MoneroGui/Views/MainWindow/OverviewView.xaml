@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel>
-            <TextBlock Text="{Binding Path=TextWallet, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 8"/>
+            <TextBlock Text="{Binding Path=TextAccount, Source={StaticResource Resources}}" FontSize="15" TextDecorations="Underline" Margin="0 0 0 8"/>
 
             <Grid Margin="20 0 0 0">
                 <Grid.ColumnDefinitions>

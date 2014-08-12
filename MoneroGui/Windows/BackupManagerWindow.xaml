@@ -38,7 +38,7 @@
                         <controls:ImageTextComposition Text="{Binding Path=TextNew, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Add.png"/>
                     </Button>
 
-                    <CheckBox IsEnabled="False" IsChecked="{Binding Path=IsRegularWalletBackupEnabled}">
+                    <CheckBox IsEnabled="False" IsChecked="{Binding Path=IsRegularAccountBackupEnabled}">
                         <TextBlock Text="{Binding Path=BackupManagerWindowCreateAutomaticBackups, Source={StaticResource Resources}}" TextWrapping="Wrap"/>
                     </CheckBox>
                 </StackPanel>

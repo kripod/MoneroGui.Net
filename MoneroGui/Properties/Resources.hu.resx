@@ -159,14 +159,14 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Biztonsági mentés kezelő</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>Tárca jelkódjának _megváltoztatása...</value>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>Számla jelkódjának _megváltoztatása...</value>
   </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Hibakereső ablak</value>
   </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>Tárca _kódolása...</value>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>Számla _kódolása...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Kilépés</value>
@@ -186,8 +186,8 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Beállítások</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>Tárca _feloldása...</value>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>Számla _feloldása...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializálás...</value>
@@ -204,8 +204,8 @@
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Megerősítetlen:</value>
   </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Tárca</value>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Számla</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Adj meg egy Monero címet</value>
@@ -315,20 +315,17 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Útvonalak</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Tárca biztonsági mentései:</value>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Számla biztonsági mentései:</value>
   </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Tárca fájl:</value>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Számla fájl:</value>
   </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon szoftver:</value>
   </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Bányász szoftver:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Tárca szoftver:</value>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Számlakezelő szoftver:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Adatbázisok mentése kilépés előtt</value>
@@ -345,8 +342,8 @@
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Programok (*.exe)|*.exe</value>
   </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Tárca fájlok (*.bin)|*.bin</value>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Számla fájlok (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
@@ -410,38 +407,38 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
   <data name="TextError" xml:space="preserve">
     <value>Hiba</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>ismét</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Jelenlegi jelkód:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Használj jelkódot a tárcádhoz, hogy biztonságban tarthasd!</value>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Használj jelkódot a számládhoz, hogy biztonságban tarthasd!</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Ajánlott legalább 10 véletlenszerű karaktert vagy 8 szót használni.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Új jelkód</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Jelkód</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Tárca jelkódjának megváltoztatása</value>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Számla jelkódjának megváltoztatása</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Tárca kódolása</value>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Számla kódolása</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>A megadott jelkódok nem egyeznek.</value>
   </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Kérlek, add meg a jelkódot, hogy hozzáférhess a tárcádhoz.</value>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Kérlek, add meg a jelkódot, hogy hozzáférhess a számládhoz.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Tárca feloldása</value>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Számla feloldása</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opciók</value>
@@ -483,7 +480,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Fájlként, az alapértelmezett helyen</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Meghatározott tárca seedként</value>
+    <value>Meghatározott számla seedként</value>
   </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ez a módszer a legbiztonságosabb, és nem is igényel számítógépet a tároláshoz</value>
@@ -507,7 +504,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Könyvtárból...</value>
   </data>
   <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Meghatározott tárca seedből...</value>
+    <value>Meghatározott számla seedből...</value>
   </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>A kijelölésből</value>
@@ -522,7 +519,7 @@ Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
     <value>Biztonsági mentés kezelő</value>
   </data>
   <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Kérlek, légy RENDKÍVÜL ÓVATOS a tárca-információid tárolásával!
+    <value>Kérlek, légy RENDKÍVÜL ÓVATOS a számla-információid tárolásával!
 
 Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value>
   </data>
@@ -550,8 +547,8 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Daemon port:</value>
   </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Tárca port:</value>
+  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
+    <value>Számlakezelő port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Kiszolgáló:</value>
@@ -628,5 +625,8 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   </data>
   <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
     <value>Kísérleti verziók keresésének engedélyezése</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Számlakezelő</value>
   </data>
 </root>

@@ -6,14 +6,14 @@ namespace Jojatekok.MoneroAPI.Settings
     {
         public string UrlHost { get; set; }
         public ushort UrlPortDaemon { get; set; }
-        public ushort UrlPortWallet { get; set; }
+        public ushort UrlPortAccountManager { get; set; }
         public WebProxy Proxy { get; set; }
 
-        public RpcSettings(string urlHost, ushort urlPortDaemon, ushort urlPortWallet)
+        public RpcSettings(string urlHost, ushort urlPortDaemon, ushort UrlPortAccountManager)
         {
             UrlHost = urlHost;
             UrlPortDaemon = urlPortDaemon;
-            UrlPortWallet = urlPortWallet;
+            UrlPortAccountManager = UrlPortAccountManager;
         }
     }
 }

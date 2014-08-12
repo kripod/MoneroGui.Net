@@ -34,8 +34,8 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OptionsNetworkRpcUrlPortDaemon, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
                 <xctk:IntegerUpDown Grid.Row="1" Grid.Column="2" x:Name="IntegerUpDownRpcUrlPortDaemon" Style="{StaticResource StyleIntegerUpDownPort}"/>
                 <Separator Grid.Row="1" Grid.Column="3" Style="{StaticResource StyleSeparatorVertical}"/>
-                <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=OptionsNetworkRpcUrlPortWallet, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-                <xctk:IntegerUpDown Grid.Row="1" Grid.Column="6" x:Name="IntegerUpDownRpcUrlPortWallet" Style="{StaticResource StyleIntegerUpDownPort}"/>
+                <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=OptionsNetworkRpcUrlPortAccountManager, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+                <xctk:IntegerUpDown Grid.Row="1" Grid.Column="6" x:Name="IntegerUpDownRpcUrlPortAccountManager" Style="{StaticResource StyleIntegerUpDownPort}"/>
             </Grid>
         </GroupBox>
 

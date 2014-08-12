@@ -1,6 +1,6 @@
 ﻿using Jojatekok.MoneroAPI.RpcManagers;
-using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests;
-using Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Responses;
+using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests;
+using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Responses;
 using Jojatekok.MoneroAPI.Settings;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroAPI.ProcessManagers
 {
-    public class WalletManager : BaseRpcProcessManager, IDisposable
+    public class AccountManager : BaseRpcProcessManager, IDisposable
     {
         public event EventHandler<PassphraseRequestedEventArgs> PassphraseRequested;
 
@@ -28,7 +28,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private bool IsStartForced { get; set; }
 
         private Timer TimerRefresh { get; set; }
-        private Timer TimerSaveWallet { get; set; }
+        private Timer TimerSaveAccount { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
         private PathSettings PathSettings { get; set; }
@@ -61,8 +61,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        private bool IsWalletKeysFileExistent {
-            get { return File.Exists(PathSettings.FileWalletDataKeys); }
+        private bool IsAccountKeysFileExistent {
+            get { return File.Exists(PathSettings.FileAccountDataKeys); }
         }
 
         private string _passphrase;
@@ -75,7 +75,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal WalletManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareWallet, rpcWebClient, rpcWebClient.RpcSettings.UrlPortWallet)
+        internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
         {
             OutputReceived += Process_OutputReceived;
             RpcAvailabilityChanged += Process_RpcAvailabilityChanged;
@@ -87,7 +87,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
             TimerRefresh = new Timer(delegate { RequestRefresh(); });
-            TimerSaveWallet = new Timer(delegate { RequestSaveWallet(); });
+            TimerSaveAccount = new Timer(delegate { RequestSaveAccount(); });
         }
 
         private void SetProcessArguments()
@@ -97,35 +97,35 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             ProcessArgumentsExtra = new List<string>(5) {
                 "--daemon-address " + rpcSettings.UrlHost + ":" + rpcSettings.UrlPortDaemon,
                 "--password \"" + Passphrase + "\"",
-                "--rpc-bind-port " + rpcSettings.UrlPortWallet
+                "--rpc-bind-port " + rpcSettings.UrlPortAccountManager
             };
 
             if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
                 ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
             }
 
-            if (IsWalletKeysFileExistent) {
-                // Load existing wallet
-                ProcessArgumentsExtra.Add("--wallet-file \"" + PathSettings.FileWalletData + "\"");
+            if (IsAccountKeysFileExistent) {
+                // Load existing account
+                ProcessArgumentsExtra.Add("--wallet-file \"" + PathSettings.FileAccountData + "\"");
 
             } else {
-                // Create new wallet
-                var directoryWalletData = PathSettings.DirectoryWalletData;
+                // Create new account
+                var directoryAccountData = PathSettings.DirectoryAccountData;
 
-                if (!Directory.Exists(directoryWalletData)) Directory.CreateDirectory(directoryWalletData);
-                ProcessArgumentsExtra.Add("--generate-new-wallet \"" + PathSettings.FileWalletData + "\"");
+                if (!Directory.Exists(directoryAccountData)) Directory.CreateDirectory(directoryAccountData);
+                ProcessArgumentsExtra.Add("--generate-new-wallet \"" + PathSettings.FileAccountData + "\"");
             }
         }
 
         public void Start()
         {
-            if (IsStartForced || IsWalletKeysFileExistent) {
-                // Start the wallet normally
+            if (IsStartForced || IsAccountKeysFileExistent) {
+                // Start the account normally
                 IsStartForced = false;
                 StartInternal();
 
             } else {
-                // Let the user set a password for the new wallet being created
+                // Let the user set a password for the new account being created
                 IsStartForced = true;
                 RequestPassphrase(true);
             }
@@ -216,13 +216,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerRefresh.Stop();
             QueryBalance();
             QueryIncomingTransfers();
-            TimerRefresh.StartOnce(TimerSettings.WalletRefreshPeriod);
+            TimerRefresh.StartOnce(TimerSettings.AccountRefreshPeriod);
         }
 
-        private void RequestSaveWallet()
+        private void RequestSaveAccount()
         {
-            JsonPostData(new RequestSaveWallet());
-            TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
+            JsonPostData(new RequestSaveAccount());
+            TimerSaveAccount.StartOnce(TimerSettings.AccountSaveAccountPeriod);
         }
 
         public bool SendTransferSplit(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, ulong fee)
@@ -250,21 +250,21 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 }));
             }
 
-            TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
+            TimerRefresh.StartImmediately(TimerSettings.AccountRefreshPeriod);
             return true;
         }
 
         private string Backup(string path = null)
         {
             if (path == null) {
-                path = PathSettings.DirectoryWalletBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
+                path = PathSettings.DirectoryAccountBackups + DateTime.Now.ToString("yyyy-MM-dd", Helper.InvariantCulture);
             }
 
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-            var walletName = Path.GetFileNameWithoutExtension(PathSettings.FileWalletData);
+            var accountName = Path.GetFileNameWithoutExtension(PathSettings.FileAccountData);
 
-            var filesToBackup = Directory.GetFiles(PathSettings.DirectoryWalletData, walletName + "*", SearchOption.TopDirectoryOnly);
+            var filesToBackup = Directory.GetFiles(PathSettings.DirectoryAccountData, accountName + "*", SearchOption.TopDirectoryOnly);
             for (var i = filesToBackup.Length - 1; i >= 0; i--) {
                 var file = filesToBackup[i];
                 Debug.Assert(file != null, "file != null");
@@ -289,7 +289,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var dataLower = e.ToLower(Helper.InvariantCulture);
 
             if (dataLower.Contains("wallet has been generated")) {
-                // Restart in RPC mode after generating a new wallet
+                // Restart in RPC mode after generating a new account
                 Restart();
             }
 
@@ -306,12 +306,12 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (IsRpcAvailable) {
                 QueryAddress();
-                TimerRefresh.StartImmediately(TimerSettings.WalletRefreshPeriod);
-                TimerSaveWallet.StartOnce(TimerSettings.WalletSaveWalletPeriod);
+                TimerRefresh.StartImmediately(TimerSettings.AccountRefreshPeriod);
+                TimerSaveAccount.StartOnce(TimerSettings.AccountSaveAccountPeriod);
 
             } else {
                 TimerRefresh.Stop();
-                TimerSaveWallet.Stop();
+                TimerSaveAccount.Stop();
             }
         }
 
@@ -327,8 +327,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 TimerRefresh.Dispose();
                 TimerRefresh = null;
 
-                TimerSaveWallet.Dispose();
-                TimerSaveWallet = null;
+                TimerSaveAccount.Dispose();
+                TimerSaveAccount = null;
 
                 // Safe shutdown
                 if (IsRpcAvailable) {

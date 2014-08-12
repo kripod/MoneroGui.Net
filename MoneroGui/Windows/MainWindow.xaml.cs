@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Hardcodet.Wpf.TaskbarNotification;
+﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -37,7 +37,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private static MoneroClient MoneroClient { get; set; }
         private static Logger LoggerDaemon { get; set; }
-        private static Logger LoggerWallet { get; set; }
+        private static Logger LoggerAccountManager { get; set; }
 
         public static readonly RoutedCommand CommandShowOrHideWindow = new RoutedCommand();
         public static readonly RoutedCommand CommandSendCoins = new RoutedCommand();
@@ -95,11 +95,11 @@ namespace Jojatekok.MoneroGUI.Windows
 
             MoneroClient = StaticObjects.MoneroClient;
             LoggerDaemon = StaticObjects.LoggerDaemon;
-            LoggerWallet = StaticObjects.LoggerWallet;
+            LoggerAccountManager = StaticObjects.LoggerAccountManager;
 
             StartDaemon();
             SourceInitialized += delegate {
-                StartWallet();
+                StartAccountManager();
 
 #if !DEBUG
                 if (isAutoUpdateEnabled && SettingsManager.General.IsUpdateCheckEnabled) {
@@ -471,19 +471,19 @@ namespace Jojatekok.MoneroGUI.Windows
             daemon.Start();
         }
 
-        private void StartWallet()
+        private void StartAccountManager()
         {
-            var wallet = MoneroClient.Wallet;
-            wallet.OnLogMessage += Wallet_OnLogMessage;
-            wallet.PassphraseRequested += Wallet_PassphraseRequested;
-            wallet.AddressReceived += Wallet_AddressReceived;
-            wallet.TransactionReceived += Wallet_TransactionReceived;
-            wallet.BalanceChanging += Wallet_BalanceChanging;
+            var accountManager = MoneroClient.AccountManager;
+            accountManager.OnLogMessage += AccountManager_OnLogMessage;
+            accountManager.PassphraseRequested += AccountManager_PassphraseRequested;
+            accountManager.AddressReceived += AccountManager_AddressReceived;
+            accountManager.TransactionReceived += AccountManager_TransactionReceived;
+            accountManager.BalanceChanging += AccountManager_BalanceChanging;
 
-            wallet.Start();
+            accountManager.Start();
 
-            OverviewView.ViewModel.DataSourceTransactions = wallet.Transactions;
-            TransactionsView.ViewModel.DataSourceTransactions = wallet.Transactions;
+            OverviewView.ViewModel.DataSourceTransactions = accountManager.Transactions;
+            TransactionsView.ViewModel.DataSourceTransactions = accountManager.Transactions;
         }
 
         private static void Daemon_OnLogMessage(object sender, string e)
@@ -534,43 +534,43 @@ namespace Jojatekok.MoneroGUI.Windows
             });
         }
 
-        private static void Wallet_OnLogMessage(object sender, string e)
+        private static void AccountManager_OnLogMessage(object sender, string e)
         {
-            LoggerWallet.Log(e);
+            LoggerAccountManager.Log(e);
         }
 
-        private void Wallet_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
+        private void AccountManager_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
             Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
                     // TODO: Resolve this issue
-                    this.ShowError("Wallets cannot be created by this release. Please use v0.38.1 for wallet file creation.");
+                    this.ShowError("Accounts cannot be created by this release. Please use v0.38.1 for account file creation.");
                     return;
 
-                    // Let the user set the wallet's passphrase for the first time
-                    var dialog = new WalletChangePassphraseWindow(this, false);
+                    // Let the user set the account's passphrase for the first time
+                    var dialog = new AccountChangePassphraseWindow(this, false);
                     if (DisplayDialog(dialog) == true) {
-                        MoneroClient.Wallet.Passphrase = dialog.NewPassphrase;
+                        MoneroClient.AccountManager.Passphrase = dialog.NewPassphrase;
                     } else {
-                        MoneroClient.Wallet.Passphrase = null;
+                        MoneroClient.AccountManager.Passphrase = null;
                     }
 
                 } else {
-                    // Request the wallet's passphrase in order to unlock it
-                    var dialog = new WalletUnlockWindow(this);
+                    // Request the account's passphrase in order to unlock it
+                    var dialog = new AccountUnlockWindow(this);
                     if (DisplayDialog(dialog) == true) {
-                        MoneroClient.Wallet.Passphrase = dialog.Passphrase;
+                        MoneroClient.AccountManager.Passphrase = dialog.Passphrase;
                     }
                 }
             }));
         }
 
-        private void Wallet_AddressReceived(object sender, AddressReceivedEventArgs e)
+        private void AccountManager_AddressReceived(object sender, AddressReceivedEventArgs e)
         {
             BeginInvokeForDataChanging(() => OverviewView.ViewModel.Address = e.Address);
         }
 
-        private void Wallet_TransactionReceived(object sender, TransactionReceivedEventArgs e)
+        private void AccountManager_TransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
             var transaction = e.Transaction;
 
@@ -603,7 +603,7 @@ namespace Jojatekok.MoneroGUI.Windows
             Dispatcher.BeginInvoke(new Action(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info)));
         }
 
-        private void Wallet_BalanceChanging(object sender, BalanceChangingEventArgs e)
+        private void AccountManager_BalanceChanging(object sender, BalanceChangingEventArgs e)
         {
             var newValue = e.NewValue;
 

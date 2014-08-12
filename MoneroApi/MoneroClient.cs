@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroAPI
         private PathSettings Paths { get; set; }
 
         public DaemonManager Daemon { get; private set; }
-        public WalletManager Wallet { get; private set; }
+        public AccountManager AccountManager { get; private set; }
 
         public MoneroClient(PathSettings paths, RpcSettings rpcSettings)
         {
@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroAPI
             Paths = paths;
 
             Daemon = new DaemonManager(RpcWebClient, Paths);
-            Wallet = new WalletManager(RpcWebClient, Paths, Daemon);
+            AccountManager = new AccountManager(RpcWebClient, Paths, Daemon);
         }
 
         public void Dispose()
@@ -31,9 +31,9 @@ namespace Jojatekok.MoneroAPI
         private void Dispose(bool disposing)
         {
             if (disposing) {
-                if (Wallet != null) {
-                    Wallet.Dispose();
-                    Wallet = null;
+                if (AccountManager != null) {
+                    AccountManager.Dispose();
+                    AccountManager = null;
                 }
 
                 if (Daemon != null) {

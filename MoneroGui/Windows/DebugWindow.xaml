@@ -11,8 +11,8 @@
                     <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>
                 </TabItem>
 
-                <TabItem Header="{Binding Path=TextWallet, Source={StaticResource Resources}}">
-                    <views:DebugConsoleView x:Name="ConsoleWallet" SendRequested="ConsoleWallet_SendRequested" Margin="5"/>
+                <TabItem Header="{Binding Path=TextAccountManager, Source={StaticResource Resources}}">
+                    <views:DebugConsoleView x:Name="ConsoleAccountManager" SendRequested="ConsoleAccountManager_SendRequested" Margin="5"/>
                 </TabItem>
             </TabControl>
         </TabItem>

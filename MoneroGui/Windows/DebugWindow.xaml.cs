@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroGUI.Windows
             InitializeComponent();
 
             ConsoleDaemon.DataContext = StaticObjects.LoggerDaemon;
-            ConsoleWallet.DataContext = StaticObjects.LoggerWallet;
+            ConsoleAccountManager.DataContext = StaticObjects.LoggerAccountManager;
         }
 
         private void ConsoleDaemon_SendRequested(object sender, string e)
@@ -21,9 +21,9 @@ namespace Jojatekok.MoneroGUI.Windows
             MoneroClient.Daemon.Send(e);
         }
 
-        private void ConsoleWallet_SendRequested(object sender, string e)
+        private void ConsoleAccountManager_SendRequested(object sender, string e)
         {
-            MoneroClient.Wallet.Send(e);
+            MoneroClient.AccountManager.Send(e);
         }
     }
 }

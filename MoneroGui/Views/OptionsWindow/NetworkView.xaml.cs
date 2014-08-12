@@ -17,7 +17,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             var networkSettings = SettingsManager.Network;
             TextBoxRpcUrlHost.Text = networkSettings.RpcUrlHost;
             IntegerUpDownRpcUrlPortDaemon.Value = networkSettings.RpcUrlPortDaemon;
-            IntegerUpDownRpcUrlPortWallet.Value = networkSettings.RpcUrlPortWallet;
+            IntegerUpDownRpcUrlPortAccountManager.Value = networkSettings.RpcUrlPortAccountManager;
             CheckBoxIsProxyEnabled.IsChecked = networkSettings.IsProxyEnabled;
             TextBoxProxyHost.Text = networkSettings.ProxyHost;
             IntegerUpDownProxyPort.Value = networkSettings.ProxyPort;
@@ -28,12 +28,12 @@ namespace Jojatekok.MoneroGUI.Views.OptionsWindow
             var networkSettings = SettingsManager.Network;
 
             if (IntegerUpDownRpcUrlPortDaemon.Value == null) IntegerUpDownRpcUrlPortDaemon.Value = networkSettings.RpcUrlPortDaemon;
-            if (IntegerUpDownRpcUrlPortWallet.Value == null) IntegerUpDownRpcUrlPortWallet.Value = networkSettings.RpcUrlPortWallet;
+            if (IntegerUpDownRpcUrlPortAccountManager.Value == null) IntegerUpDownRpcUrlPortAccountManager.Value = networkSettings.RpcUrlPortAccountManager;
             Debug.Assert(CheckBoxIsProxyEnabled.IsChecked != null, "CheckBoxIsProxyEnabled.IsChecked != null");
 
             networkSettings.RpcUrlHost = TextBoxRpcUrlHost.Text;
             networkSettings.RpcUrlPortDaemon = (ushort)IntegerUpDownRpcUrlPortDaemon.Value;
-            networkSettings.RpcUrlPortWallet = (ushort)IntegerUpDownRpcUrlPortWallet.Value;
+            networkSettings.RpcUrlPortAccountManager = (ushort)IntegerUpDownRpcUrlPortAccountManager.Value;
             networkSettings.IsProxyEnabled = CheckBoxIsProxyEnabled.IsChecked.Value;
             networkSettings.ProxyHost = TextBoxProxyHost.Text;
             networkSettings.ProxyPort = (ushort?)IntegerUpDownProxyPort.Value;

@@ -2,13 +2,13 @@
 
 namespace Jojatekok.MoneroGUI.Windows
 {
-    public partial class WalletUnlockWindow
+    public partial class AccountUnlockWindow
     {
         public string Passphrase {
             get { return PasswordBoxPassphrase.Password; }
         }
 
-        private WalletUnlockWindow()
+        private AccountUnlockWindow()
         {
             Icon = StaticObjects.ApplicationIconImage;
             SourceInitialized += delegate {
@@ -22,7 +22,7 @@ namespace Jojatekok.MoneroGUI.Windows
             InitializeComponent();
         }
 
-        public WalletUnlockWindow(Window owner) : this()
+        public AccountUnlockWindow(Window owner) : this()
         {
             Owner = owner;
         }

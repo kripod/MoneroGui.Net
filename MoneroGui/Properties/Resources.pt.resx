@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Gestor de backup</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Alterar senha da carteira...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Janela de depuração</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Criptografar carteira...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Sair</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Preferências</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Desbloquear carteira...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializando...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Não confirmado:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Carteira</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Digite um endereço Monero:</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Diretórios</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Backups da carteira:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Dados da carteira:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Software do Daemon:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Software minerador:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Software da carteira:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Gravar bases de dados antes de encerrar</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Executáveis (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Arquivos de carteira  (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Arquivo de valores separados por vírgula (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@ Por favor reduza o tamanho dos parâmetros!</value>
   <data name="TextError" xml:space="preserve">
     <value>Erro</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>novamente</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Senha atual:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Utilize uma senha para manter sua carteira segura!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(É recomendável utilizar pelo menos 10 caracteres aleatórios ou 8 palavras.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nova senha</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Senha</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Alterar senha da carteira</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Encriptar carteira</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>As senhas fornecidas não são idênticas.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Desbloquear carteira</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Por favor digite sua senha para acessar a carteira.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Opções</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Por favor não interrompa este processo!</value>
@@ -482,9 +440,6 @@ Por favor reduza o tamanho dos parâmetros!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Como um arquivo, no local padrão</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Como semente determinística da carteira</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Este método é o mais seguro, e nem requer um computador para armazenamento</value>
   </data>
@@ -506,9 +461,6 @@ Por favor reduza o tamanho dos parâmetros!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Do diretório...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>A partir da semente determinística da carteira...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Da seleção</value>
   </data>
@@ -520,11 +472,6 @@ Por favor reduza o tamanho dos parâmetros!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Gestor de backup</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Por favor, seja EXTREMAMENTE CUIDADOSO com o armazenamento dos seus dados da carteira!
-
-Ninguém deve ser capaz de acessar os mesmos, pois isso fará com que o seu dinheiro estejo comprometido.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>A transação não pôde ser enviada.</value>
@@ -549,9 +496,6 @@ Ninguém deve ser capaz de acessar os mesmos, pois isso fará com que o seu dinh
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Porta do Daemon:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>Porta da carteira:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>

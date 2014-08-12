@@ -5,14 +5,14 @@ namespace Jojatekok.MoneroAPI.Settings
 {
     public class PathSettings
     {
-        private const string DefaultRelativePathDirectoryWalletData = "WalletData\\";
+        private const string DefaultRelativePathDirectoryAccountData = "AccountData\\";
         private const string DefaultRelativePathDirectorySoftware = "Resources\\Software\\";
         
         public static readonly string DefaultDirectoryDaemonData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "bitmonero");
-        public const string DefaultDirectoryWalletBackups = DefaultRelativePathDirectoryWalletData + "Backups\\";
-        public const string DefaultFileWalletData = DefaultRelativePathDirectoryWalletData + "wallet.bin";
+        public const string DefaultDirectoryAccountBackups = DefaultRelativePathDirectoryAccountData + "Backups\\";
+        public const string DefaultFileAccountData = DefaultRelativePathDirectoryAccountData + "account.bin";
         public const string DefaultSoftwareDaemon = DefaultRelativePathDirectorySoftware + "bitmonerod.exe";
-        public const string DefaultSoftwareWallet = DefaultRelativePathDirectorySoftware + "rpcwallet.exe";
+        public const string DefaultSoftwareAccountManager = DefaultRelativePathDirectorySoftware + "rpcwallet.exe";
 
         private string _directoryDaemonData = DefaultDirectoryDaemonData;
         public string DirectoryDaemonData {
@@ -20,27 +20,27 @@ namespace Jojatekok.MoneroAPI.Settings
             set { _directoryDaemonData = value; }
         }
 
-        public string DirectoryWalletData {
+        public string DirectoryAccountData {
             get {
-                var lastIndexOfSlash = FileWalletData.LastIndexOf('\\');
-                return lastIndexOfSlash >= 0 ? Helper.GetAbsolutePath(FileWalletData.Substring(0, FileWalletData.LastIndexOf('\\'))) : StaticObjects.ApplicationDirectory;
+                var lastIndexOfSlash = FileAccountData.LastIndexOf('\\');
+                return lastIndexOfSlash >= 0 ? Helper.GetAbsolutePath(FileAccountData.Substring(0, FileAccountData.LastIndexOf('\\'))) : StaticObjects.ApplicationDirectory;
             }
         }
 
-        private string _directoryWalletBackups = DefaultDirectoryWalletBackups;
-        public string DirectoryWalletBackups {
-            get { return Helper.GetAbsolutePath(_directoryWalletBackups); }
-            set { _directoryWalletBackups = value; }
+        private string _directoryAccountBackups = DefaultDirectoryAccountBackups;
+        public string DirectoryAccountBackups {
+            get { return Helper.GetAbsolutePath(_directoryAccountBackups); }
+            set { _directoryAccountBackups = value; }
         }
 
-        private string _fileWalletData = DefaultFileWalletData;
-        public string FileWalletData {
-            get { return Helper.GetAbsolutePath(_fileWalletData); }
-            set { _fileWalletData = value; }
+        private string _fileAccountData = DefaultFileAccountData;
+        public string FileAccountData {
+            get { return Helper.GetAbsolutePath(_fileAccountData); }
+            set { _fileAccountData = value; }
         }
 
-        public string FileWalletDataKeys {
-            get { return Helper.GetAbsolutePath(FileWalletData + ".keys"); }
+        public string FileAccountDataKeys {
+            get { return Helper.GetAbsolutePath(FileAccountData + ".keys"); }
         }
 
         private string _softwareDaemon = DefaultSoftwareDaemon;
@@ -49,10 +49,10 @@ namespace Jojatekok.MoneroAPI.Settings
             set { _softwareDaemon = value; }
         }
 
-        private string _softwareWallet = DefaultSoftwareWallet;
-        public string SoftwareWallet {
-            get { return Helper.GetAbsolutePath(_softwareWallet); }
-            set { _softwareWallet = value; }
+        private string _softwareAccountManager = DefaultSoftwareAccountManager;
+        public string SoftwareAccountManager {
+            get { return Helper.GetAbsolutePath(_softwareAccountManager); }
+            set { _softwareAccountManager = value; }
         }
     }
 }

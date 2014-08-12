@@ -1,4 +1,4 @@
-﻿namespace Jojatekok.MoneroAPI.RpcManagers.Wallet.Json.Requests
+﻿namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests
 {
     public class QueryBalance : JsonRpcRequest
     {

@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_备份管理</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_更改钱包密码...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_调试窗口</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_加密钱包</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>退出</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_设置</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_解锁钱包</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>初始化中...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>未确认：</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>钱包</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>输入一个门罗币地址</value>
@@ -312,20 +300,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>路径</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>钱包备份：</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>钱包文件：</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>守护程序：</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>挖矿程序：</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>钱包程序：</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>关闭前保存数据</value>
@@ -341,9 +317,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>可执行程序 (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>钱包文件 (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>逗号分隔文件 (*.csv)|*.csv</value>
@@ -407,41 +380,26 @@
   <data name="TextError" xml:space="preserve">
     <value>错误</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>再次输入</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>当前密码：</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>使用密码确保您的钱包安全！</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(建议使用10个随机字符或者8个词组)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>新密码</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>密码</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>更改钱包密码</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>加密钱包</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>输入的密码不匹配。</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>解锁钱包</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>请输入密码来访问您的钱包。</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>选项</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>请不要中断当前进程！</value>
@@ -482,9 +440,6 @@
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>在默认路径创建一个文件</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>作为一个固定的钱包种子</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>这个方式最安全，不需要电脑作为存储</value>
   </data>
@@ -506,9 +461,6 @@
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>选择目录</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>选择钱包种子</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>选择文件</value>
   </data>
@@ -520,11 +472,6 @@
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>备份管理</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>请非常小心保存你的钱包的数据！
-
-确保没有人能访问它们，因为这会导致你的钱受到影响。</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>交易未发送成功。</value>
@@ -549,9 +496,6 @@
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>守护端口：</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
-    <value>钱包端口：</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>主机：</value>

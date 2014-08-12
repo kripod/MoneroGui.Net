@@ -150,14 +150,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Backup Manager</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Wallet-Passwort ändern...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug-Fenster</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Wallet verschlüsseln...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Beenden</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Einstellungen</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Wallet entsperren...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialisierung...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Unbestätigte:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Wallet</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Geben Sie eine Monero-Adresse ein</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Pfade</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Wallet Backups:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Wallet Daten:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Daemon-Software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Miner-Software:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Wallet-Software:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Datenbanken vor dem Herunterfahren speichern</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Ausführbare Dateien (*.exe)|.*exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Wallet-Dateien (*bin.)|.*bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Kommaseparierte Datei (*.csv)|.*csv</value>
@@ -392,41 +365,26 @@ Bitte versuchen Sie die Länge Ihrer Eingabe zu reduzieren!</value>
   <data name="TextError" xml:space="preserve">
     <value>Fehler</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>noch einmal</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Aktuelles Passwort</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Benutzen Sie ein Passwort, um Ihre Wallet vor unbefugtem Zugriff zu sichern!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Es wird empfohlen, mindestens 10 zufällige Zeichen oder 8 Worte zu benutzen.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Neues Passwort</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Passwort</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Passwort der Wallet ändern</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Brieftasche verschlüsseln</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Die angegebenen Passwörter sind nicht identisch.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Brieftasche entsperren</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Bitte geben Sie Ihr Passwort ein, um auf Ihre Wallet zuzugreifen.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Optionen</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Bitte unterbrechen Sie diesen Vorgang nicht!</value>
@@ -467,9 +425,6 @@ Bitte versuchen Sie die Länge Ihrer Eingabe zu reduzieren!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Als Datei, im voreingestellten Pfad</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Als deterministischer Wallet-Seed</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Diese Methode ist die sicherste und benötigt auch keinen Computer zum speichern</value>
   </data>
@@ -491,9 +446,6 @@ Bitte versuchen Sie die Länge Ihrer Eingabe zu reduzieren!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Aus Verzeichnis...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Aus deterministischem Wallet-Seed...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Aus Auswahl...</value>
   </data>
@@ -505,11 +457,6 @@ Bitte versuchen Sie die Länge Ihrer Eingabe zu reduzieren!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Backup Manager</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Seien Sie ÄUSSERST VORSICHTIG beim Speichern Ihrer Brieftaschen-Daten!
-
-Niemand außer Ihnen sollte Zugriff darauf haben, da er sonst Zugriff auf Ihr Konto hat.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Die Transaktion konnte nicht gesendet werden</value>

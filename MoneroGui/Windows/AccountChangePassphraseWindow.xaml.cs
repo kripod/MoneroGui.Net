@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroGUI.Windows
 {
-    public partial class WalletChangePassphraseWindow
+    public partial class AccountChangePassphraseWindow
     {
         private bool IsCurrentPassphraseRequired { get; set; }
 
@@ -14,7 +14,7 @@ namespace Jojatekok.MoneroGUI.Windows
             get { return PasswordBoxNewPassphrase1.Password; }
         }
 
-        private WalletChangePassphraseWindow()
+        private AccountChangePassphraseWindow()
         {
             Icon = StaticObjects.ApplicationIconImage;
             SourceInitialized += delegate {
@@ -28,19 +28,19 @@ namespace Jojatekok.MoneroGUI.Windows
             InitializeComponent();
         }
 
-        public WalletChangePassphraseWindow(Window owner, bool isCurrentPassphraseRequired) : this()
+        public AccountChangePassphraseWindow(Window owner, bool isCurrentPassphraseRequired) : this()
         {
             Owner = owner;
             IsCurrentPassphraseRequired = isCurrentPassphraseRequired;
 
             string baseNewPassphraseText;
             if (IsCurrentPassphraseRequired) {
-                baseNewPassphraseText = Properties.Resources.WalletChangePassphraseWindowNewPassphrase;
-                Title = Properties.Resources.WalletChangePassphraseWindowTitleChangePassphrase;
+                baseNewPassphraseText = Properties.Resources.AccountChangePassphraseWindowNewPassphrase;
+                Title = Properties.Resources.AccountChangePassphraseWindowTitleChangePassphrase;
 
             } else {
-                baseNewPassphraseText = Properties.Resources.WalletChangePassphraseWindowPassphrase;
-                Title = Properties.Resources.WalletChangePassphraseWindowTitleEncryptWallet;
+                baseNewPassphraseText = Properties.Resources.AccountChangePassphraseWindowPassphrase;
+                Title = Properties.Resources.AccountChangePassphraseWindowTitleEncryptAccount;
                 TextBlockCurrentPassphrase.Visibility = Visibility.Collapsed;
                 PasswordBoxCurrentPassphrase.Visibility = Visibility.Collapsed;
             }
@@ -50,7 +50,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 Helper.InvariantCulture,
                 "{0} ({1}){2}",
                 baseNewPassphraseText,
-                Properties.Resources.WalletChangePassphraseWindowAgain,
+                Properties.Resources.AccountChangePassphraseWindowAgain,
                 Properties.Resources.PunctuationColon
             );
         }
@@ -78,7 +78,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
             if (PasswordBoxNewPassphrase1.Password != PasswordBoxNewPassphrase2.Password) {
-                this.ShowError(Properties.Resources.WalletChangePassphraseWindowPassphrasesDoNotMatch);
+                this.ShowError(Properties.Resources.AccountChangePassphraseWindowPassphrasesDoNotMatch);
 
                 PasswordBoxNewPassphrase1.SelectAll();
                 this.SetFocusedElement(PasswordBoxNewPassphrase1);
@@ -86,7 +86,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             // TODO: Check for the current passphrase's validity, and display the following text on error:
-            // The passphrase entered for the wallet's decryption is incorrect.
+            // The passphrase entered for the account's decryption is incorrect.
 
             DialogResult = true;
         }

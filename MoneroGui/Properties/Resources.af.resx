@@ -159,14 +159,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Reserwe bestuurder</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Verander beursie frase</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Ontgogga venster</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Enkripteer beursie</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Verlaat</value>
@@ -186,9 +180,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Instellings</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Ontsluit beursie</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inisialiseer...</value>
   </data>
@@ -203,9 +194,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Onbevestigde:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Beursie</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Tik in n Monero address</value>
@@ -312,19 +300,10 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Paaie</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Beursie reserwe</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Beursie data</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Deamon sagteware:</value>
   </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Myner sagteware</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
     <value>Beursie sagteware:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
@@ -341,9 +320,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Uitvoerbare (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Beursie lêers (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Komma gespasieerde lêer (*.csv)|*.csv</value>
@@ -407,38 +383,23 @@ Verkort asseblief jou insette!</value>
   <data name="TextError" xml:space="preserve">
     <value>Fout</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>weer</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Huidige frase:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Gebruik n frase om jou beursie veilig te hou!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Dit word voorgeskryf om ten minste 10 verskeie karakters of 8 woorde te gebruik.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Nuwe frase</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Frase</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Verander beursie frase</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Enkripteer beursie</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Die verskafde frases kom nie ooreen. </value>
-  </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
-    <value>Sluit beursie oop</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Tik asseblief jou frase in om jou beursie oop te maak.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opsies</value>
@@ -482,9 +443,6 @@ Verkort asseblief jou insette!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>As n lêer, by die oorspronklike pad</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>As n deterministiese beursie saad</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Hierdie metode is die veiligste, en dit verg nie eers n rekenaar vir storing nie</value>
   </data>
@@ -506,9 +464,6 @@ Verkort asseblief jou insette!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Van pad...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Van deterministiese beursie saad...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Van seleksie</value>
   </data>
@@ -520,10 +475,6 @@ Verkort asseblief jou insette!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Reserwe bestuurder</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Wees asseblief geweldig noukeurig en versigtig met die storing van jou beursie se data.
-Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verloor.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Die transaksie kon nie gestuur word nie</value>
@@ -549,7 +500,7 @@ Niemand anders is veronderstel om toegang te kry nie anders kan jy jou geld verl
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Deamon poort:</value>
   </data>
-  <data name="OptionsNetworkRpcUrlPortWallet" xml:space="preserve">
+  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
     <value>Beursie poort:</value>
   </data>
   <data name="TextHost" xml:space="preserve">

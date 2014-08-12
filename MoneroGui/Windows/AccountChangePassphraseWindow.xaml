@@ -1,4 +1,4 @@
-﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.WalletChangePassphraseWindow"
+﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.AccountChangePassphraseWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterOwner"
@@ -21,11 +21,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Margin="0 0 0 8">
-            <TextBlock Text="{Binding Path=WalletChangePassphraseWindowInstruction1, Source={StaticResource Resources}}"/>
-            <TextBlock Text="{Binding Path=WalletChangePassphraseWindowInstruction2, Source={StaticResource Resources}}" FontWeight="SemiBold" FontStyle="Italic"/>
+            <TextBlock Text="{Binding Path=AccountChangePassphraseWindowInstruction1, Source={StaticResource Resources}}"/>
+            <TextBlock Text="{Binding Path=AccountChangePassphraseWindowInstruction2, Source={StaticResource Resources}}" FontWeight="SemiBold" FontStyle="Italic"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="TextBlockCurrentPassphrase" Text="{Binding Path=WalletChangePassphraseWindowCurrentPassphrase, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="TextBlockCurrentPassphrase" Text="{Binding Path=AccountChangePassphraseWindowCurrentPassphrase, Source={StaticResource Resources}}" VerticalAlignment="Center" Margin="0 0 0 5"/>
         <PasswordBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" x:Name="PasswordBoxCurrentPassphrase" PasswordChanged="PasswordBox_PasswordChanged" Margin="0 0 0 5"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" x:Name="TextBlockNewPassphrase1" VerticalAlignment="Center" Margin="0 0 0 5"/>

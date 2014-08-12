@@ -150,14 +150,8 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Atsarginių kopijų vadovas</value>
   </data>
-  <data name="MenuChangeWalletPassphrase" xml:space="preserve">
-    <value>_Pakeisti piniginės slaptažodį...</value>
-  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Derinimo langas</value>
-  </data>
-  <data name="MenuEncryptWallet" xml:space="preserve">
-    <value>_Užšifruoti piniginę...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Išeiti</value>
@@ -177,9 +171,6 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Nustatymai</value>
   </data>
-  <data name="MenuUnlockWallet" xml:space="preserve">
-    <value>_Atrakinti piniginę...</value>
-  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicijuojama...</value>
   </data>
@@ -194,9 +185,6 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Nepatvirtinta:</value>
-  </data>
-  <data name="TextWallet" xml:space="preserve">
-    <value>Piniginė</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Įveskite Monero adresą:</value>
@@ -300,20 +288,8 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Keliai</value>
   </data>
-  <data name="OptionsPathsDirectoryWalletBackups" xml:space="preserve">
-    <value>Piniginės atsarginės kopijos:</value>
-  </data>
-  <data name="OptionsPathsFileWalletData" xml:space="preserve">
-    <value>Piniginės informacija:</value>
-  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Demono programa:</value>
-  </data>
-  <data name="OptionsPathsSoftwareMiner" xml:space="preserve">
-    <value>Kasimo programa:</value>
-  </data>
-  <data name="OptionsPathsSoftwareWallet" xml:space="preserve">
-    <value>Piniginės programa:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Išsaugomos duomenų bazės prieš išjungimą</value>
@@ -326,9 +302,6 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Paleidimas (*.exe)|*.exe</value>
-  </data>
-  <data name="TextFilterWalletFiles" xml:space="preserve">
-    <value>Piniginės failai  (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Comma separated failai (*.csv)|*.csv</value>
@@ -392,41 +365,26 @@ Prašome sumažinti simbolių skaičių įvedimo laukuose!</value>
   <data name="TextError" xml:space="preserve">
     <value>Klaida</value>
   </data>
-  <data name="WalletChangePassphraseWindowAgain" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
     <value>vėl</value>
   </data>
-  <data name="WalletChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Dabartinis slaptažodis:</value>
   </data>
-  <data name="WalletChangePassphraseWindowInstruction1" xml:space="preserve">
-    <value>Naudokite slaptažodį savo piniginei, tam jog išliktumėte saugūs!</value>
-  </data>
-  <data name="WalletChangePassphraseWindowInstruction2" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Rekomenduojama naudoti bent 10 atsitiktinių simbolių arba 8 žodžius.)</value>
   </data>
-  <data name="WalletChangePassphraseWindowNewPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
     <value>Naujas slaptažodis</value>
   </data>
-  <data name="WalletChangePassphraseWindowPassphrase" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Slaptažodis</value>
   </data>
-  <data name="WalletChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
-    <value>Pakeisti piniginės slaptažodį</value>
-  </data>
-  <data name="WalletChangePassphraseWindowTitleEncryptWallet" xml:space="preserve">
-    <value>Užšifruoti piniginę</value>
-  </data>
-  <data name="WalletChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Pateikti slaptažodžiai nesutampa.</value>
   </data>
-  <data name="WalletUnlockWindowTitle" xml:space="preserve">
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
     <value>Atrakinti piniginę</value>
-  </data>
-  <data name="WalletUnlockWindowInstruction" xml:space="preserve">
-    <value>Prašome įvesti slaptažodį norėdami prisijungti prie piniginės.</value>
-  </data>
-  <data name="OptionsWindowTitle" xml:space="preserve">
-    <value>Parinktys</value>
   </data>
   <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
     <value>Prašome nenutraukti šio proceso!</value>
@@ -467,9 +425,6 @@ Prašome sumažinti simbolių skaičių įvedimo laukuose!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Failas, numatytoje vietoje</value>
   </data>
-  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
-    <value>Kaip determinuotos piniginės sėkla</value>
-  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Šis metodas yra saugiausias ir nereikalauja kompiuterio atminties saugojimui</value>
   </data>
@@ -491,9 +446,6 @@ Prašome sumažinti simbolių skaičių įvedimo laukuose!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Iš katalogo...</value>
   </data>
-  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
-    <value>Iš determinuotos piniginės sėklos...</value>
-  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Iš pasirinkimo</value>
   </data>
@@ -505,11 +457,6 @@ Prašome sumažinti simbolių skaičių įvedimo laukuose!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Atsarginių kopijų vadovas</value>
-  </data>
-  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
-    <value>Prašau būti YPATINGAI ATSARGIEMS išsaugojant piniginės informaciją!
-
-Niekas kitas išskyrus jus neturėtų turėti priėjimo prie jos, nes kitaip galite prarasti pinigus.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Pervedimas negali būti įvykdytas.</value>

@@ -14,15 +14,15 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class BackupManagerWindow : INotifyPropertyChanged
     {
-        private bool _isRegularWalletBackupEnabled = SettingsManager.General.IsRegularWalletBackupEnabled;
-        public bool IsRegularWalletBackupEnabled {
-            get { return _isRegularWalletBackupEnabled; }
+        private bool _isRegularAccountBackupEnabled = SettingsManager.General.IsRegularAccountBackupEnabled;
+        public bool IsRegularAccountBackupEnabled {
+            get { return _isRegularAccountBackupEnabled; }
 
             set {
-                _isRegularWalletBackupEnabled = value;
+                _isRegularAccountBackupEnabled = value;
                 OnPropertyChanged();
 
-                SettingsManager.General.IsRegularWalletBackupEnabled = value;
+                SettingsManager.General.IsRegularAccountBackupEnabled = value;
             }
         }
 
@@ -34,7 +34,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             InitializeComponent();
 
-            BaseBackupDirectory = SettingsManager.Paths.DirectoryWalletBackups;
+            BaseBackupDirectory = SettingsManager.Paths.DirectoryAccountBackups;
             Task.Factory.StartNew(LoadBackups);
         }
 
@@ -113,7 +113,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             var selectedBackup = ListBoxBackups.SelectedItem as string;
             if (selectedBackup != null) {
-                await TryRestoreWalletFromDirectoryAsync(Path.Combine(BaseBackupDirectory, selectedBackup));
+                await TryRestoreAccountFromDirectoryAsync(Path.Combine(BaseBackupDirectory, selectedBackup));
             }
 
             this.SetFocusedElement(ListBoxBackups);
@@ -123,15 +123,15 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             var dialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
             if (dialog.ShowDialog() == true) {
-                await TryRestoreWalletFromDirectoryAsync(dialog.SelectedPath);
+                await TryRestoreAccountFromDirectoryAsync(dialog.SelectedPath);
             }
 
             this.SetFocusedElement(ListBoxBackups);
         }
 
-        private async Task TryRestoreWalletFromDirectoryAsync(string directoryToRestore)
+        private async Task TryRestoreAccountFromDirectoryAsync(string directoryToRestore)
         {
-            var isRestoreSuccessful = await Task.Factory.StartNew(() => RestoreWalletFromDirectory(directoryToRestore));
+            var isRestoreSuccessful = await Task.Factory.StartNew(() => RestoreAccountFromDirectory(directoryToRestore));
 
             if (isRestoreSuccessful) {
                 RestoreShowSuccess();
@@ -140,7 +140,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        private static bool RestoreWalletFromDirectory(string directoryToRestore)
+        private static bool RestoreAccountFromDirectory(string directoryToRestore)
         {
             // Get the list of files to restore
             if (!Directory.Exists(directoryToRestore)) return false;
@@ -148,22 +148,22 @@ namespace Jojatekok.MoneroGUI.Windows
             if (files.Length == 0) return false;
 
             // Initialize variables
-            var fileWalletData = SettingsManager.Paths.FileWalletData;
-            var directoryWalletData = Helper.GetDirectoryOfFile(fileWalletData);
-            var baseWalletFileName = Helper.GetFileNameWithoutExtension(fileWalletData);
+            var fileAccountData = SettingsManager.Paths.FileAccountData;
+            var directoryAccountData = Helper.GetDirectoryOfFile(fileAccountData);
+            var baseAccountFileName = Helper.GetFileNameWithoutExtension(fileAccountData);
 
-            // Stop the wallet
-            StaticObjects.MoneroClient.Wallet.Stop();
+            // Stop the account manager
+            StaticObjects.MoneroClient.AccountManager.Stop();
 
             // Restore the wanted files (with name conversion)
             for (var i = files.Length - 1; i >= 0; i--) {
                 var sourceFile = files[i];
-                var destinationFile = baseWalletFileName + Helper.GetFileExtension(sourceFile);
-                File.Copy(sourceFile, Path.Combine(directoryWalletData, destinationFile), true);
+                var destinationFile = baseAccountFileName + Helper.GetFileExtension(sourceFile);
+                File.Copy(sourceFile, Path.Combine(directoryAccountData, destinationFile), true);
             }
 
-            // Restart the wallet
-            StaticObjects.MoneroClient.Wallet.Start();
+            // Restart the account manager
+            StaticObjects.MoneroClient.AccountManager.Start();
             return true;
         }
 
