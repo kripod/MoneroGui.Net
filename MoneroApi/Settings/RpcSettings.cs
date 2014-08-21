@@ -9,11 +9,11 @@ namespace Jojatekok.MoneroAPI.Settings
         public ushort UrlPortAccountManager { get; set; }
         public WebProxy Proxy { get; set; }
 
-        public RpcSettings(string urlHost, ushort urlPortDaemon, ushort UrlPortAccountManager)
+        public RpcSettings(string urlHost, ushort urlPortDaemon, ushort urlPortAccountManager)
         {
             UrlHost = urlHost;
             UrlPortDaemon = urlPortDaemon;
-            UrlPortAccountManager = UrlPortAccountManager;
+            UrlPortAccountManager = urlPortAccountManager;
         }
     }
 }

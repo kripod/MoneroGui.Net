@@ -46,11 +46,13 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                     Debug.Assert(transaction != null, "transaction != null");
 
                     var amountDisplayValue = transaction.Amount / StaticObjects.CoinAtomicValueDivider;
-                    dataTable.Rows.Add(transaction.Number,
-                                       transaction.Type,
-                                       transaction.IsAmountSpendable,
-                                       amountDisplayValue.ToString("G", Helper.DefaultUiCulture),
-                                       "=\"" + transaction.TransactionId + "\"");
+                    dataTable.Rows.Add(
+                        transaction.Number,
+                        transaction.Type,
+                        transaction.IsAmountSpendable,
+                        amountDisplayValue.ToString("G", Helper.DefaultUiCulture),
+                        "=\"" + transaction.TransactionId + "\""
+                    );
                 }
 
                 dataTable.ExportToCsvAsync(fileName);

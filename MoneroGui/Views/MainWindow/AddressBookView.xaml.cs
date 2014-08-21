@@ -172,8 +172,10 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
                 for (var i = 0; i < DataGridAddressBook.Items.Count; i++) {
                     var contact = DataGridAddressBook.Items[i] as SettingsManager.ConfigElementContact;
                     Debug.Assert(contact != null, "contact != null");
-                    dataTable.Rows.Add("=\"" + contact.Label + "\"",
-                                       "=\"" + contact.Address + "\"");
+                    dataTable.Rows.Add(
+                        "=\"" + contact.Label + "\"",
+                        "=\"" + contact.Address + "\""
+                    );
                 }
 
                 dataTable.ExportToCsvAsync(fileName);

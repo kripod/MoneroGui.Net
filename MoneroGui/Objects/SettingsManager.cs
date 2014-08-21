@@ -137,7 +137,33 @@ namespace Jojatekok.MoneroGUI
         {
             IsAutoSaveEnabled = false;
 
-            if (oldConfigurationVersion < 5) {
+            if (oldConfigurationVersion == 0) {
+                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+
+                oldConfigurationVersion += 1;
+            }
+
+            if (oldConfigurationVersion == 1) {
+                if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
+                    General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+                }
+
+                oldConfigurationVersion += 1;
+            }
+
+            if (oldConfigurationVersion == 2) {
+                Paths.SoftwareMiner = null;
+
+                oldConfigurationVersion += 1;
+            }
+
+            if (oldConfigurationVersion == 3) {
+                Paths.SoftwareAccountManager = Paths.SoftwareAccountManager.Replace("simplewallet.exe", "rpcwallet.exe");
+
+                oldConfigurationVersion += 1;
+            }
+
+            if (oldConfigurationVersion == 4) {
                 General.IsRegularAccountBackupEnabled = General.IsRegularWalletBackupEnabled;
                 Paths.SoftwareAccountManager = Paths.SoftwareWallet;
                 Paths.DirectoryAccountBackups = Paths.DirectoryWalletBackups;
@@ -148,39 +174,6 @@ namespace Jojatekok.MoneroGUI
                 Paths.DirectoryWalletBackups = null;
                 Paths.FileWalletData = null;
                 Network.RpcUrlPortWallet = 0;
-            } else {
-                IsAutoSaveEnabled = true;
-                return;
-            }
-
-            if (oldConfigurationVersion < 4) {
-                Paths.SoftwareAccountManager = Paths.SoftwareAccountManager.Replace("simplewallet.exe", "rpcwallet.exe");
-            } else {
-                IsAutoSaveEnabled = true;
-                return;
-            }
-
-            if (oldConfigurationVersion < 3) {
-                Paths.SoftwareMiner = null;
-            } else {
-                IsAutoSaveEnabled = true;
-                return;
-            }
-
-            if (oldConfigurationVersion < 2) {
-                if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
-                    General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
-                }
-            } else {
-                IsAutoSaveEnabled = true;
-                return;
-            }
-
-            if (oldConfigurationVersion < 1) {
-                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
-            } else {
-                IsAutoSaveEnabled = true;
-                return;
             }
 
             IsAutoSaveEnabled = true;

@@ -288,8 +288,8 @@ namespace Jojatekok.MoneroGUI
             var uriBase = new Uri(StaticObjects.ApplicationBaseDirectory, UriKind.Absolute);
             var uriPath = new Uri(path);
 
-            var decodedUrl = DecodeUrl(uriBase.MakeRelativeUri(uriPath).ToString());
-            return decodedUrl != null ? decodedUrl.Replace('/', '\\') : string.Empty;
+            var decodedUrl = uriBase.MakeRelativeUri(uriPath).ToString();
+            return decodedUrl.Replace('/', '\\').Replace("%20", " ");
         }
 
         public static string GetFileExtension(string input)

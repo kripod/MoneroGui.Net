@@ -65,13 +65,16 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var rpcSettings = RpcWebClient.RpcSettings;
 
             ProcessArgumentsExtra = new List<string>(3) {
-                "--data-dir \"" + paths.DirectoryDaemonData + "\"",
+                //"--data-dir \"" + paths.DirectoryDaemonData + "\"",
                 "--rpc-bind-port " + rpcSettings.UrlPortDaemon
             };
 
             if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
                 ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
             }
+
+            // TODO: Remove this temporary fix
+            ProcessArgumentsExtra.Add("--data-dir \"" + paths.DirectoryDaemonData);
 
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
             TimerSaveBlockchain = new Timer(delegate { RequestSaveBlockchain(); });

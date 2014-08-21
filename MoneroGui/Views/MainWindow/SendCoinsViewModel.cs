@@ -56,7 +56,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private string _paymentId;
+        private string _paymentId = string.Empty;
         public string PaymentId {
             get { return _paymentId; }
 

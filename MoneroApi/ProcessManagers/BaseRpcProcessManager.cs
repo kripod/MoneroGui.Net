@@ -7,9 +7,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 {
     public abstract class BaseRpcProcessManager : IDisposable
     {
+        public event EventHandler RpcAvailabilityChanged;
         public event EventHandler<string> OnLogMessage;
 
-        protected event EventHandler RpcAvailabilityChanged;
         protected event EventHandler<string> OutputReceived;
         protected event EventHandler<int> Exited;
 
@@ -21,7 +21,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private Timer TimerCheckRpcAvailability { get; set; }
 
         private bool _isRpcAvailable;
-        protected bool IsRpcAvailable {
+        public bool IsRpcAvailable {
             get { return _isRpcAvailable; }
 
             private set {

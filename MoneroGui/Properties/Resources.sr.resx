@@ -159,8 +159,14 @@
   <data name="MenuBackupManager" xml:space="preserve">
     <value>_Menadžer rezervne kopije</value>
   </data>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>_Promena lozinke računa...</value>
+  </data>
   <data name="MenuDebugWindow" xml:space="preserve">
     <value>_Debug prozor</value>
+  </data>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>_Enkriptuj račun...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Izlaz</value>
@@ -180,6 +186,9 @@
   <data name="MenuSettings" xml:space="preserve">
     <value>_Podešavanja</value>
   </data>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>_Otključaj račun...</value>
+  </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicijalizacija...</value>
   </data>
@@ -194,6 +203,9 @@
   </data>
   <data name="OverviewUnconfirmed" xml:space="preserve">
     <value>Nepotvrđeno:</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Račun</value>
   </data>
   <data name="TextHintAddress" xml:space="preserve">
     <value>Unesite Monero adresu</value>
@@ -300,8 +312,17 @@
   <data name="OptionsPaths" xml:space="preserve">
     <value>Putanje</value>
   </data>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Bekap računa:</value>
+  </data>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Podaci računa:</value>
+  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>Servisni softver:</value>
+  </data>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Softver računa:</value>
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
@@ -317,6 +338,9 @@
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
     <value>Izvršni (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Fajlovi računa (*.bin)|*.bin</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
     <value>Fajl sa odvajajućim zarezima (*.csv)|*.csv</value>
@@ -386,6 +410,9 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
     <value>Sadašnja šifra:</value>
   </data>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Koristi frazu za račun da bi bio siguran!</value>
+  </data>
   <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
     <value>(Preporučuje se korišćenje najmanje 10 slučajnih karaktera ili 8 reči.)</value>
   </data>
@@ -395,8 +422,20 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
     <value>Šifra</value>
   </data>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Promeni frazu računa</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Enkriptuj račun</value>
+  </data>
   <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
     <value>Šifre se ne poklapaju</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Otključaj račun</value>
+  </data>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Unesi lozinku da bi pristupio svom računu.</value>
   </data>
   <data name="OptionsWindowTitle" xml:space="preserve">
     <value>Opcije</value>
@@ -440,6 +479,9 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
     <value>Kao fajl, na podrazumevanoj lokaciji</value>
   </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Kao determinisan seme računa</value>
+  </data>
   <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
     <value>Ovaj metod je najsigurniji i čak ne zahteva komjuter za skladištenje</value>
   </data>
@@ -461,6 +503,9 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
     <value>Iz direktorijuma...</value>
   </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Od determinisanog semena računa...</value>
+  </data>
   <data name="BackupManagerWindowFromSelection" xml:space="preserve">
     <value>Iz selekcije</value>
   </data>
@@ -472,6 +517,10 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   </data>
   <data name="BackupManagerWindowTitle" xml:space="preserve">
     <value>Menadžer rezervnih kopija</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Budite IZUZETNO OPREZNI u skladištenju podataka računa!
+Niko drugi ne bi trebao da ima pristup njima,jer bi to moglo da ugrozi vaš novac.</value>
   </data>
   <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
     <value>Transakcija ne može biti poslata.</value>
@@ -496,6 +545,9 @@ Molimo, pokušajte sa manjim brojem karaktera!</value>
   </data>
   <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
     <value>Demon port:</value>
+  </data>
+  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
+    <value>Port menadžera računa:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>
@@ -557,5 +609,23 @@ The last received block was generated {3} ago.</value>
   </data>
   <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
     <value>Unesite adresu!</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>Jedna od adresa slanja pripada menjačnici.Da li želite da otkažete slanje bez payment ID?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Nedostaje Payment ID</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>Payment ID  nije važeći.</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Proverite da li postoje ispravke na startu</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Omogućava proveru eksperimentalnih gradnji</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Menadžer računa</value>
   </data>
 </root>

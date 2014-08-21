@@ -291,6 +291,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (dataLower.Contains("wallet has been generated")) {
                 // Restart in RPC mode after generating a new account
                 Restart();
+                return;
             }
 
             // Error handler
@@ -298,6 +299,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 if (dataLower.Contains("signature missmatch")) {
                     // Invalid passphrase
                     RequestPassphrase(false);
+                    return;
+                }
+
+                // TODO: Remove this temporary fix
+                if (dataLower.Contains("no_connection_to_daemon")) {
+                    Thread.Sleep(2000);
+                    Restart();
                 }
             }
         }

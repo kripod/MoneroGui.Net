@@ -151,10 +151,12 @@ namespace Jojatekok.MoneroGUI.Windows
                         latestVersionString = versionInfo["LatestVersionTest"];
                         var latestVersionStringSplit = latestVersionString.Split('-');
                         var latestVersionComparable = new Version(latestVersionStringSplit[0] + ".0");
-                        var latestVersionExtra = latestVersionStringSplit[1];
 
                         if (latestVersionComparable.CompareTo(StaticObjects.ApplicationVersionComparable) <= 0) {
-                            var latestVersionExtraSplit = latestVersionExtra.Split('.');
+                            // Return if there is no "extra" version identifier
+                            if (latestVersionStringSplit.Length == 1) return;
+
+                            var latestVersionExtraSplit = latestVersionStringSplit[1].Split('.');
                             var applicationVersionExtraSplit = StaticObjects.ApplicationVersionExtra.Split('.');
                             if (latestVersionExtraSplit[0][0] <= applicationVersionExtraSplit[0][0] && byte.Parse(latestVersionExtraSplit[1]) <= byte.Parse(applicationVersionExtraSplit[1])) {
                                 return;
