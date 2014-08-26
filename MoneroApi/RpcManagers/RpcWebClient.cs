@@ -26,12 +26,10 @@ namespace Jojatekok.MoneroAPI.RpcManagers
             return output;
         }
 
-        public T JsonPostData<T>(ushort port, JsonRpcRequest jsonRpcRequest)
+        public JsonRpcResponse<T> JsonPostData<T>(ushort port, JsonRpcRequest jsonRpcRequest)
         {
             var jsonString = PostString(port, "json_rpc", JsonSerializer.SerializeObject(jsonRpcRequest));
-            var output = JsonSerializer.DeserializeObject<JsonRpcResponse<T>>(jsonString);
-
-            return output.Result;
+            return JsonSerializer.DeserializeObject<JsonRpcResponse<T>>(jsonString);
         }
 
         private string PostString(ushort port, string relativeUrl, string postData = null)

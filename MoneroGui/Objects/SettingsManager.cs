@@ -10,10 +10,10 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
-        private const ulong SettingsVersionLatest = 5;
+        private const ulong SettingsVersionLatest = 6;
         private const string RelativePathFileUserConfiguration = "user.config";
 
-        private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 5000000000;
+        private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 100000000000;
 
         private static Configuration Configuration { get; set; }
 
@@ -144,10 +144,6 @@ namespace Jojatekok.MoneroGUI
             }
 
             if (oldConfigurationVersion == 1) {
-                if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
-                    General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
-                }
-
                 oldConfigurationVersion += 1;
             }
 
@@ -174,6 +170,10 @@ namespace Jojatekok.MoneroGUI
                 Paths.DirectoryWalletBackups = null;
                 Paths.FileWalletData = null;
                 Network.RpcUrlPortWallet = 0;
+            }
+
+            if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
+                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
             }
 
             IsAutoSaveEnabled = true;

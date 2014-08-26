@@ -119,7 +119,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         public BlockHeader QueryBlockHeaderLast()
         {
-            var blockHeaderValueContainer = JsonPostData<BlockHeaderValueContainer>(new QueryBlockHeaderLast());
+            var blockHeaderValueContainer = JsonPostData<BlockHeaderValueContainer>(new QueryBlockHeaderLast()).Result;
             if (blockHeaderValueContainer != null) {
                 return blockHeaderValueContainer.Value;
             }
@@ -129,7 +129,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void RequestSaveBlockchain()
         {
-            HttpPostData<RpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
+            HttpPostData<HttpRpcResponse>(HttpRpcCommands.DaemonSaveBlockchain);
         }
 
         private void Process_RpcAvailabilityChanged(object sender, EventArgs e)
@@ -160,9 +160,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 TimerSaveBlockchain = null;
 
                 // Safe shutdown
-                if (IsRpcAvailable) {
-                    HttpPostData<RpcResponse>(HttpRpcCommands.DaemonExit);
-                }
+                HttpPostData<HttpRpcResponse>(HttpRpcCommands.DaemonExit);
 
                 base.Dispose();
             }

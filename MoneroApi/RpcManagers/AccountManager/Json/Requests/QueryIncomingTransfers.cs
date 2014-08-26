@@ -4,12 +4,12 @@ namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests
 {
     public class QueryIncomingTransfers : JsonRpcRequest<QueryIncomingTransfersParameters>
     {
-        internal QueryIncomingTransfers(string transfersType) : base("incoming_transfers", new QueryIncomingTransfersParameters(transfersType))
+        internal QueryIncomingTransfers(QueryIncomingTransfersParameters.TransfersType transfersType) : base("incoming_transfers", new QueryIncomingTransfersParameters(transfersType))
         {
 
         }
 
-        internal QueryIncomingTransfers() : base("incoming_transfers", new QueryIncomingTransfersParameters("all"))
+        internal QueryIncomingTransfers() : this(QueryIncomingTransfersParameters.TransfersType.All)
         {
 
         }
@@ -18,12 +18,31 @@ namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests
     [JsonObject(MemberSerialization.OptIn)]
     public class QueryIncomingTransfersParameters
     {
-        [JsonProperty("transfer_type")]
-        private string TransfersType { get; set; }
-
-        internal QueryIncomingTransfersParameters(string transfersType)
+        public enum TransfersType
         {
-            TransfersType = transfersType;
+            All,
+            Available,
+            Unavailable
+        }
+
+        [JsonProperty("transfer_type")]
+        private string TransfersTypeString { get; set; }
+
+        internal QueryIncomingTransfersParameters(TransfersType transfersType)
+        {
+            switch (transfersType) {
+                case TransfersType.All:
+                    TransfersTypeString = "all";
+                    break;
+
+                case TransfersType.Available:
+                    TransfersTypeString = "available";
+                    break;
+
+                case TransfersType.Unavailable:
+                    TransfersTypeString = "unavailable";
+                    break;
+            }
         }
     }
 }

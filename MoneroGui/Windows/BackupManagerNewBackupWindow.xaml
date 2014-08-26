@@ -23,25 +23,25 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding Path=BackupManagerNewBackupWindowInstructionMain, Source={StaticResource Resources}}" TextWrapping="Wrap" Margin="0 0 0 8"/>
 
-        <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="RadioButtonDefaultLocation" IsChecked="True" Margin="20 0 0 5">
+        <RadioButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" x:Name="RadioButtonDeterministicAccountSeed" IsChecked="True" Margin="20 0 0 8">
+            <TextBlock TextWrapping="Wrap">
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed1, Source={StaticResource Resources}}"/>
+                <LineBreak/>
+                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed2, Source={StaticResource Resources}}" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
+            </TextBlock>
+        </RadioButton>
+        <RadioButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" x:Name="RadioButtonDefaultPath" Margin="20 0 0 5">
             <TextBlock TextWrapping="Wrap">
                 <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileDefault, Source={StaticResource Resources}}"/>
                 <LineBreak/>
                 <TextBlock x:Name="TextBlockDefaultBackupDirectory" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
             </TextBlock>
         </RadioButton>
-        <RadioButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="20 0 0 8">
+        <RadioButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="20 0 0 8">
             <TextBlock TextWrapping="Wrap">
                 <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileCustom1, Source={StaticResource Resources}}"/>
                 <LineBreak/>
                 <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsFileCustom2, Source={StaticResource Resources}}" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
-            </TextBlock>
-        </RadioButton>
-        <RadioButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" IsEnabled="False" Margin="20 0 0 8">
-            <TextBlock TextWrapping="Wrap">
-                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed1, Source={StaticResource Resources}}"/>
-                <LineBreak/>
-                <TextBlock Text="{Binding Path=BackupManagerNewBackupWindowSelectionAsSeed2, Source={StaticResource Resources}}" TextWrapping="Wrap" FontStyle="Italic" Margin="10 0 0 0"/>
             </TextBlock>
         </RadioButton>
 

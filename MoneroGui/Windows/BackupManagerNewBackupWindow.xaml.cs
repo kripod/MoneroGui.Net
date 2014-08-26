@@ -1,6 +1,6 @@
-﻿using Ookii.Dialogs.Wpf;
+﻿using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests;
+using Ookii.Dialogs.Wpf;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows;
 
@@ -8,10 +8,18 @@ namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class BackupManagerNewBackupWindow
     {
-        public bool IsDefaultLocationSelected {
+        public enum AccountBackupOption
+        {
+            DefaultPath,
+            CustomPath,
+            DeterministicAccountSeed
+        }
+
+        public AccountBackupOption SelectedAccountBackupOption {
             get {
-                Debug.Assert(RadioButtonDefaultLocation.IsChecked != null, "RadioButtonDefaultLocation.IsChecked != null");
-                return RadioButtonDefaultLocation.IsChecked.Value;
+                if (RadioButtonDeterministicAccountSeed.IsChecked == true) return AccountBackupOption.DeterministicAccountSeed;
+                if (RadioButtonDefaultPath.IsChecked == true) return AccountBackupOption.DefaultPath;
+                return AccountBackupOption.CustomPath;
             }
         }
 
@@ -33,17 +41,31 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private async void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
-            if (IsDefaultLocationSelected) {
-                BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync();
-                DialogResult = true;
+            switch (SelectedAccountBackupOption) {
+                case AccountBackupOption.DeterministicAccountSeed:
+                    var mnemonicKey = StaticObjects.MoneroClient.AccountManager.QueryKey(QueryKeyParameters.KeyType.Mnemonic);
+                    if (mnemonicKey == null) {
+                        this.ShowError(Properties.Resources.BackupManagerNewBackupWindowErrorRetrievingSeed);
+                        return;
+                    }
 
-            } else {
-                var dialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
+                    var deterministicAccountSeedDialog = new BackupManagerDeterministicAccountSeedWindow(this, mnemonicKey);
+                    deterministicAccountSeedDialog.ShowDialog();
+                    DialogResult = false;
+                    break;
 
-                if (dialog.ShowDialog() == true) {
-                    BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync(dialog.SelectedPath);
+                case AccountBackupOption.DefaultPath:
+                    BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync();
                     DialogResult = true;
-                }
+                    break;
+
+                case AccountBackupOption.CustomPath:
+                    var pathDialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
+                    if (pathDialog.ShowDialog() == true) {
+                        BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync(pathDialog.SelectedPath);
+                        DialogResult = true;
+                    }
+                    break;
             }
 
             Close();

@@ -10,8 +10,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler RpcAvailabilityChanged;
         public event EventHandler<string> OnLogMessage;
 
-        protected event EventHandler<string> OutputReceived;
-        protected event EventHandler<int> Exited;
+        protected event EventHandler<ProcessExitedEventArgs> Exited;
 
         private Process Process { get; set; }
         private string Path { get; set; }
@@ -96,8 +95,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        protected T HttpPostData<T>(string command) where T : RpcResponse
+        protected T HttpPostData<T>(string command) where T : HttpRpcResponse
         {
+            if (!IsRpcAvailable) return null;
+
             var output = RpcWebClient.HttpPostData<T>(RpcPort, command);
             if (output != null && output.Status == RpcResponseStatus.Ok) {
                 return output;
@@ -106,15 +107,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return null;
         }
 
-        protected T JsonPostData<T>(JsonRpcRequest jsonRpcRequest) where T : class
+        protected JsonRpcResponse<T> JsonPostData<T>(JsonRpcRequest jsonRpcRequest) where T : class
         {
-            var output = RpcWebClient.JsonPostData<T>(RpcPort, jsonRpcRequest);
-            var rpcResponse = output as RpcResponse;
-            if (rpcResponse == null || rpcResponse.Status == RpcResponseStatus.Ok) {
-                return output;
-            }
-
-            return null;
+            if (!IsRpcAvailable) return new JsonRpcResponse<T>(new JsonError());
+            return RpcWebClient.JsonPostData<T>(RpcPort, jsonRpcRequest);
         }
 
         protected void JsonPostData(JsonRpcRequest jsonRpcRequest)
@@ -128,7 +124,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (line == null) return;
 
             if (OnLogMessage != null) OnLogMessage(this, line);
-            if (OutputReceived != null) OutputReceived(this, line);
         }
 
         private void Process_Exited(object sender, EventArgs e)
@@ -137,7 +132,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             IsRpcAvailable = false;
             Process.CancelOutputRead();
-            if (Exited != null) Exited(this, Process.ExitCode);
+            if (Exited != null) Exited(this, new ProcessExitedEventArgs(Process.ExitCode));
         }
 
         public void Dispose()

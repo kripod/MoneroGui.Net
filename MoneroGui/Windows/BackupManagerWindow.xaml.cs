@@ -92,14 +92,20 @@ namespace Jojatekok.MoneroGUI.Windows
             if (dialog.ShowDialog() == true) {
                 string backupName;
 
-                if (dialog.IsDefaultLocationSelected) {
-                    backupName = dialog.BackupDirectory.Substring(BaseBackupDirectory.Length);
-                } else {
-                    backupName = await Task.Factory.StartNew(() => IsDirectoryAvailableInBackups(dialog.BackupDirectory));
-                    if (backupName == null) {
-                        this.SetFocusedElement(ListBoxBackups);
-                        return;
-                    }
+                switch (dialog.SelectedAccountBackupOption) {
+                    case BackupManagerNewBackupWindow.AccountBackupOption.DefaultPath:
+                        // Default path selected
+                        backupName = dialog.BackupDirectory.Substring(BaseBackupDirectory.Length);
+                        break;
+
+                    default:
+                        // Custom path selected
+                        backupName = await Task.Factory.StartNew(() => IsDirectoryAvailableInBackups(dialog.BackupDirectory));
+                        if (backupName == null) {
+                            this.SetFocusedElement(ListBoxBackups);
+                            return;
+                        }
+                        break;
                 }
 
                 var listViewItems = ListBoxBackups.Items;
@@ -147,13 +153,18 @@ namespace Jojatekok.MoneroGUI.Windows
             var files = Directory.GetFiles(directoryToRestore, "*", SearchOption.TopDirectoryOnly);
             if (files.Length == 0) return false;
 
+            // Stop the account manager
+            StaticObjects.MoneroClient.AccountManager.Stop();
+
             // Initialize variables
             var fileAccountData = SettingsManager.Paths.FileAccountData;
             var directoryAccountData = Helper.GetDirectoryOfFile(fileAccountData);
             var baseAccountFileName = Helper.GetFileNameWithoutExtension(fileAccountData);
 
-            // Stop the account manager
-            StaticObjects.MoneroClient.AccountManager.Stop();
+            // Create the account data directory whether it doesn't exists
+            if (!Directory.Exists(directoryAccountData)) {
+                Directory.CreateDirectory(directoryAccountData);
+            }
 
             // Restore the wanted files (with name conversion)
             for (var i = files.Length - 1; i >= 0; i--) {

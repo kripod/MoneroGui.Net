@@ -2,7 +2,7 @@
 
 namespace Jojatekok.MoneroAPI.RpcManagers
 {
-    public class RpcResponse
+    public class HttpRpcResponse
     {
         [JsonProperty("status")]
         private string StatusString {

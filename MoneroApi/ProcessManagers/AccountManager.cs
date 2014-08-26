@@ -77,7 +77,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
         {
-            OutputReceived += Process_OutputReceived;
+            Exited += Process_Exited;
             RpcAvailabilityChanged += Process_RpcAvailabilityChanged;
 
             RpcWebClient = rpcWebClient;
@@ -162,12 +162,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryAddress()
         {
-            Address = JsonPostData<AddressValueContainer>(new QueryAddress()).Value;
+            Address = JsonPostData<AddressValueContainer>(new QueryAddress()).Result.Value;
+        }
+
+        public string QueryKey(QueryKeyParameters.KeyType keyType)
+        {
+            var key = JsonPostData<KeyValueContainer>(new QueryKey(keyType)).Result;
+            return key != null ? key.Value : null;
         }
 
         private void QueryBalance()
         {
-            var balance = JsonPostData<Balance>(new QueryBalance());
+            var balance = JsonPostData<Balance>(new QueryBalance()).Result;
             if (balance != null) {
                 Balance = balance;
                 Daemon.IsBlockchainSavable = true;
@@ -176,7 +182,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private void QueryIncomingTransfers()
         {
-            var transactions = JsonPostData<TransactionListValueContainer>(new QueryIncomingTransfers());
+            var transactions = JsonPostData<TransactionListValueContainer>(new QueryIncomingTransfers()).Result;
 
             if (transactions != null) {
                 var currentTransactionCount = TransactionsPrivate.Count;
@@ -284,29 +290,18 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             return Task.Factory.StartNew(() => Backup());
         }
 
-        private void Process_OutputReceived(object sender, string e)
+        private void Process_Exited(object sender, ProcessExitedEventArgs e)
         {
-            var dataLower = e.ToLower(Helper.InvariantCulture);
+            switch (e.ExitCode) {
+                case 1:
+                    // Unknown error
+                    Restart();
+                    break;
 
-            if (dataLower.Contains("wallet has been generated")) {
-                // Restart in RPC mode after generating a new account
-                Restart();
-                return;
-            }
-
-            // Error handler
-            if (dataLower.Contains("error")) {
-                if (dataLower.Contains("signature missmatch")) {
+                case 10:
                     // Invalid passphrase
                     RequestPassphrase(false);
-                    return;
-                }
-
-                // TODO: Remove this temporary fix
-                if (dataLower.Contains("no_connection_to_daemon")) {
-                    Thread.Sleep(2000);
-                    Restart();
-                }
+                    break;
             }
         }
 
@@ -339,9 +334,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 TimerSaveAccount = null;
 
                 // Safe shutdown
-                if (IsRpcAvailable) {
-                    JsonPostData(new RequestExit());
-                }
+                JsonPostData(new RequestExit());
 
                 base.Dispose();
             }

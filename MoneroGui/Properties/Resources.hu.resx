@@ -629,4 +629,13 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   <data name="TextAccountManager" xml:space="preserve">
     <value>Számlakezelő</value>
   </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>A számlád meghatározott seedje alább megtalálható. Elektronikus eszközön való tárolása helyett ajánlott jegyzetet készíteni róla egy papíron.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Meghatározott számla seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Nem lehet kinyerni a jelenleg használt számla meghatározott seedjét.</value>
+  </data>
 </root>

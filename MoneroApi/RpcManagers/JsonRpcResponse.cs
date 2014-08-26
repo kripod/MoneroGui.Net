@@ -9,5 +9,10 @@ namespace Jojatekok.MoneroAPI.RpcManagers
 
         [JsonProperty("error")]
         public JsonError Error { get; private set; }
+
+        public JsonRpcResponse(JsonError error)
+        {
+            Error = error;
+        }
     }
 }

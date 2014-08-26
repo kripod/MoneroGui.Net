@@ -1,5 +1,6 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;

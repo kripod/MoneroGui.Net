@@ -43,6 +43,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\ProcessExitedEventArgs.cs" />
     <Compile Include="EventArgs\AddressReceivedEventArgs.cs" />
     <Compile Include="EventArgs\BalanceChangingEventArgs.cs" />
     <Compile Include="EventArgs\NetworkInformationChangingEventArgs.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="ProcessManagers\JobManager.cs" />
     <Compile Include="ProcessManagers\AccountManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RpcManagers\AccountManager\Json\Requests\QueryKey.cs" />
+    <Compile Include="RpcManagers\AccountManager\Json\Responses\KeyValueContainer.cs" />
     <Compile Include="RpcManagers\Daemon\Http\Responses\NetworkInformation.cs" />
     <Compile Include="RpcManagers\Daemon\Json\Requests\QueryBlockHeaderByHash.cs" />
     <Compile Include="RpcManagers\Daemon\Json\Requests\QueryBlockHeaderByHeight.cs" />
@@ -69,7 +72,7 @@
     <Compile Include="RpcManagers\JsonError.cs" />
     <Compile Include="RpcManagers\JsonRpcRequest.cs" />
     <Compile Include="RpcManagers\JsonRpcResponse.cs" />
-    <Compile Include="RpcManagers\RpcResponse.cs" />
+    <Compile Include="RpcManagers\HttpRpcResponse.cs" />
     <Compile Include="RpcManagers\RpcResponseStatus.cs" />
     <Compile Include="RpcManagers\RpcWebClient.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Requests\QueryAddress.cs" />

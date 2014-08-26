@@ -629,4 +629,13 @@ The last received block was generated {3} ago.</value>
   <data name="TextAccountManager" xml:space="preserve">
     <value>Account manager</value>
   </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>Your account's deterministic seed can be found below. It's recommended to make note of it on a paper instead of storing it on an electronic device.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Deterministic account seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Cannot retrieve the deterministic seed of the account being used.</value>
+  </data>
 </root>

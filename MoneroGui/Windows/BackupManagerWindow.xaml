@@ -46,14 +46,14 @@
 
             <GroupBox Grid.Row="2" Header="{Binding Path=BackupManagerWindowRestoreBackups, Source={StaticResource Resources}}">
                 <StackPanel Margin="5">
+                    <Button IsEnabled="False" Margin="0 0 0 5">
+                        <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromSeed, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
+                    </Button>
                     <Button x:Name="ButtonRestoreBackupFromSelection" IsEnabled="False" Click="ButtonRestoreBackupFromSelection_Click" Margin="0 0 0 5">
                         <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromSelection, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
                     </Button>
-                    <Button Click="ButtonRestoreBackupFromDirectory_Click" Margin="0 0 0 5">
+                    <Button Click="ButtonRestoreBackupFromDirectory_Click">
                         <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromDirectory, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
-                    </Button>
-                    <Button IsEnabled="False">
-                        <controls:ImageTextComposition Text="{Binding Path=BackupManagerWindowFromSeed, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Restore.png"/>
                     </Button>
                 </StackPanel>
             </GroupBox>
