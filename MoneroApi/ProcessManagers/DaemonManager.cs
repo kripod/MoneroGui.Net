@@ -19,23 +19,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private List<string> ProcessArgumentsExtra { get; set; }
 
         private Timer TimerQueryNetworkInformation { get; set; }
-        private Timer TimerSaveBlockchain { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
-
-        private bool _isBlockchainSavable;
-        internal bool IsBlockchainSavable {
-            get { return _isBlockchainSavable; }
-
-            set {
-                if (value == _isBlockchainSavable) return;
-                _isBlockchainSavable = value;
-
-                if (value && IsRpcAvailable) {
-                    TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
-                }
-            }
-        }
 
         private bool _isBlockchainSynced;
         public bool IsBlockchainSynced {
@@ -77,7 +62,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             ProcessArgumentsExtra.Add("--data-dir \"" + paths.DirectoryDaemonData);
 
             TimerQueryNetworkInformation = new Timer(delegate { QueryNetworkInformation(); });
-            TimerSaveBlockchain = new Timer(delegate { RequestSaveBlockchain(); });
         }
 
         public void Start()
@@ -136,11 +120,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (IsRpcAvailable) {
                 TimerQueryNetworkInformation.StartImmediately(TimerSettings.DaemonQueryNetworkInformationPeriod);
-                if (IsBlockchainSavable) TimerSaveBlockchain.StartOnce(TimerSettings.DaemonSaveBlockchainPeriod);
 
             } else {
                 TimerQueryNetworkInformation.Stop();
-                TimerSaveBlockchain.Stop();
             }
         }
 
@@ -155,9 +137,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (disposing) {
                 TimerQueryNetworkInformation.Dispose();
                 TimerQueryNetworkInformation = null;
-
-                TimerSaveBlockchain.Dispose();
-                TimerSaveBlockchain = null;
 
                 // Safe shutdown
                 HttpPostData<HttpRpcResponse>(HttpRpcCommands.DaemonExit);

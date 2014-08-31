@@ -28,11 +28,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         private bool IsStartForced { get; set; }
 
         private Timer TimerRefresh { get; set; }
-        private Timer TimerSaveAccount { get; set; }
 
         private RpcWebClient RpcWebClient { get; set; }
         private PathSettings PathSettings { get; set; }
-        private DaemonManager Daemon { get; set; }
 
         private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
         private ObservableCollection<Transaction> TransactionsPrivate {
@@ -75,19 +73,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
+        internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
         {
             Exited += Process_Exited;
             RpcAvailabilityChanged += Process_RpcAvailabilityChanged;
 
             RpcWebClient = rpcWebClient;
             PathSettings = pathSettings;
-            Daemon = daemon;
 
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
             TimerRefresh = new Timer(delegate { RequestRefresh(); });
-            TimerSaveAccount = new Timer(delegate { RequestSaveAccount(); });
         }
 
         private void SetProcessArguments()
@@ -176,7 +172,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             var balance = JsonPostData<Balance>(new QueryBalance()).Result;
             if (balance != null) {
                 Balance = balance;
-                Daemon.IsBlockchainSavable = true;
             }
         }
 
@@ -223,12 +218,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             QueryBalance();
             QueryIncomingTransfers();
             TimerRefresh.StartOnce(TimerSettings.AccountRefreshPeriod);
-        }
-
-        private void RequestSaveAccount()
-        {
-            JsonPostData(new RequestSaveAccount());
-            TimerSaveAccount.StartOnce(TimerSettings.AccountSaveAccountPeriod);
         }
 
         public bool SendTransferSplit(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, ulong fee)
@@ -310,11 +299,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (IsRpcAvailable) {
                 QueryAddress();
                 TimerRefresh.StartImmediately(TimerSettings.AccountRefreshPeriod);
-                TimerSaveAccount.StartOnce(TimerSettings.AccountSaveAccountPeriod);
 
             } else {
                 TimerRefresh.Stop();
-                TimerSaveAccount.Stop();
             }
         }
 
@@ -329,9 +316,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (disposing) {
                 TimerRefresh.Dispose();
                 TimerRefresh = null;
-
-                TimerSaveAccount.Dispose();
-                TimerSaveAccount = null;
 
                 // Safe shutdown
                 JsonPostData(new RequestExit());
