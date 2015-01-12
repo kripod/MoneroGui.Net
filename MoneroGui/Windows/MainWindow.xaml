@@ -78,7 +78,7 @@
         </tb:TaskbarIcon>
 
         <Menu Grid.Row="0">
-            <MenuItem Header="_File">
+            <MenuItem Header="{Binding Path=MenuFile, Source={StaticResource Resources}}">
                 <MenuItem Header="{Binding Path=MenuBackupManager, Source={StaticResource Resources}}" Command="windows:MainWindow.CommandBackupManager">
                     <MenuItem.Icon>
                         <Image Source="/Resources/Images/Save.png"/>

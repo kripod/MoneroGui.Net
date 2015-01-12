@@ -165,11 +165,6 @@ namespace Jojatekok.MoneroGUI
                 Paths.DirectoryAccountBackups = Paths.DirectoryWalletBackups;
                 Paths.FileAccountData = Paths.FileWalletData;
                 Network.RpcUrlPortAccountManager = Network.RpcUrlPortWallet;
-                General.IsRegularWalletBackupEnabled = false;
-                Paths.SoftwareWallet = null;
-                Paths.DirectoryWalletBackups = null;
-                Paths.FileWalletData = null;
-                Network.RpcUrlPortWallet = 0;
             }
 
             if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
@@ -349,7 +344,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareWallet", DefaultValue = null)]
+            [ConfigurationProperty("softwareWallet", DefaultValue = ApiPathSettings.DefaultSoftwareAccountManager)]
             protected internal string SoftwareWallet {
                 get { return base["softwareWallet"] as string; }
                 set {
@@ -358,7 +353,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("directoryWalletBackups", DefaultValue = null)]
+            [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPathSettings.DefaultDirectoryAccountBackups)]
             protected internal string DirectoryWalletBackups {
                 get { return base["directoryWalletBackups"] as string; }
                 set {
@@ -367,7 +362,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("fileWalletData", DefaultValue = null)]
+            [ConfigurationProperty("fileWalletData", DefaultValue = ApiPathSettings.DefaultFileAccountData)]
             protected internal string FileWalletData {
                 get { return base["fileWalletData"] as string; }
                 set {
@@ -438,7 +433,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)0)]
+            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)18082)]
             protected internal ushort RpcUrlPortWallet {
                 get { return (ushort)base["rpcUrlPortWallet"]; }
                 set {

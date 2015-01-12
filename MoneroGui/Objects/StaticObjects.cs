@@ -49,7 +49,7 @@ namespace Jojatekok.MoneroGUI
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
 
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
-        public const string ApplicationVersionExtra = "rc.2";
+        public const string ApplicationVersionExtra = "rc.3";
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.ExtractAssociatedIcon(ApplicationAssembly.Location);

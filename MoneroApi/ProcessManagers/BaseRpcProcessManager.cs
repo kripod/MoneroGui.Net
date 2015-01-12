@@ -12,8 +12,8 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         protected event EventHandler<ProcessExitedEventArgs> Exited;
 
-        private Process Process { get; set; }
         private string Path { get; set; }
+        private Process Process { get; set; }
         private RpcWebClient RpcWebClient { get; set; }
         private ushort RpcPort { get; set; }
 
@@ -152,7 +152,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 if (Process != null) {
                     if (!Process.HasExited) {
                         if (Process.Responding) {
-                            if (!Process.WaitForExit(300000)) Process.Kill();
+                            if (!Process.WaitForExit(10000)) Process.Kill();
                         } else {
                             Process.Kill();
                         }

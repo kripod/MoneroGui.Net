@@ -16,20 +16,28 @@ namespace Jojatekok.MoneroAPI
 
         public static string GetResponseString(this HttpWebRequest request)
         {
-            using (var response = request.GetResponse()) {
-                using (var stream = response.GetResponseStream()) {
-                    Debug.Assert(stream != null, "stream != null");
+            // Ensure a little of backwards compatibility in order to avoid RPC failures
+            try {
+                using (var response = request.GetResponse()) {
+                    using (var stream = response.GetResponseStream()) {
+                        Debug.Assert(stream != null, "stream != null");
 
-                    using (var reader = new StreamReader(stream)) {
-                        return reader.ReadToEnd();
+                        using (var reader = new StreamReader(stream)) {
+                            return reader.ReadToEnd();
+                        }
                     }
                 }
+
+            } catch {
+                return null;
             }
         }
 
         [SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         public static T DeserializeObject<T>(this JsonSerializer serializer, string value)
         {
+            if (value == null) return default(T);
+
             using (var stringReader = new StringReader(value)) {
                 using (var jsonTextReader = new JsonTextReader(stringReader)) {
                     return (T)serializer.Deserialize(jsonTextReader, typeof(T));

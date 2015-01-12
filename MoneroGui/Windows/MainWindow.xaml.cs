@@ -1,6 +1,5 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
-using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -547,7 +546,7 @@ namespace Jojatekok.MoneroGUI.Windows
             Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
                     // TODO: Resolve this issue
-                    this.ShowError("Accounts cannot be created by this release. Please use v0.38.1 for account file creation.");
+                    this.ShowError("Accounts cannot be created by this release. Please use simplewallet.exe for account file creation.");
                     return;
 
                     // Let the user set the account's passphrase for the first time
