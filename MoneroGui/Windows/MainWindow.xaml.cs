@@ -545,17 +545,9 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             Dispatcher.BeginInvoke(new Action(() => {
                 if (e.IsFirstTime) {
-                    // TODO: Resolve this issue
-                    this.ShowError("Accounts cannot be created by this release. Please use simplewallet.exe for account file creation.");
-                    return;
-
                     // Let the user set the account's passphrase for the first time
                     var dialog = new AccountChangePassphraseWindow(this, false);
-                    if (DisplayDialog(dialog) == true) {
-                        MoneroClient.AccountManager.Passphrase = dialog.NewPassphrase;
-                    } else {
-                        MoneroClient.AccountManager.Passphrase = null;
-                    }
+                    MoneroClient.AccountManager.Passphrase = DisplayDialog(dialog) == true ? dialog.NewPassphrase : null;
 
                 } else {
                     // Request the account's passphrase in order to unlock it

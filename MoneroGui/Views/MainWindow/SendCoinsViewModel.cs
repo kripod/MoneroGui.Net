@@ -75,16 +75,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             }
         }
 
-        private ulong? _transactionFee;
-        public ulong? TransactionFee {
-            get { return _transactionFee; }
-
-            set {
-                _transactionFee = value;
-                OnPropertyChanged();
-            }
-        }
-
         public bool IsPaymentIdValid()
         {
             return PaymentIdValidator.Validate(PaymentId, Helper.InvariantCulture).IsValid;

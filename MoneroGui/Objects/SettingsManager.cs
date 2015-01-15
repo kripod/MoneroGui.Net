@@ -10,10 +10,8 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
-        private const ulong SettingsVersionLatest = 6;
+        private const ulong SettingsVersionLatest = 7;
         private const string RelativePathFileUserConfiguration = "user.config";
-
-        private const ulong DefaultValueGeneralSectionTransactionsDefaultFee = 100000000000;
 
         private static Configuration Configuration { get; set; }
 
@@ -137,29 +135,11 @@ namespace Jojatekok.MoneroGUI
         {
             IsAutoSaveEnabled = false;
 
-            if (oldConfigurationVersion == 0) {
-                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
-
-                oldConfigurationVersion += 1;
-            }
-
-            if (oldConfigurationVersion == 1) {
-                oldConfigurationVersion += 1;
-            }
-
-            if (oldConfigurationVersion == 2) {
+            if (oldConfigurationVersion <= 2) {
                 Paths.SoftwareMiner = null;
-
-                oldConfigurationVersion += 1;
             }
 
-            if (oldConfigurationVersion == 3) {
-                Paths.SoftwareAccountManager = Paths.SoftwareAccountManager.Replace("simplewallet.exe", "rpcwallet.exe");
-
-                oldConfigurationVersion += 1;
-            }
-
-            if (oldConfigurationVersion == 4) {
+            if (oldConfigurationVersion <= 4) {
                 General.IsRegularAccountBackupEnabled = General.IsRegularWalletBackupEnabled;
                 Paths.SoftwareAccountManager = Paths.SoftwareWallet;
                 Paths.DirectoryAccountBackups = Paths.DirectoryWalletBackups;
@@ -167,8 +147,9 @@ namespace Jojatekok.MoneroGUI
                 Network.RpcUrlPortAccountManager = Network.RpcUrlPortWallet;
             }
 
-            if (General.TransactionsDefaultFee < DefaultValueGeneralSectionTransactionsDefaultFee) {
-                General.TransactionsDefaultFee = DefaultValueGeneralSectionTransactionsDefaultFee;
+            if (oldConfigurationVersion <= 6) {
+                Paths.SoftwareAccountManager = Paths.SoftwareAccountManager.Replace("rpcwallet.exe", "simplewallet.exe");
+                General.TransactionsDefaultFee = 0;
             }
 
             IsAutoSaveEnabled = true;
@@ -259,21 +240,20 @@ namespace Jojatekok.MoneroGUI
                     AutoSaveSettings();
                 }
             }
-
-            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = DefaultValueGeneralSectionTransactionsDefaultFee)]
-            public ulong TransactionsDefaultFee {
-                get { return (ulong)base["transactionsDefaultFee"]; }
-                set {
-                    base["transactionsDefaultFee"] = value;
-                    AutoSaveSettings();
-                }
-            }
             
             [ConfigurationProperty("isRegularWalletBackupEnabled", DefaultValue = false)]
             protected internal bool IsRegularWalletBackupEnabled {
                 get { return (bool)base["isRegularWalletBackupEnabled"]; }
                 set {
                     base["isRegularWalletBackupEnabled"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = (ulong)0)]
+            public ulong TransactionsDefaultFee {
+                set {
+                    base["transactionsDefaultFee"] = value;
                     AutoSaveSettings();
                 }
             }

@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroAPI
             Paths = paths;
 
             Daemon = new DaemonManager(RpcWebClient, Paths);
-            AccountManager = new AccountManager(RpcWebClient, Paths);
+            AccountManager = new AccountManager(RpcWebClient, Paths, Daemon);
         }
 
         public void Dispose()

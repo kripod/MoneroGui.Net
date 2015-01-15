@@ -21,9 +21,10 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public event EventHandler<TransactionReceivedEventArgs> TransactionReceived;
         public event EventHandler<BalanceChangingEventArgs> BalanceChanging;
 
-        private static readonly string[] ProcessArgumentsDefault = { "--log-level 0" };
+        private static readonly string[] ProcessArgumentsDefault = { "--set_log 0" };
         private List<string> ProcessArgumentsExtra { get; set; }
 
+        private bool IsWaitingForStart { get; set; }
         private bool IsTransactionReceivedEventEnabled { get; set; }
         private bool IsStartForced { get; set; }
 
@@ -31,6 +32,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
         private RpcWebClient RpcWebClient { get; set; }
         private PathSettings PathSettings { get; set; }
+        private DaemonManager Daemon { get; set; }
 
         private readonly ObservableCollection<Transaction> _transactionsPrivate = new ObservableCollection<Transaction>();
         private ObservableCollection<Transaction> TransactionsPrivate {
@@ -73,13 +75,14 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             }
         }
 
-        internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
+        internal AccountManager(RpcWebClient rpcWebClient, PathSettings pathSettings, DaemonManager daemon) : base(pathSettings.SoftwareAccountManager, rpcWebClient, rpcWebClient.RpcSettings.UrlPortAccountManager)
         {
             Exited += Process_Exited;
             RpcAvailabilityChanged += Process_RpcAvailabilityChanged;
 
             RpcWebClient = rpcWebClient;
             PathSettings = pathSettings;
+            Daemon = daemon;
 
             Transactions = new ConcurrentReadOnlyObservableCollection<Transaction>(TransactionsPrivate);
 
@@ -92,17 +95,17 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             ProcessArgumentsExtra = new List<string>(5) {
                 "--daemon-address " + rpcSettings.UrlHost + ":" + rpcSettings.UrlPortDaemon,
-                "--password \"" + Passphrase + "\"",
-                "--rpc-bind-port " + rpcSettings.UrlPortAccountManager
+                "--password \"" + Passphrase + "\""
             };
-
-            if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
-                ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
-            }
 
             if (IsAccountKeysFileExistent) {
                 // Load existing account
                 ProcessArgumentsExtra.Add("--wallet-file \"" + PathSettings.FileAccountData + "\"");
+
+                if (rpcSettings.UrlHost != StaticObjects.RpcUrlDefaultLocalhost) {
+                    ProcessArgumentsExtra.Add("--rpc-bind-ip " + rpcSettings.UrlHost);
+                }
+                ProcessArgumentsExtra.Add("--rpc-bind-port " + rpcSettings.UrlPortAccountManager);
 
             } else {
                 // Create new account
@@ -141,8 +144,36 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
 
             // <-- Start process -->
 
-            Debug.Assert(ProcessArgumentsExtra != null, "ProcessArgumentsExtra != null");
-            StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+            if (!IsAccountKeysFileExistent) {
+                OnLogMessage += AccountManager_OnLogMessage;
+            }
+
+            if (Daemon.IsRpcAvailable) {
+                StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+            } else {
+                IsWaitingForStart = true;
+                Daemon.RpcAvailabilityChanged += Daemon_RpcAvailabilityChanged;
+            }
+        }
+
+        private void AccountManager_OnLogMessage(object sender, string e)
+        {
+            // TODO: Allow selection of the deterministic seed's language
+            if (e.StartsWith("0")) {
+                Send("0");
+
+            } else if (e.StartsWith("*")) {
+                OnLogMessage -= AccountManager_OnLogMessage;
+                Restart();
+            }
+        }
+
+        private void Daemon_RpcAvailabilityChanged(object sender, EventArgs e)
+        {
+            if (IsWaitingForStart && Daemon.IsRpcAvailable) {
+                IsWaitingForStart = false;
+                StartProcess(ProcessArgumentsDefault.Concat(ProcessArgumentsExtra).ToArray());
+            }
         }
 
         public void Stop()
@@ -220,14 +251,13 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             TimerRefresh.StartOnce(TimerSettings.AccountRefreshPeriod);
         }
 
-        public bool SendTransferSplit(IList<TransferRecipient> recipients, string paymentId, ulong mixCount, ulong fee)
+        public bool SendTransferSplit(IList<TransferRecipient> recipients, string paymentId, ulong mixCount)
         {
             if (recipients == null || recipients.Count == 0) return false;
 
             var parameters = new SendTransferSplitParameters(recipients) {
                 PaymentId = paymentId,
-                MixCount = mixCount,
-                Fee = fee
+                MixCount = mixCount
             };
 
             var output = JsonPostData<TransactionIdListValueContainer>(new SendTransferSplit(parameters));
@@ -245,7 +275,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 }));
             }
 
-            TimerRefresh.StartImmediately(TimerSettings.AccountRefreshPeriod);
+            RequestRefresh();
             return true;
         }
 
@@ -283,11 +313,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             switch (e.ExitCode) {
                 case 1:
-                    // Unknown error
-                    Restart();
-                    break;
-
-                case 10:
                     // Invalid passphrase
                     RequestPassphrase(false);
                     break;
@@ -298,7 +323,7 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         {
             if (IsRpcAvailable) {
                 QueryAddress();
-                TimerRefresh.StartImmediately(TimerSettings.AccountRefreshPeriod);
+                RequestRefresh();
 
             } else {
                 TimerRefresh.Stop();
@@ -316,9 +341,6 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
             if (disposing) {
                 TimerRefresh.Dispose();
                 TimerRefresh = null;
-
-                // Safe shutdown
-                JsonPostData(new RequestExit());
 
                 base.Dispose();
             }

@@ -138,10 +138,15 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        protected void Dispose(bool isProcessKillNecessary)
+        {
+            Dispose(true, isProcessKillNecessary);
             GC.SuppressFinalize(this);
         }
 
-        private void Dispose(bool disposing)
+        private void Dispose(bool disposing, bool isProcessKillNecessary)
         {
             if (disposing && !IsDisposing) {
                 IsDisposing = true;
@@ -149,17 +154,22 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 TimerCheckRpcAvailability.Dispose();
                 TimerCheckRpcAvailability = null;
 
-                if (Process != null) {
-                    if (!Process.HasExited) {
-                        if (Process.Responding) {
-                            if (!Process.WaitForExit(10000)) Process.Kill();
-                        } else {
-                            Process.Kill();
+                if (isProcessKillNecessary) {
+                    if (Process != null) {
+                        if (!Process.HasExited) {
+                            if (Process.Responding) {
+                                if (!Process.WaitForExit(10000)) Process.Kill();
+                            } else {
+                                Process.Kill();
+                            }
                         }
+
+                        Process.Dispose();
+                        Process = null;
                     }
 
-                    Process.Dispose();
-                    Process = null;
+                } else {
+                    Process.WaitForExit();
                 }
             }
         }

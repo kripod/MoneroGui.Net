@@ -29,7 +29,6 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
             // Load settings
             var generalSettings = SettingsManager.General;
-            ViewModel.TransactionFee = generalSettings.TransactionsDefaultFee;
             ViewModel.MixCount = generalSettings.TransactionsDefaultMixCount;
         }
 
@@ -57,13 +56,13 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
         private void RefreshNewEstimatedBalance()
         {
             var balanceSpendable = ViewModel.BalanceSpendable;
-            var transactionFee = ViewModel.TransactionFee;
-            if (balanceSpendable == null || transactionFee == null) {
+            if (balanceSpendable == null) {
                 ViewModel.BalanceNewEstimated = null;
                 return;
             }
 
-            var balanceNewEstimated = (double)balanceSpendable.Value - transactionFee.Value;
+            // TODO: Calculate the TX fee and subtract it from balanceNewEstimated
+            var balanceNewEstimated = (double)balanceSpendable.Value;
             var recipients = ViewModel.Recipients;
             for (var i = recipients.Count - 1; i >= 0; i--) {
                 var amount = recipients[i].Amount;
@@ -104,9 +103,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
             SettingsManager.IsAutoSaveEnabled = false;
             var generalSettings = SettingsManager.General;
             if (ViewModel.MixCount == null) ViewModel.MixCount = generalSettings.TransactionsDefaultMixCount;
-            if (ViewModel.TransactionFee == null) ViewModel.TransactionFee = generalSettings.TransactionsDefaultFee;
             generalSettings.TransactionsDefaultMixCount = ViewModel.MixCount.Value;
-            generalSettings.TransactionsDefaultFee = ViewModel.TransactionFee.Value;
             SettingsManager.IsAutoSaveEnabled = true;
             SettingsManager.SaveSettings();
 
@@ -153,12 +150,10 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
                 // Initiate a new transaction
                 Debug.Assert(ViewModel.MixCount != null, "ViewModel.MixCount != null");
-                Debug.Assert(ViewModel.TransactionFee != null, "ViewModel.TransactionFee != null");
                 var isTransferSuccessful = StaticObjects.MoneroClient.AccountManager.SendTransferSplit(
                     recipientsList,
                     ViewModel.PaymentId.ToLower(Helper.InvariantCulture),
-                    ViewModel.MixCount.Value,
-                    ViewModel.TransactionFee.Value
+                    ViewModel.MixCount.Value
                 );
 
                 // Add new people to the address book

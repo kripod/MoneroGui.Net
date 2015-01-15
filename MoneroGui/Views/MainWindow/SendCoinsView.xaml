@@ -40,14 +40,10 @@
             <ColumnDefinition Width="Auto" SharedSizeGroup="A"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="8"/>
-            <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="19"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="8"/>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="8"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="60"/>
             <ColumnDefinition Width="19"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -128,16 +124,22 @@
             <controls:ImageTextComposition Text="{Binding Path=SendCoinsClearRecipients, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Delete.png"/>
         </Button>
 
-        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Path=SendCoinsMixCount, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <xctk:IntegerUpDown Grid.Row="3" Grid.Column="5" Value="{Binding Path=MixCount}" Minimum="0"/>
-        <Separator Grid.Row="3" Grid.Column="6" Style="{StaticResource StyleSeparatorVertical}"/>
+        <TextBlock Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="{}{0} {1} {2}">
+                    <Binding Path="SendCoinsFee" Source="{StaticResource Resources}"/>
+                    <Binding Path="PunctuationQuestionMark" Source="{StaticResource Resources}"/>
+                    <Binding Path="TextCurrencyCode" Source="{StaticResource Resources}"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Separator Grid.Row="3" Grid.Column="4" Style="{StaticResource StyleSeparatorVertical}"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding Path=SendCoinsFee, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <xctk:DoubleUpDown Grid.Row="3" Grid.Column="9" Minimum="0.005" Value="{Binding Path=TransactionFee, Converter={StaticResource ConverterCoinAtomicValueToNullableDisplayValue}}" Style="{StaticResource StyleDoubleUpDownCoinAmount}"/>
-        <TextBlock Grid.Row="3" Grid.Column="11" Text="{Binding Path=TextCurrencyCode, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-        <Separator Grid.Row="3" Grid.Column="12" Style="{StaticResource StyleSeparatorVertical}"/>
+        <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding Path=SendCoinsMixCount, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+        <xctk:IntegerUpDown Grid.Row="3" Grid.Column="7" Value="{Binding Path=MixCount}" Minimum="0"/>
+        <Separator Grid.Row="3" Grid.Column="8" Style="{StaticResource StyleSeparatorVertical}"/>
 
-        <Button Grid.Row="3" Grid.Column="13" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click">
+        <Button Grid.Row="3" Grid.Column="9" IsEnabled="{Binding Path=IsSendingEnabled}" Click="ButtonSend_Click">
             <controls:ImageTextComposition Text="{Binding Path=TextSend, Source={StaticResource Resources}}" ImageUri="/Resources/Images/Send.png"/>
         </Button>
     </Grid>

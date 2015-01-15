@@ -12,7 +12,7 @@ namespace Jojatekok.MoneroAPI.Settings
         public const string DefaultDirectoryAccountBackups = DefaultRelativePathDirectoryAccountData + "Backups\\";
         public const string DefaultFileAccountData = DefaultRelativePathDirectoryAccountData + "account.bin";
         public const string DefaultSoftwareDaemon = DefaultRelativePathDirectorySoftware + "bitmonerod.exe";
-        public const string DefaultSoftwareAccountManager = DefaultRelativePathDirectorySoftware + "rpcwallet.exe";
+        public const string DefaultSoftwareAccountManager = DefaultRelativePathDirectorySoftware + "simplewallet.exe";
 
         private string _directoryDaemonData = DefaultDirectoryDaemonData;
         public string DirectoryDaemonData {

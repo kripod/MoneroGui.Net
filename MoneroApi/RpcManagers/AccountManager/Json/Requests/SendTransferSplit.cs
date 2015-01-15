@@ -24,7 +24,9 @@ namespace Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests
         public ulong MixCount { get; set; }
 
         [JsonProperty("fee")]
-        public ulong Fee { get; set; }
+        public ulong Fee {
+            get { return 0; }
+        }
 
         [JsonProperty("unlock_time")]
         public ulong UnlockTime { get; set; }

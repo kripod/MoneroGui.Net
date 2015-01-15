@@ -6,6 +6,5 @@
         public const string DaemonGetTransactions = "gettransactions";
 
         public const string DaemonSaveBlockchain = "save_bc";
-        public const string DaemonExit = "stop_daemon";
     }
 }

@@ -78,7 +78,6 @@
     <Compile Include="RpcManagers\AccountManager\Json\Requests\QueryAddress.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Requests\QueryBalance.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Requests\QueryIncomingTransfers.cs" />
-    <Compile Include="RpcManagers\AccountManager\Json\Requests\RequestExit.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Requests\RequestSaveAccount.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Requests\SendTransferSplit.cs" />
     <Compile Include="RpcManagers\AccountManager\Json\Responses\AddressValueContainer.cs" />

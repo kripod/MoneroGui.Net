@@ -139,10 +139,9 @@ namespace Jojatekok.MoneroAPI.ProcessManagers
                 TimerQueryNetworkInformation = null;
 
                 // Safe shutdown
-                RequestSaveBlockchain();
-                HttpPostData<HttpRpcResponse>(HttpRpcCommands.DaemonExit);
+                Send("exit");
 
-                base.Dispose();
+                base.Dispose(false);
             }
         }
     }
