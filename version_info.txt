@@ -1,3 +1,3 @@
 ReleasesUrlBase	https://github.com/Jojatekok/monero-client-net/releases/download/v{0}/monero-client-net-v{0}-{1}.zip
-LatestVersionStable	0.38.2
-LatestVersionTest	0.39.0-rc.3
+LatestVersionStable	0.40.0
+LatestVersionTest	0.40.0
