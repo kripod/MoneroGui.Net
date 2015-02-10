@@ -423,15 +423,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Daemon.
-        /// </summary>
-        public static string DebugWindowConsoleDaemon {
-            get {
-                return ResourceManager.GetString("DebugWindowConsoleDaemon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Consoles.
         /// </summary>
         public static string DebugWindowConsoles {
@@ -765,6 +756,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run the corresponding process locally.
+        /// </summary>
+        public static string OptionsNetworkIsProcessHostedLocally {
+            get {
+                return ResourceManager.GetString("OptionsNetworkIsProcessHostedLocally", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect through proxy.
         /// </summary>
         public static string OptionsNetworkIsProxyEnabled {
@@ -788,24 +788,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string OptionsNetworkRpcServerSettings {
             get {
                 return ResourceManager.GetString("OptionsNetworkRpcServerSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Account manager port:.
-        /// </summary>
-        public static string OptionsNetworkRpcUrlPortAccountManager {
-            get {
-                return ResourceManager.GetString("OptionsNetworkRpcUrlPortAccountManager", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Daemon port:.
-        /// </summary>
-        public static string OptionsNetworkRpcUrlPortDaemon {
-            get {
-                return ResourceManager.GetString("OptionsNetworkRpcUrlPortDaemon", resourceCulture);
             }
         }
         
@@ -1295,6 +1277,15 @@ namespace Jojatekok.MoneroGUI.Properties {
         public static string TextCurrencyCode {
             get {
                 return ResourceManager.GetString("TextCurrencyCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daemon.
+        /// </summary>
+        public static string TextDaemon {
+            get {
+                return ResourceManager.GetString("TextDaemon", resourceCulture);
             }
         }
         

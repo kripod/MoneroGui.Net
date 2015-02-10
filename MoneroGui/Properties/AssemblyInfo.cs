@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyDescription("A GUI for interacting with the command line version of Monero.")]
 [assembly: AssemblyCompany("Jojatekok")]
 [assembly: AssemblyProduct("Monero Client .NET")]
-[assembly: AssemblyCopyright("Copyright © Jojatekok 2014")]
+[assembly: AssemblyCopyright("Copyright © Jojatekok 2015")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components. If you need to access a type in this assembly from 
@@ -45,7 +45,7 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.40.0")]
-[assembly: AssemblyFileVersion("0.40.0")]
+[assembly: AssemblyVersion("0.41.0")]
+[assembly: AssemblyFileVersion("0.41.0")]
 [assembly: NeutralResourcesLanguageAttribute("en")]
 [assembly: GuidAttribute("1ed6dec2-f23e-4880-aaa4-4b2b6ce74def")]

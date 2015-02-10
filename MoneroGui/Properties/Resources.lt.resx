@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Siųsti</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Demonas</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">

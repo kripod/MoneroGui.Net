@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Stuur</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Deamon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -496,12 +496,6 @@ Verkort asseblief jou insette!</value>
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC bediener</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Deamon poort:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
-    <value>Beursie poort:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Gasheer:</value>

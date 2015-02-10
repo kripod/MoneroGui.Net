@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Send</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -544,12 +544,6 @@ No one else should be able to access them, as this would cause your money to be 
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC server</value>
   </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Daemon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
-    <value>Account manager port:</value>
-  </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>
   </data>
@@ -637,5 +631,8 @@ The last received block was generated {3} ago.</value>
   </data>
   <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
     <value>Cannot retrieve the deterministic seed of the account being used.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>Run the corresponding process locally</value>
   </data>
 </root>

@@ -7,7 +7,7 @@
     <TabControl Margin="10">
         <TabItem Header="{Binding Path=DebugWindowConsoles, Source={StaticResource Resources}}">
             <TabControl Margin="5">
-                <TabItem Header="{Binding Path=DebugWindowConsoleDaemon, Source={StaticResource Resources}}">
+                <TabItem Header="{Binding Path=TextDaemon, Source={StaticResource Resources}}">
                     <views:DebugConsoleView x:Name="ConsoleDaemon" SendRequested="ConsoleDaemon_SendRequested" Margin="5"/>
                 </TabItem>
 

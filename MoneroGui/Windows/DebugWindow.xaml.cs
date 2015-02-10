@@ -1,10 +1,10 @@
-﻿using Jojatekok.MoneroAPI;
+﻿using Jojatekok.MoneroAPI.Extensions;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
     public partial class DebugWindow
     {
-        private static readonly MoneroClient MoneroClient = StaticObjects.MoneroClient;
+        private static readonly MoneroProcessManager MoneroProcessManager = StaticObjects.MoneroProcessManager;
 
         public DebugWindow()
         {
@@ -18,12 +18,12 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void ConsoleDaemon_SendRequested(object sender, string e)
         {
-            MoneroClient.Daemon.Send(e);
+            MoneroProcessManager.Daemon.SendConsoleCommand(e);
         }
 
         private void ConsoleAccountManager_SendRequested(object sender, string e)
         {
-            MoneroClient.AccountManager.Send(e);
+            MoneroProcessManager.AccountManager.SendConsoleCommand(e);
         }
     }
 }

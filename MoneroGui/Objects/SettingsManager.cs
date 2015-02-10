@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Jojatekok.MoneroAPI.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using ApiPathSettings = Jojatekok.MoneroAPI.Settings.PathSettings;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -270,17 +270,17 @@ namespace Jojatekok.MoneroGUI
             public string DirectoryDaemonData {
                 get {
                     var output = base["directoryDaemonData"] as string;
-                    return !string.IsNullOrEmpty(output) ? output : ApiPathSettings.DefaultDirectoryDaemonData;
+                    return !string.IsNullOrEmpty(output) ? output : Utilities.DefaultPathDirectoryDaemonData;
                 }
 
                 set {
-                    if (value == ApiPathSettings.DefaultDirectoryDaemonData) value = null;
+                    if (value == Utilities.DefaultPathDirectoryDaemonData) value = null;
                     base["directoryDaemonData"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("directoryAccountBackups", DefaultValue = ApiPathSettings.DefaultDirectoryAccountBackups)]
+            [ConfigurationProperty("directoryAccountBackups", DefaultValue = Utilities.DefaultPathDirectoryAccountBackups)]
             public string DirectoryAccountBackups {
                 get { return base["directoryAccountBackups"] as string; }
                 set {
@@ -289,7 +289,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("fileAccountData", DefaultValue = ApiPathSettings.DefaultFileAccountData)]
+            [ConfigurationProperty("fileAccountData", DefaultValue = Utilities.DefaultPathFileAccountData)]
             public string FileAccountData {
                 get { return base["fileAccountData"] as string; }
                 set {
@@ -298,7 +298,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareDaemon", DefaultValue = ApiPathSettings.DefaultSoftwareDaemon)]
+            [ConfigurationProperty("softwareDaemon", DefaultValue = Utilities.DefaultPathSoftwareDaemon)]
             public string SoftwareDaemon {
                 get { return base["softwareDaemon"] as string; }
                 set {
@@ -307,7 +307,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareAccountManager", DefaultValue = ApiPathSettings.DefaultSoftwareAccountManager)]
+            [ConfigurationProperty("softwareAccountManager", DefaultValue = Utilities.DefaultPathSoftwareAccountManager)]
             public string SoftwareAccountManager {
                 get { return base["softwareAccountManager"] as string; }
                 set {
@@ -324,7 +324,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareWallet", DefaultValue = ApiPathSettings.DefaultSoftwareAccountManager)]
+            [ConfigurationProperty("softwareWallet", DefaultValue = Utilities.DefaultPathSoftwareAccountManager)]
             protected internal string SoftwareWallet {
                 get { return base["softwareWallet"] as string; }
                 set {
@@ -333,7 +333,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("directoryWalletBackups", DefaultValue = ApiPathSettings.DefaultDirectoryAccountBackups)]
+            [ConfigurationProperty("directoryWalletBackups", DefaultValue = Utilities.DefaultPathDirectoryAccountBackups)]
             protected internal string DirectoryWalletBackups {
                 get { return base["directoryWalletBackups"] as string; }
                 set {
@@ -342,7 +342,7 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("fileWalletData", DefaultValue = ApiPathSettings.DefaultFileAccountData)]
+            [ConfigurationProperty("fileWalletData", DefaultValue = Utilities.DefaultPathFileAccountData)]
             protected internal string FileWalletData {
                 get { return base["fileWalletData"] as string; }
                 set {
@@ -359,11 +359,11 @@ namespace Jojatekok.MoneroGUI
                 this.SetDefaultSectionInformation();
             }
 
-            [ConfigurationProperty("rpcUrlHost", DefaultValue = "localhost")]
-            public string RpcUrlHost {
-                get { return base["rpcUrlHost"] as string; }
+            [ConfigurationProperty("rpcUrlHostDaemon", DefaultValue = "http://localhost")]
+            public string RpcUrlHostDaemon {
+                get { return base["rpcUrlHostDaemon"] as string; }
                 set {
-                    base["rpcUrlHost"] = value;
+                    base["rpcUrlHostDaemon"] = value;
                     AutoSaveSettings();
                 }
             }
@@ -377,11 +377,38 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
+            [ConfigurationProperty("isProcessDaemonHostedLocally", DefaultValue = true)]
+            public bool IsProcessDaemonHostedLocally {
+                get { return (bool)base["isProcessDaemonHostedLocally"]; }
+                set {
+                    base["isProcessDaemonHostedLocally"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("rpcUrlHostAccountManager", DefaultValue = "http://localhost")]
+            public string RpcUrlHostAccountManager {
+                get { return base["rpcUrlHostAccountManager"] as string; }
+                set {
+                    base["rpcUrlHostAccountManager"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
             [ConfigurationProperty("rpcUrlPortAccountManager", DefaultValue = (ushort)18082)]
             public ushort RpcUrlPortAccountManager {
                 get { return (ushort)base["rpcUrlPortAccountManager"]; }
                 set {
                     base["rpcUrlPortAccountManager"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("isProcessAccountManagerHostedLocally", DefaultValue = true)]
+            public bool IsProcessAccountManagerHostedLocally {
+                get { return (bool)base["isProcessAccountManagerHostedLocally"]; }
+                set {
+                    base["isProcessAccountManagerHostedLocally"] = value;
                     AutoSaveSettings();
                 }
             }
@@ -409,6 +436,15 @@ namespace Jojatekok.MoneroGUI
                 get { return base["proxyPort"] as ushort?; }
                 set {
                     base["proxyPort"] = value;
+                    AutoSaveSettings();
+                }
+            }
+
+            [ConfigurationProperty("rpcUrlHost", DefaultValue = "localhost")]
+            protected internal string RpcUrlHost {
+                get { return base["rpcUrlHost"] as string; }
+                set {
+                    base["rpcUrlHost"] = value;
                     AutoSaveSettings();
                 }
             }

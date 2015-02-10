@@ -11,35 +11,64 @@
 
     <StackPanel>
         <GroupBox Header="{Binding Path=OptionsNetworkRpcServerSettings, Source={StaticResource Resources}}" Margin="0 0 0 5">
-            <Grid Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="8"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="19"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="8"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <StackPanel Margin="5">
+                <GroupBox Header="{Binding Path=TextDaemon, Source={StaticResource Resources}}" Margin="0 0 0 5">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="19"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" LastChildFill="True" Margin="0 0 0 5">
-                    <TextBlock Text="{Binding Path=TextHost, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-                    <TextBox x:Name="TextBoxRpcUrlHost" Margin="8 0 0 0"/>
-                </DockPanel>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=TextHost, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxRpcUrlHostDaemon"/>
+                        <Separator Grid.Row="0" Grid.Column="3" Style="{StaticResource StyleSeparatorVertical}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=TextPort, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+                        <xctk:IntegerUpDown Grid.Row="0" Grid.Column="6" x:Name="IntegerUpDownRpcUrlPortDaemon" Style="{StaticResource StyleIntegerUpDownPort}"/>
 
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Path=OptionsNetworkRpcUrlPortDaemon, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-                <xctk:IntegerUpDown Grid.Row="1" Grid.Column="2" x:Name="IntegerUpDownRpcUrlPortDaemon" Style="{StaticResource StyleIntegerUpDownPort}"/>
-                <Separator Grid.Row="1" Grid.Column="3" Style="{StaticResource StyleSeparatorVertical}"/>
-                <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Path=OptionsNetworkRpcUrlPortAccountManager, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
-                <xctk:IntegerUpDown Grid.Row="1" Grid.Column="6" x:Name="IntegerUpDownRpcUrlPortAccountManager" Style="{StaticResource StyleIntegerUpDownPort}"/>
-            </Grid>
+                        <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CheckBoxIsProcessDaemonHostedLocally" Content="{Binding Path=OptionsNetworkIsProcessHostedLocally, Source={StaticResource Resources}}"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="{Binding Path=TextAccountManager, Source={StaticResource Resources}}" Margin="0 0 0 5">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="19"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="8"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Path=TextHost, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" x:Name="TextBoxRpcUrlHostAccountManager"/>
+                        <Separator Grid.Row="0" Grid.Column="3" Style="{StaticResource StyleSeparatorVertical}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Path=TextPort, Source={StaticResource Resources}}" VerticalAlignment="Center"/>
+                        <xctk:IntegerUpDown Grid.Row="0" Grid.Column="6" x:Name="IntegerUpDownRpcUrlPortAccountManager" Style="{StaticResource StyleIntegerUpDownPort}"/>
+
+                        <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" x:Name="CheckBoxIsProcessAccountManagerHostedLocally" Content="{Binding Path=OptionsNetworkIsProcessHostedLocally, Source={StaticResource Resources}}"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
         </GroupBox>
 
-        <GroupBox Header="{Binding Path=OptionsNetworkProxySettings, Source={StaticResource Resources}}" IsEnabled="False">
+        <GroupBox Header="{Binding Path=OptionsNetworkProxySettings, Source={StaticResource Resources}}">
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>

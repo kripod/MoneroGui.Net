@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Pošalji</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Servis</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -542,12 +542,6 @@ Niko drugi ne bi trebao da ima pristup njima,jer bi to moglo da ugrozi vaš nova
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC server</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Demon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
-    <value>Port menadžera računa:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>

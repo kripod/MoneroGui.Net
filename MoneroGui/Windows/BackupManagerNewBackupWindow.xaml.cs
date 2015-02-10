@@ -1,4 +1,4 @@
-﻿using Jojatekok.MoneroAPI.RpcManagers.AccountManager.Json.Requests;
+﻿using Jojatekok.MoneroAPI;
 using Ookii.Dialogs.Wpf;
 using System;
 using System.IO;
@@ -43,7 +43,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             switch (SelectedAccountBackupOption) {
                 case AccountBackupOption.DeterministicAccountSeed:
-                    var mnemonicKey = StaticObjects.MoneroClient.AccountManager.QueryKey(QueryKeyParameters.KeyType.Mnemonic);
+                    var mnemonicKey = StaticObjects.MoneroRpcManager.AccountManager.QueryKey(AccountKeyType.Mnemonic);
                     if (mnemonicKey == null) {
                         this.ShowError(Properties.Resources.BackupManagerNewBackupWindowErrorRetrievingSeed);
                         return;
@@ -55,14 +55,14 @@ namespace Jojatekok.MoneroGUI.Windows
                     break;
 
                 case AccountBackupOption.DefaultPath:
-                    BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync();
+                    BackupDirectory = await StaticObjects.MoneroProcessManager.AccountManager.BackupAsync();
                     DialogResult = true;
                     break;
 
                 case AccountBackupOption.CustomPath:
                     var pathDialog = new VistaFolderBrowserDialog { RootFolder = Environment.SpecialFolder.MyComputer };
                     if (pathDialog.ShowDialog() == true) {
-                        BackupDirectory = await StaticObjects.MoneroClient.AccountManager.BackupAsync(pathDialog.SelectedPath);
+                        BackupDirectory = await StaticObjects.MoneroProcessManager.AccountManager.BackupAsync(pathDialog.SelectedPath);
                         DialogResult = true;
                     }
                     break;

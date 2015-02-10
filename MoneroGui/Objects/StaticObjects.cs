@@ -1,4 +1,6 @@
 ﻿using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.Extensions;
+using Jojatekok.MoneroAPI.Extensions.Settings;
 using Jojatekok.MoneroAPI.Settings;
 using Jojatekok.MoneroGUI.Windows;
 using System;
@@ -7,7 +9,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Drawing;
 using System.IO;
-//using System.Net;
+using System.Net;
 using System.Reflection;
 using System.Windows.Media;
 using Brush = System.Windows.Media.Brush;
@@ -71,7 +73,8 @@ namespace Jojatekok.MoneroGUI
 
         public static MainWindow MainWindow { get; set; }
 
-        public static MoneroClient MoneroClient { get; private set; }
+        public static MoneroProcessManager MoneroProcessManager { get; private set; }
+        public static MoneroRpcManager MoneroRpcManager { get; private set; }
 
         public static Logger LoggerDaemon { get; private set; }
         public static Logger LoggerAccountManager { get; private set; }
@@ -81,29 +84,31 @@ namespace Jojatekok.MoneroGUI
         public static void Initialize()
         {
             var storedPathSettings = SettingsManager.Paths;
-            var pathSettings = new PathSettings {
+            var daemonPathSettings = new DaemonPathSettings {
+                SoftwareDaemon = storedPathSettings.SoftwareDaemon,
                 DirectoryDaemonData = storedPathSettings.DirectoryDaemonData,
+            };
+            var accountManagerPathSettings = new AccountManagerPathSettings {
+                SoftwareAccountManager = storedPathSettings.SoftwareAccountManager,
                 DirectoryAccountBackups = storedPathSettings.DirectoryAccountBackups,
                 FileAccountData = storedPathSettings.FileAccountData,
-                SoftwareDaemon = storedPathSettings.SoftwareDaemon,
-                SoftwareAccountManager = storedPathSettings.SoftwareAccountManager
             };
 
             var storedNetworkSettings = SettingsManager.Network;
             var rpcSettings = new RpcSettings(
-                storedNetworkSettings.RpcUrlHost,
+                storedNetworkSettings.RpcUrlHostDaemon,
                 storedNetworkSettings.RpcUrlPortDaemon,
+                storedNetworkSettings.RpcUrlHostAccountManager,
                 storedNetworkSettings.RpcUrlPortAccountManager
             );
+            if (storedNetworkSettings.IsProxyEnabled) {
+                if (!string.IsNullOrEmpty(storedNetworkSettings.ProxyHost) && storedNetworkSettings.ProxyPort != null) {
+                    rpcSettings.Proxy = new WebProxy(storedNetworkSettings.ProxyHost, (int)storedNetworkSettings.ProxyPort);
+                }
+            }
 
-            // TODO: Add support for using proxies
-            //if (networkSettings.IsProxyEnabled) {
-            //    if (!string.IsNullOrEmpty(networkSettings.ProxyHost) && networkSettings.ProxyPort != null) {
-            //        rpcSettings.Proxy = new WebProxy(networkSettings.ProxyHost, (int)networkSettings.ProxyPort);
-            //    }
-            //}
-
-            MoneroClient = new MoneroClient(pathSettings, rpcSettings);
+            MoneroProcessManager = new MoneroProcessManager(rpcSettings, accountManagerPathSettings, daemonPathSettings);
+            MoneroRpcManager = new MoneroRpcManager(rpcSettings);
 
             LoggerDaemon = new Logger();
             LoggerAccountManager = new Logger();

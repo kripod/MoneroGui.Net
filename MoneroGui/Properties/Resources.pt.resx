@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Enviar</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -493,9 +493,6 @@ Por favor reduza o tamanho dos parâmetros!</value>
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>Servidor RPC</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Porta do Daemon:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Host:</value>

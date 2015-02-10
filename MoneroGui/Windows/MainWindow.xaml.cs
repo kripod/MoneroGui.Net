@@ -1,8 +1,10 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
 using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.Extensions;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -35,9 +37,21 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private bool IsDisposing { get; set; }
 
-        private static MoneroClient MoneroClient { get; set; }
+        private static MoneroProcessManager MoneroProcessManager { get; set; }
+        private static MoneroRpcManager MoneroRpcManager { get; set; }
         private static Logger LoggerDaemon { get; set; }
         private static Logger LoggerAccountManager { get; set; }
+
+        private static ObservableCollection<Transaction> _accountTransactions;
+        private ObservableCollection<Transaction> AccountTransactions {
+            get { return _accountTransactions; }
+
+            set {
+                _accountTransactions = value;
+                OverviewView.ViewModel.DataSourceTransactions = AccountTransactions;
+                TransactionsView.ViewModel.DataSourceTransactions = AccountTransactions;
+            }
+        }
 
         public static readonly RoutedCommand CommandShowOrHideWindow = new RoutedCommand();
         public static readonly RoutedCommand CommandSendCoins = new RoutedCommand();
@@ -59,6 +73,8 @@ namespace Jojatekok.MoneroGUI.Windows
             Icon = StaticObjects.ApplicationIconImage;
             InitializeComponent();
             TaskbarIcon.Icon = StaticObjects.ApplicationIcon;
+
+            AccountTransactions = new ObservableCollection<Transaction>();
 
             var isAutoUpdateEnabled = true;
             string uriToOpen = null;
@@ -93,7 +109,8 @@ namespace Jojatekok.MoneroGUI.Windows
             CommandManager.RegisterClassCommandBinding(typeof(Popup), CommandBindingDebugWindow);
             CommandManager.RegisterClassCommandBinding(typeof(Popup), CommandBindingExit);
 
-            MoneroClient = StaticObjects.MoneroClient;
+            MoneroProcessManager = StaticObjects.MoneroProcessManager;
+            MoneroRpcManager = StaticObjects.MoneroRpcManager;
             LoggerDaemon = StaticObjects.LoggerDaemon;
             LoggerAccountManager = StaticObjects.LoggerAccountManager;
 
@@ -465,32 +482,52 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void StartDaemon()
         {
-            var daemon = MoneroClient.Daemon;
-            daemon.OnLogMessage += Daemon_OnLogMessage;
-            daemon.NetworkInformationChanging += Daemon_NetworkInformationChanging;
-            daemon.BlockchainSynced += Daemon_BlockchainSynced;
+            var daemonRpc = MoneroRpcManager.Daemon;
+            daemonRpc.NetworkInformationChanging += Daemon_NetworkInformationChanging;
+            daemonRpc.BlockchainSynced += Daemon_BlockchainSynced;
 
-            daemon.Start();
+            if (SettingsManager.Network.IsProcessDaemonHostedLocally) {
+                var daemonProcess = MoneroProcessManager.Daemon;
+                daemonProcess.Initialized += delegate {
+                    daemonRpc.Initialize();
+                };
+                daemonProcess.OnLogMessage += Daemon_OnLogMessage;
+
+                daemonProcess.Start();
+
+            } else {
+                daemonRpc.Initialize();
+            }
         }
 
         private void StartAccountManager()
         {
-            var accountManager = MoneroClient.AccountManager;
-            accountManager.OnLogMessage += AccountManager_OnLogMessage;
-            accountManager.PassphraseRequested += AccountManager_PassphraseRequested;
-            accountManager.AddressReceived += AccountManager_AddressReceived;
-            accountManager.TransactionReceived += AccountManager_TransactionReceived;
-            accountManager.BalanceChanging += AccountManager_BalanceChanging;
+            var accountManagerRpc = MoneroRpcManager.AccountManager;
+            accountManagerRpc.AddressReceived += AccountManager_AddressReceived;
+            accountManagerRpc.TransactionReceived += AccountManager_TransactionReceived;
+            accountManagerRpc.TransactionChanging += AccountManager_TransactionChanging;
+            accountManagerRpc.BalanceChanging += AccountManager_BalanceChanging;
 
-            accountManager.Start();
+            if (SettingsManager.Network.IsProcessAccountManagerHostedLocally) {
+                var accountManagerProcess = MoneroProcessManager.AccountManager;
+                accountManagerProcess.Initialized += delegate {
+                    accountManagerRpc.Initialized += AccountManager_Initialized;
+                    accountManagerRpc.Initialize();
+                };
+                accountManagerProcess.OnLogMessage += AccountManager_OnLogMessage;
+                accountManagerProcess.PassphraseRequested += AccountManager_PassphraseRequested;
 
-            OverviewView.ViewModel.DataSourceTransactions = accountManager.Transactions;
-            TransactionsView.ViewModel.DataSourceTransactions = accountManager.Transactions;
+                accountManagerProcess.Start();
+
+            } else {
+                accountManagerRpc.Initialized += AccountManager_Initialized;
+                accountManagerRpc.Initialize();
+            }
         }
 
-        private static void Daemon_OnLogMessage(object sender, string e)
+        private static void Daemon_OnLogMessage(object sender, LogMessageReceivedEventArgs e)
         {
-            LoggerDaemon.Log(e);
+            LoggerDaemon.Log(e.LogMessage.MessageText);
         }
 
         private void Daemon_NetworkInformationChanging(object sender, NetworkInformationChangingEventArgs e)
@@ -536,9 +573,22 @@ namespace Jojatekok.MoneroGUI.Windows
             });
         }
 
-        private static void AccountManager_OnLogMessage(object sender, string e)
+        private void AccountManager_Initialized(object sender, EventArgs e)
         {
-            LoggerAccountManager.Log(e);
+            var accountTransactions = MoneroRpcManager.AccountManager.Transactions;
+            Dispatcher.Invoke(() =>
+                {
+                    for (var i = 0; i < accountTransactions.Count; i++) {
+                        AccountTransactions.Add(accountTransactions[i]);
+                    }
+                },
+                DispatcherPriority.DataBind
+            );
+        }
+
+        private static void AccountManager_OnLogMessage(object sender, LogMessageReceivedEventArgs e)
+        {
+            LoggerAccountManager.Log(e.LogMessage.MessageText);
         }
 
         private void AccountManager_PassphraseRequested(object sender, PassphraseRequestedEventArgs e)
@@ -547,13 +597,13 @@ namespace Jojatekok.MoneroGUI.Windows
                 if (e.IsFirstTime) {
                     // Let the user set the account's passphrase for the first time
                     var dialog = new AccountChangePassphraseWindow(this, false);
-                    MoneroClient.AccountManager.Passphrase = DisplayDialog(dialog) == true ? dialog.NewPassphrase : null;
+                    MoneroProcessManager.AccountManager.Passphrase = DisplayDialog(dialog) == true ? dialog.NewPassphrase : null;
 
                 } else {
                     // Request the account's passphrase in order to unlock it
                     var dialog = new AccountUnlockWindow(this);
                     if (DisplayDialog(dialog) == true) {
-                        MoneroClient.AccountManager.Passphrase = dialog.Passphrase;
+                        MoneroProcessManager.AccountManager.Passphrase = dialog.Passphrase;
                     }
                 }
             }));
@@ -567,6 +617,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private void AccountManager_TransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
             var transaction = e.Transaction;
+            AccountTransactions.Add(transaction);
 
             string balloonTitle;
             switch (transaction.Type) {
@@ -597,7 +648,12 @@ namespace Jojatekok.MoneroGUI.Windows
             Dispatcher.BeginInvoke(new Action(() => TaskbarIcon.ShowBalloonTip(balloonTitle, balloonMessage, BalloonIcon.Info)));
         }
 
-        private void AccountManager_BalanceChanging(object sender, BalanceChangingEventArgs e)
+        private void AccountManager_TransactionChanging(object sender, TransactionChangingEventArgs e)
+        {
+            AccountTransactions[e.TransactionNumber] = e.NewValue;
+        }
+
+        private void AccountManager_BalanceChanging(object sender, AccountBalanceChangingEventArgs e)
         {
             var newValue = e.NewValue;
 
@@ -634,9 +690,15 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             if (disposing && !IsDisposing) {
                 IsDisposing = true;
-                
-                if (MoneroClient != null) {
-                    MoneroClient.Dispose();
+
+                if (MoneroRpcManager != null) {
+                    MoneroRpcManager.Dispose();
+                    MoneroRpcManager = null;
+                }
+
+                if (MoneroProcessManager != null) {
+                    MoneroProcessManager.Dispose();
+                    MoneroProcessManager = null;
                 }
 
                 Dispatcher.Invoke(Application.Current.Shutdown);

@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Отправить</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Демон</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -491,9 +491,6 @@
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC сервер</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Порт демона:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Хост:</value>

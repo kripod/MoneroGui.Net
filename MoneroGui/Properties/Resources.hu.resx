@@ -123,7 +123,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Küldés</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -544,12 +544,6 @@ Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC szerver</value>
   </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Daemon port:</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortAccountManager" xml:space="preserve">
-    <value>Számlakezelő port:</value>
-  </data>
   <data name="TextHost" xml:space="preserve">
     <value>Kiszolgáló:</value>
   </data>
@@ -637,5 +631,8 @@ A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
   </data>
   <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
     <value>Nem lehet kinyerni a jelenleg használt számla meghatározott seedjét.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>A hozzá tartozó folyamat futtatása helyileg</value>
   </data>
 </root>

@@ -150,7 +150,7 @@ namespace Jojatekok.MoneroGUI.Views.MainWindow
 
                 // Initiate a new transaction
                 Debug.Assert(ViewModel.MixCount != null, "ViewModel.MixCount != null");
-                var isTransferSuccessful = StaticObjects.MoneroClient.AccountManager.SendTransferSplit(
+                var isTransferSuccessful = StaticObjects.MoneroRpcManager.AccountManager.SendTransaction(
                     recipientsList,
                     ViewModel.PaymentId.ToLower(Helper.InvariantCulture),
                     ViewModel.MixCount.Value

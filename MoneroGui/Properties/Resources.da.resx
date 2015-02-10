@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Send</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -493,9 +493,6 @@ Prøv at reducere længden af ​​dit input!</value>
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC server</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Daemon port:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Vært:</value>

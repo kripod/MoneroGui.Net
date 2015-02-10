@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>送る</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>デーモン</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -299,7 +299,7 @@
   </data>
   <data name="OptionsPaths" xml:space="preserve">
     <value>パス</value>
-  </data>\
+  </data>
   <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
     <value>デーモンのソフト:</value>
   </data>
@@ -493,9 +493,6 @@
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPCサーバ</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>デーモンのポート:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>ホスト:</value>

@@ -4,7 +4,7 @@
         xmlns:views="clr-namespace:Jojatekok.MoneroGUI.Views.OptionsWindow"
         Title="{Binding Path=OptionsWindowTitle, Source={StaticResource Resources}}"
         WindowStartupLocation="CenterOwner"
-        Width="470" Height="314" MinWidth="470" MinHeight="314">
+        Width="578" Height="418" MinWidth="578" MinHeight="418">
     <Grid Grid.IsSharedSizeScope="True" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

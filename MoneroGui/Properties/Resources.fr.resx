@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>Envoyer</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -493,9 +493,6 @@ S.V.P. Essayer de réduire la longueur de la saisie. </value>
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>Serveur RPC</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>Port du Daemon:</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>Hôte:</value>

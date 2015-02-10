@@ -154,7 +154,7 @@ namespace Jojatekok.MoneroGUI.Windows
             if (files.Length == 0) return false;
 
             // Stop the account manager
-            StaticObjects.MoneroClient.AccountManager.Stop();
+            StaticObjects.MoneroProcessManager.AccountManager.Stop();
 
             // Initialize variables
             var fileAccountData = SettingsManager.Paths.FileAccountData;
@@ -174,7 +174,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
 
             // Restart the account manager
-            StaticObjects.MoneroClient.AccountManager.Start();
+            StaticObjects.MoneroProcessManager.AccountManager.Start();
             return true;
         }
 

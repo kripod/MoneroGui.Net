@@ -126,7 +126,7 @@
   <data name="TextSend" xml:space="preserve">
     <value>发送</value>
   </data>
-  <data name="DebugWindowConsoleDaemon" xml:space="preserve">
+  <data name="TextDaemon" xml:space="preserve">
     <value>守护进程</value>
   </data>
   <data name="DebugWindowConsoles" xml:space="preserve">
@@ -493,9 +493,6 @@
   </data>
   <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
     <value>RPC服务器</value>
-  </data>
-  <data name="OptionsNetworkRpcUrlPortDaemon" xml:space="preserve">
-    <value>守护端口：</value>
   </data>
   <data name="TextHost" xml:space="preserve">
     <value>主机：</value>
