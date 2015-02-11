@@ -617,7 +617,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private void AccountManager_TransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
             var transaction = e.Transaction;
-            AccountTransactions.Add(transaction);
+            Dispatcher.Invoke(() => AccountTransactions.Add(transaction), DispatcherPriority.DataBind);
 
             string balloonTitle;
             switch (transaction.Type) {
@@ -650,7 +650,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
         private void AccountManager_TransactionChanging(object sender, TransactionChangingEventArgs e)
         {
-            AccountTransactions[e.TransactionNumber] = e.NewValue;
+            Dispatcher.Invoke(() => AccountTransactions[e.TransactionNumber] = e.NewValue, DispatcherPriority.DataBind);
         }
 
         private void AccountManager_BalanceChanging(object sender, AccountBalanceChangingEventArgs e)

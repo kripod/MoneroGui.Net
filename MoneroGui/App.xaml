@@ -44,6 +44,16 @@
             <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         </Style>
 
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Foreground" Value="{x:Static objects:StaticObjects.BrushForegroundWarning}"/>
+                </Trigger>
+            </Style.Triggers>
+
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+        </Style>
+
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StyleMinHeight22}">
             <Setter Property="Padding" Value="5 0"/>
         </Style>
@@ -106,7 +116,7 @@
             <Setter Property="Margin" Value="0 2"/>
         </Style>
 
-        <Style x:Key="StyleTextBoxTransparent" TargetType="{x:Type TextBox}">
+        <Style x:Key="StyleTextBoxTransparent" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="IsReadOnly" Value="True"/>
