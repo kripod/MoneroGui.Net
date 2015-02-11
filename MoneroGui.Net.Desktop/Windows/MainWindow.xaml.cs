@@ -147,7 +147,7 @@ namespace Jojatekok.MoneroGUI.Windows
             using (var webClient = new WebClient()) {
                 try {
                     // Compare the application's version with the latest one
-                    var versionInfoString = webClient.DownloadString(new Uri("https://jojatekok.github.io/monero-client-net/version_info.txt", UriKind.Absolute));
+                    var versionInfoString = webClient.DownloadString(new Uri("https://jojatekok.github.io/MoneroGui.Net/version_info.txt", UriKind.Absolute));
                     var versionInfoStringSplit = versionInfoString.Split(new[] { '\n', '	' });
 
                     var versionInfo = new Dictionary<string, string>();
