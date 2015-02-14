@@ -1,9 +1,0 @@
-﻿<Window x:Class="Jojatekok.MoneroGUI.Windows.AddressBookWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:viewsMainWindow="clr-namespace:Jojatekok.MoneroGUI.Views.MainWindow"
-        Title="{Binding Path=TextAddressBook, Source={StaticResource Resources}}"
-        WindowStartupLocation="CenterOwner"
-        SizeToContent="Width" Height="312" MinHeight="246">
-    <viewsMainWindow:AddressBookView x:Name="AddressBookView" IsDialogModeEnabled="True" Margin="10"/>
-</Window>
