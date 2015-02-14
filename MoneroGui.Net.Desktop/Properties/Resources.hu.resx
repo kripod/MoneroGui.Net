@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextClear" xml:space="preserve">
+    <value>Ürítés</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Küldés</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Konzolok</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Információ</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Hibakereső ablak</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Címjegyzék</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>A Monero Kliens .NET leáll...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Áttekintés</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Érmék küldése</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Kliens .NET</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Tranzakciók</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;A Monero Kliens .NET-ről</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Biztonsági mentés kezelő</value>
+  </data>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>Számla jelkódjának &amp;megváltoztatása...</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Hibakereső ablak</value>
+  </data>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>Számla &amp;kódolása...</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Exportálás...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Fájl</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Súgó</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Opciók</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Beállítások</value>
+  </data>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>Számla &amp;feloldása...</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Inicializálás...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Tranzakciók száma:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Legutóbbi tranzakciók</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Elkölthető:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Megerősítetlen:</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Számla</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Adj meg egy Monero címet</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Adj meg egy címkét ehhez a címhez, hogy a címjegyzékedbe kerülhessen</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Keverések száma:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Fizetési azonosító:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Ez a mező opcionális</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>kapcsolat</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Szinkronizálás a hálózattal...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>nap</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} blokk ({1}) lemaradás</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Cím</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Mennyiség</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Címke</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Elkölthető?</value>
+  </data>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Igen</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Fogadás</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Küldés</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Ismeretlen</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>A Monero Kliens .NET-ről</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Hiba: A licencfájl nem található.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Licencfájl betöltése...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Harmadik féltől származó licencek</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Másolás</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Új...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Exportálás...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Mégse</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Ismert cím hozzáadása</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Felhasználói felület nyelve:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Alapértelmezett</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Útvonalak</value>
+  </data>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Számla biztonsági mentései:</value>
+  </data>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Számla fájl:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Daemon szoftver:</value>
+  </data>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Számlakezelő szoftver:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Adatbázisok mentése kilépés előtt</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>A Monero Kliens .NET indítása bejelentkezéskor</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Cím másolása</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Minden fájl|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Programok (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Számla fájlok (*.bin)|*.bin</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>nap</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Az ikonokat készítette:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Cím szerkesztése</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Szerkesztés</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Beillesztés</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG fájlok (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Üzenet:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Mentés másként...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>A keletkezett URI túl hosszú.
+
+Kérlek, próbáld meg csökkenteni a bevitt adatok mennyiségét!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR kód</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Jelenlegi egyenleg:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Címzett eltávolítása</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Új címzett</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Címzettek törlése</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>ismét</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Jelenlegi jelkód:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Használj jelkódot a számládhoz, hogy biztonságban tarthasd!</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Ajánlott legalább 10 véletlenszerű karaktert vagy 8 szót használni.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Új jelkód</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Jelkód</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Számla jelkódjának megváltoztatása</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Számla kódolása</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>A megadott jelkódok nem egyeznek.</value>
+  </data>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Kérlek, add meg a jelkódot, hogy hozzáférhess a számládhoz.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Számla feloldása</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Opciók</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Kérlek, ne szakítsd meg ezt a folyamatot!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Ablak elrejtése</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Ablak mutatása</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Tranzakció-azonosító</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Bejövő tranzakció</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Kimenő tranzakció</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Ismeretlen típusú tranzakció</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Kérlek, válassz egy metódust az új biztonsági mentés elkészítéséhez!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Fájlként, választott helyen</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Ezek a fájlok nem fognak megjelenni választhatóként a beépített biztonsági mentés kezelővel</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Fájlként, az alapértelmezett helyen</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Meghatározott számla seedként</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Ez a módszer a legbiztonságosabb, és nem is igényel számítógépet a tároláshoz</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Új biztonsági mentés</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Böngészés a fájlkezelőben...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Automatikusan készüljön mentés minden héten</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Mentések készítése</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>A biztonsági mentés a(z) \"{0}\" helyről nem állítható vissza.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Könyvtárból...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Meghatározott számla seedből...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>A kijelölésből</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>A biztonsági mentés sikeresen helyre lett állítva, és alkalmazásra került.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Mentések visszaállítása</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Biztonsági mentés kezelő</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Kérlek, légy RENDKÍVÜL ÓVATOS a számla-információid tárolásával!
+
+Senki se férhessen hozzájuk, hiszen ez pénzed elvesztését okozhatja.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Nem sikerült elküldeni a tranzakciót.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Becsült új egyenleg:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Díj:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Hálózat</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Kapcsolódás proxyn keresztül</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC szerver</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Kiszolgáló:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Daemon fájlok:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Naprakész</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Letöltve {0} a(z) {1} blokknyi tranzakciótörténetből ({2}% kész).
+A legutóbbi fogadott blokk generálása óta {3} telt el.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Hiba történt frissítések keresése közben.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Elérhető egy frissítés (v{0}). Szeretnéd alkalmazni?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Frissítés elérhető</value>
+  </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Kattints duplán a nagyításhoz!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Kattints duplán a kicsinyítéshez!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Kérés érkezett egy fizetés elküldésére az alábbi adatokkal:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Szeretnél elnavigálni a(z) '{0}' fülre?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Szeretnéd megnyitni ezt az URI-t?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>A program jelenleg nem az alapértelmezett '{0}' URI-k megnyitásához. Szeretnéd alapértelmezetté tenni?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Alapértelmezett URI társítás</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Mindig ellenőrizze, hogy az alkalmazás alapértelmezetten társítva van a valuta URI-jaihoz</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Ne kérdezd meg többé</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Kérlek, adj meg egy címet!</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>Az egyik címzett címe kereskedőoldalhoz tartozik. Szeretnéd megakadályozni a tranzakció elküldését fizetési azonosító nélkül?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Hiányzik a fizetési azonosító</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>A megadott fizetési azonosító érvénytelen.</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Frissítések keresése indításkor</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Kísérleti verziók keresésének engedélyezése</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Számlakezelő</value>
+  </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>A számlád meghatározott seedje alább megtalálható. Elektronikus eszközön való tárolása helyett ajánlott jegyzetet készíteni róla egy papíron.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Meghatározott számla seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Nem lehet kinyerni a jelenleg használt számla meghatározott seedjét.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>A hozzá tartozó folyamat futtatása helyileg</value>
+  </data>
+</root>

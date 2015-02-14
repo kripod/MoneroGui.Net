@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Consoles</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Debug window</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Address book</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client .NET is shutting down...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Send coins</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Client .NET</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Transactions</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;About Monero Client .NET</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Backup manager</value>
+  </data>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>&amp;Change account passphrase...</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Debug window</value>
+  </data>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>&amp;Encrypt account...</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Export...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Settings</value>
+  </data>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>&amp;Unlock account...</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Initializing...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Number of transactions:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Recent transactions</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Spendable:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Unconfirmed:</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Enter a Monero address</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Enter a label for this address to add it to your address book</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Mix count:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Payment ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>This field is optional</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>connections</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Synchronizing with network...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} blocks ({1}) behind</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Spendable?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Receive</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>About Monero Client .NET</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Error: The license file cannot be found.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Loading license file...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Third-party licenses</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>New...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Export...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Add known address</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>User Interface language:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Paths</value>
+  </data>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Account backups:</value>
+  </data>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Account data:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Daemon software:</value>
+  </data>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Account software:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Save databases before shutdown</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Start Monero Client .NET on system login</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Copy address</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>All files|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Executables (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Account files (*.bin)|*.bin</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Comma separated file (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Icons made by:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Edit contact</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG files (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Message:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Save as...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>The resulting URI is too long.
+
+Please try to reduce the length of your inputs!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR code</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Remove recipient</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Add recipient</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Clear recipients</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>again</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Current passphrase:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Use a passphrase for your account in order to keep it safe!</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(It's recommended to use at least 10 random characters or 8 words.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>New passphrase</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Passphrase</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Change account passphrase</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Encrypt account</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>The supplied passphrases do not match.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Unlock account</value>
+  </data>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Please enter your passphrase in order to access your account.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Please do not interrupt this process!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Hide window</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Show window</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Transaction ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Incoming transaction</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Outgoing transaction</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Unknown type transaction</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Please select a method for creating the new backup!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>As a file, at a chosen path</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>These files will not appear as selectable in the built-in backup manager</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>As a file, at the default location</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>As a deterministic account seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>This method is the safest, and it doesn't even require a computer for storage</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>New backup</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Browse in explorer...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Automatically create backups each week</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Create backups</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>The backup at \"{0}\" could not be restored.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>From directory...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>From deterministic account seed...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>From selection</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>The backup has been successfully restored and applied.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Restore backups</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Backup manager</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Please be EXTREMELY CAREFUL about storing your account data!
+
+No one else should be able to access them, as this would cause your money to be compromised.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>The transaction could not be sent.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Connect through proxy</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC server</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Daemon data:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Up to date</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Downloaded {0} of {1} blocks of transaction history ({2}% done).
+The last received block was generated {3} ago.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Failed to check for updates.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>An update is available (v{0}). Do you want to apply it now?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Double-click to enlarge!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Double-click to shrink!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>A request has been received to send a payment with the following details:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Do you want to navigate to the '{0}' tab?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Do you want to open this URI?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>The application is currently not the default for opening '{0}' URIs. Would you like to make it the default?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Default URI association</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Don't ask again</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Always check whether the application is the default handler of the currency's URIs</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Please enter an address!</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>One of the recipients' addresses belongs to an exchange. Do you want to cancel sending the transaction without a payment ID?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Payment ID missing</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>The payment ID you've specified is not valid.</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Check for updates on startup</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Allow checking for experimental builds</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Account manager</value>
+  </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>Your account's deterministic seed can be found below. It's recommended to make note of it on a paper instead of storing it on an electronic device.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Deterministic account seed</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Cannot retrieve the deterministic seed of the account being used.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>Run the corresponding process locally</value>
+  </data>
+</root>

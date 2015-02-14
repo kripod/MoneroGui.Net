@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Konsol</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Jendela Debug</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Buku Alamat</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Klien NET di matikan ...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Ikhtisar</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Kirim Koin</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Klient .NET</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Transaksi</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;Tentang Monero Klien .NET</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Manajer backup</value>
+  </data>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>&amp;Ubah passphrase akun...</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Jendela debug</value>
+  </data>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>&amp;Enkripsi akun ...</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Keluar</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Export...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Berkas</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Bantuan</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Pilihan</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Pengaturan</value>
+  </data>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>&amp;Aktifkan akun</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Memulai ...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Jumlah transaksi:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Transaksi terakhir</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Dibelanjakan:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Belum dikonfirmasi:</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Akun</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Masukan alamat Monero</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Masukkan label untuk alamat ini untuk ditambahkan ke buku alamat anda</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Jumlah campuran:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Payment ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Bidang ini bersifat opsional</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>Koneksi</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Sinkronisasi dengan jaringan ...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>hari</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} blok ({1}) di belakang</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Alamat</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Tipe</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Dibelanjakan?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Menerima</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Tidak diketahui</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>Tentang Monero Klien .NET</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Kesalahan: Berkas lisensi tidak dapat ditemukan.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Memuat file lisensi ...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Lisensi pihak ketiga</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Salin</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Baru...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Export...
+</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Tambahkan alamat yang dikenal</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Penampilan</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Bahasa Antarmuka Pengguna:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Standart</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Jalur</value>
+  </data>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Akun cadangan:</value>
+  </data>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Data akun:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Software Daemon:</value>
+  </data>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Akun software: </value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Simpan database sebelum dimatikan</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Mulai Monero Klien NET pada sistem login</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Salin alamat</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Semua file*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Executable (exe *) | * exe</value>
+  </data>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>File Akun (* bin) | * bin</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Koma berkas terpisah (* .csv) | * .csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>hari</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>jam</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>jam</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>menit</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>menit</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Ikon dibuat oleh:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Edit kontak</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Tempelkan</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG file (* png) | * png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Pesan:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Simpan sebagai ...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Yang dihasilkan URI terlalu panjang. Silakan coba untuk mengurangi panjang input anda!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>Kode QR</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Saldo saat ini: </value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Hapus penerima</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Tambah penerima</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Hapus penerima</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Kesalahan</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>lagi</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Kata sandi sekarang:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Gunakan Kata sandi pada akun anda untuk tetap aman!</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Ini dianjurkan untuk menggunakan setidaknya 10 karakter acak atau 8 kata.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Kata sandi baru</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Kata sandi</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Ubah kata sandi akun</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Enkripsi akun</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Kata sandi yang disertakan tidak cocok.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Aktifkan akun</value>
+  </data>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Masukkan kata sandi anda untuk mengakses akun anda.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Pilihan</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Jangan menghentikan proses ini!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Sembunyikan Jendela</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Tampilkan Jendela</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Transaksi ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Transaksi masuk</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Transaksi keluar</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Jenis transaksi tidak diketahui</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Informasi</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Peringatan</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Silakan pilih metode untuk membuat cadangan baru!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Sebagai file, di jalan yang dipilih</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>File-file ini tidak akan muncul yang dapat dipilih pada manajer cadangan</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Sebagai file, di lokasi default</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Sebagai seed akun deterministik</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Metode ini adalah yang paling aman, dan bahkan tidak memerlukan komputer untuk penyimpanan</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Cadangan baru</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Telusuri di explorer ...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Secara otomatis membuat cadangan setiap minggu</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Buat cadangan</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Cadangan di \ "{0} \" tidak dapat dipulihkan.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Dari direktori ...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Dari seed akun deterministik ...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>dipilih dari</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Cadangan telah berhasil dipulihkan dan diterapkan.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Mengembalikan cadangan</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Manajer cadangan</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Harap SANGAT HATI-HATI tentang menyimpan data akun anda! Tidak ada orang lain yang harus dapat mengaksesnya, karena hal ini kompromikan uang anda.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Transaksi tidak dapat dikirim.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Perkiraan Saldo yang baru:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Biaya:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Jaringan</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Terhubung melalui proxy</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC server</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Host:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Daemon data:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Sampai dengan tanggal</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Diunduh {0} dari {1} blok sejarah transaksi ({2}% dilakukan) . Blok diterima terakhir dihasilkan {3} lalu.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Gagal untuk memeriksa pembaruan.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Pembaruan tersedia (v {0}). Apakah Anda ingin menerapkan sekarang?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Update yang tersedia</value>
+  </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Klik dua kali untuk memperbesar! </value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Klik dua kali mengecilkan!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Permintaan telah diterima untuk mengirim pembayaran dengan rincian sebagai berikut:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Apakah anda ingin menavigasi ke '{0}' tab?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Apakah anda ingin membuka URI ini?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>Aplikasi ini saat ini tidak default untuk membuka '{0}' URI. Apakah Anda ingin membuat standar?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Asosiasi Standar URI </value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Jangan tanya lagi</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Selalu periksa apakah aplikasi penangan standar URI mata uang</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Masukkan alamat!</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>Salah satu alamat penerima milik exchange. Apakah anda ingin membatalkan pengiriman transaksi tanpa payment ID?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Payment ID hilang</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>Payment ID  yang anda tentukan tidak valid.</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Periksa pembaruan saat startup</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Izinkan memeriksa aplikasi eksperimental yang sedang dibangun</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Manajer akun</value>
+  </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>Seed deterministik akun dapat ditemukan di bawah. Ini dianjurkan untuk membuat catatan di atas kertas bukan menyimpannya pada perangkat elektronik.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Seed akun deterministic</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Tidak dapat mengambil seed deterministik dari akun yang sedang digunakan.</value>
+  </data>
+</root>

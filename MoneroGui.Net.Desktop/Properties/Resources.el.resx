@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Καθαρισμός</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Αποστολή</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Daemon</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Κονσόλες</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Debug window</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Βιβλίο διευθύνσεων</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Eπισκόπηση</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Αποστολή νομισμάτων</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Συναλλαγές</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Διαχειριστής αρχείων ασφαλείας</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Παράθυρο αποσφαλμάτωσης</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Έξοδος</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Εξαγωγή...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Αρχείο</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Βοήθεια</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Επιλογές</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;ρυθμίσεις</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Προετοιμασία...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Αριθμός συναλλαγών:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Πρόσφατες συναλλαγές</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Δαπανήσιμα:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Ανεπιβεβαίωτα:</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Eισάγετε μία Μονέρο διεύθυνση</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Δώσε ετικέτα για αυτήν την διέθυνση</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Αριθμός ανάμειξης:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Payment ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Προαιρετικό πεδίο</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>συνδέσεις</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Συνχρονισμός με το δίκτυο...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>μέρα</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} μπλοκ ({1}) πίσω</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Διεύθυνση</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Ποσό</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Ετικέτα</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Δώσε</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Δαπανήσιμα?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Όχι</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Ναι</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Παραλαβές</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Αποστολές</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Άγνωστο</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Σφάλμα: Το αρχείο άδειας χρήσης δεν μπορεί να βρεθεί.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Φόρτωση αρχείου άδειας χρήσης...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Third-party άδειες χρήσης</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Αντιγραφή</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Νέο...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Εξαγωγή...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Ακύρωση</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>ΟΚ</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Πρόσθεσε γνωστή διεύθυνση</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Eμφάνιση</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Επιλογή γλώσσας:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Προεπιλεγμένα</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Γενικά</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Μονοπάτια</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Λογισμικό Daemon:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Αποθήκευση βάσης δεδομένων πριν τον τερματισμό</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Αντιγραφή</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Όλα τα αρχεία|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>μέρες</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>ώρες</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>ώρα</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>λεπτά</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>λεπτό</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Εικονίδια από τον:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Επεξεργασία επαφής</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Επεξεργασία</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Επικόλληση</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG αρχεία (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Μήνυμα:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Αποθήκευση ως...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Το URI είναι πολύ μακρύ.
+
+Παρακαλώ δοκίμασε να μειώσεις το μήκος του!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR code</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Διαγραφή παραλήπτη</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Προσθήκη παραλήπτη</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Καθαρισμός παραληπτών</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Σφάλμα</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>ξανά</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Τρέχων κωδικός:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Δώστε τουλάχιστον 10 τυχαίους χαρακτήρες ή 8 λέξεις)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Νέος κωδικός</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Κωδικός</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Ο κωδικός που δώσατε δεν ταιριάζει.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Ξεκλείδωμα πορτοφολιού</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Παρακαλώ μη διακόψετε αυτήν την διαδικασία!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Απόκρυψη παραθύρου</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Εμφάνιση παραθύρου</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Transaction ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Εισερχόμενες συναλλαγές</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Εξερχόμενες συναλλαγές</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Άγνωστος τύπος συναλλαγής</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Πληροφορίες</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Προσοχή</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Παρακαλώ επιλέξτε μέθοδο για την δημιουργεία νέου αντίγραφου ασφαλείας!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Ως αρχείο, στην επιλεγμένη θέση</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Αυτά τα αρχεία δεν θα εμφανιστούν ως επιλέξιμα στον ενσωματωμένο διαχειριστή αρχείων ασφαλείας</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Ως αρχείο, στην προεπιλεγμένη θέση</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Αυτή η μέθοδος είναι η ασφαλέστερη και δεν χρειάζεται ούτε υπολογιστή για να αποθηκευτεί</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Νέο αρχείο ασφαλείας</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Περιήγηση σε explorer...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Αυτόματη δημιουργεία αρχείων ασφαλείας κάθε βδομάδα</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Δημιουργεία αρχείων ασφαλείας</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Το αρχείο ασφαλείας στο \"{0}\" δεν μπορεί να επαναφερθεί. </value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Από τον κατάλογο...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Από επιλογή</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Τα αρχεία ασφαλείας έχουν αποθηκευτεί και εφαρμοστεί με επιτυχία </value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Επαναφορά αρχείων ασφαλείας</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Διαχειριστής αρχείων ασφαλείας</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Η συναλλαγή δεν έχει αποσταλεί.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
+  </data>
+</root>

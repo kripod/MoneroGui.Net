@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>送る</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>デーモン</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>コンソール</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>デバッグウィンドウ</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>アドレス帳</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client .NETがシャットダウンしています...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>概要</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>コインを送る</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>Monero Client .NET</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>取引</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>Monero Client .NETについて (&amp;A)</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>バックアップマネージャ (&amp;B)</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>デバッグウィンドウ (&amp;D)</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>エクスポート... (&amp;E)</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>ファイル (&amp;F)</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>ヘルプ (&amp;H)</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>オプション (&amp;O)</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>設定 (&amp;S)</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>イニシアライジング...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>取引の数 :</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>最近の取引</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>利用可能:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>未検証:</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Moneroアドレスを入力してください</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>アドレス帳に追加するには、このアドレスのラベルを入力してください</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>ミックス度:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>支払いID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value> このフィールドは必要ではありません</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>接続数</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>ネットワークに同期中...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0}ブロック、また({1})</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>アドレス</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>総額</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>ラベル</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>利用可能?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>受信</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>送る</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>Monero Client .NETについて</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>エラー：ライセンスのファイルが見つかりませんでした</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>ライセンスのファイルの読み込み中...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>第三者ライセンス</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>新しいの...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>エクスポート...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>既知のアドレスを追加する</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>外観</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>ユーザインターフェースの言語:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>初期値</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>デーモンのソフト:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>シャットダウンの時にデータベースをセーブする</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>システムにログインした時にMonero Client .NETを起動</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>アドレスをコピーする</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>全てのファイル|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>実行可能のファイル (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>コンマで区切られたファイル (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>時間</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>アイコンの作り手:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>連絡先を編集する</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>編集する</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>貼付ける</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNGのファイル (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>メッセージ:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>名前を付けて保存...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>生成されたＵＲＩは長すぎます。
+
+インプットの長さを減らしてください。</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>ＱＲコード</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>現在の残高:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>受信者を削除する</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>受信者を追加する</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>全ての受信者を削除する</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>もう一度</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>今のパスフレーズ:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(8個以上の単語か10個以上のランダムな文字を使ってください。)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>新しいパスフレーズ</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>パスフレーズ</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>パスフレーズが同じではありません。</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>ウォレットをアンロックする</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>シャットダウンを中断しないでください！</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>ウインドウを隠す</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>ウインドウを表示する</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>取引ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>着金取引</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>送金取引</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>不明の取引の種類</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>バックアップを作る方法を選択してください！</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>選択されたパスにあるファイル</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>このファイルはビルトインのバックアップマネージャで表示されません。</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>初期値のパスにあるファイル</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>これは一番安全な方法です。ストレージのためにＰＣが必要ではありません。</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>新しいバックアップ</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>エクスプローラで閲覧する...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>毎週のバックアップを自動的に作成する</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>バックアップを作成する</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>\"{0}\"にあるバックアップは復元できませんでした。</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>ディレクトリから...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>セレクションから...</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>バックアップが正常に復元されました。</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>バックアップを復元する</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>バックアップマネージャ</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>取引を送信できませんでした。</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>推定された残高:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>料金:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>ネットワーク</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>プロキシで接続する</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>プロキシ</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPCサーバ</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>ホスト:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>ポート:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>デーモンのデータ:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>？</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>最新バージョン</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>取引履歴の{1}の内{0}ブロックをダウンロードしました。 ({2}%)
+最後に受信されたブロックは{3}前に生成されました。</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>更新プログラムを確認できませんでした。</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>更新プログラムがあります。バージョン{0}にアップデートをしますか。</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>更新プログラムがあります</value>
+  </data>
+</root>

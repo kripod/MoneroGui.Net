@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Valyti</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Siųsti</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Demonas</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Konsolė</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Derinimo langas</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Adresų knyga</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Apžvalga</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Siųsti monetas</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Pervedimai</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Atsarginių kopijų vadovas</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Derinimo langas</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Išeiti</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Eksportuoti...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Failas</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Pagalba</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Parinktys</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Nustatymai</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Inicijuojama...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Pervedimų skaičius:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Paskutiniai pervedimai</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Leidžiama siųsti:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Nepatvirtinta:</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Įveskite Monero adresą:</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Įveskite pavadinimą šiam adresui, kad įtrauktumėte jį į adresų knygą </value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Maišymų skaičius:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Mokėjimo ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Šis laukas neprivalomas</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>ryšiai</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Sinchronizuojama su tinklu...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>diena</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} blokų ({1}) mažiau</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Adresas</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Suma</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Pavadinimas</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Tipas</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Ar leidžiami siųsti?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Ne</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Taip</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Gauti</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Siųsti</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Nežinomas</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Klaida: Licenzijos failas nerastas.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Įkraunamas licenzijos failas...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Trečiųjų-šalių  licenzijos</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Kopijuoti</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Ištrinti</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Naujas...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Eksportuoti...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Atšaukti</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>Gerai</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Pridėti žinomą adresą</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Išvaizda</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Vartotojo sąsajos kalba:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Numatytasis</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Bendras</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Keliai</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Demono programa:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Išsaugomos duomenų bazės prieš išjungimą</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Kopijuoti adresą</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Visi failai|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Paleidimas (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Comma separated failai (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>dienos</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>valandos</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>valanda</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>minutės</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>minutė</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Piktogramas sukūrė:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Redaguoti kontaktą</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Redaguoti</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Įklijuoti</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG failai  (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Žinutė:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Išsaugoti kaip...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Gaunamas URI yra per ilgas.
+
+Prašome sumažinti simbolių skaičių įvedimo laukuose!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR kodas</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Current balance:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Pašalinti gavėją</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Pridėti gavėją</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Išvalyti gavėjus</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Klaida</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>vėl</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Dabartinis slaptažodis:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Rekomenduojama naudoti bent 10 atsitiktinių simbolių arba 8 žodžius.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Naujas slaptažodis</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Slaptažodis</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Pateikti slaptažodžiai nesutampa.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Atrakinti piniginę</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Prašome nenutraukti šio proceso!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Paslėpti langą</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Rodyti langą</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Pervedimo ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Įeinantis pervedimas</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Išeinantis pervedimas</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Nežinomo tipo pervedimas</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Informacija</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Įspėjimas</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Prašome pasirinkti metodą naujos atsarginės kopijos sukūrimui!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Failas, pasirinktame kelyje</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Šių failų negalėsite pasirinkti integruotame atsarginių kopijų vadove</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Failas, numatytoje vietoje</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Šis metodas yra saugiausias ir nereikalauja kompiuterio atminties saugojimui</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Nauja atsarginė kopija</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Peržiūrėti naršyklėje...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Automatiškai sukurti atsargines kopijas kiekvieną savaitę</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Sukurti atsargines kopijas</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Atsarginė kopija ties \"{0}\" negali būti atkurta.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Iš katalogo...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Iš pasirinkimo</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Atsarginė kopija sėkmingai atkurta ir panaudota.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Atkurti atsarginę kopiją</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Atsarginių kopijų vadovas</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Pervedimas negali būti įvykdytas.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Estimated new balance:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Fee:</value>
+  </data>
+</root>

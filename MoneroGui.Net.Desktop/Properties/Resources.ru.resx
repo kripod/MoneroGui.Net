@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Демон</value>
+  </data>
+  <data name="DebugWindowConsoles" xml:space="preserve">
+    <value>Консоль</value>
+  </data>
+  <data name="DebugWindowTitle" xml:space="preserve">
+    <value>Окно отладки</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Адресная книга</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>Monero Client завершает работу...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Обзор</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Отправить монеты</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Транзакции</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Менеджер резервных копий</value>
+  </data>
+  <data name="MenuDebugWindow" xml:space="preserve">
+    <value>&amp;Окно отладки</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Экспорт...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Файл</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Помощь</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Опции</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Настройки</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Инициализация...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Количество транзакций:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Последние транзакции</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Доступно:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Не подтверждено:</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Ведите адрес получателя</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Введите метку для этого адреса, чтобы добавить его в адресную книгу</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Перемешать раз:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Payment ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Не обязательно</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>подключений</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Синхронизация с сетью...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>дней</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} блоков ({1}) осталось</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Метка</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Доступно?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Получить</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Неизвестно</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>О Monero Client</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Ошибка: файла лицензии не существует.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Загрузка файла лицензии...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Сторонние лицензии</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Новый...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Экспорт...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Добавить известный адрес</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Язык интерфейса:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Основное</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Пути к файлам</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Путь к демону:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Сохранить данные перед выходом</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Запускать Monero Client при старте системы</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Копировать адрес</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Все файлы|*</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Исполняемые файлы (*.exe)|*.exe</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Файлы через запятую  (*.csv)|*.csv</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>дней</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>часов</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>час</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>минут</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>минута</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Иконку сделал:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Изменить контакт</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG файлы (*.png)|*.png</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Сообщение:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Сохранить как...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Слишком много. Пожалуйста попробуйте меньше!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR код</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Текущий баланс</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Удалить получателя</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Добавить получателя</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Очистить список получателей</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>снова</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Текущий пароль:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(Рекомендуется использовать как минимум 10 случайных символов или 8 слов.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Введенные пароли не совпадают.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Разблокировать бумажник</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Пожалуйста не прерывайте этот процесс!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Спрятать окно</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Показать окно</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>ID транзакции</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Входящая транзакция</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Исходящая транзакция</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Неизвестный тип транзакции</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Предупреждение</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Пожалуйста выберете метод создания новой резервной копии!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Как файл по указанному пути</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Эти файлы не будут доступны для выбора во встроенном менеджере резервного копирования</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Как файл, расположенный по умолчанию</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Этот метод самый безопасный, и даже не требует наличия компьютера для хранения</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Новая резервная копия</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Просмотр в Проводнике</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Автоматически создавать резервные копии каждую неделю</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Создать резервные копии</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Резервная копия от \"{0}\" не может быть восстановлена.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Из папки...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Из выделения</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Резервные копии были успешно восстановлены и применены</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Восстановить резервные копии</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Менеджер резервных копий</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Транзакция не может быть отправлена</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Предполагаемый новый баланс</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Комиссия</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Сеть</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Подключиться через прокси</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Прокси</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC сервер</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Хост:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Порт:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Данные демона:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Последняя версия</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Получено {0} из {1} блоков истории транзакций ({2}% готово).
+Последний полученный блок создан {3} назад.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Ошибка проверки обновлений</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Доступно обновление (v{0}). Хотите его установить?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Доступно обновление</value>
+  </data>
+</root>
