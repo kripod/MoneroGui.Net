@@ -31,6 +31,14 @@ namespace Jojatekok.MoneroGUI
             );
         }
 
+        public static void SetTextBindingPath(this TextControl textControl, Func<string> text)
+        {
+            textControl.Bind("Text", new DelegateBinding<string>(
+                text,
+                s => { textControl.Text = text.Invoke(); }
+            ));
+        }
+
         public static void SetTextBindingPath(this TabPage tabPage, Func<string> text)
         {
             tabPage.Bind("Text", new DelegateBinding<string>(

@@ -162,6 +162,7 @@
       <DependentUpon>Resources.zh.resx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Utilities.cs" />
+    <Compile Include="Shared\Views\MainForm\OverviewView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Mac\MyApp.app\Contents\Info.plist" />

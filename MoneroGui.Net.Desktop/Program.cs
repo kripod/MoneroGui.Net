@@ -1,4 +1,5 @@
 ﻿using Eto.Forms;
+using Jojatekok.MoneroGUI.Forms;
 using System;
 
 namespace Jojatekok.MoneroGUI.Desktop

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading;
+using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 using System.Collections.Generic;
@@ -11,6 +12,16 @@ namespace Jojatekok.MoneroGUI
     struct Utilities
     {
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
+
+        public const byte FontSizeTitle = 12;
+
+        public const byte PaddingExtraSmall = 3;
+        public const byte PaddingSmall = 5;
+        public const byte PaddingMedium = 8;
+        public const byte PaddingLarge = 10;
+        public const byte PaddingExtraLarge = 20;
+
+        public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
 
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
@@ -33,6 +44,15 @@ namespace Jojatekok.MoneroGUI
                 "Jojatekok.MoneroGUI." + resourceName + ".png," +
                 ApplicationAssemblyNameName
             ) as Image;
+        }
+
+        public static Label CreateLabel(Func<string> text, Font font = null)
+        {
+            var label = new Label();
+            label.SetTextBindingPath(text);
+            if (font != null) label.Font = font;
+
+            return label;
         }
     }
 }

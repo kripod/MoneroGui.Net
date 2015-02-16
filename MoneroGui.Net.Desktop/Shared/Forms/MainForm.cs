@@ -1,11 +1,12 @@
 ﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroGUI.Views.MainForm;
 using System;
 using System.Globalization;
 using System.Threading;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Forms
 {
 	public sealed class MainForm : Form
 	{
@@ -113,7 +114,8 @@ namespace Jojatekok.MoneroGUI
 	    private void RenderContent()
 	    {
 	        var tabPageOverview = new TabPage {
-                Image = Utilities.LoadImage("Overview")
+                Image = Utilities.LoadImage("Overview"),
+                Content = new OverviewView()
             };
             tabPageOverview.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowOverview);
 
@@ -138,12 +140,16 @@ namespace Jojatekok.MoneroGUI
             tabControlPages.Add(tabPageSendCoins);
             tabControlPages.Add(tabPageTransactions);
             tabControlPages.Add(tabPageAddressBook);
-            
+
+	        for (var i = tabControlPages.Count - 1; i >= 0; i--) {
+	            tabControlPages[i].Padding = new Padding(Utilities.PaddingMedium);
+	        }
+
             Content = new TableLayout {
                 Rows = {
                     new TableRow(
                         new Panel {
-                            Padding = new Padding(10),
+                            Padding = new Padding(Utilities.PaddingLarge),
                             Content = tabControl
                         }
                     ) { ScaleHeight = true },
@@ -151,7 +157,7 @@ namespace Jojatekok.MoneroGUI
                     new TableRow(
                         new Panel {
                             BackgroundColor = Utilities.ColorStatusBar,
-                            Padding = new Padding(10, 5),
+                            Padding = new Padding(Utilities.PaddingLarge, Utilities.PaddingSmall),
                             Content = new Label { Text = "Status bar" }
                         }
                     )
