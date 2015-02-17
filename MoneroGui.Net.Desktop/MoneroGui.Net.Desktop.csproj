@@ -7,8 +7,8 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Jojatekok.MoneroGUI</RootNamespace>
     <AssemblyName>MoneroClient.Net</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <NuGetPackageImportStamp>376eb89d</NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,41 +29,82 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eto, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Forms.2.0.7\lib\net45\Eto.dll</HintPath>
+    <Reference Include="Eto">
+      <HintPath>..\packages\Eto.Forms.2.0.7\lib\net40\Eto.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Gtk2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Gtk.2.0.7\lib\net45\Eto.Gtk2.dll</HintPath>
+    <Reference Include="Eto.Gtk2">
+      <HintPath>..\packages\Eto.Platform.Gtk.2.0.7\lib\net40\Eto.Gtk2.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Gtk3, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Gtk3.2.0.7\lib\net45\Eto.Gtk3.dll</HintPath>
+    <Reference Include="Eto.Gtk3">
+      <HintPath>..\packages\Eto.Platform.Gtk3.2.0.7\lib\net40\Eto.Gtk3.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Mac, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net45\Eto.Mac.dll</HintPath>
+    <Reference Include="Eto.Mac">
+      <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net40\Eto.Mac.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.WinForms, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Windows.2.0.7\lib\net45\Eto.WinForms.dll</HintPath>
+    <Reference Include="Eto.WinForms">
+      <HintPath>..\packages\Eto.Platform.Windows.2.0.7\lib\net40\Eto.WinForms.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Wpf, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Wpf.2.0.7\lib\net45\Eto.Wpf.dll</HintPath>
+    <Reference Include="Eto.Wpf">
+      <HintPath>..\packages\Eto.Platform.Wpf.2.0.7\lib\net40\Eto.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="MoneroApi.Net">
+      <HintPath>..\packages\MoneroApi.Net.4.0.0\lib\net40\MoneroApi.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MoneroApi.Net.Extensions">
+      <HintPath>..\packages\MoneroApi.Net.4.0.0\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMac">
+      <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net40\MonoMac.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net45\MonoMac.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.9\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Shared\Controls\Separator.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\ExtensionMethods.cs" />
-    <Compile Include="Shared\Forms\MainForm.cs" />
+    <Compile Include="Shared\Forms\MainForm.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.af.Designer.cs">
@@ -162,9 +203,12 @@
       <DependentUpon>Resources.zh.resx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Utilities.cs" />
-    <Compile Include="Shared\Views\MainForm\OverviewView.cs" />
+    <Compile Include="Shared\Views\MainForm\OverviewView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Mac\MyApp.app\Contents\Info.plist" />
     <None Include="Mac\MyApp.app\Contents\MacOS\Launcher.exec" />
     <None Include="Mac\MyApp.app\Contents\Resources\Icon.icns" />
@@ -261,5 +305,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Eto.Platform.Mac.Template.2.0.7\build\Eto.Platform.Mac.Template.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Platform.Mac.Template.2.0.7\build\Eto.Platform.Mac.Template.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

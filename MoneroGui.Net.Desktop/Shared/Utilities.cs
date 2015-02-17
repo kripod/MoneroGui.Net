@@ -1,16 +1,15 @@
-﻿using System;
-using System.Reflection;
-using System.Threading;
-using Eto;
+﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
-using System.Collections.Generic;
-using System.Text;
+using System;
+using System.Reflection;
+using System.Threading;
 
 namespace Jojatekok.MoneroGUI
 {
     struct Utilities
     {
+        public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 
         public const byte FontSizeTitle = 12;

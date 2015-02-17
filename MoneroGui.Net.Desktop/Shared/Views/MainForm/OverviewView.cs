@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Eto;
 using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroGUI.Controls;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
@@ -37,21 +38,68 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 )
             );
 
+            var spacing = new Size(Utilities.PaddingSmall, Utilities.PaddingSmall);
+
             Rows.Add(
                 new TableRow(
                     new TableCell(
                         new TableLayout {
                             Padding = new Padding(Utilities.PaddingExtraLarge, Utilities.PaddingMedium),
+                            Spacing = spacing,
                             Rows = {
-                                new TableRow(
-                                    new TableCell(
-                                        Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewSpendable),
-                                        true
+                                new TableLayout(
+                                    new TableRow(
+                                        new TableCell(
+                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewSpendable),
+                                            true
+                                        ),
+                                        new TableCell(
+                                            // TODO
+                                            Utilities.CreateLabel(() => "?" + " " + MoneroGUI.Properties.Resources.TextCurrencyCode)
+                                        )
                                     ),
-                                    new TableCell(
-                                        Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewSpendable)
+
+                                    new TableRow(
+                                        new TableCell(
+                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewUnconfirmed),
+                                            true
+                                        ),
+                                        new TableCell(
+                                            // TODO
+                                            Utilities.CreateLabel(() => "?" + " " + MoneroGUI.Properties.Resources.TextCurrencyCode)
+                                        )
                                     )
-                                )
+                                ) { Spacing = spacing },
+
+                                new Separator(SeparatorOrientation.Horizontal),
+
+                                new TableLayout(
+                                    new TableRow(
+                                        new TableCell(
+                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.TextAddress + MoneroGUI.Properties.Resources.PunctuationColon),
+                                            true
+                                        ),
+                                        new TableCell(
+                                            // TODO
+                                            Utilities.CreateLabel(() => "?")
+                                        )
+                                    )
+                                ) { Spacing = spacing },
+
+                                new Separator(SeparatorOrientation.Horizontal),
+
+                                new TableLayout(
+                                    new TableRow(
+                                        new TableCell(
+                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewNumberOfTransactions),
+                                            true
+                                        ),
+                                        new TableCell(
+                                            // TODO
+                                            Utilities.CreateLabel(() => "?")
+                                        )
+                                    )
+                                ) { Spacing = spacing }
                             }
                         },
                         true
