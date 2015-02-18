@@ -31,19 +31,27 @@ namespace Jojatekok.MoneroGUI
             );
         }
 
-        public static void SetTextBindingPath(this TextControl textControl, Func<string> text)
+        public static void SetTextBindingPath(this TextControl textControl, Func<string> textBinding)
         {
             textControl.Bind("Text", new DelegateBinding<string>(
-                text,
-                s => { textControl.Text = text.Invoke(); }
+                textBinding,
+                s => { textControl.Text = textBinding.Invoke(); }
             ));
         }
 
-        public static void SetTextBindingPath(this TabPage tabPage, Func<string> text)
+        public static void SetTextBindingPath(this TabPage tabPage, Func<string> textBinding)
         {
             tabPage.Bind("Text", new DelegateBinding<string>(
-                text,
-                s => { tabPage.Text = text.Invoke(); }
+                textBinding,
+                s => { tabPage.Text = textBinding.Invoke(); }
+            ));
+        }
+
+        public static void SetPlaceholderTextBindingPath(this TextBox textBox, Func<string> placeholderTextBinding)
+        {
+            textBox.Bind("PlaceholderText", new DelegateBinding<string>(
+                placeholderTextBinding,
+                s => { textBox.PlaceholderText = placeholderTextBinding.Invoke(); }
             ));
         }
     }

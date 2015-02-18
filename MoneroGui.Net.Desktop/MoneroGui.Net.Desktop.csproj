@@ -35,18 +35,13 @@
     <Reference Include="Eto.Gtk2">
       <HintPath>..\packages\Eto.Platform.Gtk.2.0.7\lib\net40\Eto.Gtk2.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Gtk3">
-      <HintPath>..\packages\Eto.Platform.Gtk3.2.0.7\lib\net40\Eto.Gtk3.dll</HintPath>
-    </Reference>
     <Reference Include="Eto.Mac">
       <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net40\Eto.Mac.dll</HintPath>
-    </Reference>
-    <Reference Include="Eto.WinForms">
-      <HintPath>..\packages\Eto.Platform.Windows.2.0.7\lib\net40\Eto.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Eto.Wpf">
       <HintPath>..\packages\Eto.Platform.Wpf.2.0.7\lib\net40\Eto.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -203,6 +198,9 @@
       <DependentUpon>Resources.zh.resx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Utilities.cs" />
+    <Compile Include="Shared\Views\MainForm\SendCoinsView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Views\MainForm\OverviewView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>

@@ -1,5 +1,4 @@
-﻿using Eto;
-using Eto.Drawing;
+﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Views.MainForm;
 using System;
@@ -14,11 +13,12 @@ namespace Jojatekok.MoneroGUI.Forms
 		{
 		    this.SetFormProperties(
                 () => MoneroGUI.Properties.Resources.TextClientName,
-                new Size(850, 570)
+                new Size(850, 570),
+                true // TODO: Remove this flag
 		    );
 		    this.SetLocationToCenterScreen();
 
-            Utilities.SyncContextMain = SynchronizationContext.Current;
+		    Utilities.Initialize();
 
 		    RenderMenu();
 		    RenderContent();
@@ -120,7 +120,8 @@ namespace Jojatekok.MoneroGUI.Forms
             tabPageOverview.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowOverview);
 
             var tabPageSendCoins = new TabPage {
-                Image = Utilities.LoadImage("Send")
+                Image = Utilities.LoadImage("Send"),
+                Content = new SendCoinsView()
             };
             tabPageSendCoins.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowSendCoins);
 

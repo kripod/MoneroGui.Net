@@ -17,8 +17,7 @@ namespace Jojatekok.MoneroGUI.Controls
                 Height = Utilities.PaddingMedium * 2 + 1;
                 Padding = new Padding(0, Utilities.PaddingMedium);
             } else {
-                Width = Utilities.PaddingMedium * 2 + 1;
-                Padding = new Padding(Utilities.PaddingMedium, 0);
+                Width = 1;
             }
 
             Content = new Panel { BackgroundColor = Utilities.ColorSeparator };

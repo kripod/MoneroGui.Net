@@ -23,6 +23,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                     new TableCell(
                         Utilities.CreateLabel(
                             () => MoneroGUI.Properties.Resources.TextAccount,
+                            VerticalAlign.Middle,
                             new Font(SystemFont.Default, Utilities.FontSizeTitle, FontDecoration.Underline)
                         ),
                         true
@@ -31,6 +32,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                     new TableCell(
                         Utilities.CreateLabel(
                             () => MoneroGUI.Properties.Resources.OverviewRecentTransactions,
+                            VerticalAlign.Middle,
                             new Font(SystemFont.Default, Utilities.FontSizeTitle, FontDecoration.Underline)
                         ),
                         true
@@ -76,7 +78,10 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                 new TableLayout(
                                     new TableRow(
                                         new TableCell(
-                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.TextAddress + MoneroGUI.Properties.Resources.PunctuationColon),
+                                            Utilities.CreateLabel(() =>
+                                                MoneroGUI.Properties.Resources.TextAddress + MoneroGUI.Properties.Resources.PunctuationColon,
+                                                VerticalAlign.Top
+                                            ),
                                             true
                                         ),
                                         new TableCell(
@@ -91,12 +96,18 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                 new TableLayout(
                                     new TableRow(
                                         new TableCell(
-                                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.OverviewNumberOfTransactions),
+                                            Utilities.CreateLabel(() =>
+                                                MoneroGUI.Properties.Resources.OverviewNumberOfTransactions,
+                                                VerticalAlign.Top
+                                            ),
                                             true
                                         ),
                                         new TableCell(
                                             // TODO
-                                            Utilities.CreateLabel(() => "?")
+                                            Utilities.CreateLabel(() =>
+                                                "?",
+                                                VerticalAlign.Top
+                                            )
                                         )
                                     )
                                 ) { Spacing = spacing }

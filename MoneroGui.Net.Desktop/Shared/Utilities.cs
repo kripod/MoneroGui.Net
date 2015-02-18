@@ -36,6 +36,27 @@ namespace Jojatekok.MoneroGUI
 
         private static readonly ImageConverter ImageConverter = new ImageConverter();
 
+        public static void Initialize()
+        {
+            SyncContextMain = SynchronizationContext.Current;
+		    using (var button = new Button()) {
+		        var handler = button.Handler;
+
+                var fieldInfo = handler.GetType().GetField("MinimumSize");
+		        if (fieldInfo != null) {
+		            var size = (Size)(fieldInfo.GetValue(null));
+		            size.Width = 0;
+                    fieldInfo.SetValue(null, size);
+
+		        } else {
+                    fieldInfo = handler.GetType().GetField("MinimumWidth");
+		            if (fieldInfo != null) {
+		                fieldInfo.SetValue(null, 0);
+		            }
+		        }
+		    }
+        }
+
         public static Image LoadImage(string resourceName)
         {
             return ImageConverter.ConvertFrom(
@@ -45,13 +66,48 @@ namespace Jojatekok.MoneroGUI
             ) as Image;
         }
 
-        public static Label CreateLabel(Func<string> text, Font font = null)
+        public static Label CreateLabel(Func<string> textBinding, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
         {
-            var label = new Label();
-            label.SetTextBindingPath(text);
+            var label = new Label {
+                VerticalAlign = verticalAlignment
+            };
+
+            label.SetTextBindingPath(textBinding);
             if (font != null) label.Font = font;
 
             return label;
+        }
+
+        public static TextBox CreateTextBox(Func<string> placeholderTextBinding, string text = null, Font font = null)
+        {
+            var textBox = new TextBox {
+                Text = text
+            };
+
+            textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
+            if (font != null) textBox.Font = font;
+
+            return textBox;
+        }
+
+        public static Button CreateButton(Func<string> textBinding, Image image = null)
+        {
+            var button = new Button {
+                Image = image
+            };
+
+            button.SetTextBindingPath(textBinding);
+
+            return button;
+        }
+
+        public static NumericUpDown CreateNumericUpDown()
+        {
+            var numericUpDown = new NumericUpDown {
+                 
+            };
+
+            return numericUpDown;
         }
     }
 }
