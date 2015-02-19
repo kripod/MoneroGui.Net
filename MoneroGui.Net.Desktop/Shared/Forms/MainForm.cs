@@ -126,7 +126,8 @@ namespace Jojatekok.MoneroGUI.Forms
             tabPageSendCoins.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowSendCoins);
 
             var tabPageTransactions = new TabPage {
-                Image = Utilities.LoadImage("Transaction")
+                Image = Utilities.LoadImage("Transaction"),
+                Content = new TransactionsView()
             };
             tabPageTransactions.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowTransactions);
 
@@ -143,14 +144,14 @@ namespace Jojatekok.MoneroGUI.Forms
             tabControlPages.Add(tabPageAddressBook);
 
 	        for (var i = tabControlPages.Count - 1; i >= 0; i--) {
-	            tabControlPages[i].Padding = new Padding(Utilities.PaddingMedium);
+	            tabControlPages[i].Padding = new Padding(Utilities.Padding3);
 	        }
 
             Content = new TableLayout {
                 Rows = {
                     new TableRow(
                         new Panel {
-                            Padding = new Padding(Utilities.PaddingLarge),
+                            Padding = new Padding(Utilities.Padding4),
                             Content = tabControl
                         }
                     ) { ScaleHeight = true },
@@ -158,7 +159,7 @@ namespace Jojatekok.MoneroGUI.Forms
                     new TableRow(
                         new Panel {
                             BackgroundColor = Utilities.ColorStatusBar,
-                            Padding = new Padding(Utilities.PaddingLarge, Utilities.PaddingSmall),
+                            Padding = new Padding(Utilities.Padding4, Utilities.Padding2),
                             Content = new Label { Text = "Status bar" }
                         }
                     )

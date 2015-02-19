@@ -12,10 +12,11 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class SendCoinsView : TableLayout
     {
+        private static readonly SendCoinsViewModel ViewModel = new SendCoinsViewModel();
+
         public SendCoinsView()
         {
-            var spacing = new Size(Utilities.PaddingMedium, Utilities.PaddingMedium);
-            Spacing = spacing;
+            Spacing = Utilities.Spacing3;
 
             Rows.Add(
                 new TableLayout(
@@ -35,7 +36,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             )
                         )
                     )
-                ) { Spacing = spacing }
+                ) { Spacing = Utilities.Spacing3 }
             );
 
             var listBoxRecipients = new ListBox();
@@ -58,7 +59,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             true
                         )
                     )
-                ) { Spacing = spacing }
+                ) { Spacing = Utilities.Spacing3 }
             );
 
             Rows.Add(
@@ -85,7 +86,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         ),
 
                         new TableCell(
-                            Utilities.CreateNumericUpDown()
+                            Utilities.CreateNumericUpDown(0, 1, 0, ushort.MaxValue, ViewModel, o => o.MixCount)
                         ),
 
                         new TableCell(
@@ -99,7 +100,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             )
                         )
                     )
-                ) { Spacing = spacing }
+                ) { Spacing = Utilities.Spacing3 }
             );
         }
     }

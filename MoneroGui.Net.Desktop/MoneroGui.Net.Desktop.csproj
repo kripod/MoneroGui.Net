@@ -198,6 +198,10 @@
       <DependentUpon>Resources.zh.resx</DependentUpon>
     </Compile>
     <Compile Include="Shared\Utilities.cs" />
+    <Compile Include="Shared\Views\MainForm\TransactionsView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
+    <Compile Include="Shared\Views\MainForm\SendCoinsViewModel.cs" />
     <Compile Include="Shared\Views\MainForm\SendCoinsView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>

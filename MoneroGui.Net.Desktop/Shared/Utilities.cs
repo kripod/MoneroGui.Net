@@ -2,6 +2,7 @@
 using Eto.Drawing;
 using Eto.Forms;
 using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 
@@ -9,16 +10,22 @@ namespace Jojatekok.MoneroGUI
 {
     struct Utilities
     {
+        public const byte FontSizeTitle = 12;
+
+        public const byte Padding1 = 3;
+        public const byte Padding2 = 5;
+        public const byte Padding3 = 8;
+        public const byte Padding4 = 10;
+        public const byte Padding5 = 14;
+        public const byte Padding6 = 20;
+        public const byte Padding7 = 30;
+
         public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 
-        public const byte FontSizeTitle = 12;
-
-        public const byte PaddingExtraSmall = 3;
-        public const byte PaddingSmall = 5;
-        public const byte PaddingMedium = 8;
-        public const byte PaddingLarge = 10;
-        public const byte PaddingExtraLarge = 20;
+        public static readonly Size Spacing2 = new Size(Padding2, Padding2);
+        public static readonly Size Spacing3 = new Size(Padding3, Padding3);
+        public static readonly Size Spacing5 = new Size(Padding5, Padding5);
 
         public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
 
@@ -101,11 +108,23 @@ namespace Jojatekok.MoneroGUI
             return button;
         }
 
-        public static NumericUpDown CreateNumericUpDown()
+        public static NumericUpDown CreateNumericUpDown<T>(int decimalPlaces, double increment, double minValue, double maxValue, T dataContext, Expression<Func<T, double>> valueBinding)
         {
             var numericUpDown = new NumericUpDown {
-                 
+                DecimalPlaces = decimalPlaces,
+                Increment = increment,
+                MinValue = minValue,
+                MaxValue = maxValue,
+                DataContext = dataContext
             };
+
+            numericUpDown.ValueBinding.BindDataContext(valueBinding);
+
+            if (decimalPlaces == 0) {
+                numericUpDown.ValueChanged += (sender, e) => {
+                    numericUpDown.Value = valueBinding.Compile().Invoke(dataContext);
+                };
+            }
 
             return numericUpDown;
         }

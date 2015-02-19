@@ -12,11 +12,9 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class OverviewView : TableLayout
     {
-        private const int ColumnPaddingExtra = 30;
-
         public OverviewView()
         {
-            Spacing = new Size(ColumnPaddingExtra, 0);
+            Spacing = new Size(Utilities.Padding7, 0);
 
             Rows.Add(
                 new TableRow(
@@ -40,14 +38,12 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 )
             );
 
-            var spacing = new Size(Utilities.PaddingSmall, Utilities.PaddingSmall);
-
             Rows.Add(
                 new TableRow(
                     new TableCell(
                         new TableLayout {
-                            Padding = new Padding(Utilities.PaddingExtraLarge, Utilities.PaddingMedium),
-                            Spacing = spacing,
+                            Padding = new Padding(Utilities.Padding6, Utilities.Padding3),
+                            Spacing = Utilities.Spacing5,
                             Rows = {
                                 new TableLayout(
                                     new TableRow(
@@ -71,7 +67,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                             Utilities.CreateLabel(() => "?" + " " + MoneroGUI.Properties.Resources.TextCurrencyCode)
                                         )
                                     )
-                                ) { Spacing = spacing },
+                                ) { Spacing = Utilities.Spacing2 },
 
                                 new Separator(SeparatorOrientation.Horizontal),
 
@@ -89,7 +85,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                             Utilities.CreateLabel(() => "?")
                                         )
                                     )
-                                ) { Spacing = spacing },
+                                ) { Spacing = Utilities.Spacing2 },
 
                                 new Separator(SeparatorOrientation.Horizontal),
 
@@ -110,7 +106,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                             )
                                         )
                                     )
-                                ) { Spacing = spacing }
+                                ) { Spacing = Utilities.Spacing2 }
                             }
                         },
                         true
