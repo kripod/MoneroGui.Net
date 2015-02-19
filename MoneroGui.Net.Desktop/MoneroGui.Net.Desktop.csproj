@@ -65,6 +65,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO">
@@ -197,7 +198,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.zh.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shared\SettingsManager.cs" />
     <Compile Include="Shared\Utilities.cs" />
+    <Compile Include="Shared\Views\MainForm\AddressBookView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Views\MainForm\TransactionsView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
@@ -298,6 +303,9 @@
   <ItemGroup>
     <Content Include="Mac\MyApp.app\Contents\MonoBundle\README.txt" />
     <Content Include="Mac\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\Objects\" />
   </ItemGroup>
   <Import Project="..\MoneroGui.Net\MoneroGui.Net.projitems" Label="Shared" Condition="Exists('..\MoneroGui.Net\MoneroGui.Net.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

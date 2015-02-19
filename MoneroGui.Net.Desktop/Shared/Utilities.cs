@@ -1,15 +1,22 @@
-﻿using Eto;
+﻿using System.Net;
+using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
+using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.Extensions;
+using Jojatekok.MoneroAPI.Extensions.Settings;
+using Jojatekok.MoneroAPI.Settings;
 
 namespace Jojatekok.MoneroGUI
 {
     struct Utilities
     {
+        public const string DefaultLanguageCode = "default";
+
         public const byte FontSizeTitle = 12;
 
         public const byte Padding1 = 3;
@@ -37,11 +44,12 @@ namespace Jojatekok.MoneroGUI
         public const string ApplicationVersionExtra = null;
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
+        private static readonly ImageConverter ImageConverter = new ImageConverter();
+
         public static SynchronizationContext SyncContextMain { get; set; }
 
-        public static readonly Properties.Resources ResourcesInstance = new Properties.Resources();
-
-        private static readonly ImageConverter ImageConverter = new ImageConverter();
+        public static MoneroProcessManager MoneroProcessManager { get; private set; }
+        public static MoneroRpcManager MoneroRpcManager { get; private set; }
 
         public static void Initialize()
         {
@@ -62,6 +70,35 @@ namespace Jojatekok.MoneroGUI
 		            }
 		        }
 		    }
+
+            SettingsManager.Initialize();
+
+            var storedPathSettings = SettingsManager.Paths;
+            var daemonProcessSettings = new DaemonProcessSettings {
+                SoftwareDaemon = storedPathSettings.SoftwareDaemon,
+                DirectoryDaemonData = storedPathSettings.DirectoryDaemonData,
+            };
+            var accountManagerProcessSettings = new AccountManagerProcessSettings {
+                SoftwareAccountManager = storedPathSettings.SoftwareAccountManager,
+                DirectoryAccountBackups = storedPathSettings.DirectoryAccountBackups,
+                FileAccountData = storedPathSettings.FileAccountData,
+            };
+
+            var storedNetworkSettings = SettingsManager.Network;
+            var rpcSettings = new RpcSettings(
+                storedNetworkSettings.RpcUrlHostDaemon,
+                storedNetworkSettings.RpcUrlPortDaemon,
+                storedNetworkSettings.RpcUrlHostAccountManager,
+                storedNetworkSettings.RpcUrlPortAccountManager
+            );
+            if (storedNetworkSettings.IsProxyEnabled) {
+                if (!string.IsNullOrEmpty(storedNetworkSettings.ProxyHost) && storedNetworkSettings.ProxyPort != null) {
+                    rpcSettings.Proxy = new WebProxy(storedNetworkSettings.ProxyHost, (int)storedNetworkSettings.ProxyPort);
+                }
+            }
+
+            MoneroProcessManager = new MoneroProcessManager(rpcSettings, accountManagerProcessSettings, daemonProcessSettings);
+            MoneroRpcManager = new MoneroRpcManager(rpcSettings);
         }
 
         public static Image LoadImage(string resourceName)
@@ -127,6 +164,11 @@ namespace Jojatekok.MoneroGUI
             }
 
             return numericUpDown;
+        }
+
+        public static T GetAssemblyAttribute<T>() where T : Attribute
+        {
+            return (T)Attribute.GetCustomAttribute(ApplicationAssembly, typeof(T), false);
         }
     }
 }

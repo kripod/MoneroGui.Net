@@ -19,6 +19,7 @@ namespace Jojatekok.MoneroGUI.Forms
 		    this.SetLocationToCenterScreen();
 
 		    Utilities.Initialize();
+		    InitializeCoreApi();
 
 		    RenderMenu();
 		    RenderContent();
@@ -37,6 +38,33 @@ namespace Jojatekok.MoneroGUI.Forms
                 );
 		    }, null, 2000, 0);
 		}
+
+	    private void InitializeCoreApi()
+	    {
+	        var daemonRpc = Utilities.MoneroRpcManager.Daemon;
+            var accountManagerRpc = Utilities.MoneroRpcManager.AccountManager;
+
+            if (SettingsManager.Network.IsProcessDaemonHostedLocally) {
+                // Initialize the daemon RPC manager as soon as the corresponding process is available
+                var daemonProcess = Utilities.MoneroProcessManager.Daemon;
+                daemonProcess.Initialized += delegate { daemonRpc.Initialize(); };
+                daemonProcess.Start();
+
+            } else {
+                daemonRpc.Initialize();
+            }
+
+            if (SettingsManager.Network.IsProcessAccountManagerHostedLocally) {
+                // Initialize the account manager's RPC wrapper as soon as the corresponding process is available
+                var accountManagerProcess = Utilities.MoneroProcessManager.AccountManager;
+                accountManagerProcess.Initialized += delegate { accountManagerRpc.Initialize(); };
+                accountManagerProcess.PassphraseRequested += delegate { accountManagerProcess.Passphrase = "x"; };
+                accountManagerProcess.Start();
+
+            } else {
+                accountManagerRpc.Initialize();
+            }
+	    }
 
 	    private void RenderMenu()
 	    {
@@ -132,7 +160,8 @@ namespace Jojatekok.MoneroGUI.Forms
             tabPageTransactions.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowTransactions);
 
             var tabPageAddressBook = new TabPage {
-                Image = Utilities.LoadImage("Contact")
+                Image = Utilities.LoadImage("Contact"),
+                Content = new AddressBookView()
             };
             tabPageAddressBook.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.TextAddressBook);
 
