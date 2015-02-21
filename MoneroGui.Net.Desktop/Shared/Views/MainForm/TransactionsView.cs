@@ -1,7 +1,6 @@
 ﻿using Eto;
 using Eto.Forms;
 using Jojatekok.MoneroAPI;
-using System.Collections.ObjectModel;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
@@ -11,18 +10,22 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
         {
             Spacing = Utilities.Spacing3;
 
+            var filterCollectionAccountTransactions = new FilterCollection<Transaction>(Utilities.AccountTransactions) {
+                Sort = (x, y) => y.Number.CompareTo(x.Number)
+            };
+
             var gridViewTransactions = Utilities.CreateGridView(
-                new ReadOnlyObservableCollection<Transaction>(Utilities.AccountTransactions),
+                filterCollectionAccountTransactions,
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.Number.ToString(Utilities.InvariantCulture)) },
                     HeaderText = "#"
                 },
                 new GridColumn {
-                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.AmountSpendable.ToString(Utilities.InvariantCulture)) },
+                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => MoneroAPI.Utilities.CoinAtomicValueToString(o.AmountSpendable)) },
                     HeaderText = "Spendable" // TODO: Localization
                 },
                 new GridColumn {
-                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.AmountUnspendable.ToString(Utilities.InvariantCulture)) },
+                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => MoneroAPI.Utilities.CoinAtomicValueToString(o.AmountUnspendable)) },
                     HeaderText = "Not spendable" // TODO: Localization
                 },
                 new GridColumn {

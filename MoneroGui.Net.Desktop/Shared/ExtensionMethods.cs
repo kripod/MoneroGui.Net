@@ -55,13 +55,5 @@ namespace Jojatekok.MoneroGUI
                 s => { textBox.PlaceholderText = placeholderTextBinding.Invoke(); }
             ));
         }
-
-        public static void SetDataStoreBindingPath(this GridView gridView, Func<IEnumerable<object>> dataStoreBinding)
-        {
-            gridView.Bind("DataStore", new DelegateBinding<IEnumerable<object>>(
-                dataStoreBinding,
-                s => { gridView.DataStore = dataStoreBinding.Invoke(); }
-            ));
-        }
     }
 }

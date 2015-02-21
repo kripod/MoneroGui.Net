@@ -189,12 +189,14 @@ namespace Jojatekok.MoneroGUI
             return numericUpDown;
         }
 
-        public static GridView CreateGridView<T>(ReadOnlyObservableCollection<T> dataStore, params GridColumn[] columns) where T : class
+        public static GridView CreateGridView<T>(FilterCollection<T> dataStore, params GridColumn[] columns) where T : class
         {
-            var gridView = new GridView {
+            var gridView = new GridView<T> {
                 DataStore = dataStore,
-                RowHeight = Padding7
+                ShowCellBorders = true
             };
+
+            //dataStore.Change = () => gridView.SelectionPreserver;
 
             for (var i = 0; i < columns.Length; i++) {
                 gridView.Columns.Add(columns[i]);

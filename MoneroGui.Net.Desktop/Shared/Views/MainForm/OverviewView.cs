@@ -44,7 +44,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 {
                     var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
                     var balanceText = balance != null ?
-                        MoneroAPI.Utilities.CoinAtomicValueToDisplayValue(balance.Spendable).ToString(Utilities.InvariantCulture) :
+                        MoneroAPI.Utilities.CoinAtomicValueToString(balance.Spendable) :
                         MoneroGUI.Properties.Resources.PunctuationQuestionMark;
 
                     return balanceText + " " + MoneroGUI.Properties.Resources.TextCurrencyCode;
@@ -57,7 +57,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 {
                     var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
                     var balanceText = balance != null ?
-                        MoneroAPI.Utilities.CoinAtomicValueToDisplayValue(balance.Unconfirmed).ToString(Utilities.InvariantCulture) :
+                        MoneroAPI.Utilities.CoinAtomicValueToString(balance.Unconfirmed) :
                         MoneroGUI.Properties.Resources.PunctuationQuestionMark;
 
                     return balanceText + " " + MoneroGUI.Properties.Resources.TextCurrencyCode;
