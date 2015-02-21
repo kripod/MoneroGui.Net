@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System.ComponentModel;
+using System.Globalization;
+using System.Net;
+using System.Runtime.CompilerServices;
 using Eto;
 using Eto.Drawing;
 using Eto.Forms;
@@ -34,7 +37,9 @@ namespace Jojatekok.MoneroGUI
         public static readonly Size Spacing3 = new Size(Padding3, Padding3);
         public static readonly Size Spacing5 = new Size(Padding5, Padding5);
 
+        public static readonly BindingCollection BindingsToAccountAddress = new BindingCollection();
         public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
+        public static readonly BindingCollection BindingsToAccountTransactions = new BindingCollection();
 
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
@@ -45,6 +50,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
         private static readonly ImageConverter ImageConverter = new ImageConverter();
+
+        public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
 
         public static SynchronizationContext SyncContextMain { get; set; }
 
@@ -110,9 +117,10 @@ namespace Jojatekok.MoneroGUI
             ) as Image;
         }
 
-        public static Label CreateLabel(Func<string> textBinding, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
+        public static Label CreateLabel(Func<string> textBinding, HorizontalAlign horizontalAlignment = HorizontalAlign.Left, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
         {
             var label = new Label {
+                HorizontalAlign = horizontalAlignment,
                 VerticalAlign = verticalAlignment
             };
 

@@ -18,6 +18,8 @@ namespace Jojatekok.MoneroGUI.Forms
 		    );
 		    this.SetLocationToCenterScreen();
 
+            Closed += OnFormClosed;
+
 		    Utilities.Initialize();
 		    InitializeCoreApi();
 
@@ -39,10 +41,38 @@ namespace Jojatekok.MoneroGUI.Forms
 		    }, null, 2000, 0);
 		}
 
-	    private void InitializeCoreApi()
+        private void OnFormClosed(object sender, EventArgs e)
+        {
+            if (Utilities.MoneroRpcManager != null) {
+                Utilities.MoneroRpcManager.Dispose();
+            }
+
+            if (Utilities.MoneroProcessManager != null) {
+                Utilities.MoneroProcessManager.DisposeSafely();
+            }
+        }
+
+	    private static void InitializeCoreApi()
 	    {
 	        var daemonRpc = Utilities.MoneroRpcManager.Daemon;
             var accountManagerRpc = Utilities.MoneroRpcManager.AccountManager;
+
+            accountManagerRpc.AddressReceived += delegate {
+                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountAddress.Update(), null);
+            };
+	        accountManagerRpc.BalanceChanged += delegate {
+                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountBalance.Update(), null);
+            };
+
+            accountManagerRpc.TransactionReceived += delegate {
+                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountTransactions.Update(), null);
+            };
+            accountManagerRpc.TransactionChanged += delegate {
+                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountTransactions.Update(), null);
+            };
+	        accountManagerRpc.Initialized += delegate {
+                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountTransactions.Update(), null);
+	        };
 
             if (SettingsManager.Network.IsProcessDaemonHostedLocally) {
                 // Initialize the daemon RPC manager as soon as the corresponding process is available

@@ -29,7 +29,7 @@ namespace Jojatekok.MoneroGUI
 
         public static void Initialize()
         {
-            // Directory: %LocalAppData%\[Company]\[AssemblyName]\
+            // Directory: %LocalAppData% -> [Company] -> [AssemblyName]
             var configurationPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 Utilities.GetAssemblyAttribute<AssemblyCompanyAttribute>().Company,
@@ -272,36 +272,36 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("directoryAccountBackups", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups)]
+            [ConfigurationProperty("directoryAccountBackups")]
             public string DirectoryAccountBackups {
-                get { return base["directoryAccountBackups"] as string; }
+                get { return base["directoryAccountBackups"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups; }
                 set {
                     base["directoryAccountBackups"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("fileAccountData", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData)]
+            [ConfigurationProperty("fileAccountData")]
             public string FileAccountData {
-                get { return base["fileAccountData"] as string; }
+                get { return base["fileAccountData"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData; }
                 set {
                     base["fileAccountData"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("softwareDaemon", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathSoftwareDaemon)]
+            [ConfigurationProperty("softwareDaemon")]
             public string SoftwareDaemon {
-                get { return base["softwareDaemon"] as string; }
+                get { return base["softwareDaemon"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareDaemon; }
                 set {
                     base["softwareDaemon"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("softwareAccountManager", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager)]
+            [ConfigurationProperty("softwareAccountManager")]
             public string SoftwareAccountManager {
-                get { return base["softwareAccountManager"] as string; }
+                get { return base["softwareAccountManager"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager; }
                 set {
                     base["softwareAccountManager"] = value;
                     AutoSaveSettings();
@@ -316,27 +316,27 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("softwareWallet", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager)]
+            [ConfigurationProperty("softwareWallet")]
             protected internal string SoftwareWallet {
-                get { return base["softwareWallet"] as string; }
+                get { return base["softwareWallet"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager; }
                 set {
                     base["softwareWallet"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("directoryWalletBackups", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups)]
+            [ConfigurationProperty("directoryWalletBackups")]
             protected internal string DirectoryWalletBackups {
-                get { return base["directoryWalletBackups"] as string; }
+                get { return base["directoryWalletBackups"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups; }
                 set {
                     base["directoryAccountBackups"] = value;
                     AutoSaveSettings();
                 }
             }
 
-            [ConfigurationProperty("fileWalletData", DefaultValue = MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData)]
+            [ConfigurationProperty("fileWalletData")]
             protected internal string FileWalletData {
-                get { return base["fileWalletData"] as string; }
+                get { return base["fileWalletData"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData; }
                 set {
                     base["fileAccountData"] = value;
                     AutoSaveSettings();
