@@ -2,6 +2,7 @@
 using Eto.Drawing;
 using Eto.Forms;
 using System;
+using System.Collections.Generic;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -52,6 +53,14 @@ namespace Jojatekok.MoneroGUI
             textBox.Bind("PlaceholderText", new DelegateBinding<string>(
                 placeholderTextBinding,
                 s => { textBox.PlaceholderText = placeholderTextBinding.Invoke(); }
+            ));
+        }
+
+        public static void SetDataStoreBindingPath(this GridView gridView, Func<IEnumerable<object>> dataStoreBinding)
+        {
+            gridView.Bind("DataStore", new DelegateBinding<IEnumerable<object>>(
+                dataStoreBinding,
+                s => { gridView.DataStore = dataStoreBinding.Invoke(); }
             ));
         }
     }

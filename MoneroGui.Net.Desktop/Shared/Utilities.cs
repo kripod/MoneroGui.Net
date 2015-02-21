@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using System.Globalization;
-using System.Net;
-using System.Runtime.CompilerServices;
-using Eto;
+﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 using System;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq.Expressions;
+using System.Net;
 using System.Reflection;
 using System.Threading;
 using Jojatekok.MoneroAPI;
@@ -16,7 +15,7 @@ using Jojatekok.MoneroAPI.Settings;
 
 namespace Jojatekok.MoneroGUI
 {
-    struct Utilities
+    static class Utilities
     {
         public const string DefaultLanguageCode = "default";
 
@@ -40,6 +39,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly BindingCollection BindingsToAccountAddress = new BindingCollection();
         public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
         public static readonly BindingCollection BindingsToAccountTransactions = new BindingCollection();
+
+        public static readonly ObservableCollection<Transaction> AccountTransactions = new ObservableCollection<Transaction>();
 
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
@@ -130,6 +131,20 @@ namespace Jojatekok.MoneroGUI
             return label;
         }
 
+        public static Label CreateLabel<T>(T dataContext, Expression<Func<T, string>> textBinding, HorizontalAlign horizontalAlignment = HorizontalAlign.Left, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
+        {
+            var label = new Label {
+                DataContext = dataContext,
+                HorizontalAlign = horizontalAlignment,
+                VerticalAlign = verticalAlignment
+            };
+
+            label.TextBinding.BindDataContext(textBinding);
+            if (font != null) label.Font = font;
+
+            return label;
+        }
+
         public static TextBox CreateTextBox(Func<string> placeholderTextBinding, string text = null, Font font = null)
         {
             var textBox = new TextBox {
@@ -172,6 +187,20 @@ namespace Jojatekok.MoneroGUI
             }
 
             return numericUpDown;
+        }
+
+        public static GridView CreateGridView<T>(ReadOnlyObservableCollection<T> dataStore, params GridColumn[] columns) where T : class
+        {
+            var gridView = new GridView {
+                DataStore = dataStore,
+                RowHeight = Padding7
+            };
+
+            for (var i = 0; i < columns.Length; i++) {
+                gridView.Columns.Add(columns[i]);
+            }
+
+            return gridView;
         }
 
         public static T GetAssemblyAttribute<T>() where T : Attribute

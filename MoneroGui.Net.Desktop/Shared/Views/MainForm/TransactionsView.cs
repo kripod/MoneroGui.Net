@@ -1,12 +1,7 @@
 ﻿using Eto;
-using Eto.Drawing;
 using Eto.Forms;
-using Jojatekok.MoneroGUI.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Jojatekok.MoneroAPI;
+using System.Collections.ObjectModel;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
@@ -16,9 +11,29 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
         {
             Spacing = Utilities.Spacing3;
 
+            var gridViewTransactions = Utilities.CreateGridView(
+                new ReadOnlyObservableCollection<Transaction>(Utilities.AccountTransactions),
+                new GridColumn {
+                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.Number.ToString(Utilities.InvariantCulture)) },
+                    HeaderText = "#"
+                },
+                new GridColumn {
+                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.AmountSpendable.ToString(Utilities.InvariantCulture)) },
+                    HeaderText = "Spendable" // TODO: Localization
+                },
+                new GridColumn {
+                    DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.AmountUnspendable.ToString(Utilities.InvariantCulture)) },
+                    HeaderText = "Not spendable" // TODO: Localization
+                },
+                new GridColumn {
+                    DataCell = new TextBoxCell { Binding = Binding.Property<Transaction, string>(o => o.TransactionId) },
+                    HeaderText = MoneroGUI.Properties.Resources.TransactionsTransactionId
+                }
+            );
+
             Rows.Add(
                 new TableRow(
-                    new GridView<SendCoinsViewModel>()
+                    gridViewTransactions
                 ) { ScaleHeight = true }
             );
 

@@ -71,7 +71,14 @@ namespace Jojatekok.MoneroGUI.Forms
                 Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountTransactions.Update(), null);
             };
 	        accountManagerRpc.Initialized += delegate {
-                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountTransactions.Update(), null);
+                var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
+                Utilities.SyncContextMain.Send(sender => {
+                    for (var i = 0; i < transactions.Count; i++) {
+                        Utilities.AccountTransactions.Add(transactions[i]);
+                    }
+
+                    Utilities.BindingsToAccountTransactions.Update();
+                }, null);
 	        };
 
             if (SettingsManager.Network.IsProcessDaemonHostedLocally) {
