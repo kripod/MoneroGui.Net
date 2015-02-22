@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eto;
-using Eto.Drawing;
+﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Controls;
 
@@ -23,7 +17,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             () => MoneroGUI.Properties.Resources.TextAccount,
                             HorizontalAlign.Left,
                             VerticalAlign.Middle,
-                            new Font(SystemFont.Default, Utilities.FontSizeTitle, FontDecoration.Underline)
+                            new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
                         ),
                         true
                     ),
@@ -33,7 +27,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             () => MoneroGUI.Properties.Resources.OverviewRecentTransactions,
                             HorizontalAlign.Left,
                             VerticalAlign.Middle,
-                            new Font(SystemFont.Default, Utilities.FontSizeTitle, FontDecoration.Underline)
+                            new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
                         ),
                         true
                     )

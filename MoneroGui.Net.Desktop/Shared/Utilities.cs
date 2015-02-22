@@ -4,6 +4,7 @@ using Eto.Forms;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
@@ -19,7 +20,8 @@ namespace Jojatekok.MoneroGUI
     {
         public const string DefaultLanguageCode = "default";
 
-        public const byte FontSizeTitle = 12;
+        public const byte FontSize2 = 12;
+        public const byte FontSize3 = 20;
 
         public const byte Padding1 = 3;
         public const byte Padding2 = 5;
@@ -28,6 +30,9 @@ namespace Jojatekok.MoneroGUI
         public const byte Padding5 = 14;
         public const byte Padding6 = 20;
         public const byte Padding7 = 30;
+
+        public static readonly string PathDirectoryThirdPartyLicenses = new DirectoryInfo("Licenses").FullName;
+        public static readonly string PathFileLicense = new FileInfo("LICENSE").FullName;
 
         public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);

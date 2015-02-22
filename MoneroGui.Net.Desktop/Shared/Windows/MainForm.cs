@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Forms
 	{
 		public MainForm()
 		{
-		    this.SetFormProperties(
+            this.SetWindowProperties(
                 () => MoneroGUI.Properties.Resources.TextClientName,
                 new Size(850, 570),
                 true // TODO: Remove this flag
@@ -112,35 +112,35 @@ namespace Jojatekok.MoneroGUI.Forms
                 Image = Utilities.LoadImage("Save")
 		    };
 
-            var commandExport = new Command(OnExport) {
+            var commandExport = new Command(OnCommandExport) {
                 MenuText = MoneroGUI.Properties.Resources.MenuExport,
                 Image = Utilities.LoadImage("Export"),
                 Shortcut = Application.Instance.CommonModifier | Keys.E
             };
 
-            var commandExit = new Command(OnExit) {
+            var commandExit = new Command(OnCommandExit) {
                 MenuText = MoneroGUI.Properties.Resources.MenuExit,
                 Image = Utilities.LoadImage("Exit"),
                 Shortcut = Application.Instance.CommonModifier | Keys.Q
             };
 
-		    var commandAccountChangePassphrase = new Command(OnAccountChangePassphrase) {
+		    var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
                 Enabled = false,
                 MenuText = MoneroGUI.Properties.Resources.MenuChangeAccountPassphrase,
                 Image = Utilities.LoadImage("Key")
             };
 
-            var commandShowWindowOptions = new Command(OnShowWindowOptions) {
+            var commandShowWindowOptions = new Command(OnCommandShowWindowOptions) {
                 MenuText = MoneroGUI.Properties.Resources.MenuOptions,
                 Image = Utilities.LoadImage("Options"),
                 Shortcut = Application.Instance.CommonModifier | Keys.O
             };
 
-            var commandShowWindowDebug = new Command(OnShowWindowDebug) {
+            var commandShowWindowDebug = new Command(OnCommandShowWindowDebug) {
                 MenuText = MoneroGUI.Properties.Resources.MenuDebugWindow
             };
 
-            var commandShowWindowAbout = new Command(OnShowWindowAbout) {
+            var commandShowWindowAbout = new Command(OnCommandShowWindowAbout) {
                 MenuText = MoneroGUI.Properties.Resources.MenuAbout,
                 Image = Utilities.LoadImage("Information"),
             };
@@ -240,34 +240,36 @@ namespace Jojatekok.MoneroGUI.Forms
 	        
 	    }
 
-        private void OnExport(object sender, EventArgs e)
+        private void OnCommandExport(object sender, EventArgs e)
         {
 
         }
 
-        private void OnExit(object sender, EventArgs e)
+        private void OnCommandExit(object sender, EventArgs e)
         {
             Application.Instance.Quit();
         }
 
-        private void OnAccountChangePassphrase(object sender, EventArgs e)
+        private void OnCommandAccountChangePassphrase(object sender, EventArgs e)
         {
 
         }
 
-        private void OnShowWindowOptions(object sender, EventArgs e)
+        private void OnCommandShowWindowOptions(object sender, EventArgs e)
         {
 
         }
 
-        private void OnShowWindowDebug(object sender, EventArgs e)
+        private void OnCommandShowWindowDebug(object sender, EventArgs e)
         {
 
         }
 
-        private void OnShowWindowAbout(object sender, EventArgs e)
+        private void OnCommandShowWindowAbout(object sender, EventArgs e)
         {
-
+            using (var dialog = new AboutDialog()) {
+                dialog.ShowModal(this);
+            }
         }
 	}
 }

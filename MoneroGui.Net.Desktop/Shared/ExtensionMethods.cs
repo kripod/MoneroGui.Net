@@ -2,33 +2,33 @@
 using Eto.Drawing;
 using Eto.Forms;
 using System;
-using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Jojatekok.MoneroGUI
 {
     static class ExtensionMethods
     {
-        public static void SetFormProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
+        public static void SetWindowProperties(this Window window, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
         {
-            form.Bind("Title", new DelegateBinding<string>(
+            window.Bind("Title", new DelegateBinding<string>(
                 titleBindingPath,
-                s => { form.Title = titleBindingPath.Invoke(); }
+                s => { window.Title = titleBindingPath.Invoke(); }
             ));
 
-            form.Size = size;
-            if (!isMinimumSizeCustom) form.MinimumSize = size;
+            window.Size = size;
+            if (!isMinimumSizeCustom) window.MinimumSize = size;
 
-            form.BackgroundColor = Colors.White;
+            window.BackgroundColor = Colors.White;
         }
 
-        public static void SetLocationToCenterScreen(this Form form)
+        public static void SetLocationToCenterScreen(this Window window)
         {
             var screenBounds = Screen.PrimaryScreen.Bounds;
-            var formSize = form.Size;
+            var windowSize = window.Size;
 
-            form.Location = new Point(
-                (int)(screenBounds.Width / 2 - (float)formSize.Width / 2),
-                (int)(screenBounds.Height / 2 - (float)formSize.Height / 2)
+            window.Location = new Point(
+                (int)(screenBounds.Width / 2 - (float)windowSize.Width / 2),
+                (int)(screenBounds.Height / 2 - (float)windowSize.Height / 2)
             );
         }
 
@@ -54,6 +54,11 @@ namespace Jojatekok.MoneroGUI
                 placeholderTextBinding,
                 s => { textBox.PlaceholderText = placeholderTextBinding.Invoke(); }
             ));
+        }
+
+        public static string ReWrap(this string input)
+        {
+            return Regex.Replace(input.TrimEnd(), " (\r\n|\n)", " ");
         }
     }
 }
