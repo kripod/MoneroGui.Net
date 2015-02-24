@@ -24,7 +24,7 @@ namespace Jojatekok.MoneroGUI.Forms
 	    public AboutDialog()
 		{
 		    this.SetWindowProperties(
-                () => MoneroGUI.Properties.Resources.AboutWindowTitle,
+                MoneroGUI.Properties.Resources.AboutWindowTitle,
                 new Size(600, 300)
 		    );
 

@@ -1,5 +1,6 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroAPI;
 using Jojatekok.MoneroGUI.Views.MainForm;
 using System;
 using System.Globalization;
@@ -21,7 +22,7 @@ namespace Jojatekok.MoneroGUI.Forms
             Closed += OnFormClosed;
 
 		    Utilities.Initialize();
-		    InitializeCoreApi();
+            Shown += delegate { InitializeCoreApi(); };
 
 		    RenderMenu();
 		    RenderContent();
@@ -31,7 +32,7 @@ namespace Jojatekok.MoneroGUI.Forms
                 MoneroGUI.Properties.Resources.Culture = culture;
                 Thread.CurrentThread.CurrentCulture = culture;
 
-                Utilities.SyncContextMain.Send(
+                Utilities.SyncContextMain.Post(
                     sender => {
                         UpdateBindings();
                         RenderMenu();
@@ -52,44 +53,28 @@ namespace Jojatekok.MoneroGUI.Forms
             }
         }
 
-	    private static void InitializeCoreApi()
+	    private void InitializeCoreApi()
 	    {
 	        var daemonRpc = Utilities.MoneroRpcManager.Daemon;
             var accountManagerRpc = Utilities.MoneroRpcManager.AccountManager;
 
-            accountManagerRpc.AddressReceived += delegate {
-                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountAddress.Update(), null);
-            };
-	        accountManagerRpc.BalanceChanged += delegate {
-                Utilities.SyncContextMain.Send(sender => Utilities.BindingsToAccountBalance.Update(), null);
-            };
+            daemonRpc.NetworkInformationChanged += OnDaemonRpcNetworkInformationChanged;
+            daemonRpc.BlockchainSynced += OnDaemonRpcBlockchainSynced;
 
-            accountManagerRpc.TransactionReceived += (sender, e) => {
-                Utilities.AccountTransactions.Add(e.Transaction);
-                Utilities.SyncContextMain.Send(s => Utilities.BindingsToAccountTransactions.Update(), null);
-            };
-            accountManagerRpc.TransactionChanged += (sender, e) => {
-                Utilities.AccountTransactions[e.TransactionIndex] = e.TransactionNewValue;
-                Utilities.SyncContextMain.Send(s => Utilities.BindingsToAccountTransactions.Update(), null);
-            };
-	        accountManagerRpc.Initialized += delegate {
-                var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
-                Utilities.SyncContextMain.Send(sender => {
-                    for (var i = 0; i < transactions.Count; i++) {
-                        Utilities.AccountTransactions.Add(transactions[i]);
-                    }
-
-                    Utilities.BindingsToAccountTransactions.Update();
-                }, null);
-	        };
+            accountManagerRpc.Initialized += OnAccountManagerRpcInitialized;
+            accountManagerRpc.AddressReceived += OnAccountManagerRpcAddressReceived;
+            accountManagerRpc.TransactionReceived += OnAccountManagerRpcTransactionReceived;
+            accountManagerRpc.TransactionChanged += OnAccountManagerRpcTransactionChanged;
+            accountManagerRpc.BalanceChanged += OnAccountManagerRpcBalanceChanged;
 
             if (SettingsManager.Network.IsProcessDaemonHostedLocally) {
                 // Initialize the daemon RPC manager as soon as the corresponding process is available
                 var daemonProcess = Utilities.MoneroProcessManager.Daemon;
                 daemonProcess.Initialized += delegate { daemonRpc.Initialize(); };
+                daemonProcess.OnLogMessage += OnDaemonProcessLogMessage;
                 daemonProcess.Start();
-
             } else {
+                // Initialize the daemon RPC manager immediately
                 daemonRpc.Initialize();
             }
 
@@ -97,10 +82,11 @@ namespace Jojatekok.MoneroGUI.Forms
                 // Initialize the account manager's RPC wrapper as soon as the corresponding process is available
                 var accountManagerProcess = Utilities.MoneroProcessManager.AccountManager;
                 accountManagerProcess.Initialized += delegate { accountManagerRpc.Initialize(); };
-                accountManagerProcess.PassphraseRequested += delegate { accountManagerProcess.Passphrase = "x"; };
+                accountManagerProcess.OnLogMessage += OnAccountManagerProcessLogMessage;
+                accountManagerProcess.PassphraseRequested += OnAccountManagerProcessPassphraseRequested;
                 accountManagerProcess.Start();
-
             } else {
+                // Initialize the account manager's RPC wrapper immediately
                 accountManagerRpc.Initialize();
             }
 	    }
@@ -270,6 +256,79 @@ namespace Jojatekok.MoneroGUI.Forms
             using (var dialog = new AboutDialog()) {
                 dialog.ShowModal(this);
             }
+        }
+
+        private void OnDaemonProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
+        {
+
+        }
+
+        private void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
+        {
+
+        }
+
+        private void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnAccountManagerProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
+        {
+
+        }
+
+        private void OnAccountManagerProcessPassphraseRequested(object sender, PassphraseRequestedEventArgs e)
+        {
+            Utilities.SyncContextMain.Post(s => {
+                if (e.IsFirstTime) {
+                    // Let the user set the account's passphrase for the first time
+                    // TODO
+
+                } else {
+                    // Request the account's passphrase in order to unlock it
+                    using (var dialog = new AccountUnlockDialog()) {
+                        var result = dialog.ShowModal(this);
+                        if (result != null) {
+                            Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
+                        }
+                    }
+                }
+            }, null);
+        }
+
+	    private void OnAccountManagerRpcInitialized(object sender, EventArgs e)
+	    {
+            var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
+            Utilities.SyncContextMain.Post(s => {
+                for (var i = 0; i < transactions.Count; i++) {
+                    Utilities.AccountTransactions.Add(transactions[i]);
+                }
+
+                Utilities.BindingsToAccountTransactions.Update();
+            }, null);
+	    }
+
+        private void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
+        {
+            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountAddress.Update(), null);
+        }
+
+        private void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
+        {
+            Utilities.AccountTransactions.Add(e.Transaction);
+            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountTransactions.Update(), null);
+        }
+
+        private void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
+        {
+            Utilities.AccountTransactions[e.TransactionIndex] = e.TransactionNewValue;
+            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountTransactions.Update(), null);
+        }
+
+        private void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
+        {
+            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
         }
 	}
 }

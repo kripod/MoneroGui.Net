@@ -100,6 +100,9 @@
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\ExtensionMethods.cs" />
+    <Compile Include="Shared\Windows\AccountUnlockDialog.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Windows\AboutDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>

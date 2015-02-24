@@ -8,17 +8,25 @@ namespace Jojatekok.MoneroGUI
 {
     static class ExtensionMethods
     {
-        public static void SetWindowProperties(this Window window, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
+        public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
         {
-            window.Bind("Title", new DelegateBinding<string>(
+            form.Bind("Title", new DelegateBinding<string>(
                 titleBindingPath,
-                s => { window.Title = titleBindingPath.Invoke(); }
+                s => { form.Title = titleBindingPath.Invoke(); }
             ));
 
-            window.Size = size;
-            if (!isMinimumSizeCustom) window.MinimumSize = size;
+            form.Size = size;
+            if (!isMinimumSizeCustom) form.MinimumSize = size;
 
-            window.BackgroundColor = Colors.White;
+            form.BackgroundColor = Colors.White;
+        }
+
+        public static void SetWindowProperties(this Dialog dialog, string title, Size minimumSize = default(Size))
+        {
+            dialog.Title = title;
+            dialog.MinimumSize = minimumSize;
+
+            dialog.BackgroundColor = Colors.White;
         }
 
         public static void SetLocationToCenterScreen(this Window window)
