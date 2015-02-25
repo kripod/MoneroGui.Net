@@ -59,6 +59,9 @@ namespace Jojatekok.MoneroGUI
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
 
+        public static float DefaultFontSize { get; private set; }
+        public static FontFamily DefaultFontFamily { get; private set; }
+
         public static SynchronizationContext SyncContextMain { get; set; }
 
         public static MoneroProcessManager MoneroProcessManager { get; private set; }
@@ -66,6 +69,10 @@ namespace Jojatekok.MoneroGUI
 
         public static void Initialize()
         {
+            var defaultFont = new Font(SystemFont.Default);
+            DefaultFontSize = defaultFont.Size;
+            DefaultFontFamily = defaultFont.Family;
+
             SyncContextMain = SynchronizationContext.Current;
 		    using (var button = new Button()) {
 		        var handler = button.Handler;

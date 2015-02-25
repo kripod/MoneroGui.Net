@@ -19,19 +19,19 @@ namespace Jojatekok.MoneroGUI.Forms
         {
             Padding = new Padding(Utilities.Padding4);
 
-            var textBoxResult = new TextBox();
+            var passwordBoxResult = new PasswordBox();
 
             var buttonOk = new Button { Text = MoneroGUI.Properties.Resources.TextOk };
-            buttonOk.Click += delegate { Close(textBoxResult.Text); };
+            buttonOk.Click += delegate { Close(passwordBoxResult.Text); };
             DefaultButton = buttonOk;
 
             var buttonCancel = new Button { Text = MoneroGUI.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
 
             Content = new TableLayout(
-                new Label {Text = MoneroGUI.Properties.Resources.AccountUnlockWindowInstruction},
+                new Label { Text = MoneroGUI.Properties.Resources.AccountUnlockWindowInstruction },
 
-                textBoxResult,
+                passwordBoxResult,
 
                 new TableRow(
                     new TableLayout(

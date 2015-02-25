@@ -283,7 +283,12 @@ namespace Jojatekok.MoneroGUI.Forms
             Utilities.SyncContextMain.Post(s => {
                 if (e.IsFirstTime) {
                     // Let the user set the account's passphrase for the first time
-                    // TODO
+                    using (var dialog = new AccountChangePassphraseDialog(false)) {
+                        var result = dialog.ShowModal(this);
+                        if (result != null) {
+                            Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
+                        }
+                    }
 
                 } else {
                     // Request the account's passphrase in order to unlock it
