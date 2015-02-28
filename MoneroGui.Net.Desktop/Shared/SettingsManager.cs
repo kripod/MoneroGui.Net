@@ -525,7 +525,7 @@ namespace Jojatekok.MoneroGUI
 
             protected override sealed ConfigurationElement CreateNewElement()
             {
-                return new ConfigElementContact(string.Empty, string.Empty);
+                return new ConfigElementContact("", "");
             }
 
             protected override object GetElementKey(ConfigurationElement element)

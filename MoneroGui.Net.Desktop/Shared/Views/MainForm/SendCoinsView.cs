@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eto;
-using Eto.Drawing;
+﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Controls;
+using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class SendCoinsView : TableLayout
     {
         private static readonly SendCoinsViewModel ViewModel = new SendCoinsViewModel();
+
+        private TableLayout TableLayoutRecipients { get; set; }
+        private Scrollable ScrollableRecipientsContainer { get; set; }
 
         public SendCoinsView()
         {
@@ -22,10 +20,14 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 new TableLayout(
                     new TableRow(
                         new TableCell(
-                            Utilities.CreateLabel(() =>
-                                MoneroGUI.Properties.Resources.SendCoinsCurrentBalance + " " +
-                                "?"
-                            ),
+                            Utilities.CreateLabel(() => {
+                                var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
+                                var balanceText = MoneroGUI.Properties.Resources.SendCoinsCurrentBalance + " " + (balance != null ?
+                                    MoneroAPI.Utilities.CoinAtomicValueToString(balance.Spendable) :
+                                    MoneroGUI.Properties.Resources.PunctuationQuestionMark);
+
+                                return balanceText + " " + MoneroGUI.Properties.Resources.TextCurrencyCode;
+                            }),
                             true
                         ),
 
@@ -39,9 +41,19 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 ) { Spacing = Utilities.Spacing3 }
             );
 
-            var listBoxRecipients = new ListBox();
+            TableLayoutRecipients = new TableLayout(
+                new CoinSender(),
+                new TableRow { ScaleHeight = true }
+            );
+            ScrollableRecipientsContainer = new Scrollable {
+                Content = TableLayoutRecipients,
+                Padding = new Padding(Utilities.Padding4, 0),
+                BackgroundColor = Colors.White
+            };
 
-            Rows.Add(new TableRow(listBoxRecipients) { ScaleHeight = true });
+            Rows.Add(
+                new TableRow(ScrollableRecipientsContainer) { ScaleHeight = true }
+            );
 
             Rows.Add(
                 new TableLayout(
@@ -54,7 +66,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                             Utilities.CreateTextBox(() =>
                                 MoneroGUI.Properties.Resources.TextHintOptional,
                                 null,
-                                new Font(FontFamilies.Monospace, 10)
+                                new Font(FontFamilies.Monospace, Utilities.FontSize1)
                             ),
                             true
                         )
@@ -68,14 +80,38 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.SendCoinsAddRecipient,
-                                Utilities.LoadImage("Add")
+                                Utilities.LoadImage("Add"),
+                                () => {
+                                    var oldTableLayoutRows = TableLayoutRecipients.Rows;
+                                    var newTableLayout = new TableLayout();
+
+                                    for (var i = 0; i < oldTableLayoutRows.Count - 1; i++) {
+                                        var coinSender = oldTableLayoutRows[i].Cells[0].Control as CoinSender;
+                                        Debug.Assert(coinSender != null, "coinSender != null");
+                                        newTableLayout.Rows.Add(coinSender.Clone() as CoinSender);
+                                    }
+
+                                    newTableLayout.Rows.Add(new CoinSender());
+                                    newTableLayout.Rows.Add(new TableRow { ScaleHeight = true });
+
+                                    TableLayoutRecipients = newTableLayout;
+                                    ScrollableRecipientsContainer.Content = TableLayoutRecipients;
+                                    ScrollableRecipientsContainer.ScrollPosition = new Point(0, int.MaxValue);
+                                }
                             )
                         ),
 
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.SendCoinsClearRecipients,
-                                Utilities.LoadImage("Delete")
+                                Utilities.LoadImage("Delete"),
+                                () => {
+                                    TableLayoutRecipients = new TableLayout(
+                                        new CoinSender(),
+                                        new TableRow { ScaleHeight = true }
+                                    );
+                                    ScrollableRecipientsContainer.Content = TableLayoutRecipients;
+                                }
                             )
                         ),
 

@@ -20,6 +20,7 @@ namespace Jojatekok.MoneroGUI
     {
         public const string DefaultLanguageCode = "default";
 
+        public const byte FontSize1 = 10;
         public const byte FontSize2 = 12;
         public const byte FontSize3 = 20;
 
@@ -169,13 +170,14 @@ namespace Jojatekok.MoneroGUI
             return textBox;
         }
 
-        public static Button CreateButton(Func<string> textBinding, Image image = null)
+        public static Button CreateButton(Func<string> textBinding, Image image = null, Action onClick = null)
         {
             var button = new Button {
                 Image = image
             };
 
             button.SetTextBindingPath(textBinding);
+            if (onClick != null) button.Click += (sender, e) => onClick();
 
             return button;
         }

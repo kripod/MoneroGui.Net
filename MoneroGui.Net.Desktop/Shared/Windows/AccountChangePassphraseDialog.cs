@@ -69,7 +69,8 @@ namespace Jojatekok.MoneroGUI.Forms
 
             var buttonOk = new Button { Text = MoneroGUI.Properties.Resources.TextOk };
             buttonOk.Click += delegate {
-                // TODO: Check for the current passphrase if necessary
+                // TODO: Check for the current passphrase's validity if necessary, and display the following text on error:
+                // The passphrase entered for the account's decryption is incorrect.
 
                 var newPassphrase = passwordBoxNewPassphrase1.Text;
                 if (newPassphrase != passwordBoxNewPassphrase2.Text) {

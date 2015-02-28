@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Jojatekok.MoneroGUI.Controls;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Eto;
-using Eto.Drawing;
-using Eto.Forms;
-using Jojatekok.MoneroAPI;
-using Jojatekok.MoneroGUI.Controls;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class SendCoinsViewModel : INotifyPropertyChanged
     {
-        // TODO: Add a list of transfer recipients
+        private readonly ObservableCollection<CoinSender> _recipients = new ObservableCollection<CoinSender>();
 
         private bool _isSendingEnabled;
         private bool _isBlockchainSynced;
         private ulong? _balanceSpendable;
         private double? _balanceNewEstimated;
-        private string _paymentId = string.Empty;
+        private string _paymentId = "";
         private ulong _mixCount = 3;
+
+        public ObservableCollection<CoinSender> Recipients {
+            get { return _recipients; }
+        }
 
         public bool IsSendingEnabled {
             get { return _isSendingEnabled; }
