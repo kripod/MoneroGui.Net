@@ -43,6 +43,7 @@ namespace Jojatekok.MoneroGUI
         public static readonly Size Spacing2 = new Size(Padding2, Padding2);
         public static readonly Size Spacing3 = new Size(Padding3, Padding3);
         public static readonly Size Spacing5 = new Size(Padding5, Padding5);
+        public static readonly Size Spacing6 = new Size(Padding6, Padding6);
 
         public static readonly BindingCollection BindingsToAccountAddress = new BindingCollection();
         public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
@@ -69,7 +70,7 @@ namespace Jojatekok.MoneroGUI
         public static MoneroRpcManager MoneroRpcManager { get; private set; }
 
         public static readonly FilterCollection<Transaction> DataSourceAccountTransactions = new FilterCollection<Transaction>();
-        public static ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
+        public static FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
 
         // TODO: Fetch this list from the web
         public static readonly HashSet<string> DataSourceExchangeAddresses = new HashSet<string> {
@@ -93,22 +94,22 @@ namespace Jojatekok.MoneroGUI
             DefaultFontFamily = defaultFont.Family;
 
             SyncContextMain = SynchronizationContext.Current;
-		    using (var button = new Button()) {
-		        var handler = button.Handler;
+            using (var button = new Button()) {
+                var handler = button.Handler;
 
                 var fieldInfo = handler.GetType().GetField("MinimumSize");
-		        if (fieldInfo != null) {
-		            var size = (Size)(fieldInfo.GetValue(null));
-		            size.Width = 0;
+                if (fieldInfo != null) {
+                    var size = (Size)(fieldInfo.GetValue(null));
+                    size.Width = 0;
                     fieldInfo.SetValue(null, size);
 
-		        } else {
+                } else {
                     fieldInfo = handler.GetType().GetField("MinimumWidth");
-		            if (fieldInfo != null) {
-		                fieldInfo.SetValue(null, 0);
-		            }
-		        }
-		    }
+                    if (fieldInfo != null) {
+                        fieldInfo.SetValue(null, 0);
+                    }
+                }
+            }
 
             SettingsManager.Initialize();
 
@@ -139,7 +140,7 @@ namespace Jojatekok.MoneroGUI
             MoneroProcessManager = new MoneroProcessManager(rpcSettings, accountManagerProcessSettings, daemonProcessSettings);
             MoneroRpcManager = new MoneroRpcManager(rpcSettings);
 
-            DataSourceAddressBook = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
+            DataSourceAddressBook = new FilterCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
             DataSourceAddressBook.CollectionChanged += OnDataSourceAddressBookCollectionChanged;
         }
 

@@ -8,26 +8,26 @@ using System.Threading;
 
 namespace Jojatekok.MoneroGUI.Forms
 {
-	public sealed class MainForm : Form
-	{
-		public MainForm()
-		{
+    public sealed class MainForm : Form
+    {
+        public MainForm()
+        {
             this.SetWindowProperties(
                 () => MoneroGUI.Properties.Resources.TextClientName,
                 new Size(850, 570),
                 true // TODO: Remove this flag
-		    );
-		    this.SetLocationToCenterScreen();
+            );
+            this.SetLocationToCenterScreen();
 
             Closed += OnFormClosed;
 
-		    Utilities.Initialize();
-            Shown += delegate { InitializeCoreApi(); };
+            Utilities.Initialize();
+            //Shown += delegate { InitializeCoreApi(); };
 
-		    RenderMenu();
-		    RenderContent();
+            RenderMenu();
+            RenderContent();
 
-		    var timer = new Timer(delegate {
+            var timer = new Timer(delegate {
                 var culture = new CultureInfo("en");
                 MoneroGUI.Properties.Resources.Culture = culture;
                 Thread.CurrentThread.CurrentCulture = culture;
@@ -39,8 +39,8 @@ namespace Jojatekok.MoneroGUI.Forms
                     },
                     null
                 );
-		    }, null, 2000, 0);
-		}
+            }, null, 2000, 0);
+        }
 
         private void OnFormClosed(object sender, EventArgs e)
         {
@@ -53,9 +53,9 @@ namespace Jojatekok.MoneroGUI.Forms
             }
         }
 
-	    private void InitializeCoreApi()
-	    {
-	        var daemonRpc = Utilities.MoneroRpcManager.Daemon;
+        private void InitializeCoreApi()
+        {
+            var daemonRpc = Utilities.MoneroRpcManager.Daemon;
             var accountManagerRpc = Utilities.MoneroRpcManager.AccountManager;
 
             daemonRpc.NetworkInformationChanged += OnDaemonRpcNetworkInformationChanged;
@@ -89,14 +89,14 @@ namespace Jojatekok.MoneroGUI.Forms
                 // Initialize the account manager's RPC wrapper immediately
                 accountManagerRpc.Initialize();
             }
-	    }
+        }
 
-	    private void RenderMenu()
-	    {
-	        var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
+        private void RenderMenu()
+        {
+            var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
                 MenuText = MoneroGUI.Properties.Resources.MenuBackupManager,
                 Image = Utilities.LoadImage("Save")
-		    };
+            };
 
             var commandExport = new Command(OnCommandExport) {
                 MenuText = MoneroGUI.Properties.Resources.MenuExport,
@@ -110,7 +110,7 @@ namespace Jojatekok.MoneroGUI.Forms
                 Shortcut = Application.Instance.CommonModifier | Keys.Q
             };
 
-		    var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
+            var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
                 Enabled = false,
                 MenuText = MoneroGUI.Properties.Resources.MenuChangeAccountPassphrase,
                 Image = Utilities.LoadImage("Key")
@@ -131,42 +131,42 @@ namespace Jojatekok.MoneroGUI.Forms
                 Image = Utilities.LoadImage("Information"),
             };
 
-			Menu = new MenuBar {
-				Items = {
-					new ButtonMenuItem {
-					    Text = MoneroGUI.Properties.Resources.MenuFile,
+            Menu = new MenuBar {
+                Items = {
+                    new ButtonMenuItem {
+                        Text = MoneroGUI.Properties.Resources.MenuFile,
                         Items = {
                             commandAccountBackupManager,
                             commandExport,
                             new SeparatorMenuItem(),
                             commandExit
                         }
-					},
+                    },
 
                     new ButtonMenuItem {
-					    Text = MoneroGUI.Properties.Resources.MenuSettings,
+                        Text = MoneroGUI.Properties.Resources.MenuSettings,
                         Items = {
                             commandAccountChangePassphrase,
                             new SeparatorMenuItem(),
                             commandShowWindowOptions
                         }
-					},
+                    },
 
                     new ButtonMenuItem {
-					    Text = MoneroGUI.Properties.Resources.MenuHelp,
+                        Text = MoneroGUI.Properties.Resources.MenuHelp,
                         Items = {
                             commandShowWindowDebug,
                             new SeparatorMenuItem(),
                             commandShowWindowAbout
                         }
-					}
-				}
-			};
-	    }
+                    }
+                }
+            };
+        }
 
-	    private void RenderContent()
-	    {
-	        var tabPageOverview = new TabPage {
+        private void RenderContent()
+        {
+            var tabPageOverview = new TabPage {
                 Image = Utilities.LoadImage("Overview"),
                 Content = new OverviewView()
             };
@@ -197,9 +197,9 @@ namespace Jojatekok.MoneroGUI.Forms
             tabControlPages.Add(tabPageTransactions);
             tabControlPages.Add(tabPageAddressBook);
 
-	        for (var i = tabControlPages.Count - 1; i >= 0; i--) {
-	            tabControlPages[i].Padding = new Padding(Utilities.Padding3);
-	        }
+            for (var i = tabControlPages.Count - 1; i >= 0; i--) {
+                tabControlPages[i].Padding = new Padding(Utilities.Padding3);
+            }
 
             Content = new TableLayout {
                 Rows = {
@@ -219,12 +219,12 @@ namespace Jojatekok.MoneroGUI.Forms
                     )
                 }
             };
-	    }
+        }
 
         private void OnCommandAccountBackupManager(object sender, EventArgs e)
-	    {
-	        
-	    }
+        {
+            
+        }
 
         private void OnCommandExport(object sender, EventArgs e)
         {
@@ -302,8 +302,8 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null);
         }
 
-	    private void OnAccountManagerRpcInitialized(object sender, EventArgs e)
-	    {
+        private void OnAccountManagerRpcInitialized(object sender, EventArgs e)
+        {
             var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
             Utilities.SyncContextMain.Post(s => {
                 for (var i = 0; i < transactions.Count; i++) {
@@ -313,7 +313,7 @@ namespace Jojatekok.MoneroGUI.Forms
                 Utilities.DataSourceAccountTransactions.Sort = (x, y) => y.Index.CompareTo(x.Index);
                 Utilities.BindingsToAccountTransactions.Update();
             }, null);
-	    }
+        }
 
         private void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
         {
@@ -342,5 +342,5 @@ namespace Jojatekok.MoneroGUI.Forms
         {
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
         }
-	}
+    }
 }

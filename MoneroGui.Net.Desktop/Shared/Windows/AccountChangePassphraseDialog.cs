@@ -3,8 +3,8 @@ using Eto.Forms;
 
 namespace Jojatekok.MoneroGUI.Forms
 {
-	public sealed class AccountChangePassphraseDialog : Dialog<string>
-	{
+    public sealed class AccountChangePassphraseDialog : Dialog<string>
+    {
         bool IsCurrentPassphraseRequired { get; set; }
 
         public AccountChangePassphraseDialog(bool isCurrentPassphraseRequired)
@@ -17,7 +17,7 @@ namespace Jojatekok.MoneroGUI.Forms
             IsCurrentPassphraseRequired = isCurrentPassphraseRequired;
 
             RenderContent();
-		}
+        }
 
         void RenderContent()
         {
@@ -111,5 +111,5 @@ namespace Jojatekok.MoneroGUI.Forms
                 )
             );
         }
-	}
+    }
 }

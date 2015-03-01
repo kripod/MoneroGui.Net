@@ -45,12 +45,6 @@ namespace Jojatekok.MoneroGUI
 
             Configuration = ConfigurationManager.OpenMappedExeConfiguration(configurationFileMap, ConfigurationUserLevel.PerUserRoamingAndLocal);
 
-            // Don't include unnecessary information within ConfigurationSections' type declarations
-            Configuration.TypeStringTransformer = delegate(string input) {
-                var inputSplit = input.Split(',');
-                return inputSplit[0] + "," + inputSplit[1];
-            };
-
             LoadOrCreateSections();
         }
 
@@ -274,7 +268,11 @@ namespace Jojatekok.MoneroGUI
 
             [ConfigurationProperty("directoryAccountBackups")]
             public string DirectoryAccountBackups {
-                get { return base["directoryAccountBackups"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups; }
+                get {
+                    var output = base["directoryAccountBackups"] as string;
+                    return !string.IsNullOrEmpty(output) ? output : MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups;
+                }
+
                 set {
                     base["directoryAccountBackups"] = value;
                     AutoSaveSettings();
@@ -283,7 +281,11 @@ namespace Jojatekok.MoneroGUI
 
             [ConfigurationProperty("fileAccountData")]
             public string FileAccountData {
-                get { return base["fileAccountData"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData; }
+                get {
+                    var output = base["fileAccountData"] as string;
+                    return !string.IsNullOrEmpty(output) ? output : MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData;
+                }
+
                 set {
                     base["fileAccountData"] = value;
                     AutoSaveSettings();
@@ -292,7 +294,11 @@ namespace Jojatekok.MoneroGUI
 
             [ConfigurationProperty("softwareDaemon")]
             public string SoftwareDaemon {
-                get { return base["softwareDaemon"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareDaemon; }
+                get {
+                    var output = base["softwareDaemon"] as string;
+                    return !string.IsNullOrEmpty(output) ? output : MoneroAPI.Extensions.Utilities.DefaultPathSoftwareDaemon;
+                }
+
                 set {
                     base["softwareDaemon"] = value;
                     AutoSaveSettings();
@@ -301,7 +307,11 @@ namespace Jojatekok.MoneroGUI
 
             [ConfigurationProperty("softwareAccountManager")]
             public string SoftwareAccountManager {
-                get { return base["softwareAccountManager"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager; }
+                get {
+                    var output = base["softwareAccountManager"] as string;
+                    return !string.IsNullOrEmpty(output) ? output : MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager;
+                }
+
                 set {
                     base["softwareAccountManager"] = value;
                     AutoSaveSettings();

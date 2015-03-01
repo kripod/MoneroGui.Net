@@ -3,8 +3,8 @@ using Eto.Forms;
 
 namespace Jojatekok.MoneroGUI.Forms
 {
-	public sealed class AccountUnlockDialog : Dialog<string>
-	{
+    public sealed class AccountUnlockDialog : Dialog<string>
+    {
         public AccountUnlockDialog()
         {
             this.SetWindowProperties(
@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroGUI.Forms
             );
 
             RenderContent();
-		}
+        }
 
         void RenderContent()
         {
@@ -44,5 +44,5 @@ namespace Jojatekok.MoneroGUI.Forms
                 )
             ) { Spacing = Utilities.Spacing3 };
         }
-	}
+    }
 }

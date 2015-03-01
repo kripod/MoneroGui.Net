@@ -18,7 +18,17 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
             Rows.Add(
                 new TableRow(
-                    new GridView<SendCoinsViewModel>()
+                    Utilities.CreateGridView(
+                        Utilities.DataSourceAddressBook,
+                        new GridColumn {
+                            DataCell = new TextBoxCell { Binding = Binding.Property<SettingsManager.ConfigElementContact, string>(o => o.Label) },
+                            HeaderText = "Label" // TODO: Localize
+                        },
+                        new GridColumn {
+                            DataCell = new TextBoxCell { Binding = Binding.Property<SettingsManager.ConfigElementContact, string>(o => o.Address) },
+                            HeaderText = "Address" // TODO: Localize
+                        }
+                    )
                 ) { ScaleHeight = true }
             );
 

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroGUI.Forms
 {
-	public sealed class AboutDialog : Dialog
-	{
-	    private readonly TextArea _textAreaLicense = new TextArea { ReadOnly = true };
+    public sealed class AboutDialog : Dialog
+    {
+        private readonly TextArea _textAreaLicense = new TextArea { ReadOnly = true };
         private readonly Button _buttonShowThirdPartyLicenses = new Button { Text = MoneroGUI.Properties.Resources.AboutWindowThirdPartyLicenses };
 
-	    private TextArea TextAreaLicense {
-	        get { return _textAreaLicense; }
-	    }
+        private TextArea TextAreaLicense {
+            get { return _textAreaLicense; }
+        }
 
         private Button ButtonShowThirdPartyLicenses {
             get { return _buttonShowThirdPartyLicenses; }
@@ -21,12 +21,12 @@ namespace Jojatekok.MoneroGUI.Forms
 
         private static string LicenseText { get; set; }
 
-	    public AboutDialog()
-		{
-		    this.SetWindowProperties(
+        public AboutDialog()
+        {
+            this.SetWindowProperties(
                 MoneroGUI.Properties.Resources.AboutWindowTitle,
-                new Size(600, 300)
-		    );
+                new Size(600, 0)
+            );
 
             RenderContent();
 
@@ -37,7 +37,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }
 
             CheckThirdPartyLicensesAvailability();
-		}
+        }
 
         private void RenderContent()
         {
@@ -50,7 +50,7 @@ namespace Jojatekok.MoneroGUI.Forms
                 }
             };
 
-            var dynamicLayoutMain = new DynamicLayout { DefaultPadding = new Padding(Utilities.Padding4) };
+            var dynamicLayoutMain = new DynamicLayout { Padding = new Padding(Utilities.Padding6), Spacing = Utilities.Spacing6 };
 
             dynamicLayoutMain.BeginHorizontal();
             dynamicLayoutMain.BeginVertical();
@@ -75,9 +75,10 @@ namespace Jojatekok.MoneroGUI.Forms
                 ),
 
                 new TableRow(
-                    new TableLayout(
-                        TextAreaLicense
-                    ) { Padding = new Padding(0, Utilities.Padding3) }
+                    new Panel {
+                        Content = TextAreaLicense,
+                        Padding = new Padding(0, Utilities.Padding3)
+                    }
                 ) { ScaleHeight = true },
 
                 new TableRow(
@@ -124,5 +125,5 @@ namespace Jojatekok.MoneroGUI.Forms
             ButtonShowThirdPartyLicenses.Enabled = output;
             return output;
         }
-	}
+    }
 }
