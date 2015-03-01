@@ -67,7 +67,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
 
             var labelAccountTransactionsCount = Utilities.CreateLabel(() =>
-                Utilities.AccountTransactions.Count.ToString(Utilities.InvariantCulture),
+                Utilities.DataSourceAccountTransactions.Count.ToString(Utilities.InvariantCulture),
                 HorizontalAlign.Right,
                 VerticalAlign.Top
             );

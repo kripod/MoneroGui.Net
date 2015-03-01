@@ -1,14 +1,10 @@
-﻿using Jojatekok.MoneroGUI.Controls;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class SendCoinsViewModel : INotifyPropertyChanged
     {
-        private readonly ObservableCollection<CoinSender> _recipients = new ObservableCollection<CoinSender>();
-
         private bool _isSendingEnabled;
         private bool _isBlockchainSynced;
         private ulong? _balanceSpendable;
@@ -16,13 +12,8 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
         private string _paymentId = "";
         private ulong _mixCount = 3;
 
-        public ObservableCollection<CoinSender> Recipients {
-            get { return _recipients; }
-        }
-
         public bool IsSendingEnabled {
             get { return _isSendingEnabled; }
-
             private set {
                 _isSendingEnabled = value;
                 OnPropertyChanged();
@@ -31,7 +22,6 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
         public bool IsBlockchainSynced {
             private get { return _isBlockchainSynced; }
-
             set {
                 _isBlockchainSynced = value;
                 OnPropertyChanged();
@@ -42,7 +32,6 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
         public ulong? BalanceSpendable {
             get { return _balanceSpendable; }
-
             set {
                 _balanceSpendable = value;
                 OnPropertyChanged();
@@ -53,7 +42,6 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
         public double? BalanceNewEstimated {
             get { return _balanceNewEstimated; }
-
             set {
                 _balanceNewEstimated = value;
                 OnPropertyChanged();
@@ -62,7 +50,6 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
         public string PaymentId {
             get { return _paymentId; }
-
             set {
                 _paymentId = value;
                 OnPropertyChanged();
@@ -71,7 +58,6 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
         public ulong MixCount {
             get { return _mixCount; }
-
             set {
                 _mixCount = value;
                 OnPropertyChanged();

@@ -10,12 +10,8 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
         {
             Spacing = Utilities.Spacing3;
 
-            var filterCollectionAccountTransactions = new FilterCollection<Transaction>(Utilities.AccountTransactions) {
-                Sort = (x, y) => y.Number.CompareTo(x.Number)
-            };
-
             var gridViewTransactions = Utilities.CreateGridView(
-                filterCollectionAccountTransactions,
+                Utilities.DataSourceAccountTransactions,
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.Number.ToString(Utilities.InvariantCulture)) },
                     HeaderText = "#"

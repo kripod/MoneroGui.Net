@@ -2,6 +2,7 @@
 using Eto.Drawing;
 using Eto.Forms;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Jojatekok.MoneroGUI
@@ -67,6 +68,28 @@ namespace Jojatekok.MoneroGUI
         public static string ReWrap(this string input)
         {
             return Regex.Replace(input.TrimEnd(), " (\r\n|\n)", " ");
+        }
+
+        public static int IndexOfLabel(this IList<SettingsManager.ConfigElementContact> collection, string label)
+        {
+            for (var i = collection.Count - 1; i >= 0; i--) {
+                if (collection[i].Label == label) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public static int IndexOfAddress(this IList<SettingsManager.ConfigElementContact> collection, string address)
+        {
+            for (var i = collection.Count - 1; i >= 0; i--) {
+                if (collection[i].Address == address) {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

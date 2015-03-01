@@ -2,7 +2,9 @@
 using Eto.Drawing;
 using Eto.Forms;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using System.Linq.Expressions;
@@ -46,8 +48,6 @@ namespace Jojatekok.MoneroGUI
         public static readonly BindingCollection BindingsToAccountBalance = new BindingCollection();
         public static readonly BindingCollection BindingsToAccountTransactions = new BindingCollection();
 
-        public static readonly ObservableCollection<Transaction> AccountTransactions = new ObservableCollection<Transaction>();
-
         public static readonly Assembly ApplicationAssembly = Assembly.GetExecutingAssembly();
         public static readonly AssemblyName ApplicationAssemblyName = ApplicationAssembly.GetName();
         public static readonly string ApplicationAssemblyNameName = ApplicationAssembly.GetName().Name;
@@ -67,6 +67,24 @@ namespace Jojatekok.MoneroGUI
 
         public static MoneroProcessManager MoneroProcessManager { get; private set; }
         public static MoneroRpcManager MoneroRpcManager { get; private set; }
+
+        public static readonly FilterCollection<Transaction> DataSourceAccountTransactions = new FilterCollection<Transaction>();
+        public static ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
+
+        // TODO: Fetch this list from the web
+        public static readonly HashSet<string> DataSourceExchangeAddresses = new HashSet<string> {
+            // Bittrex
+            "463tWEBn5XZJSxLU6uLQnQ2iY9xuNcDbjLSjkn3XAXHCbLrTTErJrBWYgHJQyrCwkNgYvyV3z8zctJLPCZy24jvb3NiTcTJ",
+
+            // Bter
+            "47CunEQ4v8FPVNnw9mDgNZeaiSo6SVDydB3AZM341ZtdYpBYNmYeqhh4mpU1X6RSmgBTfC8xqaAtUGC2DArotyaKSz1LJyj",
+
+            // HitBTC
+            "45VChYXEMP6HhzHzkcZXdJWXazQNRqy8ZKM3zSTiovzbAbhM7P3zQsY3kFjtCNfX9x2Wy9NRRKcxv9M249hUV4bQG8uaD2c",
+
+            // Poloniex
+            "47sghzufGhJJDQEbScMCwVBimTuq6L5JiRixD8VeGbpjCTA12noXmi4ZyBZLc99e66NtnKff34fHsGRoyZk3ES1s1V4QVcB"
+        };
 
         public static void Initialize()
         {
@@ -120,6 +138,33 @@ namespace Jojatekok.MoneroGUI
 
             MoneroProcessManager = new MoneroProcessManager(rpcSettings, accountManagerProcessSettings, daemonProcessSettings);
             MoneroRpcManager = new MoneroRpcManager(rpcSettings);
+
+            DataSourceAddressBook = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
+            DataSourceAddressBook.CollectionChanged += OnDataSourceAddressBookCollectionChanged;
+        }
+
+        private static void OnDataSourceAddressBookCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            // Save the collection's changes into the configuration file
+
+            if (DataSourceAddressBook.Count == 0) {
+                SettingsManager.AddressBook.Elements.Clear();
+                return;
+            }
+
+            var oldItems = e.OldItems;
+            if (oldItems != null) {
+                for (var i = oldItems.Count - 1; i >= 0; i--) {
+                    SettingsManager.AddressBook.Elements.Remove(oldItems[i] as SettingsManager.ConfigElementContact);
+                }
+            }
+
+            var newItems = e.NewItems;
+            if (newItems != null) {
+                for (var i = newItems.Count - 1; i >= 0; i--) {
+                    SettingsManager.AddressBook.Elements.Add(newItems[i] as SettingsManager.ConfigElementContact);
+                }
+            }
         }
 
         public static Image LoadImage(string resourceName)
@@ -158,12 +203,25 @@ namespace Jojatekok.MoneroGUI
             return label;
         }
 
-        public static TextBox CreateTextBox(Func<string> placeholderTextBinding, string text = null, Font font = null)
+        public static TextBox CreateTextBox(string text, Func<string> placeholderTextBinding = null, Font font = null)
         {
             var textBox = new TextBox {
                 Text = text
             };
 
+            textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
+            if (font != null) textBox.Font = font;
+
+            return textBox;
+        }
+
+        public static TextBox CreateTextBox<T>(T dataContext, Expression<Func<T, string>> textBinding, Func<string> placeholderTextBinding = null, Font font = null)
+        {
+            var textBox = new TextBox {
+                DataContext = dataContext
+            };
+
+            textBox.TextBinding.BindDataContext(textBinding);
             textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
             if (font != null) textBox.Font = font;
 

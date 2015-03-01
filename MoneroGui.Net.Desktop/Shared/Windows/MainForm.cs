@@ -307,9 +307,10 @@ namespace Jojatekok.MoneroGUI.Forms
             var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
             Utilities.SyncContextMain.Post(s => {
                 for (var i = 0; i < transactions.Count; i++) {
-                    Utilities.AccountTransactions.Add(transactions[i]);
+                    Utilities.DataSourceAccountTransactions.Add(transactions[i]);
                 }
 
+                Utilities.DataSourceAccountTransactions.Sort = (x, y) => y.Index.CompareTo(x.Index);
                 Utilities.BindingsToAccountTransactions.Update();
             }, null);
 	    }
@@ -319,19 +320,25 @@ namespace Jojatekok.MoneroGUI.Forms
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountAddress.Update(), null);
         }
 
-        private void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
+        private static void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
-            Utilities.AccountTransactions.Add(e.Transaction);
-            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountTransactions.Update(), null);
+            Utilities.SyncContextMain.Post(s => {
+                Utilities.DataSourceAccountTransactions.Add(e.Transaction);
+                Utilities.BindingsToAccountTransactions.Update();
+            }, null);
         }
 
-        private void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
+        private static void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
         {
-            Utilities.AccountTransactions[e.TransactionIndex] = e.TransactionNewValue;
-            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountTransactions.Update(), null);
+            Utilities.SyncContextMain.Post(s => {
+                var transactionIndex = e.TransactionIndex;
+                Utilities.DataSourceAccountTransactions.RemoveAt(transactionIndex);
+                Utilities.DataSourceAccountTransactions.Insert(transactionIndex, e.TransactionNewValue);
+                Utilities.BindingsToAccountTransactions.Update();
+            }, null);
         }
 
-        private void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
+        private static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
         }

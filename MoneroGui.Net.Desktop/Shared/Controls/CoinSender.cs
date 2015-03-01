@@ -10,13 +10,14 @@ namespace Jojatekok.MoneroGUI.Controls
     {
         private double _amount;
 
-        private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(() =>
-            MoneroGUI.Properties.Resources.TextHintAddress,
+        private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(
             null,
+            () => MoneroGUI.Properties.Resources.TextHintAddress,
             new Font(FontFamilies.Monospace, Utilities.FontSize1)
         );
-        private readonly TextBox _textBoxLabel = Utilities.CreateTextBox(() =>
-            MoneroGUI.Properties.Resources.TextHintLabel
+        private readonly TextBox _textBoxLabel = Utilities.CreateTextBox(
+            null,
+            () => MoneroGUI.Properties.Resources.TextHintLabel
         );
 
         public string Address {
@@ -79,6 +80,11 @@ namespace Jojatekok.MoneroGUI.Controls
                     true
                 )
             ));
+        }
+
+        public bool IsRecipientValid()
+        {
+            return MoneroAPI.Utilities.IsAddressValid(Address) && Amount > 0;
         }
 
         public object Clone()
