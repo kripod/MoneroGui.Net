@@ -182,7 +182,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                 // Check whether the address belongs to an exchange
                 if (isExchangeSendWithoutPaymentIdQuestionShowable && Utilities.DataSourceExchangeAddresses.Contains(recipient.Address)) {
-                    if (MessageBox.Show(this, MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionMessage, MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionTitle, MessageBoxButtons.YesNo, MessageBoxType.Question, MessageBoxDefaultButton.Yes) == DialogResult.Yes) {
+                    if (this.ShowQuestion(MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionMessage, MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionTitle)) {
                         return;
                     }
                     isExchangeSendWithoutPaymentIdQuestionShowable = false;
@@ -197,7 +197,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
             // Check for the validity of the payment ID
             if (!MoneroAPI.Utilities.IsPaymentIdValid(ViewModel.PaymentId)) {
-                MessageBox.Show(this, MoneroGUI.Properties.Resources.SendCoinsInvalidPaymentId, MessageBoxType.Error);
+                this.ShowError(MoneroGUI.Properties.Resources.SendCoinsInvalidPaymentId);
                 return;
             }
 
@@ -229,7 +229,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 ClearRecipients();
             } else {
                 // Show a warning whether the transaction could not be sent
-                MessageBox.Show(this, MoneroGUI.Properties.Resources.SendCoinsTransactionCouldNotBeSent, MessageBoxType.Error);
+                this.ShowError(MoneroGUI.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
             }
         }
     }

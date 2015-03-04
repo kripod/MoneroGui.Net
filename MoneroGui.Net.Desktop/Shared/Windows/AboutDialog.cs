@@ -39,7 +39,7 @@ namespace Jojatekok.MoneroGUI.Forms
             CheckThirdPartyLicensesAvailability();
         }
 
-        private void RenderContent()
+        void RenderContent()
         {
             var linkButtonCreditIcons = new LinkButton { Text = "VisualPharm" };
             linkButtonCreditIcons.Click += delegate { Process.Start("http://www.visualpharm.com"); };
@@ -106,7 +106,7 @@ namespace Jojatekok.MoneroGUI.Forms
             Content = dynamicLayoutMain;
         }
 
-        private void LoadLicenseText()
+        void LoadLicenseText()
         {
             if (File.Exists(Utilities.PathFileLicense)) {
                 using (var stream = new StreamReader(Utilities.PathFileLicense)) {
@@ -120,7 +120,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }
         }
 
-        private bool CheckThirdPartyLicensesAvailability()
+        bool CheckThirdPartyLicensesAvailability()
         {
             var output = Directory.Exists(Utilities.PathDirectoryThirdPartyLicenses);
             ButtonShowThirdPartyLicenses.Enabled = output;

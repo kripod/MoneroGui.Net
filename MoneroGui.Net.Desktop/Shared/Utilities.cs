@@ -144,7 +144,7 @@ namespace Jojatekok.MoneroGUI
             DataSourceAddressBook.CollectionChanged += OnDataSourceAddressBookCollectionChanged;
         }
 
-        private static void OnDataSourceAddressBookCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        static void OnDataSourceAddressBookCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             // Save the collection's changes into the configuration file
 

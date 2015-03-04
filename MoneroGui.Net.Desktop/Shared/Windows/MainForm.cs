@@ -42,7 +42,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null, 2000, 0);
         }
 
-        private void OnFormClosed(object sender, EventArgs e)
+        static void OnFormClosed(object sender, EventArgs e)
         {
             if (Utilities.MoneroRpcManager != null) {
                 Utilities.MoneroRpcManager.Dispose();
@@ -53,7 +53,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }
         }
 
-        private void InitializeCoreApi()
+        void InitializeCoreApi()
         {
             var daemonRpc = Utilities.MoneroRpcManager.Daemon;
             var accountManagerRpc = Utilities.MoneroRpcManager.AccountManager;
@@ -91,7 +91,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }
         }
 
-        private void RenderMenu()
+        void RenderMenu()
         {
             var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
                 MenuText = MoneroGUI.Properties.Resources.MenuBackupManager,
@@ -164,7 +164,7 @@ namespace Jojatekok.MoneroGUI.Forms
             };
         }
 
-        private void RenderContent()
+        void RenderContent()
         {
             var tabPageOverview = new TabPage {
                 Image = Utilities.LoadImage("Overview"),
@@ -221,64 +221,64 @@ namespace Jojatekok.MoneroGUI.Forms
             };
         }
 
-        private void OnCommandAccountBackupManager(object sender, EventArgs e)
+        void OnCommandAccountBackupManager(object sender, EventArgs e)
         {
             
         }
 
-        private void OnCommandExport(object sender, EventArgs e)
+        void OnCommandExport(object sender, EventArgs e)
         {
 
         }
 
-        private void OnCommandExit(object sender, EventArgs e)
+        void OnCommandExit(object sender, EventArgs e)
         {
             Application.Instance.Quit();
         }
 
-        private void OnCommandAccountChangePassphrase(object sender, EventArgs e)
+        void OnCommandAccountChangePassphrase(object sender, EventArgs e)
         {
 
         }
 
-        private void OnCommandShowWindowOptions(object sender, EventArgs e)
+        void OnCommandShowWindowOptions(object sender, EventArgs e)
         {
 
         }
 
-        private void OnCommandShowWindowDebug(object sender, EventArgs e)
+        void OnCommandShowWindowDebug(object sender, EventArgs e)
         {
 
         }
 
-        private void OnCommandShowWindowAbout(object sender, EventArgs e)
+        void OnCommandShowWindowAbout(object sender, EventArgs e)
         {
             using (var dialog = new AboutDialog()) {
                 dialog.ShowModal(this);
             }
         }
 
-        private void OnDaemonProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
+        void OnDaemonProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
         {
 
         }
 
-        private void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
+        void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
         {
 
         }
 
-        private void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
+        void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
         {
 
         }
 
-        private void OnAccountManagerProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
+        void OnAccountManagerProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
         {
 
         }
 
-        private void OnAccountManagerProcessPassphraseRequested(object sender, PassphraseRequestedEventArgs e)
+        void OnAccountManagerProcessPassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => {
                 if (e.IsFirstTime) {
@@ -302,7 +302,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null);
         }
 
-        private void OnAccountManagerRpcInitialized(object sender, EventArgs e)
+        void OnAccountManagerRpcInitialized(object sender, EventArgs e)
         {
             var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
             Utilities.SyncContextMain.Post(s => {
@@ -315,12 +315,12 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null);
         }
 
-        private void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
+        void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountAddress.Update(), null);
         }
 
-        private static void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
+        static void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => {
                 Utilities.DataSourceAccountTransactions.Add(e.Transaction);
@@ -328,7 +328,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null);
         }
 
-        private static void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
+        static void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => {
                 var transactionIndex = e.TransactionIndex;
@@ -338,7 +338,7 @@ namespace Jojatekok.MoneroGUI.Forms
             }, null);
         }
 
-        private static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
+        static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
         }

@@ -74,11 +74,7 @@ namespace Jojatekok.MoneroGUI.Forms
 
                 var newPassphrase = passwordBoxNewPassphrase1.Text;
                 if (newPassphrase != passwordBoxNewPassphrase2.Text) {
-                    MessageBox.Show(
-                        this,
-                        MoneroGUI.Properties.Resources.AccountChangePassphraseWindowPassphrasesDoNotMatch,
-                        MessageBoxType.Error
-                    );
+                    this.ShowError(MoneroGUI.Properties.Resources.AccountChangePassphraseWindowPassphrasesDoNotMatch);
                     return;
                 }
 

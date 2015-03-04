@@ -10,12 +10,13 @@ namespace Jojatekok.MoneroGUI
 {
     public static class SettingsManager
     {
+        private static bool _isAutoSaveEnabled = true;
+
         private const ulong SettingsVersionLatest = 7;
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private static Configuration Configuration { get; set; }
 
-        private static bool _isAutoSaveEnabled = true;
         public static bool IsAutoSaveEnabled {
             get { return _isAutoSaveEnabled; }
             set { _isAutoSaveEnabled = value; }
@@ -48,7 +49,7 @@ namespace Jojatekok.MoneroGUI
             LoadOrCreateSections();
         }
 
-        private static void LoadOrCreateSections()
+        static void LoadOrCreateSections()
         {
             var isSaveRequired = false;
             var isNewFileCreated = false;
@@ -117,7 +118,7 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        private static void UpgradeFromVersion(ulong oldConfigurationVersion)
+        static void UpgradeFromVersion(ulong oldConfigurationVersion)
         {
             IsAutoSaveEnabled = false;
 
@@ -147,12 +148,12 @@ namespace Jojatekok.MoneroGUI
             Initialize();
         }
 
-        private static void AutoSaveSettings()
+        static void AutoSaveSettings()
         {
             if (IsAutoSaveEnabled) SaveSettings();
         }
 
-        private static void SetDefaultSectionInformation(this ConfigurationSection configSection)
+        static void SetDefaultSectionInformation(this ConfigurationSection configSection)
         {
             configSection.SectionInformation.AllowExeDefinition = ConfigurationAllowExeDefinition.MachineToLocalUser;
         }
@@ -492,7 +493,7 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        private class ConfigSectionMetaData : ConfigurationSection
+        class ConfigSectionMetaData : ConfigurationSection
         {
             public ConfigSectionMetaData()
             {

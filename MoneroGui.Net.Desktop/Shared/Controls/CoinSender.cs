@@ -97,7 +97,7 @@ namespace Jojatekok.MoneroGUI.Controls
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
