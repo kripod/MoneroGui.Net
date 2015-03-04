@@ -74,12 +74,13 @@ namespace Jojatekok.MoneroGUI.Forms
                     }
                 ),
 
+                new Panel { Height = Utilities.Padding3 },
+
                 new TableRow(
-                    new Panel {
-                        Content = TextAreaLicense,
-                        Padding = new Padding(0, Utilities.Padding3)
-                    }
+                    TextAreaLicense
                 ) { ScaleHeight = true },
+
+                new Panel { Height = Utilities.Padding3 },
 
                 new TableRow(
                     new TableRow(

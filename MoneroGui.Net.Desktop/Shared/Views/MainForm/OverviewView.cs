@@ -64,6 +64,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 Utilities.MoneroRpcManager.AccountManager.Address ?? MoneroGUI.Properties.Resources.PunctuationQuestionMark,
                 HorizontalAlign.Right
             );
+            labelAccountAddress.Wrap = WrapMode.Character;
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
 
             var labelAccountTransactionsCount = Utilities.CreateLabel(() =>

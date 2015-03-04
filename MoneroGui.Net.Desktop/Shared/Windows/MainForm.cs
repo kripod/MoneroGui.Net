@@ -22,7 +22,7 @@ namespace Jojatekok.MoneroGUI.Forms
             Closed += OnFormClosed;
 
             Utilities.Initialize();
-            //Shown += delegate { InitializeCoreApi(); };
+            Shown += delegate { InitializeCoreApi(); };
 
             RenderMenu();
             RenderContent();
