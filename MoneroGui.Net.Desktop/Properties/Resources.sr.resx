@@ -139,7 +139,7 @@
     <value>Adresar</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NET se isključuje...</value>
+    <value>MoneroX se isključuje...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Pregled</value>
@@ -148,13 +148,10 @@
     <value>Pošalji novac</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcije</value>
-  </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>&amp;About Monero Client .NET</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Menadžer rezervne kopije</value>
@@ -264,9 +261,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>About Monero Client .NET</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Greška: Licencni fajl ne može biti pronađen.</value>
   </data>
@@ -326,9 +320,6 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
-  </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Client .NET on system login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>

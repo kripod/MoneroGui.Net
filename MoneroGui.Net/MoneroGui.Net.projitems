@@ -9,7 +9,6 @@
     <Import_RootNamespace>Jojatekok.MoneroGUI</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icon\Icon-192x192.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Add.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Browse.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator0.png" />
@@ -36,5 +35,14 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Send.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Synchronize.png" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon-192x192.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.svg" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.ai" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.svg" />
   </ItemGroup>
 </Project>

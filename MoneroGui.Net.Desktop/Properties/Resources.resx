@@ -139,7 +139,7 @@
     <value>Address book</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NET is shutting down...</value>
+    <value>MoneroX is shutting down...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Overview</value>
@@ -148,13 +148,13 @@
     <value>Send coins</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>&amp;About Monero Client .NET</value>
+    <value>&amp;About MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Backup manager</value>
@@ -265,7 +265,7 @@
     <value>Unknown</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>About Monero Client .NET</value>
+    <value>About MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Error: The license file cannot be found.</value>
@@ -328,7 +328,7 @@
     <value>Save databases before shutdown</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Client .NET on system login</value>
+    <value>Start MoneroX on system login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copy address</value>

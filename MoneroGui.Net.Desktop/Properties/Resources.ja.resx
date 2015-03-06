@@ -139,7 +139,7 @@
     <value>アドレス帳</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NETがシャットダウンしています...</value>
+    <value>MoneroXがシャットダウンしています...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>概要</value>
@@ -148,13 +148,13 @@
     <value>コインを送る</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>取引</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>Monero Client .NETについて (&amp;A)</value>
+    <value>MoneroXについて (&amp;A)</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>バックアップマネージャ (&amp;B)</value>
@@ -253,7 +253,7 @@
     <value>不明</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Monero Client .NETについて</value>
+    <value>MoneroXについて</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>エラー：ライセンスのファイルが見つかりませんでした</value>
@@ -307,7 +307,7 @@
     <value>シャットダウンの時にデータベースをセーブする</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>システムにログインした時にMonero Client .NETを起動</value>
+    <value>システムにログインした時にMoneroXを起動</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>アドレスをコピーする</value>

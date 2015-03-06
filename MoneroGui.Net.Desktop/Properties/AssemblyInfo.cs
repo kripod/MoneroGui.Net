@@ -4,11 +4,11 @@ using System.Resources;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Monero Client .NET")]
-[assembly: AssemblyDescription("A GUI for interacting with the command line version of Monero.")]
+[assembly: AssemblyTitle("MoneroX")]
+[assembly: AssemblyDescription("A cross-platform GUI which implements the functionality of Monero Core applications.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jojatekok")]
-[assembly: AssemblyProduct("Monero Client .NET")]
+[assembly: AssemblyProduct("MoneroX")]
 [assembly: AssemblyCopyright("Copyright © Jojatekok 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

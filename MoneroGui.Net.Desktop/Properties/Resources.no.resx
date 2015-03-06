@@ -139,7 +139,7 @@
     <value>Addressebok</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Klient .NET stenger ned...</value>
+    <value>MoneroX stenger ned...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Oversikt</value>
@@ -148,13 +148,13 @@
     <value>Send mynter</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klient .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksjoner</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>&amp;Om Monero Klient .NET</value>
+    <value>&amp;Om MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Sikkerhetskopi behandler</value>
@@ -253,7 +253,7 @@
     <value>Ukjent</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Om Monero Klient .NET</value>
+    <value>Om MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Feil: Lisens filen ble ikke bli funnet.</value>
@@ -307,7 +307,7 @@
     <value>Lagre databaser før stengning</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Klient .NET ved system innlogging.</value>
+    <value>Start MoneroX ved system innlogging.</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopier addresse</value>

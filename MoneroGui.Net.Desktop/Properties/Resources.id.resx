@@ -139,7 +139,7 @@
     <value>Buku Alamat</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Klien NET di matikan ...</value>
+    <value>MoneroX di matikan ...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Ikhtisar</value>
@@ -148,13 +148,13 @@
     <value>Kirim Koin</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klient .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksi</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>&amp;Tentang Monero Klien .NET</value>
+    <value>&amp;Tentang MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Manajer backup</value>
@@ -265,7 +265,7 @@
     <value>Tidak diketahui</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Tentang Monero Klien .NET</value>
+    <value>Tentang MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Kesalahan: Berkas lisensi tidak dapat ditemukan.</value>
@@ -329,7 +329,7 @@
     <value>Simpan database sebelum dimatikan</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Mulai Monero Klien NET pada sistem login</value>
+    <value>Mulai MoneroX pada sistem login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Salin alamat</value>
