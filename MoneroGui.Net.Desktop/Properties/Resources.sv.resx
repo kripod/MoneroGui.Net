@@ -313,13 +313,13 @@
     <value>Kopiera adress</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Alla filer|*</value>
+    <value>Alla filer</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Exekverbara (*.exe)|*.exe</value>
+    <value>Exekverbara (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Kommaseparerad fil (*.csv)|*.csv</value>
+    <value>Kommaseparerad fil (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dagar</value>
@@ -349,7 +349,7 @@
     <value>Klistra in</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG filer (*.png)|*.png</value>
+    <value>PNG filer (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Meddelande:</value>

@@ -1,9 +1,12 @@
 ﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroAPI;
+using Jojatekok.MoneroAPI.Extensions;
+using Jojatekok.MoneroAPI.Extensions.Settings;
+using Jojatekok.MoneroAPI.Settings;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
@@ -11,10 +14,6 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Threading;
-using Jojatekok.MoneroAPI;
-using Jojatekok.MoneroAPI.Extensions;
-using Jojatekok.MoneroAPI.Extensions.Settings;
-using Jojatekok.MoneroAPI.Settings;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -40,6 +39,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 
+        public static readonly string[] FileFilterPng = { "*.png" };
+
         public static readonly Size Spacing2 = new Size(Padding2, Padding2);
         public static readonly Size Spacing3 = new Size(Padding3, Padding3);
         public static readonly Size Spacing5 = new Size(Padding5, Padding5);
@@ -57,7 +58,10 @@ namespace Jojatekok.MoneroGUI
         public const string ApplicationVersionExtra = null;
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
-        private static readonly ImageConverter ImageConverter = new ImageConverter();
+        public static readonly Clipboard Clipboard = new Clipboard();
+
+        public static readonly ImageConverter ImageConverter = new ImageConverter();
+        public static readonly System.Drawing.ImageConverter SystemImageConverter = new System.Drawing.ImageConverter();
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
 
@@ -210,7 +214,7 @@ namespace Jojatekok.MoneroGUI
                 Text = text
             };
 
-            textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
+            if (placeholderTextBinding != null) textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
             if (font != null) textBox.Font = font;
 
             return textBox;
@@ -223,7 +227,7 @@ namespace Jojatekok.MoneroGUI
             };
 
             textBox.TextBinding.BindDataContext(textBinding);
-            textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
+            if (placeholderTextBinding != null) textBox.SetPlaceholderTextBindingPath(placeholderTextBinding);
             if (font != null) textBox.Font = font;
 
             return textBox;
@@ -241,14 +245,14 @@ namespace Jojatekok.MoneroGUI
             return button;
         }
 
-        public static NumericUpDown CreateNumericUpDown<T>(int decimalPlaces, double increment, double minValue, double maxValue, T dataContext, Expression<Func<T, double>> valueBinding)
+        public static NumericUpDown CreateNumericUpDown<T>(T dataContext, Expression<Func<T, double>> valueBinding, int decimalPlaces = MoneroAPI.Utilities.CoinDisplayValueDecimalPlaces, double increment = 0.001, double maxValue = 18446744.0737095, double minValue = 0)
         {
             var numericUpDown = new NumericUpDown {
+                DataContext = dataContext,
                 DecimalPlaces = decimalPlaces,
                 Increment = increment,
-                MinValue = minValue,
                 MaxValue = maxValue,
-                DataContext = dataContext
+                MinValue = minValue
             };
 
             numericUpDown.ValueBinding.BindDataContext(valueBinding);
@@ -269,7 +273,7 @@ namespace Jojatekok.MoneroGUI
                 ShowCellBorders = true
             };
 
-            //dataStore.Change = () => gridView.SelectionPreserver;
+            dataStore.Change = () => gridView.SelectionPreserver;
 
             for (var i = 0; i < columns.Length; i++) {
                 gridView.Columns.Add(columns[i]);

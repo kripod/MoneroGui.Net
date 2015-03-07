@@ -1344,7 +1344,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account files (*.bin)|*.bin.
+        ///   Looks up a localized string similar to Account files (*.wallet;*.bin).
         /// </summary>
         internal static string TextFilterAccountFiles {
             get {
@@ -1353,7 +1353,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All files|*.
+        ///   Looks up a localized string similar to All files.
         /// </summary>
         internal static string TextFilterAllFiles {
             get {
@@ -1362,7 +1362,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comma separated file (*.csv)|*.csv.
+        ///   Looks up a localized string similar to Comma separated file (*.csv).
         /// </summary>
         internal static string TextFilterCsvFiles {
             get {
@@ -1371,7 +1371,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Executables (*.exe)|*.exe.
+        ///   Looks up a localized string similar to Executables (*.exe).
         /// </summary>
         internal static string TextFilterExecutableFiles {
             get {
@@ -1380,7 +1380,7 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PNG files (*.png)|*.png.
+        ///   Looks up a localized string similar to PNG files (*.png).
         /// </summary>
         internal static string TextFilterPngFiles {
             get {

@@ -106,7 +106,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         ),
 
                         new TableCell(
-                            Utilities.CreateNumericUpDown(0, 1, 0, ushort.MaxValue, ViewModel, o => o.MixCount)
+                            Utilities.CreateNumericUpDown(ViewModel, o => o.MixCount, 0, 1, ushort.MaxValue)
                         ),
 
                         new TableCell(

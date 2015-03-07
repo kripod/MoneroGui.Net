@@ -298,13 +298,13 @@
     <value>Kopíruj adresu</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Všetky súbory|*</value>
+    <value>Všetky súbory</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Spustiteľné (*.exe)|*.exe</value>
+    <value>Spustiteľné (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Čiarkou oddelený súbor (*.csv)|*.csv</value>
+    <value>Čiarkou oddelený súbor (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dni</value>
@@ -334,7 +334,7 @@
     <value>Prilep</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG súbory (*.png)|*.png</value>
+    <value>PNG súbory (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Správa:</value>

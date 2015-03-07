@@ -301,13 +301,13 @@
     <value>Copier l'adresse</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Tous les fichiers*</value>
+    <value>Tous les fichiers</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Exécutables (*.exe)|*.exe</value>
+    <value>Exécutables (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Fichier séparateur point virgule (*.csv)|*.csv</value>
+    <value>Fichier séparateur point virgule (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>jours</value>
@@ -337,7 +337,7 @@
     <value>Coller</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>Fichier PNG (*.png)|*.png</value>
+    <value>Fichier PNG (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Message:</value>

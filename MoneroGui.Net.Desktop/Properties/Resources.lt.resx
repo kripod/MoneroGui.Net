@@ -298,13 +298,13 @@
     <value>Kopijuoti adresą</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Visi failai|*</value>
+    <value>Visi failai</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Paleidimas (*.exe)|*.exe</value>
+    <value>Paleidimas (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated failai (*.csv)|*.csv</value>
+    <value>Comma separated failai (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dienos</value>
@@ -334,7 +334,7 @@
     <value>Įklijuoti</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG failai  (*.png)|*.png</value>
+    <value>PNG failai  (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Žinutė:</value>

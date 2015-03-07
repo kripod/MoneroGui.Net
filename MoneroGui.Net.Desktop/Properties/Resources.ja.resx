@@ -313,13 +313,13 @@
     <value>アドレスをコピーする</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>全てのファイル|*</value>
+    <value>全てのファイル</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>実行可能のファイル (*.exe)|*.exe</value>
+    <value>実行可能のファイル (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>コンマで区切られたファイル (*.csv)|*.csv</value>
+    <value>コンマで区切られたファイル (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>日</value>
@@ -349,7 +349,7 @@
     <value>貼付ける</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNGのファイル (*.png)|*.png</value>
+    <value>PNGのファイル (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>メッセージ:</value>

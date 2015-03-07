@@ -298,13 +298,13 @@
     <value>Αντιγραφή</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Όλα τα αρχεία|*</value>
+    <value>Όλα τα αρχεία</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
+    <value>Eκτελέσιμα αρχεία  (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
+    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>μέρες</value>
@@ -334,7 +334,7 @@
     <value>Επικόλληση</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG αρχεία (*.png)|*.png</value>
+    <value>PNG αρχεία (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Μήνυμα:</value>

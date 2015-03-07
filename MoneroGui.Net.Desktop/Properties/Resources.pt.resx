@@ -313,13 +313,13 @@
     <value>Copiar endereço</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Todos os arquivos|*</value>
+    <value>Todos os arquivos</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executáveis (*.exe)|*.exe</value>
+    <value>Executáveis (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Arquivo de valores separados por vírgula (*.csv)|*.csv</value>
+    <value>Arquivo de valores separados por vírgula (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dias</value>
@@ -349,7 +349,7 @@
     <value>Colar</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>Arquivos PNG (*.png)|*.png</value>
+    <value>Arquivos PNG (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Mensagem:</value>

@@ -313,13 +313,13 @@
     <value>复制地址</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>所有文件|*</value>
+    <value>所有文件</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>可执行程序 (*.exe)|*.exe</value>
+    <value>可执行程序 (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>逗号分隔文件 (*.csv)|*.csv</value>
+    <value>逗号分隔文件 (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>天</value>
@@ -349,7 +349,7 @@
     <value>粘贴</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG 文件 (*.png)|*.png</value>
+    <value>PNG 文件 (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>消息：</value>

@@ -319,10 +319,10 @@
     <value>Alle lêers</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Uitvoerbare (*.exe)|*.exe</value>
+    <value>Uitvoerbare (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Komma gespasieerde lêer (*.csv)|*.csv</value>
+    <value>Komma gespasieerde lêer (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dae</value>
@@ -352,7 +352,7 @@
     <value>Plak</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG lêers (*.png)|*.png</value>
+    <value>PNG lêers (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Boodskap:</value>

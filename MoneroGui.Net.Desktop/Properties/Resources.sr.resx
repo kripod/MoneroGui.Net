@@ -325,16 +325,16 @@
     <value>Kopiraj adresu</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Svi fajlovi|*</value>
+    <value>Svi fajlovi</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Izvršni (*.exe)|*.exe</value>
+    <value>Izvršni (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Fajlovi računa (*.bin)|*.bin</value>
+    <value>Fajlovi računa (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Fajl sa odvajajućim zarezima (*.csv)|*.csv</value>
+    <value>Fajl sa odvajajućim zarezima (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dana</value>
@@ -364,7 +364,7 @@
     <value>Nalepi</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fajlovi (*.png)|*.png</value>
+    <value>PNG fajlovi (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Poruka:</value>

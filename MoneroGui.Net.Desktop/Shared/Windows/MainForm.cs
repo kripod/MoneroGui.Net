@@ -6,7 +6,7 @@ using System;
 using System.Globalization;
 using System.Threading;
 
-namespace Jojatekok.MoneroGUI.Forms
+namespace Jojatekok.MoneroGUI.Windows
 {
     public sealed class MainForm : Form
     {

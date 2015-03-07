@@ -1,7 +1,7 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 
-namespace Jojatekok.MoneroGUI.Forms
+namespace Jojatekok.MoneroGUI.Windows
 {
     public sealed class AccountChangePassphraseDialog : Dialog<string>
     {

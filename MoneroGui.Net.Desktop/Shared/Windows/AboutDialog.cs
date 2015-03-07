@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace Jojatekok.MoneroGUI.Forms
+namespace Jojatekok.MoneroGUI.Windows
 {
     public sealed class AboutDialog : Dialog
     {

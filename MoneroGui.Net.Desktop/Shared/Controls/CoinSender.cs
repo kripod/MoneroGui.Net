@@ -76,7 +76,7 @@ namespace Jojatekok.MoneroGUI.Controls
 
                 new TableCell(
                     // TODO: Read constants from Utilities instead of embedding them directly
-                    Utilities.CreateNumericUpDown(12, 0.001, 0, double.MaxValue, this, o => o.Amount),
+                    Utilities.CreateNumericUpDown(this, o => o.Amount),
                     true
                 )
             ));

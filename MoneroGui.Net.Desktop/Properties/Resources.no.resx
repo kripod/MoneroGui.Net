@@ -313,13 +313,13 @@
     <value>Kopier addresse</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Alle filer|*</value>
+    <value>Alle filer</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value> Kjørbare (*.exe)|*.exe</value>
+    <value> Kjørbare (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Komma separerte filer (*.csv)|*.csv</value>
+    <value>Komma separerte filer (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dager</value>
@@ -349,7 +349,7 @@
     <value>Lim inn</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG filer (*.png)|*.png</value>
+    <value>PNG filer (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Melding:</value>

@@ -334,16 +334,16 @@
     <value>Copy address</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>All files|*</value>
+    <value>All files</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executables (*.exe)|*.exe</value>
+    <value>Executables (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Account files (*.bin)|*.bin</value>
+    <value>Account files (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated file (*.csv)|*.csv</value>
+    <value>Comma separated file (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>days</value>
@@ -373,7 +373,7 @@
     <value>Paste</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG files (*.png)|*.png</value>
+    <value>PNG files (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Message:</value>

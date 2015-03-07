@@ -1,11 +1,15 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Controls;
+using Jojatekok.MoneroGUI.Windows;
 
 namespace Jojatekok.MoneroGUI.Views.MainForm
 {
     public class OverviewView : TableLayout
     {
+        private Button ButtonShowAddressQrCode { get; set; }
+        private Panel PanelCopyAddress { get; set; }
+
         public OverviewView()
         {
             Spacing = new Size(Utilities.Padding7, 0);
@@ -61,10 +65,17 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
             Utilities.BindingsToAccountBalance.Add(labelAccountBalanceUnconfirmed.Bindings[0]);
 
             var labelAccountAddress = Utilities.CreateLabel(() =>
-                Utilities.MoneroRpcManager.AccountManager.Address ?? MoneroGUI.Properties.Resources.PunctuationQuestionMark,
+                {
+                    var address = Utilities.MoneroRpcManager.AccountManager.Address;
+                    if (address == null) return MoneroGUI.Properties.Resources.OverviewInitializing;
+
+                    ButtonShowAddressQrCode.Visible = true;
+                    PanelCopyAddress.Visible = true;
+                    return Utilities.MoneroRpcManager.AccountManager.Address;
+                },
                 HorizontalAlign.Right
             );
-            labelAccountAddress.Wrap = WrapMode.Character;
+            // TODO: labelAccountAddress.Wrap = WrapMode.Character;
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
 
             var labelAccountTransactionsCount = Utilities.CreateLabel(() =>
@@ -73,6 +84,27 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 VerticalAlign.Top
             );
             Utilities.BindingsToAccountTransactions.Add(labelAccountTransactionsCount.Bindings[0]);
+
+            var buttonCopyAddress = new Button {
+                Image = Utilities.LoadImage("Copy")
+            };
+            buttonCopyAddress.Click += delegate { Utilities.Clipboard.Text = Utilities.MoneroRpcManager.AccountManager.Address; };
+
+            ButtonShowAddressQrCode = new Button {
+                Image = Utilities.LoadImage("QrCode"),
+                Visible = false
+            };
+            ButtonShowAddressQrCode.Click += delegate {
+                using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address)) {
+                    dialog.ShowModal(this);
+                }
+            };
+
+            PanelCopyAddress = new Panel {
+                Content = buttonCopyAddress,
+                Visible = false,
+                Padding = new Padding(Utilities.Padding2, 0)
+            };
 
             Rows.Add(
                 new TableRow(
@@ -114,9 +146,13 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                                                 VerticalAlign.Top
                                             )
                                         ),
-                                        new TableCell(
-                                            labelAccountAddress,
-                                            true
+                                        new TableRow(
+                                            new TableCell(
+                                                labelAccountAddress,
+                                                true
+                                            ),
+                                            PanelCopyAddress,
+                                            ButtonShowAddressQrCode
                                         )
                                     )
                                 ) { Spacing = Utilities.Spacing2 },

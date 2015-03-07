@@ -337,16 +337,16 @@
     <value>Cím másolása</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Minden fájl|*</value>
+    <value>Minden fájl</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Programok (*.exe)|*.exe</value>
+    <value>Programok (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Számla fájlok (*.bin)|*.bin</value>
+    <value>Számla fájlok (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+    <value>Vesszővel elválasztott fájl (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>nap</value>
@@ -376,7 +376,7 @@
     <value>Beillesztés</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fájlok (*.png)|*.png</value>
+    <value>PNG fájlok (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Üzenet:</value>

@@ -28,6 +28,9 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>..\MoneroGui.Net\Resources\Logo\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Eto">
       <HintPath>..\packages\Eto.Forms.2.0.7\lib\net40\Eto.dll</HintPath>
@@ -92,6 +95,12 @@
     <Reference Include="System.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
+    <Reference Include="zxing">
+      <HintPath>..\packages\ZXing.Net.0.14.0.1\lib\net40\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\packages\ZXing.Net.0.14.0.1\lib\net40\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Shared\Controls\CoinSender.cs">
@@ -101,7 +110,11 @@
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\ExtensionMethods.cs" />
+    <Compile Include="Shared\PaymentUriParameters.cs" />
     <Compile Include="Shared\Windows\AccountChangePassphraseDialog.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
+    <Compile Include="Shared\Windows\QrCodeDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\Windows\AccountUnlockDialog.cs">

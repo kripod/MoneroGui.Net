@@ -304,13 +304,13 @@
     <value>Копировать адрес</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Все файлы|*</value>
+    <value>Все файлы</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Исполняемые файлы (*.exe)|*.exe</value>
+    <value>Исполняемые файлы (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Файлы через запятую  (*.csv)|*.csv</value>
+    <value>Файлы через запятую  (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>дней</value>
@@ -340,7 +340,7 @@
     <value>Вставить</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG файлы (*.png)|*.png</value>
+    <value>PNG файлы (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Сообщение:</value>

@@ -335,16 +335,16 @@
     <value>Salin alamat</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Semua file*</value>
+    <value>Semua file</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executable (exe *) | * exe</value>
+    <value>Executable (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>File Akun (* bin) | * bin</value>
+    <value>File Akun (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Koma berkas terpisah (* .csv) | * .csv</value>
+    <value>Koma berkas terpisah (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>hari</value>
@@ -374,7 +374,7 @@
     <value>Tempelkan</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG file (* png) | * png</value>
+    <value>PNG file (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Pesan:</value>
