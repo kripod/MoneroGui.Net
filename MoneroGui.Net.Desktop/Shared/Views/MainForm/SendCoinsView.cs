@@ -86,6 +86,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.SendCoinsAddRecipient,
+                                null,
                                 Utilities.LoadImage("Add"),
                                 AddRecipient
                             )
@@ -94,6 +95,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.SendCoinsClearRecipients,
+                                null,
                                 Utilities.LoadImage("Delete"),
                                 ClearRecipients
                             )
@@ -116,6 +118,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextSend,
+                                null,
                                 Utilities.LoadImage("Send"),
                                 SendTransaction
                             )

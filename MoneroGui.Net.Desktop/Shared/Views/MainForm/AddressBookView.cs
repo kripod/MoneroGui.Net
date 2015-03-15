@@ -38,6 +38,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextNew,
+                                null,
                                 Utilities.LoadImage("Add")
                             )
                         ),
@@ -45,6 +46,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.AddressBookCopyAddress,
+                                null,
                                 Utilities.LoadImage("Copy")
                             )
                         ),
@@ -52,6 +54,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextEdit,
+                                null,
                                 Utilities.LoadImage("Edit")
                             )
                         ),
@@ -59,6 +62,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextDelete,
+                                null,
                                 Utilities.LoadImage("Delete")
                             )
                         ),
@@ -68,6 +72,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextQrCode,
+                                null,
                                 Utilities.LoadImage("QrCode")
                             )
                         ),
@@ -75,6 +80,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextExport,
+                                null,
                                 Utilities.LoadImage("Export")
                             )
                         )

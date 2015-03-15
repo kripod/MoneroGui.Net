@@ -39,6 +39,7 @@ namespace Jojatekok.MoneroGUI
         public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 
+        public static readonly string[] FileFilterAll = { "*" };
         public static readonly string[] FileFilterPng = { "*.png" };
 
         public static readonly Size Spacing2 = new Size(Padding2, Padding2);
@@ -57,6 +58,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
         public const string ApplicationVersionExtra = null;
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
+
+        public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         public static readonly Clipboard Clipboard = new Clipboard();
 
@@ -172,6 +175,18 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
+        public static string GetAbsolutePath(string input)
+        {
+            return new FileInfo(input).FullName;
+        }
+
+        public static string GetRelativePath(string input)
+        {
+            var inputUri = new Uri(input);
+            var applicationBaseDirectoryUri = new Uri(ApplicationBaseDirectory);
+            return Uri.UnescapeDataString(applicationBaseDirectoryUri.MakeRelativeUri(inputUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+        }
+
         public static Image LoadImage(string resourceName)
         {
             return ImageConverter.ConvertFrom(
@@ -233,13 +248,14 @@ namespace Jojatekok.MoneroGUI
             return textBox;
         }
 
-        public static Button CreateButton(Func<string> textBinding, Image image = null, Action onClick = null)
+        public static Button CreateButton(Func<string> textBinding, Func<string> toolTipBinding, Image image = null, Action onClick = null)
         {
             var button = new Button {
                 Image = image
             };
 
-            button.SetTextBindingPath(textBinding);
+            if (textBinding != null) button.SetTextBindingPath(textBinding);
+            if (toolTipBinding != null) button.SetToolTipBindingPath(toolTipBinding);
             if (onClick != null) button.Click += (sender, e) => onClick();
 
             return button;

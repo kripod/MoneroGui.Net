@@ -106,12 +106,22 @@
     <Compile Include="Shared\Controls\CoinSender.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Shared\Controls\PathSelector.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Controls\Separator.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\ExtensionMethods.cs" />
+    <Compile Include="Shared\Objects\IOptionsTabPageView.cs" />
     <Compile Include="Shared\PaymentUriParameters.cs" />
+    <Compile Include="Shared\Views\OptionsDialog\GeneralView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Windows\AccountChangePassphraseDialog.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
+    <Compile Include="Shared\Windows\OptionsDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\Windows\QrCodeDialog.cs">
@@ -328,9 +338,6 @@
   <ItemGroup>
     <Content Include="Mac\MyApp.app\Contents\MonoBundle\README.txt" />
     <Content Include="Mac\README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Shared\Objects\" />
   </ItemGroup>
   <Import Project="..\MoneroGui.Net\MoneroGui.Net.projitems" Label="Shared" Condition="Exists('..\MoneroGui.Net\MoneroGui.Net.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

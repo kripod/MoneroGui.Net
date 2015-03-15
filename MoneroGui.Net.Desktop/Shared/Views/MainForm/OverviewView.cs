@@ -85,20 +85,24 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
             );
             Utilities.BindingsToAccountTransactions.Add(labelAccountTransactionsCount.Bindings[0]);
 
-            var buttonCopyAddress = new Button {
-                Image = Utilities.LoadImage("Copy")
-            };
-            buttonCopyAddress.Click += delegate { Utilities.Clipboard.Text = Utilities.MoneroRpcManager.AccountManager.Address; };
+            var buttonCopyAddress = Utilities.CreateButton(
+                null,
+                () => MoneroGUI.Properties.Resources.TextCopy,
+                Utilities.LoadImage("Copy"),
+                delegate { Utilities.Clipboard.Text = Utilities.MoneroRpcManager.AccountManager.Address; }
+            );
 
-            ButtonShowAddressQrCode = new Button {
-                Image = Utilities.LoadImage("QrCode"),
-                Visible = false
-            };
-            ButtonShowAddressQrCode.Click += delegate {
-                using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address)) {
-                    dialog.ShowModal(this);
+            ButtonShowAddressQrCode = Utilities.CreateButton(
+                null,
+                () => MoneroGUI.Properties.Resources.TextQrCode,
+                Utilities.LoadImage("QrCode"),
+                delegate {
+                    using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address)) {
+                        dialog.ShowModal(this);
+                    }
                 }
-            };
+            );
+            ButtonShowAddressQrCode.Visible = false;
 
             PanelCopyAddress = new Panel {
                 Content = buttonCopyAddress,

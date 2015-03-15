@@ -243,7 +243,9 @@ namespace Jojatekok.MoneroGUI.Windows
 
         void OnCommandShowWindowOptions(object sender, EventArgs e)
         {
-
+            using (var dialog = new OptionsDialog()) {
+                dialog.ShowModal(this);
+            }
         }
 
         void OnCommandShowWindowDebug(object sender, EventArgs e)

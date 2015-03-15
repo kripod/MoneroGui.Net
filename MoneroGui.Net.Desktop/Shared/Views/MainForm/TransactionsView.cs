@@ -44,6 +44,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell(
                             Utilities.CreateButton(() =>
                                 MoneroGUI.Properties.Resources.TextExport,
+                                null,
                                 Utilities.LoadImage("Export")
                             )
                         )

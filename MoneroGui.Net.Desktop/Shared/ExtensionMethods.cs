@@ -58,6 +58,14 @@ namespace Jojatekok.MoneroGUI
             ));
         }
 
+        public static void SetToolTipBindingPath(this TextControl textControl, Func<string> toolTipBinding)
+        {
+            textControl.Bind("ToolTip", new DelegateBinding<string>(
+                toolTipBinding,
+                s => { textControl.ToolTip = toolTipBinding.Invoke(); }
+            ));
+        }
+
         public static void SetPlaceholderTextBindingPath(this TextBox textBox, Func<string> placeholderTextBinding)
         {
             textBox.Bind("PlaceholderText", new DelegateBinding<string>(

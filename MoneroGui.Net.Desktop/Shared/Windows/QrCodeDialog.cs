@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Eto.Drawing;
+using Eto.Forms;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using Eto.Drawing;
-using Eto.Forms;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ZXing;
@@ -139,7 +139,10 @@ namespace Jojatekok.MoneroGUI.Windows
             var textBoxQrUri = Utilities.CreateTextBox(this, o => o.QrUri);
             textBoxQrUri.ReadOnly = true;
 
-            var buttonCopyQrUri = new Button { Image = Utilities.LoadImage("Copy") };
+            var buttonCopyQrUri = new Button {
+                Image = Utilities.LoadImage("Copy"),
+                ToolTip = MoneroGUI.Properties.Resources.TextCopy
+            };
             buttonCopyQrUri.Click += delegate { Utilities.Clipboard.Text = QrUri; };
 
             DefaultButton = ButtonSaveAs;
@@ -263,17 +266,20 @@ namespace Jojatekok.MoneroGUI.Windows
 
         void OnButtonSaveAsClick(object sender, EventArgs e)
         {
-            var dialog = new SaveFileDialog {
-                Filters = new HashSet<FileDialogFilter> {
-                    new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng),
-                    new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAllFiles)
-                },
-                Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
-            };
+            using (
+                var dialog = new SaveFileDialog {
+                    Filters = new HashSet<FileDialogFilter> {
+                        new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng),
+                        new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
+                    },
+                    Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
+                }
+            ) {
+                if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 
-            if (dialog.ShowDialog(this) != DialogResult.Ok) return;
-
-            Task.Factory.StartNew(() => SaveQrCodeImage(ImageViewQrCode.Image, dialog.FileName));
+                var fileName = dialog.FileName;
+                Task.Factory.StartNew(() => SaveQrCodeImage(ImageViewQrCode.Image, fileName));
+            }
         }
 
         private static void SaveQrCodeImage(Image image, string fileName)
