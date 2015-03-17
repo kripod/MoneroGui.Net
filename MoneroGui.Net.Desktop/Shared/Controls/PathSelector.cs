@@ -14,8 +14,12 @@ namespace Jojatekok.MoneroGUI.Controls
             get { return _textBoxPath; }
         }
 
+        public string SelectedPath {
+            get { return TextBoxPath.Text; }
+            set { TextBoxPath.Text = value; }
+        }
+
         public HashSet<FileDialogFilter> Filters { get; set; }
-        public int CurrentFilterIndex { get; set; }
 
         public PathSelector()
         {
@@ -38,7 +42,7 @@ namespace Jojatekok.MoneroGUI.Controls
         {
             if (Filters != null) {
                 // Handle file selection
-                var dialog = new OpenFileDialog { Filters = Filters, CurrentFilterIndex = CurrentFilterIndex };
+                var dialog = new OpenFileDialog { Filters = Filters };
 
                 if (TextBoxPath.Text.Length != 0) {
                     var fileInfo = new FileInfo(TextBoxPath.Text);

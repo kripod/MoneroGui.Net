@@ -4,12 +4,16 @@ using Eto.Forms;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Eto.IO;
 
 namespace Jojatekok.MoneroGUI
 {
     static class ExtensionMethods
     {
+        public static string UppercaseFirst(this string input)
+        {
+            return char.ToUpper(input[0], Utilities.InvariantCulture) + input.Substring(1);
+        }
+
         public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
         {
             form.Bind("Title", new DelegateBinding<string>(

@@ -14,6 +14,7 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Threading;
+using Jojatekok.MoneroGUI.Windows;
 
 namespace Jojatekok.MoneroGUI
 {
@@ -40,6 +41,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 
         public static readonly string[] FileFilterAll = { "*" };
+        public static readonly string[] FileFilterAccount = { "*.wallet", "*.bin" };
+        public static readonly string[] FileFilterExecutable = { "*.exe" };
         public static readonly string[] FileFilterPng = { "*.png" };
 
         public static readonly Size Spacing2 = new Size(Padding2, Padding2);
@@ -67,9 +70,12 @@ namespace Jojatekok.MoneroGUI
         public static readonly System.Drawing.ImageConverter SystemImageConverter = new System.Drawing.ImageConverter();
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
+        public static readonly CultureInfo DefaultUiCulture = CultureInfo.InstalledUICulture;
 
         public static float DefaultFontSize { get; private set; }
         public static FontFamily DefaultFontFamily { get; private set; }
+
+        public static MainForm MainForm { get; private set; }
 
         public static SynchronizationContext SyncContextMain { get; set; }
 
@@ -94,13 +100,18 @@ namespace Jojatekok.MoneroGUI
             "47sghzufGhJJDQEbScMCwVBimTuq6L5JiRixD8VeGbpjCTA12noXmi4ZyBZLc99e66NtnKff34fHsGRoyZk3ES1s1V4QVcB"
         };
 
-        public static void Initialize()
+        public static void Initialize(MainForm mainForm)
         {
+            MainForm = mainForm;
+            SyncContextMain = SynchronizationContext.Current;
+
+            SettingsManager.Initialize();
+            CultureManager.Initialize();
+
             var defaultFont = new Font(SystemFont.Default);
             DefaultFontSize = defaultFont.Size;
             DefaultFontFamily = defaultFont.Family;
 
-            SyncContextMain = SynchronizationContext.Current;
             using (var button = new Button()) {
                 var handler = button.Handler;
 
@@ -117,8 +128,6 @@ namespace Jojatekok.MoneroGUI
                     }
                 }
             }
-
-            SettingsManager.Initialize();
 
             var storedPathSettings = SettingsManager.Paths;
             var daemonProcessSettings = new DaemonProcessSettings {

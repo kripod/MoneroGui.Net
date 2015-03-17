@@ -3,8 +3,6 @@ using Eto.Forms;
 using Jojatekok.MoneroAPI;
 using Jojatekok.MoneroGUI.Views.MainForm;
 using System;
-using System.Globalization;
-using System.Threading;
 
 namespace Jojatekok.MoneroGUI.Windows
 {
@@ -19,27 +17,13 @@ namespace Jojatekok.MoneroGUI.Windows
             );
             this.SetLocationToCenterScreen();
 
+            Shown += delegate { InitializeCoreApi(); };
             Closed += OnFormClosed;
 
-            Utilities.Initialize();
-            Shown += delegate { InitializeCoreApi(); };
+            Utilities.Initialize(this);
 
             RenderMenu();
             RenderContent();
-
-            var timer = new Timer(delegate {
-                var culture = new CultureInfo("en");
-                MoneroGUI.Properties.Resources.Culture = culture;
-                Thread.CurrentThread.CurrentCulture = culture;
-
-                Utilities.SyncContextMain.Post(
-                    sender => {
-                        UpdateBindings();
-                        RenderMenu();
-                    },
-                    null
-                );
-            }, null, 2000, 0);
         }
 
         static void OnFormClosed(object sender, EventArgs e)
@@ -91,7 +75,7 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        void RenderMenu()
+        public void RenderMenu()
         {
             var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
                 MenuText = MoneroGUI.Properties.Resources.MenuBackupManager,

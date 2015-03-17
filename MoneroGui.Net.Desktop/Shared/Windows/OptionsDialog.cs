@@ -27,6 +27,14 @@ namespace Jojatekok.MoneroGUI.Windows
                 Text = MoneroGUI.Properties.Resources.OptionsGeneral,
                 Content = new GeneralView()
             });
+            tabControlPages.Add(new TabPage {
+                Text = MoneroGUI.Properties.Resources.OptionsPaths,
+                Content = new PathsView()
+            });
+            tabControlPages.Add(new TabPage {
+                Text = MoneroGUI.Properties.Resources.OptionsAppearance,
+                Content = new AppearanceView()
+            });
 
             for (var i = tabControlPages.Count - 1; i >= 0; i--) {
                 tabControlPages[i].Padding = new Padding(Utilities.Padding3);

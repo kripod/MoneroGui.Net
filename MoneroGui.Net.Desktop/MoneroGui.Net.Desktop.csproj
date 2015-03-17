@@ -113,8 +113,15 @@
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\ExtensionMethods.cs" />
+    <Compile Include="Shared\Objects\CultureManager.cs" />
     <Compile Include="Shared\Objects\IOptionsTabPageView.cs" />
     <Compile Include="Shared\PaymentUriParameters.cs" />
+    <Compile Include="Shared\Views\OptionsDialog\AppearanceView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
+    <Compile Include="Shared\Views\OptionsDialog\PathsView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Views\OptionsDialog\GeneralView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
