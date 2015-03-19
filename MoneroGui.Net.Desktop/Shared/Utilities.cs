@@ -184,6 +184,17 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
+        public static bool IsHostUrlValid(string input) {
+            Uri uri;
+            if (Uri.TryCreate(input, UriKind.Absolute, out uri)) {
+                if (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public static string GetAbsolutePath(string input)
         {
             return new FileInfo(input).FullName;

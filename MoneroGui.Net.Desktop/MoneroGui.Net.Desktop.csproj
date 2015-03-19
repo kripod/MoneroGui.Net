@@ -109,6 +109,9 @@
     <Compile Include="Shared\Controls\PathSelector.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Shared\Controls\RpcServerSettingsManager.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Controls\Separator.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
@@ -117,6 +120,9 @@
     <Compile Include="Shared\Objects\IOptionsTabPageView.cs" />
     <Compile Include="Shared\PaymentUriParameters.cs" />
     <Compile Include="Shared\Views\OptionsDialog\AppearanceView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
+    <Compile Include="Shared\Views\OptionsDialog\NetworkView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Shared\Views\OptionsDialog\PathsView.cs">

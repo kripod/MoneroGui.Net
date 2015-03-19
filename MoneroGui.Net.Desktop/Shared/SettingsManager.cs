@@ -434,9 +434,9 @@ namespace Jojatekok.MoneroGUI
                 }
             }
 
-            [ConfigurationProperty("proxyPort", DefaultValue = null)]
-            public ushort? ProxyPort {
-                get { return base["proxyPort"] as ushort?; }
+            [ConfigurationProperty("proxyPort", DefaultValue = (ushort)80)]
+            public ushort ProxyPort {
+                get { return (ushort)base["proxyPort"]; }
                 set {
                     base["proxyPort"] = value;
                     AutoSaveSettings();

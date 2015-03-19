@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             this.SetWindowProperties(
                 MoneroGUI.Properties.Resources.AccountUnlockWindowTitle,
-                new Size(580, 420)
+                new Size(600, 0)
             );
 
             RenderContent();
@@ -32,9 +32,20 @@ namespace Jojatekok.MoneroGUI.Windows
                 Content = new PathsView()
             });
             tabControlPages.Add(new TabPage {
+                Text = MoneroGUI.Properties.Resources.OptionsNetwork,
+                Content = new NetworkView()
+            });
+            tabControlPages.Add(new TabPage {
                 Text = MoneroGUI.Properties.Resources.OptionsAppearance,
                 Content = new AppearanceView()
             });
+
+            // Make the window automatically sized
+            tabControl.SelectedIndex = 2;
+            SizeChanged += delegate {
+                MinimumSize = Size;
+                tabControl.SelectedIndex = 0;
+            };
 
             for (var i = tabControlPages.Count - 1; i >= 0; i--) {
                 tabControlPages[i].Padding = new Padding(Utilities.Padding3);

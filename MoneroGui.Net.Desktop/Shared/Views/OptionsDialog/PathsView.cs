@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Eto.Drawing;
+﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Controls;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 {
