@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Демон</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Консоль</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Окно отладки</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Адресная книга</value>
   </data>
@@ -152,9 +146,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Менеджер резервных копий</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Окно отладки</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Выход</value>

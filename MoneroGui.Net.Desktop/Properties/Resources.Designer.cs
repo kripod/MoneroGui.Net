@@ -423,24 +423,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Consoles.
-        /// </summary>
-        internal static string DebugWindowConsoles {
-            get {
-                return ResourceManager.GetString("DebugWindowConsoles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Debug window.
-        /// </summary>
-        internal static string DebugWindowTitle {
-            get {
-                return ResourceManager.GetString("DebugWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Overview.
         /// </summary>
         internal static string MainWindowOverview {
@@ -563,15 +545,6 @@ namespace Jojatekok.MoneroGUI.Properties {
         internal static string MenuChangeAccountPassphrase {
             get {
                 return ResourceManager.GetString("MenuChangeAccountPassphrase", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &amp;Debug window.
-        /// </summary>
-        internal static string MenuDebugWindow {
-            get {
-                return ResourceManager.GetString("MenuDebugWindow", resourceCulture);
             }
         }
         

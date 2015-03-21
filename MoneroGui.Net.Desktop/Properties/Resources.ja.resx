@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>デーモン</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>コンソール</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>デバッグウィンドウ</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>アドレス帳</value>
   </data>
@@ -158,9 +152,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>バックアップマネージャ (&amp;B)</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>デバッグウィンドウ (&amp;D)</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>終了</value>

@@ -129,14 +129,8 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Démon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzoly</value>
-  </data>
   <data name="TextInformation" xml:space="preserve">
     <value>Informácia</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Ladiace okno</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresár</value>
@@ -149,9 +143,6 @@
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcie</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Ladiace okno</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Ukonči program</value>

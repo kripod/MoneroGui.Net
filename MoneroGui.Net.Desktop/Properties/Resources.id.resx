@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsol</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Jendela Debug</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Buku Alamat</value>
   </data>
@@ -161,9 +155,6 @@
   </data>
   <data name="MenuChangeAccountPassphrase" xml:space="preserve">
     <value>&amp;Ubah passphrase akun...</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Jendela debug</value>
   </data>
   <data name="MenuEncryptAccount" xml:space="preserve">
     <value>&amp;Enkripsi akun ...</value>

@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>守护进程</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>日志信息</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>调试窗口</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>地址簿</value>
   </data>
@@ -158,9 +152,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;备份管理</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;调试窗口</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>退出</value>
@@ -515,14 +506,5 @@
   <data name="StatusBarStatusTextMain" xml:space="preserve">
     <value>已下载 {0} of {1}历史交易区块 ({2}% 完成).
 最新接收区块 {3} 以前</value>
-  </data>
-  <data name="MainWindowUpdateError" xml:space="preserve">
-    <value>Failed to check for updates.</value>
-  </data>
-  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
-    <value>An update is available (v{0}). Do you want to apply it now?</value>
-  </data>
-  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
-    <value>Update available</value>
   </data>
 </root>

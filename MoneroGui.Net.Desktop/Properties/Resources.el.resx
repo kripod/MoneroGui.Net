@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Κονσόλες</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug window</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Βιβλίο διευθύνσεων</value>
   </data>
@@ -149,9 +143,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Διαχειριστής αρχείων ασφαλείας</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Παράθυρο αποσφαλμάτωσης</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Έξοδος</value>

@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Consoles</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Fenêtre de Débogage</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Carnet d'adresses</value>
   </data>
@@ -149,9 +143,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Gestionnaire de sauvegarde.</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Fenêtre de Débogage</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Quitter</value>

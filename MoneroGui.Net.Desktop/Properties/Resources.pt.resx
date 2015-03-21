@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Terminal</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Janela de depuração</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Agenda</value>
   </data>
@@ -158,9 +152,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Gestor de backup</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Janela de depuração</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Sair</value>

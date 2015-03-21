@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsoler</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debugfönster</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adressbok</value>
   </data>
@@ -158,9 +152,6 @@
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Backuphanterare</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>&amp;Debug fönster</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Avsluta</value>
