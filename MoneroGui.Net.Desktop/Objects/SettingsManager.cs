@@ -1,5 +1,4 @@
-﻿using Jojatekok.MoneroAPI.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
@@ -12,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Desktop
     {
         private static bool _isAutoSaveEnabled = true;
 
-        private const ulong SettingsVersionLatest = 7;
+        private const ulong SettingsVersionLatest = 1;
         private const string RelativePathFileUserConfiguration = "user.config";
 
         private static Configuration Configuration { get; set; }
@@ -122,22 +121,7 @@ namespace Jojatekok.MoneroGUI.Desktop
         {
             IsAutoSaveEnabled = false;
 
-            if (oldConfigurationVersion <= 2) {
-                Paths.SoftwareMiner = null;
-            }
-
-            if (oldConfigurationVersion <= 4) {
-                General.IsRegularAccountBackupEnabled = General.IsRegularWalletBackupEnabled;
-                Paths.SoftwareAccountManager = Paths.SoftwareWallet;
-                Paths.DirectoryAccountBackups = Paths.DirectoryWalletBackups;
-                Paths.FileAccountData = Paths.FileWalletData;
-                Network.RpcUrlPortAccountManager = Network.RpcUrlPortWallet;
-            }
-
-            if (oldConfigurationVersion <= 6) {
-                Paths.SoftwareAccountManager = Paths.SoftwareAccountManager.Replace("rpcwallet.exe", "simplewallet.exe");
-                General.TransactionsDefaultFee = 0;
-            }
+            // Perform upgrade steps
 
             IsAutoSaveEnabled = true;
         }
@@ -227,23 +211,6 @@ namespace Jojatekok.MoneroGUI.Desktop
                     AutoSaveSettings();
                 }
             }
-            
-            [ConfigurationProperty("isRegularWalletBackupEnabled", DefaultValue = false)]
-            protected internal bool IsRegularWalletBackupEnabled {
-                get { return (bool)base["isRegularWalletBackupEnabled"]; }
-                set {
-                    base["isRegularWalletBackupEnabled"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("transactionsDefaultFee", DefaultValue = (ulong)0)]
-            public ulong TransactionsDefaultFee {
-                set {
-                    base["transactionsDefaultFee"] = value;
-                    AutoSaveSettings();
-                }
-            }
         }
 
         public class ConfigSectionPaths : ConfigurationSection
@@ -315,41 +282,6 @@ namespace Jojatekok.MoneroGUI.Desktop
 
                 set {
                     base["softwareAccountManager"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("softwareMiner", DefaultValue = null)]
-            protected internal string SoftwareMiner {
-                set {
-                    base["softwareMiner"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("softwareWallet")]
-            protected internal string SoftwareWallet {
-                get { return base["softwareWallet"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathSoftwareAccountManager; }
-                set {
-                    base["softwareWallet"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("directoryWalletBackups")]
-            protected internal string DirectoryWalletBackups {
-                get { return base["directoryWalletBackups"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountBackups; }
-                set {
-                    base["directoryAccountBackups"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("fileWalletData")]
-            protected internal string FileWalletData {
-                get { return base["fileWalletData"] as string ?? MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData; }
-                set {
-                    base["fileAccountData"] = value;
                     AutoSaveSettings();
                 }
             }
@@ -439,24 +371,6 @@ namespace Jojatekok.MoneroGUI.Desktop
                 get { return (ushort)base["proxyPort"]; }
                 set {
                     base["proxyPort"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("rpcUrlHost", DefaultValue = "localhost")]
-            protected internal string RpcUrlHost {
-                get { return base["rpcUrlHost"] as string; }
-                set {
-                    base["rpcUrlHost"] = value;
-                    AutoSaveSettings();
-                }
-            }
-
-            [ConfigurationProperty("rpcUrlPortWallet", DefaultValue = (ushort)18082)]
-            protected internal ushort RpcUrlPortWallet {
-                get { return (ushort)base["rpcUrlPortWallet"]; }
-                set {
-                    base["rpcUrlPortWallet"] = value;
                     AutoSaveSettings();
                 }
             }
