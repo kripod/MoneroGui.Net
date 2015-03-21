@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Eto;
+﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 using System;

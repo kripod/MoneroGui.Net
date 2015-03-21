@@ -6,7 +6,7 @@
     <ProjectGuid>{EF0D3E45-8912-4F77-9EC0-F0758B7A431A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Jojatekok.MoneroGUI.Desktop</RootNamespace>
-    <AssemblyName>MoneroX</AssemblyName>
+    <AssemblyName>MoneroGui.Net</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -31,6 +31,9 @@
   <PropertyGroup>
     <ApplicationIcon>..\MoneroGui.Net\Resources\Logo\Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Eto">
       <HintPath>..\packages\Eto.Forms.2.0.7\lib\net40\Eto.dll</HintPath>
@@ -54,11 +57,13 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="MoneroApi.Net">
-      <HintPath>..\packages\MoneroApi.Net.6.2.1\lib\net40\MoneroApi.Net.dll</HintPath>
+    <Reference Include="MoneroApi.Net, Version=6.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MoneroApi.Net.6.2.2\lib\net40\MoneroApi.Net.dll</HintPath>
     </Reference>
-    <Reference Include="MoneroApi.Net.Extensions">
-      <HintPath>..\packages\MoneroApi.Net.6.2.1\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
+    <Reference Include="MoneroApi.Net.Extensions, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MoneroApi.Net.6.2.2\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="MonoMac">
       <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net40\MonoMac.dll</HintPath>
@@ -268,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="app.manifest" />
     <None Include="Mac\MyApp.app\Contents\Info.plist" />
     <None Include="Mac\MyApp.app\Contents\MacOS\Launcher.exec" />
     <None Include="Mac\MyApp.app\Contents\Resources\Icon.icns" />
