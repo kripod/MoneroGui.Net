@@ -9,11 +9,6 @@ namespace Jojatekok.MoneroGUI
 {
     static class ExtensionMethods
     {
-        public static string UppercaseFirst(this string input)
-        {
-            return char.ToUpper(input[0], Utilities.InvariantCulture) + input.Substring(1);
-        }
-
         public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
         {
             form.Bind("Title", new DelegateBinding<string>(
@@ -78,9 +73,33 @@ namespace Jojatekok.MoneroGUI
             ));
         }
 
+        public static string UppercaseFirst(this string input)
+        {
+            return char.ToUpper(input[0], Utilities.InvariantCulture) + input.Substring(1);
+        }
+
         public static string ReWrap(this string input)
         {
             return Regex.Replace(input.TrimEnd(), " (\r\n|\n)", " ");
+        }
+
+        public static string ToStringReadable(this TimeSpan timeSpan)
+        {
+            var days = timeSpan.Days;
+            if (days > 0) {
+                if (days == 1) return "1 " + Properties.Resources.StatusBarSyncTextDaySingular;
+                return days + " " + Properties.Resources.StatusBarSyncTextDayPlural;
+            }
+
+            var hours = timeSpan.Hours;
+            if (hours > 0) {
+                if (hours == 1) return "1 " + Properties.Resources.StatusBarSyncTextHourSingular;
+                return hours + " " + Properties.Resources.StatusBarSyncTextHourPlural;
+            }
+
+            var minutes = timeSpan.Minutes;
+            if (minutes == 1) return "1 " + Properties.Resources.StatusBarSyncTextMinuteSingular;
+            return minutes + " " + Properties.Resources.StatusBarSyncTextMinutePlural;
         }
 
         public static int IndexOfLabel(this IList<SettingsManager.ConfigElementContact> collection, string label)

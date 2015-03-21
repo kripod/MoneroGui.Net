@@ -119,6 +119,10 @@
     <Compile Include="Shared\Objects\CultureManager.cs" />
     <Compile Include="Shared\Objects\IOptionsTabPageView.cs" />
     <Compile Include="Shared\PaymentUriParameters.cs" />
+    <Compile Include="Shared\Views\MainForm\StatusBarViewModel.cs" />
+    <Compile Include="Shared\Views\MainForm\StatusBarView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Shared\Views\OptionsDialog\AppearanceView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>

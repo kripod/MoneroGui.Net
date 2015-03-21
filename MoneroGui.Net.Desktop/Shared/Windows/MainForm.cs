@@ -106,10 +106,6 @@ namespace Jojatekok.MoneroGUI.Windows
                 Shortcut = Application.Instance.CommonModifier | Keys.O
             };
 
-            var commandShowWindowDebug = new Command(OnCommandShowWindowDebug) {
-                MenuText = MoneroGUI.Properties.Resources.MenuDebugWindow
-            };
-
             var commandShowWindowAbout = new Command(OnCommandShowWindowAbout) {
                 MenuText = MoneroGUI.Properties.Resources.MenuAbout,
                 Image = Utilities.LoadImage("Information"),
@@ -139,8 +135,6 @@ namespace Jojatekok.MoneroGUI.Windows
                     new ButtonMenuItem {
                         Text = MoneroGUI.Properties.Resources.MenuHelp,
                         Items = {
-                            commandShowWindowDebug,
-                            new SeparatorMenuItem(),
                             commandShowWindowAbout
                         }
                     }
@@ -198,7 +192,7 @@ namespace Jojatekok.MoneroGUI.Windows
                         new Panel {
                             BackgroundColor = Utilities.ColorStatusBar,
                             Padding = new Padding(Utilities.Padding4, Utilities.Padding2),
-                            Content = new Label { Text = "Status bar" }
+                            Content = new StatusBarView()
                         }
                     )
                 }
@@ -232,11 +226,6 @@ namespace Jojatekok.MoneroGUI.Windows
             }
         }
 
-        void OnCommandShowWindowDebug(object sender, EventArgs e)
-        {
-
-        }
-
         void OnCommandShowWindowAbout(object sender, EventArgs e)
         {
             using (var dialog = new AboutDialog()) {
@@ -251,12 +240,48 @@ namespace Jojatekok.MoneroGUI.Windows
 
         void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
         {
+            var networkInformation = e.NetworkInformation;
 
+            var connectionCount = networkInformation.ConnectionCountTotal;
+            var blockTimeRemainingString = networkInformation.BlockTimeRemaining.ToStringReadable();
+
+            var syncBarProgressPercentage = (double)networkInformation.BlockHeightDownloaded / networkInformation.BlockHeightTotal * 100;
+            var syncBarText = string.Format(
+                Utilities.InvariantCulture,
+                MoneroGUI.Properties.Resources.StatusBarSyncTextMain,
+                networkInformation.BlockHeightRemaining,
+                blockTimeRemainingString
+            );
+            var syncStatusIndicatorText = string.Format(
+                Utilities.InvariantCulture,
+                MoneroGUI.Properties.Resources.StatusBarStatusTextMain,
+                networkInformation.BlockHeightDownloaded,
+                networkInformation.BlockHeightTotal,
+                syncBarProgressPercentage.ToString("F2", CultureManager.CurrentCulture),
+                blockTimeRemainingString
+            );
+
+            Utilities.SyncContextMain.Post(s => {
+                var statusBarViewModel = StatusBarView.ViewModel;
+
+                statusBarViewModel.ConnectionCount = connectionCount;
+                statusBarViewModel.SyncStatusIndicatorText = syncStatusIndicatorText;
+
+                if (statusBarViewModel.IsBlockchainSynced) return;
+                statusBarViewModel.SyncStatusText = MoneroGUI.Properties.Resources.StatusBarStatusSynchronizing;
+                statusBarViewModel.SyncBarProgressValue = (int)Math.Floor(syncBarProgressPercentage * 100);
+                statusBarViewModel.SyncBarText = syncBarText;
+                statusBarViewModel.IsSyncBarVisible = true;
+            }, null);
         }
 
         void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
         {
-
+            Utilities.SyncContextMain.Post(s => {
+                // Enable sending coins, along with hiding the sync status
+                StatusBarView.ViewModel.IsBlockchainSynced = true;
+                //SendCoinsView.ViewModel.IsBlockchainSynced = true;
+            }, null);
         }
 
         void OnAccountManagerProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
@@ -327,6 +352,13 @@ namespace Jojatekok.MoneroGUI.Windows
         static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
+        }
+
+        public void UpdateLanguage()
+        {
+            UpdateBindings();
+            RenderMenu();
+            StatusBarView.UpdateLanguage();
         }
     }
 }

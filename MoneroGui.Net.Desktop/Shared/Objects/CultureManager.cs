@@ -109,9 +109,7 @@ namespace Jojatekok.MoneroGUI
             if (culture.ToString() == CurrentCulture.ToString()) return;
             CurrentCulture = culture;
 
-            var mainForm = Utilities.MainForm;
-            mainForm.UpdateBindings();
-            mainForm.RenderMenu();
+            Utilities.MainForm.UpdateLanguage();
         }
     }
 }
