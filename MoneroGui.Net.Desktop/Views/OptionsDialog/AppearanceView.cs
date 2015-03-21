@@ -1,7 +1,7 @@
 ﻿using Eto.Forms;
 using System;
 
-namespace Jojatekok.MoneroGUI.Views.OptionsDialog
+namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 {
     public class AppearanceView : TableLayout, IOptionsTabPageView
     {
@@ -18,7 +18,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
             LoadSettings();
 
             Rows.Add(new TableRow(
-                new Label { Text = MoneroGUI.Properties.Resources.OptionsAppearanceLanguage },
+                new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsAppearanceLanguage },
                 ComboBoxLanguages
             ));
 

@@ -1,14 +1,14 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 
-namespace Jojatekok.MoneroGUI.Windows
+namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class AccountUnlockDialog : Dialog<string>
     {
         public AccountUnlockDialog()
         {
             this.SetWindowProperties(
-                MoneroGUI.Properties.Resources.AccountUnlockWindowTitle,
+                MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowTitle,
                 new Size(300, 0)
             );
 
@@ -21,15 +21,15 @@ namespace Jojatekok.MoneroGUI.Windows
 
             var passwordBoxResult = new PasswordBox();
 
-            var buttonOk = new Button { Text = MoneroGUI.Properties.Resources.TextOk };
+            var buttonOk = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextOk };
             buttonOk.Click += delegate { Close(passwordBoxResult.Text); };
             DefaultButton = buttonOk;
 
-            var buttonCancel = new Button { Text = MoneroGUI.Properties.Resources.TextCancel };
+            var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
 
             Content = new TableLayout(
-                new Label { Text = MoneroGUI.Properties.Resources.AccountUnlockWindowInstruction },
+                new Label { Text = MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowInstruction },
 
                 passwordBoxResult,
 

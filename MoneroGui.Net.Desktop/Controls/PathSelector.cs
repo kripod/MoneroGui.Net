@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace Jojatekok.MoneroGUI.Controls
+namespace Jojatekok.MoneroGUI.Desktop.Controls
 {
     public sealed class PathSelector : TableLayout
     {

@@ -3,7 +3,7 @@ using Eto.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Jojatekok.MoneroGUI.Controls
+namespace Jojatekok.MoneroGUI.Desktop.Controls
 {
     public sealed class RpcServerSettingsManager : GroupBox, INotifyPropertyChanged
     {
@@ -36,7 +36,7 @@ namespace Jojatekok.MoneroGUI.Controls
 
             TextBoxRpcUrlHost = new TextBox { Text = rpcUrlHost };
             CheckBoxIsProcessHostedLocally = new CheckBox {
-                Text = MoneroGUI.Properties.Resources.OptionsNetworkIsProcessHostedLocally,
+                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetworkIsProcessHostedLocally,
                 Checked = isProcessHostedLocally
             };
 
@@ -45,12 +45,12 @@ namespace Jojatekok.MoneroGUI.Controls
             Content = new TableLayout(
                 new TableLayout(
                     new TableRow(
-                        new Label { Text = MoneroGUI.Properties.Resources.TextHost },
+                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextHost },
                         new TableCell(TextBoxRpcUrlHost, true),
 
                         new Separator(SeparatorOrientation.Vertical),
 
-                        new Label { Text = MoneroGUI.Properties.Resources.TextPort },
+                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextPort },
                         Utilities.CreateNumericUpDown(this, o => o.RpcUrlPort, 0, 1, ushort.MaxValue)
                     )
                 ) { Spacing = Utilities.Spacing3 },

@@ -1,11 +1,11 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroAPI;
-using Jojatekok.MoneroGUI.Controls;
+using Jojatekok.MoneroGUI.Desktop.Controls;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Jojatekok.MoneroGUI.Views.MainForm
+namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class SendCoinsView : TableLayout
     {
@@ -20,11 +20,11 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
             var labelCurrentBalance = Utilities.CreateLabel(() => {
                 var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
-                var balanceText = MoneroGUI.Properties.Resources.SendCoinsCurrentBalance + " " + (balance != null ?
+                var balanceText = MoneroGUI.Desktop.Properties.Resources.SendCoinsCurrentBalance + " " + (balance != null ?
                     MoneroAPI.Utilities.CoinAtomicValueToString(balance.Spendable) :
-                    MoneroGUI.Properties.Resources.PunctuationQuestionMark);
+                    MoneroGUI.Desktop.Properties.Resources.PunctuationQuestionMark);
 
-                return balanceText + " " + MoneroGUI.Properties.Resources.TextCurrencyCode;
+                return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
             });
             Utilities.BindingsToAccountBalance.Add(labelCurrentBalance.Bindings[0]);
 
@@ -38,7 +38,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateLabel(() =>
-                                MoneroGUI.Properties.Resources.SendCoinsEstimatedNewBalance + " " +
+                                MoneroGUI.Desktop.Properties.Resources.SendCoinsEstimatedNewBalance + " " +
                                 "?"
                             )
                         )
@@ -64,14 +64,14 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 new TableLayout(
                     new TableRow(
                         new TableCell(
-                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.TextPaymentId)
+                            Utilities.CreateLabel(() => MoneroGUI.Desktop.Properties.Resources.TextPaymentId)
                         ),
 
                         new TableCell(
                             Utilities.CreateTextBox(
                                 ViewModel,
                                 o => o.PaymentId,
-                                () => MoneroGUI.Properties.Resources.TextHintOptional,
+                                () => MoneroGUI.Desktop.Properties.Resources.TextHintOptional,
                                 new Font(FontFamilies.Monospace, Utilities.FontSize1)
                             ),
                             true
@@ -85,7 +85,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                     new TableRow(
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.SendCoinsAddRecipient,
+                                MoneroGUI.Desktop.Properties.Resources.SendCoinsAddRecipient,
                                 null,
                                 Utilities.LoadImage("Add"),
                                 AddRecipient
@@ -94,7 +94,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.SendCoinsClearRecipients,
+                                MoneroGUI.Desktop.Properties.Resources.SendCoinsClearRecipients,
                                 null,
                                 Utilities.LoadImage("Delete"),
                                 ClearRecipients
@@ -104,7 +104,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                         new TableCell { ScaleWidth = true },
 
                         new TableCell(
-                            Utilities.CreateLabel(() => MoneroGUI.Properties.Resources.SendCoinsMixCount)
+                            Utilities.CreateLabel(() => MoneroGUI.Desktop.Properties.Resources.SendCoinsMixCount)
                         ),
 
                         new TableCell(
@@ -117,7 +117,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextSend,
+                                MoneroGUI.Desktop.Properties.Resources.TextSend,
                                 null,
                                 Utilities.LoadImage("Send"),
                                 SendTransaction
@@ -185,7 +185,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                 // Check whether the address belongs to an exchange
                 if (isExchangeSendWithoutPaymentIdQuestionShowable && Utilities.DataSourceExchangeAddresses.Contains(recipient.Address)) {
-                    if (this.ShowQuestion(MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionMessage, MoneroGUI.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionTitle)) {
+                    if (this.ShowQuestion(MoneroGUI.Desktop.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionMessage, MoneroGUI.Desktop.Properties.Resources.SendCoinsExchangeSendWithoutPaymentIdQuestionTitle)) {
                         return;
                     }
                     isExchangeSendWithoutPaymentIdQuestionShowable = false;
@@ -200,7 +200,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
             // Check for the validity of the payment ID
             if (!MoneroAPI.Utilities.IsPaymentIdValid(ViewModel.PaymentId)) {
-                this.ShowError(MoneroGUI.Properties.Resources.SendCoinsInvalidPaymentId);
+                this.ShowError(MoneroGUI.Desktop.Properties.Resources.SendCoinsInvalidPaymentId);
                 return;
             }
 
@@ -232,7 +232,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 ClearRecipients();
             } else {
                 // Show a warning whether the transaction could not be sent
-                this.ShowError(MoneroGUI.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
+                this.ShowError(MoneroGUI.Desktop.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
             }
         }
     }

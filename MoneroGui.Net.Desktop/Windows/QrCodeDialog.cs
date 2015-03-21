@@ -11,7 +11,7 @@ using ZXing;
 using ZXing.QrCode;
 using ZXing.QrCode.Internal;
 
-namespace Jojatekok.MoneroGUI.Windows
+namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class QrCodeDialog : Dialog, INotifyPropertyChanged
     {
@@ -20,7 +20,7 @@ namespace Jojatekok.MoneroGUI.Windows
         private readonly Panel _panelQrCode = new Panel { Width = QrCodeImageSize, Height = QrCodeImageSize };
         private readonly ImageView _imageViewQrCode = new ImageView { Width = QrCodeImageSize, Height = QrCodeImageSize };
         private readonly Label _labelQrUriError = new Label { HorizontalAlign = HorizontalAlign.Center };
-        private readonly Button _buttonSaveAs = new Button { Text = MoneroGUI.Properties.Resources.TextSaveAs, Image = Utilities.LoadImage("Save") };
+        private readonly Button _buttonSaveAs = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextSaveAs, Image = Utilities.LoadImage("Save") };
 
         private string _qrUri = "";
         private string _address = "";
@@ -120,7 +120,7 @@ namespace Jojatekok.MoneroGUI.Windows
         public QrCodeDialog(string address = "")
         {
             this.SetWindowProperties(
-                MoneroGUI.Properties.Resources.TextQrCode,
+                MoneroGUI.Desktop.Properties.Resources.TextQrCode,
                 new Size(0, 0)
             );
 
@@ -141,7 +141,7 @@ namespace Jojatekok.MoneroGUI.Windows
 
             var buttonCopyQrUri = new Button {
                 Image = Utilities.LoadImage("Copy"),
-                ToolTip = MoneroGUI.Properties.Resources.TextCopy
+                ToolTip = MoneroGUI.Desktop.Properties.Resources.TextCopy
             };
             buttonCopyQrUri.Click += delegate { Utilities.Clipboard.Text = QrUri; };
 
@@ -162,32 +162,32 @@ namespace Jojatekok.MoneroGUI.Windows
                 new TableRow(
                     new TableLayout(
                         new TableRow(
-                            new Label { Text = MoneroGUI.Properties.Resources.TextAddress + MoneroGUI.Properties.Resources.PunctuationColon },
+                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextAddress + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
                             new TableCell(Utilities.CreateTextBox(this, o => o.Address), true)
                         ),
 
                         new TableRow(
-                            new Label { Text = MoneroGUI.Properties.Resources.TextPaymentId },
+                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextPaymentId },
                             new TableCell(Utilities.CreateTextBox(this, o => o.PaymentId), true)
                         ),
 
                         new TableRow(
-                            new Label { Text = MoneroGUI.Properties.Resources.TextAmount + MoneroGUI.Properties.Resources.PunctuationColon },
+                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextAmount + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
                             new TableLayout(
                                 new TableRow(
                                     new TableCell(Utilities.CreateNumericUpDown(this, o => o.Amount), true),
-                                    new Label { Text = MoneroGUI.Properties.Resources.TextCurrencyCode }
+                                    new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode }
                                 )
                             ) { Spacing = Utilities.Spacing3 }
                         ),
 
                         new TableRow(
-                            new Label { Text = MoneroGUI.Properties.Resources.TextLabel + MoneroGUI.Properties.Resources.PunctuationColon },
+                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextLabel + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
                             new TableCell(Utilities.CreateTextBox(this, o => o.Label), true)
                         ),
 
                         new TableRow(
-                            new Label { Text = MoneroGUI.Properties.Resources.TextMessage },
+                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextMessage },
                             new TableCell(Utilities.CreateTextBox(this, o => o.Message), true)
                         )
                     ) { Padding = new Padding(0, Utilities.Padding3), Spacing = Utilities.Spacing3 }
@@ -234,12 +234,12 @@ namespace Jojatekok.MoneroGUI.Windows
         {
             if (QrUri.Length == 0) {
                 // Notify user about the missing address parameter
-                return new Task(() => Utilities.SyncContextMain.Post(s => QrUriErrorMessage = MoneroGUI.Properties.Resources.QrCodeWindowUriNoAddress, null));
+                return new Task(() => Utilities.SyncContextMain.Post(s => QrUriErrorMessage = MoneroGUI.Desktop.Properties.Resources.QrCodeWindowUriNoAddress, null));
             }
 
             if (QrUri.Length > 1024) {
                 // Notify user about the QR URI's size being too big
-                return new Task(() => Utilities.SyncContextMain.Post(s => QrUriErrorMessage = MoneroGUI.Properties.Resources.QrCodeWindowUriTooLong, null));
+                return new Task(() => Utilities.SyncContextMain.Post(s => QrUriErrorMessage = MoneroGUI.Desktop.Properties.Resources.QrCodeWindowUriTooLong, null));
             }
 
             return new Task(() => {
@@ -269,8 +269,8 @@ namespace Jojatekok.MoneroGUI.Windows
             using (
                 var dialog = new SaveFileDialog {
                     Filters = new HashSet<FileDialogFilter> {
-                        new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng),
-                        new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
+                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng),
+                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
                     },
                     Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
                 }

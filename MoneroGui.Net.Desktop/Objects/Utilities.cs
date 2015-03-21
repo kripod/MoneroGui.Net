@@ -14,13 +14,14 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Threading;
-using Jojatekok.MoneroGUI.Windows;
+using Jojatekok.MoneroGUI.Desktop.Windows;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Desktop
 {
     static class Utilities
     {
         public const string DefaultLanguageCode = "default";
+        public const string ApplicationDefaultNamespace = "Jojatekok.MoneroGUI.Desktop";
 
         public const byte FontSize1 = 10;
         public const byte FontSize2 = 12;
@@ -61,6 +62,8 @@ namespace Jojatekok.MoneroGUI
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
         public const string ApplicationVersionExtra = null;
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
+
+        public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Icon.ico");
 
         public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -211,7 +214,7 @@ namespace Jojatekok.MoneroGUI
         {
             return ImageConverter.ConvertFrom(
                 ImageConverter.ResourcePrefix +
-                "Jojatekok.MoneroGUI." + resourceName + ".png," +
+                ApplicationDefaultNamespace + "." + resourceName + ".png," +
                 ApplicationAssemblyNameName
             ) as Image;
         }

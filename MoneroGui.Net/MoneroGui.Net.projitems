@@ -40,7 +40,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon-192x192.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.ico" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.ico" />
     <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.svg" />
     <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.ai" />
     <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.svg" />

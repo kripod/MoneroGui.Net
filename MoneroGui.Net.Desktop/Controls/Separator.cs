@@ -1,6 +1,6 @@
 ﻿using Eto.Forms;
 
-namespace Jojatekok.MoneroGUI.Controls
+namespace Jojatekok.MoneroGUI.Desktop.Controls
 {
     public sealed class Separator : Panel
     {

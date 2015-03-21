@@ -1,8 +1,8 @@
 ﻿using Eto.Forms;
-using Jojatekok.MoneroGUI.Windows;
+using Jojatekok.MoneroGUI.Desktop.Windows;
 using System;
 
-namespace Jojatekok.MoneroGUI.Desktop
+namespace Jojatekok.MoneroGUI.Desktop.Desktop
 {
     public class Program
     {

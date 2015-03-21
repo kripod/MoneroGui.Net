@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Jojatekok.MoneroGUI.Views.MainForm
+namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class StatusBarViewModel : INotifyPropertyChanged
     {

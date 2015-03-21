@@ -1,16 +1,19 @@
-﻿using Eto;
+﻿using System.IO;
+using Eto;
 using Eto.Drawing;
 using Eto.Forms;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Desktop
 {
     static class ExtensionMethods
     {
         public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
         {
+            form.Icon = Utilities.ApplicationIcon;
+
             form.Bind("Title", new DelegateBinding<string>(
                 titleBindingPath,
                 s => { form.Title = titleBindingPath.Invoke(); }
@@ -24,6 +27,8 @@ namespace Jojatekok.MoneroGUI
 
         public static void SetWindowProperties(this Dialog dialog, string title, Size minimumSize = default(Size))
         {
+            dialog.Icon = Utilities.ApplicationIcon;
+
             dialog.Title = title;
             dialog.MinimumSize = minimumSize;
 

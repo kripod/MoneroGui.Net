@@ -1,14 +1,14 @@
 ﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
-using Jojatekok.MoneroGUI.Controls;
+using Jojatekok.MoneroGUI.Desktop.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jojatekok.MoneroGUI.Views.MainForm
+namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public sealed class StatusBarView : TableLayout
     {

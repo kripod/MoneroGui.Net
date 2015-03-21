@@ -2,15 +2,15 @@
 using Eto.Forms;
 using System.Diagnostics;
 
-namespace Jojatekok.MoneroGUI.Views.OptionsDialog
+namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 {
     public class GeneralView : TableLayout, IOptionsTabPageView
     {
-        private readonly CheckBox _checkBoxIsUpdateCheckEnabled = new CheckBox { Text = MoneroGUI.Properties.Resources.OptionsGeneralIsUpdateCheckEnabled };
-        private readonly CheckBox _checkBoxIsUpdateCheckForTestBuildsEnabled = new CheckBox { Text = MoneroGUI.Properties.Resources.OptionsGeneralIsUpdateCheckForTestBuildsEnabled };
-        private readonly CheckBox _checkBoxIsStartableOnSystemLogin = new CheckBox { Text = MoneroGUI.Properties.Resources.OptionsGeneralIsStartableOnSystemLogin };
-        private readonly CheckBox _checkBoxIsUriAssociationCheckEnabled = new CheckBox { Text = MoneroGUI.Properties.Resources.OptionsGeneralIsUriAssociationCheckEnabled };
-        private readonly CheckBox _checkBoxIsSafeShutdownEnabled = new CheckBox { Text = MoneroGUI.Properties.Resources.OptionsGeneralIsSafeShutdownEnabled };
+        private readonly CheckBox _checkBoxIsUpdateCheckEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckEnabled };
+        private readonly CheckBox _checkBoxIsUpdateCheckForTestBuildsEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckForTestBuildsEnabled };
+        private readonly CheckBox _checkBoxIsStartableOnSystemLogin = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsStartableOnSystemLogin };
+        private readonly CheckBox _checkBoxIsUriAssociationCheckEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUriAssociationCheckEnabled };
+        private readonly CheckBox _checkBoxIsSafeShutdownEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsSafeShutdownEnabled };
 
         private CheckBox CheckBoxIsUpdateCheckEnabled {
             get { return _checkBoxIsUpdateCheckEnabled; }

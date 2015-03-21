@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Desktop
 {
     public static class SettingsManager
     {

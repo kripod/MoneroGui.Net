@@ -1,17 +1,17 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroAPI;
-using Jojatekok.MoneroGUI.Views.MainForm;
+using Jojatekok.MoneroGUI.Desktop.Views.MainForm;
 using System;
 
-namespace Jojatekok.MoneroGUI.Windows
+namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class MainForm : Form
     {
         public MainForm()
         {
             this.SetWindowProperties(
-                () => MoneroGUI.Properties.Resources.TextClientName,
+                () => MoneroGUI.Desktop.Properties.Resources.TextClientName,
                 new Size(850, 570),
                 true // TODO: Remove this flag
             );
@@ -78,43 +78,43 @@ namespace Jojatekok.MoneroGUI.Windows
         public void RenderMenu()
         {
             var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
-                MenuText = MoneroGUI.Properties.Resources.MenuBackupManager,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuBackupManager,
                 Image = Utilities.LoadImage("Save")
             };
 
             var commandExport = new Command(OnCommandExport) {
-                MenuText = MoneroGUI.Properties.Resources.MenuExport,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExport,
                 Image = Utilities.LoadImage("Export"),
                 Shortcut = Application.Instance.CommonModifier | Keys.E
             };
 
             var commandExit = new Command(OnCommandExit) {
-                MenuText = MoneroGUI.Properties.Resources.MenuExit,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExit,
                 Image = Utilities.LoadImage("Exit"),
                 Shortcut = Application.Instance.CommonModifier | Keys.Q
             };
 
             var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
                 Enabled = false,
-                MenuText = MoneroGUI.Properties.Resources.MenuChangeAccountPassphrase,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuChangeAccountPassphrase,
                 Image = Utilities.LoadImage("Key")
             };
 
             var commandShowWindowOptions = new Command(OnCommandShowWindowOptions) {
-                MenuText = MoneroGUI.Properties.Resources.MenuOptions,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuOptions,
                 Image = Utilities.LoadImage("Options"),
                 Shortcut = Application.Instance.CommonModifier | Keys.O
             };
 
             var commandShowWindowAbout = new Command(OnCommandShowWindowAbout) {
-                MenuText = MoneroGUI.Properties.Resources.MenuAbout,
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuAbout,
                 Image = Utilities.LoadImage("Information"),
             };
 
             Menu = new MenuBar {
                 Items = {
                     new ButtonMenuItem {
-                        Text = MoneroGUI.Properties.Resources.MenuFile,
+                        Text = MoneroGUI.Desktop.Properties.Resources.MenuFile,
                         Items = {
                             commandAccountBackupManager,
                             commandExport,
@@ -124,7 +124,7 @@ namespace Jojatekok.MoneroGUI.Windows
                     },
 
                     new ButtonMenuItem {
-                        Text = MoneroGUI.Properties.Resources.MenuSettings,
+                        Text = MoneroGUI.Desktop.Properties.Resources.MenuSettings,
                         Items = {
                             commandAccountChangePassphrase,
                             new SeparatorMenuItem(),
@@ -133,7 +133,7 @@ namespace Jojatekok.MoneroGUI.Windows
                     },
 
                     new ButtonMenuItem {
-                        Text = MoneroGUI.Properties.Resources.MenuHelp,
+                        Text = MoneroGUI.Desktop.Properties.Resources.MenuHelp,
                         Items = {
                             commandShowWindowAbout
                         }
@@ -148,25 +148,25 @@ namespace Jojatekok.MoneroGUI.Windows
                 Image = Utilities.LoadImage("Overview"),
                 Content = new OverviewView()
             };
-            tabPageOverview.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowOverview);
+            tabPageOverview.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowOverview);
 
             var tabPageSendCoins = new TabPage {
                 Image = Utilities.LoadImage("Send"),
                 Content = new SendCoinsView()
             };
-            tabPageSendCoins.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowSendCoins);
+            tabPageSendCoins.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowSendCoins);
 
             var tabPageTransactions = new TabPage {
                 Image = Utilities.LoadImage("Transaction"),
                 Content = new TransactionsView()
             };
-            tabPageTransactions.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.MainWindowTransactions);
+            tabPageTransactions.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowTransactions);
 
             var tabPageAddressBook = new TabPage {
                 Image = Utilities.LoadImage("Contact"),
                 Content = new AddressBookView()
             };
-            tabPageAddressBook.SetTextBindingPath(() => " " + MoneroGUI.Properties.Resources.TextAddressBook);
+            tabPageAddressBook.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.TextAddressBook);
 
             var tabControl = new TabControl();
             var tabControlPages = tabControl.Pages;
@@ -248,13 +248,13 @@ namespace Jojatekok.MoneroGUI.Windows
             var syncBarProgressPercentage = (double)networkInformation.BlockHeightDownloaded / networkInformation.BlockHeightTotal * 100;
             var syncBarText = string.Format(
                 Utilities.InvariantCulture,
-                MoneroGUI.Properties.Resources.StatusBarSyncTextMain,
+                MoneroGUI.Desktop.Properties.Resources.StatusBarSyncTextMain,
                 networkInformation.BlockHeightRemaining,
                 blockTimeRemainingString
             );
             var syncStatusIndicatorText = string.Format(
                 Utilities.InvariantCulture,
-                MoneroGUI.Properties.Resources.StatusBarStatusTextMain,
+                MoneroGUI.Desktop.Properties.Resources.StatusBarStatusTextMain,
                 networkInformation.BlockHeightDownloaded,
                 networkInformation.BlockHeightTotal,
                 syncBarProgressPercentage.ToString("F2", CultureManager.CurrentCulture),
@@ -268,7 +268,7 @@ namespace Jojatekok.MoneroGUI.Windows
                 statusBarViewModel.SyncStatusIndicatorText = syncStatusIndicatorText;
 
                 if (statusBarViewModel.IsBlockchainSynced) return;
-                statusBarViewModel.SyncStatusText = MoneroGUI.Properties.Resources.StatusBarStatusSynchronizing;
+                statusBarViewModel.SyncStatusText = MoneroGUI.Desktop.Properties.Resources.StatusBarStatusSynchronizing;
                 statusBarViewModel.SyncBarProgressValue = (int)Math.Floor(syncBarProgressPercentage * 100);
                 statusBarViewModel.SyncBarText = syncBarText;
                 statusBarViewModel.IsSyncBarVisible = true;

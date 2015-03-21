@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Jojatekok.MoneroGUI.Controls
+namespace Jojatekok.MoneroGUI.Desktop.Controls
 {
     public sealed class CoinSender : TableLayout, ICloneable, INotifyPropertyChanged
     {
@@ -12,12 +12,12 @@ namespace Jojatekok.MoneroGUI.Controls
 
         private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(
             null,
-            () => MoneroGUI.Properties.Resources.TextHintAddress,
+            () => MoneroGUI.Desktop.Properties.Resources.TextHintAddress,
             new Font(FontFamilies.Monospace, Utilities.FontSize1)
         );
         private readonly TextBox _textBoxLabel = Utilities.CreateTextBox(
             null,
-            () => MoneroGUI.Properties.Resources.TextHintLabel
+            () => MoneroGUI.Desktop.Properties.Resources.TextHintLabel
         );
 
         public string Address {
@@ -48,8 +48,8 @@ namespace Jojatekok.MoneroGUI.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Properties.Resources.TextAddress +
-                    MoneroGUI.Properties.Resources.PunctuationColon
+                    MoneroGUI.Desktop.Properties.Resources.TextAddress +
+                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(TextBoxAddress, true),
@@ -61,8 +61,8 @@ namespace Jojatekok.MoneroGUI.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Properties.Resources.TextLabel +
-                    MoneroGUI.Properties.Resources.PunctuationColon
+                    MoneroGUI.Desktop.Properties.Resources.TextLabel +
+                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(TextBoxLabel, true)
@@ -70,8 +70,8 @@ namespace Jojatekok.MoneroGUI.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Properties.Resources.TextAmount +
-                    MoneroGUI.Properties.Resources.PunctuationColon
+                    MoneroGUI.Desktop.Properties.Resources.TextAmount +
+                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(

@@ -2,7 +2,7 @@
 using Eto.Forms;
 using Jojatekok.MoneroAPI;
 
-namespace Jojatekok.MoneroGUI.Views.MainForm
+namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class TransactionsView : TableLayout
     {
@@ -26,7 +26,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                 },
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Property<Transaction, string>(o => o.TransactionId) },
-                    HeaderText = MoneroGUI.Properties.Resources.TransactionsTransactionId
+                    HeaderText = MoneroGUI.Desktop.Properties.Resources.TransactionsTransactionId
                 }
             );
 
@@ -43,7 +43,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextExport,
+                                MoneroGUI.Desktop.Properties.Resources.TextExport,
                                 null,
                                 Utilities.LoadImage("Export")
                             )

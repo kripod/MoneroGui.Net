@@ -1,14 +1,14 @@
 ﻿using Eto;
 using Eto.Drawing;
 using Eto.Forms;
-using Jojatekok.MoneroGUI.Controls;
+using Jojatekok.MoneroGUI.Desktop.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jojatekok.MoneroGUI.Views.MainForm
+namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class AddressBookView : TableLayout
     {
@@ -37,7 +37,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
                     new TableRow(
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextNew,
+                                MoneroGUI.Desktop.Properties.Resources.TextNew,
                                 null,
                                 Utilities.LoadImage("Add")
                             )
@@ -45,7 +45,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.AddressBookCopyAddress,
+                                MoneroGUI.Desktop.Properties.Resources.AddressBookCopyAddress,
                                 null,
                                 Utilities.LoadImage("Copy")
                             )
@@ -53,7 +53,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextEdit,
+                                MoneroGUI.Desktop.Properties.Resources.TextEdit,
                                 null,
                                 Utilities.LoadImage("Edit")
                             )
@@ -61,7 +61,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextDelete,
+                                MoneroGUI.Desktop.Properties.Resources.TextDelete,
                                 null,
                                 Utilities.LoadImage("Delete")
                             )
@@ -71,7 +71,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextQrCode,
+                                MoneroGUI.Desktop.Properties.Resources.TextQrCode,
                                 null,
                                 Utilities.LoadImage("QrCode")
                             )
@@ -79,7 +79,7 @@ namespace Jojatekok.MoneroGUI.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Properties.Resources.TextExport,
+                                MoneroGUI.Desktop.Properties.Resources.TextExport,
                                 null,
                                 Utilities.LoadImage("Export")
                             )

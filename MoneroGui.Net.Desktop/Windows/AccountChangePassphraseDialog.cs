@@ -1,7 +1,7 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 
-namespace Jojatekok.MoneroGUI.Windows
+namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class AccountChangePassphraseDialog : Dialog<string>
     {
@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI.Windows
         public AccountChangePassphraseDialog(bool isCurrentPassphraseRequired)
         {
             this.SetWindowProperties(
-                MoneroGUI.Properties.Resources.AccountUnlockWindowTitle,
+                MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowTitle,
                 new Size(300, 0)
             );
 
@@ -37,16 +37,16 @@ namespace Jojatekok.MoneroGUI.Windows
 
             string baseNewPassphraseText;
             if (IsCurrentPassphraseRequired) {
-                baseNewPassphraseText = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowNewPassphrase;
-                Title = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowTitleChangePassphrase;
+                baseNewPassphraseText = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowNewPassphrase;
+                Title = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowTitleChangePassphrase;
                 tableLayoutInputFields.Rows.Add(new TableRow(
-                    new Label { Text = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowCurrentPassphrase },
+                    new Label { Text = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowCurrentPassphrase },
                     passwordBoxCurrentPassphrase
                 ));
 
             } else {
-                baseNewPassphraseText = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowPassphrase;
-                Title = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowTitleEncryptAccount;
+                baseNewPassphraseText = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowPassphrase;
+                Title = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowTitleEncryptAccount;
             }
 
             tableLayoutInputFields.Rows.Add(new TableRow(
@@ -58,23 +58,23 @@ namespace Jojatekok.MoneroGUI.Windows
                 passwordBoxNewPassphrase2
             ));
 
-            labelNewPassphrase1.Text = baseNewPassphraseText + MoneroGUI.Properties.Resources.PunctuationColon;
+            labelNewPassphrase1.Text = baseNewPassphraseText + MoneroGUI.Desktop.Properties.Resources.PunctuationColon;
             labelNewPassphrase2.Text = string.Format(
                 Utilities.InvariantCulture,
                 "{0} ({1}){2}",
                 baseNewPassphraseText,
-                MoneroGUI.Properties.Resources.AccountChangePassphraseWindowAgain,
-                MoneroGUI.Properties.Resources.PunctuationColon
+                MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowAgain,
+                MoneroGUI.Desktop.Properties.Resources.PunctuationColon
             );
 
-            var buttonOk = new Button { Text = MoneroGUI.Properties.Resources.TextOk };
+            var buttonOk = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextOk };
             buttonOk.Click += delegate {
                 // TODO: Check for the current passphrase's validity if necessary, and display the following text on error:
                 // The passphrase entered for the account's decryption is incorrect.
 
                 var newPassphrase = passwordBoxNewPassphrase1.Text;
                 if (newPassphrase != passwordBoxNewPassphrase2.Text) {
-                    this.ShowError(MoneroGUI.Properties.Resources.AccountChangePassphraseWindowPassphrasesDoNotMatch);
+                    this.ShowError(MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowPassphrasesDoNotMatch);
                     return;
                 }
 
@@ -82,15 +82,15 @@ namespace Jojatekok.MoneroGUI.Windows
             };
             DefaultButton = buttonOk;
 
-            var buttonCancel = new Button { Text = MoneroGUI.Properties.Resources.TextCancel };
+            var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
 
             Content = new TableLayout(
                 new Label {
-                    Text = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowInstruction1
+                    Text = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowInstruction1
                 },
                 new Label {
-                    Text = MoneroGUI.Properties.Resources.AccountChangePassphraseWindowInstruction2,
+                    Text = MoneroGUI.Desktop.Properties.Resources.AccountChangePassphraseWindowInstruction2,
                     Font = new Font(Utilities.DefaultFontFamily, Utilities.DefaultFontSize, FontStyle.Bold | FontStyle.Italic)
                 },
 

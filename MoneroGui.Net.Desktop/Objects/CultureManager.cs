@@ -6,7 +6,7 @@ using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Desktop
 {
     static class CultureManager
     {

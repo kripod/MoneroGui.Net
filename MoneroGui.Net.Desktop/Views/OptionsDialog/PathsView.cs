@@ -1,9 +1,9 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
-using Jojatekok.MoneroGUI.Controls;
+using Jojatekok.MoneroGUI.Desktop.Controls;
 using System.Collections.Generic;
 
-namespace Jojatekok.MoneroGUI.Views.OptionsDialog
+namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 {
     public class PathsView : TableLayout, IOptionsTabPageView
     {
@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
         private readonly PathSelector _pathSelectorFileAccountData = new PathSelector {
             Padding = new Padding(Utilities.Padding3, 0, 0, Utilities.Padding3),
             Filters = new HashSet<FileDialogFilter> {
-                new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAccountFiles, Utilities.FileFilterAccount)
+                new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAccountFiles, Utilities.FileFilterAccount)
             }
         };
         private readonly PathSelector _pathSelectorDirectoryAccountBackups = new PathSelector {
@@ -23,15 +23,15 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
         private readonly PathSelector _pathSelectorSoftwareDaemon = new PathSelector {
             Padding = new Padding(Utilities.Padding3, 0, 0, Utilities.Padding3),
             Filters = new HashSet<FileDialogFilter> {
-                new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
-                new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
+                new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
+                new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
             }
         };
         private readonly PathSelector _pathSelectorSoftwareAccountManager = new PathSelector {
             Padding = new Padding(Utilities.Padding3, 0, 0, Utilities.Padding3),
             Filters = new HashSet<FileDialogFilter> {
-                new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
-                new FileDialogFilter(MoneroGUI.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
+                new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
+                new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
             }
         };
 
@@ -61,7 +61,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 
             Rows.Add(new TableRow(
                 new Panel {
-                    Content = new Label { Text = MoneroGUI.Properties.Resources.OptionsPathsDirectoryDaemonData },
+                    Content = new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsPathsDirectoryDaemonData },
                     Padding = new Padding(0, 0, 0, Utilities.Padding3)
                 },
                 PathSelectorDirectoryDaemonData
@@ -69,7 +69,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 
             Rows.Add(new TableRow(
                 new Panel {
-                    Content = new Label { Text = MoneroGUI.Properties.Resources.OptionsPathsFileAccountData },
+                    Content = new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsPathsFileAccountData },
                     Padding = new Padding(0, 0, 0, Utilities.Padding3)
                 },
                 PathSelectorFileAccountData
@@ -77,7 +77,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 
             Rows.Add(new TableRow(
                 new Panel {
-                    Content = new Label { Text = MoneroGUI.Properties.Resources.OptionsPathsDirectoryAccountBackups },
+                    Content = new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsPathsDirectoryAccountBackups },
                     Padding = new Padding(0, 0, 0, Utilities.Padding3)
                 },
                 PathSelectorDirectoryAccountBackups
@@ -96,7 +96,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 
             Rows.Add(new TableRow(
                 new Panel {
-                    Content = new Label { Text = MoneroGUI.Properties.Resources.OptionsPathsSoftwareDaemon },
+                    Content = new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsPathsSoftwareDaemon },
                     Padding = new Padding(0, 0, 0, Utilities.Padding3)
                 },
                 PathSelectorSoftwareDaemon
@@ -104,7 +104,7 @@ namespace Jojatekok.MoneroGUI.Views.OptionsDialog
 
             Rows.Add(new TableRow(
                 new Panel {
-                    Content = new Label { Text = MoneroGUI.Properties.Resources.OptionsPathsSoftwareAccountManager },
+                    Content = new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsPathsSoftwareAccountManager },
                     Padding = new Padding(0, 0, 0, Utilities.Padding3)
                 },
                 PathSelectorSoftwareAccountManager
