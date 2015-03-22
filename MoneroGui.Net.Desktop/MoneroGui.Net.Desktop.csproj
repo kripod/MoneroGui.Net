@@ -140,6 +140,9 @@
     <Compile Include="Views\OptionsDialog\GeneralView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Windows\AddressBookEditDialog.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Windows\AccountChangePassphraseDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>

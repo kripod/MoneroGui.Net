@@ -179,8 +179,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     //ListBoxRecipients.ScrollIntoView(recipients[firstInvalidRecipient]);
                     //ListBoxRecipients.SelectedIndex = firstInvalidRecipient;
                     //this.SetFocusedElement(ListBoxRecipients);
+                    this.ShowError(MoneroGUI.Desktop.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
                     break;
-
                 }
 
                 // Check whether the address belongs to an exchange

@@ -38,6 +38,10 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly string PathDirectoryThirdPartyLicenses = new DirectoryInfo("Licenses").FullName;
         public static readonly string PathFileLicense = new FileInfo("LICENSE").FullName;
 
+        public static readonly Color ColorForegroundDefault = Colors.Black;
+        public static readonly Color ColorForegroundWarning = Colors.OrangeRed;
+        public static readonly Color ColorBackgroundError = Colors.LightPink;
+
         public static readonly Color ColorSeparator = Color.FromRgb(10526880);
         public static readonly Color ColorStatusBar = Color.FromRgb(15855085);
 

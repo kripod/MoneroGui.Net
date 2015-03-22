@@ -2,14 +2,13 @@
 using Eto.Forms;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Jojatekok.MoneroGUI.Desktop.Controls
 {
     public sealed class CoinSender : TableLayout, ICloneable, INotifyPropertyChanged
     {
-        private double _amount;
-
         private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(
             null,
             () => MoneroGUI.Desktop.Properties.Resources.TextHintAddress,
@@ -19,6 +18,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
             null,
             () => MoneroGUI.Desktop.Properties.Resources.TextHintLabel
         );
+        private double _amount;
 
         public string Address {
             get { return TextBoxAddress.Text; }
@@ -46,6 +46,15 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
             Padding = new Padding(0, Utilities.Padding5, 0, 0);
             Spacing = Utilities.Spacing2;
 
+            var buttonShowAddressBook = new Button { Image = Utilities.LoadImage("Contact") };
+            buttonShowAddressBook.Click += OnButtonShowAddressBookClick;
+
+            var buttonPasteAddress = new Button { Image = Utilities.LoadImage("Paste") };
+            buttonPasteAddress.Click += OnButtonPasteAddressClick;
+
+            var buttonRemoveSelf = new Button { Image = Utilities.LoadImage("Delete") };
+            buttonRemoveSelf.Click += OnButtonRemoveSelfClick;
+
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
                     MoneroGUI.Desktop.Properties.Resources.TextAddress +
@@ -54,9 +63,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
                 new TableCell(TextBoxAddress, true),
 
-                new Button { Image = Utilities.LoadImage("Contact") },
-                new Button { Image = Utilities.LoadImage("Paste") },
-                new Button { Image = Utilities.LoadImage("Delete") }
+                buttonShowAddressBook,
+                buttonPasteAddress,
+                buttonRemoveSelf
             ));
 
             Rows.Add(new TableRow(
@@ -75,11 +84,49 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
                 ),
 
                 new TableCell(
-                    // TODO: Read constants from Utilities instead of embedding them directly
                     Utilities.CreateNumericUpDown(this, o => o.Amount),
                     true
                 )
             ));
+        }
+
+        void OnButtonShowAddressBookClick(object sender, EventArgs e)
+        {
+
+        }
+
+        void OnButtonPasteAddressClick(object sender, EventArgs e)
+        {
+            Address = Utilities.Clipboard.Text;
+            TextBoxLabel.Focus();
+        }
+
+        void OnButtonRemoveSelfClick(object sender, EventArgs e)
+        {
+            var tableLayout = Parent as TableLayout;
+            Debug.Assert(tableLayout != null, "tableLayout != null");
+
+            var tableLayoutRows = tableLayout.Rows;
+            if (tableLayoutRows.Count == 2) {
+                Clear();
+                TextBoxAddress.Focus();
+                return;
+            }
+
+            for (var i = tableLayoutRows.Count - 2; i >= 0; i--) {
+                if (tableLayoutRows[i].Cells[0].Control == this) {
+                    tableLayout.Remove(this);
+                    tableLayoutRows.RemoveAt(i);
+                    return;
+                }
+            }
+        }
+
+        public void Clear()
+        {
+            Address = "";
+            Label = "";
+            Amount = 0;
         }
 
         public bool IsRecipientValid()

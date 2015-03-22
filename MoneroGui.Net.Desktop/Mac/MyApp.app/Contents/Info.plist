@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>MonoBundleExecutable</key>
-	<string>MoneroX.exe</string>
+	<string>MoneroGui.Net.exe</string>
 	<key>CFBundleName</key>
 	<string>MoneroX</string>
 	<key>CFBundleIdentifier</key>

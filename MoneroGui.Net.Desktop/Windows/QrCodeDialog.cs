@@ -117,16 +117,22 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             }
         }
 
-        public QrCodeDialog(string address = "")
+        public QrCodeDialog(SettingsManager.ConfigElementContact contact)
         {
             this.SetWindowProperties(
                 MoneroGUI.Desktop.Properties.Resources.TextQrCode,
                 new Size(0, 0)
             );
 
-            Address = address;
+            Address = contact.Address;
+            Label = contact.Label;
 
             RenderContent();
+        }
+
+        public QrCodeDialog(string address = "") : this(new SettingsManager.ConfigElementContact("", address))
+        {
+            
         }
 
         void RenderContent()
@@ -135,6 +141,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             PanelQrCode.Content = ImageViewQrCode;
             ButtonSaveAs.Click += OnButtonSaveAsClick;
+
+            var textBoxLabel = Utilities.CreateTextBox(this, o => o.Label);
+            textBoxLabel.PlaceholderText = Label;
 
             var textBoxQrUri = Utilities.CreateTextBox(this, o => o.QrUri);
             textBoxQrUri.ReadOnly = true;
@@ -183,7 +192,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
                         new TableRow(
                             new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextLabel + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
-                            new TableCell(Utilities.CreateTextBox(this, o => o.Label), true)
+                            new TableCell(textBoxLabel, true)
                         ),
 
                         new TableRow(
