@@ -1,34 +1,35 @@
 ﻿using Eto;
+using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Desktop.Windows;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
-    public class AddressBookView : TableLayout
+    public class AddressBookView : TableLayout //, IExportable
     {
-        private readonly Button _buttonCopyAddress = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.AddressBookCopyAddress, null, Utilities.LoadImage("Copy"));
-        private readonly Button _buttonEdit = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextEdit, null, Utilities.LoadImage("Edit"));
-        private readonly Button _buttonDelete = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextDelete, null, Utilities.LoadImage("Delete"));
-        private readonly Button _buttonShowQrCode = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextQrCode, null, Utilities.LoadImage("QrCode"));
-        private readonly Button _buttonExport = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextExport, null, Utilities.LoadImage("Export"));
-        private readonly Button _buttonOk = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextOk, null);
+        private static readonly FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = Utilities.DataSourceAddressBook;
 
         private GridView GridViewAddressBook { get; set; }
 
-        private Button ButtonCopyAddress { get { return _buttonCopyAddress; } }
-        private Button ButtonEdit { get { return _buttonEdit; } }
-        private Button ButtonDelete { get { return _buttonDelete; } }
-        private Button ButtonShowQrCode { get { return _buttonShowQrCode; } }
-        private Button ButtonExport { get { return _buttonExport; } }
-        private Button ButtonOk { get { return _buttonOk; } }
+        private Button ButtonCopyAddress { get; set; }
+        private Button ButtonEdit { get; set; }
+        private Button ButtonDelete { get; set; }
+        private Button ButtonShowQrCode { get; set; }
+        private Button ButtonExport { get; set; }
+        private Button ButtonOk { get; set; }
 
-        private static readonly FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = Utilities.DataSourceAddressBook;
+        private Panel PanelButtonOk { get; set; }
 
         public bool IsDialogModeEnabled {
-            get { return ButtonOk.Visible; }
-            set { ButtonOk.Visible = value; }
+            get { return PanelButtonOk.Visible; }
+            set { PanelButtonOk.Visible = value; }
+        }
+
+        public SettingsManager.ConfigElementContact SelectedContact {
+            get { return GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact; }
         }
 
         public AddressBookView()
@@ -49,6 +50,13 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             GridViewAddressBook.SelectedRowsChanged += OnGridViewAddressBookSelectedRowsChanged;
             GridViewAddressBook.CellDoubleClick += OnGridViewAddressBookCellDoubleClick;
 
+            ButtonCopyAddress = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.AddressBookCopyAddress, null, Utilities.LoadImage("Copy"), OnButtonCopyAddressClick);
+            ButtonEdit = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextEdit, null, Utilities.LoadImage("Edit"), OnButtonEditClick);
+            ButtonDelete = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextDelete, null, Utilities.LoadImage("Delete"), OnButtonDeleteClick);
+            ButtonShowQrCode = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextQrCode, null, Utilities.LoadImage("QrCode"), OnButtonShowQrCodeClick);
+            ButtonExport = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextExport, null, Utilities.LoadImage("Export"), OnButtonExportClick);
+            ButtonOk = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextOk, null, Utilities.LoadImage("Ok"), SetDialogResult);
+
             ButtonCopyAddress.Enabled = false;
             ButtonEdit.Enabled = false;
             ButtonDelete.Enabled = false;
@@ -56,12 +64,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             ButtonExport.Enabled = false;
             ButtonOk.Enabled = false;
 
-            ButtonCopyAddress.Click += delegate { OnButtonCopyAddressClick(); };
-            ButtonEdit.Click += delegate { OnButtonEditClick(); };
-            ButtonDelete.Click += delegate { OnButtonDeleteClick(); };
-            ButtonShowQrCode.Click += delegate { OnButtonShowQrCodeClick(); };
-            ButtonExport.Click += delegate { OnButtonExportClick(); };
-            ButtonOk.Click += delegate { OnButtonOkClick(); };
+            PanelButtonOk = new Panel {
+                Content = ButtonOk,
+                Padding = new Padding(Utilities.Padding3, 0, 0, 0),
+                Visible = false
+            };
 
             Rows.Add(
                 new TableRow(GridViewAddressBook) { ScaleHeight = true }
@@ -83,8 +90,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                         new TableCell { ScaleWidth = true },
 
                         ButtonShowQrCode,
-                        ButtonExport,
-                        ButtonOk
+                        new TableRow(
+                            ButtonExport,
+                            PanelButtonOk
+                        )
                     )
                 ) { Spacing = Utilities.Spacing3 }
             );
@@ -92,14 +101,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         void OnGridViewAddressBookSelectedRowsChanged(object sender, EventArgs e)
         {
-            if (Loaded) {
-                var isButtonsEnabled = GridViewAddressBook.SelectedItem != null;
-                ButtonCopyAddress.Enabled = isButtonsEnabled;
-                ButtonEdit.Enabled = isButtonsEnabled;
-                ButtonDelete.Enabled = isButtonsEnabled;
-                ButtonShowQrCode.Enabled = isButtonsEnabled;
-                ButtonOk.Enabled = isButtonsEnabled;
-            }
+            var isButtonsEnabled = GridViewAddressBook.SelectedItem != null;
+            ButtonCopyAddress.Enabled = isButtonsEnabled;
+            ButtonEdit.Enabled = isButtonsEnabled;
+            ButtonDelete.Enabled = isButtonsEnabled;
+            ButtonShowQrCode.Enabled = isButtonsEnabled;
+            ButtonOk.Enabled = isButtonsEnabled;
         }
 
         void OnGridViewAddressBookCellDoubleClick(object sender, GridViewCellEventArgs e)
@@ -109,34 +116,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             } else {
                 ShowSelectedContactQrCode();
             }
-        }
-
-        private void EditSelectedContact()
-        {
-            var editIndex = DataSourceAddressBook.IndexOf(GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
-
-            using (var dialog = new AddressBookEditDialog(DataSourceAddressBook, editIndex)) {
-                if (dialog.ShowModal(this)) {
-                    var overwriteIndex = dialog.OverwriteIndex;
-                    if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
-                        DataSourceAddressBook.RemoveAt(dialog.OverwriteIndex);
-                        if (overwriteIndex < editIndex) editIndex -= 1;
-                    }
-
-                    DataSourceAddressBook[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
-                }
-            }
-
-            GridViewAddressBook.Focus();
-        }
-
-        private void ShowSelectedContactQrCode()
-        {
-            using (var dialog = new QrCodeDialog(GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact)) {
-                dialog.ShowModal(this);
-            }
-
-            GridViewAddressBook.Focus();
         }
 
         private void OnButtonNewClick()
@@ -163,8 +142,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         private void OnButtonCopyAddressClick()
         {
-            Debug.Assert(GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null, "GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact != null");
-            Utilities.Clipboard.Text = (GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact).Address;
+            Utilities.Clipboard.Text = SelectedContact.Address;
 
             GridViewAddressBook.Focus();
         }
@@ -176,7 +154,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         private void OnButtonDeleteClick()
         {
-            DataSourceAddressBook.Remove(GridViewAddressBook.SelectedItem as SettingsManager.ConfigElementContact);
+            DataSourceAddressBook.Remove(SelectedContact);
 
             GridViewAddressBook.Focus();
         }
@@ -193,15 +171,38 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             GridViewAddressBook.Focus();
         }
 
-        private void OnButtonOkClick()
+        private void EditSelectedContact()
         {
-            SetDialogResult();
+            var editIndex = DataSourceAddressBook.IndexOf(SelectedContact);
+
+            using (var dialog = new AddressBookEditDialog(DataSourceAddressBook, editIndex)) {
+                if (dialog.ShowModal(this)) {
+                    var overwriteIndex = dialog.OverwriteIndex;
+                    if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
+                        DataSourceAddressBook.RemoveAt(dialog.OverwriteIndex);
+                        if (overwriteIndex < editIndex) editIndex -= 1;
+                    }
+
+                    DataSourceAddressBook[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                }
+            }
+
+            GridViewAddressBook.Focus();
+        }
+
+        private void ShowSelectedContactQrCode()
+        {
+            using (var dialog = new QrCodeDialog(SelectedContact)) {
+                dialog.ShowModal(this);
+            }
+
+            GridViewAddressBook.Focus();
         }
 
         private void SetDialogResult()
         {
-            var dialog = Parent as Dialog<bool>;
-            if (dialog != null) dialog.Close(true);
+            var dialog = Parent as Dialog<SettingsManager.ConfigElementContact>;
+            if (dialog != null) dialog.Close(SelectedContact);
         }
 
         /*public void Export()
@@ -212,27 +213,29 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             };
 
             if (dialog.ShowDialog() == true) Export(dialog.FileName);
-        }
+        }*/
 
         public void Export(string fileName)
         {
-            using (var dataTable = new DataTable { Locale = Helper.InvariantCulture }) {
-                var columns = DataGridAddressBook.Columns;
-                for (var i = 0; i < columns.Count; i++) {
-                    dataTable.Columns.Add(columns[i].Header.ToString());
-                }
+            var dataTable = new DataTable();
 
-                for (var i = 0; i < DataGridAddressBook.Items.Count; i++) {
-                    var contact = DataGridAddressBook.Items[i] as SettingsManager.ConfigElementContact;
-                    Debug.Assert(contact != null, "contact != null");
-                    dataTable.Rows.Add(
-                        "=\"" + contact.Label + "\"",
-                        "=\"" + contact.Address + "\""
-                    );
-                }
-
-                dataTable.ExportToCsvAsync(fileName);
+            var columns = GridViewAddressBook.Columns;
+            for (var i = 0; i < columns.Count; i++) {
+                dataTable.ColumnHeaders.Add(columns[i].HeaderText);
             }
-        }*/
+
+            var dataSource = Utilities.DataSourceAddressBook;
+            for (var i = 0; i < dataSource.Items.Count; i++) {
+                var contact = dataSource.Items[i];
+                dataTable.Rows.Add(
+                    new List<object> {
+                        "\"" + contact.Label + "\"",
+                        "\"" + contact.Address + "\""
+                    }
+                );
+            }
+            
+            dataTable.ExportToCsvAsync(fileName);
+        }
     }
 }

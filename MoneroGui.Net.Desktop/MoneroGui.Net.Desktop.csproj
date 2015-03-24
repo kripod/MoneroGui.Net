@@ -120,8 +120,11 @@
     <Compile Include="Controls\Separator.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Objects\DataTable.cs" />
+    <Compile Include="Objects\Exporter.cs" />
     <Compile Include="Objects\ExtensionMethods.cs" />
     <Compile Include="Objects\CultureManager.cs" />
+    <Compile Include="Objects\IExportable.cs" />
     <Compile Include="Objects\IOptionsTabPageView.cs" />
     <Compile Include="Objects\PaymentUriParameters.cs" />
     <Compile Include="Views\MainForm\StatusBarViewModel.cs" />
@@ -140,6 +143,9 @@
     <Compile Include="Views\OptionsDialog\GeneralView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Windows\AccountUnlockDialog - Copy.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Windows\AddressBookEditDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
@@ -152,7 +158,7 @@
     <Compile Include="Windows\QrCodeDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
-    <Compile Include="Windows\AccountUnlockDialog.cs">
+    <Compile Include="Windows\AddressBookDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Windows\AboutDialog.cs">

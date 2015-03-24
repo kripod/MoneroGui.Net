@@ -1,5 +1,6 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroGUI.Desktop.Windows;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -92,7 +93,13 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
         void OnButtonShowAddressBookClick(object sender, EventArgs e)
         {
-
+            using (var dialog = new AddressBookDialog()) {
+                var contact = dialog.ShowModal(this);
+                if (contact != null) {
+                    Address = contact.Address;
+                    Label = contact.Label;
+                }
+            }
         }
 
         void OnButtonPasteAddressClick(object sender, EventArgs e)

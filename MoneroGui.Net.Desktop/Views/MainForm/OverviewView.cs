@@ -17,8 +17,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             Rows.Add(
                 new TableRow(
                     new TableCell(
-                        Utilities.CreateLabel(
-                            () => MoneroGUI.Desktop.Properties.Resources.TextAccount,
+                        Utilities.CreateLabel(() =>
+                            MoneroGUI.Desktop.Properties.Resources.TextAccount,
                             HorizontalAlign.Left,
                             VerticalAlign.Middle,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
@@ -27,8 +27,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     ),
 
                     new TableCell(
-                        Utilities.CreateLabel(
-                            () => MoneroGUI.Desktop.Properties.Resources.OverviewRecentTransactions,
+                        Utilities.CreateLabel(() =>
+                            "", //MoneroGUI.Desktop.Properties.Resources.OverviewRecentTransactions,
                             HorizontalAlign.Left,
                             VerticalAlign.Middle,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
