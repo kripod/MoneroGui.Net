@@ -48,6 +48,7 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly string[] FileFilterAll = { "*" };
         public static readonly string[] FileFilterAccount = { "*.wallet", "*.bin" };
         public static readonly string[] FileFilterExecutable = { "*.exe" };
+        public static readonly string[] FileFilterCsv = { "*.csv" };
         public static readonly string[] FileFilterPng = { "*.png" };
 
         public static readonly Size Spacing2 = new Size(Padding2, Padding2);

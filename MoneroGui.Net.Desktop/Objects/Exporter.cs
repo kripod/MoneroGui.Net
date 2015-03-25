@@ -16,21 +16,31 @@ namespace Jojatekok.MoneroGUI.Desktop
 
                 // Write the column headers
                 for (var i = 0; i < columnCount; i++) {
-                    stream.WriteAsync(dataTable.ColumnHeaders[i]);
+                    stream.Write("\"" + dataTable.ColumnHeaders[i] + "\"");
+
                     if (i < columnCountMinus1) {
-                        stream.WriteAsync(CsvDelimiter);
+                        stream.Write(CsvDelimiter);
                     }
                 }
 
                 // Write all the rows
                 for (var i = 0; i < dataTable.Rows.Count; i++) {
-                    stream.WriteLineAsync();
+                    stream.WriteLine();
 
                     for (var j = 0; j < columnCount; j++) {
-                        stream.WriteAsync(dataTable.Rows[i][j].ToString());
+                        var cell = dataTable.Rows[i][j];
+                        var cellString = cell as string;
+
+                        if (cellString != null) {
+                            stream.Write("\"" + cellString.Replace("\"", "\"\"") + "\"");
+                        } else if (cell is double) {
+                            stream.Write(((double)cell).ToString(Utilities.InvariantCulture));
+                        } else {
+                            stream.Write(cell.ToString());
+                        }
 
                         if (j < columnCountMinus1) {
-                            stream.WriteAsync(CsvDelimiter);
+                            stream.Write(CsvDelimiter);
                         }
                     }
                 }

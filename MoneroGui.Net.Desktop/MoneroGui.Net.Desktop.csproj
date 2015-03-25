@@ -143,7 +143,7 @@
     <Compile Include="Views\OptionsDialog\GeneralView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
-    <Compile Include="Windows\AccountUnlockDialog - Copy.cs">
+    <Compile Include="Windows\AccountUnlockDialog.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
     <Compile Include="Windows\AddressBookEditDialog.cs">

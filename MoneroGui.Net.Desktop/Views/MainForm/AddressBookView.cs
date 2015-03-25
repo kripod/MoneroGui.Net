@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
-    public class AddressBookView : TableLayout //, IExportable
+    public class AddressBookView : TableLayout, IExportable
     {
         private static readonly FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = Utilities.DataSourceAddressBook;
 
@@ -61,7 +61,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             ButtonEdit.Enabled = false;
             ButtonDelete.Enabled = false;
             ButtonShowQrCode.Enabled = false;
-            ButtonExport.Enabled = false;
             ButtonOk.Enabled = false;
 
             PanelButtonOk = new Panel {
@@ -166,7 +165,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         private void OnButtonExportClick()
         {
-            //Export();
+            Export();
 
             GridViewAddressBook.Focus();
         }
@@ -205,15 +204,22 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             if (dialog != null) dialog.Close(SelectedContact);
         }
 
-        /*public void Export()
+        public void Export()
         {
-            var dialog = new SaveFileDialog {
-                Filter = Properties.Resources.TextFilterCsvFiles + "|" + Properties.Resources.TextFilterAllFiles,
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            };
+            using (
+                var dialog = new SaveFileDialog {
+                    Filters = new HashSet<FileDialogFilter> {
+                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv),
+                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
+                    },
+                    Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
+                }
+            ) {
+                if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 
-            if (dialog.ShowDialog() == true) Export(dialog.FileName);
-        }*/
+                Export(dialog.FileName);
+            }
+        }
 
         public void Export(string fileName)
         {
@@ -229,8 +235,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 var contact = dataSource.Items[i];
                 dataTable.Rows.Add(
                     new List<object> {
-                        "\"" + contact.Label + "\"",
-                        "\"" + contact.Address + "\""
+                        contact.Label,
+                        contact.Address
                     }
                 );
             }
