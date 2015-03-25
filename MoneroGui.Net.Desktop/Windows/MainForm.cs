@@ -3,11 +3,16 @@ using Eto.Forms;
 using Jojatekok.MoneroAPI;
 using Jojatekok.MoneroGUI.Desktop.Views.MainForm;
 using System;
+using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class MainForm : Form
     {
+        private Command CommandExport { get; set; }
+
+        private TabControl TabControlMain { get; set; }
+
         public MainForm()
         {
             this.SetWindowProperties(
@@ -82,10 +87,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 Image = Utilities.LoadImage("Save")
             };
 
-            var commandExport = new Command(OnCommandExport) {
+            CommandExport = new Command(OnCommandExport) {
                 MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExport,
                 Image = Utilities.LoadImage("Export"),
-                Shortcut = Application.Instance.CommonModifier | Keys.E
+                Shortcut = Application.Instance.CommonModifier | Keys.E,
+                Enabled = false
             };
 
             var commandExit = new Command(OnCommandExit) {
@@ -95,9 +101,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             };
 
             var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
-                Enabled = false,
                 MenuText = MoneroGUI.Desktop.Properties.Resources.MenuChangeAccountPassphrase,
-                Image = Utilities.LoadImage("Key")
+                Image = Utilities.LoadImage("Key"),
+                Enabled = false
             };
 
             var commandShowWindowOptions = new Command(OnCommandShowWindowOptions) {
@@ -117,7 +123,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         Text = MoneroGUI.Desktop.Properties.Resources.MenuFile,
                         Items = {
                             commandAccountBackupManager,
-                            commandExport,
+                            CommandExport,
                             new SeparatorMenuItem(),
                             commandExit
                         }
@@ -168,8 +174,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             };
             tabPageAddressBook.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.TextAddressBook);
 
-            var tabControl = new TabControl();
-            var tabControlPages = tabControl.Pages;
+            TabControlMain = new TabControl();
+            TabControlMain.SelectedIndexChanged += OnTabControlMainSelectedIndexChanged;
+
+            var tabControlPages = TabControlMain.Pages;
             tabControlPages.Add(tabPageOverview);
             tabControlPages.Add(tabPageSendCoins);
             tabControlPages.Add(tabPageTransactions);
@@ -184,7 +192,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     new TableRow(
                         new Panel {
                             Padding = new Padding(Utilities.Padding4),
-                            Content = tabControl
+                            Content = TabControlMain
                         }
                     ) { ScaleHeight = true },
 
@@ -199,6 +207,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             };
         }
 
+        void OnTabControlMainSelectedIndexChanged(object sender, EventArgs e)
+        {
+            CommandExport.Enabled = TabControlMain.SelectedPage.Content is IExportable;
+        }
+
         void OnCommandAccountBackupManager(object sender, EventArgs e)
         {
             
@@ -206,7 +219,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         void OnCommandExport(object sender, EventArgs e)
         {
+            var exportableContent = TabControlMain.SelectedPage.Content as IExportable;
+            Debug.Assert(exportableContent != null, "exportableContent != null");
 
+            exportableContent.Export();
         }
 
         void OnCommandExit(object sender, EventArgs e)

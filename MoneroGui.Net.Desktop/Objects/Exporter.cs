@@ -25,7 +25,7 @@ namespace Jojatekok.MoneroGUI.Desktop
 
                 // Write all the rows
                 for (var i = 0; i < dataTable.Rows.Count; i++) {
-                    stream.WriteLine();
+                    stream.Write("\r\n");
 
                     for (var j = 0; j < columnCount; j++) {
                         var cell = dataTable.Rows[i][j];

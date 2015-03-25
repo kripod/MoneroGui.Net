@@ -130,7 +130,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                 } else {
                     // Overwrite existing item
-                    DataSourceAddressBook[overwriteIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                    DataSourceAddressBook.RemoveAt(overwriteIndex);
+                    DataSourceAddressBook.Insert(overwriteIndex, new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
                 }
 
                 GridViewAddressBook.SelectRow(overwriteIndex);
@@ -182,7 +183,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                         if (overwriteIndex < editIndex) editIndex -= 1;
                     }
 
-                    DataSourceAddressBook[editIndex] = new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address);
+                    DataSourceAddressBook.RemoveAt(editIndex);
+                    DataSourceAddressBook.Insert(editIndex, new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
                 }
             }
 

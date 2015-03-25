@@ -219,7 +219,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 if (editIndex < 0) {
                     Utilities.DataSourceAddressBook.Add(contact);
                 } else {
-                    Utilities.DataSourceAddressBook[editIndex] = contact;
+                    Utilities.DataSourceAddressBook.RemoveAt(editIndex);
+                    Utilities.DataSourceAddressBook.Insert(editIndex, contact);
                 }
             }
 
