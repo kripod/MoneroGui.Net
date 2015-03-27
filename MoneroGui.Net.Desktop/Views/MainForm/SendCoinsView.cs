@@ -7,9 +7,9 @@ using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
-    public class SendCoinsView : TableLayout
+    public sealed class SendCoinsView : TableLayout
     {
-        private static readonly SendCoinsViewModel ViewModel = new SendCoinsViewModel();
+        public static readonly SendCoinsViewModel ViewModel = new SendCoinsViewModel();
 
         private TableLayout TableLayoutRecipients { get; set; }
         private Scrollable ScrollableRecipientsContainer { get; set; }
@@ -18,28 +18,28 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         {
             Spacing = Utilities.Spacing3;
 
-            var labelCurrentBalance = Utilities.CreateLabel(() => {
-                var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
-                var balanceText = MoneroGUI.Desktop.Properties.Resources.SendCoinsCurrentBalance + " " + (balance != null ?
-                    MoneroAPI.Utilities.CoinAtomicValueToString(balance.Spendable) :
-                    MoneroGUI.Desktop.Properties.Resources.PunctuationQuestionMark);
+            DataContext = ViewModel;
 
-                return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
-            });
-            Utilities.BindingsToAccountBalance.Add(labelCurrentBalance.Bindings[0]);
+            var buttonSendTransaction = Utilities.CreateButton(() =>
+                MoneroGUI.Desktop.Properties.Resources.TextSend,
+                null,
+                Utilities.LoadImage("Send"),
+                SendTransaction
+            );
+            buttonSendTransaction.BindDataContext<bool>("Enabled", "IsSendingEnabled");
 
             Rows.Add(
                 new TableLayout(
                     new TableRow(
                         new TableCell(
-                            labelCurrentBalance,
+                            Utilities.CreateLabel(ViewModel, o => o.BalanceSpendableText),
                             true
                         ),
 
                         new TableCell(
                             Utilities.CreateLabel(() =>
                                 MoneroGUI.Desktop.Properties.Resources.SendCoinsEstimatedNewBalance + " " +
-                                "?"
+                                MoneroGUI.Desktop.Properties.Resources.PunctuationQuestionMark
                             )
                         )
                     )
@@ -116,12 +116,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                         ),
 
                         new TableCell(
-                            Utilities.CreateButton(() =>
-                                MoneroGUI.Desktop.Properties.Resources.TextSend,
-                                null,
-                                Utilities.LoadImage("Send"),
-                                SendTransaction
-                            )
+                            buttonSendTransaction
                         )
                     )
                 ) { Spacing = Utilities.Spacing3 }
@@ -180,7 +175,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     //ListBoxRecipients.SelectedIndex = firstInvalidRecipient;
                     //this.SetFocusedElement(ListBoxRecipients);
                     this.ShowError(MoneroGUI.Desktop.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
-                    break;
+                    return;
                 }
 
                 // Check whether the address belongs to an exchange

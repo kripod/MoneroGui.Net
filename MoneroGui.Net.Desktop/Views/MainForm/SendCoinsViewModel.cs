@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         private bool _isSendingEnabled;
         private bool _isBlockchainSynced;
         private ulong? _balanceSpendable;
-        private double? _balanceNewEstimated;
+        private string _balanceSpendableText = Properties.Resources.SendCoinsCurrentBalance + " " + Properties.Resources.PunctuationQuestionMark + " " + Properties.Resources.TextCurrencyCode;
         private string _paymentId = "";
         private ulong _mixCount = 3;
 
@@ -24,9 +24,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             private get { return _isBlockchainSynced; }
             set {
                 _isBlockchainSynced = value;
-                OnPropertyChanged();
 
-                //UpdatePropertyIsSendingEnabled();
+                UpdatePropertyIsSendingEnabled();
             }
         }
 
@@ -34,16 +33,24 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             get { return _balanceSpendable; }
             set {
                 _balanceSpendable = value;
-                OnPropertyChanged();
+                BalanceSpendableText =
+                    Properties.Resources.SendCoinsCurrentBalance + " " +
+                    (
+                        value != null ?
+                        MoneroAPI.Utilities.CoinAtomicValueToString(value.Value) :
+                        Properties.Resources.PunctuationQuestionMark
+                    ) + " " +
+                    Properties.Resources.TextCurrencyCode
+                ;
 
-                //UpdatePropertyIsSendingEnabled();
+                UpdatePropertyIsSendingEnabled();
             }
         }
 
-        public double? BalanceNewEstimated {
-            get { return _balanceNewEstimated; }
+        public string BalanceSpendableText {
+            get { return _balanceSpendableText; }
             set {
-                _balanceNewEstimated = value;
+                _balanceSpendableText = value;
                 OnPropertyChanged();
             }
         }
@@ -62,6 +69,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 _mixCount = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void UpdatePropertyIsSendingEnabled()
+        {
+            IsSendingEnabled = IsBlockchainSynced && BalanceSpendable != null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

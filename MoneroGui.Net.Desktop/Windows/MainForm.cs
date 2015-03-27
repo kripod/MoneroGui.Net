@@ -296,7 +296,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             Utilities.SyncContextMain.Post(s => {
                 // Enable sending coins, along with hiding the sync status
                 StatusBarView.ViewModel.IsBlockchainSynced = true;
-                //SendCoinsView.ViewModel.IsBlockchainSynced = true;
+                SendCoinsView.ViewModel.IsBlockchainSynced = true;
             }, null);
         }
 
@@ -367,7 +367,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountBalance.Update(), null);
+            Utilities.SyncContextMain.Post(s => {
+                Utilities.BindingsToAccountBalance.Update();
+                SendCoinsView.ViewModel.BalanceSpendable = e.AccountBalance.Spendable;
+            }, null);
         }
 
         public void UpdateLanguage()
