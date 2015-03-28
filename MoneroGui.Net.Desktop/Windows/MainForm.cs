@@ -10,6 +10,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
     public sealed class MainForm : Form
     {
         private Command CommandExport { get; set; }
+        private Command CommandAccountUnlock { get; set; }
+        private Command CommandAccountChangePassphrase { get; set; }
+
+        private ButtonMenuItem MenuSettings { get; set; }
 
         private TabControl TabControlMain { get; set; }
 
@@ -60,7 +64,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 // Initialize the daemon RPC manager as soon as the corresponding process is available
                 var daemonProcess = Utilities.MoneroProcessManager.Daemon;
                 daemonProcess.Initialized += delegate { daemonRpc.Initialize(); };
-                daemonProcess.OnLogMessage += OnDaemonProcessLogMessage;
                 daemonProcess.Start();
             } else {
                 // Initialize the daemon RPC manager immediately
@@ -71,7 +74,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 // Initialize the account manager's RPC wrapper as soon as the corresponding process is available
                 var accountManagerProcess = Utilities.MoneroProcessManager.AccountManager;
                 accountManagerProcess.Initialized += delegate { accountManagerRpc.Initialize(); };
-                accountManagerProcess.OnLogMessage += OnAccountManagerProcessLogMessage;
                 accountManagerProcess.PassphraseRequested += OnAccountManagerProcessPassphraseRequested;
                 accountManagerProcess.Start();
             } else {
@@ -82,11 +84,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         public void RenderMenu()
         {
-            var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuBackupManager,
-                Image = Utilities.LoadImage("Save")
-            };
-
             CommandExport = new Command(OnCommandExport) {
                 MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExport,
                 Image = Utilities.LoadImage("Export"),
@@ -94,16 +91,27 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 Enabled = false
             };
 
+            CommandAccountUnlock = new Command(OnCommandAccountUnlock) {
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuUnlockAccount,
+                Image = Utilities.LoadImage("Key")
+            };
+
+            CommandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuChangeAccountPassphrase,
+                Image = Utilities.LoadImage("Key"),
+                Enabled = false
+            };
+
+            var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
+                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuBackupManager,
+                Image = Utilities.LoadImage("Save"),
+                Enabled = false
+            };
+
             var commandExit = new Command(OnCommandExit) {
                 MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExit,
                 Image = Utilities.LoadImage("Exit"),
                 Shortcut = Application.Instance.CommonModifier | Keys.Q
-            };
-
-            var commandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuChangeAccountPassphrase,
-                Image = Utilities.LoadImage("Key"),
-                Enabled = false
             };
 
             var commandShowWindowOptions = new Command(OnCommandShowWindowOptions) {
@@ -115,6 +123,15 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             var commandShowWindowAbout = new Command(OnCommandShowWindowAbout) {
                 MenuText = MoneroGUI.Desktop.Properties.Resources.MenuAbout,
                 Image = Utilities.LoadImage("Information"),
+            };
+
+            MenuSettings = new ButtonMenuItem {
+                Text = MoneroGUI.Desktop.Properties.Resources.MenuSettings,
+                Items = {
+                    CommandAccountUnlock,
+                    new SeparatorMenuItem(),
+                    commandShowWindowOptions
+                }
             };
 
             Menu = new MenuBar {
@@ -129,14 +146,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         }
                     },
 
-                    new ButtonMenuItem {
-                        Text = MoneroGUI.Desktop.Properties.Resources.MenuSettings,
-                        Items = {
-                            commandAccountChangePassphrase,
-                            new SeparatorMenuItem(),
-                            commandShowWindowOptions
-                        }
-                    },
+                    MenuSettings,
 
                     new ButtonMenuItem {
                         Text = MoneroGUI.Desktop.Properties.Resources.MenuHelp,
@@ -230,6 +240,16 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             Application.Instance.Quit();
         }
 
+        void OnCommandAccountUnlock(object sender, EventArgs e)
+        {
+            using (var dialog = new AccountUnlockDialog()) {
+                var result = dialog.ShowModal(this);
+                if (result != null) {
+                    Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
+                }
+            }
+        }
+
         void OnCommandAccountChangePassphrase(object sender, EventArgs e)
         {
 
@@ -247,11 +267,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             using (var dialog = new AboutDialog()) {
                 dialog.ShowModal(this);
             }
-        }
-
-        void OnDaemonProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
-        {
-
         }
 
         void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
@@ -300,11 +315,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             }, null);
         }
 
-        void OnAccountManagerProcessLogMessage(object sender, LogMessageReceivedEventArgs e)
-        {
-
-        }
-
         void OnAccountManagerProcessPassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
             Utilities.SyncContextMain.Post(s => {
@@ -319,12 +329,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
                 } else {
                     // Request the account's passphrase in order to unlock it
-                    using (var dialog = new AccountUnlockDialog()) {
-                        var result = dialog.ShowModal(this);
-                        if (result != null) {
-                            Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
-                        }
-                    }
+                    OnCommandAccountUnlock(null, null);
                 }
             }, null);
         }
@@ -333,6 +338,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
             Utilities.SyncContextMain.Post(s => {
+                // Revoke the ability to (redundantly) unlock the account, and then allow changing the account's passphrase
+                MenuSettings.Items.RemoveAt(0);
+                MenuSettings.Items.Insert(0, CommandAccountChangePassphrase);
+
                 for (var i = 0; i < transactions.Count; i++) {
                     Utilities.DataSourceAccountTransactions.Add(transactions[i]);
                 }
