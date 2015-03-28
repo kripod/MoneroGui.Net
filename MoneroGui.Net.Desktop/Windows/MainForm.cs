@@ -3,12 +3,23 @@ using Eto.Forms;
 using Jojatekok.MoneroAPI;
 using Jojatekok.MoneroGUI.Desktop.Views.MainForm;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class MainForm : Form
     {
+        private static bool _isSafeShutdownAllowed = true;
+
+        private static bool IsSafeShutdownAllowed {
+            get { return _isSafeShutdownAllowed; }
+            set { _isSafeShutdownAllowed = value; }
+        }
+
         private Command CommandExport { get; set; }
         private Command CommandAccountUnlock { get; set; }
         private Command CommandAccountChangePassphrase { get; set; }
@@ -21,8 +32,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             this.SetWindowProperties(
                 () => MoneroGUI.Desktop.Properties.Resources.TextClientName,
-                new Size(850, 570),
-                true // TODO: Remove this flag
+                new Size(850, 570)
             );
             this.SetLocationToCenterScreen();
 
@@ -33,6 +43,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             RenderMenu();
             RenderContent();
+
+#if DEBUG
+            if (SettingsManager.General.IsUpdateCheckEnabled) {
+                Task.Factory.StartNew(CheckForUpdates);
+            }
+#endif
         }
 
         static void OnFormClosed(object sender, EventArgs e)
@@ -42,7 +58,106 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             }
 
             if (Utilities.MoneroProcessManager != null) {
-                Utilities.MoneroProcessManager.DisposeSafely();
+                if (IsSafeShutdownAllowed && SettingsManager.General.IsSafeShutdownEnabled) {
+                    Utilities.MoneroProcessManager.DisposeSafely();
+                } else {
+                    Utilities.MoneroProcessManager.Dispose();
+                }
+            }
+        }
+
+        private void CheckForUpdates()
+        {
+            using (var webClient = new WebClient()) {
+                try {
+                    // Compare the application's version with the latest one
+                    var versionInfoString = webClient.DownloadString(new Uri("https://jojatekok.github.io/MoneroGui.Net/version_info/version_v1.txt", UriKind.Absolute));
+                    var versionInfoStringSplit = versionInfoString.Split(new[] { '\n', '\t' });
+
+                    var versionInfo = new Dictionary<string, string>();
+                    for (var i = versionInfoStringSplit.Length - 1; i > 0; i -= 2) {
+                        versionInfo.Add(versionInfoStringSplit[i - 1], versionInfoStringSplit[i]);
+                    }
+
+                    string latestVersionString;
+
+                    if (!SettingsManager.General.IsUpdateCheckForTestBuildsEnabled) {
+                        // Check for stable releases
+                        latestVersionString = versionInfo["LatestVersionStable"];
+                        var latestVersionComparable = new Version(latestVersionString + ".0");
+                        if (latestVersionComparable.CompareTo(Utilities.ApplicationVersionComparable) <= 0) return;
+
+                    } else {
+                        // Check for experimental releases
+                        latestVersionString = versionInfo["LatestVersionTest"];
+                        var latestVersionStringSplit = latestVersionString.Split('-');
+                        var latestVersionComparable = new Version(latestVersionStringSplit[0] + ".0");
+
+                        if (latestVersionComparable.CompareTo(Utilities.ApplicationVersionComparable) <= 0) {
+                            // Return if there is no "extra" version identifier
+                            if (latestVersionStringSplit.Length == 1) return;
+
+                            var latestVersionExtraSplit = latestVersionStringSplit[1].Split('.');
+                            var applicationVersionExtraSplit = Utilities.ApplicationVersionExtra.Split('.');
+                            if (latestVersionExtraSplit[0][0] <= applicationVersionExtraSplit[0][0] && byte.Parse(latestVersionExtraSplit[1]) <= byte.Parse(applicationVersionExtraSplit[1])) {
+                                return;
+                            }
+                        }
+                    }
+
+                    var releasesUrlBase = versionInfo["ReleasesUrlBase"];
+                    
+                    var applicationBaseDirectory = Utilities.ApplicationBaseDirectory;
+
+                    var updateName = "Update (v" + latestVersionString + ")";
+                    var updatePath = applicationBaseDirectory + updateName;
+
+                    // Check whether the update file has already been downloaded
+                    if (!File.Exists(updatePath + ".zip")) {
+                        var platformString = Utilities.GetRunningPlatformName();
+                        var processorArchitectureString = Environment.Is64BitOperatingSystem ? "x64" : "x86";
+                        //TODO: webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, platformString + "-" + processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
+                    }
+
+                    Utilities.SyncContextMain.Post(s => {
+                        // Check whether the user wants to apply the new update now
+                        if (!this.ShowQuestion(string.Format(
+                            Utilities.InvariantCulture,
+                            MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateQuestionMessage,
+                            latestVersionString
+                        ), MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateQuestionTitle)) {
+                            return;
+                        }
+
+                        // TODO: Extract the downloaded update
+                        //ZipFile.ExtractToDirectory(updatePath + ".zip", updatePath);
+
+                        // Write a batch file which applies the update
+                        using (var writer = new StreamWriter(applicationBaseDirectory + "Updater.bat")) {
+                            var newLineString = Utilities.NewLineString;
+                            writer.Write(
+                                "XCOPY /S /V /Q /R /Y \"" + updateName + "\"" + newLineString +
+                                "START \"\" \"" + Utilities.ApplicationAssemblyName.Name + ".exe\" --noupdate" + newLineString +
+                                "RD /S /Q \"" + updateName + "\"" + newLineString +
+                                "DEL /F /Q \"" + updateName + ".zip\"" + newLineString +
+                                "DEL /F /Q %0"
+                            );
+                        }
+
+                        new Process {
+                            StartInfo = new ProcessStartInfo(applicationBaseDirectory + "Updater.bat") {
+                                CreateNoWindow = true,
+                                UseShellExecute = false
+                            }
+                        }.Start();
+
+                        IsSafeShutdownAllowed = false;
+                        Close();
+                    }, null);
+
+                } catch {
+                    Utilities.SyncContextMain.Post(s => this.ShowError(MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateError), null);
+                }
             }
         }
 

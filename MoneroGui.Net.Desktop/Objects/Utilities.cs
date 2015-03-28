@@ -65,7 +65,7 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly string ApplicationAssemblyNameName = ApplicationAssembly.GetName().Name;
 
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
-        public const string ApplicationVersionExtra = null;
+        public const string ApplicationVersionExtra = "";
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Icon.ico");
@@ -76,6 +76,10 @@ namespace Jojatekok.MoneroGUI.Desktop
 
         public static readonly ImageConverter ImageConverter = new ImageConverter();
         public static readonly System.Drawing.ImageConverter SystemImageConverter = new System.Drawing.ImageConverter();
+
+        public static readonly PlatformID RunningPlatformId = Environment.OSVersion.Platform;
+
+        public static readonly string NewLineString = Environment.NewLine;
 
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
         public static readonly CultureInfo DefaultUiCulture = CultureInfo.InstalledUICulture;
@@ -189,6 +193,23 @@ namespace Jojatekok.MoneroGUI.Desktop
                 for (var i = newItems.Count - 1; i >= 0; i--) {
                     SettingsManager.AddressBook.Elements.Add(newItems[i] as SettingsManager.ConfigElementContact);
                 }
+            }
+        }
+
+        public static string GetRunningPlatformName()
+        {
+            switch (RunningPlatformId) {
+                case PlatformID.Unix:
+                    if (Directory.Exists("/Applications") & Directory.Exists("/System") & Directory.Exists("/Users") & Directory.Exists("/Volumes")) {
+                        return "Mac";
+                    }
+                    return "Linux";
+
+                case PlatformID.MacOSX:
+                    return "Mac";
+
+                default:
+                    return "Windows";
             }
         }
 

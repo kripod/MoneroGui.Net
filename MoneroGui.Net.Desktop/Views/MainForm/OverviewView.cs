@@ -2,6 +2,7 @@
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Desktop.Controls;
 using Jojatekok.MoneroGUI.Desktop.Windows;
+using System;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
@@ -75,8 +76,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 },
                 HorizontalAlign.Right
             );
-            // TODO: labelAccountAddress.Wrap = WrapMode.Character;
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
+
+            if (Utilities.RunningPlatformId != PlatformID.Win32NT) {
+                labelAccountAddress.Wrap = WrapMode.Character;
+            }
 
             var labelAccountTransactionsCount = Utilities.CreateLabel(() =>
                 Utilities.DataSourceAccountTransactions.Count.ToString(Utilities.InvariantCulture),
