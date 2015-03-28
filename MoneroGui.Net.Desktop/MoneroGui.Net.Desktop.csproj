@@ -140,6 +140,10 @@
     <Compile Include="Views\MainForm\SendCoinsView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
+    <Compile Include="Views\MainForm\StatusBarViewModel.cs" />
+    <Compile Include="Views\MainForm\StatusBarView.cs">
+      <SubType>Eto.Forms</SubType>
+    </Compile>
     <Compile Include="Views\MainForm\OverviewView.cs">
       <SubType>Eto.Forms</SubType>
     </Compile>
