@@ -160,8 +160,8 @@ namespace Jojatekok.MoneroGUI.Desktop
                 storedNetworkSettings.RpcUrlPortAccountManager
             );
             if (storedNetworkSettings.IsProxyEnabled) {
-                if (!string.IsNullOrEmpty(storedNetworkSettings.ProxyHost) && storedNetworkSettings.ProxyPort != null) {
-                    rpcSettings.Proxy = new WebProxy(storedNetworkSettings.ProxyHost, (int)storedNetworkSettings.ProxyPort);
+                if (!string.IsNullOrEmpty(storedNetworkSettings.ProxyHost)) {
+                    rpcSettings.Proxy = new WebProxy(storedNetworkSettings.ProxyHost, storedNetworkSettings.ProxyPort);
                 }
             }
 

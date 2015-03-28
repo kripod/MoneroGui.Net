@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -105,6 +106,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         }
                     }
 
+                    //TODO: Remove the line below
+                    latestVersionString = "0.41.1";
+
                     var releasesUrlBase = versionInfo["ReleasesUrlBase"];
                     
                     var applicationBaseDirectory = Utilities.ApplicationBaseDirectory;
@@ -116,7 +120,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     if (!File.Exists(updatePath + ".zip")) {
                         var platformString = Utilities.GetRunningPlatformName();
                         var processorArchitectureString = Environment.Is64BitOperatingSystem ? "x64" : "x86";
-                        //TODO: webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, platformString + "-" + processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
+
+                        //TODO: Add platformString + "-" before processorArchitectureString
+                        webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
                     }
 
                     Utilities.SyncContextMain.Post(s => {
@@ -129,8 +135,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                             return;
                         }
 
-                        // TODO: Extract the downloaded update
-                        //ZipFile.ExtractToDirectory(updatePath + ".zip", updatePath);
+                        // Extract the downloaded update
+                        ZipFile.ExtractToDirectory(updatePath + ".zip", updatePath);
 
                         // Write a batch file which applies the update
                         using (var writer = new StreamWriter(applicationBaseDirectory + "Updater.bat")) {
