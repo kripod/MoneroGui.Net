@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Κονσόλες</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug window</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Βιβλίο διευθύνσεων</value>
   </data>
@@ -148,28 +142,25 @@
     <value>Συναλλαγές</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Διαχειριστής αρχείων ασφαλείας</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Παράθυρο αποσφαλμάτωσης</value>
+    <value>&amp;Διαχειριστής αρχείων ασφαλείας</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Έξοδος</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Εξαγωγή...</value>
+    <value>&amp;Εξαγωγή...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Αρχείο</value>
+    <value>&amp;Αρχείο</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Βοήθεια</value>
+    <value>&amp;Βοήθεια</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Επιλογές</value>
+    <value>&amp;Επιλογές</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_ρυθμίσεις</value>
+    <value>&amp;ρυθμίσεις</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Προετοιμασία...</value>
@@ -298,13 +289,13 @@
     <value>Αντιγραφή</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Όλα τα αρχεία|*</value>
+    <value>Όλα τα αρχεία</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Eκτελέσιμα αρχεία  (*.exe)|*.exe</value>
+    <value>Eκτελέσιμα αρχεία  (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)|*.csv</value>
+    <value>Αρχεία χωρισμένα με κόμμα  (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>μέρες</value>
@@ -334,7 +325,7 @@
     <value>Επικόλληση</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG αρχεία (*.png)|*.png</value>
+    <value>PNG αρχεία (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Μήνυμα:</value>

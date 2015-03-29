@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Demonas</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsolė</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Derinimo langas</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresų knyga</value>
   </data>
@@ -148,28 +142,25 @@
     <value>Pervedimai</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Atsarginių kopijų vadovas</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Derinimo langas</value>
+    <value>&amp;Atsarginių kopijų vadovas</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Išeiti</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Eksportuoti...</value>
+    <value>&amp;Eksportuoti...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Failas</value>
+    <value>&amp;Failas</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Pagalba</value>
+    <value>&amp;Pagalba</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Parinktys</value>
+    <value>&amp;Parinktys</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Nustatymai</value>
+    <value>&amp;Nustatymai</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicijuojama...</value>
@@ -298,13 +289,13 @@
     <value>Kopijuoti adresą</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Visi failai|*</value>
+    <value>Visi failai</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Paleidimas (*.exe)|*.exe</value>
+    <value>Paleidimas (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated failai (*.csv)|*.csv</value>
+    <value>Comma separated failai (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dienos</value>
@@ -334,7 +325,7 @@
     <value>Įklijuoti</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG failai  (*.png)|*.png</value>
+    <value>PNG failai  (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Žinutė:</value>

@@ -1,4 +1,4 @@
-﻿namespace Jojatekok.MoneroGUI
+﻿namespace Jojatekok.MoneroGUI.Desktop
 {
     interface IExportable
     {

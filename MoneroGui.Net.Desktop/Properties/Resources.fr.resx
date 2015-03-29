@@ -129,17 +129,8 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Consoles</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Fenêtre de Débogage</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Carnet d'adresses</value>
-  </data>
-  <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Le Client Monero est en cour de fermeture.</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Aperçu</value>
@@ -147,38 +138,29 @@
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Envoyer des pièces</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_A propos du Client Monero</value>
-  </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Gestionnaire de sauvegarde.</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Fenêtre de Débogage</value>
+    <value>&amp;Gestionnaire de sauvegarde.</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Quitter</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exporter...</value>
+    <value>&amp;Exporter...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fichier</value>
+    <value>&amp;Fichier</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Aide</value>
+    <value>&amp;Aide</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Options</value>
+    <value>&amp;Options</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Configurations</value>
+    <value>&amp;Configurations</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialisation...</value>
@@ -253,7 +235,7 @@
     <value>Inconnu</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>A propos de Monero Client.NET</value>
+    <value>A propos de MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Erreur: Le fichier de licence est introuvable.</value>
@@ -306,20 +288,17 @@
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sauvegarder la base de données avant d'éteindre</value>
   </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Démarrer le Client Monero au démarrage du système</value>
-  </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copier l'adresse</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Tous les fichiers*</value>
+    <value>Tous les fichiers</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Exécutables (*.exe)|*.exe</value>
+    <value>Exécutables (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Fichier séparateur point virgule (*.csv)|*.csv</value>
+    <value>Fichier séparateur point virgule (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>jours</value>
@@ -349,7 +328,7 @@
     <value>Coller</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>Fichier PNG (*.png)|*.png</value>
+    <value>Fichier PNG (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Message:</value>

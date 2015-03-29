@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Демон</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Консоль</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Окно отладки</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Адресная книга</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client завершает работу...</value>
+    <value>MoneroX завершает работу...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Обзор</value>
@@ -147,38 +141,29 @@
   <data name="MainWindowSendCoins" xml:space="preserve">
     <value>Отправить монеты</value>
   </data>
-  <data name="TextClientName" xml:space="preserve">
-    <value>О Monero Client</value>
-  </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Транзакции</value>
   </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>О Monero Client</value>
-  </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Менеджер резервных копий</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Окно отладки</value>
+    <value>&amp;Менеджер резервных копий</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Выход</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Экспорт...</value>
+    <value>&amp;Экспорт...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Файл</value>
+    <value>&amp;Файл</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Помощь</value>
+    <value>&amp;Помощь</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Опции</value>
+    <value>&amp;Опции</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Настройки</value>
+    <value>&amp;Настройки</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Инициализация...</value>
@@ -252,9 +237,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Неизвестно</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>О Monero Client</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Ошибка: файла лицензии не существует.</value>
   </data>
@@ -307,19 +289,19 @@
     <value>Сохранить данные перед выходом</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Запускать Monero Client при старте системы</value>
+    <value>Запускать MoneroX при старте системы</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Копировать адрес</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Все файлы|*</value>
+    <value>Все файлы</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Исполняемые файлы (*.exe)|*.exe</value>
+    <value>Исполняемые файлы (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Файлы через запятую  (*.csv)|*.csv</value>
+    <value>Файлы через запятую  (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>дней</value>
@@ -349,7 +331,7 @@
     <value>Вставить</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG файлы (*.png)|*.png</value>
+    <value>PNG файлы (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Сообщение:</value>

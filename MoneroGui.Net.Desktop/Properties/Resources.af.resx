@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Deamon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsole</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Ontgogga venster</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adres boek</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Klient .NET besig om af te skakel..</value>
+    <value>MoneroX besig om af te skakel..</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Oorsig</value>
@@ -148,37 +142,34 @@
     <value>Stuur munte</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero kliënt. NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksies</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Omtrent Monero kliënt. NET</value>
+    <value>&amp;Omtrent MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Reserwe bestuurder</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Ontgogga venster</value>
+    <value>&amp;Reserwe bestuurder</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Verlaat</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Laai af</value>
+    <value>&amp;Laai af</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Lêer</value>
+    <value>&amp;Lêer</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Hulp</value>
+    <value>&amp;Hulp</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opsies</value>
+    <value>&amp;Opsies</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Instellings</value>
+    <value>&amp;Instellings</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inisialiseer...</value>
@@ -253,7 +244,7 @@
     <value>Onbekend</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Omtrent Monero kliënt. NET</value>
+    <value>Omtrent MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Fout: Die lisensie lêer kan nie gevind word nie.</value>
@@ -310,7 +301,7 @@
     <value>Stoor databasis voor afskakeling</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Begin Monero kliënt. NET tydens die stelsel aantekening</value>
+    <value>Begin MoneroX tydens die stelsel aantekening</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Maak n kopie van die adres</value>
@@ -319,10 +310,10 @@
     <value>Alle lêers</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Uitvoerbare (*.exe)|*.exe</value>
+    <value>Uitvoerbare (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Komma gespasieerde lêer (*.csv)|*.csv</value>
+    <value>Komma gespasieerde lêer (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dae</value>
@@ -352,7 +343,7 @@
     <value>Plak</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG lêers (*.png)|*.png</value>
+    <value>PNG lêers (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Boodskap:</value>

@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Servis</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzola</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug prozor</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresar</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NET se isključuje...</value>
+    <value>MoneroX se isključuje...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Pregled</value>
@@ -148,46 +142,40 @@
     <value>Pošalji novac</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcije</value>
   </data>
-  <data name="MenuAbout" xml:space="preserve">
-    <value>_About Monero Client .NET</value>
-  </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Menadžer rezervne kopije</value>
+    <value>&amp;Menadžer rezervne kopije</value>
   </data>
   <data name="MenuChangeAccountPassphrase" xml:space="preserve">
-    <value>_Promena lozinke računa...</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug prozor</value>
+    <value>&amp;Promena lozinke računa...</value>
   </data>
   <data name="MenuEncryptAccount" xml:space="preserve">
-    <value>_Enkriptuj račun...</value>
+    <value>&amp;Enkriptuj račun...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Izlaz</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Izvezi</value>
+    <value>&amp;Izvezi</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fajl</value>
+    <value>&amp;Fajl</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Pomoć</value>
+    <value>&amp;Pomoć</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opcije</value>
+    <value>&amp;Opcije</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Podešavanja</value>
+    <value>&amp;Podešavanja</value>
   </data>
   <data name="MenuUnlockAccount" xml:space="preserve">
-    <value>_Otključaj račun...</value>
+    <value>&amp;Otključaj račun...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicijalizacija...</value>
@@ -264,9 +252,6 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
   </data>
-  <data name="AboutWindowTitle" xml:space="preserve">
-    <value>About Monero Client .NET</value>
-  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Greška: Licencni fajl ne može biti pronađen.</value>
   </data>
@@ -327,23 +312,20 @@
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
   </data>
-  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Client .NET on system login</value>
-  </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Svi fajlovi|*</value>
+    <value>Svi fajlovi</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Izvršni (*.exe)|*.exe</value>
+    <value>Izvršni (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Fajlovi računa (*.bin)|*.bin</value>
+    <value>Fajlovi računa (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Fajl sa odvajajućim zarezima (*.csv)|*.csv</value>
+    <value>Fajl sa odvajajućim zarezima (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dana</value>
@@ -373,7 +355,7 @@
     <value>Nalepi</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fajlovi (*.png)|*.png</value>
+    <value>PNG fajlovi (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Poruka:</value>

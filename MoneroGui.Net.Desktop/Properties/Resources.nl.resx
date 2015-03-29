@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Consoles</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug venster</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresboek</value>
   </data>
@@ -148,28 +142,25 @@
     <value>Vertalingen</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Backup manager</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug venster</value>
+    <value>&amp;Backup manager</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exporteer...</value>
+    <value>&amp;Exporteer...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Bestand</value>
+    <value>&amp;Bestand</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Help</value>
+    <value>&amp;Help</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opties</value>
+    <value>&amp;Opties</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Instellingen</value>
+    <value>&amp;Instellingen</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initialiseren...</value>
@@ -298,13 +289,13 @@
     <value>Kopieer adres</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Alle bestanden|*</value>
+    <value>Alle bestanden</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executables (*.exe)|*.exe</value>
+    <value>Executables (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated file (*.csv)|*.csv</value>
+    <value>Comma separated file (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dagen</value>
@@ -334,7 +325,7 @@
     <value>Plakken</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG bestanden (*.png)|*.png</value>
+    <value>PNG bestanden (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Bericht:</value>

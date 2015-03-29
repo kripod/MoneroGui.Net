@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>守护进程</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>日志信息</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>调试窗口</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>地址簿</value>
   </data>
@@ -154,31 +148,28 @@
     <value>交易记录</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_关于门罗币.NET客户端</value>
+    <value>&amp;关于门罗币.NET客户端</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_备份管理</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_调试窗口</value>
+    <value>&amp;备份管理</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>退出</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_导出...</value>
+    <value>&amp;导出...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_文件</value>
+    <value>&amp;文件</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_帮助</value>
+    <value>&amp;帮助</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_选项</value>
+    <value>&amp;选项</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_设置</value>
+    <value>&amp;设置</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>初始化中...</value>
@@ -313,13 +304,13 @@
     <value>复制地址</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>所有文件|*</value>
+    <value>所有文件</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>可执行程序 (*.exe)|*.exe</value>
+    <value>可执行程序 (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>逗号分隔文件 (*.csv)|*.csv</value>
+    <value>逗号分隔文件 (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>天</value>
@@ -349,7 +340,7 @@
     <value>粘贴</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG 文件 (*.png)|*.png</value>
+    <value>PNG 文件 (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>消息：</value>
@@ -515,14 +506,5 @@
   <data name="StatusBarStatusTextMain" xml:space="preserve">
     <value>已下载 {0} of {1}历史交易区块 ({2}% 完成).
 最新接收区块 {3} 以前</value>
-  </data>
-  <data name="MainWindowUpdateError" xml:space="preserve">
-    <value>Failed to check for updates.</value>
-  </data>
-  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
-    <value>An update is available (v{0}). Do you want to apply it now?</value>
-  </data>
-  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
-    <value>Update available</value>
   </data>
 </root>

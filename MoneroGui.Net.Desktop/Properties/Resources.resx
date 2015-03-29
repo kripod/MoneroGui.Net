@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Consoles</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debug window</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Address book</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NET is shutting down...</value>
+    <value>MoneroX is shutting down...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Overview</value>
@@ -148,46 +142,43 @@
     <value>Send coins</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transactions</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_About Monero Client .NET</value>
+    <value>&amp;About MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Backup manager</value>
+    <value>&amp;Backup manager</value>
   </data>
   <data name="MenuChangeAccountPassphrase" xml:space="preserve">
-    <value>_Change account passphrase...</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug window</value>
+    <value>&amp;Change account passphrase...</value>
   </data>
   <data name="MenuEncryptAccount" xml:space="preserve">
-    <value>_Encrypt account...</value>
+    <value>&amp;Encrypt account...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Export...</value>
+    <value>&amp;Export...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_File</value>
+    <value>&amp;File</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Help</value>
+    <value>&amp;Help</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Options</value>
+    <value>&amp;Options</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Settings</value>
+    <value>&amp;Settings</value>
   </data>
   <data name="MenuUnlockAccount" xml:space="preserve">
-    <value>_Unlock account...</value>
+    <value>&amp;Unlock account...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initializing...</value>
@@ -265,7 +256,7 @@
     <value>Unknown</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>About Monero Client .NET</value>
+    <value>About MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Error: The license file cannot be found.</value>
@@ -328,22 +319,22 @@
     <value>Save databases before shutdown</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Start Monero Client .NET on system login</value>
+    <value>Start MoneroX on system login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copy address</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>All files|*</value>
+    <value>All files</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executables (*.exe)|*.exe</value>
+    <value>Executables (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Account files (*.bin)|*.bin</value>
+    <value>Account files (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Comma separated file (*.csv)|*.csv</value>
+    <value>Comma separated file (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>days</value>
@@ -373,7 +364,7 @@
     <value>Paste</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG files (*.png)|*.png</value>
+    <value>PNG files (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Message:</value>

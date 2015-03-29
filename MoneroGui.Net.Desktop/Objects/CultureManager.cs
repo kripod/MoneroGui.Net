@@ -5,10 +5,8 @@ using System.Linq;
 using System.Resources;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Data;
 
-namespace Jojatekok.MoneroGUI
+namespace Jojatekok.MoneroGUI.Desktop
 {
     static class CultureManager
     {
@@ -37,25 +35,12 @@ namespace Jojatekok.MoneroGUI
             }
         }
 
-        private static ObjectDataProvider _resourceProvider;
-        public static ObjectDataProvider ResourceProvider {
-            get {
-                if (_resourceProvider == null) {
-                    _resourceProvider = (ObjectDataProvider)Application.Current.FindResource("Resources");
-                }
-
-                return _resourceProvider;
-            }
-        }
-
-        private static readonly Properties.Resources ResourceInstance = new Properties.Resources();
-        public static Properties.Resources GetResourceInstance()
+        public static void Initialize()
         {
-            return ResourceInstance;
-        }
+            var languageCode = SettingsManager.Appearance.LanguageCode;
+            var languageCulture = languageCode == Utilities.DefaultLanguageCode ? Utilities.DefaultUiCulture : new CultureInfo(languageCode);
+            CurrentCulture = languageCulture;
 
-        static CultureManager()
-        {
             Task.Factory.StartNew(LoadCultures);
         }
 
@@ -67,7 +52,7 @@ namespace Jojatekok.MoneroGUI
 
             for (var i = cultures.Length - 1; i >= 0; i--) {
                 var culture = cultures[i];
-                if (Equals(culture, Helper.InvariantCulture)) continue;
+                if (Equals(culture, Utilities.InvariantCulture)) continue;
 
                 if (resourceManager.GetResourceSet(culture, true, false) != null) {
                     supportedCultures.Add(culture);
@@ -75,7 +60,7 @@ namespace Jojatekok.MoneroGUI
             }
 
             supportedCultures = supportedCultures.OrderBy(x => x.ThreeLetterWindowsLanguageName).ToList();
-            supportedCultures.Insert(0, Helper.InvariantCulture);
+            supportedCultures.Insert(0, Utilities.InvariantCulture);
             SupportedLanguageCultures = supportedCultures;
 
             var supportedStrings = new string[supportedCultures.Count];
@@ -84,7 +69,7 @@ namespace Jojatekok.MoneroGUI
                 var culture = supportedCultures[i];
                 var nativeName = culture.NativeName.UppercaseFirst();
                 var displayName = culture.EnglishName.UppercaseFirst();
-                
+
                 var bracketIndex = nativeName.IndexOf('(');
                 if (bracketIndex >= 0) {
                     nativeName = nativeName.Substring(0, bracketIndex - 1);
@@ -97,7 +82,7 @@ namespace Jojatekok.MoneroGUI
 
                 var stringFormat = nativeName != displayName ? "{0}	{1} ({2})" : "{0}	{1}";
                 supportedStrings[i] = string.Format(
-                    Helper.InvariantCulture,
+                    Utilities.InvariantCulture,
                     stringFormat,
                     culture.ThreeLetterWindowsLanguageName,
                     nativeName,
@@ -112,21 +97,19 @@ namespace Jojatekok.MoneroGUI
         public static void SetCulture(CultureInfo culture)
         {
             // Save settings
-            if (!Equals(culture, Helper.InvariantCulture)) {
+            if (!Equals(culture, Utilities.InvariantCulture)) {
                 SettingsManager.Appearance.LanguageCode = culture.ToString();
 
             } else {
-                SettingsManager.Appearance.LanguageCode = StaticObjects.DefaultLanguageCode;
-                culture = Helper.DefaultUiCulture;
+                SettingsManager.Appearance.LanguageCode = Utilities.DefaultLanguageCode;
+                culture = Utilities.DefaultUiCulture;
             }
 
             // Apply changes only if necessary
             if (culture.ToString() == CurrentCulture.ToString()) return;
             CurrentCulture = culture;
-            ResourceProvider.Refresh();
 
-            // Manually update views which use converters
-            StaticObjects.MainWindow.TransactionsView.DataGridTransactions.Items.Refresh();
+            Utilities.MainForm.UpdateLanguage();
         }
     }
 }

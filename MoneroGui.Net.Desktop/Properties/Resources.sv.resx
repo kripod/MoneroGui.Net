@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsoler</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Debugfönster</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adressbok</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NET stängs ner...</value>
+    <value>MoneroX stängs ner...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Översikt</value>
@@ -148,37 +142,34 @@
     <value>Skicka mynt</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaktioner</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Om Monero Client .Net</value>
+    <value>&amp;Om MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Backuphanterare</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Debug fönster</value>
+    <value>&amp;Backuphanterare</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Avsluta</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportera...</value>
+    <value>&amp;Exportera...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Arkiv</value>
+    <value>&amp;Arkiv</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Hjälp</value>
+    <value>&amp;Hjälp</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Alternativ</value>
+    <value>&amp;Alternativ</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Inställningar</value>
+    <value>&amp;Inställningar</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Initierar...</value>
@@ -253,7 +244,7 @@
     <value>Okänt</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Om Monero Client .Net</value>
+    <value>Om MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Error: Licensfilen kan inte hittas</value>
@@ -307,19 +298,19 @@
     <value>Spara databaser innan nedstängning</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Starta Monero Client .NET vid systemlogin</value>
+    <value>Starta MoneroX vid systemlogin</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiera adress</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Alla filer|*</value>
+    <value>Alla filer</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Exekverbara (*.exe)|*.exe</value>
+    <value>Exekverbara (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Kommaseparerad fil (*.csv)|*.csv</value>
+    <value>Kommaseparerad fil (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dagar</value>
@@ -349,7 +340,7 @@
     <value>Klistra in</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG filer (*.png)|*.png</value>
+    <value>PNG filer (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Meddelande:</value>

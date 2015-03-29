@@ -126,20 +126,14 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzolok</value>
-  </data>
   <data name="TextInformation" xml:space="preserve">
     <value>Információ</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Hibakereső ablak</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Címjegyzék</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>A Monero Kliens .NET leáll...</value>
+    <value>A MoneroX leáll...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Áttekintés</value>
@@ -148,46 +142,43 @@
     <value>Érmék küldése</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Kliens .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Tranzakciók</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_A Monero Kliens .NET-ről</value>
+    <value>&amp;A MoneroX-ról</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Biztonsági mentés kezelő</value>
+    <value>&amp;Biztonsági mentés kezelő</value>
   </data>
   <data name="MenuChangeAccountPassphrase" xml:space="preserve">
-    <value>Számla jelkódjának _megváltoztatása...</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Hibakereső ablak</value>
+    <value>Számla jelkódjának &amp;megváltoztatása...</value>
   </data>
   <data name="MenuEncryptAccount" xml:space="preserve">
-    <value>Számla _kódolása...</value>
+    <value>Számla &amp;kódolása...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Kilépés</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportálás...</value>
+    <value>&amp;Exportálás...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Fájl</value>
+    <value>&amp;Fájl</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Súgó</value>
+    <value>&amp;Súgó</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opciók</value>
+    <value>&amp;Opciók</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Beállítások</value>
+    <value>&amp;Beállítások</value>
   </data>
   <data name="MenuUnlockAccount" xml:space="preserve">
-    <value>Számla _feloldása...</value>
+    <value>Számla &amp;feloldása...</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializálás...</value>
@@ -268,7 +259,7 @@
     <value>Ismeretlen</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>A Monero Kliens .NET-ről</value>
+    <value>A MoneroX-ról</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Hiba: A licencfájl nem található.</value>
@@ -331,22 +322,22 @@
     <value>Adatbázisok mentése kilépés előtt</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>A Monero Kliens .NET indítása bejelentkezéskor</value>
+    <value>A MoneroX indítása bejelentkezéskor</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Cím másolása</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Minden fájl|*</value>
+    <value>Minden fájl</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Programok (*.exe)|*.exe</value>
+    <value>Programok (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>Számla fájlok (*.bin)|*.bin</value>
+    <value>Számla fájlok (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Vesszővel elválasztott fájl (*.csv)|*.csv</value>
+    <value>Vesszővel elválasztott fájl (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>nap</value>
@@ -376,7 +367,7 @@
     <value>Beillesztés</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG fájlok (*.png)|*.png</value>
+    <value>PNG fájlok (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Üzenet:</value>

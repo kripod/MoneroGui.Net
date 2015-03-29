@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>デーモン</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>コンソール</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>デバッグウィンドウ</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>アドレス帳</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Client .NETがシャットダウンしています...</value>
+    <value>MoneroXがシャットダウンしています...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>概要</value>
@@ -148,37 +142,34 @@
     <value>コインを送る</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Client .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>取引</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>Monero Client .NETについて (_A)</value>
+    <value>MoneroXについて (&amp;A)</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>バックアップマネージャ (_B)</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>デバッグウィンドウ (_D)</value>
+    <value>バックアップマネージャ (&amp;B)</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>終了</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>エクスポート... (_E)</value>
+    <value>エクスポート... (&amp;E)</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>ファイル (_F)</value>
+    <value>ファイル (&amp;F)</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>ヘルプ (_H)</value>
+    <value>ヘルプ (&amp;H)</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>オプション (_O)</value>
+    <value>オプション (&amp;O)</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>設定 (_S)</value>
+    <value>設定 (&amp;S)</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>イニシアライジング...</value>
@@ -253,7 +244,7 @@
     <value>不明</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Monero Client .NETについて</value>
+    <value>MoneroXについて</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>エラー：ライセンスのファイルが見つかりませんでした</value>
@@ -307,19 +298,19 @@
     <value>シャットダウンの時にデータベースをセーブする</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>システムにログインした時にMonero Client .NETを起動</value>
+    <value>システムにログインした時にMoneroXを起動</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>アドレスをコピーする</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>全てのファイル|*</value>
+    <value>全てのファイル</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>実行可能のファイル (*.exe)|*.exe</value>
+    <value>実行可能のファイル (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>コンマで区切られたファイル (*.csv)|*.csv</value>
+    <value>コンマで区切られたファイル (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>日</value>
@@ -349,7 +340,7 @@
     <value>貼付ける</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNGのファイル (*.png)|*.png</value>
+    <value>PNGのファイル (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>メッセージ:</value>

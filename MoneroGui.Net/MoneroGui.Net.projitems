@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{2a583b7b-00bf-4e1b-aae6-789599834f86}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Jojatekok.MoneroGUI</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Add.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Browse.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator0.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator1.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator2.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator3.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\ConnectionCountIndicator4.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Contact.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Copy.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Delete.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Edit.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Exit.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Export.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Information.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Key.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Ok.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Open.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Options.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Overview.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Paste.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\QrCode.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Restore.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Save.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Send.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Synchronize.png" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Images\Transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon-192x192.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Icon.svg" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.ai" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Logo\Logo.svg" />
+  </ItemGroup>
+</Project>

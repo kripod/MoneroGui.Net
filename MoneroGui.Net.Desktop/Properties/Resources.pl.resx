@@ -129,12 +129,6 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Demon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsole</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Okno debugowania</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Książka adresowa</value>
   </data>
@@ -148,28 +142,25 @@
     <value>Transakcje</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Menedżer kopii zapasowych</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Okno debugowania</value>
+    <value>&amp;Menedżer kopii zapasowych</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Wyjdź</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Eksport...</value>
+    <value>&amp;Eksport...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Plik</value>
+    <value>&amp;Plik</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Pomoc</value>
+    <value>&amp;Pomoc</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opcje</value>
+    <value>&amp;Opcje</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Ustawienia</value>
+    <value>&amp;Ustawienia</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicjowanie...</value>
@@ -298,13 +289,13 @@
     <value>Kopiuj adres</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Wszystkie pliki|*</value>
+    <value>Wszystkie pliki</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Pliki wykonywalne (*.exe)|*.exe</value>
+    <value>Pliki wykonywalne (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Plik rozdzielony przecinkami (*.csv)|*.csv</value>
+    <value>Plik rozdzielony przecinkami (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dni</value>
@@ -334,7 +325,7 @@
     <value>Wklej</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>Pliki PNG (*.png)|*.png</value>
+    <value>Pliki PNG (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Wiadomość:</value>

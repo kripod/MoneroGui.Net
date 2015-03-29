@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Terminal</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Janela de depuração</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Agenda</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>O Cliente Monero .NET está encerrando...</value>
+    <value>O MoneroX está encerrando...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Visão geral</value>
@@ -148,37 +142,34 @@
     <value>Enviar moedas</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Cliente Monero .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transações</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Sobre o Cliente Monero .NET</value>
+    <value>&amp;Sobre o MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Gestor de backup</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Janela de depuração</value>
+    <value>&amp;Gestor de backup</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Sair</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportar...</value>
+    <value>&amp;Exportar...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Arquivo</value>
+    <value>&amp;Arquivo</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Ajuda</value>
+    <value>&amp;Ajuda</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Opções</value>
+    <value>&amp;Opções</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Preferências</value>
+    <value>&amp;Preferências</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializando...</value>
@@ -253,7 +244,7 @@
     <value>Desconhecido</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Sobre o Cliente Monero .NET</value>
+    <value>Sobre o MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Erro: O arquivo de licença não pode ser encontrado.</value>
@@ -307,19 +298,19 @@
     <value>Gravar bases de dados antes de encerrar</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Iniciar o Cliente Monero .NET no login do sistema</value>
+    <value>Iniciar o MoneroX no login do sistema</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Copiar endereço</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Todos os arquivos|*</value>
+    <value>Todos os arquivos</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executáveis (*.exe)|*.exe</value>
+    <value>Executáveis (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Arquivo de valores separados por vírgula (*.csv)|*.csv</value>
+    <value>Arquivo de valores separados por vírgula (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dias</value>
@@ -349,7 +340,7 @@
     <value>Colar</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>Arquivos PNG (*.png)|*.png</value>
+    <value>Arquivos PNG (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Mensagem:</value>

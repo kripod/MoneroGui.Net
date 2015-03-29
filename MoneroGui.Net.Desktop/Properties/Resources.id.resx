@@ -129,17 +129,11 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Daemon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konsol</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Jendela Debug</value>
-  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Buku Alamat</value>
   </data>
   <data name="TaskbarShutdown" xml:space="preserve">
-    <value>Monero Klien NET di matikan ...</value>
+    <value>MoneroX di matikan ...</value>
   </data>
   <data name="MainWindowOverview" xml:space="preserve">
     <value>Ikhtisar</value>
@@ -148,46 +142,43 @@
     <value>Kirim Koin</value>
   </data>
   <data name="TextClientName" xml:space="preserve">
-    <value>Monero Klient .NET</value>
+    <value>MoneroX</value>
   </data>
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transaksi</value>
   </data>
   <data name="MenuAbout" xml:space="preserve">
-    <value>_Tentang Monero Klien .NET</value>
+    <value>&amp;Tentang MoneroX</value>
   </data>
   <data name="MenuBackupManager" xml:space="preserve">
-    <value>_Manajer backup</value>
+    <value>&amp;Manajer backup</value>
   </data>
   <data name="MenuChangeAccountPassphrase" xml:space="preserve">
-    <value>_Ubah passphrase akun...</value>
-  </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Jendela debug</value>
+    <value>&amp;Ubah passphrase akun...</value>
   </data>
   <data name="MenuEncryptAccount" xml:space="preserve">
-    <value>_Enkripsi akun ...</value>
+    <value>&amp;Enkripsi akun ...</value>
   </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Keluar</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Export...</value>
+    <value>&amp;Export...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Berkas</value>
+    <value>&amp;Berkas</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Bantuan</value>
+    <value>&amp;Bantuan</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Pilihan</value>
+    <value>&amp;Pilihan</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Pengaturan</value>
+    <value>&amp;Pengaturan</value>
   </data>
   <data name="MenuUnlockAccount" xml:space="preserve">
-    <value>_Aktifkan akun</value>
+    <value>&amp;Aktifkan akun</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Memulai ...</value>
@@ -265,7 +256,7 @@
     <value>Tidak diketahui</value>
   </data>
   <data name="AboutWindowTitle" xml:space="preserve">
-    <value>Tentang Monero Klien .NET</value>
+    <value>Tentang MoneroX</value>
   </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Kesalahan: Berkas lisensi tidak dapat ditemukan.</value>
@@ -329,22 +320,22 @@
     <value>Simpan database sebelum dimatikan</value>
   </data>
   <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
-    <value>Mulai Monero Klien NET pada sistem login</value>
+    <value>Mulai MoneroX pada sistem login</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Salin alamat</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Semua file*</value>
+    <value>Semua file</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Executable (exe *) | * exe</value>
+    <value>Executable (*.exe)</value>
   </data>
   <data name="TextFilterAccountFiles" xml:space="preserve">
-    <value>File Akun (* bin) | * bin</value>
+    <value>File Akun (*.wallet;*.bin)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Koma berkas terpisah (* .csv) | * .csv</value>
+    <value>Koma berkas terpisah (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>hari</value>
@@ -374,7 +365,7 @@
     <value>Tempelkan</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG file (* png) | * png</value>
+    <value>PNG file (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Pesan:</value>

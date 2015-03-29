@@ -129,14 +129,8 @@
   <data name="TextDaemon" xml:space="preserve">
     <value>Démon</value>
   </data>
-  <data name="DebugWindowConsoles" xml:space="preserve">
-    <value>Konzoly</value>
-  </data>
   <data name="TextInformation" xml:space="preserve">
     <value>Informácia</value>
-  </data>
-  <data name="DebugWindowTitle" xml:space="preserve">
-    <value>Ladiace okno</value>
   </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Adresár</value>
@@ -150,26 +144,23 @@
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcie</value>
   </data>
-  <data name="MenuDebugWindow" xml:space="preserve">
-    <value>_Ladiace okno</value>
-  </data>
   <data name="MenuExit" xml:space="preserve">
     <value>Ukonči program</value>
   </data>
   <data name="MenuExport" xml:space="preserve">
-    <value>_Exportuj...</value>
+    <value>&amp;Exportuj...</value>
   </data>
   <data name="MenuFile" xml:space="preserve">
-    <value>_Súbor</value>
+    <value>&amp;Súbor</value>
   </data>
   <data name="MenuHelp" xml:space="preserve">
-    <value>_Nápoveď</value>
+    <value>&amp;Nápoveď</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Možnosti</value>
+    <value>&amp;Možnosti</value>
   </data>
   <data name="MenuSettings" xml:space="preserve">
-    <value>_Nastavenia</value>
+    <value>&amp;Nastavenia</value>
   </data>
   <data name="OverviewInitializing" xml:space="preserve">
     <value>Inicializácia...</value>
@@ -298,13 +289,13 @@
     <value>Kopíruj adresu</value>
   </data>
   <data name="TextFilterAllFiles" xml:space="preserve">
-    <value>Všetky súbory|*</value>
+    <value>Všetky súbory</value>
   </data>
   <data name="TextFilterExecutableFiles" xml:space="preserve">
-    <value>Spustiteľné (*.exe)|*.exe</value>
+    <value>Spustiteľné (*.exe)</value>
   </data>
   <data name="TextFilterCsvFiles" xml:space="preserve">
-    <value>Čiarkou oddelený súbor (*.csv)|*.csv</value>
+    <value>Čiarkou oddelený súbor (*.csv)</value>
   </data>
   <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
     <value>dni</value>
@@ -334,7 +325,7 @@
     <value>Prilep</value>
   </data>
   <data name="TextFilterPngFiles" xml:space="preserve">
-    <value>PNG súbory (*.png)|*.png</value>
+    <value>PNG súbory (*.png)</value>
   </data>
   <data name="TextMessage" xml:space="preserve">
     <value>Správa:</value>
