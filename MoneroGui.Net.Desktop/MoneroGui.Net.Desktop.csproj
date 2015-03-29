@@ -68,10 +68,10 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="MoneroApi.Net">
-      <HintPath>..\packages\MoneroApi.Net.6.2.2\lib\net40\MoneroApi.Net.dll</HintPath>
+      <HintPath>..\packages\MoneroApi.Net.6.3.0\lib\net40\MoneroApi.Net.dll</HintPath>
     </Reference>
     <Reference Include="MoneroApi.Net.Extensions">
-      <HintPath>..\packages\MoneroApi.Net.6.2.2\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
+      <HintPath>..\packages\MoneroApi.Net.6.3.0\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="MonoMac">
       <HintPath>..\packages\Eto.Platform.Mac.2.0.7\lib\net45\MonoMac.dll</HintPath>

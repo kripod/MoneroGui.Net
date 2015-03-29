@@ -27,6 +27,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
+            AbortButton.Click += delegate { Close(null); };
 
             Content = new TableLayout(
                 new Label { Text = MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowInstruction },

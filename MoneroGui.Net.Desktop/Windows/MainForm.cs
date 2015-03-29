@@ -55,12 +55,18 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         static void OnFormClosed(object sender, EventArgs e)
         {
+            var isSafeShutdownAllowed = IsSafeShutdownAllowed && SettingsManager.General.IsSafeShutdownEnabled;
+
             if (Utilities.MoneroRpcManager != null) {
-                Utilities.MoneroRpcManager.Dispose();
+                if (isSafeShutdownAllowed) {
+                    Utilities.MoneroRpcManager.DisposeSafely();
+                } else {
+                    Utilities.MoneroRpcManager.Dispose();
+                }
             }
 
             if (Utilities.MoneroProcessManager != null) {
-                if (IsSafeShutdownAllowed && SettingsManager.General.IsSafeShutdownEnabled) {
+                if (isSafeShutdownAllowed) {
                     Utilities.MoneroProcessManager.DisposeSafely();
                 } else {
                     Utilities.MoneroProcessManager.Dispose();

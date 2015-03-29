@@ -69,6 +69,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
+            AbortButton.Click += delegate { Close(); };
 
             Content = new TableLayout(
                 new TableRow(new TableCell(TabControlMain)) { ScaleHeight = true },
