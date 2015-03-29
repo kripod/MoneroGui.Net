@@ -33,7 +33,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             this.SetWindowProperties(
                 () => MoneroGUI.Desktop.Properties.Resources.TextClientName,
-                new Size(850, 570)
+                new Size(850, 570),
+                new Size(640, 480)
             );
             this.SetLocationToCenterScreen();
 

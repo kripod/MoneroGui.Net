@@ -9,7 +9,7 @@ namespace Jojatekok.MoneroGUI.Desktop
 {
     static class ExtensionMethods
     {
-        public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, bool isMinimumSizeCustom = false)
+        public static void SetWindowProperties(this Form form, Func<string> titleBindingPath, Size size, Size minimumSize = default(Size))
         {
             form.Icon = Utilities.ApplicationIcon;
 
@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Desktop
             ));
 
             form.Size = size;
-            if (!isMinimumSizeCustom) form.MinimumSize = size;
+            form.MinimumSize = minimumSize;
 
             form.BackgroundColor = Colors.White;
         }
