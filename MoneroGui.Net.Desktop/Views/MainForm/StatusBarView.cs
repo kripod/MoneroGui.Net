@@ -31,9 +31,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             LabelSyncStatus.BindDataContext<string>("Text", "SyncStatusText");
             LabelConnectionCount.BindDataContext<string>("Text", "ConnectionCountText");
 
-            ImageViewSyncStatus.BindDataContext<Image>("Image", "SyncStatusIndicatorImage");
+            // TODO: Make image bindings work on Linux
+            //ImageViewSyncStatus.BindDataContext<Image>("Image", "SyncStatusIndicatorImage");
             ImageViewSyncStatus.BindDataContext<string>("ToolTip", "SyncStatusIndicatorText");
-            ImageViewConnectionCount.BindDataContext<Image>("Image", "ConnectionCountIndicatorImage");
+            //ImageViewConnectionCount.BindDataContext<Image>("Image", "ConnectionCountIndicatorImage");
+            ImageViewSyncStatus.Image = ViewModel.SyncStatusIndicatorImage;
+            ImageViewConnectionCount.Image = ViewModel.ConnectionCountIndicatorImage;
 
             ProgressBarSyncStatus.MaxValue = 10000;
             ProgressBarSyncStatus.BindDataContext<bool>("Visible", "IsSyncBarVisible");
