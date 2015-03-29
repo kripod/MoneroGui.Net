@@ -46,9 +46,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             RenderMenu();
             RenderContent();
 
-#if DEBUG
-            if (SettingsManager.General.IsUpdateCheckEnabled) {
-                Task.Factory.StartNew(CheckForUpdates);
+#if !DEBUG
+            // TODO: Add support for Mac
+            if (Utilities.RunningPlatformId == PlatformID.Win32NT) {
+                if (SettingsManager.General.IsUpdateCheckEnabled) {
+                    Task.Factory.StartNew(CheckForUpdates);
+                }
             }
 #endif
         }
@@ -113,9 +116,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         }
                     }
 
-                    //TODO: Remove the line below
-                    latestVersionString = "0.41.1";
-
                     var releasesUrlBase = versionInfo["ReleasesUrlBase"];
                     
                     var applicationBaseDirectory = Utilities.ApplicationBaseDirectory;
@@ -128,8 +128,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         var platformString = Utilities.GetRunningPlatformName();
                         var processorArchitectureString = Environment.Is64BitOperatingSystem ? "x64" : "x86";
 
-                        //TODO: Add platformString + "-" before processorArchitectureString
-                        webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
+                        webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, platformString + "-" + processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
                     }
 
                     Utilities.SyncContextMain.Post(s => {

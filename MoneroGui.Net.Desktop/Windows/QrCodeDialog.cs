@@ -262,15 +262,22 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 };
 
                 using (var bitmap = writer.Write(QrUri)) {
-                    Utilities.SyncContextMain.Send(s => {
-// ReSharper disable AccessToDisposedClosure
-                        ImageViewQrCode.Image = new Bitmap(Utilities.SystemImageConverter.ConvertTo(bitmap, typeof(byte[])) as byte[]);
-                        bitmap.Dispose();
-// ReSharper restore AccessToDisposedClosure
-                        QrUriErrorMessage = string.Empty;
-                    }, null);
+                    if (Utilities.RunningPlatformId == PlatformID.Win32NT) {
+// ReSharper disable once AccessToDisposedClosure
+                        Utilities.SyncContextMain.Send(s => SetQrCodeImageSource(bitmap), null);
+                    } else {
+                        SetQrCodeImageSource(bitmap);
+                    }
                 }
             });
+        }
+
+        void SetQrCodeImageSource(System.Drawing.Bitmap bitmap)
+        {
+            ImageViewQrCode.Image = new Bitmap(Utilities.SystemImageConverter.ConvertTo(bitmap, typeof(byte[])) as byte[]);
+            bitmap.Dispose();
+
+            QrUriErrorMessage = string.Empty;
         }
 
         void OnButtonSaveAsClick(object sender, EventArgs e)

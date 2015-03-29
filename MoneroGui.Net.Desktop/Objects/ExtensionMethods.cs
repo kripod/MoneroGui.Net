@@ -19,7 +19,9 @@ namespace Jojatekok.MoneroGUI.Desktop
             ));
 
             form.Size = size;
-            form.MinimumSize = minimumSize;
+            if (Utilities.RunningPlatformId != PlatformID.Unix) {
+                form.MinimumSize = minimumSize;
+            }
 
             form.BackgroundColor = Colors.White;
         }
