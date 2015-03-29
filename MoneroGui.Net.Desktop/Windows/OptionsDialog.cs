@@ -1,12 +1,15 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
 using Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog;
+using System;
 using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class OptionsDialog : Dialog
     {
+        private TabControl TabControlMain { get; set; }
+
         public OptionsDialog()
         {
             this.SetWindowProperties(
@@ -21,8 +24,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             Padding = new Padding(Utilities.Padding4);
 
-            var tabControl = new TabControl();
-            var tabControlPages = tabControl.Pages;
+            TabControlMain = new TabControl();
+            var tabControlPages = TabControlMain.Pages;
             tabControlPages.Add(new TabPage {
                 Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneral,
                 Content = new GeneralView()
@@ -41,11 +44,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             });
 
             // Make the window automatically sized
-            tabControl.SelectedIndex = 2;
-            SizeChanged += delegate {
-                MinimumSize = Size;
-                tabControl.SelectedIndex = 0;
-            };
+            TabControlMain.SelectedIndex = 2;
+            SizeChanged += OnDialogSizeChanged;
 
             for (var i = tabControlPages.Count - 1; i >= 0; i--) {
                 tabControlPages[i].Padding = new Padding(Utilities.Padding3);
@@ -71,7 +71,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             AbortButton = buttonCancel;
 
             Content = new TableLayout(
-                new TableRow(new TableCell(tabControl)) { ScaleHeight = true },
+                new TableRow(new TableCell(TabControlMain)) { ScaleHeight = true },
 
                 new TableRow(
                     new TableLayout(
@@ -83,6 +83,14 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     ) { Spacing = Utilities.Spacing3 }
                 )
             ) { Spacing = Utilities.Spacing3 };
+        }
+
+        void OnDialogSizeChanged(object sender, EventArgs e)
+        {
+            MinimumSize = Size;
+            TabControlMain.SelectedIndex = 0;
+
+            SizeChanged -= OnDialogSizeChanged;
         }
     }
 }
