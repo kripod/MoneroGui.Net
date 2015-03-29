@@ -66,7 +66,7 @@ namespace Jojatekok.MoneroGUI.Desktop
 
         public static readonly Version ApplicationVersionComparable = ApplicationAssemblyName.Version;
         public const string ApplicationVersionExtra = "";
-        public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra != null ? "-" + ApplicationVersionExtra : null);
+        public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra.Length != 0 ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Icon.ico");
 

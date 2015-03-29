@@ -110,6 +110,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
                             var latestVersionExtraSplit = latestVersionStringSplit[1].Split('.');
                             var applicationVersionExtraSplit = Utilities.ApplicationVersionExtra.Split('.');
+                            if (applicationVersionExtraSplit.Length < 2) return;
+
                             if (latestVersionExtraSplit[0][0] <= applicationVersionExtraSplit[0][0] && byte.Parse(latestVersionExtraSplit[1]) <= byte.Parse(applicationVersionExtraSplit[1])) {
                                 return;
                             }
