@@ -194,6 +194,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.el.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.fi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.fi.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.fr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -289,6 +294,10 @@
     <EmbeddedResource Include="Properties\Resources.el.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.el.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.fi.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.fi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>

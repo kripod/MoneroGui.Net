@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TextCurrencyCode" xml:space="preserve">
+    <value>XMR</value>
+  </data>
+  <data name="TextClear" xml:space="preserve">
+    <value>Tyhjennä</value>
+  </data>
+  <data name="TextSend" xml:space="preserve">
+    <value>Lähetä</value>
+  </data>
+  <data name="TextAddressBook" xml:space="preserve">
+    <value>Osoitekirja</value>
+  </data>
+  <data name="TaskbarShutdown" xml:space="preserve">
+    <value>MoneroX suljetaan...</value>
+  </data>
+  <data name="MainWindowOverview" xml:space="preserve">
+    <value>Yleiskatsaus</value>
+  </data>
+  <data name="MainWindowSendCoins" xml:space="preserve">
+    <value>Lähetä kolikoita</value>
+  </data>
+  <data name="TextClientName" xml:space="preserve">
+    <value>MoneroX</value>
+  </data>
+  <data name="MainWindowTransactions" xml:space="preserve">
+    <value>Rahansiirrot</value>
+  </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;MoneroX:stä lisätietoa</value>
+  </data>
+  <data name="MenuBackupManager" xml:space="preserve">
+    <value>&amp;Varmuuskopioiden hallinta</value>
+  </data>
+  <data name="MenuChangeAccountPassphrase" xml:space="preserve">
+    <value>&amp;Vaihda tilin salasana...</value>
+  </data>
+  <data name="MenuEncryptAccount" xml:space="preserve">
+    <value>&amp;Salaa tili...</value>
+  </data>
+  <data name="MenuExit" xml:space="preserve">
+    <value>Poistu</value>
+  </data>
+  <data name="MenuExport" xml:space="preserve">
+    <value>&amp;Vie...</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>&amp;Tiedosto</value>
+  </data>
+  <data name="MenuHelp" xml:space="preserve">
+    <value>&amp;Apua</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>&amp;Valinnat</value>
+  </data>
+  <data name="MenuSettings" xml:space="preserve">
+    <value>&amp;Asetukset</value>
+  </data>
+  <data name="MenuUnlockAccount" xml:space="preserve">
+    <value>&amp;Avaa tilin lukitus....</value>
+  </data>
+  <data name="OverviewInitializing" xml:space="preserve">
+    <value>Alustetaan...</value>
+  </data>
+  <data name="OverviewNumberOfTransactions" xml:space="preserve">
+    <value>Rahansiirtojen määrä:</value>
+  </data>
+  <data name="OverviewRecentTransactions" xml:space="preserve">
+    <value>Viimeisimmät rahansiirrot</value>
+  </data>
+  <data name="OverviewSpendable" xml:space="preserve">
+    <value>Käytettävissä:</value>
+  </data>
+  <data name="OverviewUnconfirmed" xml:space="preserve">
+    <value>Vahvistamatonta:</value>
+  </data>
+  <data name="TextAccount" xml:space="preserve">
+    <value>Tili</value>
+  </data>
+  <data name="TextHintAddress" xml:space="preserve">
+    <value>Syötä Monero-osoite</value>
+  </data>
+  <data name="TextHintLabel" xml:space="preserve">
+    <value>Anna tälle osoitteelle nimike jotta voit lisätä sen osoitekirjaan</value>
+  </data>
+  <data name="SendCoinsMixCount" xml:space="preserve">
+    <value>Sekoituskertoja:</value>
+  </data>
+  <data name="TextPaymentId" xml:space="preserve">
+    <value>Maksun ID:</value>
+  </data>
+  <data name="TextHintOptional" xml:space="preserve">
+    <value>Tämä tekstikenttä on vapaavalintainen</value>
+  </data>
+  <data name="StatusBarConnections" xml:space="preserve">
+    <value>yhteydet</value>
+  </data>
+  <data name="StatusBarStatusSynchronizing" xml:space="preserve">
+    <value>Synkronoidaan verkon kanssa...</value>
+  </data>
+  <data name="StatusBarSyncTextDaySingular" xml:space="preserve">
+    <value>päivä</value>
+  </data>
+  <data name="StatusBarSyncTextMain" xml:space="preserve">
+    <value>{0} lohkoa ({1}) takana</value>
+  </data>
+  <data name="TextAddress" xml:space="preserve">
+    <value>Osoite</value>
+  </data>
+  <data name="TextAmount" xml:space="preserve">
+    <value>Määrä</value>
+  </data>
+  <data name="TextLabel" xml:space="preserve">
+    <value>Nimike</value>
+  </data>
+  <data name="TransactionsType" xml:space="preserve">
+    <value>Tyyppi</value>
+  </data>
+  <data name="TransactionsSpendable" xml:space="preserve">
+    <value>Käytettävissä?</value>
+  </data>
+  <data name="TextNo" xml:space="preserve">
+    <value>Ei</value>
+  </data>
+  <data name="TextYes" xml:space="preserve">
+    <value>Kyllä</value>
+  </data>
+  <data name="TransactionTypeReceive" xml:space="preserve">
+    <value>Vastaanota</value>
+  </data>
+  <data name="TransactionTypeSend" xml:space="preserve">
+    <value>Lähetä</value>
+  </data>
+  <data name="TransactionTypeUnknown" xml:space="preserve">
+    <value>Tunnistamaton</value>
+  </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>MoneroX:stä lisätietoa</value>
+  </data>
+  <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
+    <value>Virhe: Lisenssitiedostoa ei löydy.</value>
+  </data>
+  <data name="AboutWindowLicenseFileLoading" xml:space="preserve">
+    <value>Ladataan lisenssitiedostoa...</value>
+  </data>
+  <data name="AboutWindowThirdPartyLicenses" xml:space="preserve">
+    <value>Kolmannen osapuolen lisenssit</value>
+  </data>
+  <data name="TextCopy" xml:space="preserve">
+    <value>Kopioi</value>
+  </data>
+  <data name="TextDelete" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="TextNew" xml:space="preserve">
+    <value>Uusi...</value>
+  </data>
+  <data name="TextExport" xml:space="preserve">
+    <value>Vie...</value>
+  </data>
+  <data name="TextCancel" xml:space="preserve">
+    <value>Peruuta</value>
+  </data>
+  <data name="TextOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="AddressBookEditWindowTitleAdd" xml:space="preserve">
+    <value>Lisää tunnettu osoite</value>
+  </data>
+  <data name="OptionsAppearance" xml:space="preserve">
+    <value>Ulkoasu</value>
+  </data>
+  <data name="OptionsAppearanceLanguage" xml:space="preserve">
+    <value>Käyttöliittymän kieli:</value>
+  </data>
+  <data name="OptionsAppearanceLanguageNameDefault" xml:space="preserve">
+    <value>Oletus</value>
+  </data>
+  <data name="OptionsGeneral" xml:space="preserve">
+    <value>Yleiset</value>
+  </data>
+  <data name="OptionsPaths" xml:space="preserve">
+    <value>Polut</value>
+  </data>
+  <data name="OptionsPathsDirectoryAccountBackups" xml:space="preserve">
+    <value>Tilin varmuuskopiot:</value>
+  </data>
+  <data name="OptionsPathsFileAccountData" xml:space="preserve">
+    <value>Tilin data:</value>
+  </data>
+  <data name="OptionsPathsSoftwareDaemon" xml:space="preserve">
+    <value>Taustaprosessiohjelmisto:</value>
+  </data>
+  <data name="OptionsPathsSoftwareAccountManager" xml:space="preserve">
+    <value>Tilin ohjelmisto:</value>
+  </data>
+  <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
+    <value>Tallenna tietokannat ennen lopettamista</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Käynnistä MoneroX kirjautuessa</value>
+  </data>
+  <data name="AddressBookCopyAddress" xml:space="preserve">
+    <value>Kopioi osoite</value>
+  </data>
+  <data name="TextFilterAllFiles" xml:space="preserve">
+    <value>Kaikki tiedostot</value>
+  </data>
+  <data name="TextFilterExecutableFiles" xml:space="preserve">
+    <value>Suoritettavat (*.exe)</value>
+  </data>
+  <data name="TextFilterAccountFiles" xml:space="preserve">
+    <value>Tilin tiedostot (*.wallet;*.bin)</value>
+  </data>
+  <data name="TextFilterCsvFiles" xml:space="preserve">
+    <value>Pilkulla erotettu tiedosto (*.csv)</value>
+  </data>
+  <data name="StatusBarSyncTextDayPlural" xml:space="preserve">
+    <value>päivää</value>
+  </data>
+  <data name="StatusBarSyncTextHourPlural" xml:space="preserve">
+    <value>tuntia</value>
+  </data>
+  <data name="StatusBarSyncTextHourSingular" xml:space="preserve">
+    <value>tunti</value>
+  </data>
+  <data name="StatusBarSyncTextMinutePlural" xml:space="preserve">
+    <value>minuuttia</value>
+  </data>
+  <data name="StatusBarSyncTextMinuteSingular" xml:space="preserve">
+    <value>minuutti</value>
+  </data>
+  <data name="AboutWindowCreditIcons" xml:space="preserve">
+    <value>Kuvakkeet on tehnyt:</value>
+  </data>
+  <data name="AddressBookEditWindowTitleEdit" xml:space="preserve">
+    <value>Muokkaa yhteystietoa</value>
+  </data>
+  <data name="TextEdit" xml:space="preserve">
+    <value>Muokkaa</value>
+  </data>
+  <data name="TextPaste" xml:space="preserve">
+    <value>Liitä</value>
+  </data>
+  <data name="TextFilterPngFiles" xml:space="preserve">
+    <value>PNG-tiedostot (*.png)</value>
+  </data>
+  <data name="TextMessage" xml:space="preserve">
+    <value>Viesti:</value>
+  </data>
+  <data name="TextSaveAs" xml:space="preserve">
+    <value>Tallenna nimellä...</value>
+  </data>
+  <data name="QrCodeWindowUriTooLong" xml:space="preserve">
+    <value>Aikaansaatava URI on liian pitkä.
+
+Yritäthän vähentää syötteidesi pituutta!</value>
+  </data>
+  <data name="TextQrCode" xml:space="preserve">
+    <value>QR-koodi</value>
+  </data>
+  <data name="SendCoinsCurrentBalance" xml:space="preserve">
+    <value>Tämänhetkinen saldo:</value>
+  </data>
+  <data name="CoinSenderRemoveRecipient" xml:space="preserve">
+    <value>Poista vastaanottaja</value>
+  </data>
+  <data name="SendCoinsAddRecipient" xml:space="preserve">
+    <value>Lisää vastaanottaja</value>
+  </data>
+  <data name="SendCoinsClearRecipients" xml:space="preserve">
+    <value>Tyhjennä vastaanottajat</value>
+  </data>
+  <data name="TextError" xml:space="preserve">
+    <value>Virhe</value>
+  </data>
+  <data name="AccountChangePassphraseWindowAgain" xml:space="preserve">
+    <value>uudelleen</value>
+  </data>
+  <data name="AccountChangePassphraseWindowCurrentPassphrase" xml:space="preserve">
+    <value>Tämänhetkinen salasana:</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction1" xml:space="preserve">
+    <value>Käytä salasanaa tunnuksellasi pitääksesi sen turvassa!</value>
+  </data>
+  <data name="AccountChangePassphraseWindowInstruction2" xml:space="preserve">
+    <value>(On suositeltavaa että käytät vähintään 10 arvottua merkkiä tai 8 sanaa.)</value>
+  </data>
+  <data name="AccountChangePassphraseWindowNewPassphrase" xml:space="preserve">
+    <value>Uusi salasana</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrase" xml:space="preserve">
+    <value>Salasana</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleChangePassphrase" xml:space="preserve">
+    <value>Vaihda tilin salasana</value>
+  </data>
+  <data name="AccountChangePassphraseWindowTitleEncryptAccount" xml:space="preserve">
+    <value>Salaa tili</value>
+  </data>
+  <data name="AccountChangePassphraseWindowPassphrasesDoNotMatch" xml:space="preserve">
+    <value>Syötetyt salasanat eivät täsmää.</value>
+  </data>
+  <data name="AccountUnlockWindowTitle" xml:space="preserve">
+    <value>Aukaise tili</value>
+  </data>
+  <data name="AccountUnlockWindowInstruction" xml:space="preserve">
+    <value>Syötäthän salasanasi hallitaksesi tiliäsi.</value>
+  </data>
+  <data name="OptionsWindowTitle" xml:space="preserve">
+    <value>Asetukset</value>
+  </data>
+  <data name="TaskbarDoNotInterruptProcess" xml:space="preserve">
+    <value>Ethän keskeytä tätä prosessia!</value>
+  </data>
+  <data name="MenuHideWindow" xml:space="preserve">
+    <value>Piilota ikkuna</value>
+  </data>
+  <data name="MenuShowWindow" xml:space="preserve">
+    <value>Näytä ikkuna</value>
+  </data>
+  <data name="TransactionsTransactionId" xml:space="preserve">
+    <value>Rahansiirron ID</value>
+  </data>
+  <data name="TaskbarTransactionIncoming" xml:space="preserve">
+    <value>Saapuva rahansiirto</value>
+  </data>
+  <data name="TaskbarTransactionOutgoing" xml:space="preserve">
+    <value>Lähtevä rahansiirto</value>
+  </data>
+  <data name="TaskbarTransactionUnknownType" xml:space="preserve">
+    <value>Tunnistamaton rahansiirto</value>
+  </data>
+  <data name="TextInformation" xml:space="preserve">
+    <value>Tietoa</value>
+  </data>
+  <data name="TextWarning" xml:space="preserve">
+    <value>Varoitus</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowInstructionMain" xml:space="preserve">
+    <value>Valitse kuinka haluat luoda varmuuskopion!</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom1" xml:space="preserve">
+    <value>Tiedostona, valitussa polussa</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileCustom2" xml:space="preserve">
+    <value>Nämä tiedostot eivät ilmesty valittaviksi sisäänrakennettuun varmuuskopioiden hallintaan</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsFileDefault" xml:space="preserve">
+    <value>Tiedostona, oletussijainnissa</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed1" xml:space="preserve">
+    <value>Pääteltävänä tilin syötteenä</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowSelectionAsSeed2" xml:space="preserve">
+    <value>Tämä menetelmä on turvallisin eikä se edes vaadi tietokonetta varastoksi</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowTitle" xml:space="preserve">
+    <value>Uusi varmuuskopio</value>
+  </data>
+  <data name="BackupManagerWindowBrowseInExplorer" xml:space="preserve">
+    <value>Selaa...</value>
+  </data>
+  <data name="BackupManagerWindowCreateAutomaticBackups" xml:space="preserve">
+    <value>Luo automaattisesti varmuuskopiot joka viikko</value>
+  </data>
+  <data name="BackupManagerWindowCreateBackups" xml:space="preserve">
+    <value>Luo varmuuskopiot</value>
+  </data>
+  <data name="BackupManagerWindowErrorRestore" xml:space="preserve">
+    <value>Varmuuskopiota kohteessa \"{0}\" ei voitu palauttaa.</value>
+  </data>
+  <data name="BackupManagerWindowFromDirectory" xml:space="preserve">
+    <value>Hakemistosta...</value>
+  </data>
+  <data name="BackupManagerWindowFromSeed" xml:space="preserve">
+    <value>Pääteltävissä olevasta tilin syötteestä...</value>
+  </data>
+  <data name="BackupManagerWindowFromSelection" xml:space="preserve">
+    <value>Valinnasta</value>
+  </data>
+  <data name="BackupManagerWindowInformationRestoreSuccessful" xml:space="preserve">
+    <value>Varmuuskopio on onnistuneesti palautettu ja asetettu.</value>
+  </data>
+  <data name="BackupManagerWindowRestoreBackups" xml:space="preserve">
+    <value>Palauta varmuuskopiot</value>
+  </data>
+  <data name="BackupManagerWindowTitle" xml:space="preserve">
+    <value>Varmuuskopioiden hallinta</value>
+  </data>
+  <data name="BackupManagerWindowWarningNewBackup" xml:space="preserve">
+    <value>Ole ERITTÄIN VAROVAINEN tilidatan tallennuksen suhteen!
+
+Kenenkään muun ei tulisi käyttää niitä, koska se voi aiheuttaa vaaraa varoillesi.</value>
+  </data>
+  <data name="SendCoinsTransactionCouldNotBeSent" xml:space="preserve">
+    <value>Rahansiirtoa ei voitu lähettää.</value>
+  </data>
+  <data name="SendCoinsEstimatedNewBalance" xml:space="preserve">
+    <value>Odotettavissa oleva uusi saldo:</value>
+  </data>
+  <data name="SendCoinsFee" xml:space="preserve">
+    <value>Kulu:</value>
+  </data>
+  <data name="OptionsNetwork" xml:space="preserve">
+    <value>Verkko</value>
+  </data>
+  <data name="OptionsNetworkIsProxyEnabled" xml:space="preserve">
+    <value>Yhdistä välityspalvelimen kautta</value>
+  </data>
+  <data name="OptionsNetworkProxySettings" xml:space="preserve">
+    <value>Välityspalvelin</value>
+  </data>
+  <data name="OptionsNetworkRpcServerSettings" xml:space="preserve">
+    <value>RPC-palvelin</value>
+  </data>
+  <data name="TextHost" xml:space="preserve">
+    <value>Isäntä:</value>
+  </data>
+  <data name="TextPort" xml:space="preserve">
+    <value>Portti:</value>
+  </data>
+  <data name="OptionsPathsDirectoryDaemonData" xml:space="preserve">
+    <value>Taustaprosessin tiedot:</value>
+  </data>
+  <data name="PunctuationColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="PunctuationQuestionMark" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="StatusBarStatusUpToDate" xml:space="preserve">
+    <value>Ajan tasalla</value>
+  </data>
+  <data name="StatusBarStatusTextMain" xml:space="preserve">
+    <value>Ladattu {0} / {1} lohkoa rahansiirtohistoriasta, ({2}% ladattu).
+
+Viimeisin vastaanotettu lohko on generoitu {3} sitten.</value>
+  </data>
+  <data name="MainWindowUpdateError" xml:space="preserve">
+    <value>Päivitysten tarkistus epäonnistui.</value>
+  </data>
+  <data name="MainWindowUpdateQuestionMessage" xml:space="preserve">
+    <value>Päivitys on saatavilla (v{0}). Haluatko päivittää nyt?</value>
+  </data>
+  <data name="MainWindowUpdateQuestionTitle" xml:space="preserve">
+    <value>Päivitys on saatavilla</value>
+  </data>
+  <data name="QrCodeWindowImageEnlarge" xml:space="preserve">
+    <value>Kaksoisnapauta suurentaaksesi!</value>
+  </data>
+  <data name="QrCodeWindowImageShrink" xml:space="preserve">
+    <value>Kaksoisnapauta pienentääksesi!</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage1" xml:space="preserve">
+    <value>Vastaanotettiin pyyntö lähettää maksu seuraavin tiedoin:</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionMessage2" xml:space="preserve">
+    <value>Haluatko siirtyä '{0}' -välilehteen?</value>
+  </data>
+  <data name="MainWindowUriOpenQuestionTitle" xml:space="preserve">
+    <value>Haluatko avata tämän URI:n?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionMessage" xml:space="preserve">
+    <value>Tämä ohjelma ei ole tällä hetkellä oletusohjelma '{0}' URI-osoitteille. Haluatko asettaa sen oletukseksi?</value>
+  </data>
+  <data name="MainWindowUriAssociationQuestionTitle" xml:space="preserve">
+    <value>Oletusohjelma URI-osoitteille</value>
+  </data>
+  <data name="TextDoNotAskAgain" xml:space="preserve">
+    <value>Älä kysy uudelleen</value>
+  </data>
+  <data name="OptionsGeneralIsUriAssociationCheckEnabled" xml:space="preserve">
+    <value>Tarkista aina onko ohjelma oletuskäsittelijä valuutan URI-osoitteille</value>
+  </data>
+  <data name="QrCodeWindowUriNoAddress" xml:space="preserve">
+    <value>Syötäthän osoitteen!</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionMessage" xml:space="preserve">
+    <value>Yksi vastaanottajien osoitteista kuuluu rahanvaihdolle. Haluatko peruuttaa maksun lähetyksen ilman maksun ID:tä?</value>
+  </data>
+  <data name="SendCoinsExchangeSendWithoutPaymentIdQuestionTitle" xml:space="preserve">
+    <value>Maksun ID puuttuu</value>
+  </data>
+  <data name="SendCoinsInvalidPaymentId" xml:space="preserve">
+    <value>Määrittämäsi maksun ID ei ole kelpo.</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckEnabled" xml:space="preserve">
+    <value>Tarkista päivitykset käynnistyksen yhteydessä</value>
+  </data>
+  <data name="OptionsGeneralIsUpdateCheckForTestBuildsEnabled" xml:space="preserve">
+    <value>Salli tarkistus myös kokeellisille käännöksille</value>
+  </data>
+  <data name="TextAccountManager" xml:space="preserve">
+    <value>Tilinhallinta</value>
+  </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>Tunnuksesi määritetty avainarvo löytyy alapuolelta. On ennemmin suositeltavaa tehdä muistiinpano paperille kuin tallentaa se elektroniseen laitteeseen.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Tunnuksen määritetty avainarvo</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Käytössä olevan tunnuksen määriteltyä avainarvoa ei voida noutaa.</value>
+  </data>
+</root>
