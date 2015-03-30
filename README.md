@@ -5,20 +5,20 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
 [Eto.Forms]: http://github.com/picoe/Eto
 [Monero]: http://getmonero.org
 
-# Installation
-## Windows
-### Minimum system requirements:
+## Installation
+### Windows
+#### Minimum system requirements:
 - [Microsoft .NET Framework 4.5][] or [Mono .NET Framework 3][]
 
-### Instructions:
+#### Instructions:
 1.  Download the latest release of the application, and then extract the archive into a directory
 2.  Run 'MoneroGui.Net.exe' from the folder you have previously extracted the files to
 
-## Linux
-### Minimum system requirements:
+### Linux
+#### Minimum system requirements:
 - [Mono .NET Framework 3][]
 
-### Instructions:
+#### Instructions:
 1.  Download the latest release of the application, and then extract the archive into a directory
 2.  Open a terminal window, and then run the following command from the folder you have previously extracted the files to:
 
@@ -27,12 +27,12 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
 [Microsoft .NET Framework 4.5]: http://www.microsoft.com/download/details.aspx?id=30653
 [Mono .NET Framework 3]: http://www.mono-project.com/download/
 
-# Versioning
+## Versioning
 The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero Core binaries' version number.
 
 [Semantic Versioning 2.0.0]: http://semver.org/spec/v2.0.0.html
 
-# Donations
+## Donations
 Donations are highly appreciated in order to keep the development alive.
 
 - __Monero:__ 47hK4gehaMrFTQCiV5FEmM54hpqTrdHudb9nUBG88NicBDpxH4TGuh3TmW84Dc6dpMiEiBLGvJCuT3xC3LNHctmx7mG8NLM
