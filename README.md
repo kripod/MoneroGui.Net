@@ -1,22 +1,35 @@
-# Monero Client
-This project provides a Graphical User Interface (GUI) to interact with the command line version of Monero.
-The program is written in [C#][] and [XAML][] ([WPF][]).
+# MoneroX
+MoneroX is a multi-platform [C#][] project which provides a Graphical User Interface (GUI) to interact with Monero Core assemblies.
 
 [C#]: http://wikipedia.org/wiki/C_Sharp_%28programming_language%29
-[XAML]: http://wikipedia.org/wiki/XAML
-[WPF]: http://wikipedia.org/wiki/Windows_Presentation_Foundation
 
-## Usage requirements
-Installing [Microsoft .NET Framework 4.5][] (or higher) is a requirement for both end-users and developers.
+# Installation
+## Windows
+### Minimum system requirements:
+- [Microsoft .NET Framework 4.5][] or [Mono .NET Framework 3][]
+
+### Instructions:
+1.  Download the latest release of the application, and then extract the archive into a directory
+2.  Run 'MoneroGui.Net.exe' from the folder you have previously extracted the files to
+
+## Linux
+### Minimum system requirements:
+- [Mono .NET Framework 3][]
+
+### Instructions:
+1.  Download the latest release of the application, and then extract the archive into a directory
+2.  Open a terminal window, and then run the following command from the folder you have previously extracted the files to:
+        mono MoneroGui.Net.exe
 
 [Microsoft .NET Framework 4.5]: http://www.microsoft.com/download/details.aspx?id=30653
+[Mono .NET Framework 3]: http://www.mono-project.com/download/
 
-## About versioning
-The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the command line application's version number.
+# Versioning
+The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero Core binaries' version number.
 
 [Semantic Versioning 2.0.0]: http://semver.org/spec/v2.0.0.html
 
-## Donations
+# Donations
 Donations are highly appreciated in order to keep the development alive.
 
 - __Monero:__ 47hK4gehaMrFTQCiV5FEmM54hpqTrdHudb9nUBG88NicBDpxH4TGuh3TmW84Dc6dpMiEiBLGvJCuT3xC3LNHctmx7mG8NLM
