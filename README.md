@@ -11,6 +11,7 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
     - [Microsoft .NET Framework 4.5][] or [Mono .NET Framework 3][]
 
 - __Instructions:__
+
 1.  Download the latest release of the application, and then extract the archive into a directory
 2.  Run 'MoneroGui.Net.exe' from the folder you have previously extracted the files to
 
@@ -19,6 +20,7 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
     - [Mono .NET Framework 3][]
 
 - __Instructions:__
+
 1.  Download the latest release of the application, and then extract the archive into a directory
 2.  Open a terminal window, and then run the following command from the folder you have previously extracted the files to:
 
