@@ -1,7 +1,9 @@
 # MoneroX
-MoneroX is a multi-platform [C#][] project which provides a Graphical User Interface (GUI) to interact with Monero Core assemblies.
+MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a GUI _(Graphical User Interface)_ to interact with the [Monero][] Core assemblies.
 
 [C#]: http://wikipedia.org/wiki/C_Sharp_%28programming_language%29
+[Eto.Forms]: http://github.com/picoe/Eto
+[Monero]: http://getmonero.org
 
 # Installation
 ## Windows
@@ -19,6 +21,7 @@ MoneroX is a multi-platform [C#][] project which provides a Graphical User Inter
 ### Instructions:
 1.  Download the latest release of the application, and then extract the archive into a directory
 2.  Open a terminal window, and then run the following command from the folder you have previously extracted the files to:
+
         mono MoneroGui.Net.exe
 
 [Microsoft .NET Framework 4.5]: http://www.microsoft.com/download/details.aspx?id=30653
