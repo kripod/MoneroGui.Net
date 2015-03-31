@@ -4,13 +4,12 @@ using Eto.Forms;
 using Jojatekok.MoneroGUI.Desktop.Windows;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class AddressBookView : TableLayout, IExportable
     {
-        private static readonly FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = Utilities.DataSourceAddressBook;
+        private static readonly FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook = new FilterCollection<SettingsManager.ConfigElementContact>(Utilities.DataSourceAddressBook);
 
         private GridView GridViewAddressBook { get; set; }
 
@@ -37,7 +36,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             Spacing = Utilities.Spacing3;
 
             GridViewAddressBook = Utilities.CreateGridView(
-                Utilities.DataSourceAddressBook,
+                DataSourceAddressBook,
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Property<SettingsManager.ConfigElementContact, string>(o => o.Label) },
                     HeaderText = "Label" // TODO: Localize
@@ -208,15 +207,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         public void Export()
         {
-            using (
-                var dialog = new SaveFileDialog {
-                    Filters = new HashSet<FileDialogFilter> {
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv),
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
-                    },
-                    Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
-                }
-            ) {
+            using (var dialog = new SaveFileDialog { Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) }) {
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
+
                 if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 
                 Export(dialog.FileName);
@@ -233,8 +227,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             }
 
             var dataSource = Utilities.DataSourceAddressBook;
-            for (var i = 0; i < dataSource.Items.Count; i++) {
-                var contact = dataSource.Items[i];
+            for (var i = 0; i < dataSource.Count; i++) {
+                var contact = dataSource[i];
                 dataTable.Rows.Add(
                     new List<object> {
                         contact.Label,

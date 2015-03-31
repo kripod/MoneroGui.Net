@@ -7,6 +7,7 @@ using Jojatekok.MoneroAPI.Extensions.Settings;
 using Jojatekok.MoneroAPI.Settings;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
@@ -94,8 +95,8 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static MoneroProcessManager MoneroProcessManager { get; private set; }
         public static MoneroRpcManager MoneroRpcManager { get; private set; }
 
-        public static readonly FilterCollection<Transaction> DataSourceAccountTransactions = new FilterCollection<Transaction>();
-        public static FilterCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
+        public static readonly ObservableCollection<Transaction> DataSourceAccountTransactions = new ObservableCollection<Transaction>();
+        public static ObservableCollection<SettingsManager.ConfigElementContact> DataSourceAddressBook { get; private set; }
 
         // TODO: Fetch this list from the web
         public static readonly HashSet<string> DataSourceExchangeAddresses = new HashSet<string> {
@@ -168,7 +169,7 @@ namespace Jojatekok.MoneroGUI.Desktop
             MoneroProcessManager = new MoneroProcessManager(rpcSettings, accountManagerProcessSettings, daemonProcessSettings);
             MoneroRpcManager = new MoneroRpcManager(rpcSettings);
 
-            DataSourceAddressBook = new FilterCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
+            DataSourceAddressBook = new ObservableCollection<SettingsManager.ConfigElementContact>(SettingsManager.AddressBook.Elements);
             DataSourceAddressBook.CollectionChanged += OnDataSourceAddressBookCollectionChanged;
         }
 
@@ -245,11 +246,11 @@ namespace Jojatekok.MoneroGUI.Desktop
             ) as Image;
         }
 
-        public static Label CreateLabel(Func<string> textBinding, HorizontalAlign horizontalAlignment = HorizontalAlign.Left, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
+        public static Label CreateLabel(Func<string> textBinding, TextAlignment textAlignment = TextAlignment.Left, VerticalAlignment verticalAlignment = VerticalAlignment.Center, Font font = null)
         {
             var label = new Label {
-                HorizontalAlign = horizontalAlignment,
-                VerticalAlign = verticalAlignment
+                TextAlignment = textAlignment,
+                VerticalAlignment = verticalAlignment
             };
 
             label.SetTextBindingPath(textBinding);
@@ -258,12 +259,12 @@ namespace Jojatekok.MoneroGUI.Desktop
             return label;
         }
 
-        public static Label CreateLabel<T>(T dataContext, Expression<Func<T, string>> textBinding, HorizontalAlign horizontalAlignment = HorizontalAlign.Left, VerticalAlign verticalAlignment = VerticalAlign.Middle, Font font = null)
+        public static Label CreateLabel<T>(T dataContext, Expression<Func<T, string>> textBinding, TextAlignment textAlignment = TextAlignment.Left, VerticalAlignment verticalAlignment = VerticalAlignment.Center, Font font = null)
         {
             var label = new Label {
                 DataContext = dataContext,
-                HorizontalAlign = horizontalAlignment,
-                VerticalAlign = verticalAlignment
+                TextAlignment = textAlignment,
+                VerticalAlignment = verticalAlignment
             };
 
             label.TextBinding.BindDataContext(textBinding);
@@ -335,7 +336,7 @@ namespace Jojatekok.MoneroGUI.Desktop
         {
             var gridView = new GridView<T> {
                 DataStore = dataStore,
-                ShowCellBorders = true
+                GridLines = GridLines.Both
             };
 
             dataStore.Change = () => gridView.SelectionPreserver;

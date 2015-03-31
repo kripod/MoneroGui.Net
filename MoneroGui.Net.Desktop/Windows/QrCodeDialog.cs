@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         private readonly Panel _panelQrCode = new Panel { Width = QrCodeImageSize, Height = QrCodeImageSize };
         private readonly ImageView _imageViewQrCode = new ImageView { Width = QrCodeImageSize, Height = QrCodeImageSize };
-        private readonly Label _labelQrUriError = new Label { HorizontalAlign = HorizontalAlign.Center };
+        private readonly Label _labelQrUriError = new Label { TextAlignment = TextAlignment.Center };
         private readonly Button _buttonSaveAs = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextSaveAs, Image = Utilities.LoadImage("Save") };
 
         private string _qrUri = "";
@@ -282,15 +282,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         void OnButtonSaveAsClick(object sender, EventArgs e)
         {
-            using (
-                var dialog = new SaveFileDialog {
-                    Filters = new HashSet<FileDialogFilter> {
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng),
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
-                    },
-                    Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures))
-                }
-            ) {
+            using (var dialog = new SaveFileDialog { Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)) }) {
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterPngFiles, Utilities.FileFilterPng));
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
+
                 if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 
                 var fileName = dialog.FileName;

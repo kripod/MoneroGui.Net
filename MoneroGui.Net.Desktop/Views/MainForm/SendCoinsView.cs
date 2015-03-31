@@ -97,7 +97,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                 MoneroGUI.Desktop.Properties.Resources.SendCoinsClearRecipients,
                                 null,
                                 Utilities.LoadImage("Delete"),
-                                ClearRecipients
+                                Clear
                             )
                         ),
 
@@ -142,13 +142,15 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             ScrollableRecipientsContainer.ScrollPosition = new Point(0, int.MaxValue);
         }
 
-        void ClearRecipients()
+        void Clear()
         {
             TableLayoutRecipients = new TableLayout(
                 new CoinSender(),
                 new TableRow { ScaleHeight = true }
             );
             ScrollableRecipientsContainer.Content = TableLayoutRecipients;
+
+            ViewModel.PaymentId = "";
         }
 
         void SendTransaction()
@@ -225,7 +227,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
             if (isTransferSuccessful) {
                 // TODO: Notify the user about the transaction's success
-                ClearRecipients();
+                Clear();
             } else {
                 // Show a warning whether the transaction could not be sent
                 this.ShowError(MoneroGUI.Desktop.Properties.Resources.SendCoinsTransactionCouldNotBeSent);

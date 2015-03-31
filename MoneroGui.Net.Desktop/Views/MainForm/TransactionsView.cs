@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using Eto;
+﻿using Eto;
 using Eto.Forms;
 using Jojatekok.MoneroAPI;
+using System;
+using System.Collections.Generic;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public class TransactionsView : TableLayout, IExportable
     {
+        private static readonly FilterCollection<Transaction> DataSourceAccountTransactions = new FilterCollection<Transaction>(Utilities.DataSourceAccountTransactions) {
+            Sort = (x, y) => y.Index.CompareTo(x.Index)
+        };
+
         private GridView GridViewTransactions { get; set; }
 
         public TransactionsView()
@@ -15,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             Spacing = Utilities.Spacing3;
 
             GridViewTransactions = Utilities.CreateGridView(
-                Utilities.DataSourceAccountTransactions,
+                DataSourceAccountTransactions,
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Delegate<Transaction, string>(o => o.Number.ToString(Utilities.InvariantCulture)) },
                     HeaderText = "#"
@@ -67,15 +71,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         public void Export()
         {
-            using (
-                var dialog = new SaveFileDialog {
-                    Filters = new HashSet<FileDialogFilter> {
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv),
-                        new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
-                    },
-                    Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments))
-                }
-            ) {
+            using (var dialog = new SaveFileDialog { Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) }) {
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
+                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
+
                 if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 
                 Export(dialog.FileName);
@@ -92,8 +91,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             }
 
             var dataSource = Utilities.DataSourceAccountTransactions;
-            for (var i = 0; i < dataSource.Items.Count; i++) {
-                var transaction = dataSource.Items[i];
+            for (var i = 0; i < dataSource.Count; i++) {
+                var transaction = dataSource[i];
                 dataTable.Rows.Add(
                     new List<object> {
                         transaction.Number,

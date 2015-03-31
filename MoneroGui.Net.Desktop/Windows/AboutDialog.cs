@@ -62,7 +62,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 new TableRow(
                     new Label {
                         Text = MoneroGUI.Desktop.Properties.Resources.TextClientName,
-                        HorizontalAlign = HorizontalAlign.Center,
+                        TextAlignment = TextAlignment.Center,
                         Font = new Font(SystemFont.Default, Utilities.FontSize3)
                     }
                 ),
@@ -70,7 +70,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 new TableRow(
                     new Label {
                         Text = "v" + Utilities.ApplicationVersionString,
-                        HorizontalAlign = HorizontalAlign.Center
+                        TextAlignment = TextAlignment.Center
                     }
                 ),
 

@@ -20,8 +20,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     new TableCell(
                         Utilities.CreateLabel(() =>
                             MoneroGUI.Desktop.Properties.Resources.TextAccount,
-                            HorizontalAlign.Left,
-                            VerticalAlign.Middle,
+                            TextAlignment.Left,
+                            VerticalAlignment.Center,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
                         ),
                         true
@@ -30,8 +30,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     new TableCell(
                         Utilities.CreateLabel(() =>
                             "", //MoneroGUI.Desktop.Properties.Resources.OverviewRecentTransactions,
-                            HorizontalAlign.Left,
-                            VerticalAlign.Middle,
+                            TextAlignment.Left,
+                            VerticalAlignment.Center,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
                         ),
                         true
@@ -48,7 +48,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                     return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
                 },
-                HorizontalAlign.Right
+                TextAlignment.Right
             );
             Utilities.BindingsToAccountBalance.Add(labelAccountBalanceSpendable.Bindings[0]);
 
@@ -61,7 +61,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                     return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
                 },
-                HorizontalAlign.Right
+                TextAlignment.Right
             );
             Utilities.BindingsToAccountBalance.Add(labelAccountBalanceUnconfirmed.Bindings[0]);
 
@@ -74,7 +74,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     PanelCopyAddress.Visible = true;
                     return Utilities.MoneroRpcManager.AccountManager.Address;
                 },
-                HorizontalAlign.Right
+                TextAlignment.Right
             );
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
 
@@ -84,8 +84,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
             var labelAccountTransactionsCount = Utilities.CreateLabel(() =>
                 Utilities.DataSourceAccountTransactions.Count.ToString(Utilities.InvariantCulture),
-                HorizontalAlign.Right,
-                VerticalAlign.Top
+                TextAlignment.Right,
+                VerticalAlignment.Top
             );
             Utilities.BindingsToAccountTransactions.Add(labelAccountTransactionsCount.Bindings[0]);
 
@@ -150,8 +150,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                         new TableCell(
                                             Utilities.CreateLabel(() =>
                                                 MoneroGUI.Desktop.Properties.Resources.TextAddress + MoneroGUI.Desktop.Properties.Resources.PunctuationColon,
-                                                HorizontalAlign.Left,
-                                                VerticalAlign.Top
+                                                TextAlignment.Left,
+                                                VerticalAlignment.Top
                                             )
                                         ),
                                         new TableRow(
@@ -172,8 +172,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                         new TableCell(
                                             Utilities.CreateLabel(() =>
                                                 MoneroGUI.Desktop.Properties.Resources.OverviewNumberOfTransactions,
-                                                HorizontalAlign.Left,
-                                                VerticalAlign.Top
+                                                TextAlignment.Left,
+                                                VerticalAlignment.Top
                                             )
                                         ),
                                         new TableCell(

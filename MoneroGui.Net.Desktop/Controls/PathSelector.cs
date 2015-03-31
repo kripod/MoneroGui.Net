@@ -42,33 +42,37 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
         {
             if (Filters != null) {
                 // Handle file selection
-                var dialog = new OpenFileDialog { Filters = Filters };
-
-                if (TextBoxPath.Text.Length != 0) {
-                    var fileInfo = new FileInfo(TextBoxPath.Text);
-                    if (fileInfo.Exists) {
-                        Debug.Assert(fileInfo.DirectoryName != null, "fileInfo.DirectoryName != null");
-                        dialog.Directory = new Uri(fileInfo.DirectoryName);
-                    } else {
-                        dialog.Directory = new Uri(Utilities.ApplicationBaseDirectory);
+                using (var dialog = new OpenFileDialog()) {
+                    foreach (var filter in Filters) {
+                        dialog.Filters.Add(filter);
                     }
-                }
 
-                if (dialog.ShowDialog(this) == DialogResult.Ok) {
-                    TextBoxPath.Text = Utilities.GetRelativePath(dialog.FileName);
+                    if (TextBoxPath.Text.Length != 0) {
+                        var fileInfo = new FileInfo(TextBoxPath.Text);
+                        if (fileInfo.Exists) {
+                            Debug.Assert(fileInfo.DirectoryName != null, "fileInfo.DirectoryName != null");
+                            dialog.Directory = new Uri(fileInfo.DirectoryName);
+                        } else {
+                            dialog.Directory = new Uri(Utilities.ApplicationBaseDirectory);
+                        }
+                    }
+
+                    if (dialog.ShowDialog(this) == DialogResult.Ok) {
+                        TextBoxPath.Text = Utilities.GetRelativePath(dialog.FileName);
+                    }
                 }
 
             } else {
                 // Handle directory selection
-                var dialog = new SelectFolderDialog();
+                using (var dialog = new SelectFolderDialog()) {
+                    if (TextBoxPath.Text.Length != 0) {
+                        var directory = Utilities.GetAbsolutePath(TextBoxPath.Text);
+                        if (Directory.Exists(directory)) dialog.Directory = directory;
+                    }
 
-                if (TextBoxPath.Text.Length != 0) {
-                    var directory = Utilities.GetAbsolutePath(TextBoxPath.Text);
-                    if (Directory.Exists(directory)) dialog.Directory = directory;
-                }
-
-                if (dialog.ShowDialog(this) == DialogResult.Ok) {
-                    TextBoxPath.Text = Utilities.GetRelativePath(dialog.Directory);
+                    if (dialog.ShowDialog(this) == DialogResult.Ok) {
+                        TextBoxPath.Text = Utilities.GetRelativePath(dialog.Directory);
+                    }
                 }
             }
 

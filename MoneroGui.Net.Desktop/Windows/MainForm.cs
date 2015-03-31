@@ -475,7 +475,6 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     Utilities.DataSourceAccountTransactions.Add(transactions[i]);
                 }
 
-                Utilities.DataSourceAccountTransactions.Sort = (x, y) => y.Index.CompareTo(x.Index);
                 Utilities.BindingsToAccountTransactions.Update();
             }, null);
         }

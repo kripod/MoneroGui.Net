@@ -10,7 +10,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Desktop
         public static void Main(string[] args)
         {
             Eto.Style.Add<Label>(null, label => {
-                label.VerticalAlign = VerticalAlign.Middle;
+                label.VerticalAlignment = VerticalAlignment.Center;
             });
 
             new Application(Eto.Platform.Detect).Run(new MainForm());
