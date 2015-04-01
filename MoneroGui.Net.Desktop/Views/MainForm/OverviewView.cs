@@ -78,7 +78,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             );
             Utilities.BindingsToAccountAddress.Add(labelAccountAddress.Bindings[0]);
 
-            if (Utilities.RunningPlatformId != PlatformID.Win32NT) {
+            if (!Utilities.EnvironmentPlatform.IsWpf) {
                 labelAccountAddress.Wrap = WrapMode.Character;
             }
 

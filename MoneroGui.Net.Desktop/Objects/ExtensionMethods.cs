@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Desktop
             ));
 
             form.Size = size;
-            if (Utilities.RunningPlatformId != PlatformID.Unix) {
+            if (!Utilities.EnvironmentPlatform.IsGtk) {
                 form.MinimumSize = minimumSize;
             }
 
@@ -106,6 +106,13 @@ namespace Jojatekok.MoneroGUI.Desktop
             var minutes = timeSpan.Minutes;
             if (minutes == 1) return "1 " + Properties.Resources.StatusBarSyncTextMinuteSingular;
             return minutes + " " + Properties.Resources.StatusBarSyncTextMinutePlural;
+        }
+
+        public static string GetName(this Platform platform)
+        {
+            if (platform.IsGtk) return "Linux";
+            if (platform.IsMac) return "Mac";
+            return "Windows";
         }
 
         public static int IndexOfLabel(this IList<SettingsManager.ConfigElementContact> collection, string label)

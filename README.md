@@ -1,9 +1,9 @@
-# MoneroX
+# MoneroX [![Build status](https://ci.appveyor.com/api/projects/status/dumx4b6665o9vkyl?svg=true)](https://ci.appveyor.com/project/JoJatekok/monerogui-net)
 MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a GUI _(Graphical User Interface)_ to interact with the [Monero][] Core assemblies.
 
-[C#]: http://wikipedia.org/wiki/C_Sharp_%28programming_language%29
-[Eto.Forms]: http://github.com/picoe/Eto
-[Monero]: http://getmonero.org
+[C#]: https://wikipedia.org/wiki/C_Sharp_%28programming_language%29
+[Eto.Forms]: https://github.com/picoe/Eto
+[Monero]: https://getmonero.org
 
 ## Installation
 ### Windows
@@ -26,8 +26,8 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
 
             mono MoneroGui.Net.exe
 
-[Microsoft .NET Framework 4.5]: http://www.microsoft.com/download/details.aspx?id=30653
-[Mono .NET Framework 3]: http://www.mono-project.com/download/
+[Microsoft .NET Framework 4.5]: https://www.microsoft.com/download/details.aspx?id=30653
+[Mono .NET Framework 3]: http://www.mono-project.com/download
 
 ## Versioning
 The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero Core binaries' version number.
@@ -38,4 +38,5 @@ The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It 
 Donations are highly appreciated in order to keep the development alive.
 
 - __Monero:__ 47hK4gehaMrFTQCiV5FEmM54hpqTrdHudb9nUBG88NicBDpxH4TGuh3TmW84Dc6dpMiEiBLGvJCuT3xC3LNHctmx7mG8NLM
+
 - __Bitcoin:__ 14wHehBtFt321WTV15khon8Juaxh9drnfJ

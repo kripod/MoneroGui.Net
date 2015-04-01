@@ -78,7 +78,7 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly ImageConverter ImageConverter = new ImageConverter();
         public static readonly System.Drawing.ImageConverter SystemImageConverter = new System.Drawing.ImageConverter();
 
-        public static readonly PlatformID RunningPlatformId = Environment.OSVersion.Platform;
+        public static readonly Platform EnvironmentPlatform = Platform.Instance;
 
         public static readonly string NewLineString = Environment.NewLine;
 
@@ -196,19 +196,9 @@ namespace Jojatekok.MoneroGUI.Desktop
 
         public static string GetRunningPlatformName()
         {
-            switch (RunningPlatformId) {
-                case PlatformID.Unix:
-                    if (Directory.Exists("/Applications") & Directory.Exists("/System") & Directory.Exists("/Users") & Directory.Exists("/Volumes")) {
-                        return "Mac";
-                    }
-                    return "Linux";
-
-                case PlatformID.MacOSX:
-                    return "Mac";
-
-                default:
-                    return "Windows";
-            }
+            if (EnvironmentPlatform.IsGtk) return "Linux";
+            if (EnvironmentPlatform.IsMac) return "Mac";
+            return "Windows";
         }
 
         public static bool IsHostUrlValid(string input) {
