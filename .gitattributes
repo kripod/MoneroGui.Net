@@ -8,6 +8,3 @@
 # C#
 *.cs      merge=union diff=csharp text eol=lf
 *.csproj  merge=union text eol=crlf
-
-# WPF (Windows Presentation Foundation)
-*.xaml    merge=union text eol=lf

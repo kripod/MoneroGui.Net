@@ -85,6 +85,19 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly CultureInfo InvariantCulture = CultureInfo.InvariantCulture;
         public static readonly CultureInfo DefaultUiCulture = CultureInfo.InstalledUICulture;
 
+        public static HashSet<FileDialogFilter> FileFilterSetExecutables {
+            get {
+                var output = new HashSet<FileDialogFilter>();
+
+                if (EnvironmentPlatform.IsWpf) {
+                    output.Add(new FileDialogFilter(Properties.Resources.TextFilterExecutableFiles, FileFilterExecutable));
+                }
+                output.Add(new FileDialogFilter(Properties.Resources.TextFilterAllFiles, FileFilterAll));
+
+                return output;
+            }
+        }
+
         public static float DefaultFontSize { get; private set; }
         public static FontFamily DefaultFontFamily { get; private set; }
 

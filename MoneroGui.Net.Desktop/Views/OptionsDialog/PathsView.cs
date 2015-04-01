@@ -22,17 +22,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 
         private readonly PathSelector _pathSelectorSoftwareDaemon = new PathSelector {
             Padding = new Padding(Utilities.Padding3, 0, 0, Utilities.Padding3),
-            Filters = new HashSet<FileDialogFilter> {
-                new FileDialogFilter(Desktop.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
-                new FileDialogFilter(Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
-            }
+            Filters = Utilities.FileFilterSetExecutables
         };
         private readonly PathSelector _pathSelectorSoftwareAccountManager = new PathSelector {
             Padding = new Padding(Utilities.Padding3, 0, 0, Utilities.Padding3),
-            Filters = new HashSet<FileDialogFilter> {
-                new FileDialogFilter(Desktop.Properties.Resources.TextFilterExecutableFiles, Utilities.FileFilterExecutable),
-                new FileDialogFilter(Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll)
-            }
+            Filters = Utilities.FileFilterSetExecutables
         };
 
         private PathSelector PathSelectorDirectoryDaemonData {
