@@ -8,7 +8,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public AccountUnlockDialog()
         {
             this.SetWindowProperties(
-                MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowTitle,
+                Desktop.Properties.Resources.AccountUnlockWindowTitle,
                 new Size(300, 0)
             );
 
@@ -21,16 +21,16 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             var passwordBoxResult = new PasswordBox();
 
-            var buttonOk = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextOk };
+            var buttonOk = new Button { Text = Desktop.Properties.Resources.TextOk };
             buttonOk.Click += delegate { Close(passwordBoxResult.Text); };
             DefaultButton = buttonOk;
 
-            var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
+            var buttonCancel = new Button { Text = Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
             AbortButton.Click += delegate { Close(null); };
 
             Content = new TableLayout(
-                new Label { Text = MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowInstruction },
+                new Label { Text = Desktop.Properties.Resources.AccountUnlockWindowInstruction },
 
                 passwordBoxResult,
 

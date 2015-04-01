@@ -9,7 +9,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
     public sealed class AboutDialog : Dialog
     {
         private readonly TextArea _textAreaLicense = new TextArea { ReadOnly = true };
-        private readonly Button _buttonShowThirdPartyLicenses = new Button { Text = MoneroGUI.Desktop.Properties.Resources.AboutWindowThirdPartyLicenses };
+        private readonly Button _buttonShowThirdPartyLicenses = new Button { Text = Desktop.Properties.Resources.AboutWindowThirdPartyLicenses };
 
         private TextArea TextAreaLicense {
             get { return _textAreaLicense; }
@@ -24,7 +24,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public AboutDialog()
         {
             this.SetWindowProperties(
-                MoneroGUI.Desktop.Properties.Resources.AboutWindowTitle,
+                Desktop.Properties.Resources.AboutWindowTitle,
                 new Size(600, 0)
             );
 
@@ -61,7 +61,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             dynamicLayoutMain.Add(new TableLayout(
                 new TableRow(
                     new Label {
-                        Text = MoneroGUI.Desktop.Properties.Resources.TextClientName,
+                        Text = Desktop.Properties.Resources.TextClientName,
                         TextAlignment = TextAlignment.Center,
                         Font = new Font(SystemFont.Default, Utilities.FontSize3)
                     }
@@ -87,7 +87,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         new TableCell(
                             new TableLayout(
                                 new TableRow(
-                                    new TableCell(new Label { Text = MoneroGUI.Desktop.Properties.Resources.AboutWindowCreditIcons + " " }, true)
+                                    new TableCell(new Label { Text = Desktop.Properties.Resources.AboutWindowCreditIcons + " " }, true)
                                 ),
                                 new TableRow(
                                     new TableCell(linkButtonCreditIcons, true)
@@ -113,10 +113,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     LicenseText = stream.ReadToEnd();
                     LicenseText = LicenseText.ReWrap();
                 }
-                Utilities.SyncContextMain.Post(sender => TextAreaLicense.Text = LicenseText, null);
+                Application.Instance.AsyncInvoke(() => TextAreaLicense.Text = LicenseText);
 
             } else {
-                Utilities.SyncContextMain.Post(sender => TextAreaLicense.Text = MoneroGUI.Desktop.Properties.Resources.AboutWindowLicenseFileNotFound, null);
+                Application.Instance.AsyncInvoke(() => TextAreaLicense.Text = Desktop.Properties.Resources.AboutWindowLicenseFileNotFound);
             }
         }
 

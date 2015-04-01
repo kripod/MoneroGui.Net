@@ -39,7 +39,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             if (EditIndex >= 0) {
                 // Mode: Edit
-                windowTitle = MoneroGUI.Desktop.Properties.Resources.AddressBookEditWindowTitleEdit;
+                windowTitle = Desktop.Properties.Resources.AddressBookEditWindowTitleEdit;
 
                 var editedContact = CurrentContacts[EditIndex];
                 TextBoxLabel = new TextBox { Text = editedContact.Label, PlaceholderText = editedContact.Label };
@@ -50,7 +50,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             } else {
                 // Mode: Add
-                windowTitle = MoneroGUI.Desktop.Properties.Resources.AddressBookEditWindowTitleAdd;
+                windowTitle = Desktop.Properties.Resources.AddressBookEditWindowTitleAdd;
 
                 TextBoxLabel = new TextBox();
                 TextBoxAddress = new TextBox();
@@ -71,24 +71,24 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             Padding = new Padding(Utilities.Padding4);
 
-            ButtonOk = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextOk };
+            ButtonOk = new Button { Text = Desktop.Properties.Resources.TextOk };
             ButtonOk.Click += delegate {
                 Close(true);
             };
             DefaultButton = ButtonOk;
 
-            var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
+            var buttonCancel = new Button { Text = Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
             AbortButton.Click += delegate { Close(false); };
 
             Content = new TableLayout(
                 new TableLayout(
                     new TableRow(
-                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextLabel + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
+                        new Label { Text = Desktop.Properties.Resources.TextLabel + Desktop.Properties.Resources.PunctuationColon },
                         TextBoxLabel
                     ),
                     new TableRow(
-                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextAddress + MoneroGUI.Desktop.Properties.Resources.PunctuationColon },
+                        new Label { Text = Desktop.Properties.Resources.TextAddress + Desktop.Properties.Resources.PunctuationColon },
                         TextBoxAddress
                     )
                 ) { Spacing = Utilities.Spacing3 },

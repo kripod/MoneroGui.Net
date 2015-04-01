@@ -6,11 +6,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 {
     public class GeneralView : TableLayout, IOptionsTabPageView
     {
-        private readonly CheckBox _checkBoxIsUpdateCheckEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckEnabled };
-        private readonly CheckBox _checkBoxIsUpdateCheckForTestBuildsEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckForTestBuildsEnabled };
-        private readonly CheckBox _checkBoxIsStartableOnSystemLogin = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsStartableOnSystemLogin };
-        private readonly CheckBox _checkBoxIsUriAssociationCheckEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsUriAssociationCheckEnabled };
-        private readonly CheckBox _checkBoxIsSafeShutdownEnabled = new CheckBox { Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneralIsSafeShutdownEnabled };
+        private readonly CheckBox _checkBoxIsUpdateCheckEnabled = new CheckBox { Text = Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckEnabled };
+        private readonly CheckBox _checkBoxIsUpdateCheckForTestBuildsEnabled = new CheckBox { Text = Desktop.Properties.Resources.OptionsGeneralIsUpdateCheckForTestBuildsEnabled };
+        private readonly CheckBox _checkBoxIsStartableOnSystemLogin = new CheckBox { Text = Desktop.Properties.Resources.OptionsGeneralIsStartableOnSystemLogin };
+        private readonly CheckBox _checkBoxIsUriAssociationCheckEnabled = new CheckBox { Text = Desktop.Properties.Resources.OptionsGeneralIsUriAssociationCheckEnabled };
+        private readonly CheckBox _checkBoxIsSafeShutdownEnabled = new CheckBox { Text = Desktop.Properties.Resources.OptionsGeneralIsSafeShutdownEnabled };
 
         private CheckBox CheckBoxIsUpdateCheckEnabled {
             get { return _checkBoxIsUpdateCheckEnabled; }

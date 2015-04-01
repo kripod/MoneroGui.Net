@@ -90,8 +90,6 @@ namespace Jojatekok.MoneroGUI.Desktop
 
         public static MainForm MainForm { get; private set; }
 
-        public static SynchronizationContext SyncContextMain { get; set; }
-
         public static MoneroProcessManager MoneroProcessManager { get; private set; }
         public static MoneroRpcManager MoneroRpcManager { get; private set; }
 
@@ -116,7 +114,6 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static void Initialize(MainForm mainForm)
         {
             MainForm = mainForm;
-            SyncContextMain = SynchronizationContext.Current;
 
             SettingsManager.Initialize();
             CultureManager.Initialize();

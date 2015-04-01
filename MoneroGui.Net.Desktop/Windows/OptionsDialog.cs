@@ -13,7 +13,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public OptionsDialog()
         {
             this.SetWindowProperties(
-                MoneroGUI.Desktop.Properties.Resources.AccountUnlockWindowTitle,
+                Desktop.Properties.Resources.AccountUnlockWindowTitle,
                 new Size(600, 0)
             );
 
@@ -27,19 +27,19 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             TabControlMain = new TabControl();
             var tabControlPages = TabControlMain.Pages;
             tabControlPages.Add(new TabPage {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsGeneral,
+                Text = Desktop.Properties.Resources.OptionsGeneral,
                 Content = new GeneralView()
             });
             tabControlPages.Add(new TabPage {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsPaths,
+                Text = Desktop.Properties.Resources.OptionsPaths,
                 Content = new PathsView()
             });
             tabControlPages.Add(new TabPage {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetwork,
+                Text = Desktop.Properties.Resources.OptionsNetwork,
                 Content = new NetworkView()
             });
             tabControlPages.Add(new TabPage {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsAppearance,
+                Text = Desktop.Properties.Resources.OptionsAppearance,
                 Content = new AppearanceView()
             });
 
@@ -51,7 +51,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 tabControlPages[i].Padding = new Padding(Utilities.Padding3);
             }
 
-            var buttonOk = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextOk };
+            var buttonOk = new Button { Text = Desktop.Properties.Resources.TextOk };
             buttonOk.Click += delegate {
                 SettingsManager.IsAutoSaveEnabled = false;
 
@@ -67,7 +67,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             };
             DefaultButton = buttonOk;
 
-            var buttonCancel = new Button { Text = MoneroGUI.Desktop.Properties.Resources.TextCancel };
+            var buttonCancel = new Button { Text = Desktop.Properties.Resources.TextCancel };
             AbortButton = buttonCancel;
             AbortButton.Click += delegate { Close(); };
 

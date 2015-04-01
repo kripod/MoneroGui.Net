@@ -12,12 +12,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
     {
         private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(
             null,
-            () => MoneroGUI.Desktop.Properties.Resources.TextHintAddress,
+            () => Desktop.Properties.Resources.TextHintAddress,
             new Font(FontFamilies.Monospace, Utilities.FontSize1)
         );
         private readonly TextBox _textBoxLabel = Utilities.CreateTextBox(
             null,
-            () => MoneroGUI.Desktop.Properties.Resources.TextHintLabel
+            () => Desktop.Properties.Resources.TextHintLabel
         );
         private double _amount;
 
@@ -58,8 +58,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Desktop.Properties.Resources.TextAddress +
-                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
+                    Desktop.Properties.Resources.TextAddress +
+                    Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(TextBoxAddress, true),
@@ -71,8 +71,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Desktop.Properties.Resources.TextLabel +
-                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
+                    Desktop.Properties.Resources.TextLabel +
+                    Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(TextBoxLabel, true)
@@ -80,8 +80,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
             Rows.Add(new TableRow(
                 Utilities.CreateLabel(() =>
-                    MoneroGUI.Desktop.Properties.Resources.TextAmount +
-                    MoneroGUI.Desktop.Properties.Resources.PunctuationColon
+                    Desktop.Properties.Resources.TextAmount +
+                    Desktop.Properties.Resources.PunctuationColon
                 ),
 
                 new TableCell(

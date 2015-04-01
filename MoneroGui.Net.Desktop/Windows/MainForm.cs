@@ -32,7 +32,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public MainForm()
         {
             this.SetWindowProperties(
-                () => MoneroGUI.Desktop.Properties.Resources.TextClientName,
+                () => Desktop.Properties.Resources.TextClientName,
                 new Size(850, 570),
                 new Size(640, 480)
             );
@@ -133,13 +133,13 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                         webClient.DownloadFile(new Uri(string.Format(Utilities.InvariantCulture, releasesUrlBase, latestVersionString, platformString + "-" + processorArchitectureString), UriKind.Absolute), updatePath + ".zip");
                     }
 
-                    Utilities.SyncContextMain.Post(s => {
+                    Application.Instance.AsyncInvoke(() => {
                         // Check whether the user wants to apply the new update now
                         if (!this.ShowQuestion(string.Format(
                             Utilities.InvariantCulture,
-                            MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateQuestionMessage,
+                            Desktop.Properties.Resources.MainWindowUpdateQuestionMessage,
                             latestVersionString
-                        ), MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateQuestionTitle)) {
+                        ), Desktop.Properties.Resources.MainWindowUpdateQuestionTitle)) {
                             return;
                         }
 
@@ -167,10 +167,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
                         IsSafeShutdownAllowed = false;
                         Close();
-                    }, null);
+                    });
 
                 } catch {
-                    Utilities.SyncContextMain.Post(s => this.ShowError(MoneroGUI.Desktop.Properties.Resources.MainWindowUpdateError), null);
+                    Application.Instance.AsyncInvoke(() => this.ShowError(Desktop.Properties.Resources.MainWindowUpdateError));
                 }
             }
         }
@@ -214,48 +214,48 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public void RenderMenu()
         {
             CommandExport = new Command(OnCommandExport) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExport,
+                MenuText = Desktop.Properties.Resources.MenuExport,
                 Image = Utilities.LoadImage("Export"),
                 Shortcut = Application.Instance.CommonModifier | Keys.E,
                 Enabled = false
             };
 
             CommandAccountUnlock = new Command(OnCommandAccountUnlock) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuUnlockAccount,
+                MenuText = Desktop.Properties.Resources.MenuUnlockAccount,
                 Image = Utilities.LoadImage("Key")
             };
 
             CommandAccountChangePassphrase = new Command(OnCommandAccountChangePassphrase) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuChangeAccountPassphrase,
+                MenuText = Desktop.Properties.Resources.MenuChangeAccountPassphrase,
                 Image = Utilities.LoadImage("Key"),
                 Enabled = false
             };
 
             var commandAccountBackupManager = new Command(OnCommandAccountBackupManager) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuBackupManager,
+                MenuText = Desktop.Properties.Resources.MenuBackupManager,
                 Image = Utilities.LoadImage("Save"),
                 Enabled = false
             };
 
             var commandExit = new Command(OnCommandExit) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuExit,
+                MenuText = Desktop.Properties.Resources.MenuExit,
                 Image = Utilities.LoadImage("Exit"),
                 Shortcut = Application.Instance.CommonModifier | Keys.Q
             };
 
             var commandShowWindowOptions = new Command(OnCommandShowWindowOptions) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuOptions,
+                MenuText = Desktop.Properties.Resources.MenuOptions,
                 Image = Utilities.LoadImage("Options"),
                 Shortcut = Application.Instance.CommonModifier | Keys.O
             };
 
             var commandShowWindowAbout = new Command(OnCommandShowWindowAbout) {
-                MenuText = MoneroGUI.Desktop.Properties.Resources.MenuAbout,
+                MenuText = Desktop.Properties.Resources.MenuAbout,
                 Image = Utilities.LoadImage("Information"),
             };
 
             MenuSettings = new ButtonMenuItem {
-                Text = MoneroGUI.Desktop.Properties.Resources.MenuSettings,
+                Text = Desktop.Properties.Resources.MenuSettings,
                 Items = {
                     CommandAccountUnlock,
                     new SeparatorMenuItem(),
@@ -266,7 +266,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             Menu = new MenuBar {
                 Items = {
                     new ButtonMenuItem {
-                        Text = MoneroGUI.Desktop.Properties.Resources.MenuFile,
+                        Text = Desktop.Properties.Resources.MenuFile,
                         Items = {
                             commandAccountBackupManager,
                             CommandExport,
@@ -278,7 +278,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     MenuSettings,
 
                     new ButtonMenuItem {
-                        Text = MoneroGUI.Desktop.Properties.Resources.MenuHelp,
+                        Text = Desktop.Properties.Resources.MenuHelp,
                         Items = {
                             commandShowWindowAbout
                         }
@@ -293,25 +293,25 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 Image = Utilities.LoadImage("Overview"),
                 Content = new OverviewView()
             };
-            tabPageOverview.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowOverview);
+            tabPageOverview.SetTextBindingPath(() => " " + Desktop.Properties.Resources.MainWindowOverview);
 
             var tabPageSendCoins = new TabPage {
                 Image = Utilities.LoadImage("Send"),
                 Content = new SendCoinsView()
             };
-            tabPageSendCoins.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowSendCoins);
+            tabPageSendCoins.SetTextBindingPath(() => " " + Desktop.Properties.Resources.MainWindowSendCoins);
 
             var tabPageTransactions = new TabPage {
                 Image = Utilities.LoadImage("Transaction"),
                 Content = new TransactionsView()
             };
-            tabPageTransactions.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.MainWindowTransactions);
+            tabPageTransactions.SetTextBindingPath(() => " " + Desktop.Properties.Resources.MainWindowTransactions);
 
             var tabPageAddressBook = new TabPage {
                 Image = Utilities.LoadImage("Contact"),
                 Content = new AddressBookView()
             };
-            tabPageAddressBook.SetTextBindingPath(() => " " + MoneroGUI.Desktop.Properties.Resources.TextAddressBook);
+            tabPageAddressBook.SetTextBindingPath(() => " " + Desktop.Properties.Resources.TextAddressBook);
 
             TabControlMain = new TabControl();
             TabControlMain.SelectedIndexChanged += OnTabControlMainSelectedIndexChanged;
@@ -408,45 +408,45 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             var syncBarProgressPercentage = (double)networkInformation.BlockHeightDownloaded / networkInformation.BlockHeightTotal * 100;
             var syncBarText = string.Format(
                 Utilities.InvariantCulture,
-                MoneroGUI.Desktop.Properties.Resources.StatusBarSyncTextMain,
+                Desktop.Properties.Resources.StatusBarSyncTextMain,
                 networkInformation.BlockHeightRemaining,
                 blockTimeRemainingString
             );
             var syncStatusIndicatorText = string.Format(
                 Utilities.InvariantCulture,
-                MoneroGUI.Desktop.Properties.Resources.StatusBarStatusTextMain,
+                Desktop.Properties.Resources.StatusBarStatusTextMain,
                 networkInformation.BlockHeightDownloaded,
                 networkInformation.BlockHeightTotal,
                 syncBarProgressPercentage.ToString("F2", CultureManager.CurrentCulture),
                 blockTimeRemainingString
             );
 
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 var statusBarViewModel = StatusBarView.ViewModel;
 
                 statusBarViewModel.ConnectionCount = connectionCount;
                 statusBarViewModel.SyncStatusIndicatorText = syncStatusIndicatorText;
 
                 if (statusBarViewModel.IsBlockchainSynced) return;
-                statusBarViewModel.SyncStatusText = MoneroGUI.Desktop.Properties.Resources.StatusBarStatusSynchronizing;
+                statusBarViewModel.SyncStatusText = Desktop.Properties.Resources.StatusBarStatusSynchronizing;
                 statusBarViewModel.SyncBarProgressValue = (int)Math.Floor(syncBarProgressPercentage * 100);
                 statusBarViewModel.SyncBarText = syncBarText;
                 statusBarViewModel.IsSyncBarVisible = true;
-            }, null);
+            });
         }
 
         void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 // Enable sending coins, along with hiding the sync status
                 StatusBarView.ViewModel.IsBlockchainSynced = true;
                 SendCoinsView.ViewModel.IsBlockchainSynced = true;
-            }, null);
+            });
         }
 
         void OnAccountManagerProcessPassphraseRequested(object sender, PassphraseRequestedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 if (e.IsFirstTime) {
                     // Let the user set the account's passphrase for the first time
                     using (var dialog = new AccountChangePassphraseDialog(false)) {
@@ -460,13 +460,13 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                     // Request the account's passphrase in order to unlock it
                     OnCommandAccountUnlock(null, null);
                 }
-            }, null);
+            });
         }
 
         void OnAccountManagerRpcInitialized(object sender, EventArgs e)
         {
             var transactions = Utilities.MoneroRpcManager.AccountManager.Transactions;
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 // Revoke the ability to (redundantly) unlock the account, and then allow changing the account's passphrase
                 MenuSettings.Items.RemoveAt(0);
                 MenuSettings.Items.Insert(0, CommandAccountChangePassphrase);
@@ -476,38 +476,38 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 }
 
                 Utilities.BindingsToAccountTransactions.Update();
-            }, null);
+            });
         }
 
         void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => Utilities.BindingsToAccountAddress.Update(), null);
+            Application.Instance.AsyncInvoke(() => Utilities.BindingsToAccountAddress.Update());
         }
 
         static void OnAccountManagerRpcTransactionReceived(object sender, TransactionReceivedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 Utilities.DataSourceAccountTransactions.Add(e.Transaction);
                 Utilities.BindingsToAccountTransactions.Update();
-            }, null);
+            });
         }
 
         static void OnAccountManagerRpcTransactionChanged(object sender, TransactionChangedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 var transactionIndex = e.TransactionIndex;
                 Utilities.DataSourceAccountTransactions.RemoveAt(transactionIndex);
                 Utilities.DataSourceAccountTransactions.Insert(transactionIndex, e.TransactionNewValue);
                 Utilities.BindingsToAccountTransactions.Update();
-            }, null);
+            });
         }
 
         static void OnAccountManagerRpcBalanceChanged(object sender, AccountBalanceChangedEventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => {
+            Application.Instance.AsyncInvoke(() => {
                 Utilities.BindingsToAccountBalance.Update();
                 SendCoinsView.ViewModel.BalanceSpendable = e.AccountBalance.Spendable;
-            }, null);
+            });
         }
 
         public void UpdateLanguage()

@@ -18,7 +18,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
             LoadSettings();
 
             Rows.Add(new TableRow(
-                new Label { Text = MoneroGUI.Desktop.Properties.Resources.OptionsAppearanceLanguage },
+                new Label { Text = Desktop.Properties.Resources.OptionsAppearanceLanguage },
                 ComboBoxLanguages
             ));
 
@@ -27,7 +27,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
 
         void OnCultureManagerSupportedLanguagesLoaded(object sender, EventArgs e)
         {
-            Utilities.SyncContextMain.Post(s => LoadLanguageValues(), null);
+            Application.Instance.AsyncInvoke(LoadLanguageValues);
         }
 
         private void LoadLanguageValues()

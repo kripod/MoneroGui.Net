@@ -34,7 +34,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 },
                 new GridColumn {
                     DataCell = new TextBoxCell { Binding = Binding.Property<Transaction, string>(o => o.TransactionId) },
-                    HeaderText = MoneroGUI.Desktop.Properties.Resources.TransactionsTransactionId
+                    HeaderText = Desktop.Properties.Resources.TransactionsTransactionId
                 }
             );
 
@@ -51,7 +51,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                         new TableCell(
                             Utilities.CreateButton(() =>
-                                MoneroGUI.Desktop.Properties.Resources.TextExport,
+                                Desktop.Properties.Resources.TextExport,
                                 null,
                                 Utilities.LoadImage("Export"),
                                 OnButtonExportClick
@@ -72,8 +72,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         public void Export()
         {
             using (var dialog = new SaveFileDialog { Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) }) {
-                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
-                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
+                dialog.Filters.Add(new FileDialogFilter(Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
+                dialog.Filters.Add(new FileDialogFilter(Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
 
                 if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 

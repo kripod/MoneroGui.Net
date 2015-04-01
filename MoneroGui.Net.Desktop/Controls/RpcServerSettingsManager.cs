@@ -36,7 +36,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
             TextBoxRpcUrlHost = new TextBox { Text = rpcUrlHost };
             CheckBoxIsProcessHostedLocally = new CheckBox {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetworkIsProcessHostedLocally,
+                Text = Desktop.Properties.Resources.OptionsNetworkIsProcessHostedLocally,
                 Checked = isProcessHostedLocally
             };
 
@@ -45,12 +45,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
             Content = new TableLayout(
                 new TableLayout(
                     new TableRow(
-                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextHost },
+                        new Label { Text = Desktop.Properties.Resources.TextHost },
                         new TableCell(TextBoxRpcUrlHost, true),
 
                         new Separator(SeparatorOrientation.Vertical),
 
-                        new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextPort },
+                        new Label { Text = Desktop.Properties.Resources.TextPort },
                         Utilities.CreateNumericUpDown(this, o => o.RpcUrlPort, 0, 1, ushort.MaxValue)
                     )
                 ) { Spacing = Utilities.Spacing3 },

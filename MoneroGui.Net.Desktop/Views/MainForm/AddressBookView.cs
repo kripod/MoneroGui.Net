@@ -49,12 +49,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             GridViewAddressBook.SelectedRowsChanged += OnGridViewAddressBookSelectedRowsChanged;
             GridViewAddressBook.CellDoubleClick += OnGridViewAddressBookCellDoubleClick;
 
-            ButtonCopyAddress = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.AddressBookCopyAddress, null, Utilities.LoadImage("Copy"), OnButtonCopyAddressClick);
-            ButtonEdit = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextEdit, null, Utilities.LoadImage("Edit"), OnButtonEditClick);
-            ButtonDelete = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextDelete, null, Utilities.LoadImage("Delete"), OnButtonDeleteClick);
-            ButtonShowQrCode = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextQrCode, null, Utilities.LoadImage("QrCode"), OnButtonShowQrCodeClick);
-            ButtonExport = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextExport, null, Utilities.LoadImage("Export"), OnButtonExportClick);
-            ButtonOk = Utilities.CreateButton(() => MoneroGUI.Desktop.Properties.Resources.TextOk, null, Utilities.LoadImage("Ok"), SetDialogResult);
+            ButtonCopyAddress = Utilities.CreateButton(() => Desktop.Properties.Resources.AddressBookCopyAddress, null, Utilities.LoadImage("Copy"), OnButtonCopyAddressClick);
+            ButtonEdit = Utilities.CreateButton(() => Desktop.Properties.Resources.TextEdit, null, Utilities.LoadImage("Edit"), OnButtonEditClick);
+            ButtonDelete = Utilities.CreateButton(() => Desktop.Properties.Resources.TextDelete, null, Utilities.LoadImage("Delete"), OnButtonDeleteClick);
+            ButtonShowQrCode = Utilities.CreateButton(() => Desktop.Properties.Resources.TextQrCode, null, Utilities.LoadImage("QrCode"), OnButtonShowQrCodeClick);
+            ButtonExport = Utilities.CreateButton(() => Desktop.Properties.Resources.TextExport, null, Utilities.LoadImage("Export"), OnButtonExportClick);
+            ButtonOk = Utilities.CreateButton(() => Desktop.Properties.Resources.TextOk, null, Utilities.LoadImage("Ok"), SetDialogResult);
 
             ButtonCopyAddress.Enabled = false;
             ButtonEdit.Enabled = false;
@@ -76,7 +76,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 new TableLayout(
                     new TableRow(
                         Utilities.CreateButton(() =>
-                            MoneroGUI.Desktop.Properties.Resources.TextNew,
+                            Desktop.Properties.Resources.TextNew,
                             null,
                             Utilities.LoadImage("Add"),
                             OnButtonNewClick
@@ -208,8 +208,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         public void Export()
         {
             using (var dialog = new SaveFileDialog { Directory = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)) }) {
-                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
-                dialog.Filters.Add(new FileDialogFilter(MoneroGUI.Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
+                dialog.Filters.Add(new FileDialogFilter(Desktop.Properties.Resources.TextFilterCsvFiles, Utilities.FileFilterCsv));
+                dialog.Filters.Add(new FileDialogFilter(Desktop.Properties.Resources.TextFilterAllFiles, Utilities.FileFilterAll));
 
                 if (dialog.ShowDialog(this) != DialogResult.Ok) return;
 

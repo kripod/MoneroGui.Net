@@ -9,7 +9,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         public AddressBookDialog()
         {
             this.SetWindowProperties(
-                MoneroGUI.Desktop.Properties.Resources.TextAddressBook,
+                Desktop.Properties.Resources.TextAddressBook,
                 new Size(400, 250)
             );
 

@@ -19,7 +19,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 new TableRow(
                     new TableCell(
                         Utilities.CreateLabel(() =>
-                            MoneroGUI.Desktop.Properties.Resources.TextAccount,
+                            Desktop.Properties.Resources.TextAccount,
                             TextAlignment.Left,
                             VerticalAlignment.Center,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
@@ -29,7 +29,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                     new TableCell(
                         Utilities.CreateLabel(() =>
-                            "", //MoneroGUI.Desktop.Properties.Resources.OverviewRecentTransactions,
+                            "", //Desktop.Properties.Resources.OverviewRecentTransactions,
                             TextAlignment.Left,
                             VerticalAlignment.Center,
                             new Font(SystemFont.Default, Utilities.FontSize2, FontDecoration.Underline)
@@ -44,9 +44,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
                     var balanceText = balance != null ?
                         MoneroAPI.Utilities.CoinAtomicValueToString(balance.Spendable) :
-                        MoneroGUI.Desktop.Properties.Resources.PunctuationQuestionMark;
+                        Desktop.Properties.Resources.PunctuationQuestionMark;
 
-                    return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
+                    return balanceText + " " + Desktop.Properties.Resources.TextCurrencyCode;
                 },
                 TextAlignment.Right
             );
@@ -57,9 +57,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                     var balance = Utilities.MoneroRpcManager.AccountManager.Balance;
                     var balanceText = balance != null ?
                         MoneroAPI.Utilities.CoinAtomicValueToString(balance.Unconfirmed) :
-                        MoneroGUI.Desktop.Properties.Resources.PunctuationQuestionMark;
+                        Desktop.Properties.Resources.PunctuationQuestionMark;
 
-                    return balanceText + " " + MoneroGUI.Desktop.Properties.Resources.TextCurrencyCode;
+                    return balanceText + " " + Desktop.Properties.Resources.TextCurrencyCode;
                 },
                 TextAlignment.Right
             );
@@ -68,7 +68,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             var labelAccountAddress = Utilities.CreateLabel(() =>
                 {
                     var address = Utilities.MoneroRpcManager.AccountManager.Address;
-                    if (address == null) return MoneroGUI.Desktop.Properties.Resources.OverviewInitializing;
+                    if (address == null) return Desktop.Properties.Resources.OverviewInitializing;
 
                     ButtonShowAddressQrCode.Visible = true;
                     PanelCopyAddress.Visible = true;
@@ -91,14 +91,14 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
             var buttonCopyAddress = Utilities.CreateButton(
                 null,
-                () => MoneroGUI.Desktop.Properties.Resources.TextCopy,
+                () => Desktop.Properties.Resources.TextCopy,
                 Utilities.LoadImage("Copy"),
                 delegate { Utilities.Clipboard.Text = Utilities.MoneroRpcManager.AccountManager.Address; }
             );
 
             ButtonShowAddressQrCode = Utilities.CreateButton(
                 null,
-                () => MoneroGUI.Desktop.Properties.Resources.TextQrCode,
+                () => Desktop.Properties.Resources.TextQrCode,
                 Utilities.LoadImage("QrCode"),
                 delegate {
                     using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address)) {
@@ -124,7 +124,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                 new TableLayout(
                                     new TableRow(
                                         new TableCell(
-                                            Utilities.CreateLabel(() => MoneroGUI.Desktop.Properties.Resources.OverviewSpendable)
+                                            Utilities.CreateLabel(() => Desktop.Properties.Resources.OverviewSpendable)
                                         ),
                                         new TableCell(
                                             labelAccountBalanceSpendable,
@@ -134,7 +134,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
                                     new TableRow(
                                         new TableCell(
-                                            Utilities.CreateLabel(() => MoneroGUI.Desktop.Properties.Resources.OverviewUnconfirmed)
+                                            Utilities.CreateLabel(() => Desktop.Properties.Resources.OverviewUnconfirmed)
                                         ),
                                         new TableCell(
                                             labelAccountBalanceUnconfirmed,
@@ -149,7 +149,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                     new TableRow(
                                         new TableCell(
                                             Utilities.CreateLabel(() =>
-                                                MoneroGUI.Desktop.Properties.Resources.TextAddress + MoneroGUI.Desktop.Properties.Resources.PunctuationColon,
+                                                Desktop.Properties.Resources.TextAddress + Desktop.Properties.Resources.PunctuationColon,
                                                 TextAlignment.Left,
                                                 VerticalAlignment.Top
                                             )
@@ -171,7 +171,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                                     new TableRow(
                                         new TableCell(
                                             Utilities.CreateLabel(() =>
-                                                MoneroGUI.Desktop.Properties.Resources.OverviewNumberOfTransactions,
+                                                Desktop.Properties.Resources.OverviewNumberOfTransactions,
                                                 TextAlignment.Left,
                                                 VerticalAlignment.Top
                                             )

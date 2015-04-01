@@ -34,7 +34,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
             Spacing = Utilities.Spacing3;
 
             Rows.Add(new GroupBox {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetworkRpcServerSettings,
+                Text = Desktop.Properties.Resources.OptionsNetworkRpcServerSettings,
                 Content = new TableLayout(
                     RpcServerSettingsManagerDaemon,
                     RpcServerSettingsManagerAccountManager
@@ -42,18 +42,18 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
             });
 
             Rows.Add(new GroupBox {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetworkProxySettings,
+                Text = Desktop.Properties.Resources.OptionsNetworkProxySettings,
                 Content = new TableLayout(
                     CheckBoxIsProxyEnabled,
 
                     new TableLayout(
                         new TableRow(
-                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextHost },
+                            new Label { Text = Desktop.Properties.Resources.TextHost },
                             new TableCell(TextBoxProxyHost, true),
 
                             new Separator(SeparatorOrientation.Vertical),
 
-                            new Label { Text = MoneroGUI.Desktop.Properties.Resources.TextPort },
+                            new Label { Text = Desktop.Properties.Resources.TextPort },
                             NumericUpDownProxyPort
                         )
                     ) { Spacing = Utilities.Spacing3 }
@@ -68,21 +68,21 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.OptionsDialog
             var networkSettings = SettingsManager.Network;
 
             RpcServerSettingsManagerDaemon = new RpcServerSettingsManager(
-                MoneroGUI.Desktop.Properties.Resources.TextDaemon,
+                Desktop.Properties.Resources.TextDaemon,
                 networkSettings.RpcUrlHostDaemon,
                 networkSettings.RpcUrlPortDaemon,
                 networkSettings.IsProcessDaemonHostedLocally
             );
 
             RpcServerSettingsManagerAccountManager = new RpcServerSettingsManager(
-                MoneroGUI.Desktop.Properties.Resources.TextAccountManager,
+                Desktop.Properties.Resources.TextAccountManager,
                 networkSettings.RpcUrlHostAccountManager,
                 networkSettings.RpcUrlPortAccountManager,
                 networkSettings.IsProcessAccountManagerHostedLocally
             );
 
             CheckBoxIsProxyEnabled = new CheckBox {
-                Text = MoneroGUI.Desktop.Properties.Resources.OptionsNetworkIsProxyEnabled,
+                Text = Desktop.Properties.Resources.OptionsNetworkIsProxyEnabled,
                 Checked = networkSettings.IsProxyEnabled
             };
             CheckBoxIsProxyEnabled.CheckedChanged += OnCheckBoxIsProxyEnabledCheckedChanged;
