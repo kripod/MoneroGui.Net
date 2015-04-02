@@ -24,11 +24,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             LabelSyncStatus.BindDataContext<string>("Text", "SyncStatusText");
             LabelConnectionCount.BindDataContext<string>("Text", "ConnectionCountText");
 
-            // TODO: Fix this ToolTip binding on Mac
-            if (!Utilities.EnvironmentPlatform.IsMac) {
-                ImageViewSyncStatus.BindDataContext<string>("ToolTip", "SyncStatusIndicatorText");
-            }
-
+            ImageViewSyncStatus.BindDataContext<string>("ToolTip", "SyncStatusIndicatorText");
             ImageViewSyncStatus.BindDataContext<Image>("Image", "SyncStatusIndicatorImage");
             ImageViewConnectionCount.BindDataContext<Image>("Image", "ConnectionCountIndicatorImage");
 
