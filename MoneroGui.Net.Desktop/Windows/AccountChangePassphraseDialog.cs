@@ -11,7 +11,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             this.SetWindowProperties(
                 Desktop.Properties.Resources.AccountUnlockWindowTitle,
-                new Size(300, 0)
+                new Size(0, 0)
             );
 
             IsCurrentPassphraseRequired = isCurrentPassphraseRequired;
@@ -31,7 +31,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             var labelNewPassphrase2 = new Label();
 
             var tableLayoutInputFields = new TableLayout {
-                Padding = new Padding(Utilities.Padding3),
+                Padding = new Padding(0, Utilities.Padding3),
                 Spacing = Utilities.Spacing3
             };
 

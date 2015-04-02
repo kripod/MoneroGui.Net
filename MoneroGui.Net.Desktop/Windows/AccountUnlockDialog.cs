@@ -9,7 +9,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
         {
             this.SetWindowProperties(
                 Desktop.Properties.Resources.AccountUnlockWindowTitle,
-                new Size(300, 0)
+                new Size(0, 0)
             );
 
             RenderContent();

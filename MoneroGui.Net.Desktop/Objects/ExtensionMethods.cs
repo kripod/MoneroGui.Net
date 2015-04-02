@@ -23,7 +23,9 @@ namespace Jojatekok.MoneroGUI.Desktop
                 form.MinimumSize = minimumSize;
             }
 
-            form.BackgroundColor = Colors.White;
+            if (Utilities.EnvironmentPlatform.IsWpf) {
+                form.BackgroundColor = Colors.White;
+            }
         }
 
         public static void SetWindowProperties(this Dialog dialog, string title, Size minimumSize = default(Size))
@@ -31,9 +33,16 @@ namespace Jojatekok.MoneroGUI.Desktop
             dialog.Icon = Utilities.ApplicationIcon;
 
             dialog.Title = title;
+
+            if (Utilities.EnvironmentPlatform.IsGtk) {
+                if (minimumSize.Width == 0) minimumSize.Width = -1;
+                if (minimumSize.Height == 0) minimumSize.Height = -1;
+            }
             dialog.MinimumSize = minimumSize;
 
-            dialog.BackgroundColor = Colors.White;
+            if (Utilities.EnvironmentPlatform.IsWpf) {
+                dialog.BackgroundColor = Colors.White;
+            }
         }
 
         public static void SetLocationToCenterScreen(this Window window)
