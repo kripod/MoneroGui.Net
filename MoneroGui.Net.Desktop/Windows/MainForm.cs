@@ -74,7 +74,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
 #if !DEBUG
             // TODO: Add support for Mac
-            if (Utilities.RunningPlatformId == PlatformID.Win32NT) {
+            if (Utilities.EnvironmentPlatform.IsWpf) {
                 if (SettingsManager.General.IsUpdateCheckEnabled) {
                     Task.Factory.StartNew(CheckForUpdates);
                 }
