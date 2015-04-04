@@ -43,6 +43,32 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             Utilities.Initialize(this);
 
+            //var clipboardText = "";
+
+            //clipboardText +=
+            //    "Configuration file: " + Path.Combine(
+            //        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            //        Utilities.GetAssemblyAttribute<System.Reflection.AssemblyCompanyAttribute>().Company,
+            //        Utilities.ApplicationAssemblyName.Name,
+            //        "user.config"
+            //    ) + "\r\n" +
+            //    "Daemon data dir: " + SettingsManager.Paths.DirectoryDaemonData + "\r\n" +
+            //    "Account data file: " + SettingsManager.Paths.FileAccountData + "\r\n" +
+            //    "Default account data directory: " + MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountData + "\r\n" +
+            //    "Default account data directory (test #2): " + Path.Combine(MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountData, "MoneroX") + "\r\n" +
+            //    "Default account data file: " + MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData + "\r\n" +
+            //    "Daemon software (relative path): " + SettingsManager.Paths.SoftwareDaemon + "\r\n" +
+            //    "Daemon software (absolute path): " + Utilities.GetAbsolutePath(SettingsManager.Paths.SoftwareDaemon) + "\r\n" +
+            //    "Executing assembly path: " + System.Reflection.Assembly.GetExecutingAssembly().Location + "\r\n" +
+            //    "AppDomain base directory: " + AppDomain.CurrentDomain.BaseDirectory;
+
+            //Utilities.Clipboard.Text = clipboardText;
+
+            //Content = new TextArea {
+            //    ReadOnly = true,
+            //    Text = clipboardText
+            //};
+
             RenderMenu();
             RenderContent();
 

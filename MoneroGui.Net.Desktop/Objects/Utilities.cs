@@ -154,13 +154,13 @@ namespace Jojatekok.MoneroGUI.Desktop
 
             var storedPathSettings = SettingsManager.Paths;
             var daemonProcessSettings = new DaemonProcessSettings {
-                SoftwareDaemon = storedPathSettings.SoftwareDaemon,
-                DirectoryDaemonData = storedPathSettings.DirectoryDaemonData,
+                SoftwareDaemon = GetAbsolutePath(storedPathSettings.SoftwareDaemon),
+                DirectoryDaemonData = GetAbsolutePath(storedPathSettings.DirectoryDaemonData),
             };
             var accountManagerProcessSettings = new AccountManagerProcessSettings {
-                SoftwareAccountManager = storedPathSettings.SoftwareAccountManager,
-                DirectoryAccountBackups = storedPathSettings.DirectoryAccountBackups,
-                FileAccountData = storedPathSettings.FileAccountData,
+                SoftwareAccountManager = GetAbsolutePath(storedPathSettings.SoftwareAccountManager),
+                DirectoryAccountBackups = GetAbsolutePath(storedPathSettings.DirectoryAccountBackups),
+                FileAccountData = GetAbsolutePath(storedPathSettings.FileAccountData),
             };
 
             var storedNetworkSettings = SettingsManager.Network;
@@ -225,9 +225,9 @@ namespace Jojatekok.MoneroGUI.Desktop
             return false;
         }
 
-        public static string GetAbsolutePath(string input)
+        public static string GetAbsolutePath(string path)
         {
-            return new FileInfo(input).FullName;
+            return Path.IsPathRooted(path) || path[0] == '~' ? path : Path.Combine(ApplicationBaseDirectory, path);
         }
 
         public static string GetRelativePath(string input)

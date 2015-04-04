@@ -12,8 +12,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
     {
         private readonly TextBox _textBoxAddress = Utilities.CreateTextBox(
             null,
-            () => Desktop.Properties.Resources.TextHintAddress,
-            new Font(FontFamilies.Monospace, Utilities.FontSize1)
+            () => Desktop.Properties.Resources.TextHintAddress
         );
         private readonly TextBox _textBoxLabel = Utilities.CreateTextBox(
             null,

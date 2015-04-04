@@ -251,7 +251,13 @@ namespace Jojatekok.MoneroGUI.Desktop
             public string FileAccountData {
                 get {
                     var output = base["fileAccountData"] as string;
-                    return !string.IsNullOrEmpty(output) ? output : MoneroAPI.Extensions.Utilities.DefaultPathFileAccountData;
+                    if (!string.IsNullOrEmpty(output)) return output;
+
+                    return Path.Combine(
+                        MoneroAPI.Extensions.Utilities.DefaultPathDirectoryAccountData,
+                        Utilities.ApplicationAssemblyName.Name,
+                        "account.bin"
+                    );
                 }
 
                 set {

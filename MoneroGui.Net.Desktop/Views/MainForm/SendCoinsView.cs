@@ -71,8 +71,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                             Utilities.CreateTextBox(
                                 ViewModel,
                                 o => o.PaymentId,
-                                () => Desktop.Properties.Resources.TextHintOptional,
-                                new Font(FontFamilies.Monospace, Utilities.FontSize1)
+                                () => Desktop.Properties.Resources.TextHintOptional
                             ),
                             true
                         )
