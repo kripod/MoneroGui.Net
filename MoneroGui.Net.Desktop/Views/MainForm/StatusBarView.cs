@@ -1,10 +1,13 @@
 ﻿using Eto.Drawing;
 using Eto.Forms;
+using Jojatekok.MoneroGUI.Desktop.Controls;
 
 namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 {
     public sealed class StatusBarView : TableLayout
     {
+        private const int StatusBarHeight = 22;
+
         public static readonly StatusBarViewModel ViewModel = new StatusBarViewModel();
 
         private static readonly Label LabelSyncStatus = new Label();
@@ -13,11 +16,12 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         private static readonly ImageView ImageViewSyncStatus = new ImageView();
         private static readonly ImageView ImageViewConnectionCount = new ImageView();
 
-        private static readonly ProgressBar ProgressBarSyncStatus = new ProgressBar();
+        private static readonly ProgressBarWithText ProgressBarSyncStatus = new ProgressBarWithText { MaxValue = 10000, Height = StatusBarHeight };
 
         public StatusBarView()
         {
             Spacing = Utilities.Spacing2;
+            Height = StatusBarHeight;
 
             DataContext = ViewModel;
 
@@ -28,9 +32,9 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
             ImageViewSyncStatus.BindDataContext<Image>("Image", "SyncStatusIndicatorImage");
             ImageViewConnectionCount.BindDataContext<Image>("Image", "ConnectionCountIndicatorImage");
 
-            ProgressBarSyncStatus.MaxValue = 10000;
             ProgressBarSyncStatus.BindDataContext<bool>("Visible", "IsSyncBarVisible");
             ProgressBarSyncStatus.BindDataContext<int>("Value", "SyncBarProgressValue");
+            ProgressBarSyncStatus.BindDataContext<string>("Text", "SyncBarText");
 
             Rows.Add(
                 new TableRow(

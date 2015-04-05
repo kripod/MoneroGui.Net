@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controls\CoinSender.cs" />
     <Compile Include="Controls\PathSelector.cs" />
+    <Compile Include="Controls\ProgressBarWithText.cs" />
     <Compile Include="Controls\RpcServerSettingsManager.cs" />
     <Compile Include="Controls\Separator.cs" />
     <Compile Include="Objects\CultureManager.cs" />
