@@ -7,4 +7,5 @@ before_build:
 - nuget restore
 
 build:
+  project: MoneroGui.Net.sln
   parallel: true
