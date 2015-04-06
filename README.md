@@ -1,5 +1,5 @@
 # MoneroX [![Build status](https://ci.appveyor.com/api/projects/status/dumx4b6665o9vkyl?svg=true)](https://ci.appveyor.com/project/JoJatekok/monerogui-net)
-MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a GUI _(Graphical User Interface)_ to interact with the [Monero][] Core assemblies.
+MoneroX is a cross-platform [C#][] project based on [Eto.Forms][], providing a GUI _(Graphical User Interface)_ to interact with [Monero][]'s core assemblies.
 
 [C#]: https://wikipedia.org/wiki/C_Sharp_%28programming_language%29
 [Eto.Forms]: https://github.com/picoe/Eto
@@ -17,7 +17,7 @@ MoneroX is a multi-platform [C#][] project based on [Eto.Forms][], providing a G
 
 ### Linux
 - __Minimum system requirements:__
-    - [Mono .NET Framework 3][]
+    - [Mono .NET Framework 3][] _(Package: mono-complete)_
 
 - __Instructions:__
 
