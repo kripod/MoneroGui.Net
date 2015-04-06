@@ -3,9 +3,9 @@ version: 1.1.0.{build}
 skip_tags: true
 
 before_build:
-- cd Source
+- cd "Source"
 - nuget restore
 
-build:
-  project: MoneroGui.Net.sln
-  parallel: true
+build_script:
+- cd "Source"
+- msbuild "MoneroGui.Net.sln" /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
