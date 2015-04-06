@@ -1,0 +1,7 @@
+language: csharp
+solution: Source/MoneroGui.Net.sln
+
+# Blacklist
+branches:
+  except:
+    - gh-pages
