@@ -24,7 +24,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
         public string Text {
             get { return Label.Text; }
-            set { Label.Text = value; }
+            set {
+                Label.Text = value;
+                UpdateLabelLocation();
+            }
         }
 
         public ProgressBarWithText()
@@ -40,7 +43,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
         void OnControlSizeChanged(object sender, EventArgs e)
         {
             var labelLocationX = (Width - Label.Width) / 2;
-            var labelLocationY = (Height - Label.Height) / 2 + 1;
+            var labelLocationY = (Height - Label.Height) / 2;
 
             Remove(Label);
             Remove(TableLayoutProgressBar);
@@ -50,6 +53,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
             Add(TableLayoutProgressBar, 0, 0);
             Add(Label, labelLocationX, labelLocationY);
+        }
+
+        void UpdateLabelLocation() {
+            Move(Label, (Width - Label.Width) / 2, (Height - Label.Height) / 2);
         }
     }
 }

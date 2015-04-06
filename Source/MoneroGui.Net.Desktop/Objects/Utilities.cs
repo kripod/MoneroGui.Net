@@ -36,8 +36,10 @@ namespace Jojatekok.MoneroGUI.Desktop
         public const byte Padding6 = 20;
         public const byte Padding7 = 30;
 
-        public static readonly string PathDirectoryThirdPartyLicenses = new DirectoryInfo("Licenses").FullName;
-        public static readonly string PathFileLicense = new FileInfo("LICENSE").FullName;
+        public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+        public static readonly string PathDirectoryThirdPartyLicenses = GetAbsolutePath("Licenses");
+        public static readonly string PathFileLicense = GetAbsolutePath("LICENSE");
 
         public static readonly Color ColorForegroundDefault = Colors.Black;
         public static readonly Color ColorForegroundWarning = Colors.OrangeRed;
@@ -70,8 +72,6 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra.Length != 0 ? "-" + ApplicationVersionExtra : null);
 
         public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Icon.ico");
-
-        public static readonly string ApplicationBaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
         public static readonly Clipboard Clipboard = new Clipboard();
 
@@ -234,7 +234,10 @@ namespace Jojatekok.MoneroGUI.Desktop
         {
             var inputUri = new Uri(input);
             var applicationBaseDirectoryUri = new Uri(ApplicationBaseDirectory);
-            return Uri.UnescapeDataString(applicationBaseDirectoryUri.MakeRelativeUri(inputUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+
+            var output = Uri.UnescapeDataString(applicationBaseDirectoryUri.MakeRelativeUri(inputUri).ToString().Replace('/', Path.DirectorySeparatorChar));
+            if (output.Contains("../")) return input;
+            return output;
         }
 
         public static Image LoadImage(string resourceName)
