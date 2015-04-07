@@ -254,6 +254,16 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 Image = Utilities.LoadImage("Information"),
             };
 
+            var menuFile = new ButtonMenuItem {
+                Text = Desktop.Properties.Resources.MenuFile,
+                Items = {
+                    commandAccountBackupManager,
+                    CommandExport,
+                    new SeparatorMenuItem(),
+                    commandExit
+                }
+            };
+
             MenuSettings = new ButtonMenuItem {
                 Text = Desktop.Properties.Resources.MenuSettings,
                 Items = {
@@ -263,28 +273,19 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 }
             };
 
-            Menu = new MenuBar {
+            var menuHelp = new ButtonMenuItem {
+                Text = Desktop.Properties.Resources.MenuHelp,
                 Items = {
-                    new ButtonMenuItem {
-                        Text = Desktop.Properties.Resources.MenuFile,
-                        Items = {
-                            commandAccountBackupManager,
-                            CommandExport,
-                            new SeparatorMenuItem(),
-                            commandExit
-                        }
-                    },
-
-                    MenuSettings,
-
-                    new ButtonMenuItem {
-                        Text = Desktop.Properties.Resources.MenuHelp,
-                        Items = {
-                            commandShowWindowAbout
-                        }
-                    }
+                    commandShowWindowAbout
                 }
             };
+
+            Menu = new MenuBar();
+            var menuItems = Menu.Items;
+
+            menuItems.Add(menuFile);
+            menuItems.Add(MenuSettings);
+            menuItems.Add(menuHelp);
         }
 
         void RenderContent()
