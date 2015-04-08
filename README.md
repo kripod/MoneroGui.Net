@@ -15,6 +15,16 @@ MoneroX is a cross-platform [C#][] project based on [Eto.Forms][], providing a G
     1.  Download the latest release of the application, and then extract the archive into a directory
     2.  Run 'MoneroGui.Net.exe' from the folder you have previously extracted the files to
 
+### Mac
+- __Minimum system requirements:__
+    - [Mono .NET Framework 3][]
+
+- __Instructions:__
+
+    1.  Download the latest release of the application, and then extract the archive which contains the application
+    2.  Launch 'MoneroX.app' by double-clicking on it
+        - Make sure that you [allow running unsigned applications](http://www.wikihow.com/Install-Software-from-Unsigned-Developers-on-a-Mac) on your system
+
 ### Linux
 - __Minimum system requirements:__
     - [Mono .NET Framework 3][] _(Package: mono-complete)_
