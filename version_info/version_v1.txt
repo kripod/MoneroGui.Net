@@ -1,3 +1,3 @@
 ReleasesUrlBase	https://github.com/Jojatekok/MoneroGui.Net/releases/download/v{0}/MoneroGui.Net-v{0}-{1}.zip
-LatestVersionStable	1.0.0
-LatestVersionTest	1.0.0
+LatestVersionStable	1.2.0
+LatestVersionTest	1.2.0
