@@ -280,12 +280,11 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
                 }
             };
 
-            Menu = new MenuBar();
-            var menuItems = Menu.Items;
-
-            menuItems.Add(menuFile);
-            menuItems.Add(MenuSettings);
-            menuItems.Add(menuHelp);
+            Menu = new MenuBar(
+                menuFile,
+                MenuSettings,
+                menuHelp
+            );
         }
 
         void RenderContent()

@@ -46,25 +46,25 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="Eto">
-      <HintPath>..\packages\Eto.Forms.2.1.0-build0182\lib\net45\Eto.dll</HintPath>
+      <HintPath>..\packages\Eto.Forms.2.1.0-build0195\lib\net45\Eto.dll</HintPath>
     </Reference>
     <Reference Include="Eto.Gtk2">
-      <HintPath>..\packages\Eto.Platform.Gtk.2.1.0-build0182\lib\net45\Eto.Gtk2.dll</HintPath>
+      <HintPath>..\packages\Eto.Platform.Gtk.2.1.0-build0195\lib\net45\Eto.Gtk2.dll</HintPath>
     </Reference>
     <Reference Include="Eto.Mac">
-      <HintPath>..\packages\Eto.Platform.Mac.2.1.0-build0182\lib\net45\Eto.Mac.dll</HintPath>
+      <HintPath>..\packages\Eto.Platform.Mac.2.1.0-build0195\lib\net45\Eto.Mac.dll</HintPath>
     </Reference>
     <Reference Include="Eto.Wpf">
-      <HintPath>..\packages\Eto.Platform.Wpf.2.1.0-build0182\lib\net45\Eto.Wpf.dll</HintPath>
+      <HintPath>..\packages\Eto.Platform.Wpf.2.1.0-build0195\lib\net45\Eto.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="MoneroApi.Net">
-      <HintPath>..\packages\MoneroApi.Net.6.4.1\lib\net40\MoneroApi.Net.dll</HintPath>
+      <HintPath>..\packages\MoneroApi.Net.6.4.2\lib\net40\MoneroApi.Net.dll</HintPath>
     </Reference>
     <Reference Include="MoneroApi.Net.Extensions">
-      <HintPath>..\packages\MoneroApi.Net.6.4.1\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
+      <HintPath>..\packages\MoneroApi.Net.6.4.2\lib\net40\MoneroApi.Net.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="MonoMac">
-      <HintPath>..\packages\Eto.Platform.Mac.2.1.0-build0182\lib\net45\MonoMac.dll</HintPath>
+      <HintPath>..\packages\Eto.Platform.Mac.2.1.0-build0195\lib\net45\MonoMac.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -321,9 +321,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Eto.Platform.Mac.Template.2.1.0-build0182\build\Eto.Platform.Mac.Template.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Platform.Mac.Template.2.1.0-build0182\build\Eto.Platform.Mac.Template.targets'))" />
+    <Error Condition="!Exists('..\packages\Eto.Platform.Mac.Template.2.1.0-build0195\build\Eto.Platform.Mac.Template.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Platform.Mac.Template.2.1.0-build0195\build\Eto.Platform.Mac.Template.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
-  <Import Project="..\packages\Eto.Platform.Mac.Template.2.1.0-build0182\build\Eto.Platform.Mac.Template.targets" Condition="Exists('..\packages\Eto.Platform.Mac.Template.2.1.0-build0182\build\Eto.Platform.Mac.Template.targets')" />
+  <Import Project="..\packages\Eto.Platform.Mac.Template.2.1.0-build0195\build\Eto.Platform.Mac.Template.targets" Condition="Exists('..\packages\Eto.Platform.Mac.Template.2.1.0-build0195\build\Eto.Platform.Mac.Template.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

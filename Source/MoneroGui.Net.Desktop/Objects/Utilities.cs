@@ -14,7 +14,6 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
-using System.Threading;
 using Jojatekok.MoneroGUI.Desktop.Windows;
 
 namespace Jojatekok.MoneroGUI.Desktop
@@ -23,10 +22,6 @@ namespace Jojatekok.MoneroGUI.Desktop
     {
         public const string DefaultLanguageCode = "default";
         public const string ApplicationDefaultNamespace = "Jojatekok.MoneroGUI.Desktop";
-
-        public const byte FontSize1 = 10;
-        public const byte FontSize2 = 12;
-        public const byte FontSize3 = 20;
 
         public const byte Padding1 = 3;
         public const byte Padding2 = 5;
@@ -101,6 +96,10 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static float DefaultFontSize { get; private set; }
         public static FontFamily DefaultFontFamily { get; private set; }
 
+        public static byte FontSize1 { get; private set; }
+        public static byte FontSize2 { get; private set; }
+        public static byte FontSize3 { get; private set; }
+
         public static MainForm MainForm { get; private set; }
 
         public static MoneroProcessManager MoneroProcessManager { get; private set; }
@@ -134,6 +133,10 @@ namespace Jojatekok.MoneroGUI.Desktop
             var defaultFont = new Font(SystemFont.Default);
             DefaultFontSize = defaultFont.Size;
             DefaultFontFamily = defaultFont.Family;
+
+            FontSize1 = (byte)Math.Round(DefaultFontSize * 1.11);
+            FontSize2 = (byte)Math.Round(DefaultFontSize * 1.33);
+            FontSize3 = (byte)Math.Round(DefaultFontSize * 2.22);
 
             using (var button = new Button()) {
                 var handler = button.Handler;
