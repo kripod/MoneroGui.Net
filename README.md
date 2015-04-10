@@ -40,7 +40,7 @@ MoneroX is a cross-platform [C#][] project based on [Eto.Forms][], providing a G
 [Mono .NET Framework 3]: http://www.mono-project.com/download
 
 ## Versioning
-The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero Core binaries' version number.
+The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero core binaries' version number.
 
 [Semantic Versioning 2.0.0]: http://semver.org/spec/v2.0.0.html
 
