@@ -226,7 +226,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
             if (isTransferSuccessful) {
                 // TODO: Notify the user about the transaction's success
-                Clear();
+                Application.Instance.AsyncInvoke(Clear);
             } else {
                 // Show a warning whether the transaction could not be sent
                 this.ShowError(Desktop.Properties.Resources.SendCoinsTransactionCouldNotBeSent);
