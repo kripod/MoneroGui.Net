@@ -14,7 +14,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 {
     public sealed class MainForm : Form
     {
-        private static bool _isSafeShutdownAllowed = true;
+        private static bool _isSafeShutdownAllowed;
 
         private static bool IsSafeShutdownAllowed {
             get { return _isSafeShutdownAllowed; }
@@ -211,7 +211,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             }
         }
 
-        public void RenderMenu()
+        void RenderMenu()
         {
             CommandExport = new Command(OnCommandExport) {
                 MenuText = Desktop.Properties.Resources.MenuExport,
@@ -398,8 +398,10 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             }
         }
 
-        void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
+        static void OnDaemonRpcNetworkInformationChanged(object sender, NetworkInformationChangedEventArgs e)
         {
+            IsSafeShutdownAllowed = true;
+
             var networkInformation = e.NetworkInformation;
 
             var connectionCount = networkInformation.ConnectionCountTotal;
@@ -435,7 +437,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             });
         }
 
-        void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
+        static void OnDaemonRpcBlockchainSynced(object sender, EventArgs e)
         {
             Application.Instance.AsyncInvoke(() => {
                 // Enable sending coins, along with hiding the sync status
@@ -479,7 +481,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             });
         }
 
-        void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
+        static void OnAccountManagerRpcAddressReceived(object sender, AccountAddressReceivedEventArgs e)
         {
             Application.Instance.AsyncInvoke(() => Utilities.BindingsToAccountAddress.Update());
         }
