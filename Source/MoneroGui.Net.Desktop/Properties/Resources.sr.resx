@@ -147,6 +147,9 @@
   <data name="MainWindowTransactions" xml:space="preserve">
     <value>Transakcije</value>
   </data>
+  <data name="MenuAbout" xml:space="preserve">
+    <value>&amp;O MoneroX</value>
+  </data>
   <data name="MenuBackupManager" xml:space="preserve">
     <value>&amp;Menadžer rezervne kopije</value>
   </data>
@@ -252,6 +255,9 @@
   <data name="TransactionTypeUnknown" xml:space="preserve">
     <value>Nepoznato</value>
   </data>
+  <data name="AboutWindowTitle" xml:space="preserve">
+    <value>O MoneroX</value>
+  </data>
   <data name="AboutWindowLicenseFileNotFound" xml:space="preserve">
     <value>Greška: Licencni fajl ne može biti pronađen.</value>
   </data>
@@ -311,6 +317,9 @@
   </data>
   <data name="OptionsGeneralIsSafeShutdownEnabled" xml:space="preserve">
     <value>Sačuvaj baze podataka pre isključenja</value>
+  </data>
+  <data name="OptionsGeneralIsStartableOnSystemLogin" xml:space="preserve">
+    <value>Pokreni MoneroX po pokretanju sistema</value>
   </data>
   <data name="AddressBookCopyAddress" xml:space="preserve">
     <value>Kopiraj adresu</value>
@@ -603,5 +612,17 @@ The last received block was generated {3} ago.</value>
   </data>
   <data name="TextAccountManager" xml:space="preserve">
     <value>Menadžer računa</value>
+  </data>
+  <data name="BackupManagerDeterministicAccountSeedWindowInstruction" xml:space="preserve">
+    <value>Determinističko seme vašeg računa može se naći u nastavku.Preporučeno je da se napravi beleška o tome na papiru umesto čuvanja na elektronskom uređaju.</value>
+  </data>
+  <data name="TextDeterministicAccountSeed" xml:space="preserve">
+    <value>Determinističko seme računa</value>
+  </data>
+  <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
+    <value>Ne možete da povratite determinističko seme računa koji se koristi.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>Pokreni odgovarajući proces lokalno</value>
   </data>
 </root>

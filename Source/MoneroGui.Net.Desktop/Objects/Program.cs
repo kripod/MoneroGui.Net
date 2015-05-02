@@ -13,7 +13,9 @@ namespace Jojatekok.MoneroGUI.Desktop
         public static void Main(string[] args)
         {
             // Catch unhandled exceptions
+#if !DEBUG
             AppDomain.CurrentDomain.UnhandledException += OnApplicationUnhandledException;
+#endif
 
             AddStyles();
 

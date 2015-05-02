@@ -118,22 +118,23 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         private void OnButtonNewClick()
         {
-            var dialog = new AddressBookEditDialog(DataSourceAddressBook);
-            if (dialog.ShowModal(this)) {
-                var overwriteIndex = dialog.OverwriteIndex;
+            using (var dialog = new AddressBookEditDialog(DataSourceAddressBook) { Owner = ParentWindow }) {
+                if (dialog.ShowModal()) {
+                    var overwriteIndex = dialog.OverwriteIndex;
 
-                if (overwriteIndex < 0) {
-                    // Add new item
-                    DataSourceAddressBook.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
-                    overwriteIndex = DataSourceAddressBook.Count - 1;
+                    if (overwriteIndex < 0) {
+                        // Add new item
+                        DataSourceAddressBook.Add(new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                        overwriteIndex = DataSourceAddressBook.Count - 1;
 
-                } else {
-                    // Overwrite existing item
-                    DataSourceAddressBook.RemoveAt(overwriteIndex);
-                    DataSourceAddressBook.Insert(overwriteIndex, new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                    } else {
+                        // Overwrite existing item
+                        DataSourceAddressBook.RemoveAt(overwriteIndex);
+                        DataSourceAddressBook.Insert(overwriteIndex, new SettingsManager.ConfigElementContact(dialog.Label, dialog.Address));
+                    }
+
+                    GridViewAddressBook.SelectRow(overwriteIndex);
                 }
-
-                GridViewAddressBook.SelectRow(overwriteIndex);
             }
 
             GridViewAddressBook.Focus();
@@ -174,8 +175,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
         {
             var editIndex = DataSourceAddressBook.IndexOf(SelectedContact);
 
-            using (var dialog = new AddressBookEditDialog(DataSourceAddressBook, editIndex)) {
-                if (dialog.ShowModal(this)) {
+            using (var dialog = new AddressBookEditDialog(DataSourceAddressBook, editIndex) { Owner = ParentWindow }) {
+                if (dialog.ShowModal()) {
                     var overwriteIndex = dialog.OverwriteIndex;
                     if (overwriteIndex >= 0 && overwriteIndex != editIndex) {
                         DataSourceAddressBook.RemoveAt(dialog.OverwriteIndex);
@@ -192,8 +193,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
 
         private void ShowSelectedContactQrCode()
         {
-            using (var dialog = new QrCodeDialog(SelectedContact)) {
-                dialog.ShowModal(this);
+            using (var dialog = new QrCodeDialog(SelectedContact) { Owner = ParentWindow }) {
+                dialog.ShowModal();
             }
 
             GridViewAddressBook.Focus();

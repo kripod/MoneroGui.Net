@@ -126,6 +126,9 @@
   <data name="TextSend" xml:space="preserve">
     <value>Lähetä</value>
   </data>
+  <data name="TextDaemon" xml:space="preserve">
+    <value>Taustaprosessi</value>
+  </data>
   <data name="TextAddressBook" xml:space="preserve">
     <value>Osoitekirja</value>
   </data>
@@ -620,5 +623,8 @@ Viimeisin vastaanotettu lohko on generoitu {3} sitten.</value>
   </data>
   <data name="BackupManagerNewBackupWindowErrorRetrievingSeed" xml:space="preserve">
     <value>Käytössä olevan tunnuksen määriteltyä avainarvoa ei voida noutaa.</value>
+  </data>
+  <data name="OptionsNetworkIsProcessHostedLocally" xml:space="preserve">
+    <value>Suorita vastaava prosessi paikallisesti</value>
   </data>
 </root>

@@ -101,8 +101,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Views.MainForm
                 () => Desktop.Properties.Resources.TextQrCode,
                 Utilities.LoadImage("QrCode"),
                 delegate {
-                    using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address)) {
-                        dialog.ShowModal(this);
+                    using (var dialog = new QrCodeDialog(Utilities.MoneroRpcManager.AccountManager.Address) { Owner = ParentWindow }) {
+                        dialog.ShowModal();
                     }
                 }
             );

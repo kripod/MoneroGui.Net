@@ -92,8 +92,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Controls
 
         void OnButtonShowAddressBookClick(object sender, EventArgs e)
         {
-            using (var dialog = new AddressBookDialog()) {
-                var contact = dialog.ShowModal(this);
+            using (var dialog = new AddressBookDialog { Owner = ParentWindow }) {
+                var contact = dialog.ShowModal();
                 if (contact != null) {
                     Address = contact.Address;
                     Label = contact.Label;

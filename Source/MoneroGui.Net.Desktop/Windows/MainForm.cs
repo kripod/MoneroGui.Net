@@ -371,8 +371,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         void OnCommandAccountUnlock(object sender, EventArgs e)
         {
-            using (var dialog = new AccountUnlockDialog()) {
-                var result = dialog.ShowModal(this);
+            using (var dialog = new AccountUnlockDialog { Owner = this }) {
+                var result = dialog.ShowModal();
                 if (result != null) {
                     Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
                 }
@@ -386,15 +386,15 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
         void OnCommandShowWindowOptions(object sender, EventArgs e)
         {
-            using (var dialog = new OptionsDialog()) {
-                dialog.ShowModal(this);
+            using (var dialog = new OptionsDialog { Owner = this }) {
+                dialog.ShowModal();
             }
         }
 
         void OnCommandShowWindowAbout(object sender, EventArgs e)
         {
-            using (var dialog = new AboutDialog()) {
-                dialog.ShowModal(this);
+            using (var dialog = new AboutDialog { Owner = this }) {
+                dialog.ShowModal();
             }
         }
 
@@ -451,8 +451,8 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
             Application.Instance.AsyncInvoke(() => {
                 if (e.IsFirstTime) {
                     // Let the user set the account's passphrase for the first time
-                    using (var dialog = new AccountChangePassphraseDialog(false)) {
-                        var result = dialog.ShowModal(this);
+                    using (var dialog = new AccountChangePassphraseDialog(false) { Owner = this }) {
+                        var result = dialog.ShowModal();
                         if (result != null) {
                             Utilities.MoneroProcessManager.AccountManager.Passphrase = result;
                         }
