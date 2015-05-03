@@ -66,7 +66,11 @@ namespace Jojatekok.MoneroGUI.Desktop
         public const string ApplicationVersionExtra = "";
         public static readonly string ApplicationVersionString = ApplicationVersionComparable.ToString(3) + (ApplicationVersionExtra.Length != 0 ? "-" + ApplicationVersionExtra : null);
 
+#if __MonoCS__
+        public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Resources.Logo.Icon.ico");
+#else
         public static readonly Icon ApplicationIcon = Icon.FromResource(ApplicationDefaultNamespace + ".Icon.ico");
+#endif
 
         public static readonly Clipboard Clipboard = new Clipboard();
 
@@ -243,11 +247,17 @@ namespace Jojatekok.MoneroGUI.Desktop
             return output;
         }
 
-        public static Image LoadImage(string resourceName)
+        public static Image LoadImage(string resourceName, bool isLogo = false)
         {
+#if __MonoCS__
+            var resourceRelativePath = isLogo ? "Resources.Logo." : "Resources.Images.";
+#else
+            var resourceRelativePath = "";
+#endif
+
             return ImageConverter.ConvertFrom(
                 ImageConverter.ResourcePrefix +
-                ApplicationDefaultNamespace + "." + resourceName + ".png," +
+                ApplicationDefaultNamespace + "." + resourceRelativePath + resourceName + ".png," +
                 ApplicationAssemblyNameName
             ) as Image;
         }

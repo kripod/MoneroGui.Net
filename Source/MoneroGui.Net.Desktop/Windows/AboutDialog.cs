@@ -54,7 +54,7 @@ namespace Jojatekok.MoneroGUI.Desktop.Windows
 
             dynamicLayoutMain.BeginHorizontal();
             dynamicLayoutMain.BeginVertical();
-            dynamicLayoutMain.AddCentered(new ImageView { Image = Utilities.LoadImage("Icon-192x192") });
+            dynamicLayoutMain.AddCentered(new ImageView { Image = Utilities.LoadImage("Icon-192x192", true) });
             dynamicLayoutMain.EndVertical();
 
             dynamicLayoutMain.BeginVertical();

@@ -8,3 +8,6 @@
 # C#
 *.cs      merge=union diff=csharp text eol=lf
 *.csproj  merge=union text eol=crlf
+
+# Linux build script
+*.sh      merge=union text eol=lf
