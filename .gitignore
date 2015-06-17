@@ -1,11 +1,12 @@
 # Project-specific #
 ####################
 
-Build scripts/Output
-Build scripts/Resources/Platform-independent/Localizations
+Build scripts/Output/*
+Build scripts/Resources/Platform-independent/Localizations/*
 Build scripts/Resources/Linux/Software/*
 Build scripts/Resources/Windows/Software/*
 Build scripts/Resources/Mac/Software/*
+!.keep
 
 # Visual Studio #
 #################
