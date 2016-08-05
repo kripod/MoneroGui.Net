@@ -1,3 +1,6 @@
+# Project Discontinued
+Please be aware that this project is not actively maintained anymore.
+
 # MoneroX [![Build Status](https://travis-ci.org/Jojatekok/MoneroGui.Net.svg)](https://travis-ci.org/Jojatekok/MoneroGui.Net)
 MoneroX is a cross-platform [C#][] project based on [Eto.Forms][], providing a GUI _(Graphical User Interface)_ to interact with [Monero][]'s core assemblies.
 
@@ -43,10 +46,3 @@ MoneroX is a cross-platform [C#][] project based on [Eto.Forms][], providing a G
 The project uses [Semantic Versioning 2.0.0][] for keeping track of changes. It is not in relation with the Monero core binaries' version number.
 
 [Semantic Versioning 2.0.0]: http://semver.org/spec/v2.0.0.html
-
-## Donations
-Donations are highly appreciated in order to keep the development alive.
-
-- __Monero:__ 47hK4gehaMrFTQCiV5FEmM54hpqTrdHudb9nUBG88NicBDpxH4TGuh3TmW84Dc6dpMiEiBLGvJCuT3xC3LNHctmx7mG8NLM
-
-- __Bitcoin:__ 14wHehBtFt321WTV15khon8Juaxh9drnfJ
